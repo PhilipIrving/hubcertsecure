@@ -468,7 +468,7 @@
       <div style="text-align:center;margin-top:14px">
         <a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a>
       </div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.17</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.18</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
 
@@ -1162,7 +1162,7 @@
 
 <div class="toast" id="toast"></div>
 </div><!-- end main-app -->
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.17</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.18</div>
 
 
 <!-- ═══════════════════ SCRIPT ═══════════════════ -->
@@ -2293,7 +2293,7 @@ function renderGrids() {
       const ts = localStorage.getItem('cs-last-report-' + sk);
       const lr = ts ? new Date(ts).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : '';
       return '<div class="client-card" id="cc-' + sk + '" onclick="pickClient(\'' + c.key.replace(/'/g,"\\'").replace(/&/g,'\\x26') + '\')">' +
-        '<div class="client-name">' + c.name + '<span class="platform-badge ' + (c.platform==='trustlayer'?'tl">TL':'evident">EV') + '</span></div>' +
+        '<div class="client-name"><span class="platform-badge ' + (c.platform==='trustlayer'?'tl">TL':'evident">EV') + '</span> ' + c.name + '</div>' +
         '<span class="client-badge ' + STRUCT[struct].badgeClass + '">' + STRUCT[struct].label + '</span>' +
         (lr ? '<div style="font-size:9px;color:var(--muted);margin-top:4px">' + lr + '</div>' : '') +
         '</div>';
