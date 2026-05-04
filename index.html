@@ -468,7 +468,7 @@
       <div style="text-align:center;margin-top:14px">
         <a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a>
       </div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.20</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.21</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
 
@@ -1146,7 +1146,7 @@
 
 <div class="toast" id="toast"></div>
 </div><!-- end main-app -->
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.20</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.21</div>
 
 
 <!-- ═══════════════════ SCRIPT ═══════════════════ -->
@@ -2505,6 +2505,14 @@ async function generate() {
 
     // Always load insureds — needed for Thank You Card even when no compliance reports selected
     insureds = clientData.insureds;
+
+    // Debug: warn if no data returned
+    if (insureds.length === 0) {
+      console.warn(`[CertSecure] No insureds found for client key: "${selectedClient.key}". Check that client_name in clients.json exactly matches the 'client' column in your CSV.`);
+      toast(`No data found for "${selectedClient.name}" — check client name matches CSV exactly.`, 'error');
+    } else {
+      console.log(`[CertSecure] Loaded ${insureds.length} insureds for "${selectedClient.key}"`);
+    }
 
     if (E.cs || E.cd || E.ed) {
       // Enrich with custom properties
