@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  # ── Evident: pull from API → write to data/evident/ ───────────
+  # ── Evident: sync data + monthly snapshot on the 1st ──────────
   sync-evident:
     runs-on: ubuntu-latest
     permissions:
@@ -74,20 +74,42 @@ jobs:
       - name: Route CSVs to data/evident/
         run: |
           mkdir -p data/evident
-          for f in data/*.csv; do
-            [ -f "$f" ] && mv "$f" data/evident/
+          find data -maxdepth 1 -name "*.csv" | while IFS= read -r f; do
+            mv "$f" data/evident/
+            echo "  moved: $f"
           done
+          echo "Route complete"
 
-      - name: Commit Evident data
+      - name: Take monthly snapshot (1st of month only)
+        run: |
+          DAY=$(date -u +'%d')
+          if [ "$DAY" = "01" ]; then
+            MONTH=$(date -u +'%Y-%m')
+            YEAR="${MONTH:0:4}"
+            DEST="snapshots/$YEAR/$MONTH"
+            mkdir -p "$DEST"
+            COPIED=0
+            for f in data/evident/*.csv; do
+              if [ -f "$f" ]; then
+                cp "$f" "$DEST/"
+                COPIED=$((COPIED + 1))
+              fi
+            done
+            echo "Evident snapshot taken: $DEST ($COPIED files)"
+          else
+            echo "Not 1st of month — skipping Evident snapshot (day=$DAY)"
+          fi
+
+      - name: Commit Evident data and snapshots
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/evident/
+          git add data/evident/ snapshots/
           git diff --cached --quiet || git commit -m "sync: update Evident CSVs [$(date -u '+%Y-%m-%d %H:%M UTC')]"
           git pull --rebase
           git push
 
-  # ── TrustLayer: pull from API → write to data/trustlayer/ ──────
+  # ── TrustLayer: sync data + monthly snapshot on the 1st ───────
   sync-trustlayer:
     runs-on: ubuntu-latest
     permissions:
@@ -115,15 +137,37 @@ jobs:
       - name: Route CSVs to data/trustlayer/
         run: |
           mkdir -p data/trustlayer
-          for f in data/*.csv; do
-            [ -f "$f" ] && mv "$f" data/trustlayer/
+          find data -maxdepth 1 -name "*.csv" | while IFS= read -r f; do
+            mv "$f" data/trustlayer/
+            echo "  moved: $f"
           done
+          echo "Route complete"
 
-      - name: Commit TrustLayer data
+      - name: Take monthly snapshot (1st of month only)
+        run: |
+          DAY=$(date -u +'%d')
+          if [ "$DAY" = "01" ]; then
+            MONTH=$(date -u +'%Y-%m')
+            YEAR="${MONTH:0:4}"
+            DEST="snapshots/trustlayer/$YEAR/$MONTH"
+            mkdir -p "$DEST"
+            COPIED=0
+            for f in data/trustlayer/*.csv; do
+              if [ -f "$f" ]; then
+                cp "$f" "$DEST/"
+                COPIED=$((COPIED + 1))
+              fi
+            done
+            echo "TrustLayer snapshot taken: $DEST ($COPIED files)"
+          else
+            echo "Not 1st of month — skipping TrustLayer snapshot (day=$DAY)"
+          fi
+
+      - name: Commit TrustLayer data and snapshots
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/trustlayer/
+          git add data/trustlayer/ snapshots/
           git diff --cached --quiet || git commit -m "sync: update TrustLayer CSVs [$(date -u '+%Y-%m-%d %H:%M UTC')]"
           git pull --rebase
           git push
