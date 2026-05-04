@@ -1,0 +1,129 @@
+name: HUB CertSecure Sync
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+
+jobs:
+
+  # ── Evident: pull from API → write to data/evident/ ───────────
+  sync-evident:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run Evident sync
+        env:
+          EVIDENT_KEY_AGEQUIPMENT:      ${{ secrets.EVIDENT_KEY_AGEQUIPMENT }}
+          EVIDENT_KEY_ACTIONPLUMBING:   ${{ secrets.EVIDENT_KEY_ACTIONPLUMBING }}
+          EVIDENT_KEY_BAUERFOUNDATION:  ${{ secrets.EVIDENT_KEY_BAUERFOUNDATION }}
+          EVIDENT_KEY_CPKANSASCITY:     ${{ secrets.EVIDENT_KEY_CPKANSASCITY }}
+          EVIDENT_KEY_CAPITALROAD:      ${{ secrets.EVIDENT_KEY_CAPITALROAD }}
+          EVIDENT_KEY_EMMES:            ${{ secrets.EVIDENT_KEY_EMMES }}
+          EVIDENT_KEY_EMERYSAPPANDSONS: ${{ secrets.EVIDENT_KEY_EMERYSAPPANDSONS }}
+          EVIDENT_KEY_GARTPROPERTIES:   ${{ secrets.EVIDENT_KEY_GARTPROPERTIES }}
+          EVIDENT_KEY_KOLBGRADING:      ${{ secrets.EVIDENT_KEY_KOLBGRADING }}
+          EVIDENT_KEY_MIZUHOBANK:       ${{ secrets.EVIDENT_KEY_MIZUHOBANK }}
+          EVIDENT_KEY_MUSSELMANHALL:    ${{ secrets.EVIDENT_KEY_MUSSELMANHALL }}
+          EVIDENT_KEY_PARAGONGEO:       ${{ secrets.EVIDENT_KEY_PARAGONGEO }}
+          EVIDENT_KEY_SCANDROLI:        ${{ secrets.EVIDENT_KEY_SCANDROLI }}
+          EVIDENT_KEY_SKYLINE:          ${{ secrets.EVIDENT_KEY_SKYLINE }}
+          EVIDENT_KEY_THEABBEYCOMPANY:  ${{ secrets.EVIDENT_KEY_THEABBEYCOMPANY }}
+          EVIDENT_KEY_TRINITYCHEMICAL:  ${{ secrets.EVIDENT_KEY_TRINITYCHEMICAL }}
+          EVIDENT_KEY_UNITEDCOAL:       ${{ secrets.EVIDENT_KEY_UNITEDCOAL }}
+        run: node src/evident/sync.js
+
+      - name: Run engagement sync (Google Sheets)
+        env:
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+          GOOGLE_SHEET_ID:            ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SHEET_TAB:           Email Events
+        run: node src/evident/sync-engagement.js
+
+      - name: Run custom properties sync
+        env:
+          EVIDENT_KEY_AGEQUIPMENT:      ${{ secrets.EVIDENT_KEY_AGEQUIPMENT }}
+          EVIDENT_KEY_ACTIONPLUMBING:   ${{ secrets.EVIDENT_KEY_ACTIONPLUMBING }}
+          EVIDENT_KEY_BAUERFOUNDATION:  ${{ secrets.EVIDENT_KEY_BAUERFOUNDATION }}
+          EVIDENT_KEY_CPKANSASCITY:     ${{ secrets.EVIDENT_KEY_CPKANSASCITY }}
+          EVIDENT_KEY_CAPITALROAD:      ${{ secrets.EVIDENT_KEY_CAPITALROAD }}
+          EVIDENT_KEY_EMMES:            ${{ secrets.EVIDENT_KEY_EMMES }}
+          EVIDENT_KEY_EMERYSAPPANDSONS: ${{ secrets.EVIDENT_KEY_EMERYSAPPANDSONS }}
+          EVIDENT_KEY_GARTPROPERTIES:   ${{ secrets.EVIDENT_KEY_GARTPROPERTIES }}
+          EVIDENT_KEY_KOLBGRADING:      ${{ secrets.EVIDENT_KEY_KOLBGRADING }}
+          EVIDENT_KEY_MIZUHOBANK:       ${{ secrets.EVIDENT_KEY_MIZUHOBANK }}
+          EVIDENT_KEY_MUSSELMANHALL:    ${{ secrets.EVIDENT_KEY_MUSSELMANHALL }}
+          EVIDENT_KEY_PARAGONGEO:       ${{ secrets.EVIDENT_KEY_PARAGONGEO }}
+          EVIDENT_KEY_SCANDROLI:        ${{ secrets.EVIDENT_KEY_SCANDROLI }}
+          EVIDENT_KEY_SKYLINE:          ${{ secrets.EVIDENT_KEY_SKYLINE }}
+          EVIDENT_KEY_THEABBEYCOMPANY:  ${{ secrets.EVIDENT_KEY_THEABBEYCOMPANY }}
+          EVIDENT_KEY_TRINITYCHEMICAL:  ${{ secrets.EVIDENT_KEY_TRINITYCHEMICAL }}
+          EVIDENT_KEY_UNITEDCOAL:       ${{ secrets.EVIDENT_KEY_UNITEDCOAL }}
+        run: node src/evident/sync-custom-properties.js
+
+      - name: Route CSVs to data/evident/
+        run: |
+          mkdir -p data/evident
+          for f in data/*.csv; do
+            [ -f "$f" ] && mv "$f" data/evident/
+          done
+
+      - name: Commit Evident data
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/evident/
+          git diff --cached --quiet || git commit -m "sync: update Evident CSVs [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git pull --rebase
+          git push
+
+  # ── TrustLayer: pull from API → write to data/trustlayer/ ──────
+  sync-trustlayer:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Pull raw data from TrustLayer API
+        env:
+          TL_TOKEN_BLOCK_REAL_ESTATE: ${{ secrets.TL_TOKEN_BLOCK_REAL_ESTATE }}
+          TL_TOKEN_CMI:               ${{ secrets.TL_TOKEN_CMI }}
+          TL_TOKEN_QTS:               ${{ secrets.TL_TOKEN_QTS }}
+        run: node src/trustlayer/sync.js
+
+      - name: Transform to Evident-compatible format
+        run: node src/trustlayer/transform.js
+
+      - name: Route CSVs to data/trustlayer/
+        run: |
+          mkdir -p data/trustlayer
+          for f in data/*.csv; do
+            [ -f "$f" ] && mv "$f" data/trustlayer/
+          done
+
+      - name: Commit TrustLayer data
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/trustlayer/
+          git diff --cached --quiet || git commit -m "sync: update TrustLayer CSVs [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git pull --rebase
+          git push
