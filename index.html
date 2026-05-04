@@ -468,7 +468,7 @@
       <div style="text-align:center;margin-top:14px">
         <a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a>
       </div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.13</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.14</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
 
@@ -1162,7 +1162,7 @@
 
 <div class="toast" id="toast"></div>
 </div><!-- end main-app -->
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.13</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.14</div>
 
 
 <!-- ═══════════════════ SCRIPT ═══════════════════ -->
@@ -4618,8 +4618,8 @@ async function loadTLData(clientName) {
   // TL pipeline already outputs Evident-compatible CSVs — load and filter directly
   const [insureds, coverages, criteria, customProps, engagement] = await Promise.all([
     fetchTLCSV('data/insureds.csv'),
-    fetchTLCSV('data/coverages.csv'),
-    fetchTLCSV('data/criteria.csv'),
+    fetchTLCSV('data/coverages.csv').catch(() => []),
+    fetchTLCSV('data/criteria.csv').catch(() => []),
     fetchTLCSV('data/custom_properties.csv').catch(() => []),
     fetchTLCSV('data/engagement.csv').catch(() => []),
   ]);
@@ -4641,10 +4641,10 @@ async function loadClientData(clientName) {
   const s = getSettings();
   const [insureds, coverages, criteria, customProps, notifs] = await Promise.all([
     fetchCSV(s.insuredsPath),
-    fetchCSV(s.coveragesPath),
-    fetchCSV(s.criteriaPath),
-    fetchCSV(s.customPropsPath),
-    fetchCSV(s.notificationsPath),
+    fetchCSV(s.coveragesPath).catch(() => []),
+    fetchCSV(s.criteriaPath).catch(() => []),
+    fetchCSV(s.customPropsPath).catch(() => []),
+    fetchCSV(s.notificationsPath).catch(() => []),
   ]);
   return {
     insureds:          insureds.filter(r => r[C.client] === clientName),
