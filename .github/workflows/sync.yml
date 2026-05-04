@@ -48,6 +48,7 @@ jobs:
           GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
           GOOGLE_SHEET_ID:            ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_SHEET_TAB:           Email Events
+        continue-on-error: true
         run: node evident-sync/src/sync-engagement.js
 
       - name: Run custom properties sync
