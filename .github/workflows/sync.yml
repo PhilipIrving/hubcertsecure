@@ -7,7 +7,6 @@ on:
 
 jobs:
 
-  # ── Evident: sync data + monthly snapshot on the 1st ──────────
   sync-evident:
     runs-on: ubuntu-latest
     permissions:
@@ -96,9 +95,9 @@ jobs:
                 COPIED=$((COPIED + 1))
               fi
             done
-            echo "Evident snapshot taken: $DEST ($COPIED files)"
+            echo "Snapshot taken: $DEST ($COPIED files)"
           else
-            echo "Not 1st of month — skipping Evident snapshot (day=$DAY)"
+            echo "Not 1st of month — skipping snapshot (day=$DAY)"
           fi
 
       - name: Commit Evident data and snapshots
@@ -110,7 +109,6 @@ jobs:
           git pull --rebase
           git push
 
-  # ── TrustLayer: sync data + monthly snapshot on the 1st ───────
   sync-trustlayer:
     runs-on: ubuntu-latest
     permissions:
@@ -127,9 +125,10 @@ jobs:
 
       - name: Pull raw data from TrustLayer API
         env:
-          TL_TOKEN_BLOCK_REAL_ESTATE: ${{ secrets.TL_TOKEN_BLOCK_REAL_ESTATE }}
-          TL_TOKEN_CMI:               ${{ secrets.TL_TOKEN_CMI }}
-          TL_TOKEN_QTS:               ${{ secrets.TL_TOKEN_QTS }}
+          TL_TOKEN_BLOCK_REAL_ESTATE:  ${{ secrets.TL_TOKEN_BLOCK_REAL_ESTATE }}
+          TL_TOKEN_CMI:                ${{ secrets.TL_TOKEN_CMI }}
+          TL_TOKEN_QTS:                ${{ secrets.TL_TOKEN_QTS }}
+          TL_TOKEN_EXCEL_CONSTRUCTORS: ${{ secrets.TL_TOKEN_EXCEL_CONSTRUCTORS }}
         run: node trustlayer-sync/src/sync.js
 
       - name: Transform to Evident-compatible format
