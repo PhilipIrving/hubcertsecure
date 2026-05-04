@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HUB CertSecure — Report Generator</title>
+  <title>CertSecure — Report Generator</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
@@ -468,7 +468,7 @@
       <div style="text-align:center;margin-top:14px">
         <a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a>
       </div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.12</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.13</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
 
@@ -570,7 +570,7 @@
       </div>
       <div class="form-grp">
         <label class="form-lbl">Repository</label>
-        <input type="text" id="s-repo" placeholder="e.g. hubcertsecure">
+        <input type="text" id="s-repo" placeholder="e.g. evident-sync">
       </div>
       <div class="form-grp">
         <label class="form-lbl">Branch</label>
@@ -627,7 +627,7 @@
             </div>
             <div class="form-grp">
               <label class="form-lbl">TL Repository</label>
-              <input type="text" id="s-tl-repo" placeholder="hubcertsecure">
+              <input type="text" id="s-tl-repo" placeholder="trustlayer-sync">
             </div>
             <div class="form-grp">
               <label class="form-lbl">TL Branch</label>
@@ -971,8 +971,26 @@
             </div>
           </div>
 
-          <!-- Placeholder for symmetry — hidden -->
-          <div style="visibility:hidden"></div>
+          <!-- Thank You Card -->
+          <div class="report-card" id="rc-tyc">
+            <div class="report-card-hdr" onclick="toggleReport('tyc')">
+              <div class="rc-dot"></div>
+              <div><div class="rc-title">Thank You Card</div><div class="rc-sub">Personalised client postcard PDF</div></div>
+              <span class="rc-type type-pdf">PDF</span>
+            </div>
+            <div class="report-card-body">
+              <div class="sec-div">Options</div>
+              <div class="form-grp">
+                <label class="form-lbl">Contact Name <span style="color:var(--muted);font-weight:400">(auto-filled from client config)</span></label>
+                <input type="text" id="tyc-contact" placeholder="e.g. Jane Smith">
+                <div class="form-hint">Override the contact name if needed</div>
+              </div>
+              <div class="form-grp" style="margin-top:8px">
+                <label class="form-lbl">Producer Name <span style="color:var(--muted);font-weight:400">(auto-filled from client config)</span></label>
+                <input type="text" id="tyc-producer" placeholder="e.g. Philip Irving">
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -1092,9 +1110,6 @@
             <option value="trustlayer">TrustLayer</option>
           </select>
         </div>
-            <option value="general">General</option>
-            <option value="project">Project (Subcontractors)</option>
-            <option value="location">Location (Tenants)</option>
         <div class="form-grp">
           <label class="form-lbl">Structure</label>
           <select id="ce-structure">
@@ -1110,6 +1125,16 @@
         <div class="form-grp">
           <label class="form-lbl">Go-Live Date</label>
           <input type="date" id="ce-go-live">
+        </div>
+        <div class="form-grp">
+          <label class="form-lbl">Producer Name</label>
+          <input type="text" id="ce-producer" placeholder="e.g. Philip Irving">
+          <div class="form-hint">Shown on Thank You Card and Producer Overview</div>
+        </div>
+        <div class="form-grp">
+          <label class="form-lbl">Primary Contact Name</label>
+          <input type="text" id="ce-contact-name" placeholder="e.g. Jane Smith">
+          <div class="form-hint">Used for personalised correspondence</div>
         </div>
         <div class="form-grp" style="display:flex;align-items:center;gap:10px;padding-top:20px">
           <label style="font-size:13px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px;cursor:pointer">
@@ -1137,7 +1162,7 @@
 
 <div class="toast" id="toast"></div>
 </div><!-- end main-app -->
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.12</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.13</div>
 
 
 <!-- ═══════════════════ SCRIPT ═══════════════════ -->
@@ -1549,11 +1574,11 @@ const isEngIssue = n => ['hard_bounce','soft_bounce','reject','rejected','deferr
 
 // ── Settings ──
 const DEFAULTS = {
-  owner:'PhilipIrving', repo:'hubcertsecure', branch:'main', pat:'',
-  insuredsPath:'data/evident/insureds.csv', coveragesPath:'data/evident/coverages.csv',
-  criteriaPath:'data/evident/criteria.csv', customPropsPath:'data/evident/custom_properties.csv',
-  notificationsPath:'data/evident/engagement.csv',
-  tlOwner:'PhilipIrving', tlRepo:'hubcertsecure', tlBranch:'main',
+  owner:'PhilipIrving', repo:'evident-sync', branch:'main', pat:'',
+  insuredsPath:'data/insureds.csv', coveragesPath:'data/coverages.csv',
+  criteriaPath:'data/criteria.csv', customPropsPath:'data/custom_properties.csv',
+  notificationsPath:'data/engagement.csv',
+  tlOwner:'PhilipIrving', tlRepo:'trustlayer-sync', tlBranch:'main',
 };
 function getSettings() { return { ...DEFAULTS, ...JSON.parse(localStorage.getItem('cs-settings') || '{}') }; }
 function openSettings() {
@@ -2005,7 +2030,7 @@ async function loadClientsFromConfig() {
   const s = getSettings();
   if (!s.pat) return false;
   try {
-    const url = `https://api.github.com/repos/${s.owner}/${s.repo}/contents/data/config/clients.json?ref=${s.branch}`;
+    const url = `https://api.github.com/repos/${s.owner}/${s.repo}/contents/config/clients.json?ref=${s.branch}`;
     const res = await fetch(url, { headers: { 'Authorization': `Bearer ${s.pat}`, 'Accept': 'application/vnd.github.v3+json' } });
     if (!res.ok) return false;
     const fileInfo = await res.json();
@@ -2029,7 +2054,7 @@ async function saveClientsToConfig(updatedClients) {
   const s = getSettings();
   if (!s.pat) throw new Error('No PAT configured in Settings');
   // Re-fetch SHA in case it changed
-  const getRes = await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}/contents/data/config/clients.json?ref=${s.branch}`, {
+  const getRes = await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}/contents/config/clients.json?ref=${s.branch}`, {
     headers: { 'Authorization': `Bearer ${s.pat}`, 'Accept': 'application/vnd.github.v3+json' }
   });
   if (!getRes.ok) throw new Error('Could not fetch current clients.json');
@@ -2042,7 +2067,7 @@ async function saveClientsToConfig(updatedClients) {
     structure_options: "general | project | location",
   }, clients: updatedClients }, null, 2);
 
-  const putRes = await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}/contents/data/config/clients.json`, {
+  const putRes = await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}/contents/config/clients.json`, {
     method: 'PUT',
     headers: { 'Authorization': `Bearer ${s.pat}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
     body: JSON.stringify({ message: 'config: update clients.json via Report Generator', content: btoa(unescape(encodeURIComponent(payload))), sha, branch: s.branch })
@@ -2138,6 +2163,8 @@ function openAddClient() {
   document.getElementById('ce-platform').value = 'evident';
   document.getElementById('ce-structure').value = 'general';
   document.getElementById('ce-save-btn').textContent = 'Add Client';
+  document.getElementById('ce-producer').value = '';
+  document.getElementById('ce-contact-name').value = '';
   document.getElementById('ce-msg').style.display = 'none';
   document.getElementById('client-edit-overlay').classList.add('open');
 }
@@ -2154,6 +2181,8 @@ function openEditClient(idx) {
   document.getElementById('ce-platform').value = c.platform || 'evident';
   document.getElementById('ce-structure').value = c.structure || 'general';
   document.getElementById('ce-go-live').value = c.go_live_date || '';
+  document.getElementById('ce-producer').value = c.producer_name || '';
+  document.getElementById('ce-contact-name').value = c.contact_name || '';
   document.getElementById('ce-active').checked = c.active !== false;
   document.getElementById('ce-delete-btn').style.display = canAdminClients() ? '' : 'none';
   document.getElementById('ce-save-btn').textContent = 'Save Changes';
@@ -2174,6 +2203,8 @@ async function saveClientEdit() {
   const struct  = document.getElementById('ce-structure').value;
   const progStart = document.getElementById('ce-program-start').value;
   const goLive    = document.getElementById('ce-go-live').value;
+  const producer  = document.getElementById('ce-producer').value.trim();
+  const contactName = document.getElementById('ce-contact-name').value.trim();
   const active    = document.getElementById('ce-active').checked;
 
   if (!name) { showCEMsg('Client name is required.', true); return; }
@@ -2189,7 +2220,7 @@ async function saveClientEdit() {
   btn.disabled = true; btn.textContent = 'Saving…';
 
   const updated = [..._allClientsData];
-  const entry = { client_name: name, rp_common_name: api, program_start_date: progStart, go_live_date: goLive, structure: struct, platform, active };
+  const entry = { client_name: name, rp_common_name: api, program_start_date: progStart, go_live_date: goLive, structure: struct, platform, producer_name: producer, contact_name: contactName, active };
 
   if (_editingIndex === null) {
     updated.push(entry);
@@ -2261,13 +2292,22 @@ function pickClient(key) {
   if (card) card.classList.add('selected');
   updateCustomFieldsUI();
   _selectedReports.clear();
-  ['cs','cd','es','ed','yer','pro'].forEach(id => {
+  ['cs','cd','es','ed','yer','pro','tyc'].forEach(id => {
     const c = document.getElementById('rc-' + id); if (c) c.classList.remove('on');
   });
   // Clear server report inputs
   ['yer-year','yer-producer','pro-producer','pro-month'].forEach(function(id){
     var el=document.getElementById(id); if(el) el.value='';
   });
+  // Auto-fill Thank You Card fields from clients.json metadata
+  const meta = CLIENT_META_MAP[key] || {};
+  const tycContact  = document.getElementById('tyc-contact');
+  const tycProducer = document.getElementById('tyc-producer');
+  if (tycContact)  tycContact.value  = meta.contact_name  || '';
+  if (tycProducer) tycProducer.value = meta.producer_name || '';
+  // Also auto-fill Producer Overview producer name
+  const proProducerEl = document.getElementById('pro-producer');
+  if (proProducerEl && meta.producer_name) proProducerEl.value = meta.producer_name;
   setTimeout(function() { goTo(2); }, 80);
 }
 function updateCustomFieldsUI() {
@@ -2438,7 +2478,7 @@ async function generate() {
   document.getElementById('s3-sub').textContent      = 'Please wait while your reports are built';
 
   const on = id => _selectedReports.has(id);
-  const E = { cs: on('cs'), cd: on('cd'), es: on('es'), ed: on('ed'), yer: on('yer'), pro: on('pro') };
+  const E = { cs: on('cs'), cd: on('cd'), es: on('es'), ed: on('ed'), yer: on('yer'), pro: on('pro'), tyc: on('tyc') };
 
   resetProgress();
 
@@ -2510,6 +2550,21 @@ async function generate() {
       }
     }
 
+    if (E.tyc) {
+      const tycContact  = document.getElementById('tyc-contact')?.value?.trim()  || 'Valued Partner';
+      const tycProducer = document.getElementById('tyc-producer')?.value?.trim() || '';
+      setProgress('Building Thank You Card\u2026', 'Calculating compliance stats', 1);
+      const meta = CLIENT_META_MAP[selectedClient.key] || {};
+      // Use already-loaded insureds if available, else fetch
+      let tycInsureds = insureds.length ? insureds : (await loadClientData(selectedClient.key)).insureds;
+      downloads.push({
+        label: `Thank You Card`,
+        type:  'pdf',
+        html:  buildThankYouCardHTML(tycInsureds, meta, tycContact, tycProducer),
+        filename: `${selectedClient.name} \u2014 Thank You Card.pdf`
+      });
+    }
+
     setProgress('Finalizing…', 'Preparing your downloads', 2);
     await new Promise(r => setTimeout(r, 400));
     showDownloads(downloads);
@@ -2522,7 +2577,285 @@ async function generate() {
   }
 }
 
-// Print HTML content as PDF via hidden iframe — avoids popup blocker
+// ──────────────────────────────────────────────
+// THANK YOU CARD — landscape postcard PDF
+// 10×6 inches at 96dpi = 960×576px
+// ──────────────────────────────────────────────
+function buildThankYouCardHTML(insureds, meta, contactName, producerName) {
+  const clientName   = meta.client_name || selectedClient.name;
+  const programStart = meta.program_start_date || '';
+  const goLive       = meta.go_live_date || '';
+  const today        = new Date();
+
+  // ── Compliance rate ──
+  const active   = insureds.filter(r => r[C.active] !== 'false' && r[C.paused] !== 'true');
+  const comp     = active.filter(r => normStatus(r[C.status]) === 'compliant').length;
+  const rate     = active.length ? Math.round(comp / active.length * 100) : 0;
+  const total    = active.length;
+
+  // ── Member since ──
+  const memberSince = programStart
+    ? new Date(programStart).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+    : 'Program Start';
+
+  // ── Years as client ──
+  const startDate = programStart ? new Date(programStart) : null;
+  const yearsText = startDate
+    ? (() => {
+        const yrs = Math.floor((today - startDate) / (365.25 * 86400000));
+        const mos = Math.floor(((today - startDate) % (365.25 * 86400000)) / (30.44 * 86400000));
+        if (yrs >= 1) return yrs === 1 ? '1 year' : `${yrs} years`;
+        return mos <= 1 ? 'Less than a month' : `${mos} months`;
+      })()
+    : '';
+
+  // ── Improvement since go-live ──
+  // We use current rate; snapshot comparison shown as note if go-live date exists
+  const goLiveText = goLive
+    ? new Date(goLive).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+    : '';
+
+  // ── Warm message ──
+  const msg = `We are truly grateful for your partnership and your commitment to maintaining a strong compliance program. Your dedication makes a real difference — and we're proud to support you every step of the way.`;
+
+  // ── Color palette ──
+  const NAVY  = '#1E2E3D';
+  const BLUE  = '#3872B8';
+  const LIGHT = '#EEF3FB';
+  const WHITE = '#FFFFFF';
+
+  return `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:960px; height:576px; overflow:hidden; }
+  body {
+    font-family: 'Montserrat', 'Gotham', Arial, sans-serif;
+    background: ${WHITE};
+    display: flex;
+    width: 960px;
+    height: 576px;
+  }
+
+  /* ── LEFT PANEL — navy accent ── */
+  .left {
+    width: 320px;
+    min-width: 320px;
+    background: ${NAVY};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .left::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(56,114,184,0.18);
+  }
+  .left::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(56,114,184,0.12);
+  }
+  .hub-wordmark {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 28px;
+    position: relative; z-index:1;
+  }
+  .hub-wordmark span { color: ${BLUE}; }
+  .rate-circle {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    border: 4px solid ${BLUE};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative; z-index:1;
+    background: rgba(56,114,184,0.08);
+  }
+  .rate-pct {
+    font-size: 44px;
+    font-weight: 800;
+    color: ${WHITE};
+    line-height: 1;
+  }
+  .rate-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+  .vendor-count {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    position: relative; z-index:1;
+  }
+  .vendor-count strong { color: rgba(255,255,255,0.8); }
+
+  /* ── RIGHT PANEL — content ── */
+  .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 44px 48px;
+    position: relative;
+    background: ${WHITE};
+  }
+  .thank-you-line {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: ${BLUE};
+    margin-bottom: 6px;
+  }
+  .client-name {
+    font-size: 26px;
+    font-weight: 800;
+    color: ${NAVY};
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .greeting {
+    font-size: 12px;
+    color: #5A6B7B;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 460px;
+  }
+  .stats-row {
+    display: flex;
+    gap: 0;
+    margin-bottom: 28px;
+    border-top: 1px solid #E8ECF5;
+    border-bottom: 1px solid #E8ECF5;
+    padding: 16px 0;
+  }
+  .stat {
+    flex: 1;
+    padding-right: 20px;
+  }
+  .stat + .stat {
+    padding-left: 20px;
+    border-left: 1px solid #E8ECF5;
+  }
+  .stat-label {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #8A94A8;
+    margin-bottom: 4px;
+  }
+  .stat-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: ${NAVY};
+    line-height: 1.2;
+  }
+  .signature {
+    margin-top: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .sig-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: ${NAVY};
+  }
+  .sig-title {
+    font-size: 10px;
+    color: #8A94A8;
+    margin-top: 2px;
+  }
+  .blue-dot {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: ${BLUE};
+    display: flex; align-items: center; justify-content: center;
+  }
+  .blue-dot svg { width:18px; height:18px; fill:white; }
+</style>
+</head>
+<body>
+
+  <!-- LEFT: Compliance hero -->
+  <div class="left">
+    <div class="hub-wordmark">HUB <span>Cert</span>Secure</div>
+    <div class="rate-circle">
+      <div class="rate-pct">${rate}%</div>
+      <div class="rate-label">Compliant</div>
+    </div>
+    <div class="vendor-count"><strong>${comp}</strong> of <strong>${total}</strong> vendors compliant</div>
+  </div>
+
+  <!-- RIGHT: Letter -->
+  <div class="right">
+    <div class="thank-you-line">Thank You</div>
+    <div class="client-name">${esc(clientName)}</div>
+
+    <div class="greeting">
+      Dear ${esc(contactName)},<br><br>
+      ${msg}
+    </div>
+
+    <div class="stats-row">
+      ${programStart ? `<div class="stat">
+        <div class="stat-label">Member Since</div>
+        <div class="stat-value">${memberSince}</div>
+      </div>` : ''}
+      ${yearsText ? `<div class="stat">
+        <div class="stat-label">Partnership</div>
+        <div class="stat-value">${yearsText}</div>
+      </div>` : ''}
+      ${goLiveText ? `<div class="stat">
+        <div class="stat-label">Platform Since</div>
+        <div class="stat-value">${goLiveText}</div>
+      </div>` : ''}
+      <div class="stat">
+        <div class="stat-label">Compliance Rate</div>
+        <div class="stat-value" style="color:#16A34A">${rate}%</div>
+      </div>
+    </div>
+
+    <div class="signature">
+      <div>
+        <div class="sig-name">${esc(producerName || 'HUB CertSecure')}</div>
+        <div class="sig-title">HUB CertSecure · ${today.toLocaleDateString('en-US',{month:'long',year:'numeric'})}</div>
+      </div>
+      <div class="blue-dot">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/></svg>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>`;
+}
+
+
 function printHTMLasPDF(htmlContent) {
   const iframe = document.createElement('iframe');
   iframe.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:1024px;height:768px;visibility:hidden';
@@ -4284,11 +4617,11 @@ async function fetchTLCSV(path) {
 async function loadTLData(clientName) {
   // TL pipeline already outputs Evident-compatible CSVs — load and filter directly
   const [insureds, coverages, criteria, customProps, engagement] = await Promise.all([
-    fetchTLCSV('data/trustlayer/insureds.csv'),
-    fetchTLCSV('data/trustlayer/coverages.csv'),
-    fetchTLCSV('data/trustlayer/criteria.csv'),
-    fetchTLCSV('data/trustlayer/custom_properties.csv').catch(() => []),
-    fetchTLCSV('data/trustlayer/engagement.csv').catch(() => []),
+    fetchTLCSV('data/insureds.csv'),
+    fetchTLCSV('data/coverages.csv'),
+    fetchTLCSV('data/criteria.csv'),
+    fetchTLCSV('data/custom_properties.csv').catch(() => []),
+    fetchTLCSV('data/engagement.csv').catch(() => []),
   ]);
   return {
     insureds:          insureds.filter(r => r[C.client] === clientName),
