@@ -468,7 +468,7 @@
       <div style="text-align:center;margin-top:14px">
         <a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a>
       </div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.15</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.16</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
 
@@ -1162,7 +1162,7 @@
 
 <div class="toast" id="toast"></div>
 </div><!-- end main-app -->
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.15</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.16</div>
 
 
 <!-- ═══════════════════ SCRIPT ═══════════════════ -->
@@ -2018,7 +2018,7 @@ function buildClientsArray(data) {
     name:     c.client_name,
     key:      c.client_name,
     structure:c.structure || 'general',
-    platform: c.platform  || 'evident',
+    platform: c.platform || c.source || 'evident',
   }));
 }
 function isTLClient(keyOrClient) {
@@ -2141,7 +2141,7 @@ function renderConfigTable(filter='') {
 
   const tbody = rows.map((c,i) => `
     <tr>
-      <td style="font-weight:600">${esc(c.client_name)} <span style="font-size:8px;font-weight:800;padding:1px 5px;border-radius:4px;${c.platform==='trustlayer'?'background:#FFF3E0;color:#E65100':'background:#E8ECF5;color:#3872B8'}">${c.platform==='trustlayer'?'TL':'EV'}</span></td>
+      <td style="font-weight:600">${esc(c.client_name)} <span style="font-size:8px;font-weight:800;padding:1px 5px;border-radius:4px;${(c.platform||c.source)==='trustlayer'?'background:#FFF3E0;color:#E65100':'background:#E8ECF5;color:#3872B8'}">${(c.platform||c.source)==='trustlayer'?'TL':'EV'}</span></td>
       <td style="color:var(--muted);font-size:11px">${esc(c.rp_common_name||'')}</td>
       <td><span class="struct-badge">${STRUCT_LABEL[c.structure]||c.structure}</span></td>
       <td style="font-size:11px;color:var(--muted)">${c.program_start_date||'—'}</td>
@@ -2194,7 +2194,7 @@ function openEditClient(idx) {
   document.getElementById('ce-name-hint').style.display = 'none';
   document.getElementById('client-name-lock').style.display = '';
   document.getElementById('ce-api-name').value = c.rp_common_name || '';
-  document.getElementById('ce-platform').value = c.platform || 'evident';
+  document.getElementById('ce-platform').value = c.platform || c.source || 'evident';
   document.getElementById('ce-structure').value = c.structure || 'general';
   document.getElementById('ce-go-live').value = c.go_live_date || '';
   document.getElementById('ce-producer').value = c.producer_name || '';
