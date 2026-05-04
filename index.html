@@ -468,7 +468,7 @@
       <div style="text-align:center;margin-top:14px">
         <a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a>
       </div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.14</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.15</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
 
@@ -1162,7 +1162,7 @@
 
 <div class="toast" id="toast"></div>
 </div><!-- end main-app -->
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.14</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.15</div>
 
 
 <!-- ═══════════════════ SCRIPT ═══════════════════ -->
@@ -2098,10 +2098,26 @@ function switchTab(tab) {
 
 async function loadAndRenderConfig() {
   const wrap = document.getElementById('cfg-table-wrap');
+  const s = getSettings();
+
+  // No PAT — show specific actionable message
+  if (!s.pat) {
+    wrap.innerHTML = '<div style="text-align:center;padding:24px;color:var(--muted);font-size:13px">Enter your Access Token in <strong>Settings</strong> to load client configuration.</div>';
+    return;
+  }
+
   wrap.innerHTML = '<div style="text-align:center;padding:24px;color:var(--muted);font-size:13px">Loading clients.json…</div>';
   const ok = await loadClientsFromConfig();
+
   if (!ok) {
-    wrap.innerHTML = '<div style="text-align:center;padding:24px;color:var(--red);font-size:13px">Could not load clients.json — check your Access Token and repository settings.</div>';
+    // clients.json may not exist yet — fall back to hardcoded list so table is still usable
+    if (_allClientsData.length === 0) {
+      _allClientsData = [...CLIENTS_FALLBACK];
+      CLIENT_META_MAP = {};
+      _allClientsData.forEach(c => { CLIENT_META_MAP[c.client_name] = c; });
+    }
+    wrap.innerHTML = '<div style="text-align:center;padding:16px;color:var(--amber,#D97706);font-size:12px;margin-bottom:8px">⚠ Could not load clients.json from your repository — showing built-in client list. Check your Access Token and repository settings, or create config/clients.json.</div>';
+    renderConfigTable();
     return;
   }
   renderConfigTable();
