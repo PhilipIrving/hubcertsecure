@@ -468,7 +468,7 @@
       <div style="text-align:center;margin-top:14px">
         <a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a>
       </div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.16</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.17</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
 
@@ -1162,7 +1162,7 @@
 
 <div class="toast" id="toast"></div>
 </div><!-- end main-app -->
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.16</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.17</div>
 
 
 <!-- ═══════════════════ SCRIPT ═══════════════════ -->
@@ -2506,8 +2506,10 @@ async function generate() {
     setProgress('Fetching compliance data…', `Loading data for ${selectedClient.name}`, 0);
     const clientData = await loadClientData(selectedClient.key);
 
+    // Always load insureds — needed for Thank You Card even when no compliance reports selected
+    insureds = clientData.insureds;
+
     if (E.cs || E.cd || E.ed) {
-      insureds = clientData.insureds;
       // Enrich with custom properties
       try {
         insureds = enrichInsureds(insureds, clientData.custom_properties);
@@ -2572,7 +2574,7 @@ async function generate() {
       setProgress('Building Thank You Card\u2026', 'Calculating compliance stats', 1);
       const meta = CLIENT_META_MAP[selectedClient.key] || {};
       // Use already-loaded insureds if available, else fetch
-      let tycInsureds = insureds.length ? insureds : (await loadClientData(selectedClient.key)).insureds;
+      let tycInsureds = insureds;
       downloads.push({
         label: `Thank You Card`,
         type:  'pdf',
