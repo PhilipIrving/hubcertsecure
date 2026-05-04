@@ -1,4 +1,4 @@
-name: HUB CertSecure Sync
+name: HUB CertSecure — Sync
 
 on:
   schedule:
@@ -41,14 +41,14 @@ jobs:
           EVIDENT_KEY_THEABBEYCOMPANY:  ${{ secrets.EVIDENT_KEY_THEABBEYCOMPANY }}
           EVIDENT_KEY_TRINITYCHEMICAL:  ${{ secrets.EVIDENT_KEY_TRINITYCHEMICAL }}
           EVIDENT_KEY_UNITEDCOAL:       ${{ secrets.EVIDENT_KEY_UNITEDCOAL }}
-        run: node src/evident/sync.js
+        run: node evident-sync/src/sync.js
 
       - name: Run engagement sync (Google Sheets)
         env:
           GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
           GOOGLE_SHEET_ID:            ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_SHEET_TAB:           Email Events
-        run: node src/evident/sync-engagement.js
+        run: node evident-sync/src/sync-engagement.js
 
       - name: Run custom properties sync
         env:
@@ -69,7 +69,7 @@ jobs:
           EVIDENT_KEY_THEABBEYCOMPANY:  ${{ secrets.EVIDENT_KEY_THEABBEYCOMPANY }}
           EVIDENT_KEY_TRINITYCHEMICAL:  ${{ secrets.EVIDENT_KEY_TRINITYCHEMICAL }}
           EVIDENT_KEY_UNITEDCOAL:       ${{ secrets.EVIDENT_KEY_UNITEDCOAL }}
-        run: node src/evident/sync-custom-properties.js
+        run: node evident-sync/src/sync-custom-properties.js
 
       - name: Route CSVs to data/evident/
         run: |
@@ -107,10 +107,10 @@ jobs:
           TL_TOKEN_BLOCK_REAL_ESTATE: ${{ secrets.TL_TOKEN_BLOCK_REAL_ESTATE }}
           TL_TOKEN_CMI:               ${{ secrets.TL_TOKEN_CMI }}
           TL_TOKEN_QTS:               ${{ secrets.TL_TOKEN_QTS }}
-        run: node src/trustlayer/sync.js
+        run: node trustlayer-sync/src/sync.js
 
       - name: Transform to Evident-compatible format
-        run: node src/trustlayer/transform.js
+        run: node trustlayer-sync/src/transform.js
 
       - name: Route CSVs to data/trustlayer/
         run: |
