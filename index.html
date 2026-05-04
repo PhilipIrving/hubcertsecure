@@ -468,7 +468,7 @@
       <div style="text-align:center;margin-top:14px">
         <a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a>
       </div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.19</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.20</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
 
@@ -1146,7 +1146,7 @@
 
 <div class="toast" id="toast"></div>
 </div><!-- end main-app -->
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.19</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.20</div>
 
 
 <!-- ═══════════════════ SCRIPT ═══════════════════ -->
@@ -1563,6 +1563,26 @@ const DEFAULTS = {
   criteriaPath:'data/evident/criteria.csv', customPropsPath:'data/evident/custom_properties.csv',
   notificationsPath:'data/evident/engagement.csv',
 };
+function migrateSettings() {
+  // Migrate old flat data/ paths to new data/evident/ structure
+  const raw = JSON.parse(localStorage.getItem('cs-settings') || '{}');
+  const migrations = {
+    insuredsPath:      { old:'data/insureds.csv',          new:'data/evident/insureds.csv' },
+    coveragesPath:     { old:'data/coverages.csv',         new:'data/evident/coverages.csv' },
+    criteriaPath:      { old:'data/criteria.csv',          new:'data/evident/criteria.csv' },
+    customPropsPath:   { old:'data/custom_properties.csv', new:'data/evident/custom_properties.csv' },
+    notificationsPath: { old:'data/engagement.csv',        new:'data/evident/engagement.csv' },
+  };
+  let changed = false;
+  Object.entries(migrations).forEach(([key, m]) => {
+    if (raw[key] === m.old) { raw[key] = m.new; changed = true; }
+  });
+  // Remove stale TL repo settings — TL now uses same repo
+  ['tlOwner','tlRepo','tlBranch'].forEach(k => { if (k in raw) { delete raw[k]; changed = true; } });
+  if (changed) localStorage.setItem('cs-settings', JSON.stringify(raw));
+}
+migrateSettings();
+
 function getSettings() { return { ...DEFAULTS, ...JSON.parse(localStorage.getItem('cs-settings') || '{}') }; }
 function openSettings() {
   if (!canSeeSettings()) { toast('Settings access requires System Administrator role.', 'error'); return; }
@@ -4611,13 +4631,14 @@ async function fetchTLCSV(path) {
 
 async function loadTLData(clientName) {
   // TL pipeline already outputs Evident-compatible CSVs — load and filter directly
-  const [insureds, coverages, criteria, customProps, engagement] = await Promise.all([
+  // TL does not have custom_properties or engagement CSVs
+  const [insureds, coverages, criteria] = await Promise.all([
     fetchTLCSV('data/trustlayer/insureds.csv'),
     fetchTLCSV('data/trustlayer/coverages.csv').catch(() => []),
     fetchTLCSV('data/trustlayer/criteria.csv').catch(() => []),
-    fetchTLCSV('data/trustlayer/custom_properties.csv').catch(() => []),
-    fetchTLCSV('data/trustlayer/engagement.csv').catch(() => []),
   ]);
+  const customProps = [];
+  const engagement  = [];
   return {
     insureds:          insureds.filter(r => r[C.client] === clientName),
     coverages:         coverages.filter(r => r[C.client] === clientName),
