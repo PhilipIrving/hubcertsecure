@@ -468,7 +468,7 @@
       <div style="text-align:center;margin-top:14px">
         <a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a>
       </div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.18</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.19</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
 
@@ -593,48 +593,32 @@
       <div id="csv-paths" style="display:none">
         <div class="form-grp" style="margin-top:10px">
           <label class="form-lbl">Insureds CSV</label>
-          <input type="text" id="s-insureds" placeholder="data/insureds.csv">
+          <input type="text" id="s-insureds" placeholder="data/evident/insureds.csv">
           <div class="form-hint">Main compliance data — insured names, status, expiration</div>
         </div>
         <div class="form-grp">
           <label class="form-lbl">Coverages CSV</label>
-          <input type="text" id="s-coverages" placeholder="data/coverages.csv">
+          <input type="text" id="s-coverages" placeholder="data/evident/coverages.csv">
           <div class="form-hint">Per-coverage data — used for Expiring Coverage sheet</div>
         </div>
         <div class="form-grp">
           <label class="form-lbl">Criteria CSV</label>
-          <input type="text" id="s-criteria" placeholder="data/criteria.csv">
+          <input type="text" id="s-criteria" placeholder="data/evident/criteria.csv">
           <div class="form-hint">NC reasons per insured — used for Non-Compliance Reasons sheet</div>
         </div>
         <div class="form-grp">
           <label class="form-lbl">Custom Properties CSV</label>
-          <input type="text" id="s-customprops" placeholder="data/custom_properties.csv">
+          <input type="text" id="s-customprops" placeholder="data/evident/custom_properties.csv">
           <div class="form-hint">Contract numbers, entity types, notification lists per insured</div>
         </div>
         <div class="form-grp">
           <label class="form-lbl">Engagement CSV</label>
-          <input type="text" id="s-notifications" placeholder="data/engagement.csv">
+          <input type="text" id="s-notifications" placeholder="data/evident/engagement.csv">
           <div class="form-hint">Email event data — used for all Engagement reports</div>
         </div>
 
-        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
-          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">TrustLayer Repository</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-            <div class="form-grp">
-              <label class="form-lbl">TL Data Owner</label>
-              <input type="text" id="s-tl-owner" placeholder="PhilipIrving">
-              <div class="form-hint">Username or org that owns the trustlayer-sync repo</div>
-            </div>
-            <div class="form-grp">
-              <label class="form-lbl">TL Repository</label>
-              <input type="text" id="s-tl-repo" placeholder="trustlayer-sync">
-            </div>
-            <div class="form-grp">
-              <label class="form-lbl">TL Branch</label>
-              <input type="text" id="s-tl-branch" placeholder="main">
-              <div class="form-hint">TL clients use the same CSV paths and Access Token as above</div>
-            </div>
-          </div>
+        <div style="margin-top:14px;padding:12px 14px;background:var(--blue-light);border:1px solid #BFDBFE;border-radius:8px;font-size:11px;color:#1E40AF">
+          <strong>TrustLayer data</strong> is read from <code>data/trustlayer/</code> in the same repository using the same Access Token above.
         </div>
       </div>
 
@@ -1162,7 +1146,7 @@
 
 <div class="toast" id="toast"></div>
 </div><!-- end main-app -->
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.18</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.19</div>
 
 
 <!-- ═══════════════════ SCRIPT ═══════════════════ -->
@@ -1575,10 +1559,9 @@ const isEngIssue = n => ['hard_bounce','soft_bounce','reject','rejected','deferr
 // ── Settings ──
 const DEFAULTS = {
   owner:'PhilipIrving', repo:'evident-sync', branch:'main', pat:'',
-  insuredsPath:'data/insureds.csv', coveragesPath:'data/coverages.csv',
-  criteriaPath:'data/criteria.csv', customPropsPath:'data/custom_properties.csv',
-  notificationsPath:'data/engagement.csv',
-  tlOwner:'PhilipIrving', tlRepo:'trustlayer-sync', tlBranch:'main',
+  insuredsPath:'data/evident/insureds.csv', coveragesPath:'data/evident/coverages.csv',
+  criteriaPath:'data/evident/criteria.csv', customPropsPath:'data/evident/custom_properties.csv',
+  notificationsPath:'data/evident/engagement.csv',
 };
 function getSettings() { return { ...DEFAULTS, ...JSON.parse(localStorage.getItem('cs-settings') || '{}') }; }
 function openSettings() {
@@ -1593,9 +1576,6 @@ function openSettings() {
   document.getElementById('s-criteria').value      = s.criteriaPath;
   document.getElementById('s-customprops').value   = s.customPropsPath;
   document.getElementById('s-notifications').value = s.notificationsPath;
-  document.getElementById('s-tl-owner').value   = s.tlOwner;
-  document.getElementById('s-tl-repo').value    = s.tlRepo;
-  document.getElementById('s-tl-branch').value  = s.tlBranch;
   document.getElementById('settings-overlay').classList.add('open');
 }
 function closeSettings() { document.getElementById('settings-overlay').classList.remove('open'); }
@@ -1610,9 +1590,6 @@ function saveSettings() {
     criteriaPath:     document.getElementById('s-criteria').value.trim(),
     customPropsPath:  document.getElementById('s-customprops').value.trim(),
     notificationsPath:document.getElementById('s-notifications').value.trim(),
-    tlOwner:           document.getElementById('s-tl-owner').value.trim(),
-    tlRepo:            document.getElementById('s-tl-repo').value.trim(),
-    tlBranch:          document.getElementById('s-tl-branch').value.trim() || 'main',
   }));
   closeSettings(); toast('Settings saved', 'success');
 }
@@ -2502,7 +2479,7 @@ async function generate() {
     let insureds = [], coverages = [], criteria = [], notifications = [];
 
     // ── Route data loading through platform-aware wrapper ──
-    // loadClientData fetches from evident-sync OR trustlayer-sync based on client.platform
+    // loadClientData fetches from data/evident/ OR data/trustlayer/ based on client.source
     setProgress('Fetching compliance data…', `Loading data for ${selectedClient.name}`, 0);
     const clientData = await loadClientData(selectedClient.key);
 
@@ -4616,12 +4593,12 @@ ${(wins.length || issues.length || topNC.length) ? `
 // ──────────────────────────────────────────────
 
 // TL pipeline outputs same CSV format as Evident — just a different repo
-// fetchTLCSV uses the trustlayer-sync repo instead of evident-sync
+// fetchTLCSV reads from data/trustlayer/ in the same repo as Evident
 async function fetchTLCSV(path) {
   const s = getSettings();
-  const owner  = s.tlOwner  || 'PhilipIrving';
-  const repo   = s.tlRepo   || 'trustlayer-sync';
-  const branch = s.tlBranch || 'main';
+  const owner  = s.owner  || 'PhilipIrving';
+  const repo   = s.repo   || 'evident-sync';
+  const branch = s.branch || 'main';
   const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
   const headers = { 'Accept': 'application/vnd.github.v3.raw' };
   if (s.pat) headers['Authorization'] = `Bearer ${s.pat}`;
@@ -4635,11 +4612,11 @@ async function fetchTLCSV(path) {
 async function loadTLData(clientName) {
   // TL pipeline already outputs Evident-compatible CSVs — load and filter directly
   const [insureds, coverages, criteria, customProps, engagement] = await Promise.all([
-    fetchTLCSV('data/insureds.csv'),
-    fetchTLCSV('data/coverages.csv').catch(() => []),
-    fetchTLCSV('data/criteria.csv').catch(() => []),
-    fetchTLCSV('data/custom_properties.csv').catch(() => []),
-    fetchTLCSV('data/engagement.csv').catch(() => []),
+    fetchTLCSV('data/trustlayer/insureds.csv'),
+    fetchTLCSV('data/trustlayer/coverages.csv').catch(() => []),
+    fetchTLCSV('data/trustlayer/criteria.csv').catch(() => []),
+    fetchTLCSV('data/trustlayer/custom_properties.csv').catch(() => []),
+    fetchTLCSV('data/trustlayer/engagement.csv').catch(() => []),
   ]);
   return {
     insureds:          insureds.filter(r => r[C.client] === clientName),
