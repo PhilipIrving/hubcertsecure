@@ -342,6 +342,7 @@
   <div class="tab-bar">
     <button class="tab-btn active" id="tab-btn-reports" onclick="switchTab('reports')">Report Generator</button>
     <button class="tab-btn" id="tab-btn-config" onclick="switchTab('config')">Client Configuration</button>
+    <button class="tab-btn" id="tab-btn-monday" onclick="switchTab('monday')">Monday Sync</button>
   </div>
   <div id="tab-reports">
   <div id="step-1" class="step-panel">
@@ -399,6 +400,203 @@
     <div class="card"><div style="display:flex;gap:10px;align-items:center;margin-bottom:14px"><input type="text" class="cfg-search" id="cfg-search" placeholder="Search clients&#8230;" oninput="renderConfigTable(this.value)"><button class="btn btn-secondary" onclick="loadAndRenderConfig()" style="white-space:nowrap;flex-shrink:0">&#8635; Reload</button></div><div id="cfg-table-wrap"><div style="text-align:center;padding:24px;color:var(--muted);font-size:13px">Switch to this tab to load client configuration.</div></div></div>
   </div>
 
+
+  <div id="tab-monday" style="display:none">
+
+    <!-- CONNECTION BANNER -->
+    <div id="monday-conn-banner" style="display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border-radius:20px;margin-bottom:22px;border:1px solid #fecaca;background:var(--red-bg)">
+      <div id="monday-tab-dot" style="width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0"></div>
+      <span id="monday-tab-status" style="font-size:13px;font-weight:600;color:var(--red)">Not connected to Monday</span>
+      <button class="btn btn-secondary" style="margin-left:12px;font-size:12px;padding:5px 12px;border-radius:12px" onclick="openSettings();setTimeout(()=>switchSettingsTab('monday-cfg'),60)">Configure</button>
+    </div>
+
+    <!-- SUB-TABS -->
+    <div style="display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:24px">
+      <button class="tab-btn active" id="mtab-btn-setup" onclick="switchMondayTab('setup')">&#127959; Workspace Setup</button>
+      <button class="tab-btn" id="mtab-btn-configure" onclick="switchMondayTab('configure')">&#9881;&#65039; Configure</button>
+      <button class="tab-btn" id="mtab-btn-activity" onclick="switchMondayTab('activity')">&#128203; Activity</button>
+    </div>
+
+    <!-- ══ WORKSPACE SETUP ══ -->
+    <div id="mtab-setup">
+      <!-- PHASE TRACKER -->
+      <div style="display:flex;background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow)">
+        <div id="ws-ph-1" style="flex:1;padding:13px 18px;display:flex;align-items:center;gap:10px;background:var(--blue-light);position:relative">
+          <div id="ws-pn-1" style="width:26px;height:26px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+          <span style="font-size:12px;font-weight:600;color:var(--blue)">Review</span>
+          <div style="position:absolute;right:-11px;top:50%;width:22px;height:22px;background:var(--blue-light);border-right:1.5px solid var(--border);border-top:1.5px solid var(--border);transform:translateY(-50%) rotate(45deg);z-index:2"></div>
+        </div>
+        <div id="ws-ph-2" style="flex:1;padding:13px 18px;display:flex;align-items:center;gap:10px;position:relative">
+          <div id="ws-pn-2" style="width:26px;height:26px;border-radius:50%;background:var(--border);color:var(--muted);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+          <span id="ws-pl-2" style="font-size:12px;font-weight:600;color:var(--muted)">Build</span>
+          <div style="position:absolute;right:-11px;top:50%;width:22px;height:22px;background:var(--white);border-right:1.5px solid var(--border);border-top:1.5px solid var(--border);transform:translateY(-50%) rotate(45deg);z-index:2"></div>
+        </div>
+        <div id="ws-ph-3" style="flex:1;padding:13px 18px;display:flex;align-items:center;gap:10px">
+          <div id="ws-pn-3" style="width:26px;height:26px;border-radius:50%;background:var(--border);color:var(--muted);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+          <span id="ws-pl-3" style="font-size:12px;font-weight:600;color:var(--muted)">Complete</span>
+        </div>
+      </div>
+
+      <!-- PHASE 1: REVIEW -->
+      <div id="ws-sec-review">
+        <div class="card" style="margin-bottom:18px">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+            <div style="width:40px;height:40px;background:var(--blue-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div>
+              <div class="card-title">Build Plan &#8212; HUB CertSecure Workspace</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:3px">6 boards &nbsp;&#183;&nbsp; 4 folders &nbsp;&#183;&nbsp; 100+ columns &nbsp;&#183;&nbsp; full group structure</div>
+            </div>
+          </div>
+          <div style="background:var(--blue-light);border:1px solid #bfdbfe;border-radius:8px;padding:12px 16px;font-size:13px;color:#1e40af;margin-bottom:20px;line-height:1.6">
+            &#9432;&nbsp; Creates board structure only. Automations, Power-Ups, mirror columns, and validation rules require manual setup &#8212; see the post-build checklist.
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px"><div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Clients</div><div style="font-size:14px;font-weight:700;color:var(--navy)">Clients &#8211; Overview</div><div style="font-size:12px;color:var(--muted);margin-top:3px">32 columns &nbsp;&#183;&nbsp; 4 groups &nbsp;&#183;&nbsp; Central hub</div></div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px"><div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Business Development</div><div style="font-size:14px;font-weight:700;color:var(--navy)">Prospects</div><div style="font-size:12px;color:var(--muted);margin-top:3px">16 columns &nbsp;&#183;&nbsp; 4 groups &nbsp;&#183;&nbsp; Sales pipeline</div></div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px"><div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Installations</div><div style="font-size:14px;font-weight:700;color:var(--navy)">Evident &#8211; Onboarding</div><div style="font-size:12px;color:var(--muted);margin-top:3px">5 columns &nbsp;&#183;&nbsp; 3 groups</div></div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px"><div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Installations</div><div style="font-size:14px;font-weight:700;color:var(--navy)">TrustLayer &#8211; Onboarding</div><div style="font-size:12px;color:var(--muted);margin-top:3px">5 columns &nbsp;&#183;&nbsp; 3 groups</div></div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px"><div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Partnerships</div><div style="font-size:14px;font-weight:700;color:var(--navy)">Evident Partnership</div><div style="font-size:12px;color:var(--muted);margin-top:3px">10 columns &nbsp;&#183;&nbsp; 3 groups</div></div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px"><div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Partnerships</div><div style="font-size:14px;font-weight:700;color:var(--navy)">TrustLayer Partnership</div><div style="font-size:12px;color:var(--muted);margin-top:3px">10 columns &nbsp;&#183;&nbsp; 3 groups</div></div>
+          </div>
+          <div id="ws-no-conn" style="display:none;padding:12px 16px;background:var(--red-bg);border:1px solid #fecaca;border-radius:8px;font-size:13px;color:var(--red);margin-bottom:16px">
+            &#9888;&nbsp; Not connected to Monday. Go to Settings &#8594; Monday to connect first.
+          </div>
+          <div style="display:flex;gap:12px;align-items:center">
+            <button class="btn btn-primary" id="ws-build-btn" onclick="wsStartBuild()">&#127959;&nbsp; Build Workspace</button>
+            <span style="font-size:12px;color:var(--muted)">~2&#8211;3 minutes &nbsp;&#183;&nbsp; Cannot be undone</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 2: BUILDING -->
+      <div id="ws-sec-build" style="display:none">
+        <div class="card" style="margin-bottom:18px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <div><div class="card-title">Building Workspace&#8230;</div><div style="font-size:13px;color:var(--muted);margin-top:3px" id="ws-subtitle">Initializing&#8230;</div></div>
+            <div style="font-size:12px;font-weight:700;color:var(--blue)" id="ws-pct">0%</div>
+          </div>
+          <div style="background:var(--border);border-radius:4px;height:6px;overflow:hidden;margin-bottom:20px">
+            <div id="ws-bar" style="height:100%;background:linear-gradient(90deg,var(--blue),#6BA3DE);border-radius:4px;transition:width .4s ease;width:0%"></div>
+          </div>
+          <div style="display:flex;gap:0;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:18px">
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--navy)" id="ws-s-boards">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Boards</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--navy)" id="ws-s-groups">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Groups</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--navy)" id="ws-s-cols">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Columns</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--navy)" id="ws-s-folders">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Folders</div></div>
+          </div>
+          <div id="ws-log" style="background:#0f1924;border-radius:8px;padding:16px;font-family:monospace;font-size:11px;max-height:340px;overflow-y:auto;border:1px solid #1e2d3d">
+            <div style="color:#60a5fa">&#9432; Ready to build HUB CertSecure workspace&#8230;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 3: COMPLETE -->
+      <div id="ws-sec-complete" style="display:none">
+        <div style="background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:12px;padding:32px;text-align:center;color:white;margin-bottom:20px;box-shadow:var(--shadow-lg)">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px">&#9989;</div>
+          <div style="font-size:22px;font-weight:800;margin-bottom:8px">Workspace Built!</div>
+          <div style="font-size:14px;opacity:.8" id="ws-done-summary">Boards, groups, and columns created.</div>
+        </div>
+        <div class="card">
+          <div class="card-title" style="margin-bottom:18px">Post-Build Checklist</div>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:18px">These steps can&#8217;t be automated via the API &#8212; complete them manually in Monday.com:</div>
+          <div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div><div style="font-size:13px;line-height:1.6"><strong>Remove default group</strong> &#8212; Each board gets a "Topics" group. Delete or rename it.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">2</div><div style="font-size:13px;line-height:1.6"><strong>Set dropdown options</strong> &#8212; Platform, Structure, Stage, Rank, Category (use the Configure tab above).</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">3</div><div style="font-size:13px;line-height:1.6"><strong>Connect Boards columns</strong> &#8212; Link Onboarding and Partnership boards to Clients &#8211; Overview.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">4</div><div style="font-size:13px;line-height:1.6"><strong>Mirror columns on Clients &#8211; Overview</strong> &#8212; Onboarding Status, Configuration Deadline, Onboarding Progress.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">5</div><div style="font-size:13px;line-height:1.6"><strong>Install Power-Ups</strong> &#8212; Dependency (Onboarding), Progress Tracking (Overview), Files (Partnerships), Button (Overview &#8594; GitHub).</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">6</div><div style="font-size:13px;line-height:1.6"><strong>Build automations</strong> &#8212; Start with the Go-Live Cascade Workflow.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">7</div><div style="font-size:13px;line-height:1.6"><strong>Add validation rules</strong> &#8212; Status can&#8217;t go Active without Go-Live Date, etc.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">8</div><div style="font-size:13px;line-height:1.6"><strong>Create saved views</strong> &#8212; Daily View, Invoicing View, Reports View on Clients &#8211; Overview.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">9</div><div style="font-size:13px;line-height:1.6"><strong>Resolve invoicing permissions</strong> &#8212; Confirm visibility on INV: columns before migrating data.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">10</div><div style="font-size:13px;line-height:1.6"><strong>Migrate existing clients</strong> &#8212; Move your 25 active clients into Clients &#8211; Overview (or use the Configure tab).</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">11</div><div style="font-size:13px;line-height:1.6"><strong>Configure GitHub Button</strong> &#8212; Wire the Button Power-Up to trigger the Report Generator workflow.</div></div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:22px">
+            <a href="https://hub-international10.monday.com" target="_blank" class="btn btn-primary">Open Monday.com &#8594;</a>
+            <button class="btn btn-secondary" onclick="wsReset()">&#8635; Build Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CONFIGURE ══ -->
+    <div id="mtab-configure" style="display:none">
+      <div class="card" style="margin-bottom:18px">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
+          <div><div class="card-title" style="margin-bottom:4px">&#128269; Workspace Health Check</div><div style="font-size:13px;color:var(--muted)">Scans boards, columns, dropdown values, and client coverage in one pass</div></div>
+          <button class="btn btn-primary" id="hc-run-btn" onclick="wsRunHealthCheck()" style="white-space:nowrap;flex-shrink:0">Run Check</button>
+        </div>
+        <div id="hc-results" style="display:none;margin-top:20px">
+          <div id="hc-summary" style="display:flex;gap:0;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:18px">
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--green)" id="hc-pass-count">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Passing</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--red)" id="hc-fail-count">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Issues</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--blue)" id="hc-client-count">&#8212;</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Clients Found</div></div>
+          </div>
+          <div><div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Boards &amp; Folders</div><div id="hc-boards-list" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px"></div></div>
+          <div><div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Key Columns on Clients &#8211; Overview</div><div id="hc-columns-list" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:18px"></div></div>
+          <div><div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Dropdown Columns</div><div id="hc-dropdowns-list" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px"></div></div>
+          <div><div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Client Coverage</div><div id="hc-clients-list" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px"></div></div>
+        </div>
+        <div id="hc-running" style="display:none;margin-top:16px"><div style="background:#0f1924;border-radius:8px;padding:14px 16px;font-family:monospace;font-size:11px;max-height:220px;overflow-y:auto;border:1px solid #1e2d3d" id="hc-log"></div></div>
+      </div>
+
+      <div class="card" style="margin-bottom:18px">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
+          <div><div class="card-title" style="margin-bottom:4px">&#9660; Configure Dropdown Values</div><div style="font-size:13px;color:var(--muted)">Automates post-build checklist step 2 &#8212; sets all dropdown options via the API</div></div>
+          <button class="btn btn-primary" id="dd-apply-btn" onclick="wsApplyDropdowns()" style="white-space:nowrap;flex-shrink:0">Apply All Values</button>
+        </div>
+        <div style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px"><div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Clients &#8211; Overview &nbsp;&#183;&nbsp; Platform</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">Evident</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:#fff7ed;color:#ea580c;font-weight:600">TrustLayer</span></div></div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px"><div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Clients &#8211; Overview &nbsp;&#183;&nbsp; Structure</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">General</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">Subcontractors</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">Tenants</span></div></div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px"><div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Clients &amp; Prospects &nbsp;&#183;&nbsp; Est. Complexity</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--green-bg);color:var(--green);font-weight:600">Simple</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:#fff7ed;color:#ea580c;font-weight:600">Moderate</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--red-bg);color:var(--red);font-weight:600">Complex</span></div></div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px"><div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Prospects &nbsp;&#183;&nbsp; Stage</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Discovery</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Proposal Sent</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Negotiation</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Decision Pending</span></div></div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px"><div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Partnership Boards &nbsp;&#183;&nbsp; Category</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--red-bg);color:var(--red);font-weight:600">Platform Issue</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">Feature Request</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Bug Report</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Enhancement</span></div></div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px"><div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Partnership Boards &nbsp;&#183;&nbsp; Rank</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--red-bg);color:var(--red);font-weight:600">P1 &#8211; Critical</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:#fff7ed;color:#ea580c;font-weight:600">P2 &#8211; High</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:#fef9c3;color:#a16207;font-weight:600">P3 &#8211; Medium</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--green-bg);color:var(--green);font-weight:600">P4 &#8211; Low</span></div></div>
+        </div>
+        <div id="dd-log" style="display:none;margin-top:14px;background:#0f1924;border-radius:8px;padding:14px 16px;font-family:monospace;font-size:11px;max-height:200px;overflow-y:auto;border:1px solid #1e2d3d"></div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
+          <div><div class="card-title" style="margin-bottom:4px">&#128101; Import Clients to Monday</div><div style="font-size:13px;color:var(--muted)">Reads clients.json and creates missing clients in Clients &#8211; Overview (Onboarding group)</div></div>
+          <div style="display:flex;gap:8px;flex-shrink:0">
+            <button class="btn btn-secondary" id="ci-scan-btn" onclick="wsScanClients()">&#128269; Scan</button>
+            <button class="btn btn-primary" id="ci-import-btn" onclick="wsImportClients()" style="display:none">&#8679; Import Missing</button>
+          </div>
+        </div>
+        <div id="ci-results" style="display:none;margin-top:18px">
+          <div style="display:flex;gap:0;padding:12px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:14px">
+            <div style="flex:1;text-align:center"><div style="font-size:20px;font-weight:800;color:var(--green)" id="ci-found-count">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Already in Monday</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:20px;font-weight:800;color:var(--red)" id="ci-missing-count">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Missing</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:20px;font-weight:800;color:var(--navy)" id="ci-total-count">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Total in config</div></div>
+          </div>
+          <div id="ci-client-list" style="max-height:300px;overflow-y:auto"></div>
+        </div>
+        <div id="ci-import-log" style="display:none;margin-top:14px;background:#0f1924;border-radius:8px;padding:14px 16px;font-family:monospace;font-size:11px;max-height:200px;overflow-y:auto;border:1px solid #1e2d3d"></div>
+      </div>
+    </div>
+
+    <!-- ══ ACTIVITY LOG ══ -->
+    <div id="mtab-activity" style="display:none">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+          <div><div class="card-title" style="margin-bottom:3px">Activity Log</div><div style="font-size:13px;color:var(--muted)">Report syncs and workspace build events this session</div></div>
+          <button class="btn btn-secondary" style="font-size:12px;padding:6px 14px" onclick="mondayClearAllLogs()">Clear</button>
+        </div>
+        <div id="monday-activity-combined"><div style="font-size:13px;color:var(--muted);text-align:center;padding:24px">No activity this session.</div></div>
+      </div>
+    </div>
+
+  </div>
 
   <div class="overlay" id="client-edit-overlay">
   
@@ -966,11 +1164,12 @@ async function saveClientsToConfig(updatedClients) {
   _allClientsData.forEach(c => { CLIENT_META_MAP[c.client_name] = c; });
 }
 function switchTab(tab) {
-  ['reports','config'].forEach(t => {
+  ['reports','config','monday'].forEach(t => {
     document.getElementById('tab-' + t).style.display = t === tab ? '' : 'none';
     document.getElementById('tab-btn-' + t).classList.toggle('active', t === tab);
   });
   if (tab === 'config') loadAndRenderConfig();
+  if (tab === 'monday') { if (typeof mondayTabActivated === 'function') mondayTabActivated(); }
 }
 async function loadAndRenderConfig() {
   const wrap = document.getElementById('cfg-table-wrap'); const s = getSettings();
@@ -2353,16 +2552,6 @@ let _wsClientsMissing = []; // clients not yet in Monday
 
 // ── TAB SWITCH (extend existing) ──
 const _origSwitchMondayTab = switchMondayTab;
-function switchMondayTab(tab) {
-  ['setup','configure','activity'].forEach(t => {
-    const el  = document.getElementById('mtab-' + t);
-    const btn = document.getElementById('mtab-btn-' + t);
-    if (el)  el.style.display  = t === tab ? '' : 'none';
-    if (btn) btn.classList.toggle('active', t === tab);
-  });
-  if (tab === 'activity')  mondayRenderActivityLog();
-  if (tab === 'configure') wsCfgInit();
-}
 
 function wsCfgInit() {
   const noConn = !_mondayWsId;
