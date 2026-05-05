@@ -1,496 +1,2337 @@
-// ============================================================
-// Evident → CSV Sync Script
-// Outputs:
-//   insureds.csv           — one row per insured
-//   coverages.csv          — one row per coverage per insured
-//   custom_fields.csv      — coverage-level JSON policy data
-//   custom_properties.csv  — entity-level custom properties (Contract Number,
-//                            Notification List, Email, Entity Type, etc.)
-//   criteria.csv           — non-compliance reasons per insured
-//   summaries.csv          — one row per client (KPI counts)
-// ============================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CertSecure Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
+  <script>if(typeof ExcelJS==='undefined'){document.write('<scr'+'ipt src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"><\/scr'+'ipt>');}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}*{scrollbar-width:none!important;-ms-overflow-style:none!important}*::-webkit-scrollbar{display:none!important}
+    :root{--transition:0.22s ease;--navy:#1E2E3D;--blue:#3872B8;--blue-hover:#2D5F99;--blue-light:#EBF2FB;--bg:#EFF3F8;--white:#FFFFFF;--border:#D1DCE8;--text:#1E2E3D;--muted:#5A6B7B;--green:#16A34A;--green-bg:#F0FDF4;--red:#DC2626;--red-bg:#FEF2F2;--orange:#EA580C;--font:'Outfit',sans-serif;--radius:10px;--shadow:0 2px 8px rgba(0,0,0,0.08);--shadow-lg:0 8px 24px rgba(0,0,0,0.12)}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;transition:background var(--transition),color var(--transition)}
+    html.dark{--navy:#C9D8EC;--blue:#6BA3DE;--blue-hover:#85B5E5;--blue-light:#1A2A3D;--bg:#0F1620;--white:#1A2332;--border:#2A3A4D;--text:#D1DCE8;--muted:#7A8FA0;--green:#34D399;--green-bg:#0D2318;--red:#F87171;--red-bg:#2D1515;--shadow:0 2px 8px rgba(0,0,0,0.35);--shadow-lg:0 8px 24px rgba(0,0,0,0.5)}
+    html.dark .header{background:#0A1018;border-bottom:1px solid #1E2D3D}html.dark .client-card,html.dark .report-card{background:var(--white)}html.dark .login-card{background:#1A2332}html.dark .login-input{background:#0F1620;border-color:var(--border);color:var(--text)}html.dark select,html.dark input[type="text"],html.dark input[type="date"]{background:#0F1620;color:var(--text);border-color:var(--border)}html.dark .modal{background:#1A2332}html.dark .notif-drawer{background:#1A2332;border-color:var(--border)}
+    #auth-overlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#1E2E3D 0%,#2B3A52 60%,#3872B8 100%);align-items:center;justify-content:center}
+    .login-wrap{width:100%;max-width:420px;padding:20px}.login-card{background:#fff;border-radius:16px;padding:40px 36px 32px;box-shadow:0 24px 64px rgba(0,0,0,0.35)}
+    .login-logo{display:flex;align-items:center;gap:0;margin-bottom:28px;flex-wrap:wrap}.logo-cert{font-family:Arial,sans-serif;font-size:22px;font-weight:900;color:#1E2E3D;letter-spacing:.02em}.logo-secure{font-family:Arial,sans-serif;font-size:22px;font-weight:900;color:#fff;background:#3872B8;padding:2px 10px;border-radius:4px;margin-left:2px}.logo-sub{width:100%;font-family:Arial,sans-serif;font-size:9px;color:#94A3B8;letter-spacing:.15em;text-transform:uppercase;margin-top:4px;font-weight:600}
+    .login-title{font-size:20px;font-weight:700;color:#1E2E3D;margin-bottom:6px}.login-sub{font-size:12px;color:#5A6B7B;margin-bottom:24px;line-height:1.5}
+    .login-err{background:#FDF0EE;border:1px solid #F5CFC9;border-radius:8px;padding:10px 14px;font-size:12px;color:#C0392B;margin-bottom:16px}
+    .login-field{margin-bottom:16px}.login-label{display:block;font-size:12px;font-weight:600;color:#1E2E3D;margin-bottom:6px}
+    .login-input{width:100%;box-sizing:border-box;padding:10px 14px;border:1.5px solid #D8DEE9;border-radius:8px;font-size:14px;font-family:Arial,sans-serif;color:#1E2E3D;outline:none;transition:border-color .15s}.login-input:focus{border-color:#3872B8;box-shadow:0 0 0 3px rgba(56,114,184,0.12)}
+    .login-btn{width:100%;padding:12px;background:#2B3A52;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;font-family:Arial,sans-serif;cursor:pointer;margin-top:6px;transition:background .15s}.login-btn:hover{background:#3872B8}.login-btn:disabled{background:#94A3B8;cursor:not-allowed}
+    .login-footer{font-size:10px;color:#94A3B8;text-align:center;margin-top:20px;line-height:1.4}.login-link{font-size:12px;color:#3872B8;text-decoration:none;font-weight:600}.login-link:hover{text-decoration:underline}
+    .role-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:10px}
+    .btn-sm-ghost{font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:5px;background:var(--white);cursor:pointer;color:var(--navy);font-family:inherit}.btn-sm-ghost:hover{background:var(--bg)}
+    .btn-sm-danger{font-size:11px;padding:4px 10px;border:1px solid var(--red);border-radius:5px;background:var(--red-bg);cursor:pointer;color:var(--red);font-family:inherit}.btn-sm-danger:hover{opacity:0.85}
+    .stab{background:none;border:none;border-bottom:2px solid transparent;padding:8px 16px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;margin-bottom:-2px;font-family:inherit}.stab.active{color:var(--blue);border-bottom-color:var(--blue)}.stab:hover:not(.active){color:var(--navy)}
+    .header{background:var(--navy);padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+    .header-logo{height:34px;object-fit:contain}.header-logo-fallback{display:none;font-size:18px;font-weight:700;color:white;letter-spacing:-0.5px}.header-logo-fallback span{background:var(--blue);padding:2px 7px;border-radius:4px;margin-left:1px}
+    .header-right{display:flex;align-items:center;gap:10px}
+    .btn-ghost{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:7px 14px;border-radius:7px;cursor:pointer;font-family:var(--font);font-size:13px;font-weight:500;display:flex;align-items:center;gap:6px;transition:background 0.15s}.btn-ghost:hover{background:rgba(255,255,255,0.2)}.btn-ghost:disabled{opacity:0.5;cursor:not-allowed}
+    .main{max-width:1100px;margin:0 auto;padding:20px 24px 40px;display:flex;flex-direction:column;box-sizing:border-box}
+    .step-panel{display:flex;flex-direction:column;transition:opacity 0.3s ease}.step-panel.fading{animation:stepFade 0.35s cubic-bezier(0.16,1,0.3,1) both}@keyframes stepFade{from{opacity:0;transform:translateY(14px) scale(0.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .tab-bar{display:flex;gap:2px;border-bottom:2px solid var(--border);margin-bottom:22px;flex-shrink:0}
+    .tab-btn{background:none;border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--muted);padding:10px 18px 11px;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color 0.15s,border-color 0.15s}.tab-btn:hover{color:var(--navy)}.tab-btn.active{color:var(--blue);border-bottom-color:var(--blue)}
+    .cfg-table{width:100%;border-collapse:collapse;font-size:12px}.cfg-table th{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:8px 12px;border-bottom:2px solid var(--border);text-align:left}.cfg-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle}.cfg-table tr:hover td{background:var(--bg)}
+    .active-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:2px 8px;border-radius:12px}.active-badge.on{background:var(--green-bg,#E6F5EF);color:var(--green)}.active-badge.off{background:var(--bg);color:var(--muted)}
+    .struct-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:12px;background:var(--blue-light);color:var(--blue)}
+    .cfg-search{width:100%;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:var(--white);color:var(--text);outline:none;transition:border-color .15s}.cfg-search:focus{border-color:var(--blue)}
+    .page-title{font-size:22px;font-weight:700;color:var(--navy)}.page-sub{font-size:13px;color:var(--muted);margin-top:4px}.page-hdr{margin-bottom:14px;flex-shrink:0}
+    .card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}.card-title{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:16px}
+    .struct-label{font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin:20px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--border)}.struct-label:first-child{margin-top:0}
+    .client-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:9px}
+    .client-card{border:2px solid var(--border);border-radius:8px;padding:13px 15px;cursor:pointer;transition:all 0.15s;background:var(--white);user-select:none}.client-card:hover{border-color:var(--blue);background:var(--blue-light)}
+    .platform-badge{display:inline-block;font-size:8px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:1px 5px;border-radius:4px;margin-left:4px;vertical-align:middle}.platform-badge.evident{background:#E8ECF5;color:#3872B8}.platform-badge.tl{background:#FFF3E0;color:#E65100}
+    .client-card.selected{border-color:var(--blue);background:var(--blue-light);box-shadow:0 0 0 3px rgba(56,114,184,0.15)}
+    .client-name{font-size:13px;font-weight:600;color:var(--navy);line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .client-badge{display:inline-block;margin-top:7px;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase}.badge-general{background:#DBEAFE;color:#1D4ED8}.badge-project{background:#D1FAE5;color:#065F46}.badge-location{background:#FEF3C7;color:#92400E}
+    .client-banner{display:flex;align-items:center;gap:16px;padding:13px 18px;background:var(--blue-light);border:1px solid #BFDBFE;border-radius:8px;margin-bottom:20px}.banner-name{font-size:14px;font-weight:700;color:var(--navy)}.banner-struct{font-size:12px;color:var(--muted);margin-top:2px}.banner-change{margin-left:auto;font-size:12px;color:var(--blue);cursor:pointer;font-weight:500;white-space:nowrap;flex-shrink:0}.banner-change:hover{text-decoration:underline}
+    .report-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:680px){.report-grid{grid-template-columns:1fr}}
+    .prog-steps{display:flex;align-items:center;gap:0;padding:20px 0 10px}.prog-step{display:flex;flex-direction:column;align-items:center;flex:1;position:relative}.prog-step:not(:last-child)::after{content:'';position:absolute;top:13px;left:50%;width:100%;height:2px;background:var(--border);z-index:0}.prog-step.done::after{background:var(--green)}.prog-step.active::after{background:linear-gradient(to right,var(--blue),var(--border))}
+    .prog-dot{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;z-index:1;transition:all 0.3s}.prog-step.pending .prog-dot{background:var(--bg);border:2px solid var(--border);color:var(--muted)}.prog-step.active .prog-dot{background:var(--blue);border:2px solid var(--blue);color:white}.prog-step.done .prog-dot{background:var(--green);border:2px solid var(--green);color:white}
+    .prog-step-lbl{font-size:10px;color:var(--muted);margin-top:5px;text-align:center}.prog-step.active .prog-step-lbl{color:var(--blue);font-weight:600}.prog-step.done .prog-step-lbl{color:var(--green);font-weight:600}
+    .report-card{border:2px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color 0.15s}.report-card.on{border-color:var(--blue)}
+    .report-card-hdr{padding:13px 15px;display:flex;align-items:center;gap:11px;background:#F8FAFC;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}.report-card.on .report-card-hdr{background:var(--blue-light);border-bottom-color:#BFDBFE}
+    .rc-dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);background:var(--white);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.15s}.report-card.on .rc-dot{background:var(--blue);border-color:var(--blue)}.rc-dot::after{content:'';width:7px;height:7px;border-radius:50%;background:white;opacity:0}.report-card.on .rc-dot::after{opacity:1}
+    .rc-title{font-size:13px;font-weight:600;color:var(--navy)}.rc-sub{font-size:11px;color:var(--muted);margin-top:1px}.rc-type{margin-left:auto;padding:3px 9px;border-radius:4px;font-size:10px;font-weight:700;flex-shrink:0}.type-excel{background:#D1FAE5;color:#065F46}.type-pdf{background:#FEE2E2;color:#991B1B}
+    .report-card-body{padding:15px;display:none}.report-card.on .report-card-body{display:block}
+    .cb-group{display:flex;flex-direction:column;gap:7px}.cb-item{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text)}.cb-item input[type="checkbox"]{width:15px;height:15px;accent-color:var(--blue);cursor:pointer;flex-shrink:0}
+    .sec-div{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);margin:13px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--border)}
+    select,input[type="text"],input[type="date"]{width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-family:var(--font);font-size:12px;color:var(--text);background:var(--white);outline:none;transition:border-color 0.15s}select:focus,input:focus{border-color:var(--blue)}
+    .btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:8px;font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all 0.15s}.btn-primary{background:var(--blue);color:white}.btn-primary:hover{background:var(--blue-hover)}.btn-primary:disabled{background:var(--border);color:var(--muted);cursor:not-allowed}.btn-secondary{background:var(--white);color:var(--navy);border:1px solid var(--border)}.btn-secondary:hover{background:var(--bg)}.btn-success{background:var(--green);color:white}.btn-success:hover{background:#15803D}
+    .action-bar{display:flex;justify-content:space-between;align-items:center;margin-top:22px}
+    .spinner{width:44px;height:44px;border:4px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin 0.75s linear infinite;margin:0 auto 16px}@keyframes spin{to{transform:rotate(360deg)}}
+    .dl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:16px}.dl-card{border:1px solid var(--border);border-radius:8px;padding:20px 16px;text-align:center}.dl-icon{font-size:36px;margin-bottom:10px}.dl-name{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:14px;line-height:1.3}
+    .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9900;align-items:center;justify-content:center;padding:20px}.overlay.open{display:flex}
+    .modal{background:var(--white);border-radius:var(--radius);width:100%;max-width:580px;padding:26px;box-shadow:var(--shadow-lg);overflow:visible}.modal-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.modal-title{font-size:17px;font-weight:700;color:var(--navy)}.modal-close{background:none;border:none;font-size:18px;cursor:pointer;color:var(--muted);line-height:1;padding:2px}.modal-close:hover{color:var(--text)}
+    .form-grp{margin-bottom:14px}.form-lbl{display:block;font-size:12px;font-weight:600;color:var(--navy);margin-bottom:5px}.form-hint{font-size:11px;color:var(--muted);margin-top:3px}.modal-divider{border:none;border-top:1px solid var(--border);margin:18px 0}
+    .toast{position:fixed;bottom:24px;right:24px;padding:11px 18px;border-radius:8px;background:var(--navy);color:white;font-size:13px;font-weight:500;opacity:0;transform:translateY(8px);transition:all 0.25s;z-index:200;pointer-events:none;max-width:320px}.toast.show{opacity:1;transform:translateY(0)}.toast.success{background:var(--green)}.toast.error{background:var(--red)}
+    .info-box{background:var(--blue-light);border:1px solid #BFDBFE;border-radius:8px;padding:11px 14px;font-size:12px;color:#1E40AF;margin-bottom:16px}
+    .monday-token-wrap{position:relative}.monday-token-wrap input{padding-right:38px}.monday-token-eye{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);font-size:14px;line-height:1}
+    .monday-connect-bar{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;margin-top:12px}
+    .monday-status-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;background:var(--border);transition:background .2s}.monday-status-dot.connected{background:var(--green);box-shadow:0 0 0 3px rgba(22,163,74,.15)}.monday-status-dot.error{background:var(--red)}.monday-status-dot.loading{background:var(--orange);animation:mPulse 1s infinite}@keyframes mPulse{0%,100%{opacity:1}50%{opacity:.4}}
+    .monday-field-row{display:grid;grid-template-columns:160px 1fr auto;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}.monday-field-row:last-child{border-bottom:none}.monday-field-label{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.monday-field-current{font-size:11px;color:var(--muted);white-space:nowrap}
+    .monday-sync-card{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:14px}.monday-sync-card-hdr{padding:13px 16px;background:var(--bg);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}.monday-sync-card-body{padding:16px}
+    .monday-sync-icon{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}.monday-sync-icon.blue{background:var(--blue-light)}.monday-sync-icon.navy{background:#e8edf5}
+    .monday-item-found{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--green-bg);border:1px solid #bbf7d0;border-radius:8px;font-size:12px;color:#166534;margin-bottom:14px}
+    .monday-item-missing{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;font-size:12px;color:#9a3412;margin-bottom:14px}
+    .monday-log{background:#0f1924;border-radius:8px;padding:14px;font-family:monospace;font-size:11px;max-height:200px;overflow-y:auto;margin-top:12px;border:1px solid #1e2d3d}.monday-log-line{padding:2px 0;color:#cbd5e1}.monday-log-line.ok{color:#22c55e}.monday-log-line.err{color:#f87171}
+    .monday-section-title{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+    /* ── SPACIOUS & CLEAN UI ── */
+    .card{padding:28px;}
+    .page-title{font-size:24px;font-weight:800;}
+    .card-title{font-size:16px;font-weight:700;}
+    .form-lbl{font-size:12px;font-weight:700;letter-spacing:.03em;}
+    .form-grp{margin-bottom:18px;}
+    .tab-btn{padding:12px 20px 13px;font-size:13px;}
+    select,input[type="text"],input[type="date"]{padding:9px 12px;border-radius:8px;font-size:13px;border:1.5px solid var(--border);}
+    select:focus,input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(56,114,184,0.1);}
+    .btn{padding:10px 20px;border-radius:9px;font-size:13px;}
+    .btn-sm-ghost,.btn-sm-danger{font-size:12px;padding:6px 12px;border-radius:6px;}
+    .cfg-table td{padding:12px 14px;} .cfg-table th{padding:10px 14px;font-size:11px;}
+    .rc-title{font-size:14px;font-weight:700;} .client-card{padding:15px 16px;}
+    .client-name{font-size:13px;font-weight:700;} .stab{padding:10px 18px;font-size:13px;}
+    .modal{padding:30px;} .modal-title{font-size:18px;font-weight:800;}
+    .modal-hdr{margin-bottom:24px;} .page-hdr{margin-bottom:20px;}
+    .section-lbl{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:14px 0 8px;border-bottom:1px solid var(--border);margin-bottom:16px;display:block;}
+    .settings-box{background:var(--bg);border-radius:10px;padding:20px;margin-bottom:18px;}
+    .monday-field-row{padding:12px 0;} .monday-field-label{font-size:11px;font-weight:700;}
+    .report-card-hdr{padding:15px 16px;}
+  </style>
+</head>
+<body>
+<div id="auth-overlay" style="display:flex">
+  <div class="login-wrap">
+    <div id="view-signin" class="login-card">
+      <div class="login-logo"><div class="logo-cert">CERT</div><div class="logo-secure">SECURE</div><div class="logo-sub">SERVICED BY HUB</div></div>
+      <div class="login-title">Sign in to continue</div>
+      <div class="login-sub">Access is restricted to authorized HUB CertSecure personnel.</div>
+      <div id="signin-err" class="login-err" style="display:none"></div>
+      <div class="login-field"><label class="login-label">Email address</label><input type="email" id="login-email" class="login-input" placeholder="you@hubinternational.com" autocomplete="email"></div>
+      <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
+      <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
+      <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.20</div>
+      <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
+    </div>
+    <div id="view-forgot" class="login-card" style="display:none">
+      <div class="login-logo"><div class="logo-cert">CERT</div><div class="logo-secure">SECURE</div><div class="logo-sub">SERVICED BY HUB</div></div>
+      <div class="login-title">Reset your password</div><div class="login-sub">Enter your email and we’ll send you a reset link.</div>
+      <div id="forgot-msg" class="login-err" style="display:none"></div>
+      <div class="login-field"><label class="login-label">Email address</label><input type="email" id="forgot-email" class="login-input" placeholder="you@hubinternational.com"></div>
+      <button class="login-btn" id="forgot-btn" onclick="doForgotPassword()">Send Reset Link</button>
+      <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('signin');return false">← Back to sign in</a></div>
+    </div>
+    <div id="view-reset" class="login-card" style="display:none">
+      <div class="login-logo"><div class="logo-cert">CERT</div><div class="logo-secure">SECURE</div><div class="logo-sub">SERVICED BY HUB</div></div>
+      <div class="login-title">Set new password</div><div class="login-sub">Choose a strong password for your account.</div>
+      <div id="reset-msg" class="login-err" style="display:none"></div>
+      <div class="login-field"><label class="login-label">New password</label><input type="password" id="reset-password" class="login-input" placeholder="At least 8 characters"></div>
+      <div class="login-field"><label class="login-label">Confirm new password</label><input type="password" id="reset-confirm" class="login-input" placeholder="Repeat password"></div>
+      <button class="login-btn" id="reset-btn" onclick="doResetPassword()">Set New Password</button>
+    </div>
+  </div>
+</div>
+<header class="header">
+  <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAARCADvA7EDASIAAhEBAxEB/8QAGwABAAIDAQEAAAAAAAAAAAAAAAMEAQIGBQf/2gAMAwEAAhEDEQA/ALloiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIA=" alt="CertSecure" class="header-logo" onerror="this.style.display='none';document.getElementById('logo-text').style.display='flex'">
+  <div id="logo-text" class="header-logo-fallback">CERT<span>SECURE</span></div>
+  <div class="header-right">
+    <div class="notif-wrap" style="position:relative">
+      <button class="btn-ghost" id="notif-btn" onclick="toggleNotifDrawer()" style="position:relative">🔔 <span id="notif-badge" style="display:none;position:absolute;top:4px;right:4px;background:var(--red);color:white;border-radius:50%;width:14px;height:14px;font-size:9px;font-weight:700;line-height:14px;text-align:center"></span></button>
+      <div class="notif-drawer" id="notif-drawer" style="display:none;position:absolute;right:0;top:44px;width:300px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-lg);z-index:200;overflow:hidden">
+        <div style="padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">Recent Activity<button onclick="clearNotifs()" style="font-size:10px;color:var(--muted);background:none;border:none;cursor:pointer;font-family:inherit">Clear</button></div>
+        <div id="notif-list" style="max-height:280px;overflow-y:auto;padding:6px 0"><div style="padding:14px;font-size:12px;color:var(--muted);text-align:center">No recent activity</div></div>
+      </div>
+    </div>
+    <button class="btn-ghost" id="dark-toggle" onclick="toggleDark()" title="Toggle dark mode">🌙</button>
+    <div id="welcome-wrap" style="display:none;align-items:center;gap:8px"><span id="welcome-name" style="color:rgba(255,255,255,0.85);font-size:12px;font-weight:600"></span><span id="welcome-role" style="font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:12px"></span></div>
+    <button class="btn-ghost" onclick="openSettings()"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg> Settings</button>
+    <button class="btn-ghost" onclick="doSignOut()" style="margin-left:8px;border-left:1px solid rgba(255,255,255,0.15);padding-left:14px">⎋ Sign Out</button>
+  </div>
+</header>
+<!-- SETTINGS MODAL -->
+<div class="overlay" id="settings-overlay">
+  <div class="modal" style="max-width:600px;max-height:88vh;overflow-y:auto">
+    <div class="modal-hdr">
+      <span class="modal-title">&#9881;&#65039; Settings</span>
+      <button class="modal-close" onclick="closeSettings()">&#10005;</button>
+    </div>
+    <div style="display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:24px">
+      <button class="stab active" id="stab-datasource" onclick="switchSettingsTab('datasource')">Data Source</button>
+      <button class="stab" id="stab-monday-cfg" onclick="switchSettingsTab('monday-cfg')">Monday</button>
+      <button class="stab" id="stab-users" onclick="switchSettingsTab('users')">Users</button>
+      <button class="stab" id="stab-admin" onclick="switchSettingsTab('admin')">Admin</button>
+    </div>
 
-"use strict";
+    <!-- DATA SOURCE -->
+    <div id="stab-content-datasource">
+      <div class="settings-box">
+        <span class="section-lbl">GitHub Repository</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="form-grp"><label class="form-lbl">Owner</label><input type="text" id="s-owner" placeholder="PhilipIrving"></div>
+          <div class="form-grp"><label class="form-lbl">Repository</label><input type="text" id="s-repo" placeholder="hubcertsecure"></div>
+          <div class="form-grp"><label class="form-lbl">Branch</label><input type="text" id="s-branch" placeholder="main"></div>
+          <div class="form-grp">
+            <label class="form-lbl">Access Token <span style="font-weight:400;color:var(--muted)">(PAT)</span></label>
+            <div style="position:relative"><input type="password" id="s-pat" placeholder="ghp_..." style="padding-right:40px"><button type="button" onclick="toggleReveal('s-pat',this)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted)">&#128065;</button></div>
+            <div class="form-hint">Requires <strong>workflow</strong> scope for Refresh Data.</div>
+          </div>
+        </div>
+      </div>
+      <div class="settings-box">
+        <div style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;margin-bottom:0" onclick="toggleCsvPaths()">
+          <span class="section-lbl" style="padding:0;border:none;margin:0">CSV File Paths</span>
+          <span id="csv-toggle-icon" style="font-size:11px;color:var(--muted)">&#9660; show</span>
+        </div>
+        <div id="csv-paths" style="display:none;margin-top:16px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <div class="form-grp"><label class="form-lbl">Insureds</label><input type="text" id="s-insureds" placeholder="data/evident/insureds.csv"></div>
+            <div class="form-grp"><label class="form-lbl">Coverages</label><input type="text" id="s-coverages" placeholder="data/evident/coverages.csv"></div>
+            <div class="form-grp"><label class="form-lbl">Criteria</label><input type="text" id="s-criteria" placeholder="data/evident/criteria.csv"></div>
+            <div class="form-grp"><label class="form-lbl">Custom Properties</label><input type="text" id="s-customprops" placeholder="data/evident/custom_properties.csv"></div>
+            <div class="form-grp" style="grid-column:1/-1"><label class="form-lbl">Engagement</label><input type="text" id="s-notifications" placeholder="data/evident/engagement.csv"></div>
+          </div>
+          <div style="border-top:1px solid var(--border);padding-top:14px;margin-top:4px">
+            <div style="font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px">TrustLayer Paths</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+              <div class="form-grp"><label class="form-lbl">Insureds</label><input type="text" id="s-tl-insureds" placeholder="data/trustlayer/insureds.csv"></div>
+              <div class="form-grp"><label class="form-lbl">Coverages</label><input type="text" id="s-tl-coverages" placeholder="data/trustlayer/coverages.csv"></div>
+              <div class="form-grp"><label class="form-lbl">Criteria</label><input type="text" id="s-tl-criteria" placeholder="data/trustlayer/criteria.csv"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="btn btn-secondary" onclick="closeSettings()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+      </div>
+    </div>
 
-const https = require("https");
-const zlib  = require("zlib");
-const fs    = require("fs");
-const path  = require("path");
-const { smartWrite, writeSyncMetadata } = require("./sync-utils");
+    <!-- MONDAY -->
+    <div id="stab-content-monday-cfg" style="display:none">
+      <div class="settings-box">
+        <span class="section-lbl">API Connection</span>
+        <div class="form-grp">
+          <label class="form-lbl">API Token</label>
+          <div style="position:relative"><input type="password" id="s-monday-token" placeholder="eyJhbGciOiJIUzI1NiJ9..." style="padding-right:40px" autocomplete="off"><button type="button" onclick="toggleReveal('s-monday-token',this)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted)">&#128065;</button></div>
+          <div class="form-hint">Monday.com &#8594; Profile &#8594; Developers &#8594; My Access Tokens. Stored in your browser only.</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg);border-radius:8px;border:1px solid var(--border)">
+          <div class="monday-status-dot" id="s-monday-dot"></div>
+          <div style="font-size:13px;font-weight:600;color:var(--muted)" id="s-monday-status-text">Not connected</div>
+          <button class="btn btn-primary" style="margin-left:auto;padding:7px 18px;font-size:12px" id="s-monday-connect-btn" onclick="settingsMondayConnect()">Connect</button>
+        </div>
+      </div>
+      <div id="s-monday-board-info" style="display:none">
+        <div class="settings-box">
+          <span class="section-lbl">Workspace &amp; Boards</span>
+          <div id="s-monday-boards-list"></div>
+        </div>
+      </div>
+    </div>
 
-// ------------------------------------------------------------
-// CLIENTS
-// ------------------------------------------------------------
-const CLIENTS = [
-  { name: "A G Equipment Company",               rpCommonName: "agequipment",       apiKey: process.env.EVIDENT_KEY_AGEQUIPMENT },
-  { name: "Action Plumbing Construction",        rpCommonName: "actionplumbing",    apiKey: process.env.EVIDENT_KEY_ACTIONPLUMBING },
-  { name: "Bauer Foundation Corp.",              rpCommonName: "bauerfoundation",   apiKey: process.env.EVIDENT_KEY_BAUERFOUNDATION },
-  { name: "Canadian Pacific Kansas City",        rpCommonName: "cpkansascity",      apiKey: process.env.EVIDENT_KEY_CPKANSASCITY },
-  { name: "Capital Railroad Contracting, Inc.",  rpCommonName: "capitalroad",       apiKey: process.env.EVIDENT_KEY_CAPITALROAD },
-  { name: "EMMES",                               rpCommonName: "emmes",             apiKey: process.env.EVIDENT_KEY_EMMES },
-  { name: "ESS Companies",                       rpCommonName: "emerysappandsons",  apiKey: process.env.EVIDENT_KEY_EMERYSAPPANDSONS },
-  { name: "Gart Properties",                     rpCommonName: "gartproperties",    apiKey: process.env.EVIDENT_KEY_GARTPROPERTIES },
-  { name: "Kolb Grading",                        rpCommonName: "kolbgrading",       apiKey: process.env.EVIDENT_KEY_KOLBGRADING },
-  { name: "Mizuho Bank",                         rpCommonName: "mizuhobank",        apiKey: process.env.EVIDENT_KEY_MIZUHOBANK },
-  { name: "Musselman & Hall Contractors, LLC",   rpCommonName: "musselmanhall",     apiKey: process.env.EVIDENT_KEY_MUSSELMANHALL },
-  { name: "Paragon Geophysical Services, Inc.",  rpCommonName: "paragongeo",        apiKey: process.env.EVIDENT_KEY_PARAGONGEO },
-  { name: "Scandroli Construction",              rpCommonName: "scandroli",         apiKey: process.env.EVIDENT_KEY_SCANDROLI },
-  { name: "Skyline Developers Construction LLC", rpCommonName: "skyline",           apiKey: process.env.EVIDENT_KEY_SKYLINE },
-  { name: "The Abbey Management Company",        rpCommonName: "theabbeycompany",   apiKey: process.env.EVIDENT_KEY_THEABBEYCOMPANY },
-  { name: "Trinity Chemical Industries LLC",     rpCommonName: "trinitychemical",   apiKey: process.env.EVIDENT_KEY_TRINITYCHEMICAL },
-  { name: "United Coal Company LLC",             rpCommonName: "unitedcoal",        apiKey: process.env.EVIDENT_KEY_UNITEDCOAL },
+    <!-- USERS -->
+    <div id="stab-content-users" style="display:none">
+      <div id="users-panel" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <div style="font-size:15px;font-weight:700;color:var(--navy)">Team Members</div>
+          <button class="btn btn-primary" style="padding:8px 16px;font-size:12px" onclick="showAddUser()">+ Add User</button>
+        </div>
+        <div id="users-list" style="min-height:60px"><div style="text-align:center;padding:20px;color:var(--muted);font-size:13px">Loading&#8230;</div></div>
+        <div id="add-user-form" style="display:none;margin-top:16px;padding:18px;background:var(--bg);border-radius:10px;border:1px solid var(--border)">
+          <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px">Add New User</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="form-grp"><label class="form-lbl">Display Name</label><input type="text" id="new-user-name" class="login-input" style="font-size:13px;padding:9px 12px" placeholder="e.g. Philip Irving"></div>
+            <div class="form-grp"><label class="form-lbl">Role</label><select id="new-user-role" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:var(--white);color:var(--text)"><option value="account_administrator">Account Administrator</option><option value="account_manager">Account Manager</option><option value="system_administrator">System Administrator</option></select></div>
+            <div class="form-grp" style="grid-column:1/-1"><label class="form-lbl">Email</label><input type="email" id="new-user-email" class="login-input" style="font-size:13px;padding:9px 12px" placeholder="email@hubinternational.com"></div>
+            <div class="form-grp" style="grid-column:1/-1"><label class="form-lbl">Temporary Password</label><input type="text" id="new-user-pass" class="login-input" style="font-size:13px;padding:9px 12px" placeholder="They can reset after first login"></div>
+          </div>
+          <div id="add-user-msg" style="display:none;font-size:12px;margin-bottom:10px"></div>
+          <div style="display:flex;gap:8px"><button class="btn btn-primary" style="padding:8px 16px;font-size:12px" onclick="doAddUser()">Create User</button><button class="btn btn-secondary" style="padding:8px 16px;font-size:12px" onclick="hideAddUser()">Cancel</button></div>
+        </div>
+        <div id="edit-user-modal" style="display:none;margin-top:16px;padding:18px;background:var(--bg);border-radius:10px;border:1px solid var(--border)">
+          <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px">Edit User</div>
+          <input type="hidden" id="edit-user-id">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="form-grp"><label class="form-lbl">Display Name</label><input type="text" id="edit-user-name" class="login-input" style="font-size:13px;padding:9px 12px"></div>
+            <div class="form-grp"><label class="form-lbl">Role</label><select id="edit-user-role" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:var(--white);color:var(--text)"><option value="account_administrator">Account Administrator</option><option value="account_manager">Account Manager</option><option value="system_administrator">System Administrator</option></select></div>
+          </div>
+          <div id="edit-user-msg" style="display:none;font-size:12px;margin-bottom:10px"></div>
+          <div style="display:flex;gap:8px"><button class="btn btn-primary" style="padding:8px 16px;font-size:12px" onclick="doEditUser()">Save</button><button class="btn btn-secondary" style="padding:8px 16px;font-size:12px" onclick="hideEditUser()">Cancel</button></div>
+        </div>
+      </div>
+      <div id="users-need-key" style="display:none">
+        <div style="background:#FFF8E6;border:1px solid #F5E5B0;border-radius:10px;padding:16px;font-size:13px;color:#1E2E3D">
+          <strong style="color:#B45309">&#9888; Edge Function required</strong><br><br>
+          Add your Edge Function URL in the <strong>Admin</strong> tab to enable user management.
+        </div>
+      </div>
+    </div>
+
+    <!-- ADMIN -->
+    <div id="stab-content-admin" style="display:none">
+      <div class="settings-box">
+        <span class="section-lbl">Supabase Edge Function</span>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6">Required to enable the Users tab. Deploy the <strong>manage-users</strong> function to your Supabase project.</div>
+        <div class="form-grp">
+          <label class="form-lbl">Edge Function URL</label>
+          <input type="text" id="s-edge-url" placeholder="https://nwcyavfkmbhcadtrvyqy.supabase.co/functions/v1/manage-users">
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="btn btn-secondary" onclick="closeSettings()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveAdminKey()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="hubwide-overlay">
+  <div class="modal" style="max-width:440px">
+    <div class="modal-hdr"><span class="modal-title">&#127962; HUB-Wide Annual Review</span><button class="modal-close" onclick="closeHubWide()">&#10005;</button></div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:18px;line-height:1.5">Generates a full annual review across all clients using snapshot data. Runs entirely in the browser &#8212; no waiting.</div>
+    <div class="form-grp"><label class="form-lbl">Report Year</label><input type="text" id="hw-year" placeholder="e.g. 2026" maxlength="4" style="width:140px"><div class="form-hint">Leave blank to use the most recent snapshot year.</div></div>
+    <div id="hw-msg" style="display:none;font-size:12px;padding:8px 12px;border-radius:7px;margin-top:10px"></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:20px"><button class="btn btn-secondary" onclick="closeHubWide()">Cancel</button><button class="btn btn-primary" id="hw-btn" onclick="triggerHubWide()">&#11015; Generate</button></div>
+  </div>
+</div>
+
+<div id="main-app" style="display:none">
+<main class="main">
+  <div class="tab-bar">
+    <button class="tab-btn active" id="tab-btn-reports" onclick="switchTab('reports')">Report Generator</button>
+    <button class="tab-btn" id="tab-btn-config" onclick="switchTab('config')">Client Configuration</button>
+    <button class="tab-btn" id="tab-btn-monday" onclick="switchTab('monday')">Monday Sync</button>
+  </div>
+  <div id="tab-reports">
+  <div id="step-1" class="step-panel">
+    <div class="page-hdr" style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px">
+      <div><div class="page-title">Report Generator</div><div class="page-sub">Select a client to get started</div></div>
+      <div style="display:flex;gap:8px;justify-self:center">
+        <button class="btn btn-secondary" id="refresh-btn" onclick="triggerRefresh()" style="white-space:nowrap">&#8635; Refresh Data</button>
+        <button class="btn btn-secondary" id="rg-monday-btn" onclick="reportGeneratorSyncMonday()" style="white-space:nowrap;display:none">&#8679; Monday</button>
+      </div>
+      <div style="display:flex;justify-content:flex-end"><button class="btn btn-secondary" onclick="openHubWide()" style="gap:6px;white-space:nowrap">&#127962; HUB-Wide Annual</button></div>
+    </div>
+    <div class="card">
+      <div class="struct-label">General &#8212; Shown by Entity Type</div><div class="client-grid" id="grid-general"></div>
+      <div class="struct-label">Subcontractors &#8212; Shown by Project</div><div class="client-grid" id="grid-project"></div>
+      <div class="struct-label">Tenants &#8212; Shown by Location</div><div class="client-grid" id="grid-location"></div>
+    </div>
+  </div>
+  <div id="step-2" class="step-panel" style="display:none">
+    <div class="page-hdr"><div class="page-title">Configure Report</div><div class="page-sub">Choose which reports to generate and customize each one</div></div>
+    <div class="client-banner" id="client-banner"><div><div class="banner-name" id="banner-name"></div><div class="banner-struct" id="banner-struct"></div></div><span class="banner-change" onclick="goTo(1)">&#8592; Change Client</span></div>
+    <div class="card">
+      <div class="card-title">Select Reports to Generate</div>
+      <div class="report-grid">
+        <div class="report-card" id="rc-cs"><div class="report-card-hdr" onclick="toggleReport('cs')"><div class="rc-dot"></div><div><div class="rc-title">Compliance Summary</div><div class="rc-sub">Executive compliance overview</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Sections to Include</div><div class="cb-group"><label class="cb-item"><input type="checkbox" id="cs-kpi" checked> Program KPI Cards</label><label class="cb-item"><input type="checkbox" id="cs-breakdown" checked> Compliance Status Breakdown</label><label class="cb-item"><input type="checkbox" id="cs-coi" checked> COI Submission Status</label><label class="cb-item"><input type="checkbox" id="cs-nocoi" checked> No COI on File &#8212; Breakdown</label><label class="cb-item"><input type="checkbox" id="cs-expiring" checked> Expiring Coverage (7 / 30 / 60 / 90 days)</label><label class="cb-item"><input type="checkbox" id="cs-ncreasons" checked> Top Non-Compliance Reasons</label><label class="cb-item"><input type="checkbox" id="cs-criteriadist" checked> Insured Criteria Breakdown</label><label class="cb-item"><input type="checkbox" id="cs-coveragedist" checked> Insured Coverage Breakdown</label></div></div></div>
+        <div class="report-card" id="rc-cd"><div class="report-card-hdr" onclick="toggleReport('cd')"><div class="rc-dot"></div><div><div class="rc-title">Compliance Detail</div><div class="rc-sub">Full entity-level compliance data</div></div><span class="rc-type type-excel">Excel</span></div><div class="report-card-body"><div class="sec-div">Sheets to Include</div><div class="cb-group"><label class="cb-item"><input type="checkbox" id="cd-summary" checked> Summary</label><label class="cb-item"><input type="checkbox" id="cd-entitylist" checked> <span id="cd-entity-lbl">Entity List</span></label><label class="cb-item"><input type="checkbox" id="cd-expiring" checked> Expiring Coverage</label><label class="cb-item"><input type="checkbox" id="cd-nccoverage" checked> NC by Coverage &amp; Criteria</label><label class="cb-item"><input type="checkbox" id="cd-ncreasons" checked> Non-Compliance Reasons</label></div><div class="sec-div">Compliance Status Filter</div><select id="cd-status"><option value="all">All Statuses</option><option value="non_compliant">Non-Compliant Only</option><option value="compliant">Compliant Only</option><option value="pending">New / Pending Only</option></select><div class="sec-div" id="cd-cf-hdr" style="display:none">Custom Fields</div><div class="cb-group" id="cd-cf-list"></div></div></div>
+        <div class="report-card" id="rc-es"><div class="report-card-hdr" onclick="toggleReport('es')"><div class="rc-dot"></div><div><div class="rc-title">Engagement Summary</div><div class="rc-sub">Email engagement overview</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Sections to Include</div><div class="cb-group"><label class="cb-item"><input type="checkbox" id="es-kpi" checked> Email KPI Cards</label><label class="cb-item"><input type="checkbox" id="es-openrate" checked> Open Rate Breakdown</label><label class="cb-item"><input type="checkbox" id="es-delivery" checked> Deliverability Status</label><label class="cb-item"><input type="checkbox" id="es-issues" checked> Delivery Issue Breakdown</label><label class="cb-item"><input type="checkbox" id="es-60day" checked> Activity Window &amp; Funnel</label><label class="cb-item"><input type="checkbox" id="es-nceng" checked> NC Insured Engagement Rate</label><label class="cb-item"><input type="checkbox" id="es-topsubjects"> Top Email Subjects by Open Rate</label></div><div class="sec-div">Engagement Window</div><select id="es-window"><option value="60">Last 60 Days</option><option value="30">Last 30 Days</option><option value="90">Last 90 Days</option></select></div></div>
+        <div class="report-card" id="rc-ed"><div class="report-card-hdr" onclick="toggleReport('ed')"><div class="rc-dot"></div><div><div class="rc-title">Engagement Detail</div><div class="rc-sub">Full engagement data</div></div><span class="rc-type type-excel">Excel</span></div><div class="report-card-body"><div class="sec-div">Sheets to Include</div><div class="cb-group"><label class="cb-item"><input type="checkbox" id="ed-summary" checked> Summary</label><label class="cb-item"><input type="checkbox" id="ed-nocoi" checked> No COIs on File</label><label class="cb-item"><input type="checkbox" id="ed-noeng" checked> No Engagement Since Go-Live</label><label class="cb-item"><input type="checkbox" id="ed-ncnoeng" checked> NC + No Recent Engagement</label><label class="cb-item"><input type="checkbox" id="ed-undel" checked> Undeliverable Emails</label></div><div class="sec-div">Engagement Window</div><select id="ed-window"><option value="60">Last 60 Days</option><option value="30">Last 30 Days</option><option value="90">Last 90 Days</option></select><div class="sec-div" id="ed-cf-hdr" style="display:none">Custom Fields</div><div class="cb-group" id="ed-cf-list"></div></div></div>
+      </div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Additional Reports</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+          <div class="report-card" id="rc-yer"><div class="report-card-hdr" onclick="toggleReport('yer')"><div class="rc-dot"></div><div><div class="rc-title">Year End Review</div><div class="rc-sub">Annual snapshot PDF</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Options</div><div class="form-grp"><label class="form-lbl">Report Year</label><input type="text" id="yer-year" placeholder="e.g. 2026" maxlength="4" style="width:120px"><div class="form-hint">Reads from snapshots/YYYY/</div></div><div class="form-grp" style="margin-top:8px"><label class="form-lbl">Producer Name <span style="color:var(--muted);font-weight:400">(optional)</span></label><input type="text" id="yer-producer" placeholder="e.g. Jane Smith"></div></div></div>
+          <div class="report-card" id="rc-pro"><div class="report-card-hdr" onclick="toggleReport('pro')"><div class="rc-dot"></div><div><div class="rc-title">Producer Overview</div><div class="rc-sub">Client snapshot for producers</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Options</div><div class="form-grp"><label class="form-lbl">Producer Name</label><input type="text" id="pro-producer" placeholder="e.g. Jane Smith"></div><div class="form-grp" style="margin-top:8px"><label class="form-lbl">Snapshot Month <span style="color:var(--muted);font-weight:400">(optional)</span></label><input type="text" id="pro-month" placeholder="e.g. 2025-12"></div></div></div>
+          <div class="report-card" id="rc-tyc"><div class="report-card-hdr" onclick="toggleReport('tyc')"><div class="rc-dot"></div><div><div class="rc-title">Thank You Card</div><div class="rc-sub">Personalised client postcard PDF</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Options</div><div class="form-grp"><label class="form-lbl">Contact Name</label><input type="text" id="tyc-contact" placeholder="e.g. Jane Smith"></div><div class="form-grp" style="margin-top:8px"><label class="form-lbl">Producer Name</label><input type="text" id="tyc-producer" placeholder="e.g. Philip Irving"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="action-bar" style="flex-shrink:0"><button class="btn btn-secondary" onclick="goTo(1)">&#8592; Back</button><button class="btn btn-primary" id="gen-btn" onclick="generate()" disabled>&#11015; Generate Reports</button></div>
+  </div>
+  <div id="step-3" class="step-panel" style="display:none;flex:1;min-height:0">
+    <div class="page-hdr"><div class="page-title" id="s3-title">Generating Reports&#8230;</div><div class="page-sub" id="s3-sub">Please wait while your reports are built</div></div>
+    <div class="card">
+      <div id="gen-area"><div class="prog-steps" id="prog-steps"><div class="prog-step pending" id="ps-0"><div class="prog-dot">1</div><div class="prog-step-lbl">Fetching Data</div></div><div class="prog-step pending" id="ps-1"><div class="prog-dot">2</div><div class="prog-step-lbl">Building Reports</div></div><div class="prog-step pending" id="ps-2"><div class="prog-dot">3</div><div class="prog-step-lbl">Finalizing</div></div></div><div style="text-align:center;padding:10px 0 4px;font-size:13px;font-weight:600;color:var(--navy)" id="prog-lbl">Fetching data&#8230;</div><div style="text-align:center;font-size:12px;color:var(--muted)" id="prog-sub">Loading data files&#8230;</div></div>
+      <div id="done-area" style="display:none"><div style="text-align:center;padding:16px 0 24px"><div style="font-size:44px;margin-bottom:10px">&#9989;</div><div style="font-size:17px;font-weight:700;color:var(--navy)">Reports Ready</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Click Download on each report below</div></div><div class="dl-grid" id="dl-grid"></div><div class="action-bar" style="margin-top:22px"><button class="btn btn-secondary" onclick="goTo(2)">&#8592; Reconfigure</button><button class="btn btn-secondary" onclick="goTo(1)">Generate for Another Client</button></div></div>
+      <div id="err-area" style="display:none"><div style="text-align:center;padding:16px 0 24px"><div style="font-size:44px;margin-bottom:10px">&#10060;</div><div style="font-size:17px;font-weight:700;color:var(--red)">Generation Failed</div><div style="font-size:12px;color:var(--muted);margin-top:4px" id="err-msg">An error occurred</div></div><div class="action-bar"><button class="btn btn-secondary" onclick="goTo(2)">&#8592; Back</button><button class="btn btn-primary" onclick="generate()">Try Again</button></div></div>
+    </div>
+  </div>
+  </div>
+  <div id="tab-config" style="display:none">
+    <div class="page-hdr" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px"><div><div class="page-title">Client Configuration</div><div class="page-sub">Manage clients, go-live dates, and program settings</div></div><button class="btn btn-primary" onclick="openAddClient()">+ Add Client</button></div>
+    <div class="card"><div style="display:flex;gap:10px;align-items:center;margin-bottom:14px"><input type="text" class="cfg-search" id="cfg-search" placeholder="Search clients&#8230;" oninput="renderConfigTable(this.value)"><button class="btn btn-secondary" onclick="loadAndRenderConfig()" style="white-space:nowrap;flex-shrink:0">&#8635; Reload</button></div><div id="cfg-table-wrap"><div style="text-align:center;padding:24px;color:var(--muted);font-size:13px">Switch to this tab to load client configuration.</div></div></div>
+  </div>
+  <div id="tab-monday" style="display:none">
+
+    <!-- CONNECTION BANNER -->
+    <div id="monday-conn-banner" style="display:flex;align-items:center;gap:12px;padding:13px 18px;border-radius:10px;margin-bottom:22px;border:1px solid var(--border);background:var(--bg)">
+      <div class="monday-status-dot" id="monday-tab-dot"></div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--text)" id="monday-tab-status">Not connected to Monday</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:1px">Configure connection in Settings &#8594; Monday tab</div>
+      </div>
+      <button class="btn btn-secondary" style="margin-left:auto;font-size:12px;padding:6px 14px" onclick="openSettings();setTimeout(()=>switchSettingsTab('monday-cfg'),60)">&#9881;&#65039; Configure</button>
+    </div>
+
+    <!-- SUB-TABS -->
+    <div style="display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:24px">
+      <button class="tab-btn active" id="mtab-btn-setup" onclick="switchMondayTab('setup')">&#127959; Workspace Setup</button>
+      <button class="tab-btn" id="mtab-btn-activity" onclick="switchMondayTab('activity')">&#128203; Activity</button>
+    </div>
+
+    <!-- ══ WORKSPACE SETUP ══ -->
+    <div id="mtab-setup">
+
+      <!-- PHASE TRACKER -->
+      <div style="display:flex;background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow)">
+        <div id="ws-ph-1" style="flex:1;padding:13px 18px;display:flex;align-items:center;gap:10px;background:var(--blue-light);position:relative">
+          <div id="ws-pn-1" style="width:26px;height:26px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+          <span style="font-size:12px;font-weight:600;color:var(--blue)">Review</span>
+          <div style="position:absolute;right:-11px;top:50%;width:22px;height:22px;background:var(--blue-light);border-right:1.5px solid var(--border);border-top:1.5px solid var(--border);transform:translateY(-50%) rotate(45deg);z-index:2"></div>
+        </div>
+        <div id="ws-ph-2" style="flex:1;padding:13px 18px;display:flex;align-items:center;gap:10px;position:relative">
+          <div id="ws-pn-2" style="width:26px;height:26px;border-radius:50%;background:var(--border);color:var(--muted);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+          <span id="ws-pl-2" style="font-size:12px;font-weight:600;color:var(--muted)">Build</span>
+          <div style="position:absolute;right:-11px;top:50%;width:22px;height:22px;background:var(--white);border-right:1.5px solid var(--border);border-top:1.5px solid var(--border);transform:translateY(-50%) rotate(45deg);z-index:2"></div>
+        </div>
+        <div id="ws-ph-3" style="flex:1;padding:13px 18px;display:flex;align-items:center;gap:10px">
+          <div id="ws-pn-3" style="width:26px;height:26px;border-radius:50%;background:var(--border);color:var(--muted);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+          <span id="ws-pl-3" style="font-size:12px;font-weight:600;color:var(--muted)">Complete</span>
+        </div>
+      </div>
+
+      <!-- PHASE 1: REVIEW PLAN -->
+      <div id="ws-sec-review">
+        <div class="card" style="margin-bottom:18px">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+            <div style="width:40px;height:40px;background:var(--blue-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div>
+              <div class="card-title">Build Plan &#8212; HUB CertSecure Workspace</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:3px">6 boards &nbsp;&#183;&nbsp; 4 folders &nbsp;&#183;&nbsp; 100+ columns &nbsp;&#183;&nbsp; full group structure</div>
+            </div>
+          </div>
+          <div style="background:var(--blue-light);border:1px solid #bfdbfe;border-radius:8px;padding:12px 16px;font-size:13px;color:#1e40af;margin-bottom:20px;line-height:1.6">
+            &#9432;&nbsp; Creates board structure only. Automations, Power-Ups, mirror columns, and validation rules require manual setup afterward &#8212; see the post-build checklist.
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px">
+              <div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Clients</div>
+              <div style="font-size:14px;font-weight:700;color:var(--navy)">Clients &#8211; Overview</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:3px">32 columns &nbsp;&#183;&nbsp; 4 groups &nbsp;&#183;&nbsp; Central hub</div>
+            </div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px">
+              <div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Business Development</div>
+              <div style="font-size:14px;font-weight:700;color:var(--navy)">Prospects</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:3px">16 columns &nbsp;&#183;&nbsp; 4 groups &nbsp;&#183;&nbsp; Sales pipeline</div>
+            </div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px">
+              <div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Installations</div>
+              <div style="font-size:14px;font-weight:700;color:var(--navy)">Evident &#8211; Onboarding</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:3px">5 columns &nbsp;&#183;&nbsp; 3 groups &nbsp;&#183;&nbsp; Projects type</div>
+            </div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px">
+              <div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Installations</div>
+              <div style="font-size:14px;font-weight:700;color:var(--navy)">TrustLayer &#8211; Onboarding</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:3px">5 columns &nbsp;&#183;&nbsp; 3 groups &nbsp;&#183;&nbsp; Projects type</div>
+            </div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px">
+              <div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Partnerships</div>
+              <div style="font-size:14px;font-weight:700;color:var(--navy)">Evident Partnership</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:3px">10 columns &nbsp;&#183;&nbsp; 3 groups &nbsp;&#183;&nbsp; Tasks type</div>
+            </div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px">
+              <div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Partnerships</div>
+              <div style="font-size:14px;font-weight:700;color:var(--navy)">TrustLayer Partnership</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:3px">10 columns &nbsp;&#183;&nbsp; 3 groups &nbsp;&#183;&nbsp; Tasks type</div>
+            </div>
+          </div>
+          <div id="ws-no-conn" style="display:none;padding:12px 16px;background:var(--red-bg);border:1px solid #fecaca;border-radius:8px;font-size:13px;color:var(--red);margin-bottom:16px">
+            &#9888;&nbsp; Not connected to Monday. Go to Settings &#8594; Monday to connect first.
+          </div>
+          <div style="display:flex;gap:12px;align-items:center">
+            <button class="btn btn-primary" id="ws-build-btn" onclick="wsStartBuild()">&#127959;&nbsp; Build Workspace</button>
+            <span style="font-size:12px;color:var(--muted)">~2&#8211;3 minutes &nbsp;&#183;&nbsp; Cannot be undone</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 2: BUILDING -->
+      <div id="ws-sec-build" style="display:none">
+        <div class="card" style="margin-bottom:18px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <div>
+              <div class="card-title">Building Workspace&#8230;</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:3px" id="ws-subtitle">Initializing&#8230;</div>
+            </div>
+            <div style="font-size:12px;font-weight:700;color:var(--blue)" id="ws-pct">0%</div>
+          </div>
+          <div style="background:var(--border);border-radius:4px;height:6px;overflow:hidden;margin-bottom:20px">
+            <div id="ws-bar" style="height:100%;background:linear-gradient(90deg,var(--blue),#6BA3DE);border-radius:4px;transition:width .4s ease;width:0%"></div>
+          </div>
+          <div style="display:flex;gap:0;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:18px">
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--navy)" id="ws-s-boards">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Boards</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--navy)" id="ws-s-groups">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Groups</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--navy)" id="ws-s-cols">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Columns</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--navy)" id="ws-s-folders">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Folders</div></div>
+          </div>
+          <div id="ws-log" style="background:#0f1924;border-radius:8px;padding:16px;font-family:monospace;font-size:11px;max-height:340px;overflow-y:auto;border:1px solid #1e2d3d">
+            <div style="color:#60a5fa">&#9432; Ready to build HUB CertSecure workspace&#8230;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 3: COMPLETE -->
+      <div id="ws-sec-complete" style="display:none">
+        <div style="background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:12px;padding:32px;text-align:center;color:white;margin-bottom:20px;box-shadow:var(--shadow-lg)">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px">&#9989;</div>
+          <div style="font-size:22px;font-weight:800;margin-bottom:8px">Workspace Built!</div>
+          <div style="font-size:14px;opacity:.8" id="ws-done-summary">Boards, groups, and columns created.</div>
+        </div>
+        <div class="card">
+          <div class="card-title" style="margin-bottom:18px">Post-Build Checklist</div>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:18px">These steps can&#8217;t be automated via the API &#8212; complete them manually in Monday.com:</div>
+          <div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div><div style="font-size:13px;line-height:1.6"><strong>Remove default group</strong> &#8212; Each board gets a "Topics" group automatically. Delete or rename it per the spec.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">2</div><div style="font-size:13px;line-height:1.6"><strong>Set dropdown options</strong> &#8212; Platform (Evident / TrustLayer), Structure (General / Subcontractors / Tenants), Stage on Prospects, Rank on Partnership boards.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">3</div><div style="font-size:13px;line-height:1.6"><strong>Connect Boards columns</strong> &#8212; On each Onboarding and Partnership board, configure Connect Boards to link to Clients &#8211; Overview. Do the same for Prospects.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">4</div><div style="font-size:13px;line-height:1.6"><strong>Mirror columns on Clients &#8211; Overview</strong> &#8212; After connecting boards, add Mirror columns: Onboarding Status, Configuration Deadline, Onboarding Progress.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">5</div><div style="font-size:13px;line-height:1.6"><strong>Install Power-Ups</strong> &#8212; Dependency (Onboarding boards), Progress Tracking (Overview), Files (Partnerships), Button (Overview &#8594; GitHub).</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">6</div><div style="font-size:13px;line-height:1.6"><strong>Build automations</strong> &#8212; Cross-board automations per the build spec. Start with the Go-Live Cascade Workflow.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">7</div><div style="font-size:13px;line-height:1.6"><strong>Add validation rules</strong> &#8212; Status can&#8217;t go Active without Go-Live Date, Proposal Expiration can&#8217;t precede Deadline, etc.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">8</div><div style="font-size:13px;line-height:1.6"><strong>Create saved views on Clients &#8211; Overview</strong> &#8212; Daily View, Invoicing View, Reports View with appropriate hidden columns.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">9</div><div style="font-size:13px;line-height:1.6"><strong>Resolve invoicing permissions</strong> &#8212; Confirm visibility on INV: columns before migrating client data.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">10</div><div style="font-size:13px;line-height:1.6"><strong>Migrate existing clients</strong> &#8212; Move your 25 active clients into Clients &#8211; Overview.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">11</div><div style="font-size:13px;line-height:1.6"><strong>Configure GitHub Button</strong> &#8212; Wire the Button Power-Up to trigger your Report Generator GitHub Actions workflow.</div></div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:22px">
+            <a href="https://hub-international10.monday.com" target="_blank" class="btn btn-primary">Open Monday.com &#8594;</a>
+            <button class="btn btn-secondary" onclick="wsReset()">&#8635; Build Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ACTIVITY LOG ══ -->
+    <div id="mtab-activity" style="display:none">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+          <div>
+            <div class="card-title" style="margin-bottom:3px">Activity Log</div>
+            <div style="font-size:13px;color:var(--muted)">Report syncs and workspace build events this session</div>
+          </div>
+          <button class="btn btn-secondary" style="font-size:12px;padding:6px 14px" onclick="mondayClearAllLogs()">Clear</button>
+        </div>
+        <div id="monday-activity-combined"><div style="font-size:13px;color:var(--muted);text-align:center;padding:24px">No activity this session.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="client-edit-overlay">
+  
+    <div class="modal" style="max-width:520px">
+      <div class="modal-hdr"><span class="modal-title" id="client-modal-title">Edit Client</span><button class="modal-close" onclick="closeClientModal()">&#10005;</button></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="form-grp" style="grid-column:1/-1"><label class="form-lbl">Client Name <span id="client-name-lock" style="color:var(--muted);font-weight:400;font-size:10px">(locked &#8212; matches CSV data)</span></label><input type="text" id="ce-client-name" placeholder="e.g. Canadian Pacific Kansas City"><div class="form-hint" id="ce-name-hint" style="display:none">Must exactly match the <code>client</code> column in your CSVs.</div></div>
+        <div class="form-grp"><label class="form-lbl">API Name</label><input type="text" id="ce-api-name" placeholder="e.g. cpkansascity"></div>
+        <div class="form-grp"><label class="form-lbl">Platform</label><select id="ce-platform"><option value="evident">Evident</option><option value="trustlayer">TrustLayer</option></select></div>
+        <div class="form-grp"><label class="form-lbl">Structure</label><select id="ce-structure"><option value="general">General</option><option value="project">Project (Subcontractors)</option><option value="location">Location (Tenants)</option></select></div>
+        <div class="form-grp"><label class="form-lbl">Program Start Date</label><input type="date" id="ce-program-start"></div>
+        <div class="form-grp"><label class="form-lbl">Go-Live Date</label><input type="date" id="ce-go-live"></div>
+        <div class="form-grp"><label class="form-lbl">Producer Name</label><input type="text" id="ce-producer" placeholder="e.g. Philip Irving"></div>
+        <div class="form-grp"><label class="form-lbl">Primary Contact Name</label><input type="text" id="ce-contact-name" placeholder="e.g. Jane Smith"></div>
+        <div class="form-grp" style="display:flex;align-items:center;gap:10px;padding-top:20px"><label style="font-size:13px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="ce-active" style="width:15px;height:15px;accent-color:var(--blue)"> Active</label></div>
+      </div>
+      <div id="ce-msg" style="display:none;font-size:12px;padding:8px 12px;border-radius:7px;margin-top:12px"></div>
+      <div style="display:flex;gap:10px;justify-content:space-between;margin-top:20px;align-items:center"><div><button id="ce-delete-btn" class="btn" style="background:#FDF0EE;color:var(--red);border-color:#F5CFC9;display:none" onclick="deleteClient()">&#128465; Delete Client</button></div><div style="display:flex;gap:10px"><button class="btn btn-secondary" onclick="closeClientModal()">Cancel</button><button class="btn btn-primary" id="ce-save-btn" onclick="saveClientEdit()">Save Changes</button></div></div>
+    </div>
+  </div>
+</main>
+<div class="toast" id="toast"></div>
+</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.20</div>
+
+<script>
+// ── SUPABASE AUTH ──
+const SUPABASE_URL = 'https://nwcyavfkmbhcadtrvyqy.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_qpgDwAfvcOQIixrV3uPK-w_HWwIg36o';
+let _supabase = null;
+function getSupabase() {
+  if (!_supabase) {
+    _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+      auth: { persistSession: true, storage: window.sessionStorage, autoRefreshToken: true, detectSessionInUrl: true }
+    });
+  }
+  return _supabase;
+}
+function getEdgeUrl() {
+  return localStorage.getItem('cs-edge-url') || `${SUPABASE_URL}/functions/v1/manage-users`;
+}
+async function callEdge(action, payload={}) {
+  const { data:{ session } } = await getSupabase().auth.getSession();
+  const token = session?.access_token;
+  const res = await fetch(getEdgeUrl(), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token || SUPABASE_KEY}` },
+    body: JSON.stringify({ action, ...payload }),
+  });
+  const json = await res.json();
+  if (!res.ok) throw new Error(json.error || `HTTP ${res.status}`);
+  return json;
+}
+function showView(name) {
+  ['signin','forgot','reset'].forEach(v => {
+    document.getElementById(`view-${v}`).style.display = v === name ? '' : 'none';
+  });
+}
+function checkRecoveryToken() {
+  const hash = window.location.hash;
+  if (hash.includes('type=recovery') || hash.includes('type=signup')) {
+    getSupabase().auth.getSession().then(({ data }) => {
+      if (data?.session) {
+        document.getElementById('auth-overlay').style.display = 'flex';
+        document.getElementById('main-app').style.display = 'none';
+        showView('reset');
+      }
+    });
+    return true;
+  }
+  return false;
+}
+const ROLE_DISPLAY = {
+  system_administrator: { label: 'System Administrator', bg: '#1E2E3D', color: '#FFFFFF' },
+  account_manager:      { label: 'Account Manager',      bg: '#3872B8', color: '#FFFFFF' },
+  account_administrator:{ label: 'Account Administrator',bg: '#E8ECF5', color: '#5A6B7B' },
+};
+function applyUserDisplay(displayName, role) {
+  const wrap  = document.getElementById('welcome-wrap');
+  const nameEl= document.getElementById('welcome-name');
+  const roleEl= document.getElementById('welcome-role');
+  if (!wrap) return;
+  wrap.style.display = 'flex';
+  if (nameEl) nameEl.textContent = displayName || '';
+  if (roleEl) {
+    const rd = ROLE_DISPLAY[role] || ROLE_DISPLAY['account_administrator'];
+    roleEl.textContent = rd.label;
+    roleEl.style.background = rd.bg;
+    roleEl.style.color = rd.color;
+  }
+  window._userRole = role;
+  const addClientBtn = document.querySelector('[onclick="openAddClient()"]');
+  if (addClientBtn) addClientBtn.style.display = canAdminClients() ? '' : 'none';
+  const settingsBtn = document.querySelector('[onclick="openSettings()"]');
+  if (settingsBtn) settingsBtn.style.opacity = canSeeSettings() ? '1' : '0.4';
+}
+function canEditClients()  { return ['account_manager','system_administrator'].includes(window._userRole); }
+function canAdminClients() { return window._userRole === 'system_administrator'; }
+function canSeeSettings()  { return window._userRole === 'system_administrator'; }
+async function doLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  const btn = document.getElementById('login-btn');
+  const errEl = document.getElementById('signin-err');
+  if (!email || !password) { showAuthMsg('signin-err', 'Please enter your email and password.', true); return; }
+  btn.disabled = true; btn.textContent = 'Signing in\u2026'; errEl.style.display = 'none';
+  try {
+    const { data, error } = await getSupabase().auth.signInWithPassword({ email, password });
+    if (error) {
+      showAuthMsg('signin-err', error.message === 'Invalid login credentials' ? 'Incorrect email or password.' : error.message, true);
+      btn.disabled = false; btn.textContent = 'Sign In'; return;
+    }
+    const meta = data.user?.user_metadata || {};
+    const displayName = meta.display_name || data.user?.email?.split('@')[0] || '';
+    const role = meta.role || 'viewer';
+    window._userRole = role; window._userEmail = data.user?.email;
+    applyUserDisplay(displayName, role);
+    const adminTab = document.getElementById('stab-admin');
+    if (adminTab) adminTab.style.display = role === 'system_administrator' ? '' : 'none';
+    onLoginSuccess(data.user);
+    document.getElementById('auth-overlay').style.display = 'none';
+    document.getElementById('main-app').style.display = '';
+  } catch(e) {
+    showAuthMsg('signin-err', 'Connection error. Please check your internet and try again.', true);
+    btn.disabled = false; btn.textContent = 'Sign In';
+  }
+}
+async function doSignOut() {
+  await getSupabase().auth.signOut();
+  window._userRole = null; window._userEmail = null;
+  const wrap = document.getElementById('welcome-wrap');
+  if (wrap) wrap.style.display = 'none';
+  document.getElementById('login-email').value = '';
+  document.getElementById('login-password').value = '';
+  document.getElementById('login-btn').disabled = false;
+  document.getElementById('login-btn').textContent = 'Sign In';
+  document.getElementById('signin-err').style.display = 'none';
+  document.getElementById('main-app').style.display = 'none';
+  document.getElementById('auth-overlay').style.display = 'flex';
+  showView('signin');
+}
+async function doForgotPassword() {
+  const email = document.getElementById('forgot-email').value.trim();
+  const btn = document.getElementById('forgot-btn');
+  if (!email) { showAuthMsg('forgot-msg', 'Please enter your email address.', true); return; }
+  btn.disabled = true; btn.textContent = 'Sending\u2026';
+  const { error } = await getSupabase().auth.resetPasswordForEmail(email, { redirectTo: window.location.href.split('#')[0] });
+  if (error) {
+    showAuthMsg('forgot-msg', error.message, true);
+    btn.disabled = false; btn.textContent = 'Send Reset Link';
+  } else {
+    showAuthMsg('forgot-msg', `Reset link sent to ${email}. Check your inbox.`, false);
+    btn.textContent = 'Sent \u2713';
+  }
+}
+async function doResetPassword() {
+  const pw = document.getElementById('reset-password').value;
+  const pw2 = document.getElementById('reset-confirm').value;
+  const btn = document.getElementById('reset-btn');
+  if (!pw || pw.length < 8) { showAuthMsg('reset-msg', 'Password must be at least 8 characters.', true); return; }
+  if (pw !== pw2) { showAuthMsg('reset-msg', 'Passwords do not match.', true); return; }
+  btn.disabled = true; btn.textContent = 'Updating\u2026';
+  const { error } = await getSupabase().auth.updateUser({ password: pw });
+  if (error) {
+    showAuthMsg('reset-msg', error.message, true); btn.disabled = false; btn.textContent = 'Set New Password';
+  } else {
+    showAuthMsg('reset-msg', 'Password updated! Signing you in\u2026', false);
+    setTimeout(() => { document.getElementById('auth-overlay').style.display = 'none'; document.getElementById('main-app').style.display = ''; window.location.hash = ''; }, 1500);
+  }
+}
+function showAuthMsg(id, msg, isErr) {
+  const el = document.getElementById(id); if (!el) return;
+  el.textContent = msg; el.className = isErr ? 'login-err' : 'login-success'; el.style.display = 'block';
+}
+function switchSettingsTab(tab) {
+  ['datasource','monday-cfg','users','admin'].forEach(t => {
+    const btn = document.getElementById('stab-' + t);
+    const pane = document.getElementById('stab-content-' + t);
+    if (btn) btn.classList.toggle('active', t === tab);
+    if (pane) pane.style.display = t === tab ? '' : 'none';
+  });
+  if (tab === 'users') loadUsers();
+  if (tab === 'monday-cfg') settingsMondayTabActivated();
+}
+async function loadUsers() {
+  document.getElementById('users-need-key').style.display = 'none';
+  document.getElementById('users-panel').style.display = '';
+  document.getElementById('users-list').innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted);font-size:12px">Loading users\u2026</div>';
+  try {
+    const { users } = await callEdge('list');
+    if (!users?.length) { document.getElementById('users-list').innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted);font-size:12px">No users yet.</div>'; return; }
+    document.getElementById('users-list').innerHTML = users.map(u => {
+      const meta = u.raw_user_meta_data || u.user_metadata || {};
+      const name = meta.display_name || ''; const role = meta.role || 'viewer';
+      return `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border:1px solid var(--border);border-radius:7px;margin-bottom:8px;background:var(--bg)"><div><div style="display:flex;align-items:center;gap:8px"><div style="font-size:13px;font-weight:600;color:var(--text)">${name || u.email}</div><span class="role-badge">${role}</span></div>${name ? `<div style="font-size:11px;color:var(--muted)">${u.email}</div>` : ''}<div style="font-size:11px;color:var(--muted);margin-top:2px">Last sign in: ${u.last_sign_in_at ? new Date(u.last_sign_in_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : 'Never'}</div></div><div style="display:flex;gap:6px"><button onclick="showEditUser('${u.id}','${(name||'').replace(/'/g,"\\'")}','${role}')" class="btn-sm-ghost">Edit</button><button onclick="doResetUserPassword('${u.id}','${u.email}')" class="btn-sm-ghost">Reset PW</button><button onclick="doDeleteUser('${u.id}','${u.email}')" class="btn-sm-danger">Remove</button></div></div>`;
+    }).join('');
+  } catch(e) {
+    document.getElementById('users-list').innerHTML = `<div style="color:var(--muted);font-size:12px;padding:10px;background:var(--bg);border-radius:7px"><strong>Edge Function not set up yet.</strong><br><details style="margin-top:6px"><summary style="cursor:pointer;font-size:11px">Error detail</summary><div style="font-size:11px;color:var(--red);margin-top:4px">${e.message}</div></details></div>`;
+  }
+}
+async function doAddUser() {
+  const name = document.getElementById('new-user-name').value.trim();
+  const email = document.getElementById('new-user-email').value.trim();
+  const pass = document.getElementById('new-user-pass').value.trim();
+  const role = document.getElementById('new-user-role').value;
+  const msgEl = document.getElementById('add-user-msg');
+  if (!email || !pass) { showUserMsg(msgEl,'Email and password are required.',true); return; }
+  if (pass.length < 8) { showUserMsg(msgEl,'Password must be at least 8 characters.',true); return; }
+  try {
+    await callEdge('create', { email, password: pass, metadata: { display_name: name, role } });
+    showUserMsg(msgEl, `${name||email} added successfully.`, false);
+    document.getElementById('new-user-name').value = '';
+    document.getElementById('new-user-email').value = '';
+    document.getElementById('new-user-pass').value = '';
+    setTimeout(() => { hideAddUser(); loadUsers(); }, 1200);
+  } catch(e) { showUserMsg(msgEl, e.message, true); }
+}
+function showEditUser(uid, name, role) {
+  document.getElementById('edit-user-id').value = uid;
+  document.getElementById('edit-user-name').value = name;
+  document.getElementById('edit-user-role').value = role;
+  document.getElementById('edit-user-msg').style.display = 'none';
+  document.getElementById('edit-user-modal').style.display = '';
+  document.getElementById('add-user-form').style.display = 'none';
+}
+function hideEditUser() { document.getElementById('edit-user-modal').style.display = 'none'; }
+async function doEditUser() {
+  const uid = document.getElementById('edit-user-id').value;
+  const name = document.getElementById('edit-user-name').value.trim();
+  const role = document.getElementById('edit-user-role').value;
+  const msgEl = document.getElementById('edit-user-msg');
+  try {
+    await callEdge('updateMeta', { userId: uid, metadata: { display_name: name, role } });
+    showUserMsg(msgEl, 'Saved!', false);
+    setTimeout(() => { hideEditUser(); loadUsers(); }, 900);
+  } catch(e) { showUserMsg(msgEl, e.message, true); }
+}
+async function doDeleteUser(uid, email) {
+  if (!confirm(`Remove ${email}?\nThey will lose access immediately.`)) return;
+  try { await callEdge('delete', { userId: uid }); toast(`${email} removed`,'success'); loadUsers(); }
+  catch(e) { toast(e.message,'error'); }
+}
+async function doResetUserPassword(uid, email) {
+  const newPw = prompt(`Set a temporary password for ${email}:\n(At least 8 characters)`);
+  if (!newPw) return;
+  if (newPw.length < 8) { toast('Password must be at least 8 characters','error'); return; }
+  try { await callEdge('resetPassword', { userId: uid, password: newPw }); toast(`Password reset for ${email}`,'success'); }
+  catch(e) { toast(e.message,'error'); }
+}
+function showUserMsg(el, msg, isErr) { el.style.display = 'block'; el.style.color = isErr ? '#C0392B' : '#1A7F5A'; el.textContent = msg; }
+function showAddUser() { document.getElementById('add-user-form').style.display = ''; }
+function hideAddUser() { document.getElementById('add-user-form').style.display = 'none'; document.getElementById('add-user-msg').style.display = 'none'; }
+function saveAdminKey() {
+  const url = document.getElementById('s-edge-url').value.trim();
+  if (url) localStorage.setItem('cs-edge-url', url); else localStorage.removeItem('cs-edge-url');
+  toast('Admin settings saved','success'); closeSettings();
+}
+function toggleReveal(id, btn) {
+  const el = document.getElementById(id);
+  if (el.type === 'password') { el.type = 'text'; btn.textContent = '\U0001f648'; }
+  else { el.type = 'password'; btn.textContent = '\U0001f441'; }
+}
+function toggleCsvPaths() {
+  const el = document.getElementById('csv-paths'); const icon = document.getElementById('csv-toggle-icon');
+  const open = el.style.display === ''; el.style.display = open ? 'none' : ''; icon.textContent = open ? '\u25bc show' : '\u25b2 hide';
+}
+function onLoginSuccess(user) {
+  loadClientsFromConfig().then(ok => { if (ok) console.log(`Loaded ${CLIENTS.length} active clients from clients.json`); renderGrids(); });
+}
+document.addEventListener('DOMContentLoaded', async () => {
+  initDark(); renderGrids();
+  [2,3].forEach(i => { const el=document.getElementById(`step-${i}`); if(el) el.style.display='none'; });
+  const s1 = document.getElementById('step-1'); if(s1) s1.style.display='';
+  ['login-email','login-password'].forEach(id => { document.getElementById(id)?.addEventListener('keydown', e => { if (e.key==='Enter') doLogin(); }); });
+  document.getElementById('forgot-email')?.addEventListener('keydown', e => { if (e.key==='Enter') doForgotPassword(); });
+  ['reset-password','reset-confirm'].forEach(id => { document.getElementById(id)?.addEventListener('keydown', e => { if (e.key==='Enter') doResetPassword(); }); });
+  const eu = localStorage.getItem('cs-edge-url');
+  if (eu) { const el = document.getElementById('s-edge-url'); if(el) el.value = eu; }
+  if (!checkRecoveryToken()) {
+    try {
+      const { data: { session } } = await getSupabase().auth.getSession();
+      if (session?.user) {
+        const meta = session.user.user_metadata || {};
+        const displayName = meta.display_name || session.user.email?.split('@')[0] || '';
+        const role = meta.role || 'viewer';
+        window._userRole = role; window._userEmail = session.user.email;
+        applyUserDisplay(displayName, role);
+        const adminTab = document.getElementById('stab-admin');
+        if (adminTab) adminTab.style.display = role === 'system_administrator' ? '' : 'none';
+        onLoginSuccess(session.user);
+        document.getElementById('auth-overlay').style.display = 'none';
+        document.getElementById('main-app').style.display = '';
+      }
+    } catch(e) { /* no session */ }
+  }
+});
+function toggleDark() {
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('cs-dark', isDark ? '1' : '0');
+  document.getElementById('dark-toggle').textContent = isDark ? '\u2600\ufe0f' : '\U0001f319';
+}
+function initDark() {
+  if (localStorage.getItem('cs-dark') === '1') {
+    document.documentElement.classList.add('dark');
+    const btn = document.getElementById('dark-toggle'); if (btn) btn.textContent = '\u2600\ufe0f';
+  }
+}
+</script>
+
+<script>
+const STRUCT = {
+  general:  { label: "General",        groupLabel: null,      badgeClass: "badge-general"  },
+  project:  { label: "Subcontractors", groupLabel: "Project", badgeClass: "badge-project"  },
+  location: { label: "Tenants",        groupLabel: "Location",badgeClass: "badge-location" },
+};
+const CLIENT_FIELD_CONFIG = {
+  "A G Equipment Company":              [{key:"entityId",label:"Entity ID",on:false},{key:"entityType",label:"Entity Type",on:false}],
+  "Canadian Pacific Kansas City":       [{key:"entityId",label:"Entity ID",on:false},{key:"entityType",label:"Entity Type",on:false},{key:"contractNumber",label:"Contract Number",on:false},{key:"notes",label:"Notes",on:false}],
+  "Capital Railroad Contracting, Inc.": [{key:"entityId",label:"Entity ID",on:false},{key:"notes",label:"Notes",on:false}],
+  "Kolb Grading":                       [{key:"entityId",label:"Entity ID",on:false}],
+  "Mizuho Bank":                        [{key:"loanName",label:"Loan Name",on:false},{key:"notes",label:"Notes",on:false}],
+  "Musselman & Hall Contractors, LLC":  [{key:"insuranceType",label:"Insurance Type",on:false}],
+  "Paragon Geophysical Services, Inc.": [{key:"insuranceType",label:"Insurance Type",on:false}],
+  "Trinity Chemical Industries LLC":    [{key:"entityId",label:"Entity ID",on:false},{key:"ofCars",label:"# of Cars",on:false},{key:"notes",label:"Notes",on:false}],
+  "United Coal Company LLC":            [{key:"entityId",label:"Entity ID",on:false},{key:"entityType",label:"Entity Type",on:false}],
+  "Bauer Foundation Corp.":             [{key:"entityId",label:"Entity ID",on:false},{key:"entityType",label:"Entity Type",on:false},{key:"projectName",label:"Project Name",on:false},{key:"projectNumber",label:"Project Number",on:false},{key:"insuranceType",label:"Insurance Type",on:false},{key:"notes",label:"Notes",on:false}],
+  "ESS Companies":                      [{key:"entityId",label:"Entity ID",on:false},{key:"jobDescription",label:"Job Description",on:false},{key:"jobNumber",label:"Job Number",on:false},{key:"subcontractNumber",label:"Subcontract Number",on:false},{key:"insuranceType",label:"Insurance Type",on:false},{key:"projectSpecific",label:"Project Specific",on:false},{key:"notes",label:"Notes",on:false}],
+  "Scandroli Construction":             [{key:"entityId",label:"Entity ID",on:false},{key:"projectName",label:"Project Name",on:false},{key:"projectId",label:"Project ID",on:false},{key:"notes",label:"Notes",on:false}],
+  "Skyline Developers Construction LLC":[{key:"projectName",label:"Project Name",on:false},{key:"notes",label:"Notes",on:false}],
+  "EMMES":                              [{key:"entityId",label:"Entity ID",on:false},{key:"entityType",label:"Entity Type",on:false},{key:"propertyLocation",label:"Property Location",on:false},{key:"notes",label:"Notes",on:false}],
+  "Gart Properties":                    [{key:"entityId",label:"Entity ID",on:false},{key:"propertyLocation",label:"Property Location",on:false},{key:"propertyManager",label:"Property Manager",on:false},{key:"tenantType",label:"Tenant Type",on:false},{key:"notes",label:"Notes",on:false}],
+  "The Abbey Management Company":       [{key:"entityId",label:"Entity ID",on:false},{key:"entityType",label:"Entity Type",on:false},{key:"propertyLocation",label:"Property Location",on:false},{key:"rsf",label:"Rentable Sq. Footage",on:false},{key:"notes",label:"Notes",on:false}],
+};
+const C = {
+  client:'client', entity_name:'insured_name', insured_id:'insured_id',
+  status:'compliance_status', verify_status:'verification_status',
+  next_exp:'next_expiration', email:'primary_contact_email',
+  active:'active', paused:'paused',
+  cov_client:'client', coverage_type:'coverage_type', exp_date:'expiration_date',
+  crit_client:'client', crit_name:'insured_name', crit_email:'primary_contact_email',
+  overall_comp:'overall_compliance', nc_reasons:'non_compliance_reasons',
+  notif_client:'Client', notif_email:'Email', eng_type:'Type', sent_at:'Date', subject:'Subject',
+};
+const isEngSend  = n => n[C.eng_type] === 'send';
+const isEngOpen  = n => n[C.eng_type] === 'open';
+const isEngClick = n => n[C.eng_type] === 'click';
+const isEngIssue = n => ['hard_bounce','soft_bounce','reject','rejected','deferral','spam'].includes((n[C.eng_type]||'').toLowerCase());
+const DEFAULTS = {
+  owner:'PhilipIrving', repo:'hubcertsecure', branch:'main', pat:'',
+  insuredsPath:'data/evident/insureds.csv', coveragesPath:'data/evident/coverages.csv',
+  criteriaPath:'data/evident/criteria.csv', customPropsPath:'data/evident/custom_properties.csv',
+  notificationsPath:'data/evident/engagement.csv',
+  tlInsuredsPath:'data/trustlayer/insureds.csv', tlCoveragesPath:'data/trustlayer/coverages.csv', tlCriteriaPath:'data/trustlayer/criteria.csv',
+};
+function getSettings() { return { ...DEFAULTS, ...JSON.parse(localStorage.getItem('cs-settings') || '{}') }; }
+function openSettings() {
+  if (!canSeeSettings()) { toast('Settings access requires System Administrator role.', 'error'); return; }
+  const s = getSettings();
+  document.getElementById('s-owner').value         = s.owner;
+  document.getElementById('s-repo').value          = s.repo;
+  document.getElementById('s-branch').value        = s.branch;
+  document.getElementById('s-pat').value           = s.pat;
+  document.getElementById('s-insureds').value      = s.insuredsPath;
+  document.getElementById('s-coverages').value     = s.coveragesPath;
+  document.getElementById('s-criteria').value      = s.criteriaPath;
+  document.getElementById('s-customprops').value   = s.customPropsPath;
+  document.getElementById('s-notifications').value = s.notificationsPath;
+  document.getElementById('s-tl-insureds').value   = s.tlInsuredsPath;
+  document.getElementById('s-tl-coverages').value  = s.tlCoveragesPath;
+  document.getElementById('s-tl-criteria').value   = s.tlCriteriaPath;
+  // Restore Monday token display
+  const mt = localStorage.getItem('cs-monday-token');
+  const mtEl = document.getElementById('s-monday-token'); if (mtEl && mt) mtEl.value = mt;
+  // EU
+  const eu = localStorage.getItem('cs-edge-url');
+  const euEl = document.getElementById('s-edge-url'); if (euEl && eu) euEl.value = eu;
+  // Admin tab visibility
+  const adminTab = document.getElementById('stab-admin');
+  if (adminTab) adminTab.style.display = canAdminClients() ? '' : 'none';
+  // Open on data source tab
+  switchSettingsTab('datasource');
+  document.getElementById('settings-overlay').classList.add('open');
+}
+function closeSettings() { document.getElementById('settings-overlay').classList.remove('open'); }
+function saveSettings() {
+  localStorage.setItem('cs-settings', JSON.stringify({
+    owner: document.getElementById('s-owner').value.trim(), repo: document.getElementById('s-repo').value.trim(),
+    branch: document.getElementById('s-branch').value.trim() || 'main', pat: document.getElementById('s-pat').value.trim(),
+    insuredsPath: document.getElementById('s-insureds').value.trim(), coveragesPath: document.getElementById('s-coverages').value.trim(),
+    criteriaPath: document.getElementById('s-criteria').value.trim(), customPropsPath: document.getElementById('s-customprops').value.trim(),
+    notificationsPath: document.getElementById('s-notifications').value.trim(),
+    tlInsuredsPath: document.getElementById('s-tl-insureds').value.trim(), tlCoveragesPath: document.getElementById('s-tl-coverages').value.trim(), tlCriteriaPath: document.getElementById('s-tl-criteria').value.trim(),
+  }));
+  closeSettings(); toast('Settings saved', 'success');
+}
+async function fetchCSV(path) {
+  const { owner, repo, branch, pat } = getSettings();
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
+  const headers = { 'Accept': 'application/vnd.github.v3.raw' };
+  if (pat) headers['Authorization'] = `Bearer ${pat}`;
+  const res = await fetch(url, { headers });
+  if (res.status === 401) throw new Error('Authentication failed. Check your Access Token in Settings.');
+  if (res.status === 404) throw new Error(`Could not find ${path} in ${owner}/${repo}.`);
+  if (!res.ok) throw new Error(`Could not load ${path} (HTTP ${res.status}).`);
+  return Papa.parse(await res.text(), { header: true, skipEmptyLines: true }).data;
+}
+async function fetchTLCSV(filename) {
+  const s = getSettings();
+  const pathMap = { 'insureds.csv': s.tlInsuredsPath||'data/trustlayer/insureds.csv', 'coverages.csv': s.tlCoveragesPath||'data/trustlayer/coverages.csv', 'criteria.csv': s.tlCriteriaPath||'data/trustlayer/criteria.csv' };
+  return fetchCSV(pathMap[filename] || `data/trustlayer/${filename}`);
+}
+async function loadTLData(clientName) {
+  const [insureds, coverages, criteria] = await Promise.all([fetchTLCSV('insureds.csv'), fetchTLCSV('coverages.csv').catch(()=>[]), fetchTLCSV('criteria.csv').catch(()=>[])]);
+  return { insureds: insureds.filter(r=>r[C.client]===clientName), coverages: coverages.filter(r=>r[C.client]===clientName), criteria: criteria.filter(r=>r[C.client]===clientName), custom_properties: [], engagement: [] };
+}
+async function loadClientData(clientName) {
+  if (isTLClient(clientName)) return loadTLData(clientName);
+  const s = getSettings();
+  const [insureds, coverages, criteria, customProps, notifs] = await Promise.all([
+    fetchCSV(s.insuredsPath), fetchCSV(s.coveragesPath).catch(()=>[]), fetchCSV(s.criteriaPath).catch(()=>[]),
+    fetchCSV(s.customPropsPath).catch(()=>[]), fetchCSV(s.notificationsPath).catch(()=>[]),
+  ]);
+  return {
+    insureds: insureds.filter(r=>r[C.client]===clientName), coverages: coverages.filter(r=>r[C.client]===clientName),
+    criteria: criteria.filter(r=>r[C.client]===clientName), custom_properties: customProps.filter(r=>r[C.client]===clientName),
+    engagement: notifs.filter(r=>r[C.client]===clientName),
+  };
+}
+async function triggerRefresh() {
+  const { owner, repo, pat } = getSettings();
+  if (!pat) { toast('Add an Access Token in Settings to use Refresh Data', 'error'); return; }
+  const btn = document.getElementById('refresh-btn'); btn.textContent = '\u21bb Syncing\u2026'; btn.disabled = true;
+  try {
+    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/actions/workflows/sync.yml/dispatches`, {
+      method:'POST', headers:{'Authorization':`Bearer ${pat}`,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'}, body:JSON.stringify({ref:'main'})
+    });
+    (res.ok||res.status===204) ? toast('Sync triggered \u2014 data will refresh in ~2 min','success') : toast('Sync failed. Check your Access Token in Settings.','error');
+  } catch(e) { toast('Network error \u2014 could not trigger sync','error'); }
+  finally { btn.textContent = '\u21bb Refresh Data'; btn.disabled = false; }
+}
+</script>
+<script>
+let _allClientsData = [], _clientsFileSHA = '', _clientsFileLoaded = false;
+const CLIENTS_FALLBACK = [
+  { client_name:"A G Equipment Company",              rp_common_name:"agequipment",     structure:"general",  active:true },
+  { client_name:"Canadian Pacific Kansas City",        rp_common_name:"cpkansascity",    structure:"general",  active:true },
+  { client_name:"Capital Railroad Contracting, Inc.",  rp_common_name:"capitalroad",     structure:"general",  active:true },
+  { client_name:"Kolb Grading",                        rp_common_name:"kolbgrading",     structure:"general",  active:true },
+  { client_name:"Mizuho Bank",                         rp_common_name:"mizuhobank",      structure:"general",  active:true },
+  { client_name:"Musselman & Hall Contractors, LLC",   rp_common_name:"musselmanhall",   structure:"general",  active:true },
+  { client_name:"Paragon Geophysical Services, Inc.",  rp_common_name:"paragongeo",      structure:"general",  active:true },
+  { client_name:"Trinity Chemical Industries LLC",     rp_common_name:"trinitychemical", structure:"general",  active:true },
+  { client_name:"United Coal Company LLC",             rp_common_name:"unitedcoal",      structure:"general",  active:true },
+  { client_name:"Bauer Foundation Corp.",              rp_common_name:"bauerfoundation", structure:"project",  active:true },
+  { client_name:"ESS Companies",                       rp_common_name:"emerysappandsons",structure:"project",  active:true },
+  { client_name:"Scandroli Construction",              rp_common_name:"scandroli",       structure:"project",  active:true },
+  { client_name:"Skyline Developers Construction LLC", rp_common_name:"skyline",         structure:"project",  active:true },
+  { client_name:"EMMES",                               rp_common_name:"emmes",           structure:"location", active:true },
+  { client_name:"Gart Properties",                     rp_common_name:"gartproperties",  structure:"location", active:true },
+  { client_name:"The Abbey Management Company",        rp_common_name:"theabbeycompany", structure:"location", active:true },
+  { client_name:"Block Real Estate",                   rp_common_name:"blockrealestate", structure:"location", active:true, source:"trustlayer" },
+  { client_name:"Construction Mgmt Inc",               rp_common_name:"constructionmgmt",structure:"project",  active:true, source:"trustlayer" },
+  { client_name:"QTS Data Centers",                    rp_common_name:"qtsdatacenters",  structure:"general",  active:true, source:"trustlayer" },
+];
+let CLIENTS = buildClientsArray(CLIENTS_FALLBACK);
+let CLIENT_META_MAP = {};
+function buildClientsArray(data) {
+  return data.filter(c => c.active !== false).map(c => ({ name: c.client_name, key: c.client_name, structure: c.structure||'general', platform: c.platform||c.source||'evident' }));
+}
+function isTLClient(keyOrClient) {
+  const c = typeof keyOrClient === 'string' ? CLIENTS.find(x => x.key === keyOrClient) : keyOrClient;
+  return c?.platform === 'trustlayer';
+}
+async function loadClientsFromConfig() {
+  const s = getSettings(); if (!s.pat) return false;
+  try {
+    const url = `https://api.github.com/repos/${s.owner}/${s.repo}/contents/config/clients.json?ref=${s.branch}`;
+    const res = await fetch(url, { headers: { 'Authorization': `Bearer ${s.pat}`, 'Accept': 'application/vnd.github.v3+json' } });
+    if (!res.ok) return false;
+    const fileInfo = await res.json(); _clientsFileSHA = fileInfo.sha;
+    const raw = atob(fileInfo.content.replace(/\n/g,'')); const data = JSON.parse(raw);
+    _allClientsData = data.clients || []; _clientsFileLoaded = true;
+    CLIENTS = buildClientsArray(_allClientsData); CLIENT_META_MAP = {};
+    _allClientsData.forEach(c => { CLIENT_META_MAP[c.client_name] = c; }); return true;
+  } catch(e) { console.warn('Could not load clients.json:', e.message); return false; }
+}
+async function saveClientsToConfig(updatedClients) {
+  const s = getSettings(); if (!s.pat) throw new Error('No PAT configured in Settings');
+  const getRes = await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}/contents/config/clients.json?ref=${s.branch}`, { headers: { 'Authorization': `Bearer ${s.pat}`, 'Accept': 'application/vnd.github.v3+json' } });
+  if (!getRes.ok) throw new Error('Could not fetch current clients.json');
+  const fileInfo = await getRes.json(); const sha = fileInfo.sha;
+  const payload = JSON.stringify({ _instructions: { how_to_add_client: "Use the Client Configuration tab in the Report Generator app.", date_format: "YYYY-MM-DD", structure_options: "general | project | location" }, clients: updatedClients }, null, 2);
+  const putRes = await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}/contents/config/clients.json`, {
+    method: 'PUT', headers: { 'Authorization': `Bearer ${s.pat}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
+    body: JSON.stringify({ message: 'config: update clients.json via CertSecure Hub', content: btoa(unescape(encodeURIComponent(payload))), sha, branch: s.branch })
+  });
+  if (!putRes.ok) { const err = await putRes.json().catch(()=>({})); throw new Error(err.message || `HTTP ${putRes.status}`); }
+  const result = await putRes.json(); _clientsFileSHA = result.content?.sha || sha;
+  _allClientsData = updatedClients; CLIENTS = buildClientsArray(_allClientsData); CLIENT_META_MAP = {};
+  _allClientsData.forEach(c => { CLIENT_META_MAP[c.client_name] = c; });
+}
+function switchTab(tab) {
+  ['reports','config','monday'].forEach(t => {
+    document.getElementById('tab-' + t).style.display = t === tab ? '' : 'none';
+    document.getElementById('tab-btn-' + t).classList.toggle('active', t === tab);
+  });
+  if (tab === 'config') loadAndRenderConfig();
+  if (tab === 'monday') { if (typeof mondayTabActivated === 'function') mondayTabActivated(); }
+}
+async function loadAndRenderConfig() {
+  const wrap = document.getElementById('cfg-table-wrap'); const s = getSettings();
+  if (!s.pat) { wrap.innerHTML = '<div style="text-align:center;padding:24px;color:var(--muted);font-size:13px">Enter your Access Token in <strong>Settings</strong> to load client configuration.</div>'; return; }
+  wrap.innerHTML = '<div style="text-align:center;padding:24px;color:var(--muted);font-size:13px">Loading clients.json\u2026</div>';
+  const ok = await loadClientsFromConfig();
+  if (!ok) {
+    if (_allClientsData.length === 0) { _allClientsData = [...CLIENTS_FALLBACK]; CLIENT_META_MAP = {}; _allClientsData.forEach(c => { CLIENT_META_MAP[c.client_name] = c; }); }
+    wrap.innerHTML = '<div style="text-align:center;padding:16px;color:#D97706;font-size:12px;margin-bottom:8px">\u26a0 Could not load clients.json \u2014 showing built-in list. Check your Access Token and repository settings.</div>';
+    renderConfigTable(); return;
+  }
+  renderConfigTable();
+}
+const STRUCT_LABEL = { general:'General', project:'Subcontractors', location:'Tenants' };
+function renderConfigTable(filter='') {
+  const q = (filter||'').toLowerCase();
+  const rows = _allClientsData.filter(c => !q || c.client_name.toLowerCase().includes(q) || (c.rp_common_name||'').toLowerCase().includes(q)).sort((a,b) => a.client_name.localeCompare(b.client_name));
+  if (!rows.length) { document.getElementById('cfg-table-wrap').innerHTML = '<div style="text-align:center;padding:24px;color:var(--muted);font-size:13px">No clients match.</div>'; return; }
+  const tbody = rows.map((c,i) => `<tr><td style="font-weight:600">${esc(c.client_name)} <span style="font-size:8px;font-weight:800;padding:1px 5px;border-radius:4px;${(c.platform||c.source)==='trustlayer'?'background:#FFF3E0;color:#E65100':'background:#E8ECF5;color:#3872B8'}">${(c.platform||c.source)==='trustlayer'?'TL':'EV'}</span></td><td style="color:var(--muted);font-size:11px">${esc(c.rp_common_name||'')}</td><td><span class="struct-badge">${STRUCT_LABEL[c.structure]||c.structure}</span></td><td style="font-size:11px;color:var(--muted)">${c.program_start_date||'\u2014'}</td><td style="font-size:11px;color:var(--muted)">${c.go_live_date||'\u2014'}</td><td><span class="active-badge ${c.active!==false?'on':'off'}">${c.active!==false?'Active':'Inactive'}</span></td><td>${canEditClients() ? `<button class="btn-sm-ghost" onclick="openEditClient(${_allClientsData.indexOf(c)})">Edit</button>` : ''}</td></tr>`).join('');
+  document.getElementById('cfg-table-wrap').innerHTML = `<table class="cfg-table"><thead><tr><th>Client Name</th><th>API Name</th><th>Structure</th><th>Program Start</th><th>Go-Live</th><th>Status</th><th style="width:60px"></th></tr></thead><tbody>${tbody}</tbody></table><div style="margin-top:10px;font-size:11px;color:var(--muted)">${rows.length} of ${_allClientsData.length} clients shown</div>`;
+}
+let _editingIndex = null;
+function openAddClient() {
+  _editingIndex = null;
+  document.getElementById('client-modal-title').textContent = 'Add New Client';
+  document.getElementById('ce-client-name').value = ''; document.getElementById('ce-client-name').disabled = false;
+  document.getElementById('ce-name-hint').style.display = ''; document.getElementById('client-name-lock').style.display = 'none';
+  document.getElementById('ce-api-name').value = ''; document.getElementById('ce-platform').value = 'evident'; document.getElementById('ce-structure').value = 'general';
+  document.getElementById('ce-save-btn').textContent = 'Add Client'; document.getElementById('ce-producer').value = ''; document.getElementById('ce-contact-name').value = '';
+  document.getElementById('ce-msg').style.display = 'none'; document.getElementById('client-edit-overlay').classList.add('open');
+}
+function openEditClient(idxOrName) {
+  let idx = (typeof idxOrName === 'string' && isNaN(+idxOrName))
+    ? _allClientsData.findIndex(c => c.client_name === idxOrName)
+    : +idxOrName;
+  if (idx < 0 || idx >= _allClientsData.length) { toast('Client not found','error'); return; }
+  _editingIndex = idx; const c = _allClientsData[idx];
+  if (!c) return;
+  document.getElementById('client-modal-title').textContent = 'Edit Client';
+  document.getElementById('ce-client-name').value = c.client_name || ''; document.getElementById('ce-client-name').disabled = true;
+  document.getElementById('ce-name-hint').style.display = 'none'; document.getElementById('client-name-lock').style.display = '';
+  document.getElementById('ce-api-name').value = c.rp_common_name || ''; document.getElementById('ce-platform').value = c.platform||c.source||'evident';
+  document.getElementById('ce-structure').value = c.structure||'general'; document.getElementById('ce-go-live').value = c.go_live_date||'';
+  document.getElementById('ce-program-start').value = c.program_start_date||''; document.getElementById('ce-producer').value = c.producer_name||'';
+  document.getElementById('ce-contact-name').value = c.contact_name||''; document.getElementById('ce-active').checked = c.active !== false;
+  document.getElementById('ce-delete-btn').style.display = canAdminClients() ? '' : 'none';
+  document.getElementById('ce-save-btn').textContent = 'Save Changes'; document.getElementById('ce-msg').style.display = 'none';
+  const ov=document.getElementById('client-edit-overlay'); ov.style.display='flex'; ov.classList.add('open');
+}
+function closeClientModal() { const ov=document.getElementById('client-edit-overlay'); ov.classList.remove('open'); ov.style.display=''; }
+async function saveClientEdit() {
+  const btn = document.getElementById('ce-save-btn'); const msgEl = document.getElementById('ce-msg');
+  const name = document.getElementById('ce-client-name').value.trim(); const api = document.getElementById('ce-api-name').value.trim();
+  const platform = document.getElementById('ce-platform').value; const struct = document.getElementById('ce-structure').value;
+  const progStart = document.getElementById('ce-program-start').value; const goLive = document.getElementById('ce-go-live').value;
+  const producer = document.getElementById('ce-producer').value.trim(); const contactName = document.getElementById('ce-contact-name').value.trim();
+  const active = document.getElementById('ce-active').checked;
+  if (!name) { showCEMsg('Client name is required.', true); return; }
+  if (!api) { showCEMsg('API name (rp_common_name) is required.', true); return; }
+  if (_editingIndex === null && _allClientsData.some(c => c.client_name === name)) { showCEMsg(`A client named "${name}" already exists.`, true); return; }
+  btn.disabled = true; btn.textContent = 'Saving\u2026';
+  const updated = [..._allClientsData];
+  const entry = { client_name: name, rp_common_name: api, program_start_date: progStart, go_live_date: goLive, structure: struct, platform, producer_name: producer, contact_name: contactName, active };
+  if (_editingIndex === null) { updated.push(entry); } else { updated[_editingIndex] = { ...updated[_editingIndex], ...entry }; }
+  try {
+    await saveClientsToConfig(updated);
+    toast((_editingIndex === null ? 'Client added' : 'Client saved') + ' \u2713', 'success');
+    closeClientModal(); renderConfigTable(document.getElementById('cfg-search')?.value || ''); renderGrids();
+  } catch(e) { showCEMsg('Save failed: ' + e.message, true); }
+  btn.disabled = false; btn.textContent = _editingIndex === null ? 'Add Client' : 'Save Changes';
+}
+async function deleteClient() {
+  if (_editingIndex === null) return; const c = _allClientsData[_editingIndex];
+  if (!confirm(`Delete "${c.client_name}"?\n\nThis removes them from clients.json. Their CSV data is unaffected.`)) return;
+  const btn = document.getElementById('ce-delete-btn'); btn.disabled = true; btn.textContent = 'Deleting\u2026';
+  const updated = _allClientsData.filter((_, i) => i !== _editingIndex);
+  try {
+    await saveClientsToConfig(updated); toast(`${c.client_name} removed`, 'success');
+    closeClientModal(); renderConfigTable(document.getElementById('cfg-search')?.value || ''); renderGrids();
+  } catch(e) { showCEMsg('Delete failed: ' + e.message, true); btn.disabled = false; btn.textContent = '\U0001f5d1 Delete Client'; }
+}
+function showCEMsg(msg, isErr) {
+  const el = document.getElementById('ce-msg'); el.textContent = msg;
+  el.style.cssText = `display:block;font-size:12px;padding:8px 12px;border-radius:7px;background:${isErr?'var(--red-bg,#FDF0EE)':'var(--green-bg,#E6F5EF)'};color:${isErr?'var(--red)':'var(--green)'}`;
+}
+let selectedClient = null;
+function renderGrids() {
+  ['general','project','location'].forEach(struct => {
+    const grid = document.getElementById('grid-' + struct); if (!grid) return;
+    grid.innerHTML = CLIENTS.filter(c => c.structure === struct).map(c => {
+      const sk = c.key.replace(/[^a-z0-9]/gi,'_');
+      const ts = localStorage.getItem('cs-last-report-' + sk);
+      const lr = ts ? new Date(ts).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : '';
+      return '<div class="client-card" id="cc-' + sk + '" onclick="pickClient(\'' + c.key.replace(/'/g,"\\'").replace(/&/g,'\\x26') + '\')">' +
+        '<div class="client-name"><span class="platform-badge ' + (c.platform==='trustlayer'?'tl">TL':'evident">EV') + '</span> ' + c.name + '</div>' +
+        '<span class="client-badge ' + STRUCT[struct].badgeClass + '">' + STRUCT[struct].label + '</span>' +
+        (lr ? '<div style="font-size:9px;color:var(--muted);margin-top:4px">' + lr + '</div>' : '') + '</div>';
+    }).join('');
+  });
+}
+function pickClient(key) {
+  selectedClient = CLIENTS.find(c => c.key === key);
+  document.querySelectorAll('.client-card').forEach(el => el.classList.remove('selected'));
+  const sk = key.replace(/[^a-z0-9]/gi,'_'); const card = document.getElementById('cc-' + sk); if (card) card.classList.add('selected');
+  updateCustomFieldsUI(); _selectedReports.clear();
+  ['cs','cd','es','ed','yer','pro','tyc'].forEach(id => { const c = document.getElementById('rc-' + id); if (c) c.classList.remove('on'); });
+  ['yer-year','yer-producer','pro-producer','pro-month'].forEach(function(id){ var el=document.getElementById(id); if(el) el.value=''; });
+  const meta = CLIENT_META_MAP[key] || {};
+  const tycContact = document.getElementById('tyc-contact'); const tycProducer = document.getElementById('tyc-producer');
+  if (tycContact)  tycContact.value  = meta.contact_name  || '';
+  if (tycProducer) tycProducer.value = meta.producer_name || '';
+  const proProducerEl = document.getElementById('pro-producer'); if (proProducerEl && meta.producer_name) proProducerEl.value = meta.producer_name;
+  setTimeout(function() { goTo(2); }, 80);
+  if (typeof mondayPopulateClients === 'function') mondayPopulateClients();
+}
+function updateCustomFieldsUI() {
+  if (!selectedClient) return; const fields = CLIENT_FIELD_CONFIG[selectedClient.key] || [];
+  ['cd','ed'].forEach(prefix => {
+    const hdr = document.getElementById(prefix + '-cf-hdr'); const list = document.getElementById(prefix + '-cf-list'); if (!hdr || !list) return;
+    if (!fields.length) { hdr.style.display = 'none'; list.innerHTML = ''; return; }
+    hdr.style.display = '';
+    list.innerHTML = fields.map(f => '<label class="cb-item"><input type="checkbox" id="' + prefix + '-cf-' + f.key.replace(/[^a-z0-9]/gi,'_') + '" ' + (f.on?'checked':'') + '> ' + f.label + '</label>').join('');
+  });
+}
+function getCustomFields(prefix) {
+  const fields = CLIENT_FIELD_CONFIG[selectedClient?.key] || [];
+  return fields.filter(f => { const el = document.getElementById(prefix + '-cf-' + f.key.replace(/[^a-z0-9]/gi,'_')); return el && el.checked; });
+}
+let _currentStep = 1;
+function goTo(n) {
+  [1,2,3].forEach(i => { const el = document.getElementById('step-' + i); if (el) el.style.display = 'none'; });
+  const next = document.getElementById('step-' + n); if (!next) return;
+  next.style.display = ''; next.classList.remove('fading'); void next.offsetWidth; next.classList.add('fading'); _currentStep = n;
+  if (n === 2 && selectedClient) {
+    const s = STRUCT[selectedClient.structure];
+    document.getElementById('banner-name').textContent = selectedClient.name;
+    document.getElementById('banner-struct').textContent = s.groupLabel ? s.label + ' \u2014 Shown by ' + s.groupLabel : s.label;
+    document.getElementById('cd-entity-lbl').textContent = s.groupLabel ? s.groupLabel + ' List' : 'Entity List';
+    updateGenBtn();
+  }
+}
+let _selectedReports = new Set();
+function toggleReport(id) {
+  const card = document.getElementById('rc-' + id);
+  if (_selectedReports.has(id)) { _selectedReports.delete(id); if (card) card.classList.remove('on'); }
+  else { _selectedReports.add(id); if (card) card.classList.add('on'); }
+  updateGenBtn();
+}
+function updateGenBtn() { const btn = document.getElementById('gen-btn'); if (btn) btn.disabled = _selectedReports.size === 0; }
+</script>
+
+<script>
+let _notifs = [], _unread = 0;
+function addNotif(msg, type='info') {
+  _notifs.unshift({ msg, type, time: new Date() }); if (_notifs.length > 15) _notifs.pop(); _unread++; updateNotifBadge(); renderNotifList();
+}
+function updateNotifBadge() {
+  const badge = document.getElementById('notif-badge'); if (!badge) return;
+  if (_unread > 0) { badge.textContent = _unread > 9 ? '9+' : _unread; badge.style.display = ''; } else badge.style.display = 'none';
+}
+function renderNotifList() {
+  const list = document.getElementById('notif-list'); if (!list) return;
+  if (!_notifs.length) { list.innerHTML = '<div style="padding:14px;font-size:12px;color:var(--muted);text-align:center">No recent activity</div>'; return; }
+  const icons = { success:'\u2713', error:'\u2717', info:'\u23f3' };
+  const colors = { success:'var(--green)', error:'var(--red)', info:'var(--blue)' };
+  list.innerHTML = _notifs.map(n => {
+    let actionBtn = '';
+    if (n._download) {
+      const dl = n._download;
+      if (dl.type === 'excel') {
+        const url = URL.createObjectURL(dl.blob);
+        actionBtn = '<a href="' + url + '" download="' + dl.filename + '" style="font-size:10px;color:var(--blue);font-weight:600;text-decoration:none;white-space:nowrap" onclick="setTimeout(()=>URL.revokeObjectURL(this.href),3000)">\u2193 Download</a>';
+      } else {
+        if (!dl._blobUrl) { const b = new Blob([dl.html||''],{type:'text/html'}); dl._blobUrl = URL.createObjectURL(b); }
+        actionBtn = dl._blobUrl ? '<a href="' + dl._blobUrl + '" target="_blank" style="font-size:10px;color:var(--blue);font-weight:600;text-decoration:none;white-space:nowrap">\u2197 Open PDF</a>' : '';
+      }
+    }
+    return '<div style="padding:9px 14px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start">' +
+      '<span style="color:' + (colors[n.type]||colors.info) + ';font-weight:700;font-size:12px;margin-top:1px">' + (icons[n.type]||'\u2139') + '</span>' +
+      '<div style="flex:1;min-width:0"><div style="font-size:12px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + n.msg + '</div>' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:3px"><div style="font-size:10px;color:var(--muted)">' + n.time.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}) + '</div>' + actionBtn + '</div></div></div>';
+  }).join('');
+}
+function toggleNotifDrawer() {
+  const drawer = document.getElementById('notif-drawer'); if (!drawer) return;
+  const open = drawer.style.display === ''; drawer.style.display = open ? 'none' : '';
+  if (!open) { _unread = 0; updateNotifBadge(); }
+}
+function clearNotifs() { _notifs = []; _unread = 0; updateNotifBadge(); renderNotifList(); }
+document.addEventListener('click', e => { if (!e.target.closest('.notif-wrap')) { const d = document.getElementById('notif-drawer'); if (d) d.style.display = 'none'; } });
+function openHubWide() {
+  document.getElementById('hubwide-overlay').classList.add('open');
+  const yr = document.getElementById('hw-year'); if (yr && !yr.value) yr.value = String(new Date().getFullYear());
+}
+function closeHubWide() { document.getElementById('hubwide-overlay').classList.remove('open'); document.getElementById('hw-msg').style.display = 'none'; }
+async function triggerHubWide() {
+  const year = document.getElementById('hw-year').value.trim() || String(new Date().getFullYear());
+  const btn = document.getElementById('hw-btn'); const msg = document.getElementById('hw-msg');
+  btn.disabled = true; btn.textContent = 'Generating\u2026'; msg.style.display = 'none';
+  try {
+    const months = await listSnapshotMonths(year);
+    if (!months.length) throw new Error(`No snapshots found for ${year}. Check that snapshots/${year}/ exists.`);
+    const firstMonth = months[0], lastMonth = months[months.length - 1];
+    btn.textContent = 'Fetching data\u2026';
+    const monthlySnapshots = [];
+    for (const m of months) {
+      btn.textContent = `Loading ${m}\u2026`;
+      try { const ins = await fetchCSV(`snapshots/${year}/${m}/insureds.csv`); let crit = []; try { crit = await fetchCSV(`snapshots/${year}/${m}/criteria.csv`); } catch(e) {} monthlySnapshots.push({ month: m, ins, crit }); } catch(e) {}
+    }
+    let engAll = []; try { engAll = await fetchCSV(`snapshots/${year}/${lastMonth}/engagement.csv`); } catch(e) {}
+    const allClients = CLIENTS.map(c => c.key);
+    const firstSnap = monthlySnapshots.find(s => s.month === firstMonth);
+    const lastSnap  = monthlySnapshots.find(s => s.month === lastMonth);
+    const clientStats = [];
+    for (const clientKey of allClients) {
+      const getStats = (snap) => {
+        if (!snap) return null;
+        const ins = snap.ins.filter(r => r[C.client] === clientKey);
+        const active = ins.filter(r => r[C.active] !== 'false' && r[C.paused] !== 'true');
+        const comp = active.filter(r => normStatus(r[C.status]) === 'compliant').length;
+        const nc   = active.filter(r => normStatus(r[C.status]) === 'non_compliant').length;
+        const rate = active.length ? Math.round(comp/active.length*100) : 0;
+        return { total: active.length, comp, nc, rate };
+      };
+      const start = getStats(firstSnap), end = getStats(lastSnap);
+      if (!end || !end.total) continue;
+      const improvement = (start && start.rate > 0) ? end.rate - start.rate : null;
+      clientStats.push({ name: clientKey, start, end, improvement });
+    }
+    const totalActive = clientStats.reduce((s,c) => s+c.end.total, 0);
+    const totalComp   = clientStats.reduce((s,c) => s+c.end.comp, 0);
+    const totalNC     = clientStats.reduce((s,c) => s+c.end.nc, 0);
+    const overallRate = totalActive ? Math.round(totalComp/totalActive*100) : 0;
+    const firstTotal  = clientStats.filter(c=>c.start).reduce((s,c)=>s+(c.start?.total||0),0);
+    const firstComp   = clientStats.filter(c=>c.start).reduce((s,c)=>s+(c.start?.comp||0),0);
+    const firstRate   = firstTotal ? Math.round(firstComp/firstTotal*100) : 0;
+    const rateChange  = overallRate - firstRate;
+    const monthlyTrend = monthlySnapshots.map(s => {
+      const active = s.ins.filter(r => r[C.active] !== 'false' && r[C.paused] !== 'true');
+      const comp   = active.filter(r => normStatus(r[C.status]) === 'compliant').length;
+      const rate   = active.length ? Math.round(comp/active.length*100) : 0;
+      return { month: s.month, total: active.length, comp, rate };
+    });
+    const normEm  = n => (n[C.notif_email]||'').trim().toLowerCase();
+    const sentSet = new Set(engAll.filter(isEngSend).map(normEm).filter(Boolean));
+    const openSet = new Set(engAll.filter(isEngOpen).map(normEm).filter(Boolean));
+    const issueSet= new Set(engAll.filter(isEngIssue).map(normEm).filter(Boolean));
+    const engRate = sentSet.size ? Math.round(openSet.size/sentSet.size*100) : 0;
+    const improved = clientStats.filter(c => c.improvement !== null && c.improvement > 0).sort((a,b) => b.improvement - a.improvement).slice(0, 5);
+    const ncMapAll = {};
+    if (lastSnap) { lastSnap.crit.filter(r => normStatus(r[C.overall_comp]) === 'non_compliant').forEach(r => { (r[C.nc_reasons]||'').split(' | ').forEach(p => { const ci = p.indexOf(':'); if (ci < 0) return; const reason = p.slice(ci+1).trim(); if (!reason) return; ncMapAll[reason] = (ncMapAll[reason]||0) + 1; }); }); }
+    const topNCAll = Object.entries(ncMapAll).sort((a,b)=>b[1]-a[1]).slice(0,6);
+    const ncByCovType = {};
+    if (lastSnap) { lastSnap.crit.filter(r => normStatus(r[C.overall_comp]) === 'non_compliant').forEach(r => { (r[C.nc_reasons]||'').split(' | ').forEach(p => { const ci = p.indexOf(':'); if (ci < 0) return; const covType = fmtCoverage(p.slice(0, ci).trim()); if (!covType) return; if (!ncByCovType[covType]) ncByCovType[covType] = { count: 0, reasons: {} }; ncByCovType[covType].count++; const reason = p.slice(ci+1).trim(); if (reason) ncByCovType[covType].reasons[reason] = (ncByCovType[covType].reasons[reason]||0)+1; }); }); }
+    const ncByCovSorted = Object.entries(ncByCovType).sort((a,b) => b[1].count - a[1].count).slice(0,8).map(([type, d]) => ({ type, count: d.count, topReason: Object.entries(d.reasons).sort((a,b)=>b[1]-a[1])[0]?.[0] || '' }));
+    btn.textContent = 'Building report\u2026';
+    const htmlOut = buildHubWideHTML(year, { firstMonth, lastMonth, months, clientStats, monthlyTrend, totalActive, totalComp, totalNC, overallRate, firstRate, rateChange, sentSet, openSet, issueSet, engRate, improved, topNCAll, ncByCovSorted });
+    const blobUrl = URL.createObjectURL(new Blob([htmlOut], { type: 'text/html' }));
+    printHTMLasPDF(htmlOut);
+    _notifs.unshift({ msg: `HUB-Wide Annual Review ${year}`, type: 'success', time: new Date(), _download: { type: 'pdf', html: htmlOut, _blobUrl: blobUrl, filename: `HUB-Wide Annual Review ${year}.pdf` } });
+    if (_notifs.length > 15) _notifs.pop(); renderNotifList();
+    const drawer = document.getElementById('notif-drawer'); if (drawer) { drawer.style.display = ''; _unread = 0; updateNotifBadge(); }
+    msg.textContent = '\u2713 Print dialog opening \u2014 save as PDF. Also in Recent Activity.';
+    msg.style.cssText = 'display:block;font-size:12px;padding:8px 12px;border-radius:7px;background:var(--green-bg);color:var(--green);margin-top:10px';
+    setTimeout(() => closeHubWide(), 3000);
+  } catch(e) {
+    msg.textContent = 'Failed: ' + e.message;
+    msg.style.cssText = 'display:block;font-size:12px;padding:8px 12px;border-radius:7px;background:var(--red-bg);color:var(--red);margin-top:10px';
+  }
+  btn.textContent = '\u2b07 Generate'; btn.disabled = false;
+}
+</script>
+<script>
+function buildHubWideHTML(year, data) {
+  const { firstMonth, lastMonth, months, clientStats, monthlyTrend, totalActive, totalComp, totalNC, overallRate, firstRate, rateChange, sentSet, openSet, issueSet, engRate, improved, topNCAll, ncByCovSorted } = data;
+  const moNames = {1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'May',6:'Jun',7:'Jul',8:'Aug',9:'Sep',10:'Oct',11:'Nov',12:'Dec'};
+  const stamp   = new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
+  const logoSrc = (document.querySelector('.header-logo')?.src?.startsWith('data:')) ? document.querySelector('.header-logo').src : null;
+  const logoTag = logoSrc ? `<img src="${logoSrc}" style="height:38px;object-fit:contain">` : `<div style="font-family:Arial,sans-serif;font-size:18px;font-weight:700;color:#1E2E3D">CERT<span style="background:#3872B8;color:white;padding:1px 7px;border-radius:3px">SECURE</span></div>`;
+  const rateColor = overallRate >= 80 ? '#16A34A' : overallRate >= 60 ? '#D97706' : '#DC2626';
+  const chgColor  = rateChange >= 0 ? '#16A34A' : '#DC2626';
+  const trendBars = monthlyTrend.map(d => {
+    const color = d.rate >= 80 ? '#16A34A' : d.rate >= 60 ? '#D97706' : '#DC2626';
+    const mo = d.month.split('-')[1];
+    return `<div style="display:flex;flex-direction:column;align-items:center;flex:1;gap:2px"><div style="font-size:9px;font-weight:700;color:${color}">${d.rate}%</div><div style="width:100%;background:#F1F5F9;border-radius:2px 2px 0 0;height:50px;display:flex;align-items:flex-end"><div style="width:100%;background:${color};border-radius:2px 2px 0 0;height:${Math.max(2,Math.round(d.rate/100*50))}px"></div></div><div style="font-size:8px;color:#8A94A8">${moNames[parseInt(mo)]||mo}</div></div>`;
+  }).join('');
+  const clientRows = clientStats.map((c,i) => {
+    const rate = c.end.rate, rColor = rate >= 80 ? '#16A34A' : rate >= 60 ? '#D97706' : '#DC2626', chg = c.improvement;
+    const chgStr = chg === null ? '\u2014' : (chg > 0 ? `<span style="color:#16A34A">\u25b2${chg}%</span>` : chg < 0 ? `<span style="color:#DC2626">\u25bc${Math.abs(chg)}%</span>` : '<span style="color:#8A94A8">\u2014</span>');
+    return `<tr style="background:${i%2===0?'#FAFBFC':'white'}"><td style="font-weight:600;font-size:10px">${esc(c.name)}</td><td style="text-align:center">${c.end.total}</td><td style="text-align:center;color:#16A34A;font-weight:600">${c.end.comp}</td><td style="text-align:center;color:${c.end.nc>0?'#DC2626':'#16A34A'};font-weight:600">${c.end.nc}</td><td style="text-align:center;font-weight:800;color:${rColor}">${rate}%</td><td style="text-align:center">${chgStr}</td></tr>`;
+  }).join('');
+
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8">
+<title>HUB-Wide Annual Review ${year}</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:28px 32px 24px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;padding-bottom:18px;border-bottom:3px solid #1E2E3D}
+.pill{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:#EEF1F8;color:#1E2E3D;margin-bottom:7px}
+.sec{display:flex;align-items:center;gap:8px;margin:16px 0 10px}.sec-line{flex:1;height:2px;background:#E8ECF5}
+.sec-lbl{font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#1E2E3D;white-space:nowrap;padding-left:8px;border-left:3px solid #3872B8}
+.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{border-radius:8px;padding:13px}
+.kpi.grey{background:#EEF1F8}.kpi.green{background:#E6F5EF}.kpi.red{background:#FDF0EE}.kpi.blue{background:#EBF2FB}.kpi.amber{background:#FFF8E6}
+.kpi-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.kpi.grey .kpi-lbl{color:#5A6B7B}.kpi.green .kpi-lbl{color:#15803D}.kpi.red .kpi-lbl{color:#B91C1C}.kpi.blue .kpi-lbl{color:#1D4ED8}.kpi.amber .kpi-lbl{color:#B45309}
+.kpi-val{font-size:26px;font-weight:800;line-height:1}
+.kpi.grey .kpi-val{color:#1E2E3D}.kpi.green .kpi-val{color:#16A34A}.kpi.red .kpi-val{color:#DC2626}.kpi.blue .kpi-val{color:#3872B8}.kpi.amber .kpi-val{color:#D97706}
+.kpi-sub{font-size:10px;font-weight:600;margin-top:3px}
+.kpi.green .kpi-sub{color:#16A34A}.kpi.red .kpi-sub{color:#DC2626}.kpi.blue .kpi-sub{color:#3872B8}.kpi.amber .kpi-sub{color:#D97706}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}.bcard{border:1px solid #E8ECF5;border-radius:8px;padding:13px 15px}
+table{width:100%;border-collapse:collapse}
+th{font-size:8px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:white;background:#2B3A52;padding:7px 9px;text-align:left}
+th:not(:first-child){text-align:center}
+td{padding:5px 9px;border-bottom:1px solid #F0F2F6;font-size:10px;vertical-align:middle}
+.prog-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA;font-size:10px}.prog-row:last-child{border-bottom:none}
+.prog-bar-wrap{width:80px;background:#F1F5F9;border-radius:3px;height:6px;flex-shrink:0}
+.footer{margin-top:18px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8.5px;color:#B0B8C8;line-height:1.4}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A3 landscape;margin:8mm}}
+</style></head><body>
+<div class="hdr">
+  <div>
+    ${logoTag}
+    <div style="margin-top:12px">
+      <div class="pill">Internal Use Only</div>
+      <div style="font-size:24px;font-weight:900;color:#1E2E3D;line-height:1.1">HUB-Wide Annual Review</div>
+      <div style="font-size:13px;color:#5A6B7B;margin-top:4px">${clientStats.length} clients &nbsp;&middot;&nbsp; ${firstMonth} &rarr; ${lastMonth} &nbsp;&middot;&nbsp; ${months.length} snapshots</div>
+    </div>
+  </div>
+  <div style="text-align:right">
+    <div style="font-size:52px;font-weight:900;color:#3872B8;line-height:1">${year}</div>
+    <div style="margin-top:8px;display:flex;gap:8px;justify-content:flex-end">
+      <div style="text-align:center;background:${overallRate>=80?'#E6F5EF':'#FDF0EE'};border-radius:10px;padding:10px 16px">
+        <div style="font-size:8px;font-weight:700;color:${rateColor};letter-spacing:.1em;text-transform:uppercase">Book Rate</div>
+        <div style="font-size:34px;font-weight:900;color:${rateColor};line-height:1">${overallRate}%</div>
+      </div>
+      <div style="text-align:center;background:${rateChange>=0?'#E6F5EF':'#FDF0EE'};border-radius:10px;padding:10px 16px">
+        <div style="font-size:8px;font-weight:700;color:${chgColor};letter-spacing:.1em;text-transform:uppercase">YoY Change</div>
+        <div style="font-size:34px;font-weight:900;color:${chgColor};line-height:1">${rateChange>=0?'+':''}${rateChange}%</div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:#8A94A8;margin-top:6px">${stamp}</div>
+  </div>
+</div>
+<div class="sec"><div class="sec-lbl">Total Insureds Managed Across All Clients</div><div class="sec-line"></div></div>
+<div class="kpi4">
+  <div class="kpi grey"><div class="kpi-lbl">Total Active Entities</div><div class="kpi-val">${totalActive.toLocaleString()}</div><div class="kpi-sub" style="color:#3872B8">${clientStats.length} clients</div></div>
+  <div class="kpi green"><div class="kpi-lbl">Compliant</div><div class="kpi-val">${totalComp.toLocaleString()}</div><div class="kpi-sub">${pct(totalComp,totalActive)} of active</div></div>
+  <div class="kpi ${totalNC>0?'red':'green'}"><div class="kpi-lbl">Non-Compliant</div><div class="kpi-val">${totalNC.toLocaleString()}</div><div class="kpi-sub">${pct(totalNC,totalActive)} of active</div></div>
+  <div class="kpi blue"><div class="kpi-lbl">Program Start Rate</div><div class="kpi-val">${firstRate}%</div><div class="kpi-sub" style="color:${chgColor}">${rateChange>=0?'\u25b2':'\u25bc'} ${Math.abs(rateChange)}% over year</div></div>
+</div>
+${monthlyTrend.length > 1 ? `
+<div class="sec"><div class="sec-lbl">Combined Compliance Rate \u2014 How It Moved Over the Year</div><div class="sec-line"></div></div>
+<div class="bcard">
+  <div style="display:flex;gap:5px;align-items:flex-end;height:70px">${trendBars}</div>
+  <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:9px;color:#8A94A8">
+    <span>Best: <strong style="color:#16A34A">${moNames[parseInt(monthlyTrend.reduce((a,b)=>a.rate>b.rate?a:b).month.split('-')[1])]} (${monthlyTrend.reduce((a,b)=>a.rate>b.rate?a:b).rate}%)</strong></span>
+    <span>${monthlyTrend.length} monthly snapshots · all ${clientStats.length} clients combined</span>
+    <span>Worst: <strong style="color:#DC2626">${moNames[parseInt(monthlyTrend.reduce((a,b)=>a.rate<b.rate?a:b).month.split('-')[1])]} (${monthlyTrend.reduce((a,b)=>a.rate<b.rate?a:b).rate}%)</strong></span>
+  </div>
+</div>` : ''}
+<div class="two-col" style="margin-top:4px">
+  ${sentSet.size > 0 ? `<div>
+    <div class="sec" style="margin-top:14px"><div class="sec-lbl">Total Emails &amp; Engagement Rates</div><div class="sec-line"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div class="bcard" style="text-align:center"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1D4ED8;margin-bottom:5px">Contacts Reached</div><div style="font-size:26px;font-weight:800;color:#3872B8">${sentSet.size.toLocaleString()}</div></div>
+      <div class="bcard" style="text-align:center"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#15803D;margin-bottom:5px">Open Rate</div><div style="font-size:26px;font-weight:800;color:${engRate>=50?'#16A34A':engRate>=25?'#D97706':'#DC2626'}">${engRate}%</div></div>
+      <div class="bcard" style="text-align:center"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${issueSet.size===0?'#15803D':'#B91C1C'};margin-bottom:5px">Delivery Issues</div><div style="font-size:26px;font-weight:800;color:${issueSet.size===0?'#16A34A':'#DC2626'}">${issueSet.size}</div></div>
+    </div>
+  </div>` : '<div></div>'}
+  ${improved.length > 0 ? `<div>
+    <div class="sec" style="margin-top:14px"><div class="sec-lbl">Which Clients Improved the Most</div><div class="sec-line"></div></div>
+    <div class="bcard">
+      ${improved.map((c,i)=>`<div class="prog-row">
+        <div style="font-size:10px;font-weight:700;color:#3872B8;width:18px">#${i+1}</div>
+        <div style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#1E2E3D">${esc(c.name)}</div>
+        <div style="font-size:10px;color:#8A94A8;white-space:nowrap">${c.start.rate}% \u2192 ${c.end.rate}%</div>
+        <div style="font-weight:800;color:#16A34A;width:38px;text-align:right">+${c.improvement}%</div>
+      </div>`).join('')}
+    </div>
+  </div>` : '<div></div>'}
+</div>
+${ncByCovSorted && ncByCovSorted.length ? `
+<div class="sec"><div class="sec-lbl">NC Failures by Coverage Type</div><div class="sec-line"></div></div>
+<div style="display:grid;grid-template-columns:repeat(${Math.min(4,ncByCovSorted.length)},1fr);gap:10px;margin-bottom:4px">
+  ${ncByCovSorted.map((c,i)=>`<div style="border:1px solid ${i<2?'#F5CFC9':'#E8ECF5'};border-radius:8px;padding:12px 14px;background:${i<2?'#FDF0EE':'#FAFBFC'}">
+    <div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8A94A8;margin-bottom:5px">#${i+1} COVERAGE TYPE</div>
+    <div style="font-size:11px;font-weight:700;color:#1E2E3D;margin-bottom:5px;line-height:1.2">${esc(c.type)}</div>
+    <div style="font-size:24px;font-weight:800;color:${i<2?'#DC2626':'#1E2E3D'};line-height:1">${c.count}</div>
+    <div style="font-size:9px;color:#8A94A8;margin-top:2px">NC failures</div>
+    ${c.topReason?`<div style="font-size:9px;color:#5A6B7B;margin-top:7px;line-height:1.3;border-top:1px solid #E8ECF5;padding-top:6px">${esc(c.topReason.length>52?c.topReason.slice(0,52)+'\u2026':c.topReason)}</div>`:''}
+  </div>`).join('')}
+</div>` : ''}
+${topNCAll.length ? `
+<div class="sec"><div class="sec-lbl">Common NC Trends Across the Whole Book</div><div class="sec-line"></div></div>
+<div class="bcard">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px">
+    ${topNCAll.map(([reason,n],i)=>`<div class="prog-row">
+      <div style="font-size:10px;font-weight:700;color:#B91C1C;width:18px">#${i+1}</div>
+      <div style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#5A6B7B">${esc(reason.length>55?reason.slice(0,55)+'\u2026':reason)}</div>
+      <div class="prog-bar-wrap"><div style="height:100%;background:#C0392B;border-radius:3px;width:${barPct(n,topNCAll[0][1])}%"></div></div>
+      <div style="font-weight:700;color:#C0392B;width:24px;text-align:right">${n}</div>
+    </div>`).join('')}
+  </div>
+</div>` : ''}
+<div class="sec"><div class="sec-lbl">Client-by-Client Breakdown</div><div class="sec-line"></div></div>
+<table>
+  <thead><tr><th style="width:34%">Client</th><th>Active</th><th>Compliant</th><th>Non-Compliant</th><th>End Rate</th><th>Change</th></tr></thead>
+  <tbody>${clientRows}</tbody>
+</table>
+<div class="footer">
+  <div>&#x1F512; <strong>Confidential \u2014 HUB CertSecure Internal.</strong> HUB-Wide Annual Review \u00b7 ${year} \u00b7 Do not distribute outside HUB International.</div>
+  <div>HUB CertSecure \u00b7 ${year}</div>
+</div>
+</body></html>`;
+}
+</script>
+<script>
+let _progStep = 0;
+function setProgress(lbl,sub,explicitStep){
+  document.getElementById('prog-lbl').textContent=lbl;
+  document.getElementById('prog-sub').textContent=sub||'';
+  if(explicitStep!==undefined)_progStep=Math.max(_progStep,explicitStep);
+  [0,1,2].forEach(i=>{
+    const el=document.getElementById('ps-'+i); if(!el)return;
+    if(i<_progStep)el.className='prog-step done';
+    else if(i===_progStep)el.className='prog-step active';
+    else el.className='prog-step pending';
+    el.querySelector('.prog-dot').textContent=i<_progStep?'\u2713':String(i+1);
+  });
+}
+function resetProgress(){
+  _progStep=0;
+  [0,1,2].forEach(i=>{const el=document.getElementById('ps-'+i);if(el){el.className='prog-step pending';el.querySelector('.prog-dot').textContent=String(i+1);}});
+}
+async function generate(){
+  if(typeof ExcelJS==='undefined'){alert('ExcelJS library failed to load. Please refresh the page.');return;}
+  goTo(3);
+  document.getElementById('gen-area').style.display='block';
+  document.getElementById('done-area').style.display='none';
+  document.getElementById('err-area').style.display='none';
+  document.getElementById('s3-title').textContent='Generating Reports\u2026';
+  document.getElementById('s3-sub').textContent='Please wait while your reports are built';
+  const on=id=>_selectedReports.has(id);
+  const E={cs:on('cs'),cd:on('cd'),es:on('es'),ed:on('ed'),yer:on('yer'),pro:on('pro'),tyc:on('tyc')};
+  resetProgress();
+  try{
+    setProgress('Fetching compliance data\u2026',`Loading data for ${selectedClient.name}`,0);
+    const clientData=await loadClientData(selectedClient.key);
+    let insureds=clientData.insureds;
+    if(E.cs||E.cd||E.ed){try{insureds=enrichInsureds(insureds,clientData.custom_properties);}catch(e){console.warn('custom_properties skip:',e.message);}}
+    const coverages=(E.cd||E.cs)?clientData.coverages:[];
+    const criteria=(E.cd||E.cs)?clientData.criteria:[];
+    const notifications=(E.es||E.ed)?clientData.engagement:[];
+    const reportDate=new Date().toISOString().split('T')[0];
+    const statusFilter=document.getElementById('cd-status').value;
+    const engWindow=parseInt(document.getElementById('ed-window').value)||60;
+    const esWindow=parseInt(document.getElementById('es-window')?.value)||60;
+    const downloads=[];
+    if(E.cd){setProgress('Building Compliance Detail\u2026','Generating Excel workbook',1);const wb=await buildComplianceDetailXL(insureds,coverages,criteria,{statusFilter,reportDate});downloads.push({label:'Compliance Detail',type:'excel',blob:await xlBlob(wb),filename:`${selectedClient.name} \u2014 Compliance Detail.xlsx`});}
+    if(E.ed){setProgress('Building Engagement Detail\u2026','Generating Excel workbook',1);const wb=await buildEngagementDetailXL(insureds,notifications,{engWindow,reportDate});downloads.push({label:'Engagement Detail',type:'excel',blob:await xlBlob(wb),filename:`${selectedClient.name} \u2014 Engagement Detail.xlsx`});}
+    if(E.cs){setProgress('Building Compliance Summary\u2026','Generating PDF',1);downloads.push({label:'Compliance Summary',type:'pdf',html:buildComplianceSummaryHTML(insureds,coverages,criteria,{reportDate}),filename:`${selectedClient.name} \u2014 Compliance Summary.pdf`});}
+    if(E.es){setProgress('Building Engagement Summary\u2026','Generating PDF',1);downloads.push({label:'Engagement Summary',type:'pdf',html:buildEngagementSummaryHTML(notifications,{reportDate,engWindow:esWindow}),filename:`${selectedClient.name} \u2014 Engagement Summary.pdf`});}
+    if(E.yer){setProgress('Building Year End Review\u2026','Fetching snapshot data',1);const yerYear=document.getElementById('yer-year')?.value?.trim()||String(new Date().getFullYear());const yerProducer=document.getElementById('yer-producer')?.value?.trim()||'';downloads.push({label:`Year End Review ${yerYear}`,type:'pdf',html:await buildYearEndReviewHTML(yerYear,yerProducer),filename:`${selectedClient.name} \u2014 Year End Review ${yerYear}.pdf`});}
+    if(E.pro){const proProducer=document.getElementById('pro-producer')?.value?.trim()||'';if(!proProducer){toast('Producer name required for Producer Overview \u2014 skipped.','error');}else{setProgress('Building Producer Overview\u2026','Fetching snapshot data',1);const proMonth=document.getElementById('pro-month')?.value?.trim()||'';downloads.push({label:'Producer Overview',type:'pdf',html:await buildProducerOverviewHTML(proProducer,proMonth||null),filename:`${selectedClient.name} \u2014 Producer Overview.pdf`});}}
+    if(E.tyc){const tycContact=document.getElementById('tyc-contact')?.value?.trim()||'Valued Partner';const tycProducer=document.getElementById('tyc-producer')?.value?.trim()||'';setProgress('Building Thank You Card\u2026','Calculating compliance stats',1);const meta=CLIENT_META_MAP[selectedClient.key]||{};downloads.push({label:'Thank You Card',type:'pdf',html:buildThankYouCardHTML(insureds,meta,tycContact,tycProducer),filename:`${selectedClient.name} \u2014 Thank You Card.pdf`});}
+    setProgress('Finalizing\u2026','Preparing your downloads',2);
+    await new Promise(r=>setTimeout(r,400));
+    showDownloads(downloads);
+  }catch(e){
+    console.error(e);
+    document.getElementById('gen-area').style.display='none';
+    document.getElementById('err-area').style.display='block';
+    document.getElementById('err-msg').textContent=e.message||'Unexpected error';
+    document.getElementById('s3-title').textContent='Generation Failed';
+  }
+}
+function printHTMLasPDF(htmlContent){
+  const iframe=document.createElement('iframe');
+  iframe.style.cssText='position:fixed;top:-9999px;left:-9999px;width:1024px;height:768px;visibility:hidden';
+  document.body.appendChild(iframe);
+  iframe.contentDocument.open();
+  iframe.contentDocument.write(htmlContent);
+  iframe.contentDocument.close();
+  iframe.onload=()=>{setTimeout(()=>{iframe.contentWindow.focus();iframe.contentWindow.print();setTimeout(()=>{try{document.body.removeChild(iframe);}catch(e){}},2000);},300);};
+}
+function showDownloads(downloads){
+  if(selectedClient){const safeKey=selectedClient.key.replace(/[^a-z0-9]/gi,'_');localStorage.setItem('cs-last-report-'+safeKey,new Date().toISOString());}
+  let excelIdx=0;
+  downloads.forEach(d=>{
+    if(d.type==='excel'){setTimeout(()=>{const a=document.createElement('a');a.href=URL.createObjectURL(d.blob);a.download=d.filename;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(a.href),5000);},excelIdx++*350);}
+    else{printHTMLasPDF(d.html);const blob=new Blob([d.html],{type:'text/html'});d._blobUrl=URL.createObjectURL(blob);}
+  });
+  goTo(2);renderGrids();
+  const excels=downloads.filter(d=>d.type==='excel').length;
+  const pdfs=downloads.filter(d=>d.type==='pdf').length;
+  const parts=[];
+  if(excels)parts.push(excels+' Excel'+(excels>1?'s':'')+' downloading');
+  if(pdfs)parts.push(pdfs+' PDF'+(pdfs>1?'s':'')+' \u2014 print dialog opening');
+  toast('\u2713 '+parts.join(' \u00b7 '),'success');
+  downloads.forEach(d=>addDownloadNotif(d));
+  const drawer=document.getElementById('notif-drawer');
+  if(drawer){drawer.style.display='';_unread=0;updateNotifBadge();}
+  if(typeof mondayOnReportsGenerated==='function')mondayOnReportsGenerated();
+}
+function addDownloadNotif(d){
+  if(d.type==='pdf'&&!d._blobUrl){const blob=new Blob([d.html],{type:'text/html'});d._blobUrl=URL.createObjectURL(blob);}
+  _notifs.unshift({msg:d.label,type:'success',time:new Date(),_download:d});
+  if(_notifs.length>15)_notifs.pop();
+  renderNotifList();
+}
+</script>
+<script>
+function enrichInsureds(insureds,customProps){
+  const customMap={};
+  for(const row of customProps){
+    const key=(row['contact_email']||row['insured_name']||'').trim().toLowerCase();
+    if(!key||key==='nan')continue;
+    const fn=(row['field_name']||'').trim(),fv=(row['field_value']||'').trim();
+    if(!fn||!fv||fv==='nan')continue;
+    if(!customMap[key])customMap[key]={};
+    if(!(fn in customMap[key]))customMap[key][fn]=fv;
+  }
+  return insureds.map(r=>{
+    const key=(r[C.email]||'').trim().toLowerCase(),cp=customMap[key]||{};
+    return{...r,_custom:cp,_contractNumber:cp['contractNumber']||'',_entityType:cp['entityType']||'',_projectName:cp['projectName']||cp['jobDescription']||'',_projectNumber:cp['projectNumber']||cp['jobNumber']||'',_locationName:cp['propertyLocation']||'',_notificationList:fmtNotifList(cp['notificationList']||''),_realEmail:(cp['email']||'').trim().toLowerCase()};
+  });
+}
+function insuredEmails(r){
+  const s=new Set();
+  if(r._realEmail)s.add(r._realEmail);
+  (r._notificationList||'').split(',').forEach(e=>{const t=e.trim().toLowerCase();if(t&&t.includes('@'))s.add(t);});
+  if(r[C.email])s.add(r[C.email].trim().toLowerCase());
+  return s;
+}
+function hasEmail(r,emailSet){for(const em of insuredEmails(r)){if(emailSet.has(em))return true;}return false;}
+function shortName(n){
+  if(n.includes('Kansas City'))return'CPKC';if(n.includes('Capital Railroad'))return'CRC';
+  if(n.includes('Musselman'))return'M&H';if(n.includes('Skyline'))return'Skyline';
+  if(n.includes('Scandroli'))return'Scandroli';if(n.includes('Abbey'))return'Abbey';
+  return n.split(' ')[0];
+}
+const XL={NAVY:'FF2B3A52',BLUE:'FF3A7FC1',WHITE:'FFFFFFFF',GREEN:'FF1A7F5A',GREEN_BG:'FFE6F5EF',RED:'FFC0392B',RED_BG:'FFFDF0EE',AMBER:'FFC97A00',BLUE_BG:'FFE8F1FB',BODY:'FF1A2030',ALT:'FFF9FAFC',PLAIN:'FFFFFFFF'};
+const xlFill=argb=>({type:'pattern',pattern:'solid',fgColor:{argb}});
+const xlFont=(argb,bold=false,sz=10,italic=false)=>({name:'Arial',size:sz,bold,italic,color:{argb}});
+function applyHdr(cell,bgArgb=XL.NAVY){cell.fill=xlFill(bgArgb);cell.font=xlFont(XL.WHITE,true);cell.alignment={horizontal:'left',vertical:'middle'};}
+function applyData(cell,alt){cell.fill=xlFill(alt?XL.ALT:XL.PLAIN);cell.font=xlFont(XL.BODY);cell.alignment={vertical:'middle'};}
+function applyStatus(cell,val,alt){const n=normStatus(val);if(n==='compliant'){cell.fill=xlFill(XL.GREEN_BG);cell.font=xlFont(XL.GREEN,true);}else if(n==='non_compliant'){cell.fill=xlFill(XL.RED_BG);cell.font=xlFont(XL.RED,true);}else{cell.fill=xlFill(XL.BLUE_BG);cell.font=xlFont(XL.BLUE,true);}cell.alignment={vertical:'middle'};}
+function applyDays(cell,v,alt){const c=v<=7?XL.RED:v<=30?XL.AMBER:v<=60?XL.BLUE:XL.NAVY;cell.fill=xlFill(alt?XL.ALT:XL.PLAIN);cell.font=xlFont(c,true);cell.alignment={horizontal:'center',vertical:'middle'};}
+function applyIssue(cell,val,alt){const t=(val||'').toLowerCase().replace(/[\s_]/g,'');if(t==='hardbounce'||t==='rejected'||t==='reject'){cell.fill=xlFill(XL.RED_BG);cell.font=xlFont(XL.RED,true);}else{applyData(cell,alt);}cell.alignment={vertical:'middle'};}
+function buildWS(wb,name,headers,rows,opts={}){
+  const{hdrBg=XL.NAVY,colWidths=[],wrapCols=new Set(),styleFn}=opts;
+  const ws=wb.addWorksheet(name);
+  ws.columns=headers.map((h,i)=>({header:'',width:colWidths[i]||20}));
+  const hdrRow=ws.addRow(headers);hdrRow.height=22;hdrRow.eachCell(cell=>applyHdr(cell,hdrBg));
+  rows.forEach((row,ri)=>{
+    const alt=ri%2===0;
+    const vals=headers.map(h=>{const v=row[h];return(v===null||v===undefined)?'':v;});
+    const dr=ws.addRow(vals);dr.height=18;
+    headers.forEach((h,ci)=>{const cell=dr.getCell(ci+1);const val=row[h];if(styleFn){styleFn(cell,h,val,alt,row);}else{applyData(cell,alt);}if(wrapCols.has(h))cell.alignment={...cell.alignment,wrapText:true,vertical:'top'};});
+  });
+  ws.views=[{state:'frozen',ySplit:1}];
+  if(rows.length)ws.autoFilter={from:{row:1,column:1},to:{row:rows.length+1,column:headers.length}};
+  return ws;
+}
+async function xlBlob(wb){const buf=await wb.xlsx.writeBuffer();return new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});}
+
+async function buildComplianceDetailXL(insureds,coverages,criteria,{statusFilter,reportDate}){
+  const wb=new ExcelJS.Workbook();wb.creator='HUB CertSecure';
+  const sl=STRUCT[selectedClient.structure];
+  const active=insureds.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');
+  const total=active.length,comp=active.filter(r=>normStatus(r[C.status])==='compliant').length;
+  const nc=active.filter(r=>normStatus(r[C.status])==='non_compliant').length,newp=total-comp-nc;
+  const stamp=new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
+  const cfFields=getCustomFields('cd'),isProj=selectedClient.structure==='project',isLoc=selectedClient.structure==='location';
+  const groupField=isProj?'_projectName':isLoc?'_locationName':'_entityType',groupLabel=sl.groupLabel;
+  const insuredById={};active.forEach(r=>{if(r[C.insured_id])insuredById[r[C.insured_id]]=r;});
+  if(chk('cd-summary')){
+    const ws0=wb.addWorksheet('Summary');ws0.columns=[{width:42},{width:12},{width:14}];
+    const t1=ws0.addRow([`${shortName(selectedClient.name)} \u2014 Compliance Detail`]);t1.getCell(1).font=xlFont(XL.NAVY,true,18);t1.height=30;
+    const t2=ws0.addRow([selectedClient.name]);t2.getCell(1).font=xlFont(XL.BLUE,false,13);t2.height=22;
+    ws0.addRow([`API Retrieval Date: ${stamp}`]).getCell(1).font=xlFont('FF5A6480',false,10,true);ws0.addRow([]);
+    const mHdr=ws0.addRow(['Metric','Count','% of Active']);mHdr.height=22;mHdr.eachCell(cell=>applyHdr(cell));
+    [['Active Third-Parties',total,null],['Compliant',comp,pct(comp,total)],['Non-Compliant',nc,pct(nc,total)],['New / Pending',newp,pct(newp,total)]].forEach(([l,n,p],ri)=>{
+      const alt=ri%2===0,dr=ws0.addRow([l,n,p||'\u2014']);dr.height=18;dr.eachCell(cell=>applyData(cell,alt));
+      dr.getCell(2).alignment={horizontal:'right',vertical:'middle'};dr.getCell(3).alignment={horizontal:'right',vertical:'middle'};
+    });
+  }
+  if(chk('cd-entitylist')){
+    let rows=statusFilter!=='all'?active.filter(r=>normStatus(r[C.status])===statusFilter):active;
+    const grpSkip=new Set(isProj?['projectName','jobDescription']:isLoc?['propertyLocation']:[]);
+    const hdrs=['Insured Name'];if(groupLabel)hdrs.push(groupLabel);
+    cfFields.filter(f=>!grpSkip.has(f.key)).forEach(f=>hdrs.push(f.label));
+    hdrs.push('Compliance Status','Verification Status','Next Expiration','Notification Email');
+    const widths=[71];if(groupLabel)widths.push(45);cfFields.filter(f=>!grpSkip.has(f.key)).forEach(()=>widths.push(22));widths.push(21,23,19,55);
+    buildWS(wb,groupLabel?`${groupLabel} List`:'Entity List',hdrs,rows.map(r=>{
+      const obj={'Insured Name':r[C.entity_name]||''};if(groupLabel)obj[groupLabel]=r[groupField]||'';
+      cfFields.filter(f=>!grpSkip.has(f.key)).forEach(f=>{obj[f.label]=r._custom?.[f.key]||'';});
+      obj['Compliance Status']=fmtStatus(r[C.status]);obj['Verification Status']=fmtVerif(r[C.verify_status]);
+      obj['Next Expiration']=fmtDate(r[C.next_exp]);obj['Notification Email']=fmtNotifList(r._notificationList)||r[C.email]||'';return obj;
+    }),{colWidths:widths,styleFn:(cell,h,v,alt)=>{if(h==='Compliance Status')applyStatus(cell,v,alt);else applyData(cell,alt);}});
+  }
+  if(chk('cd-expiring')&&coverages.length){
+    const exp=coverages.map(r=>({...r,_days:daysUntilDate(r[C.exp_date])})).filter(r=>r._days!==null&&r._days>=0&&r._days<=90).sort((a,b)=>a._days-b._days);
+    const grpSkip2=new Set(isProj?['projectName','jobDescription']:isLoc?['propertyLocation']:[]);
+    const hdrs=['Insured Name'];if(groupLabel)hdrs.push(groupLabel);cfFields.filter(f=>!grpSkip2.has(f.key)).forEach(f=>hdrs.push(f.label));hdrs.push('Coverage Type','Expiration Date','Days Until','Status');
+    const widths=[71];if(groupLabel)widths.push(45);cfFields.filter(f=>!grpSkip2.has(f.key)).forEach(()=>widths.push(22));widths.push(30,16,12,21);
+    buildWS(wb,'Expiring Coverage',hdrs,exp.map(r=>{
+      const ins=insuredById[r['insured_id']]||{};
+      const obj={'Insured Name':r['insured_name']||'',...(groupLabel?{[groupLabel]:ins[groupField]||''}:{}),'Coverage Type':fmtCoverage(r[C.coverage_type]),'Expiration Date':fmtDate(r[C.exp_date]),'Days Until':r._days,'Status':fmtStatus(ins[C.status]||'')};
+      cfFields.filter(f=>!grpSkip2.has(f.key)).forEach(f=>{obj[f.label]=ins._custom?.[f.key]||'';});return obj;
+    }),{colWidths:widths,styleFn:(cell,h,v,alt)=>{if(h==='Status')applyStatus(cell,v,alt);else if(h==='Days Until')applyDays(cell,typeof v==='number'?v:parseInt(v)||0,alt);else applyData(cell,alt);}});
+  }
+  if(chk('cd-nccoverage')&&criteria.length){
+    const ws=wb.addWorksheet('NC by Coverage & Criteria');
+    ws.columns=[{width:38},{width:22},{width:13},{width:4},{width:80},{width:32},{width:10},{width:11}];
+    const hdr=ws.addRow(['Coverage Type','Non-Compliant Entities','% of Active','','Criteria','Coverage Type','Count','% of Total']);hdr.height=22;
+    [1,2,3].forEach(ci=>applyHdr(hdr.getCell(ci),XL.NAVY));hdr.getCell(4).fill=xlFill(XL.PLAIN);[5,6,7,8].forEach(ci=>applyHdr(hdr.getCell(ci),XL.BLUE));
+    const cvMap={};
+    criteria.filter(r=>normStatus(r[C.overall_comp])==='non_compliant').forEach(r=>{(r[C.nc_reasons]||'').split(' | ').forEach(p=>{const m=p.trim().match(/^([A-Z_]+):/);if(m){const t=fmtCoverage(m[1]);cvMap[t]=(cvMap[t]||0)+1;}});});
+    const leftRows=Object.entries(cvMap).sort((a,b)=>b[1]-a[1]);
+    const criMap={};criteria.forEach(r=>{(r[C.nc_reasons]||'').split(' | ').forEach(p=>{const ci=p.indexOf(':');if(ci<0)return;const ct=fmtCoverage(p.slice(0,ci).trim()),reason=p.slice(ci+1).trim();if(!reason)return;const k=`${reason}||${ct}`;criMap[k]=(criMap[k]||0)+1;});});
+    const critTotal=Object.values(criMap).reduce((a,b)=>a+b,0)||1;const rightRows=Object.entries(criMap).sort((a,b)=>b[1]-a[1]);const maxR=Math.max(leftRows.length,rightRows.length);
+    for(let ri=0;ri<maxR;ri++){
+      const alt=ri%2===0,[lct,ln]=leftRows[ri]||['',''],[ k,rn]=rightRows[ri]||['',''];const[reason,rct]=k?k.split('||'):['',''];
+      const dr=ws.addRow([lct,ln||'',ln?pct(ln,total):'','',reason||'',rct||'',rn||'',rn?pct(rn,critTotal):'']);dr.height=18;
+      [1,2,3].forEach(ci=>applyData(dr.getCell(ci),alt));dr.getCell(2).alignment={horizontal:'right',vertical:'middle'};dr.getCell(3).alignment={horizontal:'right',vertical:'middle'};
+      dr.getCell(4).fill=xlFill(XL.PLAIN);[5,6,7,8].forEach(ci=>applyData(dr.getCell(ci),alt));dr.getCell(5).alignment={wrapText:true,vertical:'top'};dr.getCell(7).alignment={horizontal:'right',vertical:'middle'};dr.getCell(8).alignment={horizontal:'right',vertical:'middle'};
+    }
+    ws.views=[{state:'frozen',ySplit:1}];
+  }
+  if(chk('cd-ncreasons')&&criteria.length){
+    const grpSkip3=new Set(isProj?['projectName','jobDescription']:isLoc?['propertyLocation']:[]);
+    const hdrs=['Insured Name'];if(groupLabel)hdrs.push(groupLabel);cfFields.filter(f=>!grpSkip3.has(f.key)).forEach(f=>hdrs.push(f.label));hdrs.push('Coverage Type','Non-Compliance Reason');
+    const widths=[71];if(groupLabel)widths.push(45);cfFields.filter(f=>!grpSkip3.has(f.key)).forEach(()=>widths.push(22));widths.push(30,80);
+    const ncRows=[];
+    criteria.filter(r=>normStatus(r[C.overall_comp])==='non_compliant'&&r[C.nc_reasons]).forEach(r=>{
+      const ins=insuredById[r['insured_id']]||{};
+      (r[C.nc_reasons]||'').split(' | ').map(s=>s.trim()).filter(Boolean).forEach(part=>{
+        const ci=part.indexOf(':'),ct=ci>0?fmtCoverage(part.slice(0,ci).trim()):'',reason=ci>0?part.slice(ci+1).trim():part;
+        const obj={'Insured Name':r[C.crit_name]||'',...(groupLabel?{[groupLabel]:ins[groupField]||''}:{}),'Coverage Type':ct,'Non-Compliance Reason':reason};
+        cfFields.filter(f=>!grpSkip3.has(f.key)).forEach(f=>{obj[f.label]=ins._custom?.[f.key]||'';});ncRows.push(obj);
+      });
+    });
+    ncRows.sort((a,b)=>(a['Insured Name']||'').localeCompare(b['Insured Name']||''));
+    buildWS(wb,'Non-Compliance Reasons',hdrs,ncRows,{colWidths:widths,wrapCols:new Set(['Non-Compliance Reason']),styleFn:(cell,h,v,alt)=>applyData(cell,alt)});
+  }
+  return wb;
+}
+</script>
+<script>
+async function buildEngagementDetailXL(insureds,notifications,{engWindow,reportDate}){
+  const wb=new ExcelJS.Workbook();wb.creator='HUB CertSecure';
+  const cutoff=new Date();cutoff.setDate(cutoff.getDate()-engWindow);
+  const active=insureds.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');
+  const stamp=new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
+  const cfFields=getCustomFields('ed'),sl=STRUCT[selectedClient.structure];
+  const isProj=selectedClient.structure==='project',isLoc=selectedClient.structure==='location';
+  const groupField=isProj?'_projectName':isLoc?'_locationName':'_entityType',groupLabel=sl.groupLabel;
+  const normEm=n=>(n[C.notif_email]||'').trim().toLowerCase();
+  const sentEmails=new Set(notifications.filter(isEngSend).map(normEm).filter(Boolean));
+  const openedEmails=new Set(notifications.filter(isEngOpen).map(normEm).filter(Boolean));
+  const clickedEmails=new Set(notifications.filter(isEngClick).map(normEm).filter(Boolean));
+  const issueEmails=new Set(notifications.filter(isEngIssue).map(normEm).filter(Boolean));
+  const metaGoLive=CLIENT_META_MAP[selectedClient.key]?.go_live_date;
+  const allDates=notifications.map(n=>n[C.sent_at]).filter(Boolean).sort();
+  const goLiveCutoff=metaGoLive?new Date(metaGoLive):(allDates.length?new Date(allDates[0]):new Date(0));
+  const openedSinceGoLive=new Set(notifications.filter(n=>(isEngOpen(n)||isEngClick(n))&&new Date(n[C.sent_at])>=goLiveCutoff).map(normEm).filter(Boolean));
+  const fmtEngDate=ds=>{try{return new Date(ds).toLocaleDateString('en-US',{month:'short',day:'2-digit',year:'numeric'});}catch(e){return ds;}};
+  if(chk('ed-summary')){
+    const ws0=wb.addWorksheet('Summary');ws0.columns=[{width:52},{width:12}];
+    const noCoiRows=active.filter(r=>!hasEmail(r,sentEmails));
+    const noEngRows=active.filter(r=>hasEmail(r,sentEmails)&&!hasEmail(r,openedSinceGoLive));
+    const recentOpenS=new Set(notifications.filter(n=>isEngOpen(n)&&new Date(n[C.sent_at])>=cutoff).map(normEm).filter(Boolean));
+    const ncNoEngRows=active.filter(r=>normStatus(r[C.status])==='non_compliant'&&!hasEmail(r,recentOpenS));
+    const dataRange=allDates.length?`${fmtEngDate(allDates[0])} \u2014 ${fmtEngDate(allDates[allDates.length-1])}`:'N/A';
+    const goLive=metaGoLive?fmtEngDate(metaGoLive):(allDates.length?fmtEngDate(allDates[0]):'N/A');
+    const t1=ws0.addRow([`${shortName(selectedClient.name)} \u2014 Engagement Detail`]);t1.getCell(1).font=xlFont(XL.NAVY,true,18);t1.height=30;
+    const t2=ws0.addRow([selectedClient.name]);t2.getCell(1).font=xlFont(XL.BLUE,false,13);t2.height=22;
+    ws0.addRow([`API Retrieval Date: ${stamp}`]).getCell(1).font=xlFont('FF5A6480',false,10,true);
+    ws0.addRow([`Data Range: ${dataRange}`]).getCell(1).font=xlFont('FF5A6480',false,10,true);
+    ws0.addRow([`Go-Live Date: ${goLive}`]).getCell(1).font=xlFont('FF5A6480',false,10,true);ws0.addRow([]);
+    const catHdr=ws0.addRow(['Category','Count']);catHdr.height=22;catHdr.eachCell(cell=>applyHdr(cell));
+    [['Active Third-Parties',active.length],['Emails Sent (unique)',sentEmails.size],['No COI on File',noCoiRows.length],['No Engagement Since Go-Live',noEngRows.length],[`Non-Compliant, No ${engWindow}-Day Engagement`,ncNoEngRows.length],['Addresses with Delivery Issues',issueEmails.size]].forEach(([l,n],ri)=>{
+      const alt=ri%2===0,dr=ws0.addRow([l,n]);dr.height=18;applyData(dr.getCell(1),alt);applyData(dr.getCell(2),alt);dr.getCell(2).alignment={horizontal:'right',vertical:'middle'};
+    });
+  }
+  const engGrpSkip=new Set(isProj?['projectName','jobDescription']:isLoc?['propertyLocation']:[]);
+  function getHdrs(){const h=['Insured Name'];if(groupLabel)h.push(groupLabel);cfFields.filter(f=>!engGrpSkip.has(f.key)).forEach(f=>h.push(f.label));h.push('Compliance Status','Verification Status','Notification Email','Next Expiration');return h;}
+  function getWidths(){const w=[71,45];cfFields.filter(f=>!engGrpSkip.has(f.key)).forEach(()=>w.push(22));w.push(21,23,55,19);return w;}
+  function makeRow(r){const obj={'Insured Name':r[C.entity_name]||''};if(groupLabel)obj[groupLabel]=r[groupField]||'';cfFields.filter(f=>!engGrpSkip.has(f.key)).forEach(f=>{obj[f.label]=r._custom?.[f.key]||'';});obj['Compliance Status']=fmtStatus(r[C.status]);obj['Verification Status']=fmtVerif(r[C.verify_status]);obj['Notification Email']=fmtNotifList(r._notificationList)||r[C.email]||'';obj['Next Expiration']=fmtDate(r[C.next_exp]);return obj;}
+  const statusStyleFn=(cell,h,v,alt)=>{if(h==='Compliance Status')applyStatus(cell,v,alt);else applyData(cell,alt);};
+  if(chk('ed-nocoi')){const rows=active.filter(r=>!hasEmail(r,sentEmails)).map(makeRow);if(rows.length)buildWS(wb,'No COIs on File',getHdrs(),rows,{colWidths:getWidths(),styleFn:statusStyleFn});}
+  if(chk('ed-noeng')){const rows=active.filter(r=>!hasEmail(r,openedEmails)&&!hasEmail(r,clickedEmails)).map(makeRow);if(rows.length)buildWS(wb,'No Engagement Since Go-Live',getHdrs(),rows,{colWidths:getWidths(),hdrBg:XL.RED,styleFn:statusStyleFn});}
+  if(chk('ed-ncnoeng')){
+    const recentOpen=new Set(notifications.filter(n=>isEngOpen(n)&&new Date(n[C.sent_at])>=cutoff).map(normEm).filter(Boolean));
+    const ncHdrs=['Insured Name'];if(groupLabel)ncHdrs.push(groupLabel);cfFields.filter(f=>!engGrpSkip.has(f.key)).forEach(f=>ncHdrs.push(f.label));ncHdrs.push('Verification Status','Notification Email','Next Expiration');
+    const ncWidths=[71];if(groupLabel)ncWidths.push(45);cfFields.filter(f=>!engGrpSkip.has(f.key)).forEach(()=>ncWidths.push(22));ncWidths.push(23,55,19);
+    const makeNcRow=r=>{const obj={'Insured Name':r[C.entity_name]||''};if(groupLabel)obj[groupLabel]=r[groupField]||'';cfFields.filter(f=>!engGrpSkip.has(f.key)).forEach(f=>{obj[f.label]=r._custom?.[f.key]||'';});obj['Verification Status']=fmtVerif(r[C.verify_status]);obj['Notification Email']=fmtNotifList(r._notificationList)||r[C.email]||'';obj['Next Expiration']=fmtDate(r[C.next_exp]);return obj;};
+    const rows=active.filter(r=>normStatus(r[C.status])==='non_compliant'&&!hasEmail(r,recentOpen)).map(makeNcRow);
+    if(rows.length)buildWS(wb,`NC + No ${engWindow}-Day Engagement`,ncHdrs,rows,{colWidths:ncWidths,hdrBg:XL.RED,styleFn:(cell,h,v,alt)=>applyData(cell,alt)});
+  }
+  if(chk('ed-undel')){buildWS(wb,'Undeliverable Emails',['Email','Issue Type','Date','Subject'],notifications.filter(isEngIssue).map(n=>({'Email':n[C.notif_email]||'','Issue Type':n[C.eng_type]||'','Date':n[C.sent_at]||'','Subject':n[C.subject]||''})),{colWidths:[50,18,26,80],styleFn:(cell,h,v,alt)=>{if(h==='Issue Type')applyIssue(cell,v,alt);else applyData(cell,alt);}});}
+  return wb;
+}
+</script>
+<script>
+function buildComplianceSummaryHTML(insureds,coverages,criteria,{reportDate}){
+  const sl=STRUCT[selectedClient.structure],active=insureds.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');
+  const total=active.length,comp=active.filter(r=>normStatus(r[C.status])==='compliant').length;
+  const nc=active.filter(r=>normStatus(r[C.status])==='non_compliant').length,newp=total-comp-nc;
+  const rate=total?Math.round(comp/total*100):0;
+  const stamp=new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
+  const rateColor=rate>=80?'#16A34A':rate>=60?'#D97706':'#DC2626';
+  const logoSrc=document.querySelector('.header-logo')?.src?.startsWith('data:')?document.querySelector('.header-logo').src:null;
+  const logoTag=logoSrc?`<img src="${logoSrc}" style="height:34px;object-fit:contain">`:`<div style="font-family:Arial,sans-serif;font-size:16px;font-weight:700;color:#1E2E3D">CERT<span style="background:#3872B8;color:white;padding:1px 6px;border-radius:3px">SECURE</span></div>`;
+  const expMap={};let ex7=0,ex30=0,ex60=0,ex90=0;
+  coverages.forEach(r=>{const d=daysUntilDate(r[C.exp_date]);if(d!==null&&d>=0&&d<=90){const nm=r['insured_name']||'';if(!expMap[nm])expMap[nm]=d;else expMap[nm]=Math.min(expMap[nm],d);}});
+  Object.values(expMap).forEach(d=>{if(d<=7)ex7++;if(d<=30)ex30++;if(d<=60)ex60++;if(d<=90)ex90++;});
+  const expTotal=Object.keys(expMap).length;
+  const ncMap={};criteria.filter(r=>normStatus(r[C.overall_comp])==='non_compliant').forEach(r=>{(r[C.nc_reasons]||'').split(' | ').forEach(p=>{const ci=p.indexOf(':');if(ci<0)return;const reason=p.slice(ci+1).trim();if(!reason)return;ncMap[reason]=(ncMap[reason]||0)+1;});});
+  const topNC=Object.entries(ncMap).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const covMap={};coverages.forEach(r=>{const ct=fmtCoverage(r[C.coverage_type]);if(ct)covMap[ct]=(covMap[ct]||0)+1;});const topCov=Object.entries(covMap).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const critMap={};criteria.forEach(r=>{const ct=fmtCoverage(r[C.coverage_type]);if(ct)critMap[ct]=(critMap[ct]||0)+1;});const topCrit=Object.entries(critMap).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const secHdr=title=>`<div style="display:flex;align-items:center;gap:8px;margin:18px 0 10px"><div style="width:4px;height:16px;background:#3872B8;border-radius:2px;flex-shrink:0"></div><div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1E2E3D">${title}</div><div style="flex:1;height:1px;background:#E8ECF5"></div></div>`;
+  const progBar=(n,total2,color='#3872B8')=>`<div style="flex:1;background:#F0F4F8;border-radius:2px;height:5px"><div style="width:${total2?Math.round(n/total2*100):0}%;background:${color};height:100%;border-radius:2px"></div></div>`;
+  const ncRows=chk('cs-ncreasons')?topNC.map(([r,n])=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA;font-size:9px"><div style="flex:1;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(r.length>65?r.slice(0,65)+'\u2026':r)}</div>${progBar(n,topNC[0]?.[1]||1,'#DC2626')}<div style="width:22px;text-align:right;font-weight:700;color:#DC2626">${n}</div></div>`).join(''):'';
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Compliance Summary</title><style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:26px 30px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{border-radius:8px;padding:12px 14px}.kpi-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;color:#5A6B7B}.kpi-val{font-size:28px;font-weight:800;line-height:1}.kpi-sub{font-size:10px;font-weight:600;margin-top:3px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}.bcard{border:1px solid #E8ECF5;border-radius:8px;padding:12px 14px}.footer{margin-top:18px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8.5px;color:#B0B8C8}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:letter landscape;margin:8mm}}</style></head><body>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;padding-bottom:14px;border-bottom:3px solid #1E2E3D"><div>${logoTag}<div style="margin-top:10px"><div style="font-size:22px;font-weight:900;color:#1E2E3D">${esc(selectedClient.name)}</div><div style="font-size:11px;color:#5A6B7B;margin-top:2px">Compliance Summary &nbsp;\u00b7&nbsp; ${stamp}</div></div></div><div style="text-align:center;background:${rate>=80?'#E6F5EF':'#FDF0EE'};border-radius:10px;padding:12px 22px"><div style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:${rateColor}">Compliance Rate</div><div style="font-size:46px;font-weight:900;color:${rateColor};line-height:1">${rate}%</div><div style="font-size:9px;color:${rateColor};margin-top:2px">${comp} of ${total} active</div></div></div>
+${chk('cs-kpi')?`${secHdr('Program KPIs')}<div class="kpi4"><div class="kpi" style="background:#EEF1F8"><div class="kpi-lbl">Total Active</div><div class="kpi-val" style="color:#1E2E3D">${total}</div></div><div class="kpi" style="background:#E6F5EF"><div class="kpi-lbl">Compliant</div><div class="kpi-val" style="color:#16A34A">${comp}</div><div class="kpi-sub" style="color:#16A34A">${pct(comp,total)} of active</div></div><div class="kpi" style="background:${nc>0?'#FDF0EE':'#E6F5EF'}"><div class="kpi-lbl">Non-Compliant</div><div class="kpi-val" style="color:${nc>0?'#DC2626':'#16A34A'}">${nc}</div><div class="kpi-sub" style="color:${nc>0?'#DC2626':'#16A34A'}">${pct(nc,total)} of active</div></div><div class="kpi" style="background:#EBF2FB"><div class="kpi-lbl">New / Pending</div><div class="kpi-val" style="color:#3872B8">${newp}</div><div class="kpi-sub" style="color:#3872B8">${pct(newp,total)} of active</div></div></div>`:''}
+${chk('cs-expiring')&&expTotal>0?`${secHdr('Expiring Coverage')}<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">${[[7,'#DC2626','#FDF0EE',ex7],[30,'#D97706','#FFF8E6',ex30],[60,'#3872B8','#EBF2FB',ex60],[90,'#1E2E3D','#EEF1F8',ex90]].map(([d,c,bg,n])=>`<div class="kpi" style="background:${bg}"><div class="kpi-lbl" style="color:${c}">\u2264 ${d} Days</div><div class="kpi-val" style="color:${c}">${n}</div><div class="kpi-sub" style="color:${c}">entities</div></div>`).join('')}</div>`:''}
+<div class="two-col" style="margin-top:4px">${chk('cs-ncreasons')&&topNC.length?`<div>${secHdr('Top Non-Compliance Reasons')}<div class="bcard">${ncRows}</div></div>`:'<div></div>'}${chk('cs-criteriadist')&&topCrit.length?`<div>${secHdr('Insured Criteria Breakdown')}<div class="bcard">${topCrit.map(([t,n])=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA;font-size:9px"><div style="width:130px;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(t)}</div>${progBar(n,topCrit[0]?.[1]||1,'#3872B8')}<div style="width:22px;text-align:right;font-weight:700;color:#3872B8">${n}</div></div>`).join('')}</div></div>`:'<div></div>'}</div>
+${chk('cs-coveragedist')&&topCov.length?`${secHdr('Coverage Type Distribution')}<div class="bcard"><div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px">${topCov.map(([t,n])=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA;font-size:9px"><div style="width:130px;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(t)}</div>${progBar(n,topCov[0]?.[1]||1,'#6BA3DE')}<div style="width:22px;text-align:right;font-weight:700;color:#3872B8">${n}</div></div>`).join('')}</div></div>`:''}
+<div class="footer"><div>&#x1F512; Confidential \u2014 HUB CertSecure \u00b7 ${esc(selectedClient.name)} \u00b7 Compliance Summary</div><div>${stamp}</div></div></body></html>`;
+}
+</script>
+<script>
+function buildEngagementSummaryHTML(notifications,{reportDate,engWindow}){
+  const cutoff=new Date();cutoff.setDate(cutoff.getDate()-engWindow);
+  const stamp=new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
+  const logoSrc=document.querySelector('.header-logo')?.src?.startsWith('data:')?document.querySelector('.header-logo').src:null;
+  const logoTag=logoSrc?`<img src="${logoSrc}" style="height:34px;object-fit:contain">`:`<div style="font-family:Arial,sans-serif;font-size:16px;font-weight:700;color:#1E2E3D">CERT<span style="background:#3872B8;color:white;padding:1px 6px;border-radius:3px">SECURE</span></div>`;
+  const normEm=n=>(n[C.notif_email]||'').trim().toLowerCase();
+  const sends=notifications.filter(isEngSend),opens=notifications.filter(isEngOpen),clicks=notifications.filter(isEngClick),issues=notifications.filter(isEngIssue);
+  const sentSet=new Set(sends.map(normEm).filter(Boolean)),openSet=new Set(opens.map(normEm).filter(Boolean)),clickSet=new Set(clicks.map(normEm).filter(Boolean)),issueSet=new Set(issues.map(normEm).filter(Boolean));
+  const recentSent=sends.filter(n=>new Date(n[C.sent_at])>=cutoff),recentOpen=opens.filter(n=>new Date(n[C.sent_at])>=cutoff),recentClick=clicks.filter(n=>new Date(n[C.sent_at])>=cutoff);
+  const recentSentSet=new Set(recentSent.map(normEm).filter(Boolean)),recentOpenSet=new Set(recentOpen.map(normEm).filter(Boolean));
+  const openRate=sentSet.size?Math.round(openSet.size/sentSet.size*100):0,clickRate=openSet.size?Math.round(clickSet.size/openSet.size*100):0;
+  const openColor=openRate>=50?'#16A34A':openRate>=25?'#D97706':'#DC2626';
+  const subjectMap={};notifications.forEach(n=>{const subj=(n[C.subject]||'').trim();if(!subj)return;if(!subjectMap[subj])subjectMap[subj]={sends:0,opens:0};if(isEngSend(n))subjectMap[subj].sends++;if(isEngOpen(n))subjectMap[subj].opens++;});
+  const topSubjects=Object.entries(subjectMap).filter(([,v])=>v.sends>=3).map(([s,v])=>({subject:s,...v,rate:v.sends?Math.round(v.opens/v.sends*100):0})).sort((a,b)=>b.rate-a.rate).slice(0,6);
+  const issueTypeMap={};issues.forEach(n=>{const t=(n[C.eng_type]||'').toLowerCase();issueTypeMap[t]=(issueTypeMap[t]||0)+1;});const issueTypes=Object.entries(issueTypeMap).sort((a,b)=>b[1]-a[1]);
+  const progBar=(n,tot,color='#3872B8')=>`<div style="flex:1;background:#F0F4F8;border-radius:2px;height:5px"><div style="width:${tot?Math.round(n/tot*100):0}%;background:${color};height:100%;border-radius:2px"></div></div>`;
+  const secHdr=title=>`<div style="display:flex;align-items:center;gap:8px;margin:18px 0 10px"><div style="width:4px;height:16px;background:#3872B8;border-radius:2px;flex-shrink:0"></div><div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1E2E3D">${title}</div><div style="flex:1;height:1px;background:#E8ECF5"></div></div>`;
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Engagement Summary</title><style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:26px 30px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{border-radius:8px;padding:12px 14px}.kpi-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}.kpi-val{font-size:28px;font-weight:800;line-height:1}.kpi-sub{font-size:10px;font-weight:600;margin-top:3px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}.bcard{border:1px solid #E8ECF5;border-radius:8px;padding:12px 14px}.footer{margin-top:18px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8.5px;color:#B0B8C8}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:letter landscape;margin:8mm}}</style></head><body>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;padding-bottom:14px;border-bottom:3px solid #1E2E3D"><div>${logoTag}<div style="margin-top:10px"><div style="font-size:22px;font-weight:900;color:#1E2E3D">${esc(selectedClient.name)}</div><div style="font-size:11px;color:#5A6B7B;margin-top:2px">Engagement Summary &nbsp;\u00b7&nbsp; Last ${engWindow} days &nbsp;\u00b7&nbsp; ${stamp}</div></div></div><div style="text-align:center;background:${openRate>=50?'#E6F5EF':openRate>=25?'#FFF8E6':'#FDF0EE'};border-radius:10px;padding:12px 22px"><div style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:${openColor}">Open Rate</div><div style="font-size:46px;font-weight:900;color:${openColor};line-height:1">${openRate}%</div><div style="font-size:9px;color:${openColor};margin-top:2px">${openSet.size} of ${sentSet.size} contacts</div></div></div>
+${chk('es-kpi')?`${secHdr('Email KPIs')}<div class="kpi4"><div class="kpi" style="background:#EBF2FB"><div class="kpi-lbl" style="color:#1D4ED8">Unique Contacts Reached</div><div class="kpi-val" style="color:#3872B8">${sentSet.size}</div></div><div class="kpi" style="background:${openRate>=50?'#E6F5EF':openRate>=25?'#FFF8E6':'#FDF0EE'}"><div class="kpi-lbl" style="color:${openColor}">Opened Email</div><div class="kpi-val" style="color:${openColor}">${openSet.size}</div><div class="kpi-sub" style="color:${openColor}">${openRate}% open rate</div></div><div class="kpi" style="background:#EEF1F8"><div class="kpi-lbl" style="color:#5A6B7B">Clicked a Link</div><div class="kpi-val" style="color:#1E2E3D">${clickSet.size}</div><div class="kpi-sub" style="color:#5A6B7B">${clickRate}% click-to-open</div></div><div class="kpi" style="background:${issueSet.size>0?'#FDF0EE':'#E6F5EF'}"><div class="kpi-lbl" style="color:${issueSet.size>0?'#B91C1C':'#15803D'}">Delivery Issues</div><div class="kpi-val" style="color:${issueSet.size>0?'#DC2626':'#16A34A'}">${issueSet.size}</div></div></div>`:''}
+<div class="two-col" style="margin-top:4px">${chk('es-issues')&&issueTypes.length?`<div>${secHdr('Delivery Issue Breakdown')}<div class="bcard">${issueTypes.map(([t,n])=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA;font-size:9px"><div style="width:110px;color:#5A6B7B;text-transform:capitalize">${t.replace(/_/g,' ')}</div>${progBar(n,issueTypes[0]?.[1]||1,'#DC2626')}<div style="width:22px;text-align:right;font-weight:700;color:#DC2626">${n}</div></div>`).join('')}</div></div>`:'<div></div>'}${chk('es-60day')&&recentSentSet.size>0?`<div>${secHdr(`Activity Window \u2014 Last ${engWindow} Days`)}<div class="bcard">${[['Emails Sent',recentSentSet.size,'#3872B8'],['Opened',recentOpenSet.size,'#16A34A'],['Clicked',new Set(recentClick.map(normEm).filter(Boolean)).size,'#D97706'],['Issues',new Set(issues.filter(n=>new Date(n[C.sent_at])>=cutoff).map(normEm).filter(Boolean)).size,'#DC2626']].map(([l,n,c])=>`<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #F5F7FA;font-size:10px"><div style="color:#5A6B7B">${l}</div><div style="font-weight:700;color:${c}">${n}</div></div>`).join('')}</div></div>`:'<div></div>'}</div>
+${chk('es-topsubjects')&&topSubjects.length?`${secHdr('Top Email Subjects by Open Rate')}<div class="bcard"><div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px">${topSubjects.map(s=>{const rc=s.rate>=50?'#16A34A':s.rate>=25?'#D97706':'#DC2626';return`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA;font-size:9px"><div style="flex:1;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(s.subject.length>60?s.subject.slice(0,60)+'\u2026':s.subject)}</div><div style="font-weight:700;color:${rc};white-space:nowrap">${s.rate}%</div></div>`;}).join('')}</div></div>`:''}
+<div class="footer"><div>&#x1F512; Confidential \u2014 HUB CertSecure \u00b7 ${esc(selectedClient.name)} \u00b7 Engagement Summary</div><div>${stamp}</div></div></body></html>`;
+}
+</script>
+<script>
+async function listSnapshotMonths(year){
+  const s=getSettings(),url=`https://api.github.com/repos/${s.owner}/${s.repo}/contents/snapshots/${year}?ref=${s.branch}`,headers={'Accept':'application/vnd.github.v3+json'};
+  if(s.pat)headers['Authorization']=`Bearer ${s.pat}`;
+  const res=await fetch(url,{headers});if(!res.ok)return[];
+  const data=await res.json();
+  return(Array.isArray(data)?data:[]).filter(f=>f.type==='dir'&&/^\d{4}-\d{2}$/.test(f.name)).map(f=>f.name).sort();
+}
+async function fetchSnapshotCSV(year,month,file){return fetchCSV(`snapshots/${year}/${month}/${file}`);}
+
+async function buildYearEndReviewHTML(year,producer){
+  const months=await listSnapshotMonths(year),clientName=selectedClient.key;
+  if(!months.length)throw new Error(`No snapshots found for ${year}.`);
+  const stamp=new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
+  const logoSrc=document.querySelector('.header-logo')?.src?.startsWith('data:')?document.querySelector('.header-logo').src:null;
+  const logoTag=logoSrc?`<img src="${logoSrc}" style="height:32px;object-fit:contain">`:`<div style="font-family:Arial,sans-serif;font-size:15px;font-weight:700;color:#1E2E3D">CERT<span style="background:#3872B8;color:white;padding:1px 6px;border-radius:3px">SECURE</span></div>`;
+  const moNames={1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'May',6:'Jun',7:'Jul',8:'Aug',9:'Sep',10:'Oct',11:'Nov',12:'Dec'};
+  const monthlyData=[];
+  for(const m of months){try{const ins=await fetchSnapshotCSV(year,m,'insureds.csv');const clientIns=ins.filter(r=>r[C.client]===clientName);const active=clientIns.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');const comp=active.filter(r=>normStatus(r[C.status])==='compliant').length;const rate=active.length?Math.round(comp/active.length*100):0;monthlyData.push({month:m,total:active.length,comp,nc:active.length-comp,rate});}catch(e){}}
+  if(!monthlyData.length)throw new Error(`No data found for ${clientName} in ${year}.`);
+  const first=monthlyData[0],last=monthlyData[monthlyData.length-1],change=last.rate-first.rate;
+  const rateColor=last.rate>=80?'#16A34A':last.rate>=60?'#D97706':'#DC2626',chgColor=change>=0?'#16A34A':'#DC2626';
+  const bars=monthlyData.map(d=>{const color=d.rate>=80?'#16A34A':d.rate>=60?'#D97706':'#DC2626',mo=d.month.split('-')[1];return`<div style="display:flex;flex-direction:column;align-items:center;flex:1;gap:2px"><div style="font-size:8px;font-weight:700;color:${color}">${d.rate}%</div><div style="width:100%;background:#F1F5F9;border-radius:2px 2px 0 0;height:50px;display:flex;align-items:flex-end"><div style="width:100%;background:${color};border-radius:2px 2px 0 0;height:${Math.max(2,Math.round(d.rate/100*50))}px"></div></div><div style="font-size:7px;color:#8A94A8">${moNames[parseInt(mo)]||mo}</div></div>`;}).join('');
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Year End Review ${year}</title><style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:26px 30px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{border-radius:8px;padding:12px 14px}.bcard{border:1px solid #E8ECF5;border-radius:8px;padding:12px 14px}.footer{margin-top:18px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8.5px;color:#B0B8C8}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:letter landscape;margin:8mm}}</style></head><body>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;padding-bottom:14px;border-bottom:3px solid #1E2E3D"><div>${logoTag}<div style="margin-top:10px"><div style="font-size:20px;font-weight:900;color:#1E2E3D">${esc(selectedClient.name)}</div><div style="font-size:11px;color:#5A6B7B;margin-top:2px">Year End Review ${year}${producer?` &nbsp;\u00b7&nbsp; ${esc(producer)}`:''} &nbsp;\u00b7&nbsp; ${stamp}</div></div></div><div style="display:flex;gap:10px"><div style="text-align:center;background:${last.rate>=80?'#E6F5EF':'#FDF0EE'};border-radius:10px;padding:10px 18px"><div style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:${rateColor}">${year} End Rate</div><div style="font-size:38px;font-weight:900;color:${rateColor};line-height:1">${last.rate}%</div></div><div style="text-align:center;background:${change>=0?'#E6F5EF':'#FDF0EE'};border-radius:10px;padding:10px 18px"><div style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:${chgColor}">YoY Change</div><div style="font-size:38px;font-weight:900;color:${chgColor};line-height:1">${change>=0?'+':''}${change}%</div></div></div></div>
+<div class="kpi4" style="margin-bottom:14px"><div class="kpi" style="background:#EEF1F8"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px">Active (End of ${year})</div><div style="font-size:26px;font-weight:800;color:#1E2E3D">${last.total}</div></div><div class="kpi" style="background:#E6F5EF"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#15803D;margin-bottom:5px">Compliant</div><div style="font-size:26px;font-weight:800;color:#16A34A">${last.comp}</div></div><div class="kpi" style="background:${last.nc>0?'#FDF0EE':'#E6F5EF'}"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${last.nc>0?'#B91C1C':'#15803D'};margin-bottom:5px">Non-Compliant</div><div style="font-size:26px;font-weight:800;color:${last.nc>0?'#DC2626':'#16A34A'}">${last.nc}</div></div><div class="kpi" style="background:#EEF1F8"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px">Snapshots</div><div style="font-size:26px;font-weight:800;color:#1E2E3D">${monthlyData.length}</div></div></div>
+<div class="bcard"><div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5A6B7B;margin-bottom:10px">Monthly Compliance Rate \u2014 ${year}</div><div style="display:flex;gap:5px;align-items:flex-end;height:70px">${bars}</div><div style="display:flex;justify-content:space-between;margin-top:6px;font-size:8px;color:#8A94A8"><span>Start of year: <strong>${first.rate}%</strong></span><span>${monthlyData.length} monthly snapshots</span><span>End of year: <strong style="color:${rateColor}">${last.rate}%</strong></span></div></div>
+<div class="footer"><div>&#x1F512; Confidential \u2014 HUB CertSecure \u00b7 ${esc(selectedClient.name)} \u00b7 Year End Review ${year}</div><div>${stamp}</div></div></body></html>`;
+}
+</script>
+<script>
+async function buildProducerOverviewHTML(producer,monthOverride){
+  const year=String(new Date().getFullYear());let months=await listSnapshotMonths(year);
+  if(!months.length){months=await listSnapshotMonths(String(parseInt(year)-1));}
+  const month=monthOverride||(months.length?months[months.length-1]:null);
+  if(!month)throw new Error('No snapshots available for Producer Overview.');
+  const stamp=new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
+  const logoSrc=document.querySelector('.header-logo')?.src?.startsWith('data:')?document.querySelector('.header-logo').src:null;
+  const logoTag=logoSrc?`<img src="${logoSrc}" style="height:32px;object-fit:contain">`:`<div style="font-family:Arial,sans-serif;font-size:15px;font-weight:700;color:#1E2E3D">CERT<span style="background:#3872B8;color:white;padding:1px 6px;border-radius:3px">SECURE</span></div>`;
+  let ins=[];try{ins=await fetchSnapshotCSV(year,month,'insureds.csv');}catch(e){const prevYear=String(parseInt(year)-1);ins=await fetchSnapshotCSV(prevYear,month,'insureds.csv');}
+  const clientIns=ins.filter(r=>r[C.client]===selectedClient.key),active=clientIns.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');
+  const total=active.length,comp=active.filter(r=>normStatus(r[C.status])==='compliant').length,nc=total-comp,rate=total?Math.round(comp/total*100):0;
+  const rateColor=rate>=80?'#16A34A':rate>=60?'#D97706':'#DC2626';
+  const expiringRows=active.map(r=>({name:r[C.entity_name]||'',days:daysUntilDate(r[C.next_exp]),date:fmtDate(r[C.next_exp]),status:fmtStatus(r[C.status])})).filter(r=>r.days!==null&&r.days>=0&&r.days<=30).sort((a,b)=>a.days-b.days).slice(0,10);
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Producer Overview</title><style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:26px 30px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{border-radius:8px;padding:12px 14px}.bcard{border:1px solid #E8ECF5;border-radius:8px;padding:12px 14px}table{width:100%;border-collapse:collapse}th{font-size:8px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:white;background:#2B3A52;padding:6px 9px;text-align:left}td{padding:5px 9px;border-bottom:1px solid #F0F2F6;font-size:10px;vertical-align:middle}.footer{margin-top:18px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8.5px;color:#B0B8C8}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:letter landscape;margin:8mm}}</style></head><body>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;padding-bottom:14px;border-bottom:3px solid #1E2E3D"><div>${logoTag}<div style="margin-top:10px"><div style="font-size:20px;font-weight:900;color:#1E2E3D">${esc(selectedClient.name)}</div><div style="font-size:11px;color:#5A6B7B;margin-top:2px">Producer Overview &nbsp;\u00b7&nbsp; ${esc(producer)} &nbsp;\u00b7&nbsp; Snapshot: ${month}</div></div></div><div style="text-align:center;background:${rate>=80?'#E6F5EF':'#FDF0EE'};border-radius:10px;padding:10px 18px"><div style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:${rateColor}">Compliance Rate</div><div style="font-size:38px;font-weight:900;color:${rateColor};line-height:1">${rate}%</div><div style="font-size:9px;color:${rateColor};margin-top:2px">${comp} of ${total}</div></div></div>
+<div class="kpi4" style="margin-bottom:14px"><div class="kpi" style="background:#EEF1F8"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px">Active</div><div style="font-size:26px;font-weight:800;color:#1E2E3D">${total}</div></div><div class="kpi" style="background:#E6F5EF"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#15803D;margin-bottom:5px">Compliant</div><div style="font-size:26px;font-weight:800;color:#16A34A">${comp}</div></div><div class="kpi" style="background:${nc>0?'#FDF0EE':'#E6F5EF'}"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${nc>0?'#B91C1C':'#15803D'};margin-bottom:5px">Non-Compliant</div><div style="font-size:26px;font-weight:800;color:${nc>0?'#DC2626':'#16A34A'}">${nc}</div></div><div class="kpi" style="background:#EEF1F8"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px">Snapshot Month</div><div style="font-size:16px;font-weight:800;color:#1E2E3D;padding-top:6px">${month}</div></div></div>
+${expiringRows.length?`<div style="display:flex;align-items:center;gap:8px;margin:18px 0 10px"><div style="width:4px;height:16px;background:#D97706;border-radius:2px;flex-shrink:0"></div><div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1E2E3D">Expiring Coverage \u2014 Next 30 Days</div><div style="flex:1;height:1px;background:#E8ECF5"></div></div><table><thead><tr><th>Insured Name</th><th>Next Expiration</th><th>Days Until</th><th>Status</th></tr></thead><tbody>${expiringRows.map((r,i)=>`<tr style="background:${i%2===0?'#FAFBFC':'white'}"><td>${esc(r.name)}</td><td>${r.date}</td><td style="font-weight:700;color:${r.days<=7?'#DC2626':r.days<=14?'#D97706':'#3872B8'}">${r.days}d</td><td><span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:12px;background:${r.status==='Compliant'?'#E6F5EF':'#FDF0EE'};color:${r.status==='Compliant'?'#16A34A':'#DC2626'}">${r.status}</span></td></tr>`).join('')}</tbody></table>`:
+`<div style="text-align:center;padding:20px;color:#8A94A8;font-size:12px;border:1px solid #E8ECF5;border-radius:8px">\u2713 No coverage expiring in the next 30 days</div>`}
+<div class="footer"><div>&#x1F512; Confidential \u2014 HUB CertSecure \u00b7 ${esc(selectedClient.name)} \u00b7 Producer Overview for ${esc(producer)}</div><div>${stamp}</div></div></body></html>`;
+}
+
+function buildThankYouCardHTML(insureds,meta,contactName,producer){
+  const active=insureds.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');
+  const total=active.length,comp=active.filter(r=>normStatus(r[C.status])==='compliant').length,rate=total?Math.round(comp/total*100):0;
+  const logoSrc=document.querySelector('.header-logo')?.src?.startsWith('data:')?document.querySelector('.header-logo').src:null;
+  const logoTag=logoSrc?`<img src="${logoSrc}" style="height:28px;object-fit:contain">`:`<div style="font-family:Arial,sans-serif;font-size:14px;font-weight:700;color:white">CERT<span style="background:rgba(255,255,255,0.25);padding:1px 5px;border-radius:3px">SECURE</span></div>`;
+  const goLive=meta.go_live_date?new Date(meta.go_live_date).toLocaleDateString('en-US',{month:'long',year:'numeric'}):'',year=new Date().getFullYear();
+  const rateColor=rate>=80?'#16A34A':rate>=60?'#D97706':'#DC2626';
+  const msg=rate>=80?'Thank you for your commitment to a fully compliant insurance program \u2014 your diligence protects everyone involved.':rate>=60?'Thank you for your continued partnership. Together we\u2019re making meaningful progress toward a fully compliant program.':'Thank you for your trust. Our team is working alongside you to move toward a fully compliant program \u2014 we appreciate your partnership.';
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Thank You Card</title><style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:#F4F7FB;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.card{background:white;border-radius:16px;width:700px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.15)}.card-top{background:linear-gradient(135deg,#1E2E3D 0%,#2B3A52 60%,#3872B8 100%);padding:28px 32px 22px;color:white}.card-body{padding:28px 32px 24px}.stat-row{display:flex;gap:14px;margin-top:18px}.stat{background:#F8FAFC;border:1px solid #E8ECF5;border-radius:10px;padding:12px 16px;flex:1;text-align:center}@media print{body{min-height:unset;background:white}@page{size:letter landscape;margin:8mm}}</style></head><body>
+<div class="card"><div class="card-top"><div style="display:flex;justify-content:space-between;align-items:center">${logoTag}<div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.6)">Client Recognition ${year}</div></div><div style="margin-top:18px"><div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:5px">For the team at</div><div style="font-size:26px;font-weight:900;color:white;line-height:1.1">${esc(selectedClient.name)}</div>${contactName?`<div style="font-size:14px;color:rgba(255,255,255,0.75);margin-top:5px">Attention: ${esc(contactName)}</div>`:''}</div></div>
+<div class="card-body"><div style="font-size:24px;font-weight:800;color:#1E2E3D;line-height:1.2;margin-bottom:12px">Thank you for being a valued CertSecure partner.</div><div style="font-size:13px;color:#5A6B7B;line-height:1.6;margin-bottom:18px">${msg}</div><div class="stat-row"><div class="stat"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px">Active Entities</div><div style="font-size:30px;font-weight:900;color:#1E2E3D">${total}</div></div><div class="stat"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#15803D;margin-bottom:5px">Compliant</div><div style="font-size:30px;font-weight:900;color:#16A34A">${comp}</div></div><div class="stat"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${rateColor};margin-bottom:5px">Compliance Rate</div><div style="font-size:30px;font-weight:900;color:${rateColor}">${rate}%</div></div>${goLive?`<div class="stat"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px">Program Since</div><div style="font-size:16px;font-weight:800;color:#1E2E3D;margin-top:7px">${goLive}</div></div>`:''}</div>${producer?`<div style="margin-top:22px;padding-top:16px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;align-items:center"><div style="font-size:11px;color:#8A94A8">Your CertSecure Specialist</div><div style="font-size:13px;font-weight:700;color:#1E2E3D">${esc(producer)}</div></div>`:''}</div></div></body></html>`;
+}
+</script>
+<script>
+function normStatus(s){const v=(s||'').toLowerCase().replace(/[\s\-]/g,'_');if(v==='compliant'||v==='active')return'compliant';if(v==='non_compliant'||v==='noncompliant'||v==='out_of_compliance')return'non_compliant';return'pending';}
+function fmtStatus(s){const n=normStatus(s);if(n==='compliant')return'Compliant';if(n==='non_compliant')return'Non-Compliant';return'New / Pending';}
+function fmtVerif(s){const v=(s||'').toLowerCase().replace(/[\s\-]/g,'_');if(v==='verified')return'Verified';if(v==='unverified')return'Unverified';if(v==='pending')return'Pending';return s||'Unverified';}
+function fmtCoverage(s){if(!s)return'';const map={GL:'General Liability',CGL:'General Liability',AL:'Auto Liability',BAL:'Business Auto',WC:"Workers' Compensation",UL:'Umbrella Liability',XS:'Excess Liability',XL:'Excess Liability',PROF:'Professional Liability',EO:'Errors & Omissions',CYBL:'Cyber Liability',CYBER:'Cyber Liability',POLL:'Pollution Liability',EPLI:'Employment Practices Liability',PROP:'Commercial Property',BLDG:'Building / Property',BOP:'Business Owners Policy',IM:'Inland Marine',DIRS:"Directors' & Officers'"};const upper=s.toUpperCase().replace(/[\s_\-]+/g,'');if(map[upper])return map[upper];return s.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());}
+function fmtDate(s){if(!s||s==='nan'||s==='N/A')return'\u2014';try{const d=new Date(s);if(isNaN(d.getTime()))return s;return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}catch(e){return s;}}
+function fmtNotifList(s){if(!s||s==='nan')return'';return s.split(',').map(e=>e.trim()).filter(e=>e&&e.includes('@')).join(', ');}
+function daysUntilDate(s){if(!s||s==='nan'||s==='N/A')return null;try{const d=new Date(s),now=new Date();now.setHours(0,0,0,0);if(isNaN(d.getTime()))return null;return Math.round((d-now)/86400000);}catch(e){return null;}}
+function pct(n,d){if(!d)return'\u2014';return Math.round(n/d*100)+'%';}
+function barPct(n,max){return max?Math.round(n/max*100):0;}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function chk(id){const el=document.getElementById(id);return el?el.checked:false;}
+function toast(msg,type=''){const el=document.getElementById('toast');if(!el)return;el.textContent=msg;el.className='toast'+(type?' '+type:'');el.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>el.classList.remove('show'),3200);}
+</script>
+<script>
+// ════════════════════════════════════════════
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.20
+// ════════════════════════════════════════════
+let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
+let _mondayColumns={}, _mondayReportLog=[];
+
+// ── Column map (matches workspace design) ──
+const MONDAY_COL_MAP = {
+  status:       ['Status'],
+  platform:     ['Platform'],
+  structure:    ['Structure'],
+  golive:       ['Go-Live Date'],
+  licenses:     ['Est. Licenses'],
+  producer:     ['Producer'],
+  renewalStatus:['INV: Renewal Status'],
+  renewalDate:  ['INV: Renewal Date'],
+  currentFee:   ['INV: Current Fee'],
+  nextFee:      ['INV: Next Year Fee'],
+  billMode:     ['INV: Bill Mode'],
+  rptCS:        ['RPT: Compliance Summary'],
+  rptCD:        ['RPT: Compliance Detail'],
+  rptES:        ['RPT: Engagement Summary'],
+  rptED:        ['RPT: Engagement Detail'],
+  rptYER:       ['RPT: Year End Review'],
+  rptPRO:       ['RPT: Producer Overview'],
+};
+
+function mondayColId(key) {
+  for (const name of (MONDAY_COL_MAP[key]||[])) { if (_mondayColumns[name]) return _mondayColumns[name]; }
+  return null;
+}
+
+async function mondayGQL(query, variables={}) {
+  const token = _mondayToken || localStorage.getItem('cs-monday-token') || '';
+  if (!token) throw new Error('No Monday API token. Go to Settings → Monday tab.');
+  let res;
+  try {
+    res = await fetch('https://api.monday.com/v2', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': token, 'API-Version': '2023-10' },
+      body: JSON.stringify({ query, variables })
+    });
+  } catch(netErr) {
+    throw new Error('Network error — check your internet connection and try again.');
+  }
+  if (res.status === 401) throw new Error('Unauthorized — check your Monday API token in Settings.');
+  if (!res.ok) throw new Error('Monday API returned HTTP ' + res.status + '. Check your token.');
+  const data = await res.json();
+  if (data.errors?.length) throw new Error(data.errors[0].message || 'Monday API error');
+  if (data.error_message)  throw new Error(data.error_message);
+  return data.data;
+}
+
+
+async function mondayFindBoards() {
+  const data = await mondayGQL('query($wid:[ID]){boards(workspace_ids:$wid,limit:50){id name}}', { wid:[_mondayWsId] });
+  const boards = data.boards || [];
+  const ob = boards.find(b=>b.name?.toLowerCase().includes('overview')&&b.name?.toLowerCase().includes('client'))
+          || boards.find(b=>b.name?.toLowerCase().includes('overview'));
+  if (ob) { _mondayBoardId = parseInt(ob.id); await mondayLoadColumns(); }
+  settingsMondayShowBoardInfo();
+}
+
+async function mondayLoadColumns() {
+  if (!_mondayBoardId) return;
+  const data = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){columns{id title type}}}', { bid:[_mondayBoardId] });
+  _mondayColumns = {};
+  (data.boards?.[0]?.columns||[]).forEach(col => { _mondayColumns[col.title] = col.id; });
+}
+
+// ── SETTINGS: Monday tab ──
+function settingsMondayTabActivated() {
+  const saved = localStorage.getItem('cs-monday-token');
+  if (saved) { const el = document.getElementById('s-monday-token'); if (el && !el.value) el.value = saved; }
+  if (_mondayWsId) {
+    document.getElementById('s-monday-dot').className = 'monday-status-dot connected';
+    document.getElementById('s-monday-status-text').textContent = 'Connected \u2014 ' + _mondayWsName;
+    document.getElementById('s-monday-connect-btn').textContent = '\u2713 Connected';
+    document.getElementById('s-monday-connect-btn').style.background = 'var(--green)';
+    settingsMondayShowBoardInfo();
+  }
+}
+
+async function settingsMondayConnect() {
+  const tokenInput = document.getElementById('s-monday-token');
+  const token = tokenInput?.value?.trim();
+  if (!token) { toast('Enter your Monday API token first', 'error'); return; }
+  _mondayToken = token;
+  const btn = document.getElementById('s-monday-connect-btn');
+  const dot = document.getElementById('s-monday-dot');
+  const txt = document.getElementById('s-monday-status-text');
+  btn.disabled = true; btn.textContent = 'Connecting…';
+  dot.className = 'monday-status-dot loading';
+  txt.textContent = 'Connecting…';
+  try {
+    // Verify token with a lightweight me query first
+    const meData = await mondayGQL('query { me { name } workspaces { id name } }');
+    const workspaces = meData.workspaces || [];
+    if (!workspaces.length) throw new Error('Token is valid but no workspaces were found. Check your Monday account permissions.');
+    const ws = workspaces.find(w => w.name?.toLowerCase().includes('hub')) || workspaces[0];
+    _mondayWsId   = parseInt(ws.id);
+    _mondayWsName = ws.name;
+    // Save token only after confirmed working
+    localStorage.setItem('cs-monday-token', token);
+    dot.className    = 'monday-status-dot connected';
+    txt.textContent  = 'Connected — ' + _mondayWsName + (meData.me?.name ? ' (as ' + meData.me.name + ')' : '');
+    btn.textContent  = '✓ Connected';
+    btn.style.background = 'var(--green)';
+    btn.disabled = false;
+    await mondayFindBoards();
+    mondayUpdateConnectionBanner();
+    const rgBtn = document.getElementById('rg-monday-btn'); if (rgBtn) rgBtn.style.display = '';
+    toast('✓ Connected to ' + _mondayWsName, 'success');
+  } catch(e) {
+    _mondayToken = '';
+    dot.className    = 'monday-status-dot error';
+    txt.textContent  = '❌ ' + e.message;
+    btn.textContent  = 'Try Again';
+    btn.disabled     = false;
+    btn.style.background = '';
+    toast('Connection failed: ' + e.message, 'error');
+  }
+}
+
+
+function settingsMondayShowBoardInfo() {
+  const wrap = document.getElementById('s-monday-board-info');
+  const list = document.getElementById('s-monday-boards-list');
+  if (!wrap||!list) return;
+  wrap.style.display = '';
+  if (_mondayBoardId) {
+    const mapped = Object.keys(MONDAY_COL_MAP).filter(k=>mondayColId(k)).length;
+    list.innerHTML = `<div style="padding:12px 14px;background:var(--green-bg);border:1px solid #bbf7d0;border-radius:8px;font-size:13px;color:#166534">\u2713 <strong>Clients \u2013 Overview</strong> found \u00b7 ${Object.keys(_mondayColumns).length} columns \u00b7 ${mapped} design fields matched</div>`;
+  } else {
+    list.innerHTML = `<div style="padding:12px 14px;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;font-size:13px;color:#9a3412">\u26a0 No "Clients \u2013 Overview" board found. Board structure may not be built yet.</div>`;
+  }
+}
+
+function mondayUpdateConnectionBanner() {
+  const dot  = document.getElementById('monday-tab-dot');
+  const text = document.getElementById('monday-tab-status');
+  const noConn = document.getElementById('ws-no-conn');
+  if (!dot||!text) return;
+  if (_mondayWsId) {
+    dot.className  = 'monday-status-dot connected';
+    text.textContent = 'Connected \u2014 ' + _mondayWsName + (_mondayBoardId ? ' \u00b7 Overview board found' : ' \u00b7 Run build to create boards');
+    if (noConn) noConn.style.display = 'none';
+  } else {
+    dot.className  = 'monday-status-dot';
+    text.textContent = 'Not connected to Monday';
+  }
+}
+
+// ── MONDAY TAB ACTIVATION ──
+function mondayTabActivated() {
+  const saved = localStorage.getItem('cs-monday-token');
+  if (saved && !_mondayToken) _mondayToken = saved;
+  mondayUpdateConnectionBanner();
+  const rgBtn = document.getElementById('rg-monday-btn');
+  if (rgBtn) rgBtn.style.display = _mondayWsId ? '' : 'none';
+}
+
+// ── SUB-TAB NAVIGATION ──
+function switchMondayTab(tab) {
+  ['setup','activity'].forEach(t => {
+    const el  = document.getElementById('mtab-' + t);
+    const btn = document.getElementById('mtab-btn-' + t);
+    if (el)  el.style.display  = t===tab ? '' : 'none';
+    if (btn) btn.classList.toggle('active', t===tab);
+  });
+  if (tab === 'activity') mondayRenderActivityLog();
+}
+
+// ── ACTIVITY LOG ──
+function mondayRenderActivityLog() {
+  const wrap = document.getElementById('monday-activity-combined'); if (!wrap) return;
+  const all = [...(_mondayReportLog||[]).map(r=>({...r,_src:'report'}))];
+  all.sort((a,b)=>(b._ts||0)-(a._ts||0));
+  if (!all.length) { wrap.innerHTML='<div style="font-size:13px;color:var(--muted);text-align:center;padding:24px">No activity this session.</div>'; return; }
+  wrap.innerHTML = all.map(r=>`
+    <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border)">
+      <div style="font-weight:600;color:var(--navy);flex:1;font-size:13px">${esc(r.client||r.name||'')}</div>
+      <div style="font-size:12px;color:var(--muted)">${r.date||''}</div>
+      <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--green-bg);color:var(--green)">Report${r.rate&&r.rate!=='\u2014'?' \u00b7 '+r.rate+'%':''}</span>
+    </div>`).join('');
+}
+
+function mondayClearAllLogs() { _mondayReportLog=[]; mondayRenderActivityLog(); mondayUpdateReportLog(); }
+
+function mondayUpdateReportLog() {
+  const wrap = document.getElementById('monday-last-synced-list'); if (!wrap) return;
+  if (!_mondayReportLog.length) { wrap.innerHTML='<div style="font-size:12px;color:var(--muted);text-align:center;padding:16px">No syncs this session.</div>'; return; }
+  wrap.innerHTML = _mondayReportLog.map(r=>`
+    <div style="display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--border);font-size:12px">
+      <div style="font-weight:600;color:var(--navy);flex:1">${esc(r.client||'')}</div>
+      <div style="color:var(--muted)">${r.date||''}</div>
+      <div style="font-weight:700;padding:2px 9px;border-radius:12px;background:${r.rate==='\u2014'?'var(--bg)':r.rate>=80?'var(--green-bg)':'var(--red-bg)'};color:${r.rate==='\u2014'?'var(--muted)':r.rate>=80?'var(--green)':'var(--red)'}">${r.rate==='\u2014'?'\u2014':r.rate+'%'}</div>
+    </div>`).join('');
+}
+
+async function mondayOnReportsGenerated() {
+  if (!selectedClient) return;
+  const stamp = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  _mondayReportLog.unshift({client:selectedClient.name,date:stamp,rate:'\u2014',_ts:Date.now()});
+  mondayUpdateReportLog();
+  // Auto-push stats if connected
+  if (_mondayWsId && _mondayBoardId) {
+    try {
+      const clientData = await loadClientData(selectedClient.key);
+      const active = clientData.insureds.filter(r=>r.active!=='false'&&r.paused!=='true');
+      const total = active.length;
+      const comp  = active.filter(r=>normStatus(r.compliance_status)==='compliant').length;
+      const rate  = total ? Math.round(comp/total*100) : 0;
+      _mondayReportLog[0].rate = rate; _mondayReportLog[0].total = total;
+      mondayUpdateReportLog();
+      const licId = mondayColId('licenses');
+      if (licId && total) {
+        await mondayGQL('mutation($bid:ID!,$iid:ID!,$cv:JSON!){change_multiple_column_values(board_id:$bid,item_id:$iid,column_values:$cv){id}}',
+          { bid:_mondayBoardId, iid:0, cv:JSON.stringify({[licId]:total}) });
+      }
+    } catch(e) { console.warn('Auto-sync skipped:', e.message); }
+  }
+}
+
+function mondayPopulateClients() { /* no-op: kept for compatibility */ }
+
+// ── SYNC TO MONDAY FROM REPORT GENERATOR ──
+async function reportGeneratorSyncMonday() {
+  if (!_mondayWsId) { toast('Connect to Monday in Settings \u2192 Monday tab first','error'); return; }
+  if (!selectedClient) { toast('Select a client first','error'); return; }
+  if (!_mondayBoardId) { toast('Clients \u2013 Overview board not found. Run workspace build first.','error'); return; }
+  const btn = document.getElementById('rg-monday-btn');
+  btn.disabled=true; btn.textContent='Syncing\u2026';
+  try {
+    const data = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){items_page(limit:200){items{id name}}}}',{bid:[_mondayBoardId]});
+    const match = (data.boards?.[0]?.items_page?.items||[]).find(i=>i.name?.toLowerCase().trim()===selectedClient.key.toLowerCase().trim());
+    if (!match) throw new Error(`"${selectedClient.name}" not found in Clients \u2013 Overview`);
+    const clientData = await loadClientData(selectedClient.key);
+    const active = clientData.insureds.filter(r=>r.active!=='false'&&r.paused!=='true');
+    const total=active.length, comp=active.filter(r=>normStatus(r.compliance_status)==='compliant').length;
+    const rate=total?Math.round(comp/total*100):0;
+    const vals={}, licId=mondayColId('licenses'); if(licId&&total) vals[licId]=total;
+    if (Object.keys(vals).length) {
+      await mondayGQL('mutation($bid:ID!,$iid:ID!,$cv:JSON!){change_multiple_column_values(board_id:$bid,item_id:$iid,column_values:$cv){id}}',
+        {bid:_mondayBoardId,iid:parseInt(match.id),cv:JSON.stringify(vals)});
+    }
+    toast(`\u2713 ${selectedClient.name} \u2014 ${rate}% synced to Monday`,'success');
+    const stamp=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    _mondayReportLog.unshift({client:selectedClient.name,date:stamp,rate,_ts:Date.now()});
+  } catch(e) { toast('Sync failed: '+e.message,'error'); }
+  btn.disabled=false; btn.textContent='\u8679 Monday';
+}
+
+// ── WORKSPACE BUILDER ──
+const WS_FOLDERS = [
+  { key:'clients',       name:'Clients' },
+  { key:'bizdev',        name:'Business Development' },
+  { key:'installations', name:'Installations' },
+  { key:'partnerships',  name:'Partnerships' },
 ];
 
-const BASE_URL      = "https://verify.api.evidentid.com/api/v1";
-const DATA_DIR      = path.join(__dirname, "..", "data");
-const CLIENT_THREADS = 8;   // clients processed in parallel
-const CONCURRENCY    = 20;  // concurrent per-insured requests per client
+const WS_BOARDS = [
+  {
+    key:'prospects', name:'Prospects', folder:'bizdev', kind:'public',
+    groups:[{name:'Active',color:'bright-blue'},{name:'Inactive',color:'trolley-grey'},{name:'Closed Won',color:'done-green'},{name:'Closed Lost',color:'dark-red'}],
+    columns:[
+      {t:'Status',type:'color'},{t:'Stage',type:'dropdown'},{t:'Referring HUB',type:'text'},
+      {t:'Referring Producer',type:'email'},{t:'Decision Maker',type:'email'},{t:'Day-to-Day 1',type:'email'},
+      {t:'Day-to-Day 2',type:'email'},{t:'Initial Meeting Date',type:'date'},{t:'Proposal Deadline',type:'date'},
+      {t:'Proposal Expiration',type:'date'},{t:'Targeted Go-Live',type:'date'},{t:'Est. Licenses',type:'numbers'},
+      {t:'Est. Complexity',type:'dropdown'},{t:'Target Fee',type:'numbers'},{t:'Proposed Fee',type:'numbers'},
+      {t:'Connect: Clients \u2013 Overview',type:'board_relation'},
+    ]
+  },
+  {
+    key:'overview', name:'Clients \u2013 Overview', folder:'clients', kind:'public',
+    groups:[{name:'Onboarding',color:'dark-orange'},{name:'Active',color:'bright-blue'},{name:'Offboarding',color:'purple'},{name:'Inactive',color:'trolley-grey'}],
+    columns:[
+      {t:'Status',type:'color'},{t:'Platform',type:'dropdown'},{t:'Structure',type:'dropdown'},
+      {t:'EPIC ID',type:'text'},{t:'Referring HUB',type:'text'},{t:'Producer',type:'email'},
+      {t:'Decision Maker',type:'email'},{t:'Day-to-Day 1',type:'email'},{t:'Day-to-Day 2',type:'email'},
+      {t:'Service Start Date',type:'date'},{t:'Go-Live Date',type:'date'},{t:'Est. Licenses',type:'numbers'},
+      {t:'Est. Complexity',type:'dropdown'},{t:'iVaaS',type:'link'},{t:'Generate Reports',type:'button'},
+      {t:'Files',type:'file'},{t:'INV: Renewal Date',type:'date'},{t:'INV: Renewal Status',type:'color'},
+      {t:'INV: Est. Cost',type:'numbers'},{t:'INV: Current Fee',type:'numbers'},{t:'INV: Next Year Fee',type:'numbers'},
+      {t:'INV: Bill Mode',type:'text'},{t:'INV: Bill Schedule',type:'text'},{t:'INV: Producer Split',type:'text'},
+      {t:'RPT: Compliance Summary',type:'link'},{t:'RPT: Compliance Detail',type:'link'},
+      {t:'RPT: Engagement Summary',type:'link'},{t:'RPT: Engagement Detail',type:'link'},
+      {t:'RPT: Year End Review',type:'link'},{t:'RPT: Producer Overview',type:'link'},
+      {t:'RPT: Thank You Card',type:'link'},{t:'Connect: Prospects',type:'board_relation'},
+      {t:'Connect: Onboarding',type:'board_relation'},
+    ]
+  },
+  {
+    key:'evident_ob', name:'Evident \u2013 Onboarding', folder:'installations', kind:'public',
+    groups:[{name:'Active Installations',color:'bright-blue'},{name:'Complete',color:'done-green'},{name:'On Hold',color:'saladish'}],
+    columns:[{t:'Person',type:'multiple-person'},{t:'Go-Live Date',type:'date'},{t:'Deadline',type:'date'},{t:'Overall Status',type:'color'},{t:'Connect: Clients \u2013 Overview',type:'board_relation'}]
+  },
+  {
+    key:'tl_ob', name:'TrustLayer \u2013 Onboarding', folder:'installations', kind:'public',
+    groups:[{name:'Active Installations',color:'bright-blue'},{name:'Complete',color:'done-green'},{name:'On Hold',color:'saladish'}],
+    columns:[{t:'Person',type:'multiple-person'},{t:'Go-Live Date',type:'date'},{t:'Deadline',type:'date'},{t:'Overall Status',type:'color'},{t:'Connect: Clients \u2013 Overview',type:'board_relation'}]
+  },
+  {
+    key:'evident_part', name:'Evident Partnership', folder:'partnerships', kind:'public',
+    groups:[{name:'Platform Issues',color:'dark-red'},{name:'Feature Requests',color:'bright-blue'},{name:'Resolved',color:'done-green'}],
+    columns:[{t:'Category',type:'dropdown'},{t:'Rank',type:'dropdown'},{t:'Status',type:'color'},{t:'Date Reported',type:'date'},{t:'Est. Date',type:'date'},{t:'Ticket Number',type:'text'},{t:'Date Resolved',type:'date'},{t:'Description',type:'long-text'},{t:'Connect: Clients \u2013 Overview',type:'board_relation'},{t:'Files',type:'file'}]
+  },
+  {
+    key:'tl_part', name:'TrustLayer Partnership', folder:'partnerships', kind:'public',
+    groups:[{name:'Platform Issues',color:'dark-red'},{name:'Feature Requests',color:'bright-blue'},{name:'Resolved',color:'done-green'}],
+    columns:[{t:'Category',type:'dropdown'},{t:'Rank',type:'dropdown'},{t:'Status',type:'color'},{t:'Date Reported',type:'date'},{t:'Est. Date',type:'date'},{t:'Ticket Number',type:'text'},{t:'Date Resolved',type:'date'},{t:'Description',type:'long-text'},{t:'Connect: Clients \u2013 Overview',type:'board_relation'},{t:'Files',type:'file'}]
+  },
+];
 
-let detailDebugDone = false; // only fetch individual insured detail once per run
+let _wsTotal=0, _wsDone=0, _wsStats={boards:0,groups:0,columns:0,folders:0};
 
-// ------------------------------------------------------------
-// TIMESTAMP — Central Time with date AND time
-// ------------------------------------------------------------
-function getSyncTimestamp() {
-  return new Date().toLocaleString("en-US", {
-    timeZone:  "America/Chicago",
-    year:      "numeric",
-    month:     "2-digit",
-    day:       "2-digit",
-    hour:      "2-digit",
-    minute:    "2-digit",
-    second:    "2-digit",
-    hour12:    false,
-  }).replace(",", ""); // e.g. "04/22/2026 11:55:30"
+function wsLog(type, msg, dim='') {
+  const log = document.getElementById('ws-log'); if (!log) return;
+  const ts  = new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+  const colors = {ok:'#22c55e',err:'#f87171',info:'#60a5fa',wait:'#fbbf24'};
+  const icons  = {ok:'\u2713',err:'\u2717',info:'\u2139',wait:'\u2026'};
+  const el = document.createElement('div');
+  el.style.cssText='padding:3px 0;display:flex;gap:10px;line-height:1.5';
+  el.innerHTML=`<span style="color:#4a6070;flex-shrink:0">${ts}</span><span style="color:${colors[type]||'#cbd5e1'};flex-shrink:0">${icons[type]||type}</span><span style="color:#cbd5e1">${msg} <span style="color:#4a6070">${dim}</span></span>`;
+  log.appendChild(el);
+  log.scrollTop=log.scrollHeight;
 }
 
-// Also write a sync_date (date only) for backward compat with Power BI
-function getSyncDate() {
-  return new Date().toLocaleString("en-US", {
-    timeZone: "America/Chicago",
-    year:     "numeric",
-    month:    "2-digit",
-    day:      "2-digit",
-  }); // e.g. "04/22/2026"
+function wsUpdateProgress() {
+  const pct = _wsTotal>0 ? Math.round((_wsDone/_wsTotal)*100) : 0;
+  const bar = document.getElementById('ws-bar'); if (bar) bar.style.width=pct+'%';
+  const pctEl = document.getElementById('ws-pct'); if (pctEl) pctEl.textContent=pct+'%';
+  const sub = document.getElementById('ws-subtitle');
+  ['boards','groups','columns','folders'].forEach(k=>{const el=document.getElementById('ws-s-'+k);if(el)el.textContent=_wsStats[k];});
 }
 
-// ------------------------------------------------------------
-// HTTP HELPER — handles gzip automatically
-// ------------------------------------------------------------
-function apiGet(rpCommonName, apiKey, endpoint, params = {}) {
-  return new Promise((resolve, reject) => {
-    const credentials = Buffer.from(`${rpCommonName}:${apiKey}`).toString("base64");
-    const qs = Object.keys(params).length
-      ? "?" + Object.entries(params).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join("&")
-      : "";
-    const url = `${BASE_URL}${endpoint}${qs}`;
-
-    https.get(url, {
-      headers: {
-        Authorization:     `Basic ${credentials}`,
-        "Content-Type":    "application/json",
-        "Accept-Encoding": "gzip, deflate",
-      },
-    }, (res) => {
-      const enc = res.headers["content-encoding"] || "";
-      let stream = res;
-      if (enc.includes("gzip"))    stream = res.pipe(zlib.createGunzip());
-      if (enc.includes("deflate")) stream = res.pipe(zlib.createInflate());
-
-      let data = "";
-      stream.on("data", c => (data += c));
-      stream.on("end", () => {
-        if (res.statusCode === 404) { resolve(null); return; }
-        if (res.statusCode >= 200 && res.statusCode < 300) {
-          try { resolve(JSON.parse(data)); }
-          catch (e) { reject(new Error(`JSON parse error on ${endpoint}: ${e.message}`)); }
-        } else {
-          reject(new Error(`HTTP ${res.statusCode} on ${endpoint}: ${data.slice(0, 200)}`));
-        }
-      });
-      stream.on("error", reject);
-    }).on("error", reject);
-  });
-}
-
-// ------------------------------------------------------------
-// PAGINATION HELPER
-// ------------------------------------------------------------
-async function fetchAllInsureds(rpCommonName, apiKey) {
-  const insureds = [];
-  const limit = 100;
-  let skip = 0;
-  while (true) {
-    const res = await apiGet(rpCommonName, apiKey, "/insurance/insureds", { limit, skip });
-    if (!res) break;
-    const records = res.records || [];
-    insureds.push(...records);
-    const total = res.navigation?.total ?? records.length;
-    if (insureds.length >= total || records.length === 0) break;
-    skip += limit;
-    // no delay needed — Evident API handles concurrent pagination fine
-  }
-  return insureds;
-}
-
-// ------------------------------------------------------------
-// CONCURRENCY POOL
-// ------------------------------------------------------------
-async function pooled(items, limit, fn) {
-  const results = [];
-  let i = 0;
-  async function worker() {
-    while (i < items.length) {
-      const idx = i++;
-      results[idx] = await fn(items[idx], idx);
-    }
-  }
-  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
-  return results;
-}
-
-// ------------------------------------------------------------
-// CSV HELPERS
-// ------------------------------------------------------------
-function csvEscape(v) {
-  if (v === null || v === undefined) return "";
-  const s = String(v);
-  return (s.includes(",") || s.includes('"') || s.includes("\n"))
-    ? `"${s.replace(/"/g, '""')}"` : s;
-}
-
-function toCsv(rows) {
-  if (!rows || rows.length === 0) return "";
-  const headers = Object.keys(rows[0]);
-  return [
-    headers.join(","),
-    ...rows.map(r => headers.map(h => csvEscape(r[h])).join(","))
-  ].join("\n");
-}
-
-// ------------------------------------------------------------
-// PROCESS ONE CLIENT
-// ------------------------------------------------------------
-async function processClient(client) {
-  const { name, rpCommonName, apiKey } = client;
-  const insuredRows      = [];
-  const coverageRows     = [];
-  const customFieldRows  = [];
-  const customPropRows   = [];
-  const criteriaRows     = [];
-  const errorLog         = [];
-
-  const syncTimestamp = getSyncTimestamp();
-  const syncDate      = getSyncDate();
-
-  console.log(`\n📋 Starting: ${name}`);
-
-  // 1. Field definitions for entity-level custom properties
-  //    e.g. Contract Number, Notification List, Email, Entity Type, etc.
-  let fieldDefs = {}; // fieldId -> fieldName
-  try {
-    const defs = await apiGet(rpCommonName, apiKey, "/insurance/config/insureds/fields");
-    // fieldDefs: UUID -> {id, name, key}
-    // fieldDefsList: ordered array for positional insuredFields mapping
-    if (Array.isArray(defs)) {
-      for (const f of defs) {
-        if (f.id) fieldDefs[f.id] = { id: f.id, name: f.name || f.id, key: f.key || f.id };
-      }
-    }
-    const fieldDefsList = Array.isArray(defs) ? defs : [];
-    console.log(`   Field defs: ${fieldDefsList.length}`);
-  } catch (err) {
-    errorLog.push({ client: name, stage: "field_defs", error: err.message });
-  }
-
-  // 2. Fetch all insureds
-  let insureds = [];
-  try {
-    insureds = await fetchAllInsureds(rpCommonName, apiKey);
-    console.log(`   Insureds: ${insureds.length}`);
-
-  } catch (err) {
-    errorLog.push({ client: name, stage: "insureds", error: err.message });
-    return { insuredRows, coverageRows, customFieldRows, customPropRows, criteriaRows, errorLog };
-  }
-
-  // 3. Program summary
-  let summary = { compliant: 0, nonCompliant: 0, pending: 0, total: insureds.length };
-  try {
-    const s = await apiGet(rpCommonName, apiKey, "/insurance/summary");
-    if (s) {
-      summary.compliant    = s.compliantCount    ?? s.compliant    ?? s.statistics?.compliantCount    ?? 0;
-      summary.nonCompliant = s.nonCompliantCount ?? s.nonCompliant ?? s.statistics?.nonCompliantCount ?? 0;
-      summary.pending      = s.pendingCount      ?? s.pending      ?? s.statistics?.pendingCount      ?? 0;
-    }
-  } catch (err) {
-    // Fall back to counting from insured records
-    for (const ins of insureds) {
-      const st = (ins.complianceStatus || ins.status || "").toUpperCase();
-      if (st === "COMPLIANT")     summary.compliant++;
-      else if (st === "PENDING")  summary.pending++;
-      else                        summary.nonCompliant++;
-    }
-  }
-
-  // 4. Per-insured: coverages, custom fields (coverage-level), custom properties (entity-level), criteria
-  await pooled(insureds, CONCURRENCY, async (insured) => {
-    const insuredId          = insured.id || "";
-    const insuredName        = insured.displayName || insured.name || insured.companyName || "";
-    const contactEmail       = insured.contactEmail || insured.email || "";
-    const contactName        = insured.contactName || "";
-    const complianceStatus   = insured.complianceStatus || insured.status || "";
-    const verificationStatus = insured.verificationStatus || "";
-    const nextExpiration     = insured.nextExpiration || insured.nextExpirationDate || "";
-    const active             = insured.active !== false;
-    const paused             = insured.paused === true;
-    const address            = insured.address || {};
-    const country            = address.country || insured.country || "";
-    const city               = address.city    || insured.city    || "";
-    const state              = address.state   || insured.state   || "";
-
-    insuredRows.push({
-      client:                name,
-      insured_id:            insuredId,
-      insured_name:          insuredName,
-      legal_name:            insured.legalName || "",
-      primary_contact_email: contactEmail,
-      primary_contact_name:  contactName,
-      compliance_status:     complianceStatus,
-      verification_status:   verificationStatus,
-      next_expiration:       nextExpiration,
-      active,
-      paused,
-      country,
-      city,
-      state,
-      sync_date:             syncDate,
-      sync_timestamp:        syncTimestamp,
-    });
-
-    // ── Entity-level Custom Properties ──────────────────────────────
-    // These come from the insured object's properties array.
-    // Structure: [{field: {id, name}, value}]
-    // OR from the RP-scoped insured endpoint if not embedded.
-    let propList = [];
-
-    if (Array.isArray(insured.properties) && insured.properties.length > 0) {
-      propList = insured.properties;
-    } else if (Array.isArray(insured.customProperties) && insured.customProperties.length > 0) {
-      propList = insured.customProperties;
+function wsSetPhase(n) {
+  [1,2,3].forEach(i=>{
+    const ph = document.getElementById('ws-ph-'+i);
+    const pn = document.getElementById('ws-pn-'+i);
+    const pl = document.getElementById('ws-pl-'+i);
+    if (!ph||!pn) return;
+    if (i<n) {
+      ph.style.background='var(--green-bg)'; pn.style.background='var(--green)'; pn.style.color='white';
+      pn.textContent='\u2713'; if(pl){pl.style.color='var(--green)';}
+    } else if (i===n) {
+      ph.style.background='var(--blue-light)'; pn.style.background='var(--blue)'; pn.style.color='white';
+      pn.textContent=String(i); if(pl){pl.style.color='var(--blue)';pl.style.fontWeight='700';}
     } else {
-      // Fallback: RP-scoped endpoint for custom properties
-      try {
-        const rpRes = await apiGet(rpCommonName, apiKey, `/insurance/insureds/${insuredId}`);
-        propList = rpRes?.properties || rpRes?.customProperties || rpRes?.fields || [];
-      } catch (_) { /* endpoint may not exist for all clients */ }
-    }
-
-    for (const prop of propList) {
-      const fieldId   = prop.field?.id   || prop.fieldId   || prop.id   || "";
-      const fieldName = prop.field?.name || prop.fieldName || prop.name ||
-                        fieldDefs[fieldId] || fieldId || "";
-      const rawValue  = prop.value !== undefined ? prop.value : prop.fieldValue;
-      const fieldValue = rawValue === null || rawValue === undefined ? "" :
-                         typeof rawValue === "object" ? JSON.stringify(rawValue) : String(rawValue);
-      if (!fieldName) continue;
-      customPropRows.push({
-        client:         name,
-        insured_id:     insuredId,
-        insured_name:   insuredName,
-        field_id:       fieldId,
-        field_name:     fieldName,
-        field_value:    fieldValue,
-        sync_date:      syncDate,
-        sync_timestamp: syncTimestamp,
-      });
-    }
-
-    // ── Coverage data from /data endpoint ─────────────────────────────
-    // Returns object keyed by coverage type: {COMMERCIAL_GENERAL_LIABILITY: {coverageId, policy, details,...}}
-    try {
-      const dataRes = await apiGet(rpCommonName, apiKey, `/insurance/insureds/${insuredId}/data`);
-      if (dataRes && typeof dataRes === "object" && !Array.isArray(dataRes)) {
-        for (const [covType, covData] of Object.entries(dataRes)) {
-          if (!covData) continue;
-          const policy  = covData.policy  || {};
-          const details = covData.details || {};
-
-          coverageRows.push({
-            client:                name,
-            insured_id:            insuredId,
-            primary_contact_email: contactEmail,
-            insured_name:          insuredName,
-            coverage_type:         covType,
-            coverage_id:           covData.coverageId  || "",
-            policy_number:         policy.policyNumber  || "",
-            insurer:               policy.carrier?.name || "",
-            effective_date:        policy.effectiveDate  || "",
-            expiration_date:       policy.expirationDate || "",
-            per_occurrence:        details.eachOccurrenceLimit || details.perOccurrenceLimit || "",
-            aggregate:             details.generalAggregateLimit || details.aggregateLimit   || "",
-            combined_single_limit: details.combinedSingleLimitEachAccident || "",
-            created_at:            covData.createdAt || "",
-            sync_date:             syncDate,
-            sync_timestamp:        syncTimestamp,
-          });
-
-          customFieldRows.push({
-            client:         name,
-            insured_id:     insuredId,
-            insured_name:   insuredName,
-            field_id:       covType,
-            field_label:    covType,
-            field_value:    JSON.stringify(covData),
-            sync_date:      syncDate,
-            sync_timestamp: syncTimestamp,
-          });
-        }
-      }
-    } catch (err) {
-      errorLog.push({ client: name, stage: "coverage_data", insured: insuredId, error: err.message });
-    }
-
-    // ── Entity custom properties from insuredFields ───────────────────
-    // Positional array — index i maps to fieldDefsList[i]; null = not set
-    const insuredFieldsArr = Array.isArray(insured.insuredFields) ? insured.insuredFields : [];
-    insuredFieldsArr.forEach((fieldVal, i) => {
-      if (fieldVal === null || fieldVal === undefined) return;
-      const fieldDef  = fieldDefsList[i] || {};
-      const fieldName = fieldDef.name || fieldDef.key || `field_${i}`;
-      const fieldKey  = fieldDef.key  || fieldDef.id  || `field_${i}`;
-      const fieldValue = typeof fieldVal === "object" ? JSON.stringify(fieldVal) : String(fieldVal);
-      if (!fieldValue.trim()) return;
-      customPropRows.push({
-        client:         name,
-        insured_id:     insuredId,
-        insured_name:   insuredName,
-        field_key:      fieldKey,
-        field_name:     fieldName,
-        field_value:    fieldValue,
-        sync_date:      syncDate,
-        sync_timestamp: syncTimestamp,
-      });
-    });
-
-    // ── Criteria (non-compliance reasons) ──
-    // Skip /status call entirely for compliant/pending insureds — they have no
-    // non-compliance reasons, so this saves ~33% of all API calls.
-    const skipStatus = ["COMPLIANT", "PENDING", "NEW"].includes(
-      (complianceStatus || "").toUpperCase()
-    );
-    try {
-      const statusRes = skipStatus
-        ? null
-        : await apiGet(rpCommonName, apiKey, `/insurance/insureds/${insuredId}/status`);
-
-      // Build reasons string from top-level nonComplianceReasons object
-      const ncObj = statusRes?.nonComplianceReasons || {};
-      const reasonParts = [];
-      for (const [covType, reasons] of Object.entries(ncObj)) {
-        if (Array.isArray(reasons) && reasons.length > 0) {
-          reasonParts.push(`${covType}: ${reasons.join('; ')}`);
-        }
-      }
-      const reasons = reasonParts.join(' | ');
-
-      // Build decline reasons string
-      const declineObj = statusRes?.declineReasons || {};
-      const declineParts = [];
-      for (const [covType, declines] of Object.entries(declineObj)) {
-        if (Array.isArray(declines) && declines.length > 0) {
-          declineParts.push(`${covType}: ${declines.join('; ')}`);
-        }
-      }
-      const declines = declineParts.join(' | ');
-
-      // One row per insured — no group looping, no duplicates possible
-      // Skip writing a row entirely if statusRes is null (compliant/pending)
-      if (!statusRes) return;
-      criteriaRows.push({
-        client:                  name,
-        insured_id:              insuredId,
-        primary_contact_email:   contactEmail,
-        insured_name:            insuredName,
-        overall_compliance:      statusRes?.complianceStatus || complianceStatus,
-        verification_status:     verificationStatus,
-        group_id:                "",
-        group_name:              "",
-        group_compliance:        "",
-        non_compliance_reasons:  reasons,
-        decline_reasons:         declines,
-        sync_date:               syncDate,
-        sync_timestamp:          syncTimestamp,
-      });
-    } catch (err) {
-      errorLog.push({ client: name, stage: "criteria", insured: insuredId, error: err.message });
+      ph.style.background=''; pn.style.background='var(--border)'; pn.style.color='var(--muted)';
+      pn.textContent=String(i); if(pl){pl.style.color='var(--muted)';}
     }
   });
-
-  console.log(`   ✅ ${name} — ${insuredRows.length} insureds, ${coverageRows.length} coverages, ${customPropRows.length} custom props`);
-
-  return { insuredRows, coverageRows, customFieldRows, customPropRows, criteriaRows, summary, errorLog };
 }
 
-// ------------------------------------------------------------
-// MAIN
-// ------------------------------------------------------------
-async function main() {
-  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
+function wsReset() {
+  _wsTotal=0; _wsDone=0; _wsStats={boards:0,groups:0,columns:0,folders:0};
+  document.getElementById('ws-sec-build').style.display='none';
+  document.getElementById('ws-sec-complete').style.display='none';
+  document.getElementById('ws-sec-review').style.display='';
+  const log=document.getElementById('ws-log');
+  if (log) log.innerHTML='<div style="color:#60a5fa">\u2139 Ready to build HUB CertSecure workspace\u2026</div>';
+  const bar=document.getElementById('ws-bar'); if(bar) bar.style.width='0%';
+  wsSetPhase(1);
+}
 
-  const activeClients = CLIENTS.filter(c => {
-    if (!c.apiKey) { console.warn(`⚠️  Skipping "${c.name}" — no API key`); return false; }
-    return true;
-  });
-
-  console.log(`\n🚀 Processing ${activeClients.length} clients (${CLIENT_THREADS} at a time)\n`);
-
-  const results = await pooled(activeClients, CLIENT_THREADS, processClient);
-
-  const allInsureds    = results.flatMap(r => r?.insuredRows     || []);
-  const allCoverages   = results.flatMap(r => r?.coverageRows    || []);
-  const allCustFields  = results.flatMap(r => r?.customFieldRows || []);
-  const allCustProps   = results.flatMap(r => r?.customPropRows  || []);
-  const allCriteria    = results.flatMap(r => r?.criteriaRows    || []);
-  const allErrors      = results.flatMap(r => r?.errorLog        || []);
-
-  // Build summaries
-  const syncTs   = getSyncTimestamp();
-  const syncDate = getSyncDate();
-  const summaryRows = activeClients.map((c, i) => {
-    const s = results[i]?.summary || {};
-    return {
-      client:           c.name,
-      total_insureds:   s.total       || 0,
-      compliant:        s.compliant   || 0,
-      non_compliant:    s.nonCompliant || 0,
-      pending:          s.pending     || 0,
-      sync_date:        syncDate,
-      sync_timestamp:   syncTs,
-    };
-  });
-
-  console.log("");
-  const fileChanges = [
-    { file: "insureds.csv",          changed: smartWrite(path.join(DATA_DIR, "insureds.csv"),          allInsureds,   "insureds.csv") },
-    { file: "coverages.csv",         changed: smartWrite(path.join(DATA_DIR, "coverages.csv"),         allCoverages,  "coverages.csv") },
-    { file: "custom_fields.csv",     changed: smartWrite(path.join(DATA_DIR, "custom_fields.csv"),     allCustFields, "custom_fields.csv") },
-    { file: "custom_properties.csv", changed: smartWrite(path.join(DATA_DIR, "custom_properties.csv"), allCustProps,  "custom_properties.csv") },
-    { file: "criteria.csv",          changed: smartWrite(path.join(DATA_DIR, "criteria.csv"),          allCriteria,   "criteria.csv") },
-    { file: "summaries.csv",         changed: smartWrite(path.join(DATA_DIR, "summaries.csv"),         summaryRows,   "summaries.csv") },
-  ];
-  writeSyncMetadata(DATA_DIR, fileChanges, syncTs);
-  console.log(`\n🕐 Sync completed: ${syncTs} CT`);
-
-  if (allErrors.length > 0) {
-    const errSummary = {};
-    allErrors.forEach(e => { errSummary[e.stage] = (errSummary[e.stage] || 0) + 1; });
-    console.warn(`\n⚠️  ${allErrors.length} errors: ${JSON.stringify(errSummary)}`);
-    fs.writeFileSync(path.join(DATA_DIR, "sync_errors.log"), JSON.stringify(allErrors, null, 2));
+async function wsStartBuild() {
+  if (!_mondayWsId) {
+    const nc=document.getElementById('ws-no-conn'); if(nc) nc.style.display='';
+    return;
+  }
+  // Switch to build phase
+  document.getElementById('ws-sec-review').style.display='none';
+  document.getElementById('ws-sec-build').style.display='';
+  wsSetPhase(2);
+  // Count steps
+  _wsTotal = WS_FOLDERS.length;
+  WS_BOARDS.forEach(b=>{ _wsTotal += 1 + b.groups.length + b.columns.length; });
+  _wsDone=0; _wsStats={boards:0,groups:0,columns:0,folders:0};
+  wsUpdateProgress();
+  const sleep = ms => new Promise(r=>setTimeout(r,ms));
+  const folderIds = {};
+  const sub = document.getElementById('ws-subtitle');
+  try {
+    // Create folders
+    wsLog('info','Creating folder structure\u2026');
+    if (sub) sub.textContent='Creating folders\u2026';
+    for (const folder of WS_FOLDERS) {
+      try {
+        await sleep(400);
+        const data = await mondayGQL(`mutation($name:String!,$wid:ID!){create_folder(name:$name,workspace_id:$wid){id name}}`,{name:folder.name,wid:_mondayWsId});
+        folderIds[folder.key]=parseInt(data.create_folder.id);
+        _wsStats.folders++; wsLog('ok','Folder created',folder.name);
+      } catch(e){ wsLog('err','Folder failed (may already exist)',folder.name); }
+      _wsDone++; wsUpdateProgress();
+    }
+    // Create boards
+    wsLog('info','Creating boards\u2026');
+    for (const bd of WS_BOARDS) {
+      if (sub) sub.textContent='Creating board: '+bd.name;
+      await sleep(600);
+      try {
+        const fid = folderIds[bd.folder];
+        let mut;
+        if (fid) {
+          mut = await mondayGQL(`mutation($name:String!,$kind:BoardKind!,$wid:ID!,$fid:ID!){create_board(board_name:$name,board_kind:$kind,workspace_id:$wid,folder_id:$fid){id name}}`,{name:bd.name,kind:bd.kind,wid:_mondayWsId,fid});
+        } else {
+          mut = await mondayGQL(`mutation($name:String!,$kind:BoardKind!,$wid:ID!){create_board(board_name:$name,board_kind:$kind,workspace_id:$wid){id name}}`,{name:bd.name,kind:bd.kind,wid:_mondayWsId});
+        }
+        const boardId=parseInt(mut.create_board.id);
+        _wsStats.boards++; _wsDone++; wsLog('ok','Board created',`${bd.name} (ID: ${boardId})`); wsUpdateProgress();
+        // Groups
+        for (const grp of bd.groups) {
+          await sleep(350);
+          try {
+            await mondayGQL(`mutation($bid:ID!,$name:String!,$color:String){create_group(board_id:$bid,group_name:$name,group_color:$color){id}}`,{bid:boardId,name:grp.name,color:grp.color});
+            _wsStats.groups++; wsLog('ok','  Group',grp.name);
+          } catch(e){ wsLog('err','  Group failed',grp.name); }
+          _wsDone++; wsUpdateProgress();
+        }
+        // Columns
+        for (const col of bd.columns) {
+          await sleep(300);
+          try {
+            await mondayGQL(`mutation($bid:ID!,$title:String!,$type:ColumnType!){create_column(board_id:$bid,title:$title,column_type:$type){id title}}`,{bid:boardId,title:col.t,type:col.type});
+            _wsStats.columns++; wsLog('ok','  Column',col.t);
+          } catch(e){ wsLog('err','  Column failed',`${col.t} \u2014 ${e.message}`); }
+          _wsDone++; wsUpdateProgress();
+        }
+      } catch(e){
+        wsLog('err','Board failed',`${bd.name}: ${e.message}`);
+        _wsDone++; wsUpdateProgress();
+      }
+    }
+    // Done
+    const bar=document.getElementById('ws-bar'); if(bar) bar.style.width='100%';
+    const pctEl=document.getElementById('ws-pct'); if(pctEl) pctEl.textContent='100%';
+    if (sub) sub.textContent='Build complete!';
+    wsLog('info','\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500');
+    wsLog('ok',`Build complete! ${_wsStats.boards} boards \u00b7 ${_wsStats.groups} groups \u00b7 ${_wsStats.columns} columns \u00b7 ${_wsStats.folders} folders`);
+    // Log to activity
+    _mondayReportLog.unshift({client:'Workspace Build',date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}),rate:'\u2014',_ts:Date.now()});
+    await sleep(1200);
+    document.getElementById('ws-sec-build').style.display='none';
+    document.getElementById('ws-sec-complete').style.display='';
+    const summary=document.getElementById('ws-done-summary');
+    if (summary) summary.textContent=`${_wsStats.boards} boards \u00b7 ${_wsStats.groups} groups \u00b7 ${_wsStats.columns} columns \u00b7 ${_wsStats.folders} folders`;
+    wsSetPhase(3);
+    // Reload Monday columns now that boards exist
+    await mondayFindBoards();
+    mondayUpdateConnectionBanner();
+  } catch(err){
+    wsLog('err','Fatal error',err.message);
+    if (sub) sub.textContent='Build failed \u2014 see log for details';
   }
 }
-
-main().catch(err => {
-  console.error("Fatal error:", err);
-  process.exit(1);
-});
+</script>
+</body>
+</html>
