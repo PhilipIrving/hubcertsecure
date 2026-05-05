@@ -373,6 +373,7 @@
     <!-- SUB-TABS -->
     <div style="display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:24px">
       <button class="tab-btn active" id="mtab-btn-setup" onclick="switchMondayTab('setup')">&#127959; Workspace Setup</button>
+      <button class="tab-btn" id="mtab-btn-configure" onclick="switchMondayTab('configure')">&#9881;&#65039; Configure</button>
       <button class="tab-btn" id="mtab-btn-activity" onclick="switchMondayTab('activity')">&#128203; Activity</button>
     </div>
 
@@ -508,6 +509,112 @@
             <button class="btn btn-secondary" onclick="wsReset()">&#8635; Build Again</button>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- ══ CONFIGURE ══ -->
+    <div id="mtab-configure" style="display:none">
+
+      <!-- HEALTH CHECK -->
+      <div class="card" style="margin-bottom:18px">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
+          <div>
+            <div class="card-title" style="margin-bottom:4px">&#128269; Workspace Health Check</div>
+            <div style="font-size:13px;color:var(--muted)">Scans boards, columns, dropdown values, and client coverage in one pass</div>
+          </div>
+          <button class="btn btn-primary" id="hc-run-btn" onclick="wsRunHealthCheck()" style="white-space:nowrap;flex-shrink:0">Run Check</button>
+        </div>
+        <div id="hc-results" style="display:none;margin-top:20px">
+          <div id="hc-summary" style="display:flex;gap:0;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:18px">
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--green)" id="hc-pass-count">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Passing</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--red)" id="hc-fail-count">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Issues</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--blue)" id="hc-client-count">&#8212;</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Clients Found</div></div>
+          </div>
+          <div id="hc-boards-section">
+            <div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Boards &amp; Folders</div>
+            <div id="hc-boards-list" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px"></div>
+          </div>
+          <div id="hc-columns-section">
+            <div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Key Columns on Clients &#8211; Overview</div>
+            <div id="hc-columns-list" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:18px"></div>
+          </div>
+          <div id="hc-dropdowns-section">
+            <div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Dropdown Columns</div>
+            <div id="hc-dropdowns-list" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px"></div>
+          </div>
+          <div id="hc-clients-section">
+            <div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Client Coverage</div>
+            <div id="hc-clients-list" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px"></div>
+          </div>
+        </div>
+        <div id="hc-running" style="display:none;margin-top:16px">
+          <div style="background:#0f1924;border-radius:8px;padding:14px 16px;font-family:monospace;font-size:11px;max-height:220px;overflow-y:auto;border:1px solid #1e2d3d" id="hc-log"></div>
+        </div>
+      </div>
+
+      <!-- DROPDOWN CONFIGURATOR -->
+      <div class="card" style="margin-bottom:18px">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
+          <div>
+            <div class="card-title" style="margin-bottom:4px">&#9660; Configure Dropdown Values</div>
+            <div style="font-size:13px;color:var(--muted)">Automates post-build checklist step 2 &#8212; sets all dropdown options via the API</div>
+          </div>
+          <button class="btn btn-primary" id="dd-apply-btn" onclick="wsApplyDropdowns()" style="white-space:nowrap;flex-shrink:0">Apply All Values</button>
+        </div>
+        <div style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px">
+            <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Clients &#8211; Overview &nbsp;&#183;&nbsp; Platform</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">Evident</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:#fff7ed;color:#ea580c;font-weight:600">TrustLayer</span></div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px">
+            <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Clients &#8211; Overview &nbsp;&#183;&nbsp; Structure</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">General</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">Subcontractors</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">Tenants</span></div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px">
+            <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Clients &amp; Prospects &nbsp;&#183;&nbsp; Est. Complexity</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--green-bg);color:var(--green);font-weight:600">Simple</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:#fff7ed;color:#ea580c;font-weight:600">Moderate</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--red-bg);color:var(--red);font-weight:600">Complex</span></div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px">
+            <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Prospects &nbsp;&#183;&nbsp; Stage</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Discovery</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Proposal Sent</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Negotiation</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Decision Pending</span></div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px">
+            <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Partnership Boards &nbsp;&#183;&nbsp; Category</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--red-bg);color:var(--red);font-weight:600">Platform Issue</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">Feature Request</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Bug Report</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Enhancement</span></div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px">
+            <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Partnership Boards &nbsp;&#183;&nbsp; Rank</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--red-bg);color:var(--red);font-weight:600">P1 &#8211; Critical</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:#fff7ed;color:#ea580c;font-weight:600">P2 &#8211; High</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:#fef9c3;color:#a16207;font-weight:600">P3 &#8211; Medium</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--green-bg);color:var(--green);font-weight:600">P4 &#8211; Low</span></div>
+          </div>
+        </div>
+        <div id="dd-log" style="display:none;margin-top:14px;background:#0f1924;border-radius:8px;padding:14px 16px;font-family:monospace;font-size:11px;max-height:200px;overflow-y:auto;border:1px solid #1e2d3d"></div>
+      </div>
+
+      <!-- CLIENT IMPORT -->
+      <div class="card">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
+          <div>
+            <div class="card-title" style="margin-bottom:4px">&#128101; Import Clients to Monday</div>
+            <div style="font-size:13px;color:var(--muted)">Reads clients.json and creates missing clients in Clients &#8211; Overview (Onboarding group)</div>
+          </div>
+          <div style="display:flex;gap:8px;flex-shrink:0">
+            <button class="btn btn-secondary" id="ci-scan-btn" onclick="wsScanClients()">&#128269; Scan</button>
+            <button class="btn btn-primary" id="ci-import-btn" onclick="wsImportClients()" style="display:none">&#8679; Import Missing</button>
+          </div>
+        </div>
+        <div id="ci-results" style="display:none;margin-top:18px">
+          <div style="display:flex;gap:0;padding:12px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:14px">
+            <div style="flex:1;text-align:center"><div style="font-size:20px;font-weight:800;color:var(--green)" id="ci-found-count">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Already in Monday</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:20px;font-weight:800;color:var(--red)" id="ci-missing-count">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Missing</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:20px;font-weight:800;color:var(--navy)" id="ci-total-count">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Total in config</div></div>
+          </div>
+          <div id="ci-client-list" style="max-height:300px;overflow-y:auto"></div>
+        </div>
+        <div id="ci-import-log" style="display:none;margin-top:14px;background:#0f1924;border-radius:8px;padding:14px 16px;font-family:monospace;font-size:11px;max-height:200px;overflow-y:auto;border:1px solid #1e2d3d"></div>
       </div>
     </div>
 
@@ -2342,6 +2449,392 @@ async function wsStartBuild() {
     if (sub) sub.textContent='Build failed \u2014 see log for details';
   }
 }
+
+// ════════════════════════════════════════════
+//  MONDAY CONFIGURE MODULE
+// ════════════════════════════════════════════
+
+// ── DROPDOWN DEFINITIONS ──
+const WS_DROPDOWNS = [
+  {
+    boardKey: 'overview', boardName: 'Clients \u2013 Overview',
+    column: 'Platform', type: 'dropdown',
+    labels: ['Evident', 'TrustLayer']
+  },
+  {
+    boardKey: 'overview', boardName: 'Clients \u2013 Overview',
+    column: 'Structure', type: 'dropdown',
+    labels: ['General', 'Subcontractors', 'Tenants']
+  },
+  {
+    boardKey: 'overview', boardName: 'Clients \u2013 Overview',
+    column: 'Est. Complexity', type: 'dropdown',
+    labels: ['Simple', 'Moderate', 'Complex']
+  },
+  {
+    boardKey: 'prospects', boardName: 'Prospects',
+    column: 'Stage', type: 'dropdown',
+    labels: ['Discovery', 'Proposal Sent', 'Negotiation', 'Decision Pending']
+  },
+  {
+    boardKey: 'prospects', boardName: 'Prospects',
+    column: 'Est. Complexity', type: 'dropdown',
+    labels: ['Simple', 'Moderate', 'Complex']
+  },
+  {
+    boardKey: 'evident_part', boardName: 'Evident Partnership',
+    column: 'Category', type: 'dropdown',
+    labels: ['Platform Issue', 'Feature Request', 'Bug Report', 'Enhancement']
+  },
+  {
+    boardKey: 'evident_part', boardName: 'Evident Partnership',
+    column: 'Rank', type: 'dropdown',
+    labels: ['P1 \u2013 Critical', 'P2 \u2013 High', 'P3 \u2013 Medium', 'P4 \u2013 Low']
+  },
+  {
+    boardKey: 'tl_part', boardName: 'TrustLayer Partnership',
+    column: 'Category', type: 'dropdown',
+    labels: ['Platform Issue', 'Feature Request', 'Bug Report', 'Enhancement']
+  },
+  {
+    boardKey: 'tl_part', boardName: 'TrustLayer Partnership',
+    column: 'Rank', type: 'dropdown',
+    labels: ['P1 \u2013 Critical', 'P2 \u2013 High', 'P3 \u2013 Medium', 'P4 \u2013 Low']
+  },
+];
+
+// ── EXPECTED BOARDS (for health check) ──
+const WS_EXPECTED_BOARDS = [
+  { name: 'Clients \u2013 Overview',      folder: 'Clients' },
+  { name: 'Prospects',                    folder: 'Business Development' },
+  { name: 'Evident \u2013 Onboarding',    folder: 'Installations' },
+  { name: 'TrustLayer \u2013 Onboarding', folder: 'Installations' },
+  { name: 'Evident Partnership',          folder: 'Partnerships' },
+  { name: 'TrustLayer Partnership',       folder: 'Partnerships' },
+];
+
+const WS_EXPECTED_COLS = [
+  'Status','Platform','Structure','Go-Live Date','Est. Licenses','Producer',
+  'INV: Renewal Date','INV: Renewal Status','INV: Current Fee','INV: Next Year Fee',
+  'RPT: Compliance Summary','RPT: Compliance Detail','RPT: Year End Review',
+  'Connect: Prospects','Connect: Onboarding',
+];
+
+// Cached board IDs from workspace scan
+let _wsBoardMap = {}; // boardName → boardId
+let _wsBoardCols = {}; // boardId → {colTitle: colId}
+let _wsClientsMissing = []; // clients not yet in Monday
+
+// ── TAB SWITCH (extend existing) ──
+const _origSwitchMondayTab = switchMondayTab;
+function switchMondayTab(tab) {
+  ['setup','configure','activity'].forEach(t => {
+    const el  = document.getElementById('mtab-' + t);
+    const btn = document.getElementById('mtab-btn-' + t);
+    if (el)  el.style.display  = t === tab ? '' : 'none';
+    if (btn) btn.classList.toggle('active', t === tab);
+  });
+  if (tab === 'activity')  mondayRenderActivityLog();
+  if (tab === 'configure') wsCfgInit();
+}
+
+function wsCfgInit() {
+  const noConn = !_mondayWsId;
+  // Show a gentle reminder if not connected
+  if (noConn) toast('Connect to Monday in Settings \u2192 Monday tab first', 'error');
+}
+
+// ── LOG HELPER ──
+function cfgLog(targetId, type, msg) {
+  const el = document.getElementById(targetId); if (!el) return;
+  el.style.display = '';
+  const colors = { ok:'#22c55e', err:'#f87171', info:'#60a5fa', wait:'#fbbf24' };
+  const icons  = { ok:'\u2713', err:'\u2717', info:'\u2139', wait:'\u2026' };
+  const line = document.createElement('div');
+  line.style.cssText = 'padding:2px 0;display:flex;gap:10px;line-height:1.5';
+  line.innerHTML = `<span style="color:${colors[type]||'#cbd5e1'};flex-shrink:0">${icons[type]||type}</span><span style="color:#cbd5e1">${msg}</span>`;
+  el.appendChild(line);
+  el.scrollTop = el.scrollHeight;
+}
+
+function cfgLogClear(targetId) {
+  const el = document.getElementById(targetId); if (el) { el.innerHTML = ''; el.style.display = 'none'; }
+}
+
+// ── HEALTH CHECK ──
+async function wsRunHealthCheck() {
+  if (!_mondayWsId) { toast('Connect to Monday first','error'); return; }
+  const btn = document.getElementById('hc-run-btn');
+  const running = document.getElementById('hc-running');
+  const results = document.getElementById('hc-results');
+  btn.disabled = true; btn.textContent = 'Scanning\u2026';
+  results.style.display = 'none'; running.style.display = '';
+  cfgLogClear('hc-log');
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  let pass = 0, fail = 0;
+
+  try {
+    // 1. Fetch all boards
+    cfgLog('hc-log','info','Fetching workspace boards\u2026');
+    await sleep(300);
+    const data = await mondayGQL('query($wid:[ID]){boards(workspace_ids:$wid,limit:50){id name}}',{wid:[_mondayWsId]});
+    const boards = data.boards || [];
+    _wsBoardMap = {};
+    boards.forEach(b => { _wsBoardMap[b.name] = parseInt(b.id); });
+
+    // 2. Check expected boards
+    cfgLog('hc-log','info','Checking boards\u2026');
+    const boardsHtml = WS_EXPECTED_BOARDS.map(eb => {
+      const found = boards.some(b => b.name.toLowerCase().trim() === eb.name.toLowerCase().trim());
+      if (found) pass++; else fail++;
+      return `<div style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:7px;background:${found?'var(--green-bg)':'var(--red-bg)'};border:1px solid ${found?'#bbf7d0':'#fecaca'}">
+        <span style="font-size:14px">${found?'\u2713':'\u2717'}</span>
+        <div><div style="font-size:12px;font-weight:600;color:${found?'#166534':'var(--red)'}">${eb.name}</div><div style="font-size:10px;color:var(--muted)">${eb.folder}</div></div>
+      </div>`;
+    }).join('');
+    document.getElementById('hc-boards-list').innerHTML = boardsHtml;
+
+    // 3. Load Clients – Overview columns
+    const ovId = Object.entries(_wsBoardMap).find(([n])=>n.toLowerCase().includes('overview')&&n.toLowerCase().includes('client'))?.[1];
+    let colsHtml = '';
+    if (ovId) {
+      cfgLog('hc-log','info','Loading Clients \u2013 Overview columns\u2026');
+      await sleep(300);
+      const colData = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){columns{id title}}}',{bid:[ovId]});
+      const cols = colData.boards?.[0]?.columns || [];
+      _wsBoardCols[ovId] = {};
+      cols.forEach(c => { _wsBoardCols[ovId][c.title] = c.id; });
+      // Reload main column map too
+      _mondayColumns = _wsBoardCols[ovId]; _mondayBoardId = ovId;
+      colsHtml = WS_EXPECTED_COLS.map(name => {
+        const found = !!_wsBoardCols[ovId][name];
+        if (found) pass++; else fail++;
+        return `<div style="display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:6px;background:${found?'var(--green-bg)':'var(--red-bg)'};font-size:11px;font-weight:600;color:${found?'#166534':'var(--red)'}">
+          <span>${found?'\u2713':'\u2717'}</span>${name}
+        </div>`;
+      }).join('');
+    } else {
+      colsHtml = '<div style="font-size:12px;color:var(--muted)">Clients \u2013 Overview board not found \u2014 run Workspace Setup first.</div>';
+    }
+    document.getElementById('hc-columns-list').innerHTML = colsHtml;
+
+    // 4. Check dropdown columns exist
+    cfgLog('hc-log','info','Checking dropdown columns\u2026');
+    await sleep(200);
+    const ddBoardNames = [...new Set(WS_DROPDOWNS.map(d => d.boardName))];
+    const ddChecks = await Promise.all(ddBoardNames.map(async bName => {
+      const bId = Object.entries(_wsBoardMap).find(([n])=>n.toLowerCase().trim()===bName.toLowerCase().trim())?.[1];
+      if (!bId) return { bName, found: false, cols: [] };
+      if (!_wsBoardCols[bId]) {
+        const cd = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){columns{id title}}}',{bid:[bId]});
+        _wsBoardCols[bId] = {};
+        (cd.boards?.[0]?.columns||[]).forEach(c=>{ _wsBoardCols[bId][c.title]=c.id; });
+      }
+      const cols = WS_DROPDOWNS.filter(d=>d.boardName===bName).map(d=>d.column);
+      return { bName, found: true, cols: cols.map(c=>({name:c,exists:!!_wsBoardCols[bId][c]})) };
+    }));
+    const ddHtml = ddChecks.map(({bName, found, cols}) => {
+      if (!found) { fail++; return `<div style="padding:8px 12px;border-radius:7px;background:var(--red-bg);border:1px solid #fecaca;font-size:12px;color:var(--red)">\u2717 ${bName} board not found</div>`; }
+      const allOk = cols.every(c=>c.exists);
+      if (allOk) pass++; else fail++;
+      return `<div style="padding:10px 14px;border-radius:7px;background:${allOk?'var(--green-bg)':'var(--bg)'};border:1px solid ${allOk?'#bbf7d0':'var(--border)'}">
+        <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px">${bName}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px">
+          ${cols.map(c=>`<span style="font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;background:${c.exists?'var(--green-bg)':'var(--red-bg)'};color:${c.exists?'var(--green)':'var(--red)'}">${c.exists?'\u2713':'\u2717'} ${c.name}</span>`).join('')}
+        </div>
+      </div>`;
+    }).join('');
+    document.getElementById('hc-dropdowns-list').innerHTML = ddHtml;
+
+    // 5. Check client coverage
+    cfgLog('hc-log','info','Scanning client coverage\u2026');
+    await sleep(400);
+    let clientsHtml = '<div style="font-size:12px;color:var(--muted)">Run a client scan to see coverage.</div>';
+    if (ovId && typeof CLIENTS !== 'undefined') {
+      const itemData = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){items_page(limit:200){items{id name}}}}',{bid:[ovId]});
+      const mondayItems = (itemData.boards?.[0]?.items_page?.items||[]).map(i=>i.name.toLowerCase().trim());
+      const cfgClients = CLIENTS.map(c=>c.key);
+      let found=0, missing=0;
+      _wsClientsMissing = [];
+      clientsHtml = cfgClients.map(name => {
+        const inMonday = mondayItems.some(m=>m===name.toLowerCase().trim()||m.includes(name.toLowerCase().trim().slice(0,10)));
+        if (inMonday) found++; else { missing++; _wsClientsMissing.push(name); }
+        return `<div style="display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:6px;background:${inMonday?'var(--green-bg)':'var(--red-bg)'};font-size:11px;font-weight:600;color:${inMonday?'#166534':'var(--red)'}">
+          <span>${inMonday?'\u2713':'\u2717'}</span><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${name}</span>
+        </div>`;
+      }).join('');
+      document.getElementById('hc-client-count').textContent = found + '/' + cfgClients.length;
+      if (_wsClientsMissing.length) {
+        document.getElementById('ci-import-btn').style.display = '';
+        document.getElementById('ci-missing-count').textContent = _wsClientsMissing.length;
+        document.getElementById('ci-found-count').textContent = found;
+        document.getElementById('ci-total-count').textContent = cfgClients.length;
+        document.getElementById('ci-results').style.display = '';
+      }
+    }
+    document.getElementById('hc-clients-list').innerHTML = clientsHtml;
+
+    // Final summary
+    document.getElementById('hc-pass-count').textContent = pass;
+    document.getElementById('hc-fail-count').textContent = fail;
+    cfgLog('hc-log','ok',`Health check complete \u2014 ${pass} passing, ${fail} issue${fail!==1?'s':''}`);
+    running.style.display = 'none';
+    results.style.display = '';
+    toast(fail === 0 ? '\u2713 All checks passed!' : `\u26a0 ${fail} issue${fail!==1?'s':''} found`, fail===0?'success':'error');
+
+  } catch(e) {
+    cfgLog('hc-log','err','Health check failed: '+e.message);
+    toast('Health check failed: '+e.message,'error');
+  }
+  btn.disabled = false; btn.textContent = 'Run Check';
+}
+
+// ── DROPDOWN CONFIGURATOR ──
+async function wsApplyDropdowns() {
+  if (!_mondayWsId) { toast('Connect to Monday first','error'); return; }
+  const btn = document.getElementById('dd-apply-btn');
+  btn.disabled = true; btn.textContent = 'Applying\u2026';
+  cfgLogClear('dd-log');
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  let ok = 0, err = 0;
+
+  try {
+    // Load all boards if not cached
+    if (!Object.keys(_wsBoardMap).length) {
+      const data = await mondayGQL('query($wid:[ID]){boards(workspace_ids:$wid,limit:50){id name}}',{wid:[_mondayWsId]});
+      (data.boards||[]).forEach(b=>{_wsBoardMap[b.name]=parseInt(b.id);});
+    }
+
+    for (const dd of WS_DROPDOWNS) {
+      // Find board ID
+      const bId = Object.entries(_wsBoardMap).find(([n])=>n.toLowerCase().trim()===dd.boardName.toLowerCase().trim())?.[1];
+      if (!bId) { cfgLog('dd-log','err',`Board not found: ${dd.boardName}`); err++; continue; }
+
+      // Get column ID if not cached
+      if (!_wsBoardCols[bId]) {
+        await sleep(300);
+        const cd = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){columns{id title type}}}',{bid:[bId]});
+        _wsBoardCols[bId] = {};
+        (cd.boards?.[0]?.columns||[]).forEach(c=>{_wsBoardCols[bId][c.title]=c.id;});
+      }
+      const colId = _wsBoardCols[bId][dd.column];
+      if (!colId) { cfgLog('dd-log','err',`Column not found: ${dd.column} on ${dd.boardName}`); err++; continue; }
+
+      // Build labels object: {"0":"Label 0","1":"Label 1",...}
+      const labelsObj = {};
+      dd.labels.forEach((lbl,i) => { labelsObj[String(i)] = lbl; });
+      const valStr = JSON.stringify(labelsObj);
+
+      await sleep(400);
+      try {
+        await mondayGQL(
+          'mutation($bid:ID!,$cid:String!,$val:String!){change_column_metadata(board_id:$bid,column_id:$cid,column_property:labels,value:$val){id}}',
+          { bid: bId, cid: colId, val: valStr }
+        );
+        cfgLog('dd-log','ok',`${dd.boardName} \u2192 ${dd.column}: ${dd.labels.join(', ')}`);
+        ok++;
+      } catch(e) {
+        cfgLog('dd-log','err',`${dd.boardName} \u2192 ${dd.column}: ${e.message}`);
+        err++;
+      }
+    }
+
+    cfgLog('dd-log','info',`\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500`);
+    cfgLog('dd-log','ok',`Done \u2014 ${ok} applied, ${err} failed`);
+    toast(err===0 ? '\u2713 All dropdown values set!' : `${ok} set, ${err} failed`, err===0?'success':'error');
+  } catch(e) {
+    cfgLog('dd-log','err','Failed: '+e.message);
+    toast('Failed: '+e.message,'error');
+  }
+  btn.disabled = false; btn.textContent = 'Apply All Values';
+}
+
+// ── CLIENT SCAN ──
+async function wsScanClients() {
+  if (!_mondayWsId) { toast('Connect to Monday first','error'); return; }
+  if (!_mondayBoardId) { toast('Clients \u2013 Overview not found. Run health check first.','error'); return; }
+  const btn = document.getElementById('ci-scan-btn');
+  btn.disabled = true; btn.textContent = 'Scanning\u2026';
+  try {
+    const itemData = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){items_page(limit:200){items{id name}}}}',{bid:[_mondayBoardId]});
+    const mondayItems = (itemData.boards?.[0]?.items_page?.items||[]).map(i=>i.name.toLowerCase().trim());
+    const cfgClients = typeof CLIENTS !== 'undefined' ? CLIENTS : [];
+    _wsClientsMissing = [];
+    let found = 0;
+
+    const listHtml = cfgClients.map(c => {
+      const inMonday = mondayItems.some(m=>m===c.key.toLowerCase().trim());
+      if (inMonday) found++; else _wsClientsMissing.push(c.key);
+      const platBadge = c.platform==='trustlayer'
+        ? '<span style="font-size:9px;font-weight:800;padding:1px 5px;border-radius:3px;background:#fff7ed;color:#ea580c">TL</span>'
+        : '<span style="font-size:9px;font-weight:800;padding:1px 5px;border-radius:3px;background:var(--blue-light);color:var(--blue)">EV</span>';
+      return `<div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:7px;background:${inMonday?'var(--green-bg)':'var(--bg)'};border:1px solid ${inMonday?'#bbf7d0':'var(--border)'}">
+        <span style="font-size:13px">${inMonday?'\u2713':'\u25a1'}</span>
+        ${platBadge}
+        <span style="font-size:12px;font-weight:600;color:${inMonday?'#166534':'var(--text)'};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(c.key)}</span>
+      </div>`;
+    }).join('');
+
+    document.getElementById('ci-found-count').textContent   = found;
+    document.getElementById('ci-missing-count').textContent  = _wsClientsMissing.length;
+    document.getElementById('ci-total-count').textContent    = cfgClients.length;
+    document.getElementById('ci-client-list').innerHTML      = listHtml;
+    document.getElementById('ci-results').style.display      = '';
+    document.getElementById('ci-import-btn').style.display   = _wsClientsMissing.length ? '' : 'none';
+    toast(`${found}/${cfgClients.length} clients already in Monday`, 'success');
+  } catch(e) { toast('Scan failed: '+e.message,'error'); }
+  btn.disabled = false; btn.textContent = '\u{1F50D} Scan';
+}
+
+// ── CLIENT IMPORT ──
+async function wsImportClients() {
+  if (!_mondayWsId || !_mondayBoardId) { toast('Connect and scan first','error'); return; }
+  if (!_wsClientsMissing.length) { toast('No missing clients to import','success'); return; }
+  const btn = document.getElementById('ci-import-btn');
+  btn.disabled = true; btn.textContent = 'Importing\u2026';
+  cfgLogClear('ci-import-log');
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  // Find Onboarding group
+  let onboardingGrpId = null;
+  try {
+    const grpData = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){groups{id title}}}',{bid:[_mondayBoardId]});
+    const grp = (grpData.boards?.[0]?.groups||[]).find(g=>g.title?.toLowerCase().includes('onboard'));
+    onboardingGrpId = grp?.id || null;
+  } catch(e) { cfgLog('ci-import-log','err','Could not load groups: '+e.message); }
+
+  let ok=0, err=0;
+  for (const clientKey of _wsClientsMissing) {
+    await sleep(500);
+    try {
+      const meta = typeof CLIENT_META_MAP !== 'undefined' ? CLIENT_META_MAP[clientKey]||{} : {};
+      const colVals = {};
+      const platMap = {evident:'Evident',trustlayer:'TrustLayer'};
+      const structMap = {general:'General',project:'Subcontractors',location:'Tenants'};
+      const platId = mondayColId('platform');    if (platId) colVals[platId] = {label: platMap[meta.platform||meta.source||'evident']||'Evident'};
+      const structId = mondayColId('structure'); if (structId) colVals[structId] = {label: structMap[meta.structure||'general']||'General'};
+      const glId = mondayColId('golive');        if (glId && meta.go_live_date) colVals[glId] = {date: meta.go_live_date};
+      const prodId = mondayColId('producer');    if (prodId && meta.producer_name) colVals[prodId] = meta.producer_name;
+
+      await mondayGQL(
+        'mutation($bid:ID!,$gid:String,$name:String!,$cv:JSON){create_item(board_id:$bid,group_id:$gid,item_name:$name,column_values:$cv){id}}',
+        { bid: _mondayBoardId, gid: onboardingGrpId, name: clientKey, cv: JSON.stringify(colVals) }
+      );
+      cfgLog('ci-import-log','ok','Created: '+clientKey);
+      ok++;
+    } catch(e) {
+      cfgLog('ci-import-log','err','Failed: '+clientKey+' \u2014 '+e.message);
+      err++;
+    }
+  }
+  cfgLog('ci-import-log','info','\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500');
+  cfgLog('ci-import-log','ok',`Import complete \u2014 ${ok} created, ${err} failed`);
+  toast(`\u2713 ${ok} clients imported to Monday`, 'success');
+  btn.disabled = false; btn.textContent = '\u8679 Import Missing';
+  // Re-scan to update the list
+  if (!err) setTimeout(wsScanClients, 800);
+}
+
 </script>
 </body>
 </html>
