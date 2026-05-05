@@ -261,26 +261,303 @@
     <div class="card"><div style="display:flex;gap:10px;align-items:center;margin-bottom:14px"><input type="text" class="cfg-search" id="cfg-search" placeholder="Search clients&#8230;" oninput="renderConfigTable(this.value)"><button class="btn btn-secondary" onclick="loadAndRenderConfig()" style="white-space:nowrap;flex-shrink:0">&#8635; Reload</button></div><div id="cfg-table-wrap"><div style="text-align:center;padding:24px;color:var(--muted);font-size:13px">Switch to this tab to load client configuration.</div></div></div>
   </div>
   <div id="tab-monday" style="display:none">
-    <div class="page-hdr" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px"><div><div class="page-title">Monday Sync</div><div class="page-sub">Connect to Monday.com and push client data to your workspace</div></div><div id="monday-connected-badge" style="display:none;align-items:center;gap:8px;background:var(--green-bg);border:1px solid #bbf7d0;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:#166534"><div class="monday-status-dot connected"></div><span id="monday-ws-name">Connected</span></div></div>
-    <div class="card" style="margin-bottom:18px"><div class="card-title" style="margin-bottom:14px">&#128279; Connection</div><div class="info-box" style="margin-bottom:16px">Your Monday API token is stored locally in your browser only &#8212; never saved to GitHub or shared anywhere.</div><div class="form-grp"><label class="form-lbl">Monday API Token</label><div class="monday-token-wrap"><input type="password" id="monday-api-token" placeholder="eyJhbGciOiJIUzI1NiJ9..." autocomplete="off"><button class="monday-token-eye" onclick="toggleReveal('monday-api-token',this)">&#128065;</button></div><div class="form-hint">Monday.com &#8594; Profile Picture &#8594; Developers &#8594; My Access Tokens</div></div><div class="monday-connect-bar"><div class="monday-status-dot" id="monday-dot"></div><div style="font-size:12px;font-weight:600;color:var(--muted)" id="monday-status-text">Not connected</div><button class="btn btn-primary" style="margin-left:auto;padding:7px 16px;font-size:12px" id="monday-connect-btn" onclick="mondayConnect()">Connect</button></div><div id="monday-board-info" style="display:none;margin-top:12px"><div class="monday-section-title">Detected Boards</div><div id="monday-boards-list"></div></div></div>
-    <div class="card" style="margin-bottom:18px"><div class="card-title" style="margin-bottom:4px">&#128202; Sync Client Data to Monday</div><div style="font-size:12px;color:var(--muted);margin-bottom:16px">Push compliance stats and field updates to the client&#8217;s row in Clients &#8211; Overview</div><div class="form-grp" style="margin-bottom:16px"><label class="form-lbl">Select Client</label><select id="monday-client-select" onchange="mondayLoadClient()"><option value="">&#8212; Select a client &#8212;</option></select></div>
-      <div id="monday-client-panel" style="display:none"><div id="monday-item-status"></div>
-        <div class="monday-sync-card"><div class="monday-sync-card-hdr"><div class="monday-sync-icon blue">&#128200;</div><div><div style="font-size:13px;font-weight:600;color:var(--navy)">Compliance Stats</div><div style="font-size:11px;color:var(--muted)">Push live compliance data from the Report Generator</div></div><button class="btn btn-primary" style="margin-left:auto;padding:7px 14px;font-size:12px" onclick="mondayPushStats()" id="monday-push-stats-btn">Push Stats</button></div><div class="monday-sync-card-body"><div id="monday-stats-preview"><div style="font-size:12px;color:var(--muted);text-align:center;padding:12px">Select a client to preview stats</div></div></div></div>
-        <div class="monday-sync-card"><div class="monday-sync-card-hdr"><div class="monday-sync-icon navy">&#9999;&#65039;</div><div><div style="font-size:13px;font-weight:600;color:var(--navy)">Update Fields</div><div style="font-size:11px;color:var(--muted)">Edit Monday fields without leaving CertSecure Hub</div></div><button class="btn btn-primary" style="margin-left:auto;padding:7px 14px;font-size:12px" onclick="mondaySaveFields()" id="monday-save-fields-btn">Save to Monday</button></div>
-          <div class="monday-sync-card-body">
-            <div class="monday-field-row"><div class="monday-field-label">Client Status</div><select id="mf-status" style="width:100%"><option value="">&#8212; No change &#8212;</option><option>Onboarding</option><option>Active</option><option>Offboarding</option><option>Inactive</option></select><div class="monday-field-current" id="mf-status-current">&#8212;</div></div>
-            <div class="monday-field-row"><div class="monday-field-label">Renewal Status</div><select id="mf-renewal-status" style="width:100%"><option value="">&#8212; No change &#8212;</option><option>Not Started</option><option>In Progress</option><option>Renewed</option><option>Lost</option></select><div class="monday-field-current" id="mf-renewal-current">&#8212;</div></div>
-            <div class="monday-field-row"><div class="monday-field-label">Renewal Date</div><input type="date" id="mf-renewal-date" style="width:100%"><div class="monday-field-current" id="mf-renewal-date-current">&#8212;</div></div>
-            <div class="monday-field-row"><div class="monday-field-label">Est. Licenses</div><input type="text" id="mf-licenses" placeholder="e.g. 500" style="width:100%"><div class="monday-field-current" id="mf-licenses-current">&#8212;</div></div>
-            <div class="monday-field-row"><div class="monday-field-label">Go-Live Date</div><input type="date" id="mf-golive" style="width:100%"><div class="monday-field-current" id="mf-golive-current">&#8212;</div></div>
-          </div>
-        </div>
-        <div id="monday-sync-log-wrap" style="display:none"><div class="monday-section-title">Sync Log</div><div class="monday-log" id="monday-sync-log"></div></div>
+    <!-- INTERNAL SUB-TABS -->
+    <div style="display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:22px">
+      <button class="tab-btn active" id="mtab-btn-sync" onclick="switchMondayTab('sync')" style="font-size:12px;padding:8px 16px">&#128257; Client Sync</button>
+      <button class="tab-btn" id="mtab-btn-prospects" onclick="switchMondayTab('prospects')" style="font-size:12px;padding:8px 16px">&#127919; Prospects</button>
+    </div>
+    <div id="mtab-sync">
+    <div class="page-hdr" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+      <div><div class="page-title">Monday Sync</div><div class="page-sub">Push client data from CertSecure Hub directly to your Monday.com workspace</div></div>
+      <div id="monday-connected-badge" style="display:none;align-items:center;gap:8px;background:var(--green-bg);border:1px solid #bbf7d0;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:#166534">
+        <div class="monday-status-dot connected"></div><span id="monday-ws-name">Connected</span>
       </div>
     </div>
-    <div class="card"><div class="card-title" style="margin-bottom:4px">&#128206; Report Activity Log</div><div style="font-size:12px;color:var(--muted);margin-bottom:16px">Automatically records every time reports are generated this session</div><div id="monday-last-synced-list"><div style="font-size:12px;color:var(--muted);text-align:center;padding:16px">No reports generated this session yet.</div></div><div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><div style="font-size:11px;color:var(--muted)">Resets on page reload</div><button class="btn btn-secondary" style="font-size:12px;padding:6px 14px" onclick="mondayClearReportLog()">Clear</button></div></div>
+
+    <!-- CONNECTION -->
+    <div class="card" style="margin-bottom:18px">
+      <div class="card-title" style="margin-bottom:14px">&#128279; Connection</div>
+      <div class="info-box" style="margin-bottom:16px">Your Monday API token is stored locally in your browser only &#8212; never saved to GitHub or shared anywhere.</div>
+      <div class="form-grp">
+        <label class="form-lbl">Monday API Token</label>
+        <div class="monday-token-wrap">
+          <input type="password" id="monday-api-token" placeholder="eyJhbGciOiJIUzI1NiJ9..." autocomplete="off">
+          <button class="monday-token-eye" onclick="toggleReveal('monday-api-token',this)">&#128065;</button>
+        </div>
+        <div class="form-hint">Monday.com &#8594; Profile Picture &#8594; Developers &#8594; My Access Tokens</div>
+      </div>
+      <div class="monday-connect-bar">
+        <div class="monday-status-dot" id="monday-dot"></div>
+        <div style="font-size:12px;font-weight:600;color:var(--muted)" id="monday-status-text">Not connected</div>
+        <button class="btn btn-primary" style="margin-left:auto;padding:7px 16px;font-size:12px" id="monday-connect-btn" onclick="mondayConnect()">Connect</button>
+      </div>
+      <div id="monday-board-info" style="display:none;margin-top:12px">
+        <div class="monday-section-title">Detected Boards</div>
+        <div id="monday-boards-list"></div>
+      </div>
+    </div>
+
+    <!-- FULL SYNC -->
+    <div class="card" style="margin-bottom:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <div><div class="card-title" style="margin-bottom:2px">&#128257; Full Client Sync</div><div style="font-size:12px;color:var(--muted)">Select a client and push all data to their row in Clients &#8211; Overview</div></div>
+        <button class="btn btn-primary" style="padding:9px 20px" id="monday-full-sync-btn" onclick="mondayFullSync()">&#8679; Sync to Monday</button>
+      </div>
+
+      <div style="margin-top:16px;display:flex;gap:12px;align-items:flex-end">
+        <div class="form-grp" style="flex:1;margin-bottom:0">
+          <label class="form-lbl">Client</label>
+          <select id="monday-client-select" onchange="mondayLoadClient()"><option value="">&#8212; Select a client &#8212;</option></select>
+        </div>
+        <div id="monday-item-badge" style="display:none;padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;white-space:nowrap"></div>
+      </div>
+
+      <div id="monday-client-panel" style="display:none;margin-top:18px">
+
+        <!-- COMPLIANCE STATS ROW -->
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:14px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Live Compliance Stats</div>
+            <button class="btn btn-secondary" style="font-size:11px;padding:4px 12px" onclick="mondayFetchStats()" id="monday-fetch-stats-btn">&#8635; Load</button>
+          </div>
+          <div id="monday-stats-row" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+            <div style="text-align:center;background:var(--white);border:1px solid var(--border);border-radius:7px;padding:10px"><div style="font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Active</div><div style="font-size:22px;font-weight:800;color:var(--navy)" id="ms-total">&#8212;</div></div>
+            <div style="text-align:center;background:var(--green-bg);border:1px solid #bbf7d0;border-radius:7px;padding:10px"><div style="font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:4px">Compliant</div><div style="font-size:22px;font-weight:800;color:var(--green)" id="ms-comp">&#8212;</div></div>
+            <div style="text-align:center;background:var(--red-bg);border:1px solid #fecaca;border-radius:7px;padding:10px"><div style="font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:4px">Non-Compliant</div><div style="font-size:22px;font-weight:800;color:var(--red)" id="ms-nc">&#8212;</div></div>
+            <div style="text-align:center;background:var(--blue-light);border:1px solid #bfdbfe;border-radius:7px;padding:10px"><div style="font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:4px">Rate</div><div style="font-size:22px;font-weight:800;color:var(--blue)" id="ms-rate">&#8212;</div></div>
+          </div>
+        </div>
+
+        <!-- FIELD GROUPS -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+
+          <!-- LEFT: Client Info -->
+          <div>
+            <div class="monday-section-title" style="margin-top:0">Client Info</div>
+            <div class="monday-field-row">
+              <div class="monday-field-label">Status</div>
+              <select id="mf-status" style="width:100%"><option value="">&#8212; No change &#8212;</option><option>Onboarding</option><option>Active</option><option>Offboarding</option><option>Inactive</option></select>
+              <div class="monday-field-current" id="mf-status-current">&#8212;</div>
+            </div>
+            <div class="monday-field-row">
+              <div class="monday-field-label">Platform</div>
+              <select id="mf-platform" style="width:100%"><option value="">&#8212; No change &#8212;</option><option>Evident</option><option>TrustLayer</option></select>
+              <div class="monday-field-current" id="mf-platform-current">&#8212;</div>
+            </div>
+            <div class="monday-field-row">
+              <div class="monday-field-label">Structure</div>
+              <select id="mf-structure" style="width:100%"><option value="">&#8212; No change &#8212;</option><option>General</option><option>Subcontractors</option><option>Tenants</option></select>
+              <div class="monday-field-current" id="mf-structure-current">&#8212;</div>
+            </div>
+            <div class="monday-field-row">
+              <div class="monday-field-label">Go-Live Date</div>
+              <input type="date" id="mf-golive" style="width:100%">
+              <div class="monday-field-current" id="mf-golive-current">&#8212;</div>
+            </div>
+            <div class="monday-field-row">
+              <div class="monday-field-label">Est. Licenses</div>
+              <input type="text" id="mf-licenses" placeholder="e.g. 500" style="width:100%">
+              <div class="monday-field-current" id="mf-licenses-current">&#8212;</div>
+            </div>
+            <div class="monday-field-row">
+              <div class="monday-field-label">Producer</div>
+              <input type="text" id="mf-producer" placeholder="e.g. Philip Irving" style="width:100%">
+              <div class="monday-field-current" id="mf-producer-current">&#8212;</div>
+            </div>
+          </div>
+
+          <!-- RIGHT: INV fields -->
+          <div>
+            <div class="monday-section-title" style="margin-top:0">INV: Invoicing &amp; Renewals</div>
+            <div class="monday-field-row">
+              <div class="monday-field-label">Renewal Status</div>
+              <select id="mf-renewal-status" style="width:100%"><option value="">&#8212; No change &#8212;</option><option>Not Started</option><option>In Progress</option><option>Renewed</option><option>Lost</option></select>
+              <div class="monday-field-current" id="mf-renewal-current">&#8212;</div>
+            </div>
+            <div class="monday-field-row">
+              <div class="monday-field-label">Renewal Date</div>
+              <input type="date" id="mf-renewal-date" style="width:100%">
+              <div class="monday-field-current" id="mf-renewal-date-current">&#8212;</div>
+            </div>
+            <div class="monday-field-row">
+              <div class="monday-field-label">Current Fee</div>
+              <input type="text" id="mf-current-fee" placeholder="e.g. 12000" style="width:100%">
+              <div class="monday-field-current" id="mf-current-fee-current">&#8212;</div>
+            </div>
+            <div class="monday-field-row">
+              <div class="monday-field-label">Next Year Fee</div>
+              <input type="text" id="mf-next-fee" placeholder="e.g. 13500" style="width:100%">
+              <div class="monday-field-current" id="mf-next-fee-current">&#8212;</div>
+            </div>
+            <div class="monday-field-row">
+              <div class="monday-field-label">Bill Mode</div>
+              <select id="mf-bill-mode" style="width:100%"><option value="">&#8212; No change &#8212;</option><option>Monthly</option><option>Quarterly</option><option>Annual</option></select>
+              <div class="monday-field-current" id="mf-bill-mode-current">&#8212;</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RPT: Report Links -->
+        <div class="monday-section-title">RPT: Report Links <span style="font-size:9px;font-weight:400;color:var(--muted)">(paste URLs &#8212; auto-filled after generating reports)</span></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="monday-field-row"><div class="monday-field-label">Compliance Summary</div><input type="text" id="mf-rpt-cs" placeholder="URL" style="width:100%;font-size:11px"></div>
+          <div class="monday-field-row"><div class="monday-field-label">Compliance Detail</div><input type="text" id="mf-rpt-cd" placeholder="URL" style="width:100%;font-size:11px"></div>
+          <div class="monday-field-row"><div class="monday-field-label">Engagement Summary</div><input type="text" id="mf-rpt-es" placeholder="URL" style="width:100%;font-size:11px"></div>
+          <div class="monday-field-row"><div class="monday-field-label">Engagement Detail</div><input type="text" id="mf-rpt-ed" placeholder="URL" style="width:100%;font-size:11px"></div>
+          <div class="monday-field-row"><div class="monday-field-label">Year End Review</div><input type="text" id="mf-rpt-yer" placeholder="URL" style="width:100%;font-size:11px"></div>
+          <div class="monday-field-row"><div class="monday-field-label">Producer Overview</div><input type="text" id="mf-rpt-pro" placeholder="URL" style="width:100%;font-size:11px"></div>
+        </div>
+
+        <!-- SYNC LOG -->
+        <div id="monday-sync-log-wrap" style="display:none;margin-top:14px">
+          <div class="monday-section-title">Sync Log</div>
+          <div class="monday-log" id="monday-sync-log"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REPORT LOG -->
+    <div class="card">
+      <div class="card-title" style="margin-bottom:4px">&#128206; Report Activity Log</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:16px">Auto-logs every time reports are generated this session. Use URLs to fill RPT: fields above.</div>
+      <div id="monday-last-synced-list"><div style="font-size:12px;color:var(--muted);text-align:center;padding:16px">No reports generated this session yet.</div></div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:11px;color:var(--muted)">Resets on page reload</div>
+        <button class="btn btn-secondary" style="font-size:12px;padding:6px 14px" onclick="mondayClearReportLog()">Clear</button>
+      </div>
+    </div>
+    <!-- PROSPECTS TAB -->
+    <div id="mtab-prospects" style="display:none">
+
+      <!-- CONNECTION REMINDER if not connected -->
+      <div id="prospects-noconn" style="display:none;margin-bottom:18px">
+        <div class="info-box">Connect to Monday in the <strong>Client Sync</strong> tab first, then come back here to manage prospects.</div>
+      </div>
+
+      <!-- PROSPECT BOARD STATUS -->
+      <div id="prospects-board-status" style="margin-bottom:18px;font-size:12px;color:var(--muted);padding:10px 14px;background:var(--bg);border-radius:8px;border:1px solid var(--border)" style="display:none"></div>
+
+      <!-- ADD NEW PROSPECT -->
+      <div class="card" style="margin-bottom:18px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+          <div><div class="card-title" style="margin-bottom:2px">&#10133; Add New Prospect</div><div style="font-size:12px;color:var(--muted)">Creates a new item in the Prospects board, Active group</div></div>
+          <button class="btn btn-primary" id="prospect-add-btn" onclick="mondayAddProspect()">&#43; Add to Monday</button>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div class="form-grp" style="grid-column:1/-1">
+            <label class="form-lbl">Prospect Name <span style="color:var(--red)">*</span></label>
+            <input type="text" id="pr-name" placeholder="e.g. Heartland Construction LLC">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Stage</label>
+            <select id="pr-stage">
+              <option value="">&#8212; Select &#8212;</option>
+              <option>Discovery</option><option>Proposal Sent</option><option>Negotiation</option><option>Decision Pending</option>
+            </select>
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Structure</label>
+            <select id="pr-structure">
+              <option value="">&#8212; Select &#8212;</option>
+              <option>General</option><option>Subcontractors</option><option>Tenants</option>
+            </select>
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Referring HUB</label>
+            <input type="text" id="pr-hub" placeholder="e.g. HUB Midwest">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Referring Producer</label>
+            <input type="text" id="pr-producer" placeholder="e.g. Larry Smith">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Decision Maker</label>
+            <input type="text" id="pr-decision-maker" placeholder="Name &amp; title">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Day-to-Day Contact</label>
+            <input type="text" id="pr-day-to-day" placeholder="Name &amp; email">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Initial Meeting Date</label>
+            <input type="date" id="pr-meeting-date">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Targeted Go-Live</label>
+            <input type="date" id="pr-golive">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Est. Licenses</label>
+            <input type="text" id="pr-licenses" placeholder="e.g. 250">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Target Fee ($)</label>
+            <input type="text" id="pr-target-fee" placeholder="e.g. 8500">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Proposed Fee ($)</label>
+            <input type="text" id="pr-proposed-fee" placeholder="e.g. 7800">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Proposal Deadline</label>
+            <input type="date" id="pr-proposal-deadline">
+          </div>
+        </div>
+        <div id="prospect-add-msg" style="display:none;font-size:12px;padding:8px 12px;border-radius:7px;margin-top:12px"></div>
+      </div>
+
+      <!-- CONVERT TO CLIENT -->
+      <div class="card" style="margin-bottom:18px">
+        <div class="card-title" style="margin-bottom:4px">&#127881; Convert Prospect &#8594; Client</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:16px">When a prospect is <strong>Closed Won</strong>, use this to create them in Clients &#8211; Overview and optionally add to clients.json</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div class="form-grp">
+            <label class="form-lbl">Prospect Name (exact)</label>
+            <input type="text" id="conv-name" placeholder="Must match Monday item name exactly">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Client Name in CertSecure <span style="color:var(--muted);font-weight:400">(if different)</span></label>
+            <input type="text" id="conv-client-name" placeholder="Leave blank to use prospect name">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Platform</label>
+            <select id="conv-platform"><option value="evident">Evident</option><option value="trustlayer">TrustLayer</option></select>
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Structure</label>
+            <select id="conv-structure"><option value="general">General</option><option value="project">Subcontractors</option><option value="location">Tenants</option></select>
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Go-Live Date</label>
+            <input type="date" id="conv-golive">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Producer Name</label>
+            <input type="text" id="conv-producer" placeholder="e.g. Philip Irving">
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:8px;align-items:center">
+          <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer">
+            <input type="checkbox" id="conv-add-clients-json" style="accent-color:var(--blue);width:15px;height:15px" checked>
+            Also add to clients.json (makes them appear in Report Generator)
+          </label>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:14px">
+          <button class="btn btn-primary" onclick="mondayConvertToClient()">&#127881; Convert to Client</button>
+          <button class="btn btn-secondary" onclick="mondayMarkClosedLost()">&#128683; Mark Closed Lost</button>
+        </div>
+        <div id="conv-msg" style="display:none;font-size:12px;padding:8px 12px;border-radius:7px;margin-top:12px"></div>
+      </div>
+
+      <!-- PROSPECT LOG -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom:4px">&#128203; Prospect Activity</div>
+        <div id="prospect-log-list"><div style="font-size:12px;color:var(--muted);text-align:center;padding:16px">No prospect actions this session.</div></div>
+      </div>
+    </div>
   </div>
   <div class="overlay" id="client-edit-overlay">
+  
     <div class="modal" style="max-width:520px">
       <div class="modal-hdr"><span class="modal-title" id="client-modal-title">Edit Client</span><button class="modal-close" onclick="closeClientModal()">&#10005;</button></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
@@ -1610,168 +1887,663 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.20
 // ════════════════════════════════════════════
-let _mondayToken='',_mondayWsId=null,_mondayWsName='',_mondayBoardId=null;
-let _mondayColumns={},_mondayItemId=null,_mondayItemData={},_mondayReportLog=[];
+let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
+let _mondayColumns={}, _mondayItemId=null, _mondayItemData={}, _mondayReportLog=[];
+let _mondayLiveStats=null;
 const MONDAY_GQL_URL='https://api.monday.com/v2';
-async function mondayGQL(query,variables={}){
-  const token=_mondayToken||localStorage.getItem('cs-monday-token')||'';
-  if(!token)throw new Error('No Monday API token. Enter it in the Connection section.');
-  const res=await fetch(MONDAY_GQL_URL,{method:'POST',headers:{'Content-Type':'application/json','Authorization':token,'API-Version':'2023-10'},body:JSON.stringify({query,variables})});
-  const data=await res.json();if(data.errors?.length)throw new Error(data.errors[0].message);return data.data;
+
+// ── COLUMN MAP — matches our workspace design ──
+const MONDAY_COL_MAP = {
+  status:       ['Status'],
+  platform:     ['Platform'],
+  structure:    ['Structure'],
+  golive:       ['Go-Live Date','Go Live Date'],
+  licenses:     ['Est. Licenses','Estimated Licenses'],
+  producer:     ['Producer Name','Producer'],
+  renewalStatus:['INV: Renewal Status'],
+  renewalDate:  ['INV: Renewal Date'],
+  currentFee:   ['INV: Current Fee'],
+  nextFee:      ['INV: Next Year Fee'],
+  billMode:     ['INV: Bill Mode'],
+  rptCS:        ['RPT: Compliance Summary'],
+  rptCD:        ['RPT: Compliance Detail'],
+  rptES:        ['RPT: Engagement Summary'],
+  rptED:        ['RPT: Engagement Detail'],
+  rptYER:       ['RPT: Year End Review'],
+  rptPRO:       ['RPT: Producer Overview'],
+};
+
+function mondayColId(key) {
+  const candidates = MONDAY_COL_MAP[key] || [];
+  for (const name of candidates) { if (_mondayColumns[name]) return _mondayColumns[name]; }
+  return null;
 }
-function mondayLog(msg,type=''){
-  const wrap=document.getElementById('monday-sync-log-wrap'),log=document.getElementById('monday-sync-log');
-  if(!wrap||!log)return;wrap.style.display='';
-  const line=document.createElement('div');line.className='monday-log-line '+type;
-  const ts=new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',second:'2-digit'});
-  line.textContent=`[${ts}] ${msg}`;log.appendChild(line);log.scrollTop=log.scrollHeight;
+
+async function mondayGQL(query, variables={}) {
+  const token = _mondayToken || localStorage.getItem('cs-monday-token') || '';
+  if (!token) throw new Error('No Monday API token. Enter it in the Connection section.');
+  const res = await fetch(MONDAY_GQL_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': token, 'API-Version': '2023-10' },
+    body: JSON.stringify({ query, variables })
+  });
+  const data = await res.json();
+  if (data.errors?.length) throw new Error(data.errors[0].message);
+  return data.data;
 }
-function mondayTabActivated(){
-  const saved=localStorage.getItem('cs-monday-token');
-  if(saved){const inp=document.getElementById('monday-api-token');if(inp&&!inp.value)inp.value=saved;}
+
+function mondayLog(msg, type='') {
+  const wrap = document.getElementById('monday-sync-log-wrap');
+  const log  = document.getElementById('monday-sync-log');
+  if (!wrap || !log) return;
+  wrap.style.display = '';
+  const line = document.createElement('div');
+  line.className = 'monday-log-line ' + type;
+  const ts = new Date().toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit', second:'2-digit' });
+  line.textContent = `[${ts}] ${msg}`;
+  log.appendChild(line);
+  log.scrollTop = log.scrollHeight;
+}
+
+function mondayTabActivated() {
+  const saved = localStorage.getItem('cs-monday-token');
+  if (saved) { const inp = document.getElementById('monday-api-token'); if (inp && !inp.value) inp.value = saved; }
   mondayPopulateClients();
-  if(_mondayWsId){
-    document.getElementById('monday-dot').className='monday-status-dot connected';
-    document.getElementById('monday-status-text').textContent='Connected \u2014 '+_mondayWsName;
-    document.getElementById('monday-connected-badge').style.display='flex';
-    document.getElementById('monday-ws-name').textContent=_mondayWsName;
-    if(_mondayBoardId)mondayShowBoardInfo([]);
+  // Show sync sub-tab by default if neither is visible
+  const syncEl = document.getElementById('mtab-sync');
+  if (syncEl && syncEl.style.display === 'none') switchMondayTab('sync');
+  if (_mondayWsId) {
+    document.getElementById('monday-dot').className = 'monday-status-dot connected';
+    document.getElementById('monday-status-text').textContent = 'Connected \u2014 ' + _mondayWsName;
+    document.getElementById('monday-connected-badge').style.display = 'flex';
+    document.getElementById('monday-ws-name').textContent = _mondayWsName;
+    if (_mondayBoardId) mondayShowBoardInfo([]);
   }
 }
-function mondayPopulateClients(){
-  const sel=document.getElementById('monday-client-select');if(!sel)return;
-  const cur=sel.value;sel.innerHTML='<option value="">\u2014 Select a client \u2014</option>';
-  (typeof CLIENTS!=='undefined'?CLIENTS:[]).sort((a,b)=>a.name.localeCompare(b.name)).forEach(c=>{const opt=document.createElement('option');opt.value=c.key;opt.textContent=c.name;sel.appendChild(opt);});
-  if(cur)sel.value=cur;
-  if(typeof selectedClient!=='undefined'&&selectedClient?.key&&!sel.value)sel.value=selectedClient.key;
+
+function mondayPopulateClients() {
+  const sel = document.getElementById('monday-client-select');
+  if (!sel) return;
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">— Select a client —</option>';
+  (typeof CLIENTS !== 'undefined' ? CLIENTS : [])
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .forEach(c => { const opt = document.createElement('option'); opt.value = c.key; opt.textContent = c.name; sel.appendChild(opt); });
+  if (cur) sel.value = cur;
+  if (typeof selectedClient !== 'undefined' && selectedClient?.key && !sel.value) sel.value = selectedClient.key;
 }
-async function mondayConnect(){
-  const tokenInput=document.getElementById('monday-api-token'),token=tokenInput?.value?.trim();
-  if(!token){toast('Enter your Monday API token first','error');return;}
-  _mondayToken=token;localStorage.setItem('cs-monday-token',token);
-  const btn=document.getElementById('monday-connect-btn');btn.disabled=true;btn.textContent='Connecting\u2026';
-  document.getElementById('monday-dot').className='monday-status-dot loading';
-  document.getElementById('monday-status-text').textContent='Connecting\u2026';
-  try{
-    const data=await mondayGQL('query{workspaces{id name}}');
-    const workspaces=data.workspaces||[];if(!workspaces.length)throw new Error('No workspaces found for this token.');
-    const ws=workspaces.find(w=>w.name?.toLowerCase().includes('hub'))||workspaces[0];
-    _mondayWsId=parseInt(ws.id);_mondayWsName=ws.name;
-    document.getElementById('monday-dot').className='monday-status-dot connected';
-    document.getElementById('monday-status-text').textContent='Connected \u2014 '+_mondayWsName;
-    document.getElementById('monday-connected-badge').style.display='flex';
-    document.getElementById('monday-ws-name').textContent=_mondayWsName;
+
+async function mondayConnect() {
+  const token = document.getElementById('monday-api-token')?.value?.trim();
+  if (!token) { toast('Enter your Monday API token first', 'error'); return; }
+  _mondayToken = token; localStorage.setItem('cs-monday-token', token);
+  const btn = document.getElementById('monday-connect-btn');
+  btn.disabled = true; btn.textContent = 'Connecting…';
+  document.getElementById('monday-dot').className = 'monday-status-dot loading';
+  document.getElementById('monday-status-text').textContent = 'Connecting…';
+  try {
+    const data = await mondayGQL('query { workspaces { id name } }');
+    const workspaces = data.workspaces || [];
+    if (!workspaces.length) throw new Error('No workspaces found for this token.');
+    const ws = workspaces.find(w => w.name?.toLowerCase().includes('hub')) || workspaces[0];
+    _mondayWsId = parseInt(ws.id); _mondayWsName = ws.name;
+    document.getElementById('monday-dot').className = 'monday-status-dot connected';
+    document.getElementById('monday-status-text').textContent = 'Connected — ' + _mondayWsName;
+    document.getElementById('monday-connected-badge').style.display = 'flex';
+    document.getElementById('monday-ws-name').textContent = _mondayWsName;
     await mondayFindBoards();
-    btn.textContent='\u2713 Connected';btn.style.background='var(--green)';
-    toast('Connected to '+_mondayWsName,'success');
-  }catch(e){
-    document.getElementById('monday-dot').className='monday-status-dot error';
-    document.getElementById('monday-status-text').textContent='Failed \u2014 '+e.message;
-    toast(e.message,'error');btn.disabled=false;btn.textContent='Connect';_mondayToken='';
+    btn.textContent = '✓ Connected'; btn.style.background = 'var(--green)';
+    toast('Connected to ' + _mondayWsName, 'success');
+  } catch(e) {
+    document.getElementById('monday-dot').className = 'monday-status-dot error';
+    document.getElementById('monday-status-text').textContent = 'Failed — ' + e.message;
+    toast(e.message, 'error'); btn.disabled = false; btn.textContent = 'Connect'; _mondayToken = '';
   }
 }
-async function mondayFindBoards(){
-  const data=await mondayGQL('query($wid:[ID]){boards(workspace_ids:$wid,limit:50){id name}}',{wid:[_mondayWsId]});
-  const boards=data.boards||[];
-  const ob=boards.find(b=>b.name?.toLowerCase().includes('overview')&&b.name?.toLowerCase().includes('client'))||boards.find(b=>b.name?.toLowerCase().includes('overview'));
-  if(ob){_mondayBoardId=parseInt(ob.id);await mondayLoadColumns();}
+
+async function mondayFindBoards() {
+  const data = await mondayGQL('query($wid:[ID]){boards(workspace_ids:$wid,limit:50){id name}}', { wid: [_mondayWsId] });
+  const boards = data.boards || [];
+  const ob = boards.find(b => b.name?.toLowerCase().includes('overview') && b.name?.toLowerCase().includes('client'))
+          || boards.find(b => b.name?.toLowerCase().includes('overview'));
+  if (ob) { _mondayBoardId = parseInt(ob.id); await mondayLoadColumns(); }
   mondayShowBoardInfo(boards);
 }
-async function mondayLoadColumns(){
-  if(!_mondayBoardId)return;
-  const data=await mondayGQL('query($bid:[ID!]){boards(ids:$bid){columns{id title}}}',{bid:[_mondayBoardId]});
-  _mondayColumns={};(data.boards?.[0]?.columns||[]).forEach(col=>{_mondayColumns[col.title]=col.id;});
+
+async function mondayLoadColumns() {
+  if (!_mondayBoardId) return;
+  const data = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){columns{id title type}}}', { bid: [_mondayBoardId] });
+  _mondayColumns = {};
+  (data.boards?.[0]?.columns || []).forEach(col => { _mondayColumns[col.title] = { id: col.id, type: col.type }; });
+  console.log('Monday columns mapped:', Object.keys(_mondayColumns).length);
 }
-function mondayShowBoardInfo(boards){
-  const wrap=document.getElementById('monday-board-info'),list=document.getElementById('monday-boards-list');if(!wrap||!list)return;wrap.style.display='';
-  if(!boards.length&&_mondayBoardId){list.innerHTML=`<div style="font-size:12px;color:var(--green);padding:8px 12px;background:var(--green-bg);border:1px solid #bbf7d0;border-radius:7px">\u2713 Clients \u2013 Overview found (ID: ${_mondayBoardId}) \u00b7 ${Object.keys(_mondayColumns).length} columns mapped</div>`;return;}
-  list.innerHTML=boards.slice(0,8).map(b=>{const isOv=parseInt(b.id)===_mondayBoardId;return`<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:7px;margin-bottom:6px;background:${isOv?'var(--green-bg)':'var(--bg)'};border:1px solid ${isOv?'#bbf7d0':'var(--border)'}"><div style="font-size:12px;font-weight:${isOv?'700':'500'};color:${isOv?'var(--green)':'var(--text)'}">${isOv?'\u2605 ':''}${esc(b.name)}</div><div style="font-size:10px;color:var(--muted);margin-left:auto">ID: ${b.id}</div>${isOv?'<div style="font-size:10px;font-weight:700;color:var(--green)">Clients \u2013 Overview \u2713</div>':''}</div>`;}).join('')+(boards.length>8?`<div style="font-size:11px;color:var(--muted);padding:4px 12px">+${boards.length-8} more boards</div>`:'');
+
+function mondayGetColId(colName) {
+  return _mondayColumns[colName]?.id || null;
 }
-async function mondayLoadClient(){
-  const sel=document.getElementById('monday-client-select'),clientKey=sel?.value,panel=document.getElementById('monday-client-panel');
-  if(!panel)return;if(!clientKey){panel.style.display='none';return;}panel.style.display='';
-  _mondayItemId=null;_mondayItemData={};
-  if(_mondayWsId&&_mondayBoardId)await mondayFindItem(clientKey);
-  else document.getElementById('monday-item-status').innerHTML='<div class="monday-item-missing">\u26a0 Connect to Monday first</div>';
-  const meta=typeof CLIENT_META_MAP!=='undefined'?CLIENT_META_MAP[clientKey]||{}:{};
-  const gld=document.getElementById('mf-golive');if(gld&&meta.go_live_date)gld.value=meta.go_live_date;
+
+function mondayShowBoardInfo(boards) {
+  const wrap = document.getElementById('monday-board-info');
+  const list = document.getElementById('monday-boards-list');
+  if (!wrap || !list) return;
+  wrap.style.display = '';
+  if (!boards.length && _mondayBoardId) {
+    const mapped = Object.keys(MONDAY_COL_MAP).filter(k => mondayColId(k)).length;
+    list.innerHTML = `<div style="font-size:12px;color:var(--green);padding:8px 12px;background:var(--green-bg);border:1px solid #bbf7d0;border-radius:7px">✓ Clients – Overview found &nbsp;&middot;&nbsp; ${Object.keys(_mondayColumns).length} columns loaded &nbsp;&middot;&nbsp; ${mapped}/${Object.keys(MONDAY_COL_MAP).length} design columns matched</div>`;
+    return;
+  }
+  list.innerHTML = boards.slice(0, 8).map(b => {
+    const isOv = parseInt(b.id) === _mondayBoardId;
+    return `<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:7px;margin-bottom:6px;background:${isOv ? 'var(--green-bg)' : 'var(--bg)'};border:1px solid ${isOv ? '#bbf7d0' : 'var(--border)'}">
+      <div style="font-size:12px;font-weight:${isOv ? '700' : '500'};color:${isOv ? 'var(--green)' : 'var(--text)'}">${isOv ? '★ ' : ''}${esc(b.name)}</div>
+      <div style="font-size:10px;color:var(--muted);margin-left:auto">ID: ${b.id}</div>
+      ${isOv ? '<div style="font-size:10px;font-weight:700;color:var(--green)">Clients – Overview ✓</div>' : ''}
+    </div>`;
+  }).join('') + (boards.length > 8 ? `<div style="font-size:11px;color:var(--muted);padding:4px 12px">+${boards.length - 8} more boards</div>` : '');
 }
-async function mondayFindItem(clientKey){
-  const statusEl=document.getElementById('monday-item-status');statusEl.innerHTML='<div style="font-size:12px;color:var(--muted);padding:8px 0">&#128269; Looking up client in Monday\u2026</div>';
-  try{
-    const data=await mondayGQL('query($bid:[ID!]){boards(ids:$bid){items_page(limit:200){items{id name column_values{id text value}}}}}',{bid:[_mondayBoardId]});
-    const items=data.boards?.[0]?.items_page?.items||[];
-    const match=items.find(i=>i.name?.toLowerCase().trim()===clientKey.toLowerCase().trim());
-    if(match){
-      _mondayItemId=parseInt(match.id);_mondayItemData={};
-      match.column_values.forEach(cv=>{_mondayItemData[cv.id]={text:cv.text,value:cv.value};});
-      statusEl.innerHTML=`<div class="monday-item-found">\u2713 Found in Monday \u2014 Item ID: ${match.id}</div>`;
+
+async function mondayLoadClient() {
+  const sel = document.getElementById('monday-client-select');
+  const clientKey = sel?.value;
+  const panel = document.getElementById('monday-client-panel');
+  if (!panel) return;
+  if (!clientKey) { panel.style.display = 'none'; mondaySetItemBadge(null); return; }
+  panel.style.display = '';
+  _mondayItemId = null; _mondayItemData = {}; _mondayLiveStats = null;
+  mondayResetStatBoxes();
+  // Pre-fill from clients.json meta
+  const meta = typeof CLIENT_META_MAP !== 'undefined' ? CLIENT_META_MAP[clientKey] || {} : {};
+  if (meta.go_live_date) document.getElementById('mf-golive').value = meta.go_live_date;
+  if (meta.producer_name) document.getElementById('mf-producer').value = meta.producer_name;
+  const structMap = { general: 'General', project: 'Subcontractors', location: 'Tenants' };
+  if (meta.structure) { const s = document.getElementById('mf-structure'); if (s) s.value = structMap[meta.structure] || ''; }
+  const platMap = { evident: 'Evident', trustlayer: 'TrustLayer' };
+  const plat = meta.platform || meta.source || 'evident';
+  const pEl = document.getElementById('mf-platform'); if (pEl) pEl.value = platMap[plat] || '';
+  if (_mondayWsId && _mondayBoardId) await mondayFindItem(clientKey);
+  else mondaySetItemBadge('noconn');
+}
+
+async function mondayFindItem(clientKey) {
+  mondaySetItemBadge('searching');
+  try {
+    const data = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){items_page(limit:200){items{id name column_values{id text value}}}}}', { bid: [_mondayBoardId] });
+    const items = data.boards?.[0]?.items_page?.items || [];
+    const match = items.find(i => i.name?.toLowerCase().trim() === clientKey.toLowerCase().trim());
+    if (match) {
+      _mondayItemId = parseInt(match.id); _mondayItemData = {};
+      match.column_values.forEach(cv => { _mondayItemData[cv.id] = { text: cv.text, value: cv.value }; });
+      mondaySetItemBadge('found', match.id);
       mondayPopulateFields();
-    }else{statusEl.innerHTML=`<div class="monday-item-missing">\u26a0 "${esc(clientKey)}" not found in Clients \u2013 Overview. Check the name matches exactly.</div>`;}
-  }catch(e){statusEl.innerHTML=`<div class="monday-item-missing">\u26a0 Search failed \u2014 ${esc(e.message)}</div>`;}
+    } else {
+      mondaySetItemBadge('notfound', clientKey);
+    }
+  } catch(e) { mondaySetItemBadge('error', e.message); }
 }
-function mondayPopulateFields(){
-  const getColText=t=>{const id=_mondayColumns[t];return id?(_mondayItemData[id]?.text||'\u2014'):'\u2014';};
-  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v||'\u2014';};
-  set('mf-status-current',getColText('Status'));set('mf-renewal-current',getColText('INV: Renewal Status'));
-  set('mf-renewal-date-current',getColText('INV: Renewal Date'));set('mf-licenses-current',getColText('Est. Licenses'));set('mf-golive-current',getColText('Go-Live Date'));
-  const s=document.getElementById('mf-status'),cv=getColText('Status');
-  if(s&&cv!=='\u2014'){const m=Array.from(s.options).find(o=>o.value===cv);if(m)s.value=cv;}
+
+function mondaySetItemBadge(status, detail='') {
+  const badge = document.getElementById('monday-item-badge');
+  if (!badge) return;
+  const configs = {
+    null:       { display: 'none' },
+    noconn:     { text: '⚠ Connect to Monday first', bg: '#fff7ed', color: '#9a3412', border: '#fed7aa' },
+    searching:  { text: '&#128269; Looking up…', bg: 'var(--bg)', color: 'var(--muted)', border: 'var(--border)' },
+    found:      { text: '✓ Found in Monday', bg: 'var(--green-bg)', color: '#166534', border: '#bbf7d0' },
+    notfound:   { text: '⚠ Not found in Clients – Overview', bg: '#fff7ed', color: '#9a3412', border: '#fed7aa' },
+    error:      { text: '⚠ Lookup error', bg: 'var(--red-bg)', color: 'var(--red)', border: '#fecaca' },
+  };
+  const cfg = configs[status];
+  if (!cfg || cfg.display === 'none') { badge.style.display = 'none'; return; }
+  badge.style.cssText = `display:block;padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;white-space:nowrap;background:${cfg.bg};color:${cfg.color};border:1px solid ${cfg.border}`;
+  badge.innerHTML = cfg.text;
 }
-async function mondayPushStats(){
-  if(!_mondayItemId){toast('No Monday item found \u2014 connect and select a client first','error');return;}
-  const sel=document.getElementById('monday-client-select'),clientKey=sel?.value;
-  if(!clientKey){toast('Select a client first','error');return;}
-  const btn=document.getElementById('monday-push-stats-btn');btn.disabled=true;btn.textContent='Pushing\u2026';
-  mondayLog('Fetching live data for '+clientKey+'\u2026','');
-  try{
-    const clientData=await loadClientData(clientKey);
-    const insureds=clientData.insureds||[],active=insureds.filter(r=>r['active']!=='false'&&r['paused']!=='true');
-    const total=active.length,comp=active.filter(r=>{const s=(r['compliance_status']||'').toLowerCase().replace(/[\s\-]/g,'_');return s==='compliant'||s==='active';}).length;
-    const nc=total-comp,rate=total?Math.round(comp/total*100):0;
-    const stamp=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
-    mondayLog(`Stats: ${total} active \u00b7 ${comp} compliant \u00b7 ${nc} NC \u00b7 ${rate}% rate`,'ok');
-    const colVals={},licId=_mondayColumns['Est. Licenses'];
-    if(licId&&total>0)colVals[licId]=total;
-    if(Object.keys(colVals).length>0){await mondayGQL('mutation($bid:ID!,$iid:ID!,$cv:JSON!){change_multiple_column_values(board_id:$bid,item_id:$iid,column_values:$cv){id}}',{bid:_mondayBoardId,iid:_mondayItemId,cv:JSON.stringify(colVals)});mondayLog('Est. Licenses updated in Monday \u2713','ok');}
-    mondayLog(`Compliance Rate: ${rate}% \u2014 note this in Monday if no formula column exists`,'');
-    _mondayReportLog.unshift({client:clientKey,date:stamp,total,comp,nc,rate});mondayUpdateReportLog();
-    mondayLog('Sync complete \u2713','ok');toast('Stats pushed to Monday \u2713','success');
-  }catch(e){mondayLog('Error: '+e.message,'err');toast('Push failed \u2014 '+e.message,'error');}
-  btn.disabled=false;btn.textContent='Push Stats';
+
+function mondayPopulateFields() {
+  const getT = id => (_mondayItemData[id]?.text || '');
+  const setC = (elId, title) => { const id = mondayColId(title); const el = document.getElementById(elId + '-current'); if (el) el.textContent = (id ? getT(id) : '') || '—'; };
+  setC('mf-status', 'status'); setC('mf-platform', 'platform'); setC('mf-structure', 'structure');
+  setC('mf-golive', 'golive'); setC('mf-licenses', 'licenses'); setC('mf-producer', 'producer');
+  setC('mf-renewal-status', 'renewalStatus'); setC('mf-renewal-date', 'renewalDate');
+  setC('mf-current-fee', 'currentFee'); setC('mf-next-fee', 'nextFee'); setC('mf-bill-mode', 'billMode');
+  setC('mf-rpt-cs', 'rptCS'); setC('mf-rpt-cd', 'rptCD'); setC('mf-rpt-es', 'rptES');
+  setC('mf-rpt-ed', 'rptED'); setC('mf-rpt-yer', 'rptYER'); setC('mf-rpt-pro', 'rptPRO');
+  // Try to pre-fill dropdowns from current Monday values
+  const trySet = (selId, title) => {
+    const id = mondayColId(title); if (!id) return;
+    const cur = getT(id); if (!cur) return;
+    const el = document.getElementById(selId); if (!el) return;
+    const opt = Array.from(el.options).find(o => o.value.toLowerCase() === cur.toLowerCase());
+    if (opt) el.value = opt.value;
+  };
+  trySet('mf-status', 'status'); trySet('mf-platform', 'platform'); trySet('mf-structure', 'structure');
+  trySet('mf-renewal-status', 'renewalStatus'); trySet('mf-bill-mode', 'billMode');
 }
-async function mondaySaveFields(){
-  if(!_mondayItemId){toast('No Monday item linked \u2014 connect first','error');return;}
-  const btn=document.getElementById('monday-save-fields-btn');btn.disabled=true;btn.textContent='Saving\u2026';
-  mondayLog('Saving field updates to Monday\u2026','');
-  try{
-    const colVals={};let changes=0;
-    const tryCol=(selId,title,fmt)=>{const el=document.getElementById(selId);if(!el||!el.value)return;const id=_mondayColumns[title];if(!id){mondayLog(`Column "${title}" not found \u2014 skipping`,'');return;}colVals[id]=fmt(el.value);changes++;mondayLog(`${title} \u2192 ${el.value}`,'');};
-    tryCol('mf-status','Status',v=>({label:v}));tryCol('mf-renewal-status','INV: Renewal Status',v=>({label:v}));
-    tryCol('mf-renewal-date','INV: Renewal Date',v=>({date:v}));tryCol('mf-golive','Go-Live Date',v=>({date:v}));
-    const lic=document.getElementById('mf-licenses')?.value?.trim();
-    if(lic&&!isNaN(parseInt(lic))){const id=_mondayColumns['Est. Licenses'];if(id){colVals[id]=parseInt(lic);changes++;mondayLog(`Est. Licenses \u2192 ${lic}`,'');}}
-    if(changes===0){toast('No changes to save \u2014 update at least one field','error');btn.disabled=false;btn.textContent='Save to Monday';return;}
-    await mondayGQL('mutation($bid:ID!,$iid:ID!,$cv:JSON!){change_multiple_column_values(board_id:$bid,item_id:$iid,column_values:$cv){id}}',{bid:_mondayBoardId,iid:_mondayItemId,cv:JSON.stringify(colVals)});
-    mondayLog(`${changes} field(s) saved \u2713`,'ok');toast(`${changes} field${changes>1?'s':''} saved to Monday \u2713`,'success');
-    await mondayFindItem(document.getElementById('monday-client-select')?.value);
-  }catch(e){mondayLog('Error: '+e.message,'err');toast('Save failed \u2014 '+e.message,'error');}
-  btn.disabled=false;btn.textContent='Save to Monday';
+
+function mondayResetStatBoxes() {
+  ['ms-total','ms-comp','ms-nc','ms-rate'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = '—'; });
 }
-function mondayUpdateReportLog(){
-  const wrap=document.getElementById('monday-last-synced-list');if(!wrap)return;
-  if(!_mondayReportLog.length){wrap.innerHTML='<div style="font-size:12px;color:var(--muted);text-align:center;padding:16px">No reports generated this session yet.</div>';return;}
-  wrap.innerHTML=_mondayReportLog.map(r=>`<div style="display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--border);font-size:12px"><div style="font-weight:600;color:var(--navy);flex:1">${esc(r.client)}</div><div style="color:var(--muted)">${r.date}</div><div style="background:${r.rate==='\u2014'?'var(--bg)':r.rate>=80?'var(--green-bg)':'var(--red-bg)'};color:${r.rate==='\u2014'?'var(--muted)':r.rate>=80?'var(--green)':'var(--red)'};font-weight:700;padding:2px 9px;border-radius:12px">${r.rate==='\u2014'?'\u2014':r.rate+'%'}</div><div style="color:var(--muted)">${r.total==='\u2014'?'':r.total+' active'}</div></div>`).join('');
+
+async function mondayFetchStats() {
+  const sel = document.getElementById('monday-client-select');
+  const clientKey = sel?.value; if (!clientKey) { toast('Select a client first', 'error'); return; }
+  const btn = document.getElementById('monday-fetch-stats-btn'); btn.disabled = true; btn.textContent = 'Loading…';
+  try {
+    const clientData = await loadClientData(clientKey);
+    const active = clientData.insureds.filter(r => r['active'] !== 'false' && r['paused'] !== 'true');
+    const total = active.length;
+    const comp  = active.filter(r => { const s=(r['compliance_status']||'').toLowerCase().replace(/[\s\-]/g,'_'); return s==='compliant'||s==='active'; }).length;
+    const nc = total - comp;
+    const rate = total ? Math.round(comp / total * 100) : 0;
+    _mondayLiveStats = { total, comp, nc, rate };
+    document.getElementById('ms-total').textContent = total;
+    document.getElementById('ms-comp').textContent  = comp;
+    document.getElementById('ms-nc').textContent    = nc;
+    document.getElementById('ms-rate').textContent  = rate + '%';
+    // Pre-fill Est. Licenses if empty
+    const licEl = document.getElementById('mf-licenses'); if (licEl && !licEl.value) licEl.value = total;
+    toast('Stats loaded from live data', 'success');
+  } catch(e) { toast('Failed to load stats: ' + e.message, 'error'); }
+  btn.disabled = false; btn.textContent = '↻ Load';
 }
-function mondayClearReportLog(){_mondayReportLog=[];mondayUpdateReportLog();}
-function mondayOnReportsGenerated(){
-  if(!selectedClient)return;
-  const stamp=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
-  _mondayReportLog.unshift({client:selectedClient.name,date:stamp,total:'\u2014',comp:'\u2014',nc:'\u2014',rate:'\u2014'});
+
+function mondayBuildColumnValues() {
+  // Helper to get col type
+  const colType = key => { const id = mondayColId(key); if (!id) return null; return Object.values(_mondayColumns).find(c => c.id === id)?.type || 'text'; };
+  const vals = {};
+  const tryAdd = (key, elId, fmt) => {
+    const id = mondayColId(key); if (!id) return;
+    const el = document.getElementById(elId); if (!el || !el.value) return;
+    vals[id] = fmt(el.value);
+  };
+  // Status columns (dropdown type)
+  tryAdd('status',        'mf-status',          v => ({ label: v }));
+  tryAdd('platform',      'mf-platform',        v => ({ label: v }));
+  tryAdd('structure',     'mf-structure',       v => ({ label: v }));
+  tryAdd('renewalStatus', 'mf-renewal-status',  v => ({ label: v }));
+  tryAdd('billMode',      'mf-bill-mode',       v => ({ label: v }));
+  // Date columns
+  tryAdd('golive',        'mf-golive',          v => ({ date: v }));
+  tryAdd('renewalDate',   'mf-renewal-date',    v => ({ date: v }));
+  // Number / text columns
+  tryAdd('licenses',      'mf-licenses',        v => isNaN(parseInt(v)) ? v : parseInt(v));
+  tryAdd('currentFee',    'mf-current-fee',     v => isNaN(parseFloat(v)) ? v : parseFloat(v));
+  tryAdd('nextFee',       'mf-next-fee',        v => isNaN(parseFloat(v)) ? v : parseFloat(v));
+  tryAdd('producer',      'mf-producer',        v => v);
+  // Link columns (RPT:)
+  tryAdd('rptCS',  'mf-rpt-cs',  v => ({ url: v, text: 'Compliance Summary' }));
+  tryAdd('rptCD',  'mf-rpt-cd',  v => ({ url: v, text: 'Compliance Detail' }));
+  tryAdd('rptES',  'mf-rpt-es',  v => ({ url: v, text: 'Engagement Summary' }));
+  tryAdd('rptED',  'mf-rpt-ed',  v => ({ url: v, text: 'Engagement Detail' }));
+  tryAdd('rptYER', 'mf-rpt-yer', v => ({ url: v, text: 'Year End Review' }));
+  tryAdd('rptPRO', 'mf-rpt-pro', v => ({ url: v, text: 'Producer Overview' }));
+  return vals;
+}
+
+async function mondayFullSync() {
+  if (!_mondayBoardId) { toast('Connect to Monday first', 'error'); return; }
+  const clientKey = document.getElementById('monday-client-select')?.value;
+  if (!clientKey) { toast('Select a client first', 'error'); return; }
+
+  // Clear log
+  const log = document.getElementById('monday-sync-log'); if (log) log.innerHTML = '';
+  const btn = document.getElementById('monday-full-sync-btn'); btn.disabled = true; btn.textContent = 'Syncing…';
+
+  try {
+    // 1. Find item if not already found
+    if (!_mondayItemId) {
+      mondayLog('Looking up client in Monday…');
+      await mondayFindItem(clientKey);
+      if (!_mondayItemId) throw new Error(`"${clientKey}" not found in Clients – Overview. Check the board or create the item first.`);
+    }
+
+    mondayLog(`✓ Item found: ID ${_mondayItemId}`, 'ok');
+
+    // 2. Load stats if not already loaded
+    if (!_mondayLiveStats) {
+      mondayLog('Fetching live compliance data…');
+      await mondayFetchStats();
+    }
+    if (_mondayLiveStats) {
+      mondayLog(`Stats: ${_mondayLiveStats.total} active · ${_mondayLiveStats.comp} compliant · ${_mondayLiveStats.nc} NC · ${_mondayLiveStats.rate}% rate`, 'ok');
+    }
+
+    // 3. Build column values
+    const colVals = mondayBuildColumnValues();
+    if (Object.keys(colVals).length === 0) {
+      mondayLog('⚠ No fields to update — fill in at least one field above', 'err');
+      toast('No fields to update', 'error'); btn.disabled = false; btn.textContent = '虹 Sync to Monday'; return;
+    }
+
+    // 4. Log what we're pushing
+    Object.keys(colVals).forEach(id => {
+      const colName = Object.entries(_mondayColumns).find(([k, v]) => v.id === id)?.[0] || id;
+      mondayLog(`  → ${colName}: ${JSON.stringify(colVals[id])}`);
+    });
+
+    // 5. Push to Monday
+    mondayLog(`Pushing ${Object.keys(colVals).length} field(s) to Monday…`);
+    await mondayGQL(
+      'mutation($bid:ID!,$iid:ID!,$cv:JSON!){change_multiple_column_values(board_id:$bid,item_id:$iid,column_values:$cv){id}}',
+      { bid: _mondayBoardId, iid: _mondayItemId, cv: JSON.stringify(colVals) }
+    );
+
+    mondayLog(`✓ Sync complete — ${Object.keys(colVals).length} field(s) updated`, 'ok');
+    toast(`✓ ${clientKey} synced to Monday (${Object.keys(colVals).length} fields)`, 'success');
+
+    // 6. Refresh current values display
+    await mondayFindItem(clientKey);
+
+    // 7. Log to activity
+    const stamp = new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+    _mondayReportLog.unshift({ client: clientKey, date: stamp, total: _mondayLiveStats?.total || '—', comp: _mondayLiveStats?.comp || '—', nc: _mondayLiveStats?.nc || '—', rate: _mondayLiveStats?.rate ?? '—', fields: Object.keys(colVals).length });
+    mondayUpdateReportLog();
+
+  } catch(e) {
+    mondayLog('Error: ' + e.message, 'err');
+    toast('Sync failed: ' + e.message, 'error');
+  }
+  btn.disabled = false; btn.textContent = '虹 Sync to Monday';
+}
+
+function mondayUpdateReportLog() {
+  const wrap = document.getElementById('monday-last-synced-list'); if (!wrap) return;
+  if (!_mondayReportLog.length) { wrap.innerHTML = '<div style="font-size:12px;color:var(--muted);text-align:center;padding:16px">No syncs this session yet.</div>'; return; }
+  wrap.innerHTML = _mondayReportLog.map(r => `
+    <div style="display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--border);font-size:12px">
+      <div style="font-weight:600;color:var(--navy);flex:1">${esc(r.client)}</div>
+      <div style="color:var(--muted)">${r.date}</div>
+      ${r.fields !== undefined ? `<div style="font-size:10px;color:var(--muted)">${r.fields} fields</div>` : ''}
+      <div style="background:${r.rate==='—'?'var(--bg)':r.rate>=80?'var(--green-bg)':'var(--red-bg)'};color:${r.rate==='—'?'var(--muted)':r.rate>=80?'var(--green)':'var(--red)'};font-weight:700;padding:2px 9px;border-radius:12px">${r.rate==='—'?'—':r.rate+'%'}</div>
+    </div>`).join('');
+}
+
+function mondayClearReportLog() { _mondayReportLog = []; mondayUpdateReportLog(); }
+
+async function mondayOnReportsGenerated() {
+  if (!selectedClient) return;
+  const stamp = new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+  _mondayReportLog.unshift({ client: selectedClient.name, date: stamp, total: '\u2014', comp: '\u2014', nc: '\u2014', rate: '\u2014' });
   mondayUpdateReportLog();
+  // Auto-select client in Monday Sync tab
+  const sel = document.getElementById('monday-client-select');
+  if (sel && selectedClient.key) {
+    if (!sel.value) { sel.value = selectedClient.key; await mondayLoadClient(); }
+    // Auto-push stats if connected and item is found
+    if (_mondayWsId && _mondayItemId) {
+      try {
+        await mondayFetchStats();
+        // Push Est. Licenses (live count) if column exists
+        const colVals = {};
+        const licId = mondayColId('licenses');
+        if (licId && _mondayLiveStats?.total) colVals[licId] = _mondayLiveStats.total;
+        if (Object.keys(colVals).length) {
+          await mondayGQL('mutation($bid:ID!,$iid:ID!,$cv:JSON!){change_multiple_column_values(board_id:$bid,item_id:$iid,column_values:$cv){id}}',
+            { bid: _mondayBoardId, iid: _mondayItemId, cv: JSON.stringify(colVals) });
+          // Update the log entry with real stats
+          if (_mondayReportLog[0] && _mondayLiveStats) {
+            _mondayReportLog[0].total = _mondayLiveStats.total;
+            _mondayReportLog[0].comp  = _mondayLiveStats.comp;
+            _mondayReportLog[0].nc    = _mondayLiveStats.nc;
+            _mondayReportLog[0].rate  = _mondayLiveStats.rate;
+            mondayUpdateReportLog();
+          }
+        }
+      } catch(e) { console.warn('Auto-push after reports failed:', e.message); }
+    }
+  }
 }
+
+// Legacy stubs (kept for compatibility)
+async function mondayPushStats() { await mondayFetchStats(); }
+async function mondaySaveFields() { await mondayFullSync(); }
+
+// ── MONDAY SUB-TAB NAVIGATION ──
+let _mondayProspectsBoardId = null, _mondayProspectsColumns = {}, _mondayProspectLog = [];
+
+function switchMondayTab(tab) {
+  ['sync','prospects'].forEach(t => {
+    const content = document.getElementById('mtab-' + t);
+    const btn = document.getElementById('mtab-btn-' + t);
+    if (content) content.style.display = t === tab ? '' : 'none';
+    if (btn) btn.classList.toggle('active', t === tab);
+  });
+  if (tab === 'prospects') mondayInitProspects();
+}
+
+async function mondayInitProspects() {
+  const noconn = document.getElementById('prospects-noconn');
+  const status = document.getElementById('prospects-board-status');
+  if (!_mondayWsId) {
+    if (noconn) noconn.style.display = '';
+    return;
+  }
+  if (noconn) noconn.style.display = 'none';
+  // Pre-fill producer from first client meta if available
+  const producerEl = document.getElementById('pr-producer');
+  if (producerEl && !producerEl.value) {
+    const firstMeta = Object.values(typeof CLIENT_META_MAP !== 'undefined' ? CLIENT_META_MAP : {}).find(m => m.producer_name);
+    if (firstMeta) producerEl.value = firstMeta.producer_name;
+  }
+  // Find Prospects board if not already found
+  if (!_mondayProspectsBoardId) await mondayFindProspectsBoard();
+  if (status) {
+    if (_mondayProspectsBoardId) {
+      status.style.display = '';
+      status.style.cssText = 'margin-bottom:18px;font-size:12px;color:#166534;padding:10px 14px;background:var(--green-bg);border-radius:8px;border:1px solid #bbf7d0';
+      const mapped = Object.keys(MONDAY_PROSPECTS_COL_MAP).filter(k => mondayProspectsColId(k)).length;
+      status.textContent = `\u2713 Prospects board connected \u2014 ${Object.keys(_mondayProspectsColumns).length} columns loaded, ${mapped}/${Object.keys(MONDAY_PROSPECTS_COL_MAP).length} design columns matched`;
+    } else {
+      status.style.display = '';
+      status.style.cssText = 'margin-bottom:18px;font-size:12px;color:#9a3412;padding:10px 14px;background:#fff7ed;border-radius:8px;border:1px solid #fed7aa';
+      status.textContent = '\u26a0 Could not find a Prospects board in your workspace. Check that it exists and is named "Prospects".';
+    }
+  }
+}
+
+const MONDAY_PROSPECTS_COL_MAP = {
+  status:          ['Status'],
+  stage:           ['Stage'],
+  referringHub:    ['Referring HUB','Referring Hub'],
+  referringProd:   ['Referring Producer'],
+  decisionMaker:   ['Decision Maker'],
+  dayToDay:        ['Day-to-Day 1','Day-to-Day'],
+  meetingDate:     ['Initial Meeting Date'],
+  proposalDeadline:['Proposal Deadline'],
+  proposalExp:     ['Proposal Expiration'],
+  targetedGoLive:  ['Targeted Go-Live'],
+  licenses:        ['Est. Licenses'],
+  targetFee:       ['Target Fee'],
+  proposedFee:     ['Proposed Fee'],
+  structure:       ['Structure'],
+};
+
+function mondayProspectsColId(key) {
+  const candidates = MONDAY_PROSPECTS_COL_MAP[key] || [];
+  for (const name of candidates) { if (_mondayProspectsColumns[name]) return _mondayProspectsColumns[name]; }
+  return null;
+}
+
+async function mondayFindProspectsBoard() {
+  try {
+    const data = await mondayGQL('query($wid:[ID]){boards(workspace_ids:$wid,limit:50){id name}}', { wid: [_mondayWsId] });
+    const boards = data.boards || [];
+    const pb = boards.find(b => b.name?.toLowerCase().includes('prospect'));
+    if (!pb) return;
+    _mondayProspectsBoardId = parseInt(pb.id);
+    // Load columns
+    const colData = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){columns{id title type}}}', { bid: [_mondayProspectsBoardId] });
+    _mondayProspectsColumns = {};
+    (colData.boards?.[0]?.columns || []).forEach(col => { _mondayProspectsColumns[col.title] = col.id; });
+  } catch(e) { console.warn('Could not find Prospects board:', e.message); }
+}
+
+async function mondayAddProspect() {
+  if (!_mondayWsId) { toast('Connect to Monday first (Client Sync tab)', 'error'); return; }
+  const name = document.getElementById('pr-name')?.value?.trim();
+  if (!name) { showProspectMsg('Prospect name is required.', true); return; }
+  if (!_mondayProspectsBoardId) await mondayFindProspectsBoard();
+  if (!_mondayProspectsBoardId) { showProspectMsg('Could not find Prospects board in Monday.', true); return; }
+  const btn = document.getElementById('prospect-add-btn'); btn.disabled = true; btn.textContent = 'Adding\u2026';
+  try {
+    // Find "Active" group
+    const grpData = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){groups{id title}}}', { bid: [_mondayProspectsBoardId] });
+    const groups = grpData.boards?.[0]?.groups || [];
+    const activeGrp = groups.find(g => g.title?.toLowerCase().includes('active')) || groups[0];
+    const groupId = activeGrp?.id;
+    // Build column values
+    const vals = {};
+    const add = (key, elId, fmt) => {
+      const id = mondayProspectsColId(key); if (!id) return;
+      const el = document.getElementById(elId); if (!el || !el.value) return;
+      vals[id] = fmt(el.value);
+    };
+    add('stage',           'pr-stage',           v => ({ label: v }));
+    add('structure',       'pr-structure',       v => ({ label: v }));
+    add('referringHub',    'pr-hub',             v => v);
+    add('referringProd',   'pr-producer',        v => v);
+    add('decisionMaker',   'pr-decision-maker',  v => v);
+    add('dayToDay',        'pr-day-to-day',      v => v);
+    add('meetingDate',     'pr-meeting-date',    v => ({ date: v }));
+    add('targetedGoLive',  'pr-golive',          v => ({ date: v }));
+    add('proposalDeadline','pr-proposal-deadline',v => ({ date: v }));
+    add('licenses',        'pr-licenses',        v => isNaN(parseInt(v)) ? v : parseInt(v));
+    add('targetFee',       'pr-target-fee',      v => isNaN(parseFloat(v)) ? v : parseFloat(v));
+    add('proposedFee',     'pr-proposed-fee',    v => isNaN(parseFloat(v)) ? v : parseFloat(v));
+    // Create item
+    const createData = await mondayGQL(
+      'mutation($bid:ID!,$gid:String,$name:String!,$cv:JSON){create_item(board_id:$bid,group_id:$gid,item_name:$name,column_values:$cv){id}}',
+      { bid: _mondayProspectsBoardId, gid: groupId, name, cv: JSON.stringify(vals) }
+    );
+    const newId = createData.create_item?.id;
+    showProspectMsg(`\u2713 "${name}" added to Prospects (Item #${newId})`, false);
+    toast('\u2713 Prospect added to Monday', 'success');
+    // Log it
+    _mondayProspectLog.unshift({ action: 'Added', name, date: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}), id: newId });
+    mondayRenderProspectLog();
+    // Clear form
+    ['pr-name','pr-stage','pr-structure','pr-hub','pr-producer','pr-decision-maker','pr-day-to-day','pr-meeting-date','pr-golive','pr-proposal-deadline','pr-licenses','pr-target-fee','pr-proposed-fee'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+    // Pre-fill convert form
+    document.getElementById('conv-name').value = name;
+  } catch(e) { showProspectMsg('Failed: ' + e.message, true); }
+  btn.disabled = false; btn.textContent = '+ Add to Monday';
+}
+
+async function mondayConvertToClient() {
+  const prospectName = document.getElementById('conv-name')?.value?.trim();
+  if (!prospectName) { showConvMsg('Enter the prospect name (must match exactly in Monday).', true); return; }
+  if (!_mondayWsId) { showConvMsg('Connect to Monday first.', true); return; }
+  const clientName  = document.getElementById('conv-client-name')?.value?.trim() || prospectName;
+  const platform    = document.getElementById('conv-platform')?.value || 'evident';
+  const structure   = document.getElementById('conv-structure')?.value || 'general';
+  const goLive      = document.getElementById('conv-golive')?.value || '';
+  const producer    = document.getElementById('conv-producer')?.value?.trim() || '';
+  const addToJson   = document.getElementById('conv-add-clients-json')?.checked;
+  const btn = document.querySelector('[onclick="mondayConvertToClient()"]'); btn.disabled = true; btn.textContent = 'Converting\u2026';
+  try {
+    // 1. Find prospect item and mark Closed Won
+    if (!_mondayProspectsBoardId) await mondayFindProspectsBoard();
+    if (_mondayProspectsBoardId) {
+      const pData = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){items_page(limit:200){items{id name column_values{id text}}}}}', { bid: [_mondayProspectsBoardId] });
+      const pitems = pData.boards?.[0]?.items_page?.items || [];
+      const pmatch = pitems.find(i => i.name?.toLowerCase().trim() === prospectName.toLowerCase().trim());
+      if (pmatch) {
+        // Move to Closed Won group
+        const grpData = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){groups{id title}}}', { bid: [_mondayProspectsBoardId] });
+        const wonGrp = (grpData.boards?.[0]?.groups || []).find(g => g.title?.toLowerCase().includes('won'));
+        if (wonGrp) {
+          await mondayGQL('mutation($bid:ID!,$iid:ID!,$gid:String!){move_item_to_group(item_id:$iid,group_id:$gid){id}}',
+            { bid: _mondayProspectsBoardId, iid: parseInt(pmatch.id), gid: wonGrp.id });
+        }
+        // Update status to Closed Won
+        const statusId = mondayProspectsColId('status');
+        if (statusId) await mondayGQL('mutation($bid:ID!,$iid:ID!,$cv:JSON!){change_multiple_column_values(board_id:$bid,item_id:$iid,column_values:$cv){id}}',
+          { bid: _mondayProspectsBoardId, iid: parseInt(pmatch.id), cv: JSON.stringify({ [statusId]: { label: 'Closed Won' } }) });
+        showConvMsg('\u2713 Prospect marked Closed Won in Monday.', false);
+      }
+    }
+    // 2. Create item in Clients – Overview if board is found
+    if (_mondayBoardId) {
+      const grpData = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){groups{id title}}}', { bid: [_mondayBoardId] });
+      const onboardingGrp = (grpData.boards?.[0]?.groups || []).find(g => g.title?.toLowerCase().includes('onboard')) || grpData.boards?.[0]?.groups?.[0];
+      const vals = {};
+      const statusId = mondayColId('status');      if (statusId) vals[statusId] = { label: 'Onboarding' };
+      const platId   = mondayColId('platform');    if (platId)   vals[platId]   = { label: platform === 'trustlayer' ? 'TrustLayer' : 'Evident' };
+      const structId = mondayColId('structure');   if (structId) vals[structId] = { label: { general:'General', project:'Subcontractors', location:'Tenants' }[structure] || 'General' };
+      const glId     = mondayColId('golive');      if (glId && goLive) vals[glId] = { date: goLive };
+      const prodId   = mondayColId('producer');    if (prodId && producer) vals[prodId] = producer;
+      await mondayGQL('mutation($bid:ID!,$gid:String,$name:String!,$cv:JSON){create_item(board_id:$bid,group_id:$gid,item_name:$name,column_values:$cv){id}}',
+        { bid: _mondayBoardId, gid: onboardingGrp?.id, name: clientName, cv: JSON.stringify(vals) });
+      showConvMsg('\u2713 Client created in Clients \u2013 Overview (Onboarding).', false);
+    }
+    // 3. Add to clients.json if checked
+    if (addToJson) {
+      const apiName = clientName.toLowerCase().replace(/[^a-z0-9]/g,'').slice(0, 20);
+      const newEntry = { client_name: clientName, rp_common_name: apiName, program_start_date: '', go_live_date: goLive, structure, platform, producer_name: producer, contact_name: '', active: true };
+      if (typeof _allClientsData !== 'undefined' && _allClientsData.length) {
+        _allClientsData.push(newEntry);
+        try {
+          await saveClientsToConfig(_allClientsData);
+          showConvMsg('\u2713 Added to clients.json. Will appear in Report Generator after reload.', false);
+        } catch(e) { showConvMsg('\u26a0 Monday updated but clients.json save failed: ' + e.message, true); }
+      }
+      if (typeof renderGrids !== 'undefined') renderGrids();
+    }
+    toast('\u2713 ' + clientName + ' converted to client!', 'success');
+    _mondayProspectLog.unshift({ action: 'Converted \u2192 Client', name: prospectName, date: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}), id: '' });
+    mondayRenderProspectLog();
+    document.getElementById('conv-name').value = '';
+    document.getElementById('conv-client-name').value = '';
+    document.getElementById('conv-golive').value = '';
+    document.getElementById('conv-producer').value = '';
+  } catch(e) { showConvMsg('Error: ' + e.message, true); }
+  btn.disabled = false; btn.textContent = '\uD83C\uDF89 Convert to Client';
+}
+
+async function mondayMarkClosedLost() {
+  const prospectName = document.getElementById('conv-name')?.value?.trim();
+  if (!prospectName) { showConvMsg('Enter the prospect name first.', true); return; }
+  if (!_mondayProspectsBoardId) await mondayFindProspectsBoard();
+  if (!_mondayProspectsBoardId) { showConvMsg('Prospects board not found.', true); return; }
+  try {
+    const pData = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){items_page(limit:200){items{id name}}}}', { bid: [_mondayProspectsBoardId] });
+    const match = (pData.boards?.[0]?.items_page?.items || []).find(i => i.name?.toLowerCase().trim() === prospectName.toLowerCase().trim());
+    if (!match) { showConvMsg(`"${prospectName}" not found in Prospects board.`, true); return; }
+    const grpData = await mondayGQL('query($bid:[ID!]){boards(ids:$bid){groups{id title}}}', { bid: [_mondayProspectsBoardId] });
+    const lostGrp = (grpData.boards?.[0]?.groups || []).find(g => g.title?.toLowerCase().includes('lost'));
+    if (lostGrp) await mondayGQL('mutation($bid:ID!,$iid:ID!,$gid:String!){move_item_to_group(item_id:$iid,group_id:$gid){id}}',
+      { bid: _mondayProspectsBoardId, iid: parseInt(match.id), gid: lostGrp.id });
+    showConvMsg('\u2713 Marked Closed Lost.', false);
+    toast(prospectName + ' marked Closed Lost', 'success');
+    _mondayProspectLog.unshift({ action: 'Closed Lost', name: prospectName, date: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}), id: match.id });
+    mondayRenderProspectLog();
+  } catch(e) { showConvMsg('Error: ' + e.message, true); }
+}
+
+function showProspectMsg(msg, isErr) {
+  const el = document.getElementById('prospect-add-msg'); if (!el) return;
+  el.textContent = msg;
+  el.style.cssText = `display:block;font-size:12px;padding:8px 12px;border-radius:7px;background:${isErr?'var(--red-bg)':'var(--green-bg)'};color:${isErr?'var(--red)':'var(--green)'}`;
+}
+function showConvMsg(msg, isErr) {
+  const el = document.getElementById('conv-msg'); if (!el) return;
+  el.textContent = msg;
+  el.style.cssText = `display:block;font-size:12px;padding:8px 12px;border-radius:7px;background:${isErr?'var(--red-bg)':'var(--green-bg)'};color:${isErr?'var(--red)':'var(--green)'}`;
+}
+function mondayRenderProspectLog() {
+  const wrap = document.getElementById('prospect-log-list'); if (!wrap) return;
+  if (!_mondayProspectLog.length) { wrap.innerHTML = '<div style="font-size:12px;color:var(--muted);text-align:center;padding:16px">No prospect actions this session.</div>'; return; }
+  wrap.innerHTML = _mondayProspectLog.map(r => {
+    const color = r.action.includes('Client') ? 'var(--green)' : r.action.includes('Lost') ? 'var(--red)' : 'var(--blue)';
+    return `<div style="display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--border);font-size:12px">
+      <div style="font-weight:600;color:var(--navy);flex:1">${esc(r.name)}</div>
+      <div style="color:var(--muted)">${r.date}</div>
+      <div style="font-weight:600;color:${color}">${r.action}</div>
+    </div>`;
+  }).join('');
+}
+
 </script>
 </body>
 </html>
