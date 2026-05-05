@@ -15,6 +15,40 @@
     body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;transition:background var(--transition),color var(--transition)}
     html.dark{--navy:#C9D8EC;--blue:#6BA3DE;--blue-hover:#85B5E5;--blue-light:#1A2A3D;--bg:#0F1620;--white:#1A2332;--border:#2A3A4D;--text:#D1DCE8;--muted:#7A8FA0;--green:#34D399;--green-bg:#0D2318;--red:#F87171;--red-bg:#2D1515;--shadow:0 2px 8px rgba(0,0,0,0.35);--shadow-lg:0 8px 24px rgba(0,0,0,0.5)}
     html.dark .header{background:#0A1018;border-bottom:1px solid #1E2D3D}html.dark .client-card,html.dark .report-card{background:var(--white)}html.dark .login-card{background:#1A2332}html.dark .login-input{background:#0F1620;border-color:var(--border);color:var(--text)}html.dark select,html.dark input[type="text"],html.dark input[type="date"]{background:#0F1620;color:var(--text);border-color:var(--border)}html.dark .modal{background:#1A2332}html.dark .notif-drawer{background:#1A2332;border-color:var(--border)}
+    /* Settings dark mode */
+    html.dark .settings-box{background:#111C2A;border-color:#253347}
+    html.dark .section-lbl{color:#6B7E96;border-color:#253347}
+    html.dark .stab{color:#6B7E96;background:transparent}
+    html.dark .stab:hover:not(.active){background:#1A2332}
+    html.dark .stab.active{color:var(--blue);border-bottom-color:var(--blue)}
+    html.dark .form-lbl{color:#8A99AA}
+    html.dark .form-hint{color:#6B7E96}
+    html.dark input[type="password"]{background:#111C2A;color:var(--text);border-color:#253347}
+    html.dark input[type="email"]{background:#111C2A;color:var(--text);border-color:#253347}
+    html.dark input[type="checkbox"]{accent-color:var(--blue)}
+    html.dark .modal-title{color:var(--text)}
+    html.dark .modal-hdr{border-color:#253347}
+    html.dark .modal-close{background:#1A2332;border-color:#253347;color:var(--muted)}
+    html.dark .role-badge{background:#1A2332;color:var(--muted)}
+    html.dark #users-list > div{background:#111C2A;border-color:#253347}
+    html.dark #add-user-form,html.dark #edit-user-modal{background:#111C2A;border-color:#253347}
+    html.dark .monday-status-dot{background:#253347}
+    html.dark #s-monday-boards-list div{border-color:#253347}
+    html.dark .settings-box{background:#111C2A;border-color:#1E2D3D}
+    html.dark .stab{color:var(--muted)}
+    html.dark .stab.active{color:var(--blue);border-color:var(--blue)}
+    html.dark .stab:hover:not(.active){background:#1A2332}
+    html.dark input[type="password"]{background:#0F1620;color:var(--text);border-color:var(--border)}
+    html.dark input[type="email"]{background:#0F1620;color:var(--text);border-color:var(--border)}
+    html.dark input[type="checkbox"]{accent-color:var(--blue)}
+    html.dark .section-lbl{color:var(--muted);border-color:#1E2D3D}
+    html.dark .form-hint{color:var(--muted)}
+    html.dark .form-lbl{color:var(--muted)}
+    html.dark .modal-close{background:#1A2332;border-color:#1E2D3D;color:var(--text)}
+    html.dark .modal-title{color:var(--text)}
+    html.dark .modal-hdr{border-color:#1E2D3D}
+    html.dark #stab-content-datasource,html.dark #stab-content-monday-cfg,html.dark #stab-content-users,html.dark #stab-content-admin{color:var(--text)}
+    html.dark .users-list .role-badge{background:#1A2332}
     #auth-overlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#1E2E3D 0%,#2B3A52 60%,#3872B8 100%);align-items:center;justify-content:center}
     .login-wrap{width:100%;max-width:420px;padding:20px}.login-card{background:#fff;border-radius:16px;padding:40px 36px 32px;box-shadow:0 24px 64px rgba(0,0,0,0.35)}
     .login-logo{display:flex;align-items:center;gap:0;margin-bottom:28px;flex-wrap:wrap}.logo-cert{font-family:Arial,sans-serif;font-size:22px;font-weight:900;color:#1E2E3D;letter-spacing:.02em}.logo-secure{font-family:Arial,sans-serif;font-size:22px;font-weight:900;color:#fff;background:#3872B8;padding:2px 10px;border-radius:4px;margin-left:2px}.logo-sub{width:100%;font-family:Arial,sans-serif;font-size:9px;color:#94A3B8;letter-spacing:.15em;text-transform:uppercase;margin-top:4px;font-weight:600}
@@ -205,10 +239,13 @@
           </div>
         </div>
       </div>
-      <div style="display:flex;gap:10px;justify-content:flex-end">
+      <div style="display:flex;gap:10px;justify-content:flex-end;align-items:center">
+        <button class="btn btn-secondary" id="s-test-btn" onclick="testDataConnection()" style="font-size:12px;padding:8px 14px">&#128268; Test Connection</button>
+        <div style="flex:1"></div>
         <button class="btn btn-secondary" onclick="closeSettings()">Cancel</button>
         <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
       </div>
+      <div id="s-test-result" style="display:none;margin-top:12px;font-size:12px;padding:10px 14px;border-radius:8px"></div>
     </div>
 
     <!-- MONDAY -->
@@ -309,6 +346,10 @@
   </div>
   <div id="tab-reports">
   <div id="step-1" class="step-panel">
+    <div id="pat-warning" style="display:none;align-items:center;gap:12px;padding:11px 16px;margin-bottom:14px;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;font-size:13px;color:#9a3412">
+      <span>&#9888;</span>
+      <span><strong>No Access Token configured.</strong> Data cannot load without a GitHub PAT. <button onclick="openSettings()" style="background:none;border:none;color:var(--blue);cursor:pointer;font-weight:600;font-size:13px;padding:0;text-decoration:underline">Open Settings</button> to add one.</span>
+    </div>
     <div class="page-hdr" style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px">
       <div><div class="page-title">Report Generator</div><div class="page-sub">Select a client to get started</div></div>
       <div style="display:flex;gap:8px;justify-self:center">
@@ -361,14 +402,11 @@
   <div id="tab-monday" style="display:none">
 
     <!-- CONNECTION BANNER -->
-    <div id="monday-conn-banner" style="display:flex;align-items:center;gap:12px;padding:13px 18px;border-radius:10px;margin-bottom:22px;border:1px solid var(--border);background:var(--bg)">
-      <div class="monday-status-dot" id="monday-tab-dot"></div>
-      <div>
-        <div style="font-size:13px;font-weight:600;color:var(--text)" id="monday-tab-status">Not connected to Monday</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:1px">Configure connection in Settings &#8594; Monday tab</div>
-      </div>
-      <button class="btn btn-secondary" style="margin-left:auto;font-size:12px;padding:6px 14px" onclick="openSettings();setTimeout(()=>switchSettingsTab('monday-cfg'),60)">&#9881;&#65039; Configure</button>
-    </div>
+    <div id="monday-conn-banner" style="display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border-radius:20px;margin-bottom:22px;border:1px solid #fecaca;background:var(--red-bg)">
+      <div id="monday-tab-dot" style="width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0"></div>
+      <span id="monday-tab-status" style="font-size:13px;font-weight:600;color:var(--red)">Not connected to Monday</span>
+      <button class="btn btn-secondary" style="margin-left:12px;font-size:12px;padding:5px 12px;border-radius:12px" onclick="openSettings();setTimeout(()=>switchSettingsTab('monday-cfg'),60)">Configure</button>
+    </div>    </div>
 
     <!-- SUB-TABS -->
     <div style="display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:24px">
@@ -909,6 +947,15 @@ function toggleCsvPaths() {
   const open = el.style.display === ''; el.style.display = open ? 'none' : ''; icon.textContent = open ? '\u25bc show' : '\u25b2 hide';
 }
 function onLoginSuccess(user) {
+  const s = getSettings();
+  const warn = document.getElementById('pat-warning');
+  if (warn) warn.style.display = s.pat ? 'none' : 'flex';
+  loadClientsFromConfig().then(ok => {
+    if (ok) console.log('Loaded ' + CLIENTS.length + ' clients from clients.json');
+    else if (s.pat) console.warn('Could not load clients.json');
+    renderGrids();
+  });
+}
   loadClientsFromConfig().then(ok => { if (ok) console.log(`Loaded ${CLIENTS.length} active clients from clients.json`); renderGrids(); });
 }
 document.addEventListener('DOMContentLoaded', async () => {
@@ -1037,6 +1084,39 @@ function saveSettings() {
   }));
   closeSettings(); toast('Settings saved', 'success');
 }
+
+async function testDataConnection() {
+  const btn = document.getElementById('s-test-btn');
+  const result = document.getElementById('s-test-result');
+  saveSettings(); const s = getSettings();
+  btn.disabled = true; btn.textContent = 'Testing…';
+  result.style.display = 'none';
+  const show = (ok, msg) => {
+    result.style.cssText = 'display:block;font-size:12px;padding:10px 14px;border-radius:8px;' +
+      (ok ? 'background:var(--green-bg);color:var(--green);border:1px solid #bbf7d0'
+          : 'background:var(--red-bg);color:var(--red);border:1px solid #fecaca');
+    result.innerHTML = (ok ? '✓ ' : '✗ ') + msg;
+  };
+  if (!s.pat) { show(false, 'No Access Token. Add one above then test again.'); btn.disabled=false; btn.textContent='Test Connection'; return; }
+  try {
+    const base = 'https://api.github.com/repos/' + s.owner + '/' + s.repo + '/contents/';
+    const auth = { 'Authorization': 'Bearer ' + s.pat, 'Accept': 'application/vnd.github.v3.raw' };
+    const cfgRes = await fetch(base + 'config/clients.json?ref=' + s.branch, { headers: auth });
+    if (cfgRes.status === 401) { show(false, 'Token rejected — check it has repo scope in GitHub.'); return; }
+    if (cfgRes.status === 404) { show(false, 'config/clients.json not found in ' + s.owner + '/' + s.repo + '. Check repo name and branch.'); return; }
+    if (!cfgRes.ok) { show(false, 'GitHub returned HTTP ' + cfgRes.status); return; }
+    const cfgJson = await cfgRes.json();
+    const clientCount = (cfgJson.clients||[]).filter(c=>c.active!==false).length;
+    const csvRes = await fetch(base + s.insuredsPath + '?ref=' + s.branch, { headers: auth });
+    const csvOk = csvRes.ok;
+    const csvRows = csvOk ? (await csvRes.text()).split('\n').length - 2 : 0;
+    show(true, 'Connected — ' + clientCount + ' active clients &nbsp;·&nbsp; insureds.csv: ' + (csvOk ? csvRows + ' rows' : 'not found — check Evident sync'));
+    const warn = document.getElementById('pat-warning'); if (warn) warn.style.display = 'none';
+    loadClientsFromConfig().then(() => renderGrids());
+  } catch(e) { show(false, 'Network error: ' + e.message); }
+  btn.disabled=false; btn.textContent='Test Connection';
+}
+
 async function fetchCSV(path) {
   const { owner, repo, branch, pat } = getSettings();
   const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
@@ -1116,7 +1196,7 @@ function isTLClient(keyOrClient) {
   return c?.platform === 'trustlayer';
 }
 async function loadClientsFromConfig() {
-  const s = getSettings(); if (!s.pat) return false;
+  const s = getSettings();
   try {
     const url = `https://api.github.com/repos/${s.owner}/${s.repo}/contents/config/clients.json?ref=${s.branch}`;
     const res = await fetch(url, { headers: { 'Authorization': `Bearer ${s.pat}`, 'Accept': 'application/vnd.github.v3+json' } });
@@ -2131,17 +2211,22 @@ function settingsMondayShowBoardInfo() {
 }
 
 function mondayUpdateConnectionBanner() {
-  const dot  = document.getElementById('monday-tab-dot');
-  const text = document.getElementById('monday-tab-status');
+  const dot    = document.getElementById('monday-tab-dot');
+  const text   = document.getElementById('monday-tab-status');
+  const banner = document.getElementById('monday-conn-banner');
   const noConn = document.getElementById('ws-no-conn');
-  if (!dot||!text) return;
+  if (!dot||!text||!banner) return;
   if (_mondayWsId) {
-    dot.className  = 'monday-status-dot connected';
-    text.textContent = 'Connected \u2014 ' + _mondayWsName + (_mondayBoardId ? ' \u00b7 Overview board found' : ' \u00b7 Run build to create boards');
+    banner.style.cssText = 'display:flex;align-items:center;gap:12px;padding:11px 16px;border-radius:20px;margin-bottom:22px;border:1px solid #bbf7d0;background:var(--green-bg)';
+    dot.style.cssText    = 'width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0';
+    text.style.color     = '#166534';
+    text.textContent     = 'Connected — ' + _mondayWsName + (_mondayBoardId ? ' · Overview board found' : ' · Run build to create boards');
     if (noConn) noConn.style.display = 'none';
   } else {
-    dot.className  = 'monday-status-dot';
-    text.textContent = 'Not connected to Monday';
+    banner.style.cssText = 'display:flex;align-items:center;gap:12px;padding:11px 16px;border-radius:20px;margin-bottom:22px;border:1px solid #fecaca;background:var(--red-bg)';
+    dot.style.cssText    = 'width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0';
+    text.style.color     = 'var(--red)';
+    text.textContent     = 'Not connected to Monday';
   }
 }
 
