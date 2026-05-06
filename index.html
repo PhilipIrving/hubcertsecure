@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.26</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.27</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.26</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.27</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -1120,7 +1120,18 @@ async function runDataDiagnostic() {
       const cfgR=await fetch(base+'config/clients.json?ref='+s.branch,{headers:auth});
       if(cfgR.status===401) lines.push('✗ Token rejected — check it has repo scope in GitHub');
       else if(cfgR.status===404) lines.push('✗ Repo not found: '+s.owner+'/'+s.repo+' (branch: '+s.branch+')');
-      else if(cfgR.ok){const cfg=await cfgR.json();lines.push('✓ clients.json: '+((cfg.clients||[]).filter(c=>c.active!==false).length)+' active clients');}
+      else if(cfgR.ok){
+        const rawCfg=await cfgR.text();
+        try {
+          const cfg=JSON.parse(rawCfg);
+          const topKeys=Object.keys(cfg).join(', ');
+          const clients=cfg.clients||cfg.data||[];
+          const active=clients.filter(c=>c.active!==false).length;
+          lines.push('✓ clients.json top-level keys: '+topKeys);
+          lines.push((active>0?'✓':'✗')+' clients.json: '+active+' active clients ('+clients.length+' total)');
+          if(!active) lines.push('ℹ Fix: check that clients.json has a "clients" array with active:true entries');
+        } catch(pe) { lines.push('✗ clients.json is not valid JSON: '+pe.message); }
+      }
       const csvR=await fetch(base+s.insuredsPath+'?ref='+s.branch,{headers:auth});
       if(!csvR.ok){lines.push('✗ insureds.csv not found at '+s.insuredsPath+' (HTTP '+csvR.status+')');
         lines.push('ℹ Expected path: data/evident/insureds.csv');}
@@ -1186,7 +1197,16 @@ async function loadClientsFromConfig() {
     if (!res.ok) return false;
     const fileInfo = await res.json(); _clientsFileSHA = fileInfo.sha;
     const raw = atob(fileInfo.content.replace(/\n/g,'')); const data = JSON.parse(raw);
-    _allClientsData = data.clients || []; _clientsFileLoaded = true;
+    const loaded = data.clients || [];
+    const activeLoaded = loaded.filter(c => c.active !== false);
+    if (!activeLoaded.length) {
+      // clients.json exists but has 0 active clients — use built-in fallback
+      console.warn('clients.json returned 0 active clients — using built-in client list');
+      _allClientsData = CLIENTS_FALLBACK.map(c=>({...c}));
+    } else {
+      _allClientsData = loaded;
+    }
+    _clientsFileSHA = fileInfo.sha; _clientsFileLoaded = true;
     CLIENTS = buildClientsArray(_allClientsData); CLIENT_META_MAP = {};
     _allClientsData.forEach(c => { CLIENT_META_MAP[c.client_name] = c; }); return true;
   } catch(e) { console.warn('Could not load clients.json:', e.message); return false; }
@@ -2069,7 +2089,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.26
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.27
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
