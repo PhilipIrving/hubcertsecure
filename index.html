@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.34</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.35</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.34</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.35</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -2114,7 +2114,30 @@ async function fetchSnapshotCSV(year,month,file){return fetchCSV(`snapshots/${ye
 
 async function buildYearEndReviewHTML(year,producer){
   const months=await listSnapshotMonths(year),clientName=selectedClient.key;
-  if(!months.length)throw new Error(`No snapshots found for ${year}.`);
+  // If no snapshots exist yet, fall back to live data with a warning
+  const usingLiveData = !months.length;
+  if(usingLiveData) {
+    // Use current live data as a single data point
+    const liveData = await loadClientData(selectedClient.key);
+    const active = liveData.insureds.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');
+    const total=active.length, comp=active.filter(r=>normStatus(r[C.status])==='compliant').length;
+    const nc=total-comp, rate=total?Math.round(comp/total*100):0;
+    const stamp=new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
+    const logoSrc=document.querySelector('.header-logo')?.src?.startsWith('data:')?document.querySelector('.header-logo').src:null;
+    const logoTag=logoSrc?`<img src="${logoSrc}" style="height:32px;object-fit:contain">`:`<div style="font-family:Arial,sans-serif;font-size:15px;font-weight:700;color:#1E2E3D">CERT<span style="background:#3872B8;color:white;padding:1px 6px;border-radius:3px">SECURE</span></div>`;
+    const rateColor=rate>=80?'#16A34A':rate>=60?'#D97706':'#DC2626';
+    return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} — Year End Review ${year}</title><style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:26px 30px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.footer{margin-top:18px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8.5px;color:#B0B8C8}@media print{@page{size:letter landscape;margin:8mm}}</style></head><body>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;padding-bottom:14px;border-bottom:3px solid #1E2E3D"><div>${logoTag}<div style="margin-top:10px"><div style="font-size:20px;font-weight:900;color:#1E2E3D">${esc(selectedClient.name)}</div><div style="font-size:11px;color:#5A6B7B;margin-top:2px">Year End Review ${year}${producer?' · '+esc(producer):''} · ${stamp}</div></div></div><div style="text-align:center;background:${rate>=80?'#E6F5EF':'#FDF0EE'};border-radius:10px;padding:10px 18px"><div style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:${rateColor}">Current Rate</div><div style="font-size:38px;font-weight:900;color:${rateColor};line-height:1">${rate}%</div></div></div>
+<div style="background:#FFF8E6;border:1px solid #F5E5B0;border-radius:8px;padding:14px 18px;margin-bottom:18px;font-size:12px;color:#92400E"><strong>⚠ No monthly snapshots yet for ${year}.</strong> Monthly snapshots are taken automatically on the 1st of each month. This report uses current live data instead. The first snapshot will be taken on June 1, ${year}.</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px">
+  <div style="background:#EEF1F8;border-radius:8px;padding:12px"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px">Active</div><div style="font-size:26px;font-weight:800">${total}</div></div>
+  <div style="background:#E6F5EF;border-radius:8px;padding:12px"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#15803D;margin-bottom:5px">Compliant</div><div style="font-size:26px;font-weight:800;color:#16A34A">${comp}</div></div>
+  <div style="background:${nc>0?'#FDF0EE':'#E6F5EF'};border-radius:8px;padding:12px"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${nc>0?'#B91C1C':'#15803D'};margin-bottom:5px">Non-Compliant</div><div style="font-size:26px;font-weight:800;color:${nc>0?'#DC2626':'#16A34A'}">${nc}</div></div>
+  <div style="background:#EEF1F8;border-radius:8px;padding:12px"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px">Snapshots</div><div style="font-size:26px;font-weight:800;color:#B45309">0</div></div>
+</div>
+<div class="footer"><div>🔒 Confidential — HUB CertSecure · ${esc(selectedClient.name)} · Year End Review ${year}</div><div>${stamp}</div></div>
+</body></html>`;
+  }
   const stamp=new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
   const logoSrc=document.querySelector('.header-logo')?.src?.startsWith('data:')?document.querySelector('.header-logo').src:null;
   const logoTag=logoSrc?`<img src="${logoSrc}" style="height:32px;object-fit:contain">`:`<div style="font-family:Arial,sans-serif;font-size:15px;font-weight:700;color:#1E2E3D">CERT<span style="background:#3872B8;color:white;padding:1px 6px;border-radius:3px">SECURE</span></div>`;
@@ -2135,13 +2158,14 @@ async function buildYearEndReviewHTML(year,producer){
 <script>
 async function buildProducerOverviewHTML(producer,monthOverride){
   const year=String(new Date().getFullYear());let months=await listSnapshotMonths(year);
-  if(!months.length){months=await listSnapshotMonths(String(parseInt(year)-1));}
+  // Don't fall back to previous year — that causes path confusion
+  if(!months.length){throw new Error(`No snapshots exist for ${year} yet. Monthly snapshots are taken on the 1st of each month. The first snapshot will be available June 1, ${year}.`);}
   const month=monthOverride||(months.length?months[months.length-1]:null);
   if(!month)throw new Error('No snapshots available for Producer Overview.');
   const stamp=new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
   const logoSrc=document.querySelector('.header-logo')?.src?.startsWith('data:')?document.querySelector('.header-logo').src:null;
   const logoTag=logoSrc?`<img src="${logoSrc}" style="height:32px;object-fit:contain">`:`<div style="font-family:Arial,sans-serif;font-size:15px;font-weight:700;color:#1E2E3D">CERT<span style="background:#3872B8;color:white;padding:1px 6px;border-radius:3px">SECURE</span></div>`;
-  let ins=[];try{ins=await fetchSnapshotCSV(year,month,'insureds.csv');}catch(e){const prevYear=String(parseInt(year)-1);ins=await fetchSnapshotCSV(prevYear,month,'insureds.csv');}
+  let ins=[];try{ins=await fetchSnapshotCSV(year,month,'insureds.csv');}catch(e){throw new Error(`Could not load snapshot ${year}/${month}. Run a sync on the 1st of the month to generate snapshots.`);}
   const clientIns=ins.filter(r=>r[C.client]===selectedClient.key),active=clientIns.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');
   const total=active.length,comp=active.filter(r=>normStatus(r[C.status])==='compliant').length,nc=total-comp,rate=total?Math.round(comp/total*100):0;
   const rateColor=rate>=80?'#16A34A':rate>=60?'#D97706':'#DC2626';
@@ -2183,7 +2207,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.34
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.35
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
