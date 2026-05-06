@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.27</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.31</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.27</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.31</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -1017,168 +1017,217 @@ function saveSettings() {
 async function testDataConnection() {
   const btn = document.getElementById('s-test-btn');
   const result = document.getElementById('s-test-result');
-  saveSettings(); const s = getSettings();
-  btn.disabled = true; btn.textContent = 'Testing…';
+  saveSettings();
+  const s = getSettings();
+  btn.disabled = true; btn.textContent = 'Testing\u2026';
   result.style.display = 'none';
   const show = (ok, msg) => {
     result.style.cssText = 'display:block;font-size:12px;padding:10px 14px;border-radius:8px;' +
       (ok ? 'background:var(--green-bg);color:var(--green);border:1px solid #bbf7d0'
           : 'background:var(--red-bg);color:var(--red);border:1px solid #fecaca');
-    result.innerHTML = (ok ? '✓ ' : '✗ ') + msg;
+    result.innerHTML = (ok ? '\u2713 ' : '\u2717 ') + msg;
   };
   if (!s.pat) { show(false, 'No Access Token. Add one above then test again.'); btn.disabled=false; btn.textContent='Test Connection'; return; }
   try {
-    const base = 'https://api.github.com/repos/' + s.owner + '/' + s.repo + '/contents/';
-    const auth = { 'Authorization': 'Bearer ' + s.pat, 'Accept': 'application/vnd.github.v3.raw' };
-    const cfgRes = await fetch(base + 'config/clients.json?ref=' + s.branch, { headers: auth });
-    if (cfgRes.status === 401) { show(false, 'Token rejected — check it has repo scope in GitHub.'); return; }
-    if (cfgRes.status === 404) { show(false, 'config/clients.json not found in ' + s.owner + '/' + s.repo + '. Check repo name and branch.'); return; }
-    if (!cfgRes.ok) { show(false, 'GitHub returned HTTP ' + cfgRes.status); return; }
-    const cfgJson = await cfgRes.json();
-    const clientCount = (cfgJson.clients||[]).filter(c=>c.active!==false).length;
-    const csvRes = await fetch(base + s.insuredsPath + '?ref=' + s.branch, { headers: auth });
+    const rawBase = 'https://raw.githubusercontent.com/' + s.owner + '/' + s.repo + '/' + s.branch + '/';
+    const auth = { Authorization: 'token ' + s.pat };
+    // Test clients.json via API (needs base64 decode)
+    const cfgApiRes = await fetch('https://api.github.com/repos/' + s.owner + '/' + s.repo + '/contents/config/clients.json?ref=' + s.branch,
+      { headers: { Authorization: 'Bearer ' + s.pat, Accept: 'application/vnd.github.v3+json' } });
+    if (cfgApiRes.status === 401) { show(false, 'Token rejected \u2014 check it has repo scope.'); return; }
+    if (cfgApiRes.status === 404) { show(false, 'config/clients.json not found in ' + s.owner + '/' + s.repo); return; }
+    if (!cfgApiRes.ok) { show(false, 'GitHub returned HTTP ' + cfgApiRes.status); return; }
+    const cfgMeta = await cfgApiRes.json();
+    const cfgRaw = atob(cfgMeta.content.replace(/\n/g, ''));
+    const cfgJson = JSON.parse(cfgRaw);
+    const clientCount = (cfgJson.clients || []).filter(c => c.active !== false).length;
+    // Test insureds.csv via raw URL
+    const csvRes = await fetch(rawBase + s.insuredsPath, { headers: auth });
     const csvOk = csvRes.ok;
     const csvRows = csvOk ? (await csvRes.text()).split('\n').length - 2 : 0;
-    show(true, 'Connected — ' + clientCount + ' active clients &nbsp;·&nbsp; insureds.csv: ' + (csvOk ? csvRows + ' rows' : 'not found — check Evident sync'));
+    show(true, '\u2713 ' + clientCount + ' active clients in config &nbsp;\u00b7&nbsp; insureds.csv: ' + (csvOk ? csvRows + ' rows' : 'not found'));
     const warn = document.getElementById('pat-warning'); if (warn) warn.style.display = 'none';
     loadClientsFromConfig().then(() => renderGrids());
-  } catch(e) { show(false, 'Network error: ' + e.message); }
-  btn.disabled=false; btn.textContent='Test Connection';
+  } catch(e) { show(false, 'Error: ' + e.message); }
+  btn.disabled = false; btn.textContent = 'Test Connection';
 }
 
 async function fetchCSV(path) {
   const { owner, repo, branch, pat } = getSettings();
-  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
-  const headers = { 'Accept': 'application/vnd.github.v3.raw' };
-  if (pat) headers['Authorization'] = `Bearer ${pat}`;
+  // Use raw.githubusercontent.com — always returns raw file content reliably
+  const url = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`;
+  const headers = {};
+  if (pat) headers['Authorization'] = `token ${pat}`;
   const res = await fetch(url, { headers });
-  if (res.status === 401) throw new Error('Authentication failed. Check your Access Token in Settings.');
-  if (res.status === 404) throw new Error(`Could not find ${path} in ${owner}/${repo}.`);
+  if (res.status === 401 || res.status === 403) throw new Error('Authentication failed. Check your Access Token in Settings.');
+  if (res.status === 404) throw new Error(`Could not find ${path} in ${owner}/${repo} (branch: ${branch}).`);
   if (!res.ok) throw new Error(`Could not load ${path} (HTTP ${res.status}).`);
-  return Papa.parse(await res.text(), { header: true, skipEmptyLines: true }).data;
+  const text = await res.text();
+  const firstChar = text.trimStart()[0];
+  if (firstChar === '<' || firstChar === '{' || firstChar === '[') {
+    throw new Error(`Expected CSV but got ${firstChar === '<' ? 'HTML' : 'JSON'} from ${path}. Check repo/branch in Settings.`);
+  }
+  return Papa.parse(text, { header: true, skipEmptyLines: true }).data;
 }
+
 async function fetchTLCSV(filename) {
   const s = getSettings();
-  const pathMap = { 'insureds.csv': s.tlInsuredsPath||'data/trustlayer/insureds.csv', 'coverages.csv': s.tlCoveragesPath||'data/trustlayer/coverages.csv', 'criteria.csv': s.tlCriteriaPath||'data/trustlayer/criteria.csv' };
+  const pathMap = {
+    'insureds.csv':   s.tlInsuredsPath  || 'data/trustlayer/insureds.csv',
+    'coverages.csv':  s.tlCoveragesPath || 'data/trustlayer/coverages.csv',
+    'criteria.csv':   s.tlCriteriaPath  || 'data/trustlayer/criteria.csv',
+  };
   return fetchCSV(pathMap[filename] || `data/trustlayer/${filename}`);
 }
+
 async function loadTLData(clientName) {
-  const [insureds, coverages, criteria] = await Promise.all([fetchTLCSV('insureds.csv'), fetchTLCSV('coverages.csv').catch(()=>[]), fetchTLCSV('criteria.csv').catch(()=>[])]);
-  return { insureds: insureds.filter(r=>r[C.client]===clientName), coverages: coverages.filter(r=>r[C.client]===clientName), criteria: criteria.filter(r=>r[C.client]===clientName), custom_properties: [], engagement: [] };
+  const [insureds, coverages, criteria] = await Promise.all([
+    fetchTLCSV('insureds.csv'),
+    fetchTLCSV('coverages.csv').catch(() => []),
+    fetchTLCSV('criteria.csv').catch(() => []),
+  ]);
+  const match = r => r[C.client] === clientName;
+  return { insureds: insureds.filter(match), coverages: coverages.filter(match), criteria: criteria.filter(match), custom_properties: [], engagement: [] };
 }
+
 async function loadClientData(clientName) {
   if (isTLClient(clientName)) return loadTLData(clientName);
   const s = getSettings();
   const [insureds, coverages, criteria, customProps, notifs] = await Promise.all([
-    fetchCSV(s.insuredsPath), fetchCSV(s.coveragesPath).catch(()=>[]), fetchCSV(s.criteriaPath).catch(()=>[]),
-    fetchCSV(s.customPropsPath).catch(()=>[]), fetchCSV(s.notificationsPath).catch(()=>[]),
+    fetchCSV(s.insuredsPath),
+    fetchCSV(s.coveragesPath).catch(() => []),
+    fetchCSV(s.criteriaPath).catch(() => []),
+    fetchCSV(s.customPropsPath).catch(() => []),
+    fetchCSV(s.notificationsPath).catch(() => []),
   ]);
+  const meta = CLIENT_META_MAP[clientName] || {};
+  const rpName = (meta.rp_common_name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const matchRow = r => {
+    if (r[C.client] === clientName) return true;
+    if (rpName && r[C.client]) {
+      const rv = r[C.client].toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (rv.includes(rpName) || rpName.includes(rv)) return true;
+    }
+    return false;
+  };
   return {
-    insureds: insureds.filter(r=>r[C.client]===clientName), coverages: coverages.filter(r=>r[C.client]===clientName),
-    criteria: criteria.filter(r=>r[C.client]===clientName), custom_properties: customProps.filter(r=>r[C.client]===clientName),
-    engagement: notifs.filter(r=>r[C.client]===clientName),
+    insureds:          insureds.filter(matchRow),
+    coverages:         coverages.filter(matchRow),
+    criteria:          criteria.filter(matchRow),
+    custom_properties: customProps.filter(matchRow),
+    engagement:        notifs.filter(matchRow),
   };
 }
+
 async function triggerRefresh() {
   const { owner, repo, pat } = getSettings();
   if (!pat) { toast('Add an Access Token in Settings to use Refresh Data', 'error'); return; }
-  const btn = document.getElementById('refresh-btn'); btn.textContent = '\u21bb Syncing\u2026'; btn.disabled = true;
+  const btn = document.getElementById('refresh-btn'); btn.textContent = '↻ Syncing…'; btn.disabled = true;
   try {
     const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/actions/workflows/sync.yml/dispatches`, {
-      method:'POST', headers:{'Authorization':`Bearer ${pat}`,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'}, body:JSON.stringify({ref:'main'})
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${pat}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
+      body: JSON.stringify({ ref: 'main' })
     });
     if (res.ok || res.status === 204) {
-      toast('Data sync triggered \u2014 refreshing in ~2 min','success');
-      // If connected to Monday and a client is selected, push latest stats
+      toast('Data sync triggered — refreshing in ~2 min', 'success');
       if (typeof _mondayWsId !== 'undefined' && _mondayWsId && typeof reportGeneratorSyncMonday === 'function') {
         setTimeout(async () => {
-          if (selectedClient) {
-            toast('Syncing to Monday\u2026', 'success');
-            await reportGeneratorSyncMonday();
-          }
-          // Refresh connection banner
+          if (selectedClient) await reportGeneratorSyncMonday();
           if (typeof mondayUpdateConnectionBanner === 'function') mondayUpdateConnectionBanner();
         }, 1000);
       }
     } else {
-      toast('Sync failed. Check your Access Token in Settings.','error');
+      toast('Sync failed. Check your Access Token in Settings.', 'error');
     }
-  } catch(e) { toast('Network error \u2014 could not trigger sync','error'); }
-  finally { btn.textContent = '\u21bb Refresh Data'; btn.disabled = false; }
+  } catch(e) { toast('Network error — could not trigger sync', 'error'); }
+  finally { btn.textContent = '↻ Refresh Data'; btn.disabled = false; }
 }
 
+
 async function runDataDiagnostic() {
-  const s=getSettings(), btn=document.getElementById('rg-diag-btn');
-  btn.disabled=true; btn.textContent='Checking…';
-  const lines=[];
+  const s = getSettings();
+  const btn = document.getElementById('rg-diag-btn');
+  btn.disabled = true; btn.textContent = 'Checking\u2026';
+  const lines = [];
   try {
-    if(!s.pat){lines.push('✗ No Access Token — add one in Settings → Data Source');}
-    else {
-      lines.push('✓ Access Token configured');
-      const auth={Authorization:'Bearer '+s.pat, Accept:'application/vnd.github.v3.raw'};
-      const base='https://api.github.com/repos/'+s.owner+'/'+s.repo+'/contents/';
-      const cfgR=await fetch(base+'config/clients.json?ref='+s.branch,{headers:auth});
-      if(cfgR.status===401) lines.push('✗ Token rejected — check it has repo scope in GitHub');
-      else if(cfgR.status===404) lines.push('✗ Repo not found: '+s.owner+'/'+s.repo+' (branch: '+s.branch+')');
-      else if(cfgR.ok){
-        const rawCfg=await cfgR.text();
-        try {
-          const cfg=JSON.parse(rawCfg);
-          const topKeys=Object.keys(cfg).join(', ');
-          const clients=cfg.clients||cfg.data||[];
-          const active=clients.filter(c=>c.active!==false).length;
-          lines.push('✓ clients.json top-level keys: '+topKeys);
-          lines.push((active>0?'✓':'✗')+' clients.json: '+active+' active clients ('+clients.length+' total)');
-          if(!active) lines.push('ℹ Fix: check that clients.json has a "clients" array with active:true entries');
-        } catch(pe) { lines.push('✗ clients.json is not valid JSON: '+pe.message); }
+    if (!s.pat) {
+      lines.push('\u2717 No Access Token \u2014 add one in Settings \u2192 Data Source');
+    } else {
+      lines.push('\u2713 Access Token configured');
+      const rawBase = 'https://raw.githubusercontent.com/' + s.owner + '/' + s.repo + '/' + s.branch + '/';
+      const auth = { Authorization: 'token ' + s.pat };
+      // Check clients.json
+      const cfgApiRes = await fetch('https://api.github.com/repos/' + s.owner + '/' + s.repo + '/contents/config/clients.json?ref=' + s.branch,
+        { headers: { Authorization: 'Bearer ' + s.pat, Accept: 'application/vnd.github.v3+json' } });
+      if (cfgApiRes.status === 401) {
+        lines.push('\u2717 Token rejected \u2014 check it has repo scope in GitHub');
+      } else if (cfgApiRes.status === 404) {
+        lines.push('\u2717 Repo not found: ' + s.owner + '/' + s.repo);
+      } else if (cfgApiRes.ok) {
+        const cfgMeta = await cfgApiRes.json();
+        const cfgRaw = atob(cfgMeta.content.replace(/\n/g, ''));
+        const cfg = JSON.parse(cfgRaw);
+        const clients = cfg.clients || [];
+        const active = clients.filter(c => c.active !== false).length;
+        lines.push((active > 0 ? '\u2713' : '\u2717') + ' clients.json: ' + active + ' active clients (' + clients.length + ' total)');
+        if (!active) lines.push('\u2139 Fix: check clients.json has a "clients" array with active:true entries');
       }
-      const csvR=await fetch(base+s.insuredsPath+'?ref='+s.branch,{headers:auth});
-      if(!csvR.ok){lines.push('✗ insureds.csv not found at '+s.insuredsPath+' (HTTP '+csvR.status+')');
-        lines.push('ℹ Expected path: data/evident/insureds.csv');}
-      else {
-        const raw=await csvR.text(); const rows=raw.trim().split('\n');
-        lines.push('✓ insureds.csv: '+(rows.length-1)+' data rows');
-        if(typeof Papa!=='undefined'){
-          const parsed=Papa.parse(raw,{header:true,skipEmptyLines:true});
-          if(selectedClient){
-            const matched=parsed.data.filter(r=>r.client===selectedClient.key);
-            if(matched.length) lines.push('✓ Filter match: '+matched.length+' rows for "'+selectedClient.key+'"');
-            else {
-              lines.push('✗ NO rows match client "'+selectedClient.key+'"');
-              const sample=[...new Set(parsed.data.slice(0,20).map(r=>r.client).filter(Boolean))];
-              lines.push('ℹ Sample CSV client values: '+sample.slice(0,5).join(' | '));
+      // Check insureds.csv
+      const csvRes = await fetch(rawBase + s.insuredsPath, { headers: auth });
+      if (!csvRes.ok) {
+        lines.push('\u2717 insureds.csv not found at ' + s.insuredsPath + ' (HTTP ' + csvRes.status + ')');
+        lines.push('\u2139 Expected: data/evident/insureds.csv');
+      } else {
+        const raw = await csvRes.text();
+        const rows = raw.trim().split('\n');
+        lines.push('\u2713 insureds.csv: ' + (rows.length - 1) + ' data rows');
+        if (typeof Papa !== 'undefined') {
+          const parsed = Papa.parse(raw, { header: true, skipEmptyLines: true });
+          if (selectedClient) {
+            const matched = parsed.data.filter(r => r.client === selectedClient.key);
+            if (matched.length) {
+              lines.push('\u2713 Filter match: ' + matched.length + ' rows for "' + selectedClient.key + '"');
+            } else {
+              lines.push('\u2717 NO rows match "' + selectedClient.key + '"');
+              const sample = [...new Set(parsed.data.slice(0, 20).map(r => r.client).filter(Boolean))];
+              lines.push('\u2139 CSV client values: ' + sample.slice(0, 5).join(' | '));
             }
-          } else lines.push('ℹ Select a client on step 1 to test filter matching');
+          } else {
+            lines.push('\u2139 Select a client on step 1 to test filter matching');
+          }
         }
       }
     }
-  } catch(e){lines.push('✗ Error: '+e.message);}
-  alert('Data Diagnostic\n\n'+lines.join('\n'));
-  btn.disabled=false; btn.textContent='🔍 Check Data';
+  } catch(e) {
+    lines.push('\u2717 Error: ' + e.message);
+  }
+  alert('Data Diagnostic\n\n' + lines.join('\n'));
+  btn.disabled = false; btn.textContent = '\U0001f50d Check Data';
 }
 </script>
 <script>
 let _allClientsData = [], _clientsFileSHA = '', _clientsFileLoaded = false;
 const CLIENTS_FALLBACK = [
-  { client_name:"A G Equipment Company",              rp_common_name:"agequipment",     structure:"general",  active:true },
-  { client_name:"Canadian Pacific Kansas City",        rp_common_name:"cpkansascity",    structure:"general",  active:true },
-  { client_name:"Capital Railroad Contracting, Inc.",  rp_common_name:"capitalroad",     structure:"general",  active:true },
-  { client_name:"Kolb Grading",                        rp_common_name:"kolbgrading",     structure:"general",  active:true },
-  { client_name:"Mizuho Bank",                         rp_common_name:"mizuhobank",      structure:"general",  active:true },
-  { client_name:"Musselman & Hall Contractors, LLC",   rp_common_name:"musselmanhall",   structure:"general",  active:true },
-  { client_name:"Paragon Geophysical Services, Inc.",  rp_common_name:"paragongeo",      structure:"general",  active:true },
-  { client_name:"Trinity Chemical Industries LLC",     rp_common_name:"trinitychemical", structure:"general",  active:true },
-  { client_name:"United Coal Company LLC",             rp_common_name:"unitedcoal",      structure:"general",  active:true },
-  { client_name:"Bauer Foundation Corp.",              rp_common_name:"bauerfoundation", structure:"project",  active:true },
-  { client_name:"ESS Companies",                       rp_common_name:"emerysappandsons",structure:"project",  active:true },
-  { client_name:"Scandroli Construction",              rp_common_name:"scandroli",       structure:"project",  active:true },
-  { client_name:"Skyline Developers Construction LLC", rp_common_name:"skyline",         structure:"project",  active:true },
-  { client_name:"EMMES",                               rp_common_name:"emmes",           structure:"location", active:true },
-  { client_name:"Gart Properties",                     rp_common_name:"gartproperties",  structure:"location", active:true },
-  { client_name:"The Abbey Management Company",        rp_common_name:"theabbeycompany", structure:"location", active:true },
-  { client_name:"Block Real Estate",                   rp_common_name:"blockrealestate", structure:"location", active:true, source:"trustlayer" },
-  { client_name:"Construction Mgmt Inc",               rp_common_name:"constructionmgmt",structure:"project",  active:true, source:"trustlayer" },
-  { client_name:"QTS Data Centers",                    rp_common_name:"qtsdatacenters",  structure:"general",  active:true, source:"trustlayer" },
+  { client_name:"A G Equipment Company",              rp_common_name:"agequipment",      structure:"general",  source:"evident",     program_start_date:"2025-07-21", go_live_date:"2025-07-21", active:true },
+  { client_name:"Bauer Foundation Corp.",             rp_common_name:"bauerfoundation",  structure:"project",  source:"evident",     program_start_date:"2025-10-01", go_live_date:"2025-10-01", active:true },
+  { client_name:"Canadian Pacific Kansas City",       rp_common_name:"cpkansascity",     structure:"general",  source:"evident",     program_start_date:"2025-05-01", go_live_date:"2025-11-05", active:true },
+  { client_name:"Capital Railroad Contracting, Inc.", rp_common_name:"capitalroad",      structure:"general",  source:"evident",     program_start_date:"2024-08-01", go_live_date:"2024-08-01", active:true },
+  { client_name:"EMMES",                              rp_common_name:"emmes",            structure:"location", source:"evident",     program_start_date:"2025-10-01", go_live_date:"2025-10-01", active:true },
+  { client_name:"ESS Companies",                      rp_common_name:"emerysappandsons", structure:"project",  source:"evident",     program_start_date:"2025-08-01", go_live_date:"2025-08-01", active:true },
+  { client_name:"Gart Properties",                    rp_common_name:"gartproperties",   structure:"location", source:"evident",     program_start_date:"2024-09-01", go_live_date:"2024-09-01", active:true },
+  { client_name:"Kolb Grading",                       rp_common_name:"kolbgrading",      structure:"general",  source:"evident",     program_start_date:"2023-05-01", go_live_date:"2023-05-01", active:true },
+  { client_name:"Mizuho Bank",                        rp_common_name:"mizuhobank",       structure:"general",  source:"evident",     program_start_date:"2025-10-06", go_live_date:"2025-10-06", active:true },
+  { client_name:"Musselman & Hall Contractors, LLC",  rp_common_name:"musselmanhall",    structure:"general",  source:"evident",     program_start_date:"2023-01-01", go_live_date:"2023-01-01", active:true },
+  { client_name:"Paragon Geophysical Services, Inc.", rp_common_name:"paragongeo",       structure:"general",  source:"evident",     program_start_date:"2025-09-02", go_live_date:"2025-09-02", active:true },
+  { client_name:"Scandroli Construction",             rp_common_name:"scandroli",        structure:"project",  source:"evident",     program_start_date:"2024-08-01", go_live_date:"2024-08-01", active:true },
+  { client_name:"Skyline Developers Construction LLC",rp_common_name:"skyline",          structure:"project",  source:"evident",     program_start_date:"2025-08-18", go_live_date:"2025-08-18", active:true },
+  { client_name:"The Abbey Management Company",       rp_common_name:"theabbeycompany",  structure:"location", source:"evident",     program_start_date:"2025-09-01", go_live_date:"2025-09-01", active:true },
+  { client_name:"Trinity Chemical Industries LLC",    rp_common_name:"trinitychemical",  structure:"general",  source:"evident",     program_start_date:"2026-01-01", go_live_date:"2026-01-01", active:true },
+  { client_name:"United Coal Company LLC",            rp_common_name:"unitedcoal",       structure:"general",  source:"evident",     program_start_date:"2025-09-08", go_live_date:"2025-09-08", active:true },
+  { client_name:"Block Real Estate Services, LLC",    rp_common_name:"blockrealestate",  structure:"location", source:"trustlayer",  program_start_date:"2025-01-01", go_live_date:"2025-01-01", active:true },
+  { client_name:"Construction Management Inc.",       rp_common_name:"constructionmgmt", structure:"project",  source:"trustlayer",  program_start_date:"2025-01-01", go_live_date:"2025-01-01", active:true },
+  { client_name:"QTS Data Centers",                   rp_common_name:"qtsdatacenters",   structure:"project",  source:"trustlayer",  program_start_date:"2025-01-01", go_live_date:"2025-01-01", active:true },
 ];
 let CLIENTS = buildClientsArray(CLIENTS_FALLBACK);
 let CLIENT_META_MAP = {};
@@ -1216,6 +1265,8 @@ async function saveClientsToConfig(updatedClients) {
   const getRes = await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}/contents/config/clients.json?ref=${s.branch}`, { headers: { 'Authorization': `Bearer ${s.pat}`, 'Accept': 'application/vnd.github.v3+json' } });
   if (!getRes.ok) throw new Error('Could not fetch current clients.json');
   const fileInfo = await getRes.json(); const sha = fileInfo.sha;
+  // Safety guard — never commit if the data looks wrong
+  if (!updatedClients || !Array.isArray(updatedClients)) throw new Error('Invalid clients data — aborting save to prevent corruption.');
   const payload = JSON.stringify({ _instructions: { how_to_add_client: "Use the Client Configuration tab in the Report Generator app.", date_format: "YYYY-MM-DD", structure_options: "general | project | location" }, clients: updatedClients }, null, 2);
   const putRes = await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}/contents/config/clients.json`, {
     method: 'PUT', headers: { 'Authorization': `Bearer ${s.pat}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
@@ -2089,7 +2140,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.27
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.31
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
