@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.33</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.34</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.33</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.34</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -1099,8 +1099,20 @@ async function loadTLData(clientName) {
     fetchTLCSV('coverages.csv').catch(() => []),
     fetchTLCSV('criteria.csv').catch(() => []),
   ]);
-  const match = r => r[C.client] === clientName;
-  return { insureds: insureds.filter(match), coverages: coverages.filter(match), criteria: criteria.filter(match), custom_properties: [], engagement: [] };
+  // TL sync writes short names (e.g. "Block Real Estate") but clients.json
+  // may have the full legal name ("Block Real Estate Services, LLC").
+  // Use rp_common_name fuzzy match as fallback.
+  const meta = CLIENT_META_MAP[clientName] || {};
+  const rpName = (meta.rp_common_name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const matchRow = r => {
+    if (r[C.client] === clientName) return true;
+    if (rpName && r[C.client]) {
+      const rv = r[C.client].toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (rv.includes(rpName) || rpName.includes(rv)) return true;
+    }
+    return false;
+  };
+  return { insureds: insureds.filter(matchRow), coverages: coverages.filter(matchRow), criteria: criteria.filter(matchRow), custom_properties: [], engagement: [] };
 }
 
 async function loadClientData(clientName) {
@@ -1187,10 +1199,14 @@ async function runDataDiagnostic() {
         if (!active) lines.push('\u2139 Fix: check clients.json has a "clients" array with active:true entries');
       }
       // Check insureds.csv
-      const csvRes = await fetch('https://api.github.com/repos/' + s.owner + '/' + s.repo + '/contents/' + s.insuredsPath + '?ref=' + s.branch, { headers: { Authorization: 'Bearer ' + s.pat, Accept: 'application/vnd.github.v3+json' } });
+      // Use correct CSV based on whether selected client is TL or Evident
+      const isTLDiag = selectedClient && typeof isTLClient === 'function' && isTLClient(selectedClient.key);
+      const csvDiagPath = isTLDiag ? (s.tlInsuredsPath || 'data/trustlayer/insureds.csv') : s.insuredsPath;
+      if (isTLDiag) lines.push('ℹ TrustLayer client — checking: ' + csvDiagPath);
+      const csvRes = await fetch('https://api.github.com/repos/' + s.owner + '/' + s.repo + '/contents/' + csvDiagPath + '?ref=' + s.branch, { headers: { Authorization: 'Bearer ' + s.pat, Accept: 'application/vnd.github.v3+json' } });
       if (!csvRes.ok) {
-        lines.push('\u2717 insureds.csv not found at ' + s.insuredsPath + ' (HTTP ' + csvRes.status + ')');
-        lines.push('\u2139 Expected: data/evident/insureds.csv');
+        lines.push('✗ CSV not found at ' + csvDiagPath + ' (HTTP ' + csvRes.status + ')');
+        lines.push('ℹ Expected: ' + (isTLDiag ? 'data/trustlayer/insureds.csv' : 'data/evident/insureds.csv'));
       } else {
         const csvBody = await csvRes.json();
         let raw;
@@ -1206,7 +1222,13 @@ async function runDataDiagnostic() {
         if (typeof Papa !== 'undefined') {
           const parsed = Papa.parse(raw, { header: true, skipEmptyLines: true });
           if (selectedClient) {
-            const matched = parsed.data.filter(r => r.client === selectedClient.key);
+            const meta = typeof CLIENT_META_MAP !== 'undefined' ? (CLIENT_META_MAP[selectedClient.key] || {}) : {};
+            const rpN = (meta.rp_common_name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+            const matched = parsed.data.filter(r => {
+              if (r.client === selectedClient.key) return true;
+              if (rpN && r.client) { const rv = r.client.toLowerCase().replace(/[^a-z0-9]/g, ''); if (rv.includes(rpN) || rpN.includes(rv)) return true; }
+              return false;
+            });
             if (matched.length) {
               lines.push('\u2713 Filter match: ' + matched.length + ' rows for "' + selectedClient.key + '"');
             } else {
@@ -1224,7 +1246,7 @@ async function runDataDiagnostic() {
     lines.push('\u2717 Error: ' + e.message);
   }
   alert('Data Diagnostic\n\n' + lines.join('\n'));
-  btn.disabled = false; btn.textContent = '\U0001f50d Check Data';
+  btn.disabled = false; btn.textContent = '🔍 Check Data';
 }
 </script>
 <script>
@@ -2161,7 +2183,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.33
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.34
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
