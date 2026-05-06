@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.32</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.33</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -357,7 +357,7 @@
       <div><div class="page-title">Report Generator</div><div class="page-sub">Select a client to get started</div></div>
       <div style="display:flex;gap:8px;justify-self:center">
         <button class="btn btn-secondary" id="refresh-btn" onclick="triggerRefresh()" style="white-space:nowrap">&#8635; Refresh Data</button>
-        <button class="btn btn-secondary" id="rg-diag-btn" onclick="runDataDiagnostic()" style="white-space:nowrap" title="Diagnose data">&#128270; Check Data</button>
+        <button class="btn btn-secondary" id="rg-diag-btn" onclick="runDataDiagnostic()" style="white-space:nowrap" title="Diagnose data">🔍 Check Data</button>
         <button class="btn btn-secondary" id="rg-monday-btn" onclick="reportGeneratorSyncMonday()" style="white-space:nowrap;display:none">&#8679; Monday</button>
       </div>
       <div style="display:flex;justify-content:flex-end"><button class="btn btn-secondary" onclick="openHubWide()" style="gap:6px;white-space:nowrap">&#127962; HUB-Wide Annual</button></div>
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.32</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.33</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -1054,21 +1054,32 @@ async function testDataConnection() {
 
 async function fetchCSV(path) {
   const { owner, repo, branch, pat } = getSettings();
-  // Use Contents API with base64 decode — works for both public and private repos
-  // raw.githubusercontent.com blocks CORS for authenticated requests from browsers
-  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
   const headers = { 'Accept': 'application/vnd.github.v3+json' };
   if (pat) headers['Authorization'] = `Bearer ${pat}`;
+  // Step 1: Get file metadata from Contents API
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
   const res = await fetch(url, { headers });
   if (res.status === 401 || res.status === 403) throw new Error('Authentication failed. Check your Access Token in Settings.');
   if (res.status === 404) throw new Error(`Could not find ${path} in ${owner}/${repo} (branch: ${branch}).`);
   if (!res.ok) throw new Error(`Could not load ${path} (HTTP ${res.status}).`);
   const meta = await res.json();
-  // Decode base64 content — Contents API always returns base64 encoded file
-  if (!meta.content) throw new Error(`No content returned for ${path}. File may be too large (>1MB) or empty.`);
-  const text = atob(meta.content.replace(/\n/g, ''));
-  const firstChar = text.trimStart()[0];
-  if (firstChar === '<') throw new Error(`Got HTML instead of CSV from ${path}. Check repo/branch in Settings.`);
+  let text;
+  if (meta.content && meta.content.trim() !== '') {
+    // File is under 1MB — decode inline base64
+    text = atob(meta.content.replace(/\n/g, ''));
+  } else if (meta.sha) {
+    // File is over 1MB — use Git Blobs API (supports large files, same CORS rules)
+    const blobRes = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/git/blobs/${meta.sha}`,
+      { headers }
+    );
+    if (!blobRes.ok) throw new Error(`Could not load blob for ${path} (HTTP ${blobRes.status}).`);
+    const blob = await blobRes.json();
+    text = atob(blob.content.replace(/\n/g, ''));
+  } else {
+    throw new Error(`No content or SHA returned for ${path}. File may be empty.`);
+  }
+  if (text.trimStart()[0] === '<') throw new Error(`Got HTML instead of CSV for ${path}. Check repo/branch in Settings.`);
   return Papa.parse(text, { header: true, skipEmptyLines: true }).data;
 }
 
@@ -1181,7 +1192,15 @@ async function runDataDiagnostic() {
         lines.push('\u2717 insureds.csv not found at ' + s.insuredsPath + ' (HTTP ' + csvRes.status + ')');
         lines.push('\u2139 Expected: data/evident/insureds.csv');
       } else {
-        const csvBody = await csvRes.json(); const raw = atob(csvBody.content.replace(/\n/g, ''));
+        const csvBody = await csvRes.json();
+        let raw;
+        if (csvBody.content && csvBody.content.trim() !== '') {
+          raw = atob(csvBody.content.replace(/\n/g, ''));
+        } else if (csvBody.sha) {
+          const blobRes2 = await fetch('https://api.github.com/repos/' + s.owner + '/' + s.repo + '/git/blobs/' + csvBody.sha, { headers: { Authorization: 'Bearer ' + s.pat, Accept: 'application/vnd.github.v3+json' } });
+          const blob2 = await blobRes2.json();
+          raw = atob(blob2.content.replace(/\n/g, ''));
+        } else { raw = ''; }
         const rows = raw.trim().split('\n');
         lines.push('\u2713 insureds.csv: ' + (rows.length - 1) + ' data rows');
         if (typeof Papa !== 'undefined') {
@@ -2142,7 +2161,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.32
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.33
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
