@@ -1,11 +1,5 @@
 [
   {
-    "client": "A G Equipment Company",
-    "stage": "coverage_data",
-    "insured": "a7dfaf41-5e08-4ca5-a9be-c096886305fa",
-    "error": "HTTP 502 on /insurance/insureds/a7dfaf41-5e08-4ca5-a9be-c096886305fa/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
     "client": "Action Plumbing Construction",
     "stage": "field_defs",
     "error": "HTTP 401 on /insurance/config/insureds/fields: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
@@ -14,102 +8,6 @@
     "client": "Action Plumbing Construction",
     "stage": "insureds",
     "error": "HTTP 401 on /insurance/insureds: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "77da6ca8-f5dc-48c6-9ed7-3309bf8f8bc5",
-    "error": "HTTP 502 on /insurance/insureds/77da6ca8-f5dc-48c6-9ed7-3309bf8f8bc5/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "85022777-9722-4981-a9be-27730e12af81",
-    "error": "HTTP 502 on /insurance/insureds/85022777-9722-4981-a9be-27730e12af81/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "c3192f57-bae6-4157-ba07-3504dc80e8a9",
-    "error": "HTTP 502 on /insurance/insureds/c3192f57-bae6-4157-ba07-3504dc80e8a9/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "c33ec101-024a-475c-8f1f-80a0d8a1b985",
-    "error": "HTTP 502 on /insurance/insureds/c33ec101-024a-475c-8f1f-80a0d8a1b985/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "c31ce9bc-1c1e-466c-aad8-2d9540ac1993",
-    "error": "HTTP 502 on /insurance/insureds/c31ce9bc-1c1e-466c-aad8-2d9540ac1993/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "c3446ca5-d30b-481e-8a87-768b3a594750",
-    "error": "HTTP 502 on /insurance/insureds/c3446ca5-d30b-481e-8a87-768b3a594750/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "c31ce9bc-1c1e-466c-aad8-2d9540ac1993",
-    "error": "HTTP 502 on /insurance/insureds/c31ce9bc-1c1e-466c-aad8-2d9540ac1993/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "c3446ca5-d30b-481e-8a87-768b3a594750",
-    "error": "HTTP 502 on /insurance/insureds/c3446ca5-d30b-481e-8a87-768b3a594750/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "c3613035-d4b6-4c01-a1a8-e3805e552291",
-    "error": "HTTP 502 on /insurance/insureds/c3613035-d4b6-4c01-a1a8-e3805e552291/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "c3727e48-5f55-4566-9401-21ed40a35f80",
-    "error": "HTTP 502 on /insurance/insureds/c3727e48-5f55-4566-9401-21ed40a35f80/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "c37e21ef-f0fc-411f-adab-3cb4a39a6a0f",
-    "error": "HTTP 502 on /insurance/insureds/c37e21ef-f0fc-411f-adab-3cb4a39a6a0f/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "c3727e48-5f55-4566-9401-21ed40a35f80",
-    "error": "HTTP 502 on /insurance/insureds/c3727e48-5f55-4566-9401-21ed40a35f80/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "c3805b20-0d4c-41aa-ac85-c528df5cf25b",
-    "error": "HTTP 502 on /insurance/insureds/c3805b20-0d4c-41aa-ac85-c528df5cf25b/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "c37e21ef-f0fc-411f-adab-3cb4a39a6a0f",
-    "error": "HTTP 502 on /insurance/insureds/c37e21ef-f0fc-411f-adab-3cb4a39a6a0f/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "c3805b20-0d4c-41aa-ac85-c528df5cf25b",
-    "error": "HTTP 502 on /insurance/insureds/c3805b20-0d4c-41aa-ac85-c528df5cf25b/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "c38dcbc4-043a-4c45-ad55-2216d2b509d6",
-    "error": "HTTP 502 on /insurance/insureds/c38dcbc4-043a-4c45-ad55-2216d2b509d6/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
   },
   {
     "client": "ESS Companies",
@@ -160,11 +58,5 @@
     "client": "Musselman & Hall Contractors, LLC",
     "stage": "insureds",
     "error": "HTTP 401 on /insurance/insureds: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "coverage_data",
-    "insured": "d804e891-5552-44ac-882b-4cf579019843",
-    "error": "HTTP 401 on /insurance/insureds/d804e891-5552-44ac-882b-4cf579019843/data: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
   }
 ]
