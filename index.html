@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.25</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.26</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -357,6 +357,7 @@
       <div><div class="page-title">Report Generator</div><div class="page-sub">Select a client to get started</div></div>
       <div style="display:flex;gap:8px;justify-self:center">
         <button class="btn btn-secondary" id="refresh-btn" onclick="triggerRefresh()" style="white-space:nowrap">&#8635; Refresh Data</button>
+        <button class="btn btn-secondary" id="rg-diag-btn" onclick="runDataDiagnostic()" style="white-space:nowrap" title="Diagnose data">&#128270; Check Data</button>
         <button class="btn btn-secondary" id="rg-monday-btn" onclick="reportGeneratorSyncMonday()" style="white-space:nowrap;display:none">&#8679; Monday</button>
       </div>
       <div style="display:flex;justify-content:flex-end"><button class="btn btn-secondary" onclick="openHubWide()" style="gap:6px;white-space:nowrap">&#127962; HUB-Wide Annual</button></div>
@@ -623,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.25</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.26</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -1104,6 +1105,45 @@ async function triggerRefresh() {
     }
   } catch(e) { toast('Network error \u2014 could not trigger sync','error'); }
   finally { btn.textContent = '\u21bb Refresh Data'; btn.disabled = false; }
+}
+
+async function runDataDiagnostic() {
+  const s=getSettings(), btn=document.getElementById('rg-diag-btn');
+  btn.disabled=true; btn.textContent='Checking…';
+  const lines=[];
+  try {
+    if(!s.pat){lines.push('✗ No Access Token — add one in Settings → Data Source');}
+    else {
+      lines.push('✓ Access Token configured');
+      const auth={Authorization:'Bearer '+s.pat, Accept:'application/vnd.github.v3.raw'};
+      const base='https://api.github.com/repos/'+s.owner+'/'+s.repo+'/contents/';
+      const cfgR=await fetch(base+'config/clients.json?ref='+s.branch,{headers:auth});
+      if(cfgR.status===401) lines.push('✗ Token rejected — check it has repo scope in GitHub');
+      else if(cfgR.status===404) lines.push('✗ Repo not found: '+s.owner+'/'+s.repo+' (branch: '+s.branch+')');
+      else if(cfgR.ok){const cfg=await cfgR.json();lines.push('✓ clients.json: '+((cfg.clients||[]).filter(c=>c.active!==false).length)+' active clients');}
+      const csvR=await fetch(base+s.insuredsPath+'?ref='+s.branch,{headers:auth});
+      if(!csvR.ok){lines.push('✗ insureds.csv not found at '+s.insuredsPath+' (HTTP '+csvR.status+')');
+        lines.push('ℹ Expected path: data/evident/insureds.csv');}
+      else {
+        const raw=await csvR.text(); const rows=raw.trim().split('\n');
+        lines.push('✓ insureds.csv: '+(rows.length-1)+' data rows');
+        if(typeof Papa!=='undefined'){
+          const parsed=Papa.parse(raw,{header:true,skipEmptyLines:true});
+          if(selectedClient){
+            const matched=parsed.data.filter(r=>r.client===selectedClient.key);
+            if(matched.length) lines.push('✓ Filter match: '+matched.length+' rows for "'+selectedClient.key+'"');
+            else {
+              lines.push('✗ NO rows match client "'+selectedClient.key+'"');
+              const sample=[...new Set(parsed.data.slice(0,20).map(r=>r.client).filter(Boolean))];
+              lines.push('ℹ Sample CSV client values: '+sample.slice(0,5).join(' | '));
+            }
+          } else lines.push('ℹ Select a client on step 1 to test filter matching');
+        }
+      }
+    }
+  } catch(e){lines.push('✗ Error: '+e.message);}
+  alert('Data Diagnostic\n\n'+lines.join('\n'));
+  btn.disabled=false; btn.textContent='🔍 Check Data';
 }
 </script>
 <script>
@@ -1620,9 +1660,20 @@ async function generate(){
   const E={cs:on('cs'),cd:on('cd'),es:on('es'),ed:on('ed'),yer:on('yer'),pro:on('pro'),tyc:on('tyc')};
   resetProgress();
   try{
+    const s=getSettings();
+    if(!s.pat){throw new Error('No Access Token configured. Open Settings → Data Source and add your GitHub PAT.');}
     setProgress('Fetching compliance data\u2026',`Loading data for ${selectedClient.name}`,0);
-    const clientData=await loadClientData(selectedClient.key);
+    let clientData;
+    try { clientData = await loadClientData(selectedClient.key); }
+    catch(fetchErr) { throw new Error('Data load failed: ' + fetchErr.message); }
     let insureds=clientData.insureds;
+    console.log('[RG] ' + selectedClient.key + ' — insureds: ' + insureds.length + ', coverages: ' + (clientData.coverages||[]).length);
+    if(!insureds.length){
+      let rawCount=0; try{const raw=await fetchCSV(s.insuredsPath);rawCount=raw.length;}catch(_){}
+      throw new Error(rawCount===0
+        ? 'insureds.csv appears empty — has the Evident sync run? Check GitHub Actions.'
+        : 'CSV has '+rawCount+' rows but none match "'+selectedClient.key+'". The client name in the CSV must match clients.json exactly.');
+    }
     if(E.cs||E.cd||E.ed){try{insureds=enrichInsureds(insureds,clientData.custom_properties);}catch(e){console.warn('custom_properties skip:',e.message);}}
     const coverages=(E.cd||E.cs)?clientData.coverages:[];
     const criteria=(E.cd||E.cs)?clientData.criteria:[];
@@ -1648,6 +1699,8 @@ async function generate(){
     document.getElementById('err-area').style.display='block';
     document.getElementById('err-msg').textContent=e.message||'Unexpected error';
     document.getElementById('s3-title').textContent='Generation Failed';
+    document.getElementById('s3-sub').textContent='See error message below';
+    console.error('[RG Error]',e.message,e);
   }
 }
 function printHTMLasPDF(htmlContent){
@@ -2016,7 +2069,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.25
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.26
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
