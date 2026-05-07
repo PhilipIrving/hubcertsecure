@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.60</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.62</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -286,7 +286,7 @@
           <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px">Add New User</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
             <div class="form-grp"><label class="form-lbl">Display Name</label><input type="text" id="new-user-name" class="login-input" style="font-size:13px;padding:9px 12px" placeholder="e.g. Philip Irving"></div>
-            <div class="form-grp"><label class="form-lbl">Role</label><select id="new-user-role" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:var(--white);color:var(--text)"><option value="account_administrator">Account Administrator</option><option value="account_manager">Account Manager</option><option value="system_administrator">System Administrator</option></select></div>
+            <div class="form-grp"><label class="form-lbl">Role</label><select id="new-user-role" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:var(--white);color:var(--text)"><option value="account_administrator">Account Administrator</option><option value="account_manager">Account Manager</option><option value="account_executive">Account Executive</option><option value="system_administrator">System Administrator</option></select></div>
             <div class="form-grp" style="grid-column:1/-1"><label class="form-lbl">Email</label><input type="email" id="new-user-email" class="login-input" style="font-size:13px;padding:9px 12px" placeholder="email@hubinternational.com"></div>
             <div class="form-grp" style="grid-column:1/-1"><label class="form-lbl">Temporary Password</label><input type="text" id="new-user-pass" class="login-input" style="font-size:13px;padding:9px 12px" placeholder="They can reset after first login"></div>
           </div>
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.60</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.62</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -677,6 +677,7 @@ const ROLE_DISPLAY = {
   system_administrator: { label: 'System Administrator', bg: '#1E2E3D', color: '#FFFFFF' },
   account_manager:      { label: 'Account Manager',      bg: '#3872B8', color: '#FFFFFF' },
   account_administrator:{ label: 'Account Administrator',bg: '#E8ECF5', color: '#5A6B7B' },
+  account_executive:    { label: 'Account Executive',    bg: '#0D9488', color: '#FFFFFF' },
 };
 function applyUserDisplay(displayName, role) {
   const wrap  = document.getElementById('welcome-wrap');
@@ -686,7 +687,7 @@ function applyUserDisplay(displayName, role) {
   wrap.style.display = 'flex';
   if (nameEl) nameEl.textContent = displayName || '';
   if (roleEl) {
-    const rd = ROLE_DISPLAY[role] || ROLE_DISPLAY['account_administrator'];
+    const rd = ROLE_DISPLAY[role] || ROLE_DISPLAY['account_executive'] || ROLE_DISPLAY['account_administrator'];
     roleEl.textContent = rd.label;
     roleEl.style.background = rd.bg;
     roleEl.style.color = rd.color;
@@ -697,7 +698,7 @@ function applyUserDisplay(displayName, role) {
   const settingsBtn = document.querySelector('[onclick="openSettings()"]');
   if (settingsBtn) settingsBtn.style.opacity = canSeeSettings() ? '1' : '0.4';
 }
-function canEditClients()  { return ['account_manager','system_administrator'].includes(window._userRole); }
+function canEditClients()  { return ['account_manager','account_administrator','account_executive','system_administrator'].includes(window._userRole); }
 function canAdminClients() { return window._userRole === 'system_administrator'; }
 function canSeeSettings()  { return window._userRole === 'system_administrator'; }
 async function doLogin() {
@@ -1351,7 +1352,10 @@ async function saveClientsToConfig(updatedClients) {
       const err = await putRes.json().catch(() => ({}));
       // 409/422 SHA conflict — retry once with a freshly-fetched SHA
       if (attempt < 2 && (putRes.status === 409 || putRes.status === 422 || (err.message||'').toLowerCase().includes('does not match'))) {
-        await new Promise(r => setTimeout(r, 600)); // brief pause before retry
+        // Show visible retry message so user knows what's happening
+        const msgEl = document.getElementById('ce-msg');
+        if (msgEl) { msgEl.textContent = '⚠️ File was updated by a sync — retrying your save…'; msgEl.style.cssText = 'display:block;font-size:12px;padding:8px 12px;border-radius:7px;background:#FFF8E6;color:#92400E;border:1px solid #F5E5B0;margin-top:10px'; }
+        await new Promise(r => setTimeout(r, 800));
         return attemptSave(attempt + 1);
       }
       throw new Error(err.message || 'HTTP ' + putRes.status);
@@ -1436,6 +1440,7 @@ async function saveClientEdit() {
   if (_editingIndex === null) { updated.push(entry); } else { updated[_editingIndex] = { ...updated[_editingIndex], ...entry }; }
   try {
     await saveClientsToConfig(updated);
+    const msgEl2 = document.getElementById('ce-msg'); if (msgEl2) msgEl2.style.display = 'none';
     toast((_editingIndex === null ? 'Client added' : 'Client saved') + ' \u2713', 'success');
     closeClientModal(); renderConfigTable(document.getElementById('cfg-search')?.value || ''); renderGrids();
   } catch(e) { showCEMsg('Save failed: ' + e.message, true); }
@@ -2470,7 +2475,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.60
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.62
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
