@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.57</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.58</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -379,9 +379,9 @@
         <div class="report-card" id="rc-es"><div class="report-card-hdr" onclick="toggleReport('es')"><div class="rc-dot"></div><div><div class="rc-title">Engagement Summary</div><div class="rc-sub">Email engagement overview</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Sections to Include</div><div class="cb-group"><label class="cb-item"><input type="checkbox" id="es-kpi" checked> Email KPI Cards</label><label class="cb-item"><input type="checkbox" id="es-openrate" checked> Open Rate Breakdown</label><label class="cb-item"><input type="checkbox" id="es-delivery" checked> Deliverability Status</label><label class="cb-item"><input type="checkbox" id="es-issues" checked> Delivery Issue Breakdown</label><label class="cb-item"><input type="checkbox" id="es-60day" checked> Activity Window &amp; Funnel</label><label class="cb-item"><input type="checkbox" id="es-nceng" checked> NC Insured Engagement Rate</label><label class="cb-item"><input type="checkbox" id="es-topsubjects"> Top Email Subjects by Open Rate</label></div><div class="sec-div">Engagement Window</div><select id="es-window"><option value="60">Last 60 Days</option><option value="30">Last 30 Days</option><option value="90">Last 90 Days</option></select></div></div>
         <div class="report-card" id="rc-ed"><div class="report-card-hdr" onclick="toggleReport('ed')"><div class="rc-dot"></div><div><div class="rc-title">Engagement Detail</div><div class="rc-sub">Full engagement data</div></div><span class="rc-type type-excel">Excel</span></div><div class="report-card-body"><div class="sec-div">Sheets to Include</div><div class="cb-group"><label class="cb-item"><input type="checkbox" id="ed-summary" checked> Summary</label><label class="cb-item"><input type="checkbox" id="ed-nocoi" checked> No COIs on File</label><label class="cb-item"><input type="checkbox" id="ed-noeng" checked> No Engagement Since Go-Live</label><label class="cb-item"><input type="checkbox" id="ed-ncnoeng" checked> NC + No Recent Engagement</label><label class="cb-item"><input type="checkbox" id="ed-undel" checked> Undeliverable Emails</label></div><div class="sec-div">Engagement Window</div><select id="ed-window"><option value="60">Last 60 Days</option><option value="30">Last 30 Days</option><option value="90">Last 90 Days</option></select><div class="sec-div" id="ed-cf-hdr" style="display:none">Custom Fields</div><div class="cb-group" id="ed-cf-list"></div></div></div>
       </div>
-      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
+      <div style="margin-top:14px;border-top:1px solid var(--border);padding-top:14px">
         <div class="sec-div" style="margin-bottom:10px;padding-top:0;border-top:none;font-size:10px;letter-spacing:.09em">Additional Reports</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+        <div class="report-grid">
         <div class="report-card" id="rc-yer"><div class="report-card-hdr" onclick="toggleReport('yer')"><div class="rc-dot"></div><div><div class="rc-title">Program Overview</div><div class="rc-sub">Comprehensive annual program report</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Options</div><div class="form-grp"><label class="form-lbl">Report Year</label><input type="text" id="po-year" placeholder="e.g. 2026" maxlength="4" style="width:120px"><div class="form-hint">Reads from snapshots/YYYY/</div></div><div class="form-grp" style="margin-top:8px"><label class="form-lbl">Producer Name <span style="color:var(--muted);font-weight:400">(optional)</span></label><input type="text" id="po-producer" placeholder="e.g. Jane Smith"></div></div></div>
           
         <div class="report-card" id="rc-tyc"><div class="report-card-hdr" onclick="toggleReport('tyc')"><div class="rc-dot"></div><div><div class="rc-title">Thank You Card</div><div class="rc-sub">Personalised client postcard PDF</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Options</div><div class="form-grp"><label class="form-lbl">Contact Name</label><input type="text" id="tyc-contact" placeholder="e.g. Jane Smith"></div><div class="form-grp" style="margin-top:8px"><label class="form-lbl">Producer Name</label><input type="text" id="tyc-producer" placeholder="e.g. Philip Irving"></div></div></div>
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.57</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.58</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -2449,7 +2449,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.57
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.58
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
