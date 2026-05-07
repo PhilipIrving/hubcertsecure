@@ -164,11 +164,13 @@ jobs:
       - name: Route CSVs to data/trustlayer/
         run: |
           mkdir -p data/trustlayer
-          find data -maxdepth 1 -name "*.csv" | while IFS= read -r f; do
-            mv "$f" data/trustlayer/
-            echo "  moved: $f"
+          find trustlayer-sync/data -maxdepth 1 -name "*.csv" | while IFS= read -r f; do
+            fname=$(basename "$f")
+            cp "$f" "data/trustlayer/$fname"
+            echo "  copied: $fname"
           done
-          echo "Route complete"
+          echo "Final data/trustlayer/ contents:"
+          ls -lh data/trustlayer/*.csv 2>/dev/null | awk '{print "  " $5, $9}'
 
       - name: Take monthly snapshot (1st of month only)
         run: |
