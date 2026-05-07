@@ -1282,7 +1282,6 @@ async function runDataDiagnostic() {
           lines.push((engMatched.length?'\u2713':'\u2717')+' Engagement rows matching "'+selectedClient.key+'": '+engMatched.length);
         }
       }
-    }
   } catch(e) {
     lines.push('\u2717 Error: ' + e.message);
   }
