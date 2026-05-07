@@ -74,11 +74,31 @@ jobs:
       - name: Route CSVs to data/evident/
         run: |
           mkdir -p data/evident
+
+          # Move any CSVs from repo-root data/ (written by sync.js)
           find data -maxdepth 1 -name "*.csv" | while IFS= read -r f; do
             mv "$f" data/evident/
-            echo "  moved: $f"
+            echo "  moved from data/: $f"
           done
-          echo "Route complete"
+
+          # Also capture CSVs from evident-sync/data/ (written by sync-engagement.js / sync-custom-properties.js)
+          if [ -d "evident-sync/data" ]; then
+            find evident-sync/data -maxdepth 1 -name "*.csv" | while IFS= read -r f; do
+              fname=$(basename "$f")
+              # Only copy if it has actual data (more than just a header row)
+              lines=$(wc -l < "$f")
+              if [ "$lines" -gt 1 ]; then
+                cp "$f" "data/evident/$fname"
+                echo "  copied from evident-sync/data/: $fname ($lines rows)"
+              else
+                echo "  skipped (empty): $fname"
+              fi
+            done
+          fi
+
+          # List final state
+          echo "Final data/evident/ contents:"
+          ls -lh data/evident/*.csv 2>/dev/null | awk '{print "  " $5, $9}'
 
       - name: Take monthly snapshot (1st of month only)
         run: |
