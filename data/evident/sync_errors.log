@@ -1,32 +1,14 @@
 [
   {
-    "client": "Action Plumbing Construction",
-    "stage": "coverage_data",
-    "insured": "a1a3669a-c08c-4131-884e-f5f63347e7b5",
-    "error": "HTTP 502 on /insurance/insureds/a1a3669a-c08c-4131-884e-f5f63347e7b5/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    "client": "Canadian Pacific Kansas City",
+    "stage": "criteria",
+    "insured": "6f7035d5-b736-4220-945b-362db71d0ff3",
+    "error": "HTTP 502 on /insurance/insureds/6f7035d5-b736-4220-945b-362db71d0ff3/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
   },
   {
-    "client": "Capital Railroad Contracting, Inc.",
-    "stage": "coverage_data",
-    "insured": "457c28a7-8b4b-4ace-b0a3-d83911c27916",
-    "error": "HTTP 502 on /insurance/insureds/457c28a7-8b4b-4ace-b0a3-d83911c27916/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Capital Railroad Contracting, Inc.",
-    "stage": "coverage_data",
-    "insured": "63640974-dea4-4360-b5fe-7b794d924f8e",
-    "error": "HTTP 502 on /insurance/insureds/63640974-dea4-4360-b5fe-7b794d924f8e/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Capital Railroad Contracting, Inc.",
-    "stage": "coverage_data",
-    "insured": "684e910f-07be-4817-a150-35101c6ec1dc",
-    "error": "HTTP 502 on /insurance/insureds/684e910f-07be-4817-a150-35101c6ec1dc/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "EMMES",
-    "stage": "coverage_data",
-    "insured": "09b56567-6372-48e7-8487-fc8c80faafd4",
-    "error": "HTTP 502 on /insurance/insureds/09b56567-6372-48e7-8487-fc8c80faafd4/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    "client": "Canadian Pacific Kansas City",
+    "stage": "criteria",
+    "insured": "6fdbef48-932a-41f3-ba43-aa7a93a9fa83",
+    "error": "HTTP 502 on /insurance/insureds/6fdbef48-932a-41f3-ba43-aa7a93a9fa83/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
   }
 ]
