@@ -1,0 +1,16 @@
+{
+  "owner": "PhilipIrving",
+  "repo": "hubcertsecure",
+  "branch": "main",
+  "insuredsPath": "data/evident/insureds.csv",
+  "coveragesPath": "data/evident/coverages.csv",
+  "criteriaPath": "data/evident/criteria.csv",
+  "customPropsPath": "data/evident/custom_properties.csv",
+  "notificationsPath": "data/evident/engagement.csv",
+  "tlInsuredsPath": "data/trustlayer/insureds.csv",
+  "tlCoveragesPath": "data/trustlayer/coverages.csv",
+  "tlCriteriaPath": "data/trustlayer/criteria.csv",
+  "mondayToken": "eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjU0NzU2ODQ4NywiYWFpIjoxMSwidWlkIjo2Mzg3MzQxMSwiaWFkIjoiMjAyNS0wOC0wNlQxODozODowOC4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTk3NTU3MDgsInJnbiI6InVzZTEifQ.kZuC8NVVgbf5h6zOu1CFkfPVLgw4XTvueWb_MEM7jLg",
+  "_published": "2026-05-07",
+  "_publishedBy": "System Administrator"
+}
