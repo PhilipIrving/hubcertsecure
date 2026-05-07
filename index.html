@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.43</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.44</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.43</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.44</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -2160,7 +2160,7 @@ function buildComplianceSummaryHTML(insureds,coverages,criteria,{reportDate}){
   const nc=active.filter(r=>normStatus(r[C.status])==='non_compliant').length,newp=total-comp-nc;
   const rate=total?Math.round(comp/total*100):0;
   const stamp=new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
-  const rateColor=rate>=80?'#16A34A':rate>=60?'#D97706':'#DC2626';  const snapshotNote=usedLiveData?` &nbsp;&#x26A0;&nbsp; Using live data (snapshot unreadable)`:``;  
+  const rateColor=rate>=80?'#16A34A':rate>=60?'#D97706':'#DC2626'; 
   const logoSrc=typeof CERTSECURE_LOGO_SRC!=='undefined'?CERTSECURE_LOGO_SRC:(document.querySelector('.header-logo')?.src?.startsWith('data:')?document.querySelector('.header-logo').src:null);
   const logoTag=logoSrc?`<img src="${logoSrc}" style="height:34px;object-fit:contain">`:`<div style="font-family:Arial,sans-serif;font-size:16px;font-weight:700;color:#1E2E3D">CERT<span style="background:#3872B8;color:white;padding:1px 6px;border-radius:3px">SECURE</span></div>`;
 
@@ -2397,7 +2397,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.43
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.44
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
