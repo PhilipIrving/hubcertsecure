@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.36</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.37</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.36</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.37</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -1112,7 +1112,7 @@ async function loadTLData(clientName) {
     }
     return false;
   };
-  return { insureds: insureds.filter(matchRow), coverages: coverages.filter(matchRow), criteria: criteria.filter(matchRow), custom_properties: [], engagement: [] };
+  return { insureds: insureds.filter(matchRow), coverages: coverages.filter(matchRow), criteria: criteria.filter(matchRow), custom_properties: [], engagement: [] }; // TL has no engagement data
 }
 
 async function loadClientData(clientName) {
@@ -1140,7 +1140,13 @@ async function loadClientData(clientName) {
     coverages:         coverages.filter(matchRow),
     criteria:          criteria.filter(matchRow),
     custom_properties: customProps.filter(matchRow),
-    engagement:        notifs.filter(matchRow),
+    // Engagement CSV uses 'Client' (capital C from Google Sheets) — check both
+    engagement: notifs.filter(r => {
+      const v = r['Client'] || r['client'] || '';
+      if (v === clientName) return true;
+      if (rpName && v) { const rv = v.toLowerCase().replace(/[^a-z0-9]/g,''); if (rv.includes(rpName)||rpName.includes(rv)) return true; }
+      return false;
+    }),
   };
 }
 
@@ -1586,7 +1592,7 @@ async function triggerHubWide() {
     const htmlOut = buildHubWideHTML(year, { firstMonth, lastMonth, months, clientStats, monthlyTrend, totalActive, totalComp, totalNC, overallRate, firstRate, rateChange, sentSet, openSet, issueSet, engRate, improved, topNCAll, ncByCovSorted });
     const blobUrl = URL.createObjectURL(new Blob([htmlOut], { type: 'text/html' }));
     printHTMLasPDF(htmlOut);
-    _notifs.unshift({ msg: `HUB-Wide Annual Review ${year}`, type: 'success', time: new Date(), _download: { type: 'pdf', html: htmlOut, _blobUrl: blobUrl, filename: `HUB-Wide Annual Review ${year}.pdf` } });
+    _notifs.unshift({ msg: `HUB-Wide Annual Review ${year}`, type: 'success', time: new Date(), _download: { type: 'pdf', html: htmlOut, _blobUrl: blobUrl, filename: `HUB-Wide Annual Review ${year} - ${new Date().toISOString().split('T')[0]}.pdf` } });
     if (_notifs.length > 15) _notifs.pop(); renderNotifList();
     const drawer = document.getElementById('notif-drawer'); if (drawer) { drawer.style.display = ''; _unread = 0; updateNotifBadge(); }
     msg.textContent = '\u2713 Print dialog opening \u2014 save as PDF. Also in Recent Activity.';
@@ -1798,13 +1804,13 @@ async function generate(){
     const engWindow=parseInt(document.getElementById('ed-window').value)||60;
     const esWindow=parseInt(document.getElementById('es-window')?.value)||60;
     const downloads=[];
-    if(E.cd){setProgress('Building Compliance Detail\u2026','Generating Excel workbook',1);const wb=await buildComplianceDetailXL(insureds,coverages,criteria,{statusFilter,reportDate});downloads.push({label:'Compliance Detail',type:'excel',blob:await xlBlob(wb),filename:`${selectedClient.name} \u2014 Compliance Detail.xlsx`});}
-    if(E.ed){setProgress('Building Engagement Detail\u2026','Generating Excel workbook',1);const wb=await buildEngagementDetailXL(insureds,notifications,{engWindow,reportDate});downloads.push({label:'Engagement Detail',type:'excel',blob:await xlBlob(wb),filename:`${selectedClient.name} \u2014 Engagement Detail.xlsx`});}
-    if(E.cs){setProgress('Building Compliance Summary\u2026','Generating PDF',1);downloads.push({label:'Compliance Summary',type:'pdf',html:buildComplianceSummaryHTML(insureds,coverages,criteria,{reportDate}),filename:`${selectedClient.name} \u2014 Compliance Summary.pdf`});}
-    if(E.es){setProgress('Building Engagement Summary\u2026','Generating PDF',1);downloads.push({label:'Engagement Summary',type:'pdf',html:buildEngagementSummaryHTML(notifications,{reportDate,engWindow:esWindow}),filename:`${selectedClient.name} \u2014 Engagement Summary.pdf`});}
-    if(E.yer){setProgress('Building Year End Review\u2026','Fetching snapshot data',1);const yerYear=document.getElementById('yer-year')?.value?.trim()||String(new Date().getFullYear());const yerProducer=document.getElementById('yer-producer')?.value?.trim()||'';downloads.push({label:`Year End Review ${yerYear}`,type:'pdf',html:await buildYearEndReviewHTML(yerYear,yerProducer),filename:`${selectedClient.name} \u2014 Year End Review ${yerYear}.pdf`});}
-    if(E.pro){const proProducer=document.getElementById('pro-producer')?.value?.trim()||'';if(!proProducer){toast('Producer name required for Producer Overview \u2014 skipped.','error');}else{setProgress('Building Producer Overview\u2026','Fetching snapshot data',1);const proMonth=document.getElementById('pro-month')?.value?.trim()||'';downloads.push({label:'Producer Overview',type:'pdf',html:await buildProducerOverviewHTML(proProducer,proMonth||null),filename:`${selectedClient.name} \u2014 Producer Overview.pdf`});}}
-    if(E.tyc){const tycContact=document.getElementById('tyc-contact')?.value?.trim()||'Valued Partner';const tycProducer=document.getElementById('tyc-producer')?.value?.trim()||'';setProgress('Building Thank You Card\u2026','Calculating compliance stats',1);const meta=CLIENT_META_MAP[selectedClient.key]||{};downloads.push({label:'Thank You Card',type:'pdf',html:buildThankYouCardHTML(insureds,meta,tycContact,tycProducer),filename:`${selectedClient.name} \u2014 Thank You Card.pdf`});}
+    if(E.cd){setProgress('Building Compliance Detail\u2026','Generating Excel workbook',1);const wb=await buildComplianceDetailXL(insureds,coverages,criteria,{statusFilter,reportDate});downloads.push({label:'Compliance Detail',type:'excel',blob:await xlBlob(wb),filename:`${selectedClient.name} - Compliance Detail - ${new Date().toISOString().split('T')[0]}.xlsx`});}
+    if(E.ed){setProgress('Building Engagement Detail\u2026','Generating Excel workbook',1);const wb=await buildEngagementDetailXL(insureds,notifications,{engWindow,reportDate});downloads.push({label:'Engagement Detail',type:'excel',blob:await xlBlob(wb),filename:`${selectedClient.name} - Engagement Detail - ${new Date().toISOString().split('T')[0]}.xlsx`});}
+    if(E.cs){setProgress('Building Compliance Summary\u2026','Generating PDF',1);downloads.push({label:'Compliance Summary',type:'pdf',html:buildComplianceSummaryHTML(insureds,coverages,criteria,{reportDate}),filename:`${selectedClient.name} - Compliance Summary - ${new Date().toISOString().split('T')[0]}.pdf`});}
+    if(E.es){setProgress('Building Engagement Summary\u2026','Generating PDF',1);downloads.push({label:'Engagement Summary',type:'pdf',html:buildEngagementSummaryHTML(notifications,{reportDate,engWindow:esWindow}),filename:`${selectedClient.name} - Engagement Summary - ${new Date().toISOString().split('T')[0]}.pdf`});}
+    if(E.yer){setProgress('Building Year End Review\u2026','Fetching snapshot data',1);const yerYear=document.getElementById('yer-year')?.value?.trim()||String(new Date().getFullYear());const yerProducer=document.getElementById('yer-producer')?.value?.trim()||'';downloads.push({label:`Year End Review ${yerYear}`,type:'pdf',html:await buildYearEndReviewHTML(yerYear,yerProducer),filename:`${selectedClient.name} - Year End Review ${yerYear} - ${new Date().toISOString().split('T')[0]}.pdf`});}
+    if(E.pro){const proProducer=document.getElementById('pro-producer')?.value?.trim()||'';if(!proProducer){toast('Producer name required for Producer Overview \u2014 skipped.','error');}else{setProgress('Building Producer Overview\u2026','Fetching snapshot data',1);const proMonth=document.getElementById('pro-month')?.value?.trim()||'';downloads.push({label:'Producer Overview',type:'pdf',html:await buildProducerOverviewHTML(proProducer,proMonth||null),filename:`${selectedClient.name} - Producer Overview - ${new Date().toISOString().split('T')[0]}.pdf`});}}
+    if(E.tyc){const tycContact=document.getElementById('tyc-contact')?.value?.trim()||'Valued Partner';const tycProducer=document.getElementById('tyc-producer')?.value?.trim()||'';setProgress('Building Thank You Card\u2026','Calculating compliance stats',1);const meta=CLIENT_META_MAP[selectedClient.key]||{};downloads.push({label:'Thank You Card',type:'pdf',html:buildThankYouCardHTML(insureds,meta,tycContact,tycProducer),filename:`${selectedClient.name} - Thank You Card - ${new Date().toISOString().split('T')[0]}.pdf`});}
     setProgress('Finalizing\u2026','Preparing your downloads',2);
     await new Promise(r=>setTimeout(r,400));
     showDownloads(downloads);
@@ -2275,7 +2281,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.36
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.37
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
