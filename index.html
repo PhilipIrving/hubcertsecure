@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.44</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.45</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.44</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.45</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -1189,104 +1189,90 @@ async function runDataDiagnostic() {
       lines.push('\u2717 No Access Token \u2014 add one in Settings \u2192 Data Source');
     } else {
       lines.push('\u2713 Access Token configured');
-      const rawBase = 'https://raw.githubusercontent.com/' + s.owner + '/' + s.repo + '/' + s.branch + '/';
-      const auth = { Authorization: 'token ' + s.pat };
+      const auth = { Authorization: 'Bearer ' + s.pat, Accept: 'application/vnd.github.v3+json' };
+      const base = 'https://api.github.com/repos/' + s.owner + '/' + s.repo + '/contents/';
+      const blobBase = 'https://api.github.com/repos/' + s.owner + '/' + s.repo + '/git/blobs/';
+
       // Check clients.json
-      const cfgApiRes = await fetch('https://api.github.com/repos/' + s.owner + '/' + s.repo + '/contents/config/clients.json?ref=' + s.branch,
-        { headers: { Authorization: 'Bearer ' + s.pat, Accept: 'application/vnd.github.v3+json' } });
-      if (cfgApiRes.status === 401) {
-        lines.push('\u2717 Token rejected \u2014 check it has repo scope in GitHub');
-      } else if (cfgApiRes.status === 404) {
-        lines.push('\u2717 Repo not found: ' + s.owner + '/' + s.repo);
-      } else if (cfgApiRes.ok) {
-        const cfgMeta = await cfgApiRes.json();
-        const cfgRaw = atob(cfgMeta.content.replace(/\n/g, ''));
-        const cfg = JSON.parse(cfgRaw);
-        const clients = cfg.clients || [];
-        const active = clients.filter(c => c.active !== false).length;
-        lines.push((active > 0 ? '\u2713' : '\u2717') + ' clients.json: ' + active + ' active clients (' + clients.length + ' total)');
-        if (!active) lines.push('\u2139 Fix: check clients.json has a "clients" array with active:true entries');
-      }
-      // Check insureds.csv
-      // Use correct CSV based on whether selected client is TL or Evident
-      const isTLDiag = selectedClient && typeof isTLClient === 'function' && isTLClient(selectedClient.key);
-      const csvDiagPath = isTLDiag ? (s.tlInsuredsPath || 'data/trustlayer/insureds.csv') : s.insuredsPath;
-      if (isTLDiag) lines.push('ℹ TrustLayer client — checking: ' + csvDiagPath);
-      const csvRes = await fetch('https://api.github.com/repos/' + s.owner + '/' + s.repo + '/contents/' + csvDiagPath + '?ref=' + s.branch, { headers: { Authorization: 'Bearer ' + s.pat, Accept: 'application/vnd.github.v3+json' } });
-      if (!csvRes.ok) {
-        lines.push('✗ CSV not found at ' + csvDiagPath + ' (HTTP ' + csvRes.status + ')');
-        lines.push('ℹ Expected: ' + (isTLDiag ? 'data/trustlayer/insureds.csv' : 'data/evident/insureds.csv'));
+      const cfgRes = await fetch(base + 'config/clients.json?ref=' + s.branch, { headers: auth });
+      if (!cfgRes.ok) {
+        lines.push('\u2717 clients.json: HTTP ' + cfgRes.status + ' (check repo name/branch in Settings)');
       } else {
-        const csvBody = await csvRes.json();
-        let raw;
-        if (csvBody.content && csvBody.content.trim() !== '') {
-          raw = atob(csvBody.content.replace(/\n/g, ''));
-        } else if (csvBody.sha) {
-          const blobRes2 = await fetch('https://api.github.com/repos/' + s.owner + '/' + s.repo + '/git/blobs/' + csvBody.sha, { headers: { Authorization: 'Bearer ' + s.pat, Accept: 'application/vnd.github.v3+json' } });
-          const blob2 = await blobRes2.json();
-          raw = atob(blob2.content.replace(/\n/g, ''));
-        } else { raw = ''; }
-        const rows = raw.trim().split('\n');
-        lines.push('\u2713 insureds.csv: ' + (rows.length - 1) + ' data rows');
-        if (typeof Papa !== 'undefined') {
-          const parsed = Papa.parse(raw, { header: true, skipEmptyLines: true });
-          if (selectedClient) {
-            const meta = typeof CLIENT_META_MAP !== 'undefined' ? (CLIENT_META_MAP[selectedClient.key] || {}) : {};
-            const rpN = (meta.rp_common_name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
-            const matched = parsed.data.filter(r => {
-              if (r.client === selectedClient.key) return true;
-              if (rpN && r.client) { const rv = r.client.toLowerCase().replace(/[^a-z0-9]/g, ''); if (rv.includes(rpN) || rpN.includes(rv)) return true; }
-              return false;
-            });
-            if (matched.length) {
-              lines.push('\u2713 Filter match: ' + matched.length + ' rows for "' + selectedClient.key + '"');
-            } else {
-              lines.push('\u2717 NO rows match "' + selectedClient.key + '"');
-              const sample = [...new Set(parsed.data.slice(0, 20).map(r => r.client).filter(Boolean))];
-              lines.push('\u2139 CSV client values: ' + sample.slice(0, 5).join(' | '));
-            }
+        const cfgMeta = await cfgRes.json();
+        const cfg = JSON.parse(atob(cfgMeta.content.replace(/\n/g, '')));
+        const active = (cfg.clients || []).filter(c => c.active !== false).length;
+        lines.push((active > 0 ? '\u2713' : '\u2717') + ' clients.json: ' + active + ' active (' + (cfg.clients||[]).length + ' total)');
+        if (!active) lines.push('\u2139 Fix: ensure clients.json has a "clients" array with active:true entries');
+      }
+
+      // Check correct CSV based on client type
+      const isTL = selectedClient && typeof isTLClient !== 'undefined' && isTLClient(selectedClient.key);
+      const csvPath = isTL ? (s.tlInsuredsPath || 'data/trustlayer/insureds.csv') : s.insuredsPath;
+      if (isTL) lines.push('\u2139 TrustLayer client \u2014 checking: ' + csvPath);
+      const csvRes = await fetch(base + csvPath + '?ref=' + s.branch, { headers: auth });
+      if (!csvRes.ok) {
+        lines.push('\u2717 insureds.csv: HTTP ' + csvRes.status + ' at ' + csvPath);
+      } else {
+        const csvMeta = await csvRes.json();
+        let csvRaw;
+        if (csvMeta.content && csvMeta.content.trim()) {
+          csvRaw = atob(csvMeta.content.replace(/\n/g, ''));
+        } else {
+          const blobData = await (await fetch(blobBase + csvMeta.sha, { headers: auth })).json();
+          csvRaw = atob(blobData.content.replace(/\n/g, ''));
+        }
+        const rowCount = csvRaw.trim().split('\n').length - 1;
+        lines.push('\u2713 insureds.csv: ' + rowCount + ' rows');
+        if (typeof Papa !== 'undefined' && selectedClient && csvRaw) {
+          const meta = (typeof CLIENT_META_MAP !== 'undefined' && CLIENT_META_MAP[selectedClient.key]) || {};
+          const rpN = (meta.rp_common_name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+          const parsed = Papa.parse(csvRaw, { header: true, skipEmptyLines: true });
+          const matched = parsed.data.filter(r => {
+            const v = r.client || r.Client || '';
+            if (v === selectedClient.key) return true;
+            if (rpN && v) { const rv = v.toLowerCase().replace(/[^a-z0-9]/g, ''); if (rv.includes(rpN) || rpN.includes(rv)) return true; }
+            return false;
+          });
+          if (matched.length) {
+            lines.push('\u2713 Filter match: ' + matched.length + ' rows for "' + selectedClient.key + '"');
           } else {
-            lines.push('\u2139 Select a client on step 1 to test filter matching');
+            lines.push('\u2717 NO rows match "' + selectedClient.key + '"');
+            const sample = [...new Set(parsed.data.slice(0, 20).map(r => r.client || r.Client || '').filter(Boolean))];
+            lines.push('\u2139 CSV client values: ' + sample.slice(0, 5).join(' | '));
           }
+        } else if (!selectedClient) {
+          lines.push('\u2139 Select a client on step 1 to test filter matching');
+        }
+      }
+
+      // Check engagement.csv
+      const engPath = s.notificationsPath || 'data/evident/engagement.csv';
+      const engRes = await fetch(base + engPath + '?ref=' + s.branch, { headers: auth });
+      if (!engRes.ok) {
+        lines.push('\u2717 engagement.csv: HTTP ' + engRes.status + ' at ' + engPath);
+      } else {
+        const engMeta = await engRes.json();
+        let engRaw;
+        if (engMeta.content && engMeta.content.trim()) {
+          engRaw = atob(engMeta.content.replace(/\n/g, ''));
+        } else {
+          const engBlob = await (await fetch(blobBase + engMeta.sha, { headers: auth })).json();
+          engRaw = atob(engBlob.content.replace(/\n/g, ''));
+        }
+        const engRows = engRaw.trim().split('\n').length - 1;
+        lines.push('\u2713 engagement.csv: ' + engRows + ' rows');
+        if (engRows > 0 && selectedClient && typeof Papa !== 'undefined') {
+          const ep = Papa.parse(engRaw, { header: true, skipEmptyLines: true });
+          const sampleClients = [...new Set(ep.data.slice(0, 300).map(r => r.Client || r.client || '').filter(Boolean))].slice(0, 5);
+          lines.push('\u2139 Sample Client values: ' + (sampleClients.join(' | ') || 'none found'));
         }
       }
     }
-      // ── Check engagement.csv ──
-      const engPath = s.notificationsPath || 'data/evident/engagement.csv';
-      const engApiRes = await fetch('https://api.github.com/repos/'+s.owner+'/'+s.repo+'/contents/'+engPath+'?ref='+s.branch, {headers:{Authorization:'Bearer '+s.pat,Accept:'application/vnd.github.v3+json'}});
-      if (!engApiRes.ok) {
-        lines.push('\u2717 engagement.csv not found at '+engPath+' (HTTP '+engApiRes.status+')');
-      } else {
-        const engMeta = await engApiRes.json();
-        let engRaw = '';
-        if (engMeta.content && engMeta.content.trim()) {
-          engRaw = atob(engMeta.content.replace(/\n/g,''));
-        } else if (engMeta.sha) {
-          const eb = await fetch('https://api.github.com/repos/'+s.owner+'/'+s.repo+'/git/blobs/'+engMeta.sha, {headers:{Authorization:'Bearer '+s.pat,Accept:'application/vnd.github.v3+json'}});
-          engRaw = atob((await eb.json()).content.replace(/\n/g,''));
-        }
-        const engLineCount = engRaw.trim().split('\n').length - 1;
-        lines.push('\u2713 engagement.csv: '+engLineCount+' rows');
-        lines.push('\u2139 Columns: '+(engRaw.split('\n')[0]||''));
-        if (typeof Papa !== 'undefined' && engRaw && selectedClient) {
-          const ep = Papa.parse(engRaw, {header:true, skipEmptyLines:true});
-          const sampleClients = [...new Set(ep.data.slice(0,500).map(r=>r['Client']||r['client']||'').filter(Boolean))].slice(0,6);
-          lines.push('\u2139 Sample Client values in engagement.csv: '+(sampleClients.join(' | ')||'none'));
-          const rpName2 = ((typeof CLIENT_META_MAP !== 'undefined' ? (CLIENT_META_MAP[selectedClient.key]||{}) : {}).rp_common_name||'').toLowerCase().replace(/[^a-z0-9]/g,'');
-          const engMatched = ep.data.filter(r=>{
-            const v=r['Client']||r['client']||'';
-            if(v===selectedClient.key)return true;
-            if(rpName2&&v){const rv=v.toLowerCase().replace(/[^a-z0-9]/g,'');if(rv.includes(rpName2)||rpName2.includes(rv))return true;}
-            return false;
-          });
-          lines.push((engMatched.length?'\u2713':'\u2717')+' Engagement rows matching "'+selectedClient.key+'": '+engMatched.length);
-        }
-      }
   } catch(e) {
     lines.push('\u2717 Error: ' + e.message);
   }
   alert('Data Diagnostic\n\n' + lines.join('\n'));
-  btn.disabled = false; btn.textContent = '🔍 Check Data';
+  btn.disabled = false; btn.textContent = '\U0001f50d Check Data';
 }
 </script>
 <script>
@@ -2396,7 +2382,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.44
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.45
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
