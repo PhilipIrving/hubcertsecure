@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.62</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.63</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -416,6 +416,7 @@
 
     <!-- SUB-TABS -->
     <div style="display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:24px">
+      <button class="tab-btn" id="mtab-btn-clients" onclick="switchMondayTab('clients')">&#128101; Client Panel</button>
       <button class="tab-btn active" id="mtab-btn-setup" onclick="switchMondayTab('setup')">&#127959; Workspace Setup</button>
       <button class="tab-btn" id="mtab-btn-configure" onclick="switchMondayTab('configure')">&#9881;&#65039; Configure</button>
       <button class="tab-btn" id="mtab-btn-activity" onclick="switchMondayTab('activity')">&#128203; Activity</button>
@@ -600,6 +601,27 @@
       </div>
     </div>
 
+    <!-- ══ CLIENT PANEL ══ -->
+    <div id="mtab-clients" style="display:none">
+      <div style="display:grid;grid-template-columns:250px 1fr;min-height:520px;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--white)">
+        <!-- LEFT: client list -->
+        <div style="border-right:1px solid var(--border);display:flex;flex-direction:column">
+          <div style="padding:10px 12px;border-bottom:1px solid var(--border);background:var(--blue-light)">
+            <input type="text" id="cp-search" placeholder="&#128269; Search clients..." oninput="cpRenderList()" style="width:100%;font-size:12px;padding:6px 10px;border:1px solid var(--border);border-radius:6px;background:var(--white)">
+          </div>
+          <div id="cp-list" style="overflow-y:auto;flex:1;padding:6px"></div>
+        </div>
+        <!-- RIGHT: editor -->
+        <div id="cp-editor" style="overflow-y:auto;padding:20px;background:#FAFBFC">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--muted);gap:10px;padding:60px 0">
+            <div style="font-size:32px">&#128101;</div>
+            <div style="font-size:13px;font-weight:600">Select a client to edit</div>
+            <div style="font-size:12px;text-align:center;max-width:220px">Click any client on the left to view and edit all their information</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div class="overlay" id="client-edit-overlay">
@@ -624,7 +646,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.62</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.63</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -2475,7 +2497,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.62
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.63
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -2485,19 +2507,35 @@ const MONDAY_COL_MAP = {
   status:       ['Status'],
   platform:     ['Platform'],
   structure:    ['Structure'],
+  serviceStart: ['Service Start Date'],
   golive:       ['Go-Live Date'],
   licenses:     ['Est. Licenses'],
   producer:     ['Producer'],
+  dayToDay1:    ['Day-to-Day 1'],
+  dayToDay2:    ['Day-to-Day 2'],
+  decisionMaker:['Decision Maker'],
+  referringHub: ['Referring HUB'],
+  epicId:       ['EPIC ID'],
+  estComplexity:['Est. Complexity'],
+  ivaas:        ['iVaaS'],
+  compRate:     ['Compliance Rate %'],
+  ncCount:      ['Non-Compliant Count'],
+  openRate:     ['Email Open Rate %'],
+  lastSync:     ['Last Data Sync'],
   renewalStatus:['INV: Renewal Status'],
   renewalDate:  ['INV: Renewal Date'],
+  estCost:      ['INV: Est. Cost'],
   currentFee:   ['INV: Current Fee'],
   nextFee:      ['INV: Next Year Fee'],
   billMode:     ['INV: Bill Mode'],
+  billSchedule: ['INV: Bill Schedule'],
+  producerSplit:['INV: Producer Split'],
   rptCS:        ['RPT: Compliance Summary'],
   rptCD:        ['RPT: Compliance Detail'],
   rptES:        ['RPT: Engagement Summary'],
   rptED:        ['RPT: Engagement Detail'],
   rptYER:       ['RPT: Program Overview'],
+  rptTYC:       ['RPT: Thank You Card'],
 };
 
 function mondayColId(key) {
@@ -2642,7 +2680,7 @@ function mondayTabActivated() {
 
 // ── SUB-TAB NAVIGATION ──
 function switchMondayTab(tab) {
-  ['setup','configure','activity'].forEach(t => {
+  ['setup','configure','activity','clients'].forEach(t => {
     const el  = document.getElementById('mtab-' + t);
     const btn = document.getElementById('mtab-btn-' + t);
     if (el)  el.style.display  = t===tab ? '' : 'none';
@@ -2650,6 +2688,376 @@ function switchMondayTab(tab) {
   });
   if (tab === 'configure') wsCfgInit();
   if (tab === 'activity') mondayRenderActivityLog();
+  if (tab === 'clients') cpInit();
+}
+
+// ══════════════════════════════════════════════════════════════
+// CLIENT PANEL — Monday.com Generator
+// ══════════════════════════════════════════════════════════════
+
+const CP_SECTIONS = [
+  { id:'program', label:'Program', fields:[
+    { key:'platform',          label:'Platform',           type:'select', opts:['evident','trustlayer'], display:['Evident','TrustLayer'], src:'config' },
+    { key:'structure',         label:'Structure',          type:'select', opts:['general','project','location'], display:['General','Subcontractors','Tenants'], src:'config' },
+    { key:'program_start_date',label:'Service Start Date', type:'date',   src:'config' },
+    { key:'go_live_date',      label:'Go-Live Date',       type:'date',   src:'config' },
+    { key:'epic_id',           label:'EPIC ID',            type:'text',   src:'monday' },
+    { key:'referring_hub',     label:'Referring HUB',      type:'text',   src:'monday' },
+    { key:'est_complexity',    label:'Est. Complexity',    type:'select', opts:['','Simple','Moderate','Complex'], display:['—','Simple','Moderate','Complex'], src:'monday' },
+    { key:'ivaas',             label:'iVaaS Link',         type:'url',    src:'monday' },
+  ]},
+  { id:'contacts', label:'Contacts', fields:[
+    { key:'producer_name',  label:'Producer',             type:'text',  src:'config' },
+    { key:'contact_name',   label:'Primary Contact',      type:'text',  src:'config' },
+    { key:'decision_maker', label:'Decision Maker',       type:'text',  src:'monday' },
+    { key:'day_to_day_1',   label:'Day-to-Day 1 (Email)', type:'email', src:'monday' },
+    { key:'day_to_day_2',   label:'Day-to-Day 2 (Email)', type:'email', src:'monday' },
+  ]},
+  { id:'stats', label:'Live Stats', readonly:true, fields:[
+    { key:'_comp_rate',   label:'Compliance Rate',  type:'stat', unit:'%' },
+    { key:'_total_active',label:'Total Active',     type:'stat' },
+    { key:'_nc_count',    label:'Non-Compliant',    type:'stat' },
+    { key:'_open_rate',   label:'Email Open Rate',  type:'stat', unit:'%' },
+    { key:'_last_pushed', label:'Last Pushed',      type:'stat' },
+  ]},
+  { id:'invoice', label:'Invoice', fields:[
+    { key:'inv_renewal_date',   label:'Renewal Date',      type:'date',   src:'monday' },
+    { key:'inv_renewal_status', label:'Renewal Status',    type:'text',   src:'monday' },
+    { key:'inv_est_cost',       label:'Est. Cost ($)',      type:'number', src:'monday' },
+    { key:'inv_current_fee',    label:'Current Fee ($)',    type:'number', src:'monday' },
+    { key:'inv_next_fee',       label:'Next Year Fee ($)',  type:'number', src:'monday' },
+    { key:'inv_bill_mode',      label:'Bill Mode',          type:'text',   src:'monday' },
+    { key:'inv_bill_schedule',  label:'Bill Schedule',      type:'text',   src:'monday' },
+    { key:'inv_producer_split', label:'Producer Split',     type:'text',   src:'monday' },
+  ]},
+  { id:'reports', label:'Reports', fields:[
+    { key:'rpt_cs',  label:'Compliance Summary',  type:'url', src:'monday', hint:'Auto-filled on generation' },
+    { key:'rpt_cd',  label:'Compliance Detail',   type:'url', src:'monday', hint:'Auto-filled on generation' },
+    { key:'rpt_es',  label:'Engagement Summary',  type:'url', src:'monday', hint:'Auto-filled on generation' },
+    { key:'rpt_ed',  label:'Engagement Detail',   type:'url', src:'monday', hint:'Auto-filled on generation' },
+    { key:'rpt_yer', label:'Program Overview',    type:'url', src:'monday', hint:'Auto-filled on generation' },
+    { key:'rpt_tyc', label:'Thank You Card',      type:'url', src:'monday', hint:'Auto-filled on generation' },
+  ]},
+];
+
+// Maps CP field keys to MONDAY_COL_MAP keys
+const CP_MONDAY_KEY = {
+  platform:'platform', structure:'structure', program_start_date:'serviceStart',
+  go_live_date:'golive', producer_name:'producer', day_to_day_1:'dayToDay1',
+  day_to_day_2:'dayToDay2', decision_maker:'decisionMaker', referring_hub:'referringHub',
+  epic_id:'epicId', est_complexity:'estComplexity', ivaas:'ivaas',
+  inv_renewal_date:'renewalDate', inv_renewal_status:'renewalStatus',
+  inv_est_cost:'estCost', inv_current_fee:'currentFee', inv_next_fee:'nextFee',
+  inv_bill_mode:'billMode', inv_bill_schedule:'billSchedule', inv_producer_split:'producerSplit',
+  rpt_cs:'rptCS', rpt_cd:'rptCD', rpt_es:'rptES', rpt_ed:'rptED', rpt_yer:'rptYER', rpt_tyc:'rptTYC',
+  _comp_rate:'compRate', _nc_count:'ncCount', _open_rate:'openRate', _last_pushed:'lastSync',
+};
+
+let _cpKey = null;  // currently selected client key
+let _cpState = {};  // { [clientKey]: { field_key: value, ... } }
+
+function cpInit() {
+  cpRenderList();
+  if (_cpKey) cpRenderEditor(_cpKey);
+}
+
+function cpRenderList() {
+  const wrap = document.getElementById('cp-list'); if (!wrap) return;
+  const q = (document.getElementById('cp-search')?.value||'').toLowerCase();
+  const clients = (_allClientsData||[]).filter(c => c.active!==false);
+  const filtered = q ? clients.filter(c=>(c.client_name||'').toLowerCase().includes(q)) : clients;
+  const platform_colors = { trustlayer:'#EA580C', evident:'#3872B8' };
+  wrap.innerHTML = filtered.length ? filtered.map(c => {
+    const plat = c.platform||c.source||'evident';
+    const col  = platform_colors[plat]||'#3872B8';
+    const isSelected = c.client_name === _cpKey;
+    const state = _cpState[c.client_name]||{};
+    const hasEdits = Object.keys(state).length > 0;
+    return `<div onclick="cpSelectClient('${esc(c.client_name)}')" style="padding:8px 10px;border-radius:6px;cursor:pointer;margin-bottom:2px;background:${isSelected?'var(--blue-light)':'transparent'};border:1px solid ${isSelected?'#BFDBFE':'transparent'};display:flex;align-items:center;gap:8px">
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px;font-weight:${isSelected?'700':'500'};color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(c.client_name)}</div>
+        <div style="font-size:10px;color:${col};font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-top:1px">${plat==='trustlayer'?'TrustLayer':'Evident'}</div>
+      </div>
+      ${hasEdits?'<div style="width:6px;height:6px;border-radius:50%;background:#D97706;flex-shrink:0" title="Unsaved changes"></div>':''}
+    </div>`;
+  }).join('') : '<div style="font-size:12px;color:var(--muted);padding:12px;text-align:center">No clients found</div>';
+}
+
+function cpSelectClient(key) {
+  _cpKey = key;
+  cpRenderList();
+  cpRenderEditor(key);
+}
+
+function cpGetVal(key, field) {
+  // Priority: edited state → monday_fields → config
+  if (_cpState[key] && _cpState[key][field.key] !== undefined) return _cpState[key][field.key];
+  const meta = (typeof CLIENT_META_MAP!=='undefined' && CLIENT_META_MAP[key]) || {};
+  if (field.src === 'config') return meta[field.key]||'';
+  const mf = meta.monday_fields||{};
+  return mf[field.key]||'';
+}
+
+function cpSetVal(key, fieldKey, val) {
+  if (!_cpState[key]) _cpState[key] = {};
+  _cpState[key][fieldKey] = val;
+  // Show unsaved indicator
+  const badge = document.getElementById('cp-unsaved');
+  if (badge) badge.style.display = '';
+}
+
+function cpRenderEditor(key) {
+  const wrap = document.getElementById('cp-editor'); if (!wrap) return;
+  const meta = (typeof CLIENT_META_MAP!=='undefined' && CLIENT_META_MAP[key]) || {};
+  const connected = !!(_mondayWsId && _mondayBoardId);
+  const plat = meta.platform||meta.source||'evident';
+  const platColor = plat==='trustlayer'?'#EA580C':'#3872B8';
+
+  let html = `<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
+    <div>
+      <div style="font-size:18px;font-weight:700;color:var(--text)">${esc(key)}</div>
+      <div style="font-size:11px;font-weight:600;color:${platColor};text-transform:uppercase;letter-spacing:.06em;margin-top:2px">${plat==='trustlayer'?'TrustLayer':'Evident'} · ${(meta.structure||'general').replace('project','Subcontractors').replace('location','Tenants').replace('general','General')}</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <span id="cp-unsaved" style="display:none;font-size:11px;color:#D97706;font-weight:600">&#9679; Unsaved</span>
+      ${connected?`<button class="btn btn-secondary" style="font-size:11px;padding:5px 12px" onclick="cpPullMonday('${esc(key)}')">&#8595; Pull from Monday</button>`:''}
+      <button class="btn btn-primary" style="font-size:11px;padding:5px 14px" onclick="cpSave('${esc(key)}')">&#10003; Save${connected?' + Push':'  to Config'}</button>
+    </div>
+  </div>`;
+
+  // Render sections
+  CP_SECTIONS.forEach(sec => {
+    html += `<div style="margin-bottom:16px">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)">${sec.label}</div>`;
+
+    if (sec.readonly) {
+      // Stats section — show as read-only tiles with Load button
+      html += `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:8px">`;
+      sec.fields.forEach(f => {
+        const v = (meta.monday_fields||{})[f.key]||'—';
+        const isRate = f.unit==='%';
+        const numV = parseFloat(v);
+        const color = isRate ? (numV>=80?'#16A34A':numV>=60?'#D97706':'#DC2626') : 'var(--text)';
+        html += `<div style="background:var(--card-bg,white);border:1px solid var(--border);border-radius:6px;padding:10px 12px">
+          <div style="font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">${f.label}</div>
+          <div style="font-size:20px;font-weight:700;color:${color}" id="cp-stat-${f.key.replace('_','')}">${v}${v!=='—'&&f.unit?f.unit:''}</div>
+        </div>`;
+      });
+      html += `</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-secondary" style="font-size:11px;padding:5px 12px" onclick="cpLoadStats('${esc(key)}')">&#128257; Load Live Stats</button>
+          ${connected?`<button class="btn btn-secondary" style="font-size:11px;padding:5px 12px" onclick="cpPushStats('${esc(key)}')">&#8679; Push Stats to Monday</button>`:''}
+        </div>`;
+    } else {
+      html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">`;
+      sec.fields.forEach(f => {
+        const v = cpGetVal(key, f);
+        const inputId = `cp-f-${f.key}`;
+        let input = '';
+        if (f.type==='select') {
+          const opts = (f.opts||[]).map((o,i)=>`<option value="${o}"${v===o?' selected':''}>${(f.display||f.opts)[i]}</option>`).join('');
+          input = `<select id="${inputId}" onchange="cpSetVal('${esc(key)}','${f.key}',this.value)" style="width:100%;font-size:12px;padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:var(--white)">${opts}</select>`;
+        } else if (f.type==='url') {
+          input = `<div style="display:flex;gap:4px">
+            <input type="url" id="${inputId}" value="${esc(v)}" placeholder="https://..." oninput="cpSetVal('${esc(key)}','${f.key}',this.value)" style="flex:1;font-size:11px;padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:var(--white)">
+            ${v?`<a href="${esc(v)}" target="_blank" style="display:flex;align-items:center;padding:0 8px;border:1px solid var(--border);border-radius:6px;font-size:14px;color:var(--blue);text-decoration:none" title="Open link">&#8599;</a>`:''}
+          </div>`;
+        } else {
+          input = `<input type="${f.type}" id="${inputId}" value="${esc(v)}" ${f.type==='number'?'min="0"':''} oninput="cpSetVal('${esc(key)}','${f.key}',this.value)" style="width:100%;font-size:12px;padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:var(--white)">`;
+        }
+        const hint = f.hint?`<div style="font-size:10px;color:var(--muted);margin-top:2px;font-style:italic">${f.hint}</div>`:'';
+        html += `<div class="form-grp" style="margin:0">
+          <label class="form-lbl" style="font-size:11px">${f.label}</label>
+          ${input}${hint}
+        </div>`;
+      });
+      html += `</div>`;
+    }
+    html += `</div>`;
+  });
+
+  // Open in Monday link
+  if (connected) {
+    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+      <div style="font-size:11px;color:var(--muted)">Changes save to config and push to Monday simultaneously</div>
+      <button class="btn btn-secondary" style="font-size:11px;padding:4px 12px" onclick="cpOpenInMonday('${esc(key)}')">&#8599; Open in Monday</button>
+    </div>`;
+  }
+
+  wrap.innerHTML = html;
+}
+
+async function cpLoadStats(key) {
+  const btn = event.target; btn.disabled=true; btn.textContent='Loading\u2026';
+  try {
+    const data = await loadClientData(key);
+    const active = data.insureds.filter(r=>r.active!=='false'&&r.paused!=='true');
+    const comp = active.filter(r=>normStatus(r.compliance_status)==='compliant').length;
+    const nc = active.length-comp;
+    const rate = active.length?Math.round(comp/active.length*100):0;
+    // Engagement
+    const normEm = n=>(n.Email||n.email||'').trim().toLowerCase();
+    const eng = data.engagement||[];
+    const sent = new Set(eng.filter(isEngSend).map(normEm).filter(Boolean));
+    const opened = new Set(eng.filter(isEngOpen).map(normEm).filter(Boolean));
+    const openRate = sent.size?Math.round(opened.size/sent.size*100):0;
+    // Store in monday_fields
+    if (!_cpState[key]) _cpState[key]={};
+    _cpState[key]['_comp_rate']=rate; _cpState[key]['_total_active']=active.length;
+    _cpState[key]['_nc_count']=nc; _cpState[key]['_open_rate']=openRate;
+    // Update stat tiles
+    const statsMap = {'_comp_rate':rate+'%','_total_active':active.length,'_nc_count':nc,'_open_rate':openRate+'%','_last_pushed':'Pending push'};
+    Object.entries(statsMap).forEach(([k,v])=>{const el=document.getElementById('cp-stat-'+k.replace('_',''));if(el)el.textContent=v;});
+    toast('Live stats loaded \u2713','success');
+  } catch(e) { toast('Failed to load stats: '+e.message,'error'); }
+  btn.disabled=false; btn.textContent='\u21BB Load Live Stats';
+}
+
+async function cpPushStats(key) {
+  if (!_mondayWsId||!_mondayBoardId) { toast('Not connected to Monday','error'); return; }
+  const btn=event.target; btn.disabled=true; btn.textContent='Pushing\u2026';
+  try {
+    const state = _cpState[key]||{};
+    const itemId = await cpFindMondayItem(key);
+    if (!itemId) throw new Error('Client row not found in Monday — use Import Clients first');
+    const colVals = {};
+    const stamp = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    const rate = state['_comp_rate']; if(rate!==undefined){const id=mondayColId('compRate');if(id)colVals[id]=Number(rate)||0;}
+    const nc   = state['_nc_count'];  if(nc!==undefined) {const id=mondayColId('ncCount'); if(id)colVals[id]=Number(nc)||0;}
+    const oRate= state['_open_rate']; if(oRate!==undefined){const id=mondayColId('openRate');if(id)colVals[id]=Number(oRate)||0;}
+    const lic  = state['_total_active'];if(lic!==undefined){const id=mondayColId('licenses');if(id)colVals[id]=Number(lic)||0;}
+    const lsId = mondayColId('lastSync'); if(lsId)colVals[lsId]=stamp;
+    if(Object.keys(colVals).length){
+      await mondayGQL('mutation($bid:ID!,$iid:ID!,$cv:JSON!){change_multiple_column_values(board_id:$bid,item_id:$iid,column_values:$cv){id}}',
+        {bid:_mondayBoardId,iid:itemId,cv:JSON.stringify(colVals)});
+    }
+    _cpState[key]['_last_pushed']=stamp;
+    const el=document.getElementById('cp-stat-_last_pushed'.replace('_',''));if(el)el.textContent=stamp;
+    toast('Stats pushed to Monday \u2713','success');
+  } catch(e) { toast('Push failed: '+e.message,'error'); }
+  btn.disabled=false; btn.textContent='\u2191 Push Stats to Monday';
+}
+
+async function cpFindMondayItem(key) {
+  const data = await mondayGQL(
+    'query($bid:[ID!]){boards(ids:$bid){items_page(limit:500){items{id name}}}}',
+    {bid:[_mondayBoardId]}
+  );
+  const items = data?.boards?.[0]?.items_page?.items||[];
+  const match = items.find(i=>i.name===key||(i.name||'').toLowerCase().replace(/[^a-z0-9]/g,'')===(key||'').toLowerCase().replace(/[^a-z0-9]/g,''));
+  return match?.id||null;
+}
+
+async function cpPullMonday(key) {
+  if (!_mondayWsId||!_mondayBoardId) { toast('Not connected to Monday','error'); return; }
+  const btn=event.target; btn.disabled=true; btn.textContent='Pulling\u2026';
+  try {
+    const itemId = await cpFindMondayItem(key);
+    if (!itemId) { toast('Client not found in Monday — use Import Clients first','error'); btn.disabled=false;btn.textContent='\u2193 Pull from Monday';return; }
+    const data = await mondayGQL(
+      'query($bid:[ID!],$iid:[ID!]){boards(ids:$bid){items_page(limit:1,query_params:{ids:$iid}){items{column_values{id text}}}}}',
+      {bid:[_mondayBoardId],iid:[itemId]}
+    );
+    const cols = data?.boards?.[0]?.items_page?.items?.[0]?.column_values||[];
+    // Reverse map column ID → text
+    const colTextMap = {};
+    cols.forEach(c=>{ if(c.text) colTextMap[c.id]=c.text; });
+    // Map MONDAY_COL_MAP keys → field values
+    if (!_cpState[key]) _cpState[key]={};
+    Object.entries(CP_MONDAY_KEY).forEach(([fieldKey, colMapKey])=>{
+      const colId = mondayColId(colMapKey);
+      if(colId && colTextMap[colId]) _cpState[key][fieldKey]=colTextMap[colId];
+    });
+    cpRenderEditor(key);
+    toast('Pulled from Monday \u2713','success');
+  } catch(e) { toast('Pull failed: '+e.message,'error'); }
+  btn.disabled=false; btn.textContent='\u2193 Pull from Monday';
+}
+
+async function cpSave(key) {
+  const btn=document.querySelector(`[onclick="cpSave('${key}')"]`);
+  if(btn){btn.disabled=true;btn.textContent='Saving\u2026';}
+  const connected = !!(_mondayWsId&&_mondayBoardId);
+  const state = _cpState[key]||{};
+  try {
+    // 1. Update clients.json for config fields
+    const updated = (_allClientsData||[]).map(c => {
+      if (c.client_name!==key) return c;
+      const entry = {...c};
+      CP_SECTIONS.forEach(sec=>{
+        sec.fields&&sec.fields.forEach(f=>{
+          if(f.src==='config'&&state[f.key]!==undefined) entry[f.key]=state[f.key];
+        });
+      });
+      // Store monday_fields for non-config fields
+      const mf = {...(c.monday_fields||{})};
+      CP_SECTIONS.forEach(sec=>{
+        sec.fields&&sec.fields.forEach(f=>{
+          if(f.src==='monday'&&state[f.key]!==undefined) mf[f.key]=state[f.key];
+          if(f.type==='stat'&&state[f.key]!==undefined) mf[f.key]=state[f.key];
+        });
+      });
+      entry.monday_fields=mf;
+      return entry;
+    });
+    await saveClientsToConfig(updated);
+    // 2. Push to Monday if connected
+    if (connected) {
+      const itemId = await cpFindMondayItem(key);
+      if (itemId) {
+        const colVals={};
+        const meta = CLIENT_META_MAP[key]||{};
+        const platMap={evident:'Evident',trustlayer:'TrustLayer'};
+        const structMap={general:'General',project:'Subcontractors',location:'Tenants'};
+        // Build column values
+        const push = (colKey,val,transform) => { const id=mondayColId(colKey); if(id&&val!==undefined&&val!=='') colVals[id]=transform?transform(val):val; };
+        push('platform',    state['platform']||meta.platform,  v=>({label:platMap[v]||v}));
+        push('structure',   state['structure']||meta.structure, v=>({label:structMap[v]||v}));
+        push('serviceStart',state['program_start_date']||meta.program_start_date, v=>({date:v}));
+        push('golive',      state['go_live_date']||meta.go_live_date,             v=>({date:v}));
+        push('producer',    state['producer_name']||meta.producer_name);
+        push('dayToDay1',   state['day_to_day_1']||((meta.monday_fields||{})['day_to_day_1']));
+        push('dayToDay2',   state['day_to_day_2']||((meta.monday_fields||{})['day_to_day_2']));
+        push('decisionMaker',state['decision_maker']||(meta.monday_fields||{})['decision_maker']);
+        push('referringHub', state['referring_hub']||(meta.monday_fields||{})['referring_hub']);
+        push('epicId',      state['epic_id']||(meta.monday_fields||{})['epic_id']);
+        push('estComplexity',state['est_complexity']||(meta.monday_fields||{})['est_complexity'], v=>({label:v}));
+        push('ivaas',       state['ivaas']||(meta.monday_fields||{})['ivaas'], v=>({url:v,text:'iVaaS'}));
+        push('renewalDate', state['inv_renewal_date']||(meta.monday_fields||{})['inv_renewal_date'], v=>({date:v}));
+        push('renewalStatus',state['inv_renewal_status']||(meta.monday_fields||{})['inv_renewal_status']);
+        push('estCost',     state['inv_est_cost']||(meta.monday_fields||{})['inv_est_cost'], v=>Number(v));
+        push('currentFee',  state['inv_current_fee']||(meta.monday_fields||{})['inv_current_fee'], v=>Number(v));
+        push('nextFee',     state['inv_next_fee']||(meta.monday_fields||{})['inv_next_fee'], v=>Number(v));
+        push('billMode',    state['inv_bill_mode']||(meta.monday_fields||{})['inv_bill_mode']);
+        push('billSchedule',state['inv_bill_schedule']||(meta.monday_fields||{})['inv_bill_schedule']);
+        push('producerSplit',state['inv_producer_split']||(meta.monday_fields||{})['inv_producer_split']);
+        ['rpt_cs','rpt_cd','rpt_es','rpt_ed','rpt_yer','rpt_tyc'].forEach(rk=>{
+          const v=state[rk]||(meta.monday_fields||{})[rk];
+          if(v){const id=mondayColId(CP_MONDAY_KEY[rk]);if(id)colVals[id]={url:v,text:rk.replace('rpt_','RPT: ').toUpperCase()};}
+        });
+        if(Object.keys(colVals).length){
+          await mondayGQL('mutation($bid:ID!,$iid:ID!,$cv:JSON!){change_multiple_column_values(board_id:$bid,item_id:$iid,column_values:$cv){id}}',
+            {bid:_mondayBoardId,iid:itemId,cv:JSON.stringify(colVals)});
+        }
+      }
+    }
+    // Clear edited state
+    delete _cpState[key];
+    const badge=document.getElementById('cp-unsaved');if(badge)badge.style.display='none';
+    toast((connected?'Saved + pushed to Monday':'Saved to config')+' \u2713','success');
+    cpRenderList();
+    cpRenderEditor(key);
+  } catch(e) { toast('Save failed: '+e.message,'error'); }
+  if(btn){btn.disabled=false;btn.textContent='\u2713 Save'+(connected?' + Push':' to Config');}
+}
+
+async function cpOpenInMonday(key) {
+  try {
+    const itemId = await cpFindMondayItem(key);
+    if (!itemId) { toast('Client row not found in Monday','error'); return; }
+    const wsId = _mondayWsId||'';
+    window.open(`https://hubinternational.monday.com/boards/${_mondayBoardId}/pulses/${itemId}`,'_blank');
+  } catch(e) { toast('Could not open in Monday: '+e.message,'error'); }
 }
 
 // ── ACTIVITY LOG ──
