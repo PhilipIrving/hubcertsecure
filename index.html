@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.42</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.43</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.42</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.43</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -1861,13 +1861,16 @@ async function generate(){
   }
 }
 function printHTMLasPDF(htmlContent){
-  const iframe=document.createElement('iframe');
-  iframe.style.cssText='position:fixed;top:-9999px;left:-9999px;width:1024px;height:768px;visibility:hidden';
-  document.body.appendChild(iframe);
-  iframe.contentDocument.open();
-  iframe.contentDocument.write(htmlContent);
-  iframe.contentDocument.close();
-  iframe.onload=()=>{setTimeout(()=>{iframe.contentWindow.focus();iframe.contentWindow.print();setTimeout(()=>{try{document.body.removeChild(iframe);}catch(e){}},2000);},300);};
+  // Open in a new window so the HTML <title> is used as the PDF filename
+  const w=window.open('','_blank','width=1200,height=900');
+  if(!w){alert('Pop-up blocked. Please allow pop-ups for this site and try again.');return;}
+  w.document.open();
+  w.document.write(htmlContent);
+  w.document.close();
+  // Wait for fonts/images then print
+  const doP=()=>{try{w.focus();w.print();}catch(e){}setTimeout(()=>{try{w.close();}catch(e){}},3000);};
+  if(w.document.readyState==='complete'){setTimeout(doP,400);}
+  else{w.onload=()=>setTimeout(doP,400);}
 }
 function showDownloads(downloads){
   if(selectedClient){const safeKey=selectedClient.key.replace(/[^a-z0-9]/gi,'_');localStorage.setItem('cs-last-report-'+safeKey,new Date().toISOString());}
@@ -2157,7 +2160,7 @@ function buildComplianceSummaryHTML(insureds,coverages,criteria,{reportDate}){
   const nc=active.filter(r=>normStatus(r[C.status])==='non_compliant').length,newp=total-comp-nc;
   const rate=total?Math.round(comp/total*100):0;
   const stamp=new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
-  const rateColor=rate>=80?'#16A34A':rate>=60?'#D97706':'#DC2626';
+  const rateColor=rate>=80?'#16A34A':rate>=60?'#D97706':'#DC2626';  const snapshotNote=usedLiveData?` &nbsp;&#x26A0;&nbsp; Using live data (snapshot unreadable)`:``;  
   const logoSrc=typeof CERTSECURE_LOGO_SRC!=='undefined'?CERTSECURE_LOGO_SRC:(document.querySelector('.header-logo')?.src?.startsWith('data:')?document.querySelector('.header-logo').src:null);
   const logoTag=logoSrc?`<img src="${logoSrc}" style="height:34px;object-fit:contain">`:`<div style="font-family:Arial,sans-serif;font-size:16px;font-weight:700;color:#1E2E3D">CERT<span style="background:#3872B8;color:white;padding:1px 6px;border-radius:3px">SECURE</span></div>`;
 
@@ -2316,8 +2319,16 @@ async function buildYearEndReviewHTML(year,producer){
   const logoTag=logoSrc?`<img src="${logoSrc}" style="height:32px;object-fit:contain">`:`<div style="font-family:Arial,sans-serif;font-size:15px;font-weight:700;color:#1E2E3D">CERT<span style="background:#3872B8;color:white;padding:1px 6px;border-radius:3px">SECURE</span></div>`;
   const moNames={1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'May',6:'Jun',7:'Jul',8:'Aug',9:'Sep',10:'Oct',11:'Nov',12:'Dec'};
   const monthlyData=[];
-  for(const m of months){try{const ins=await fetchSnapshotCSV(year,m,'insureds.csv');const clientIns=ins.filter(r=>r[C.client]===clientName);const active=clientIns.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');const comp=active.filter(r=>normStatus(r[C.status])==='compliant').length;const rate=active.length?Math.round(comp/active.length*100):0;monthlyData.push({month:m,total:active.length,comp,nc:active.length-comp,rate});}catch(e){}}
-  if(!monthlyData.length)throw new Error(`No data found for ${clientName} in ${year}.`);
+  for(const m of months){try{const ins=await fetchSnapshotCSV(year,m,'insureds.csv');const clientIns=ins.filter(r=>r[C.client]===clientName);const active=clientIns.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');const comp=active.filter(r=>normStatus(r[C.status])==='compliant').length;const rate=active.length?Math.round(comp/active.length*100):0;if(active.length>0){monthlyData.push({month:m,total:active.length,comp,nc:active.length-comp,rate});}}catch(e){}}
+  if(!monthlyData.length){
+    // Snapshots exist but have no data for this client (possibly corrupt) — use live data
+    const liveData=await loadClientData(selectedClient.key);
+    const active=liveData.insureds.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');
+    if(!active.length)throw new Error(`No data found for ${selectedClient.name} in ${year}.`);
+    const comp=active.filter(r=>normStatus(r[C.status])==='compliant').length;
+    const rate=Math.round(comp/active.length*100);
+    monthlyData.push({month:`${year}-live`,total:active.length,comp,nc:active.length-comp,rate});
+  }
   const first=monthlyData[0],last=monthlyData[monthlyData.length-1],change=last.rate-first.rate;
   const rateColor=last.rate>=80?'#16A34A':last.rate>=60?'#D97706':'#DC2626',chgColor=change>=0?'#16A34A':'#DC2626';
   const bars=monthlyData.map(d=>{const color=d.rate>=80?'#16A34A':d.rate>=60?'#D97706':'#DC2626',mo=d.month.split('-')[1];return`<div style="display:flex;flex-direction:column;align-items:center;flex:1;gap:2px"><div style="font-size:8px;font-weight:700;color:${color}">${d.rate}%</div><div style="width:100%;background:#F1F5F9;border-radius:2px 2px 0 0;height:50px;display:flex;align-items:flex-end"><div style="width:100%;background:${color};border-radius:2px 2px 0 0;height:${Math.max(2,Math.round(d.rate/100*50))}px"></div></div><div style="font-size:7px;color:#8A94A8">${moNames[parseInt(mo)]||mo}</div></div>`;}).join('');
@@ -2338,13 +2349,19 @@ async function buildProducerOverviewHTML(producer,monthOverride){
   const stamp=new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
   const logoSrc=typeof CERTSECURE_LOGO_SRC!=='undefined'?CERTSECURE_LOGO_SRC:(document.querySelector('.header-logo')?.src?.startsWith('data:')?document.querySelector('.header-logo').src:null);
   const logoTag=logoSrc?`<img src="${logoSrc}" style="height:32px;object-fit:contain">`:`<div style="font-family:Arial,sans-serif;font-size:15px;font-weight:700;color:#1E2E3D">CERT<span style="background:#3872B8;color:white;padding:1px 6px;border-radius:3px">SECURE</span></div>`;
-  let ins=[];try{ins=await fetchSnapshotCSV(year,month,'insureds.csv');}catch(e){throw new Error(`Could not load snapshot ${year}/${month}. Run a sync on the 1st of the month to generate snapshots.`);}
+  let ins=[];let usedLiveData=false;
+  try{ins=await fetchSnapshotCSV(year,month,'insureds.csv');}
+  catch(e){
+    // Snapshot directory exists but file unreadable — fall back to live data
+    try{const ld=await loadClientData(selectedClient.key);ins=ld.insureds;usedLiveData=true;}
+    catch(e2){throw new Error(`Could not load snapshot or live data for ${selectedClient.name}.`);}
+  }
   const clientIns=ins.filter(r=>r[C.client]===selectedClient.key),active=clientIns.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');
   const total=active.length,comp=active.filter(r=>normStatus(r[C.status])==='compliant').length,nc=total-comp,rate=total?Math.round(comp/total*100):0;
   const rateColor=rate>=80?'#16A34A':rate>=60?'#D97706':'#DC2626';
   const expiringRows=active.map(r=>({name:r[C.entity_name]||'',days:daysUntilDate(r[C.next_exp]),date:fmtDate(r[C.next_exp]),status:fmtStatus(r[C.status])})).filter(r=>r.days!==null&&r.days>=0&&r.days<=30).sort((a,b)=>a.days-b.days).slice(0,10);
   return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Producer Overview</title><style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:26px 30px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{border-radius:8px;padding:12px 14px}.bcard{border:1px solid #E8ECF5;border-radius:8px;padding:12px 14px}table{width:100%;border-collapse:collapse}th{font-size:8px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:white;background:#2B3A52;padding:6px 9px;text-align:left}td{padding:5px 9px;border-bottom:1px solid #F0F2F6;font-size:10px;vertical-align:middle}.footer{margin-top:18px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8.5px;color:#B0B8C8}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:letter landscape;margin:8mm}}</style></head><body>
-<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;padding-bottom:14px;border-bottom:3px solid #1E2E3D"><div>${logoTag}<div style="margin-top:10px"><div style="font-size:20px;font-weight:900;color:#1E2E3D">${esc(selectedClient.name)}</div><div style="font-size:11px;color:#5A6B7B;margin-top:2px">Producer Overview &nbsp;\u00b7&nbsp; ${esc(producer)} &nbsp;\u00b7&nbsp; Snapshot: ${month}</div></div></div><div style="text-align:center;background:${rate>=80?'#E6F5EF':'#FDF0EE'};border-radius:10px;padding:10px 18px"><div style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:${rateColor}">Compliance Rate</div><div style="font-size:38px;font-weight:900;color:${rateColor};line-height:1">${rate}%</div><div style="font-size:9px;color:${rateColor};margin-top:2px">${comp} of ${total}</div></div></div>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;padding-bottom:14px;border-bottom:3px solid #1E2E3D"><div>${logoTag}<div style="margin-top:10px"><div style="font-size:20px;font-weight:900;color:#1E2E3D">${esc(selectedClient.name)}</div><div style="font-size:11px;color:#5A6B7B;margin-top:2px">Producer Overview &nbsp;\u00b7&nbsp; ${esc(producer)} &nbsp;\u00b7&nbsp; ${usedLiveData?'Live Data':('Snapshot: '+month)}${snapshotNote}</div></div></div><div style="text-align:center;background:${rate>=80?'#E6F5EF':'#FDF0EE'};border-radius:10px;padding:10px 18px"><div style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:${rateColor}">Compliance Rate</div><div style="font-size:38px;font-weight:900;color:${rateColor};line-height:1">${rate}%</div><div style="font-size:9px;color:${rateColor};margin-top:2px">${comp} of ${total}</div></div></div>
 <div class="kpi4" style="margin-bottom:14px"><div class="kpi" style="background:#EEF1F8"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px">Active</div><div style="font-size:26px;font-weight:800;color:#1E2E3D">${total}</div></div><div class="kpi" style="background:#E6F5EF"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#15803D;margin-bottom:5px">Compliant</div><div style="font-size:26px;font-weight:800;color:#16A34A">${comp}</div></div><div class="kpi" style="background:${nc>0?'#FDF0EE':'#E6F5EF'}"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${nc>0?'#B91C1C':'#15803D'};margin-bottom:5px">Non-Compliant</div><div style="font-size:26px;font-weight:800;color:${nc>0?'#DC2626':'#16A34A'}">${nc}</div></div><div class="kpi" style="background:#EEF1F8"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px">Snapshot Month</div><div style="font-size:16px;font-weight:800;color:#1E2E3D;padding-top:6px">${month}</div></div></div>
 ${expiringRows.length?`<div style="display:flex;align-items:center;gap:8px;margin:18px 0 10px"><div style="width:4px;height:16px;background:#D97706;border-radius:2px;flex-shrink:0"></div><div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1E2E3D">Expiring Coverage \u2014 Next 30 Days</div><div style="flex:1;height:1px;background:#E8ECF5"></div></div><table><thead><tr><th>Insured Name</th><th>Next Expiration</th><th>Days Until</th><th>Status</th></tr></thead><tbody>${expiringRows.map((r,i)=>`<tr style="background:${i%2===0?'#FAFBFC':'white'}"><td>${esc(r.name)}</td><td>${r.date}</td><td style="font-weight:700;color:${r.days<=7?'#DC2626':r.days<=14?'#D97706':'#3872B8'}">${r.days}d</td><td><span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:12px;background:${r.status==='Compliant'?'#E6F5EF':'#FDF0EE'};color:${r.status==='Compliant'?'#16A34A':'#DC2626'}">${r.status}</span></td></tr>`).join('')}</tbody></table>`:
 `<div style="text-align:center;padding:20px;color:#8A94A8;font-size:12px;border:1px solid #E8ECF5;border-radius:8px">\u2713 No coverage expiring in the next 30 days</div>`}
@@ -2380,7 +2397,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.42
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.43
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
