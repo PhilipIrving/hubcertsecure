@@ -106,7 +106,14 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/evident/ snapshots/
           git diff --cached --quiet || git commit -m "sync: update Evident CSVs [$(date -u '+%Y-%m-%d %H:%M UTC')]"
-          git pull --rebase
+          # Rebase with -X ours: if TrustLayer sync committed first, our fresh data wins
+          git pull --rebase -X ours
+          # Safety net: force-resolve any remaining conflicts and continue
+          if git rebase --show-current-patch >/dev/null 2>&1; then
+            git diff --name-only --diff-filter=U | xargs -r git checkout --ours --
+            git diff --name-only --diff-filter=U | xargs -r git add
+            git rebase --continue --no-edit
+          fi
           git push
 
   sync-trustlayer:
@@ -169,5 +176,12 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/trustlayer/ snapshots/
           git diff --cached --quiet || git commit -m "sync: update TrustLayer CSVs [$(date -u '+%Y-%m-%d %H:%M UTC')]"
-          git pull --rebase
+          # Rebase with -X ours: if Evident sync committed first, our fresh data wins
+          git pull --rebase -X ours
+          # Safety net: force-resolve any remaining conflicts and continue
+          if git rebase --show-current-patch >/dev/null 2>&1; then
+            git diff --name-only --diff-filter=U | xargs -r git checkout --ours --
+            git diff --name-only --diff-filter=U | xargs -r git add
+            git rebase --continue --no-edit
+          fi
           git push
