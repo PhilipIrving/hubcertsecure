@@ -33,6 +33,7 @@ const path  = require("path");
 const CLIENTS = [
   { name: "Block Real Estate",     token: process.env.TL_TOKEN_BLOCK_REAL_ESTATE },
   { name: "Construction Mgmt Inc", token: process.env.TL_TOKEN_CMI },
+  { name: "QTS Data Centers",      token: process.env.TL_TOKEN_QTS },
 ];
 
 const BASE_URL = "https://api.trustlayer.io/v2";
