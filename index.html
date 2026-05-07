@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.63</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.65</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -243,6 +243,7 @@
         <div style="flex:1"></div>
         <button class="btn btn-secondary" onclick="closeSettings()">Cancel</button>
         <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+        <button class="btn btn-secondary" id="publish-team-btn" onclick="publishSharedSettings()" style="display:none" title="Publish current settings to team members">&#127760; Publish to Team</button>
       </div>
       <div style="display:flex;align-items:center;gap:10px;padding:14px 0;border-top:1px solid var(--border);margin-top:4px">
         <span style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">Appearance</span>
@@ -645,8 +646,10 @@
   </div>
 </main>
 <div class="toast" id="toast"></div>
+
+<!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.63</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.65</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -702,6 +705,9 @@ const ROLE_DISPLAY = {
   account_executive:    { label: 'Account Executive',    bg: '#0D9488', color: '#FFFFFF' },
 };
 function applyUserDisplay(displayName, role) {
+  // Show "Publish to Team" only for system admins
+  const publishBtn = document.getElementById('publish-team-btn');
+  if (publishBtn) publishBtn.style.display = role === 'system_administrator' ? '' : 'none';
   const wrap  = document.getElementById('welcome-wrap');
   const nameEl= document.getElementById('welcome-name');
   const roleEl= document.getElementById('welcome-role');
@@ -743,11 +749,12 @@ async function doLogin() {
     const meta = data.user?.user_metadata || {};
     const displayName = meta.display_name || data.user?.email?.split('@')[0] || '';
     const role = meta.role || 'viewer';
+    const sharedPat = meta.shared_pat || '';
     window._userRole = role; window._userEmail = data.user?.email;
     applyUserDisplay(displayName, role);
     const adminTab = document.getElementById('stab-admin');
     if (adminTab) adminTab.style.display = role === 'system_administrator' ? '' : 'none';
-    onLoginSuccess(data.user);
+    onLoginSuccess(data.user, sharedPat);
     document.getElementById('auth-overlay').style.display = 'none';
     document.getElementById('main-app').style.display = '';
   } catch(e) {
@@ -900,14 +907,24 @@ function toggleCsvPaths() {
   const el = document.getElementById('csv-paths'); const icon = document.getElementById('csv-toggle-icon');
   const open = el.style.display === ''; el.style.display = open ? 'none' : ''; icon.textContent = open ? '\u25bc show' : '\u25b2 hide';
 }
-function onLoginSuccess(user) {
+function onLoginSuccess(user, sharedPat) {
   const s = getSettings();
-  const warn = document.getElementById('pat-warning');
-  if (warn) warn.style.display = s.pat ? 'none' : 'flex';
-  loadClientsFromConfig().then(ok => {
-    if (ok) console.log('Loaded ' + CLIENTS.length + ' clients from clients.json');
-    else if (s.pat) console.warn('Could not load clients.json');
-    renderGrids();
+  const effectivePat = s.pat || sharedPat || '';
+  if (!effectivePat) {
+    const warn = document.getElementById('pat-warning');
+    if (warn) warn.style.display = 'flex';
+    renderGrids(); return;
+  }
+  if (!s.pat && sharedPat) {
+    localStorage.setItem('cs-settings', JSON.stringify({...getSettings(), pat: sharedPat}));
+  }
+  loadSharedSettings(effectivePat).then(() => {
+    const warn = document.getElementById('pat-warning');
+    if (warn) warn.style.display = 'none';
+    loadClientsFromConfig().then(ok => {
+      if (ok) console.log('Loaded ' + CLIENTS.length + ' clients from clients.json');
+      renderGrids();
+    });
   });
 }
 document.addEventListener('DOMContentLoaded', async () => {
@@ -1028,6 +1045,84 @@ function openSettings() {
   document.getElementById('settings-overlay').classList.add('open');
 }
 function closeSettings() { document.getElementById('settings-overlay').classList.remove('open'); }
+
+// ════════════════════════════════════════════════════
+// SHARED SETTINGS — loads from config/shared-settings.json
+// ════════════════════════════════════════════════════
+
+async function loadSharedSettings(pat) {
+  const s = getSettings();
+  const url = 'https://api.github.com/repos/'+s.owner+'/'+s.repo+'/contents/config/shared-settings.json?ref='+s.branch;
+  try {
+    const res = await fetch(url, { headers: { Authorization: 'Bearer '+pat, Accept: 'application/vnd.github.v3+json' } });
+    if (!res.ok) return false; // file may not exist yet — that's ok
+    const meta = await res.json();
+    const shared = JSON.parse(atob(meta.content.replace(/\n/g,'')));
+    // Merge shared settings into localStorage, preserving the user's PAT
+    const current = getSettings();
+    const merged = { ...current, ...shared, pat: pat }; // PAT is never in shared file
+    localStorage.setItem('cs-settings', JSON.stringify(merged));
+    // Restore Monday token if included
+    if (shared.mondayToken) localStorage.setItem('cs-monday-token', shared.mondayToken);
+    console.log('[SharedSettings] Loaded from repo \u2713');
+    return true;
+  } catch(e) { console.warn('[SharedSettings] Could not load:', e.message); return false; }
+}
+
+async function publishSharedSettings() {
+  const btn = document.getElementById('publish-team-btn');
+  btn.disabled = true; btn.textContent = 'Publishing\u2026';
+  const s = getSettings();
+  if (!s.pat) { toast('No Access Token — cannot publish', 'error'); btn.disabled=false; btn.textContent='\u{1F310} Publish to Team'; return; }
+  try {
+    // Build shared settings — everything EXCEPT the PAT
+    const shared = {
+      owner: s.owner, repo: s.repo, branch: s.branch,
+      insuredsPath: s.insuredsPath, coveragesPath: s.coveragesPath,
+      criteriaPath: s.criteriaPath, customPropsPath: s.customPropsPath,
+      notificationsPath: s.notificationsPath,
+      tlInsuredsPath: s.tlInsuredsPath, tlCoveragesPath: s.tlCoveragesPath, tlCriteriaPath: s.tlCriteriaPath,
+      mondayToken: localStorage.getItem('cs-monday-token')||'',
+      _published: new Date().toISOString().split('T')[0],
+      _publishedBy: 'System Administrator'
+    };
+    const payload = JSON.stringify(shared, null, 2);
+    const encoded = btoa(unescape(encodeURIComponent(payload)));
+    const fileUrl = 'https://api.github.com/repos/'+s.owner+'/'+s.repo+'/contents/config/shared-settings.json';
+    const headers = { Authorization: 'Bearer '+s.pat, 'Content-Type':'application/json', Accept:'application/vnd.github.v3+json' };
+    // Get current SHA (file may not exist yet)
+    let sha = null;
+    const getRes = await fetch(fileUrl+'?ref='+s.branch, { headers });
+    if (getRes.ok) { sha = (await getRes.json()).sha; }
+    const body = { message:'config: publish shared settings ['+shared._published+']', content: encoded, branch: s.branch };
+    if (sha) body.sha = sha;
+    const putRes = await fetch(fileUrl, { method:'PUT', headers, body: JSON.stringify(body) });
+    if (!putRes.ok) { const e=await putRes.json().catch(()=>({})); throw new Error(e.message||'HTTP '+putRes.status); }
+    // Stamp PAT on all non-admin users so they auto-load on login
+    try {
+      const { users } = await callEdge('list');
+      let stamped = 0;
+      for (const u of (users||[])) {
+        const umeta = u.raw_user_meta_data || u.user_metadata || {};
+        if (umeta.role !== 'system_administrator') {
+          await callEdge('updateMeta', { userId: u.id, metadata: { ...umeta, shared_pat: s.pat } });
+          stamped++;
+        }
+      }
+      const lp = document.getElementById('shared-settings-status');
+      if (lp) { lp.textContent = 'Last published: '+shared._published+' \u00b7 '+stamped+' user'+(stamped!==1?'s':'')+' updated'; lp.style.display=''; }
+      toast('\u2713 Published \u2014 '+stamped+' team member'+(stamped!==1?'s':'')+' will auto-load settings on next login', 'success');
+    } catch(eStamp) {
+      const lp = document.getElementById('shared-settings-status');
+      if (lp) { lp.textContent = 'Last published: '+shared._published; lp.style.display=''; }
+      toast('\u2713 Settings published to repo', 'success');
+    }
+  } catch(e) { toast('Publish failed: '+e.message, 'error'); }
+  btn.disabled=false; btn.textContent='\u{1F310} Publish to Team';
+}
+
+
+
 function saveSettings() {
   localStorage.setItem('cs-settings', JSON.stringify({
     owner: document.getElementById('s-owner').value.trim(), repo: document.getElementById('s-repo').value.trim(),
@@ -2497,7 +2592,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.63
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.65
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
