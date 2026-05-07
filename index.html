@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.59</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.60</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.59</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.60</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -1331,20 +1331,37 @@ async function loadClientsFromConfig() {
 }
 async function saveClientsToConfig(updatedClients) {
   const s = getSettings(); if (!s.pat) throw new Error('No PAT configured in Settings');
-  const getRes = await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}/contents/config/clients.json?ref=${s.branch}`, { headers: { 'Authorization': `Bearer ${s.pat}`, 'Accept': 'application/vnd.github.v3+json' } });
-  if (!getRes.ok) throw new Error('Could not fetch current clients.json');
-  const fileInfo = await getRes.json(); const sha = fileInfo.sha;
-  // Safety guard — never commit if the data looks wrong
   if (!updatedClients || !Array.isArray(updatedClients)) throw new Error('Invalid clients data — aborting save to prevent corruption.');
   const payload = JSON.stringify({ _instructions: { how_to_add_client: "Use the Client Configuration tab in the Report Generator app.", date_format: "YYYY-MM-DD", structure_options: "general | project | location" }, clients: updatedClients }, null, 2);
-  const putRes = await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}/contents/config/clients.json`, {
-    method: 'PUT', headers: { 'Authorization': `Bearer ${s.pat}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
-    body: JSON.stringify({ message: 'config: update clients.json via HUB CertSecure', content: btoa(unescape(encodeURIComponent(payload))), sha, branch: s.branch })
-  });
-  if (!putRes.ok) { const err = await putRes.json().catch(()=>({})); throw new Error(err.message || `HTTP ${putRes.status}`); }
-  const result = await putRes.json(); _clientsFileSHA = result.content?.sha || sha;
-  _allClientsData = updatedClients; CLIENTS = buildClientsArray(_allClientsData); CLIENT_META_MAP = {};
-  _allClientsData.forEach(c => { CLIENT_META_MAP[c.client_name] = c; });
+  const encoded = btoa(unescape(encodeURIComponent(payload)));
+  const headers = { 'Authorization': `Bearer ${s.pat}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' };
+  const fileUrl = `https://api.github.com/repos/${s.owner}/${s.repo}/contents/config/clients.json`;
+
+  // Helper: fetch fresh SHA and attempt PUT. Retries once on SHA mismatch (race with sync).
+  async function attemptSave(attempt) {
+    const getRes = await fetch(`${fileUrl}?ref=${s.branch}`, { headers });
+    if (!getRes.ok) throw new Error('Could not fetch current clients.json (HTTP ' + getRes.status + ')');
+    const fileInfo = await getRes.json();
+    const sha = fileInfo.sha;
+    const putRes = await fetch(fileUrl, {
+      method: 'PUT', headers,
+      body: JSON.stringify({ message: 'config: update clients.json via HUB CertSecure', content: encoded, sha, branch: s.branch })
+    });
+    if (!putRes.ok) {
+      const err = await putRes.json().catch(() => ({}));
+      // 409/422 SHA conflict — retry once with a freshly-fetched SHA
+      if (attempt < 2 && (putRes.status === 409 || putRes.status === 422 || (err.message||'').toLowerCase().includes('does not match'))) {
+        await new Promise(r => setTimeout(r, 600)); // brief pause before retry
+        return attemptSave(attempt + 1);
+      }
+      throw new Error(err.message || 'HTTP ' + putRes.status);
+    }
+    const result = await putRes.json();
+    _clientsFileSHA = result.content?.sha || sha;
+    _allClientsData = updatedClients; CLIENTS = buildClientsArray(_allClientsData); CLIENT_META_MAP = {};
+    _allClientsData.forEach(c => { CLIENT_META_MAP[c.client_name] = c; });
+  }
+  await attemptSave(1);
 }
 function switchTab(tab) {
   ['reports','config','monday'].forEach(t => {
@@ -2453,7 +2470,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.59
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.60
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
