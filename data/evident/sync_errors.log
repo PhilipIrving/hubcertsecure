@@ -1,62 +1,32 @@
 [
   {
     "client": "Action Plumbing Construction",
-    "stage": "field_defs",
-    "error": "HTTP 401 on /insurance/config/insureds/fields: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+    "stage": "coverage_data",
+    "insured": "a1a3669a-c08c-4131-884e-f5f63347e7b5",
+    "error": "HTTP 502 on /insurance/insureds/a1a3669a-c08c-4131-884e-f5f63347e7b5/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
   },
   {
-    "client": "Action Plumbing Construction",
-    "stage": "insureds",
-    "error": "HTTP 401 on /insurance/insureds: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+    "client": "Capital Railroad Contracting, Inc.",
+    "stage": "coverage_data",
+    "insured": "457c28a7-8b4b-4ace-b0a3-d83911c27916",
+    "error": "HTTP 502 on /insurance/insureds/457c28a7-8b4b-4ace-b0a3-d83911c27916/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
   },
   {
-    "client": "ESS Companies",
-    "stage": "field_defs",
-    "error": "HTTP 401 on /insurance/config/insureds/fields: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+    "client": "Capital Railroad Contracting, Inc.",
+    "stage": "coverage_data",
+    "insured": "63640974-dea4-4360-b5fe-7b794d924f8e",
+    "error": "HTTP 502 on /insurance/insureds/63640974-dea4-4360-b5fe-7b794d924f8e/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
   },
   {
-    "client": "ESS Companies",
-    "stage": "insureds",
-    "error": "HTTP 401 on /insurance/insureds: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+    "client": "Capital Railroad Contracting, Inc.",
+    "stage": "coverage_data",
+    "insured": "684e910f-07be-4817-a150-35101c6ec1dc",
+    "error": "HTTP 502 on /insurance/insureds/684e910f-07be-4817-a150-35101c6ec1dc/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
   },
   {
-    "client": "Gart Properties",
-    "stage": "field_defs",
-    "error": "HTTP 401 on /insurance/config/insureds/fields: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
-  },
-  {
-    "client": "Gart Properties",
-    "stage": "insureds",
-    "error": "HTTP 401 on /insurance/insureds: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
-  },
-  {
-    "client": "Kolb Grading",
-    "stage": "field_defs",
-    "error": "HTTP 401 on /insurance/config/insureds/fields: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
-  },
-  {
-    "client": "Kolb Grading",
-    "stage": "insureds",
-    "error": "HTTP 401 on /insurance/insureds: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
-  },
-  {
-    "client": "Mizuho Bank",
-    "stage": "field_defs",
-    "error": "HTTP 401 on /insurance/config/insureds/fields: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
-  },
-  {
-    "client": "Mizuho Bank",
-    "stage": "insureds",
-    "error": "HTTP 401 on /insurance/insureds: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
-  },
-  {
-    "client": "Musselman & Hall Contractors, LLC",
-    "stage": "field_defs",
-    "error": "HTTP 401 on /insurance/config/insureds/fields: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
-  },
-  {
-    "client": "Musselman & Hall Contractors, LLC",
-    "stage": "insureds",
-    "error": "HTTP 401 on /insurance/insureds: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+    "client": "EMMES",
+    "stage": "coverage_data",
+    "insured": "09b56567-6372-48e7-8487-fc8c80faafd4",
+    "error": "HTTP 502 on /insurance/insureds/09b56567-6372-48e7-8487-fc8c80faafd4/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
   }
 ]
