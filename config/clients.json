@@ -1,18 +1,8 @@
 {
   "_instructions": {
-    "how_to_add_client": "Copy one of the entries below and add it to the 'clients' array. Fill in all fields.",
-    "how_to_remove_client": "Delete the entire { } block for that client from the 'clients' array.",
+    "how_to_add_client": "Use the Client Configuration tab in the Report Generator app.",
     "date_format": "YYYY-MM-DD",
-    "structure_options": "general | project | location",
-    "source_options": "evident | trustlayer",
-    "logo_instructions": "Place client logo PNG in /logos/ using rp_common_name as filename e.g. gartproperties.png",
-    "engagement_actions": {
-      "engaged": ["open", "click"],
-      "undeliverable": ["hard_bounce"],
-      "blocked": ["rejected", "soft_bounce", "spam"],
-      "remove": ["deferral"],
-      "excluded": ["send", "queued", "reject"]
-    }
+    "structure_options": "general | project | location"
   },
   "clients": [
     {
@@ -22,7 +12,10 @@
       "go_live_date": "2025-07-21",
       "structure": "general",
       "source": "evident",
-      "active": true
+      "active": true,
+      "platform": "evident",
+      "producer_name": "Brian Darnell",
+      "contact_name": "Holly Hull"
     },
     {
       "client_name": "Bauer Foundation Corp.",
