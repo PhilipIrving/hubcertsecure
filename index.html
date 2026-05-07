@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.55</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.56</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.55</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.56</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -1294,7 +1294,7 @@ const CLIENTS_FALLBACK = [
   { client_name:"The Abbey Management Company",       rp_common_name:"theabbeycompany",  structure:"location", source:"evident",     program_start_date:"2025-09-01", go_live_date:"2025-09-01", active:true },
   { client_name:"Trinity Chemical Industries LLC",    rp_common_name:"trinitychemical",  structure:"general",  source:"evident",     program_start_date:"2026-01-01", go_live_date:"2026-01-01", active:true },
   { client_name:"United Coal Company LLC",            rp_common_name:"unitedcoal",       structure:"general",  source:"evident",     program_start_date:"2025-09-08", go_live_date:"2025-09-08", active:true },
-  { client_name:"Block Real Estate Services, LLC",    rp_common_name:"blockrealestate",  structure:"location", source:"trustlayer",  program_start_date:"2025-01-01", go_live_date:"2025-01-01", active:true },
+  { client_name:"Block Real Estate Services, LLC",    rp_common_name:"blockrealestate",  structure:"location", platform:"trustlayer", platform:"trustlayer", platform:"trustlayer", source:"trustlayer",  program_start_date:"2025-01-01", go_live_date:"2025-01-01", active:true },
   { client_name:"Construction Management Inc.",       rp_common_name:"constructionmgmt", structure:"project",  source:"trustlayer",  program_start_date:"2025-01-01", go_live_date:"2025-01-01", active:true },
   { client_name:"QTS Data Centers",                   rp_common_name:"qtsdatacenters",   structure:"project",  source:"trustlayer",  program_start_date:"2025-01-01", go_live_date:"2025-01-01", active:true },
 ];
@@ -1305,7 +1305,7 @@ function buildClientsArray(data) {
 }
 function isTLClient(keyOrClient) {
   const c = typeof keyOrClient === 'string' ? CLIENTS.find(x => x.key === keyOrClient) : keyOrClient;
-  return c?.platform === 'trustlayer';
+  return c?.platform === 'trustlayer' || c?.source === 'trustlayer';
 }
 async function loadClientsFromConfig() {
   const s = getSettings();
@@ -2302,18 +2302,20 @@ async function buildProgramOverviewHTML(year, producer) {
   for (const m of months) {
     try {
       const ins = await fetchSnapshotCSV(year, m, 'insureds.csv');
-      const ci = ins.filter(r => r[C.client] === clientName);
-      const active = ci.filter(r => r[C.active] !== 'false' && r[C.paused] !== 'true');
-      if (active.length > 0) {
-        const comp = active.filter(r => normStatus(r[C.status]) === 'compliant').length;
-        monthlyData.push({ month: m, total: active.length, comp, nc: active.length-comp, rate: Math.round(comp/active.length*100) });
+      const rpn2=((typeof CLIENT_META_MAP!=='undefined'&&CLIENT_META_MAP[clientName])||{}).rp_common_name||'';
+      const ci=ins.filter(r=>{const v=r[C.client]||'';if(v===clientName)return true;if(rpn2){const rv=v.toLowerCase().replace(/[^a-z0-9]/g,'');const rp2=rpn2.toLowerCase().replace(/[^a-z0-9]/g,'');if(rv.includes(rp2)||rp2.includes(rv))return true;}return false;});
+      const active=ci.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');
+      if(active.length>0){const comp=active.filter(r=>normStatus(r[C.status])==='compliant').length;monthlyData.push({ month: m, total: active.length, comp, nc: active.length-comp, rate: Math.round(comp/active.length*100) });
         try { lastCrit = await fetchSnapshotCSV(year, m, 'criteria.csv'); } catch(e) {}
       }
     } catch(e) {}
   }
   let liveIns=[],liveCrit=[],liveEng=[];
-  try{liveIns=await fetchCSV(s.insuredsPath);}catch(e){}
-  try{liveCrit=await fetchCSV(s.criteriaPath||'data/evident/criteria.csv');}catch(e){}
+  const isTL=isTLClient(clientName);
+  const insPath=isTL?(s.tlInsuredsPath||'data/trustlayer/insureds.csv'):s.insuredsPath;
+  const critPath=isTL?(s.tlCriteriaPath||'data/trustlayer/criteria.csv'):(s.criteriaPath||'data/evident/criteria.csv');
+  try{liveIns=await fetchCSV(insPath);}catch(e){}
+  try{liveCrit=await fetchCSV(critPath);}catch(e){}
   try{liveEng=await fetchCSV(s.notificationsPath||'data/evident/engagement.csv');}catch(e){}
   const clientIns=liveIns.filter(r=>r[C.client]===clientName);
   const active=clientIns.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');
@@ -2356,8 +2358,9 @@ async function buildProgramOverviewHTML(year, producer) {
   const bars=monthlyData.map(d=>{const h=Math.max(3,Math.round((d.rate/100)*50));const c=d.rate>=80?'#16A34A':d.rate>=60?'#D97706':'#DC2626';return`<div style="display:flex;flex-direction:column;align-items:center;gap:1px;flex:1;min-width:0"><div style="font-size:6.5px;font-weight:700;color:${c}">${d.rate}%</div><div style="width:100%;background:${c};border-radius:2px 2px 0 0;height:${h}px"></div><div style="font-size:6px;color:#8A94A8;white-space:nowrap">${d.month.replace(year+'-','').replace('-current','now')}</div></div>`;}).join('');
   const ncEngaged=ncActive.filter(r=>openSet.has((r[C.email]||'').trim().toLowerCase())).length;
   return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Program Overview ${year}</title>
+<style>@page{size:letter landscape;margin:8mm}</style>
 <style>
-@page{size:letter landscape;margin:8mm}
+
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:14px 20px 10px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
@@ -2446,7 +2449,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.55
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.56
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
