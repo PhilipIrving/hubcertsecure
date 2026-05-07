@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.51</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.55</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -382,8 +382,8 @@
       <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
         <div style="font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Additional Reports</div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
-          <div class="report-card" id="rc-yer"><div class="report-card-hdr" onclick="toggleReport('yer')"><div class="rc-dot"></div><div><div class="rc-title">Year End Review</div><div class="rc-sub">Annual snapshot PDF</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Options</div><div class="form-grp"><label class="form-lbl">Report Year</label><input type="text" id="yer-year" placeholder="e.g. 2026" maxlength="4" style="width:120px"><div class="form-hint">Reads from snapshots/YYYY/</div></div><div class="form-grp" style="margin-top:8px"><label class="form-lbl">Producer Name <span style="color:var(--muted);font-weight:400">(optional)</span></label><input type="text" id="yer-producer" placeholder="e.g. Jane Smith"></div></div></div>
-          <div class="report-card" id="rc-pro"><div class="report-card-hdr" onclick="toggleReport('pro')"><div class="rc-dot"></div><div><div class="rc-title">Producer Stewardship</div><div class="rc-sub">Client snapshot for producers</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Options</div><div class="form-grp"><label class="form-lbl">Producer Name</label><input type="text" id="pro-producer" placeholder="e.g. Jane Smith"></div><div class="form-grp" style="margin-top:8px"><label class="form-lbl">Snapshot Month <span style="color:var(--muted);font-weight:400">(optional)</span></label><input type="text" id="pro-month" placeholder="e.g. 2025-12"></div></div></div>
+          <div class="report-card" id="rc-yer"><div class="report-card-hdr" onclick="toggleReport('yer')"><div class="rc-dot"></div><div><div class="rc-title">Program Overview</div><div class="rc-sub">Comprehensive annual program report</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Options</div><div class="form-grp"><label class="form-lbl">Report Year</label><input type="text" id="po-year" placeholder="e.g. 2026" maxlength="4" style="width:120px"><div class="form-hint">Reads from snapshots/YYYY/</div></div><div class="form-grp" style="margin-top:8px"><label class="form-lbl">Producer Name <span style="color:var(--muted);font-weight:400">(optional)</span></label><input type="text" id="po-producer" placeholder="e.g. Jane Smith"></div></div></div>
+          
           <div class="report-card" id="rc-tyc"><div class="report-card-hdr" onclick="toggleReport('tyc')"><div class="rc-dot"></div><div><div class="rc-title">Thank You Card</div><div class="rc-sub">Personalised client postcard PDF</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Options</div><div class="form-grp"><label class="form-lbl">Contact Name</label><input type="text" id="tyc-contact" placeholder="e.g. Jane Smith"></div><div class="form-grp" style="margin-top:8px"><label class="form-lbl">Producer Name</label><input type="text" id="tyc-producer" placeholder="e.g. Philip Irving"></div></div></div>
         </div>
       </div>
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.51</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.55</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -1847,8 +1847,8 @@ async function generate(){
     if(E.ed){setProgress('Building Engagement Detail\u2026','Generating Excel workbook',1);const wb=await buildEngagementDetailXL(insureds,notifications,{engWindow,reportDate});downloads.push({label:'Engagement Detail',type:'excel',blob:await xlBlob(wb),filename:`${selectedClient.name} - Engagement Detail - ${new Date().toISOString().split('T')[0]}.xlsx`});}
     if(E.cs){setProgress('Building Compliance Summary\u2026','Generating PDF',1);downloads.push({label:'Compliance Summary',type:'pdf',html:buildComplianceSummaryHTML(insureds,coverages,criteria,{reportDate}),filename:`${selectedClient.name} - Compliance Summary - ${new Date().toISOString().split('T')[0]}.pdf`});}
     if(E.es){setProgress('Building Engagement Summary\u2026','Generating PDF',1);downloads.push({label:'Engagement Summary',type:'pdf',html:buildEngagementSummaryHTML(notifications,{reportDate,engWindow:esWindow}),filename:`${selectedClient.name} - Engagement Summary - ${new Date().toISOString().split('T')[0]}.pdf`});}
-    if(E.yer){setProgress('Building Year End Review\u2026','Fetching snapshot data',1);const yerYear=document.getElementById('yer-year')?.value?.trim()||String(new Date().getFullYear());const yerProducer=document.getElementById('yer-producer')?.value?.trim()||'';downloads.push({label:`Year End Review ${yerYear}`,type:'pdf',html:await buildYearEndReviewHTML(yerYear,yerProducer),filename:`${selectedClient.name} - Year End Review ${yerYear} - ${new Date().toISOString().split('T')[0]}.pdf`});}
-    if(E.pro){const proProducer=document.getElementById('pro-producer')?.value?.trim()||'';if(!proProducer){toast('Producer name required for Producer Stewardship \u2014 skipped.','error');}else{setProgress('Building Producer Stewardship\u2026','Fetching snapshot data',1);const proMonth=document.getElementById('pro-month')?.value?.trim()||'';downloads.push({label:'Producer Stewardship',type:'pdf',html:await buildProducerOverviewHTML(proProducer,proMonth||null),filename:`${selectedClient.name} - Producer Stewardship - ${new Date().toISOString().split('T')[0]}.pdf`});}}
+    if(E.yer){setProgress('Building Program Overview\u2026','Fetching snapshot data',1);const yerYear=document.getElementById('po-year')?.value?.trim()||String(new Date().getFullYear());const yerProducer=document.getElementById('po-producer')?.value?.trim()||'';downloads.push({label:`Program Overview ${yerYear}`,type:'pdf',html:await buildProgramOverviewHTML(String(new Date().getFullYear()),document.getElementById('po-producer')?.value?.trim()||''),filename:`${selectedClient.name} - Program Overview ${yerYear} - ${new Date().toISOString().split('T')[0]}.pdf`});}
+    
     if(E.tyc){const tycContact=document.getElementById('tyc-contact')?.value?.trim()||'Valued Partner';const tycProducer=document.getElementById('tyc-producer')?.value?.trim()||'';setProgress('Building Thank You Card\u2026','Calculating compliance stats',1);const meta=CLIENT_META_MAP[selectedClient.key]||{};downloads.push({label:'Thank You Card',type:'pdf',html:buildThankYouCardHTML(insureds,meta,tycContact,tycProducer),filename:`${selectedClient.name} - Thank You Card - ${new Date().toISOString().split('T')[0]}.pdf`});}
     setProgress('Finalizing\u2026','Preparing your downloads',2);
     await new Promise(r=>setTimeout(r,400));
@@ -1864,16 +1864,15 @@ async function generate(){
   }
 }
 function printHTMLasPDF(htmlContent){
-  // Open in a new window so the HTML <title> is used as the PDF filename
-  const w=window.open('','_blank','width=1200,height=900');
-  if(!w){alert('Pop-up blocked. Please allow pop-ups for this site and try again.');return;}
-  w.document.open();
-  w.document.write(htmlContent);
-  w.document.close();
-  // Wait for fonts/images then print
-  const doP=()=>{try{w.focus();w.print();}catch(e){}setTimeout(()=>{try{w.close();}catch(e){}},3000);};
-  if(w.document.readyState==='complete'){setTimeout(doP,400);}
-  else{w.onload=()=>setTimeout(doP,400);}
+  // Inject self-print script — page triggers its OWN print dialog
+  // so @page{size:landscape} is fully computed before printing
+  const ap=`<scr`+`ipt>window.addEventListener('load',function(){setTimeout(function(){window.print();},900);});<\/scr`+`ipt>`;
+  const html=htmlContent.replace('<\/body>',ap+'<\/body>');
+  const blob=new Blob([html],{type:'text/html'});
+  const url=URL.createObjectURL(blob);
+  const w=window.open(url,'_blank');
+  if(!w){alert('Pop-up blocked. Please allow pop-ups for this site and try again.');}
+  setTimeout(()=>URL.revokeObjectURL(url),120000);
 }
 function showDownloads(downloads){
   if(selectedClient){const safeKey=selectedClient.key.replace(/[^a-z0-9]/gi,'_');localStorage.setItem('cs-last-report-'+safeKey,new Date().toISOString());}
@@ -2211,7 +2210,7 @@ function buildComplianceSummaryHTML(insureds,coverages,criteria,{reportDate}){
 
   const ncRows=chk('cs-ncreasons')?topNC.map(([r,n])=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA;font-size:9px"><div style="flex:1;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(r.length>65?r.slice(0,65)+'\u2026':r)}</div>${progBar(n,topNC[0]?.[1]||1,'#DC2626')}<div style="width:22px;text-align:right;font-weight:700;color:#DC2626">${n}</div></div>`).join(''):'';
 
-  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Compliance Summary</title><style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:26px 30px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{border-radius:8px;padding:12px 14px}.kpi-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;color:#5A6B7B}.kpi-val{font-size:28px;font-weight:800;line-height:1}.kpi-sub{font-size:10px;font-weight:600;margin-top:3px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.bcard{border:1px solid #E8ECF5;border-radius:8px;padding:12px 14px}.donut-wrap{display:flex;align-items:center;gap:14px}.footer{margin-top:18px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8.5px;color:#B0B8C8}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:letter landscape;margin:8mm}}</style></head><body>
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Compliance Summary</title><style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:26px 30px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{border-radius:8px;padding:12px 14px}.kpi-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;color:#5A6B7B}.kpi-val{font-size:28px;font-weight:800;line-height:1}.kpi-sub{font-size:10px;font-weight:600;margin-top:3px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.bcard{border:1px solid #E8ECF5;border-radius:8px;padding:12px 14px}.donut-wrap{display:flex;align-items:center;gap:14px}.footer{margin-top:18px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8.5px;color:#B0B8C8}@page{size:letter landscape;margin:8mm}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body>
 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;padding-bottom:14px;border-bottom:3px solid #1E2E3D"><div>${logoTag}<div style="margin-top:10px"><div style="font-size:22px;font-weight:900;color:#1E2E3D">${esc(selectedClient.name)}</div><div style="font-size:11px;color:#5A6B7B;margin-top:2px">Compliance Summary &nbsp;\u00b7&nbsp; ${stamp}</div></div></div><div style="text-align:center;background:${rate>=80?'#E6F5EF':'#FDF0EE'};border-radius:10px;padding:12px 22px"><div style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:${rateColor}">Compliance Rate</div><div style="font-size:46px;font-weight:900;color:${rateColor};line-height:1">${rate}%</div><div style="font-size:9px;color:${rateColor};margin-top:2px">${comp} of ${total} active</div></div></div>
 ${chk('cs-kpi')?`${secHdr('Program KPIs')}<div class="kpi4"><div class="kpi" style="background:#EEF1F8"><div class="kpi-lbl">Total Active</div><div class="kpi-val" style="color:#1E2E3D">${total}</div></div><div class="kpi" style="background:#E6F5EF"><div class="kpi-lbl">Compliant</div><div class="kpi-val" style="color:#16A34A">${comp}</div><div class="kpi-sub" style="color:#16A34A">${pct(comp,total)} of active</div></div><div class="kpi" style="background:${nc>0?'#FDF0EE':'#E6F5EF'}"><div class="kpi-lbl">Non-Compliant</div><div class="kpi-val" style="color:${nc>0?'#DC2626':'#16A34A'}">${nc}</div><div class="kpi-sub" style="color:${nc>0?'#DC2626':'#16A34A'}">${pct(nc,total)} of active</div></div><div class="kpi" style="background:#EBF2FB"><div class="kpi-lbl">New / Pending</div><div class="kpi-val" style="color:#3872B8">${newp}</div><div class="kpi-sub" style="color:#3872B8">${pct(newp,total)} of active</div></div></div>`:''}
 ${(chk('cs-breakdown')||chk('cs-coi'))?`${secHdr('Compliance Overview')}<div class="${chk('cs-breakdown')&&chk('cs-coi')?'two-col':''}">
@@ -2269,7 +2268,7 @@ function buildEngagementSummaryHTML(notifications,{reportDate,engWindow}){
   const progBar=(n,tot2,color='#3872B8')=>`<div style="flex:1;background:#F0F4F8;border-radius:2px;height:5px"><div style="width:${tot2?Math.round(n/tot2*100):0}%;background:${color};height:100%;border-radius:2px"></div></div>`;
   const legend=(label,val,tot2,color)=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA"><div style="width:10px;height:10px;border-radius:50%;background:${color};flex-shrink:0"></div><div style="flex:1;font-size:10px;color:#5A6B7B">${label}</div><div style="font-size:11px;font-weight:700;color:#1E2E3D">${val}</div><div style="font-size:9px;color:#8A94A8;margin-left:4px">${tot2?Math.round(val/tot2*100)+'%':''}</div></div>`;
 
-  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Engagement Summary</title><style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:26px 30px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{border-radius:8px;padding:12px 14px}.kpi-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}.kpi-val{font-size:28px;font-weight:800;line-height:1}.kpi-sub{font-size:10px;font-weight:600;margin-top:3px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.bcard{border:1px solid #E8ECF5;border-radius:8px;padding:12px 14px}.donut-wrap{display:flex;align-items:center;gap:14px}.footer{margin-top:18px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8.5px;color:#B0B8C8}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:letter landscape;margin:8mm}}</style></head><body>
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Engagement Summary</title><style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:26px 30px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{border-radius:8px;padding:12px 14px}.kpi-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}.kpi-val{font-size:28px;font-weight:800;line-height:1}.kpi-sub{font-size:10px;font-weight:600;margin-top:3px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.bcard{border:1px solid #E8ECF5;border-radius:8px;padding:12px 14px}.donut-wrap{display:flex;align-items:center;gap:14px}.footer{margin-top:18px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8.5px;color:#B0B8C8}@page{size:letter landscape;margin:8mm}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body>
 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;padding-bottom:14px;border-bottom:3px solid #1E2E3D"><div>${logoTag}<div style="margin-top:10px"><div style="font-size:22px;font-weight:900;color:#1E2E3D">${esc(selectedClient.name)}</div><div style="font-size:11px;color:#5A6B7B;margin-top:2px">Engagement Summary &nbsp;\u00b7&nbsp; Last ${engWindow} days &nbsp;\u00b7&nbsp; ${stamp}</div></div></div><div style="text-align:center;background:${openRate>=50?'#E6F5EF':openRate>=25?'#FFF8E6':'#FDF0EE'};border-radius:10px;padding:12px 22px"><div style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:${openColor}">Open Rate</div><div style="font-size:46px;font-weight:900;color:${openColor};line-height:1">${openRate}%</div><div style="font-size:9px;color:${openColor};margin-top:2px">${openSet.size} of ${sentSet.size} contacts</div></div></div>
 ${chk('es-kpi')?`${secHdr('Email KPIs')}<div class="kpi4"><div class="kpi" style="background:#EBF2FB"><div class="kpi-lbl" style="color:#1D4ED8">Contacts Reached</div><div class="kpi-val" style="color:#3872B8">${sentSet.size}</div></div><div class="kpi" style="background:${openRate>=50?'#E6F5EF':openRate>=25?'#FFF8E6':'#FDF0EE'}"><div class="kpi-lbl" style="color:${openColor}">Opened</div><div class="kpi-val" style="color:${openColor}">${openSet.size}</div><div class="kpi-sub" style="color:${openColor}">${openRate}% open rate</div></div><div class="kpi" style="background:#EEF1F8"><div class="kpi-lbl" style="color:#5A6B7B">Clicked a Link</div><div class="kpi-val" style="color:#1E2E3D">${clickSet.size}</div><div class="kpi-sub" style="color:#5A6B7B">${clickRate}% click-to-open</div></div><div class="kpi" style="background:${issueSet.size>0?'#FDF0EE':'#E6F5EF'}"><div class="kpi-lbl" style="color:${issueSet.size>0?'#B91C1C':'#15803D'}">Delivery Issues</div><div class="kpi-val" style="color:${issueSet.size>0?'#DC2626':'#16A34A'}">${issueSet.size}</div></div></div>`:''}
 ${(chk('es-openrate')||chk('es-delivery'))?`${secHdr('Engagement & Deliverability Breakdown')}<div class="${chk('es-openrate')&&chk('es-delivery')?'two-col':''}">
@@ -2291,14 +2290,12 @@ async function listSnapshotMonths(year){
 }
 async function fetchSnapshotCSV(year,month,file){return fetchCSV(`snapshots/${year}/${month}/${file}`);}
 
-async function buildYearEndReviewHTML(year, producer) {
+async function buildProgramOverviewHTML(year, producer) {
   const s = getSettings();
   const clientName = selectedClient.key;
   const stamp = new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
   const logoSrc = typeof CERTSECURE_LOGO_SRC !== 'undefined' ? CERTSECURE_LOGO_SRC : (document.querySelector('.header-logo')?.src?.startsWith('data:') ? document.querySelector('.header-logo').src : null);
-  const logoTag = logoSrc ? `<img src="${logoSrc}" style="height:28px;object-fit:contain">` : `<span style="font-weight:900;color:#1E2E3D">HUB CertSecure</span>`;
-
-  // ── Load snapshot data ──
+  const logoTag = logoSrc ? `<img src="${logoSrc}" style="height:28px;object-fit:contain">` : `<span style="font-weight:900">HUB CertSecure</span>`;
   const months = await listSnapshotMonths(year);
   const monthlyData = [];
   let lastCrit = [];
@@ -2309,342 +2306,114 @@ async function buildYearEndReviewHTML(year, producer) {
       const active = ci.filter(r => r[C.active] !== 'false' && r[C.paused] !== 'true');
       if (active.length > 0) {
         const comp = active.filter(r => normStatus(r[C.status]) === 'compliant').length;
-        monthlyData.push({ month: m, total: active.length, comp, nc: active.length - comp, rate: Math.round(comp/active.length*100) });
+        monthlyData.push({ month: m, total: active.length, comp, nc: active.length-comp, rate: Math.round(comp/active.length*100) });
         try { lastCrit = await fetchSnapshotCSV(year, m, 'criteria.csv'); } catch(e) {}
       }
     } catch(e) {}
   }
-
-  // ── Fallback to live data if no valid snapshots ──
-  let liveIns = [], liveCrit = [], liveEngage = [], usingLive = false;
-  try { liveIns = await fetchCSV(s.insuredsPath); } catch(e) {}
-  try { liveCrit = await fetchCSV(s.criteriaPath || 'data/evident/criteria.csv'); } catch(e) {}
-  try { liveEngage = await fetchCSV(s.notificationsPath || 'data/evident/engagement.csv'); } catch(e) {}
-  if (!monthlyData.length) {
-    usingLive = true;
-    const ci = liveIns.filter(r => r[C.client] === clientName);
-    const active = ci.filter(r => r[C.active] !== 'false' && r[C.paused] !== 'true');
-    if (active.length) {
-      const comp = active.filter(r => normStatus(r[C.status]) === 'compliant').length;
-      monthlyData.push({ month: `${year}-live`, total: active.length, comp, nc: active.length - comp, rate: Math.round(comp/active.length*100) });
-    }
+  let liveIns=[],liveCrit=[],liveEng=[];
+  try{liveIns=await fetchCSV(s.insuredsPath);}catch(e){}
+  try{liveCrit=await fetchCSV(s.criteriaPath||'data/evident/criteria.csv');}catch(e){}
+  try{liveEng=await fetchCSV(s.notificationsPath||'data/evident/engagement.csv');}catch(e){}
+  const clientIns=liveIns.filter(r=>r[C.client]===clientName);
+  const active=clientIns.filter(r=>r[C.active]!=='false'&&r[C.paused]!=='true');
+  if(!active.length&&!monthlyData.length)throw new Error('No data found for '+selectedClient.name);
+  const usingLive=!monthlyData.length;
+  if(usingLive&&active.length){const comp=active.filter(r=>normStatus(r[C.status])==='compliant').length;monthlyData.push({month:year+'-current',total:active.length,comp,nc:active.length-comp,rate:Math.round(comp/active.length*100)});}
+  const first=monthlyData[0],last=monthlyData[monthlyData.length-1];
+  const change=last.rate-first.rate;
+  const rateColor=last.rate>=80?'#16A34A':last.rate>=60?'#D97706':'#DC2626';
+  const critSrc=(lastCrit.length?lastCrit:liveCrit).filter(r=>r[C.client]===clientName);
+  const ncMap={};
+  critSrc.filter(r=>normStatus(r[C.overall_comp])==='non_compliant').forEach(r=>{(r[C.nc_reasons]||'').split(' | ').forEach(p=>{const ci=p.indexOf(':');if(ci<0)return;const rs=p.slice(ci+1).trim();if(rs)ncMap[rs]=(ncMap[rs]||0)+1;});});
+  const topNC=Object.entries(ncMap).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  const normEm=n=>(n[C.notif_email]||'').trim().toLowerCase();
+  const rpn=((typeof CLIENT_META_MAP!=='undefined'&&CLIENT_META_MAP[clientName])||{}).rp_common_name||'';
+  const clientEng=liveEng.filter(r=>{const v=r[C.notif_client]||'';if(v===clientName)return true;if(rpn){const rv=v.toLowerCase().replace(/[^a-z0-9]/g,'');const rp2=rpn.toLowerCase().replace(/[^a-z0-9]/g,'');if(rv.includes(rp2)||rp2.includes(rv))return true;}return false;});
+  const sentSet=new Set(clientEng.filter(isEngSend).map(normEm).filter(Boolean));
+  const openSet=new Set(clientEng.filter(isEngOpen).map(normEm).filter(Boolean));
+  const clickSet=new Set(clientEng.filter(isEngClick).map(normEm).filter(Boolean));
+  const issueSet=new Set(clientEng.filter(isEngIssue).map(normEm).filter(Boolean));
+  const issueEmailMap={};clientEng.filter(isEngIssue).forEach(n=>{const e=normEm(n);if(e)issueEmailMap[e]=(n[C.eng_type]||'issue').toLowerCase();});
+  const openRate=sentSet.size?Math.round(openSet.size/sentSet.size*100):0;
+  const delivRate=sentSet.size?Math.round((sentSet.size-issueSet.size)/sentSet.size*100):0;
+  const openColor=openRate>=50?'#16A34A':openRate>=25?'#D97706':'#DC2626';
+  const ncActive=active.filter(r=>normStatus(r[C.status])==='non_compliant');
+  const criticalList=[];
+  for(const ins of ncActive){
+    const pe=(ins[C.email]||'').trim().toLowerCase();
+    const allE=[pe,(ins['email2']||'').trim().toLowerCase(),(ins['_notificationList']||'').trim().toLowerCase()].filter(Boolean);
+    const hasDelivIssue=allE.some(e=>issueEmailMap[e]);
+    const wasSent=allE.some(e=>sentSet.has(e));
+    const hasOpened=allE.some(e=>openSet.has(e));
+    if(hasDelivIssue){const it=allE.map(e=>issueEmailMap[e]).find(Boolean)||'issue';criticalList.push({name:ins[C.entity_name]||'',email:pe,reason:'Delivery Issue',detail:it.replace(/_/g,' '),color:'#DC2626',bg:'#FDF0EE'});}
+    else if(wasSent&&!hasOpened){criticalList.push({name:ins[C.entity_name]||'',email:pe,reason:'Never Opened',detail:'Sent, no opens',color:'#D97706',bg:'#FFF8E6'});}
   }
-  if (!monthlyData.length) throw new Error('No data found for ' + selectedClient.name);
-
-  // ── Compliance stats ──
-  const first = monthlyData[0], last = monthlyData[monthlyData.length - 1];
-  const change = last.rate - first.rate;
-  const rateColor = last.rate >= 80 ? '#16A34A' : last.rate >= 60 ? '#D97706' : '#DC2626';
-  const changeColor = change >= 0 ? '#16A34A' : '#DC2626';
-
-  // ── NC Reasons (top 5) ──
-  const critSource = lastCrit.length ? lastCrit : liveCrit;
-  const clientCrit = critSource.filter(r => r[C.client] === clientName);
-  const ncMap = {};
-  clientCrit.filter(r => normStatus(r[C.overall_comp]) === 'non_compliant').forEach(r => {
-    (r[C.nc_reasons] || '').split(' | ').forEach(p => {
-      const ci = p.indexOf(':'); if (ci < 0) return;
-      const reason = p.slice(ci+1).trim(); if (!reason) return;
-      ncMap[reason] = (ncMap[reason] || 0) + 1;
-    });
-  });
-  const topNC = Object.entries(ncMap).sort((a,b) => b[1]-a[1]).slice(0,5);
-
-  // ── Engagement stats ──
-  const normEm = n => (n[C.notif_email]||'').trim().toLowerCase();
-  const clientEng = liveEngage.filter(r => {
-    const v = r[C.notif_client]||'';
-    if (v === clientName) return true;
-    const rpn = (typeof CLIENT_META_MAP !== 'undefined' ? (CLIENT_META_MAP[clientName]||{}) : {}).rp_common_name||'';
-    if (rpn) { const rv = v.toLowerCase().replace(/[^a-z0-9]/g,''); const rp2 = rpn.toLowerCase().replace(/[^a-z0-9]/g,''); if (rv.includes(rp2)||rp2.includes(rv)) return true; }
-    return false;
-  });
-  const sentSet = new Set(clientEng.filter(isEngSend).map(normEm).filter(Boolean));
-  const openSet = new Set(clientEng.filter(isEngOpen).map(normEm).filter(Boolean));
-  const issueSet = new Set(clientEng.filter(isEngIssue).map(normEm).filter(Boolean));
-  const openRate = sentSet.size ? Math.round(openSet.size/sentSet.size*100) : 0;
-  const openColor = openRate >= 50 ? '#16A34A' : openRate >= 25 ? '#D97706' : '#DC2626';
-  const delivRate = sentSet.size ? Math.round((sentSet.size-issueSet.size)/sentSet.size*100) : 0;
-
-  // ── NC + Not Engaged (critical list) ──
-  const liveInsClient = liveIns.filter(r => r[C.client] === clientName);
-  const activeIns = liveInsClient.filter(r => r[C.active] !== 'false' && r[C.paused] !== 'true');
-  const ncIns = activeIns.filter(r => normStatus(r[C.status]) === 'non_compliant');
-  const ncNotEngaged = ncIns.filter(r => {
-    const emails = [r[C.email], r['email2'], r['_notificationList']].filter(Boolean).map(e => e.trim().toLowerCase());
-    return !emails.some(e => openSet.has(e));
-  }).slice(0, 12);
-
-  // ── Bar chart ──
-  const maxRate = Math.max(...monthlyData.map(d => d.rate), 1);
-  const bars = monthlyData.map(d => {
-    const h = Math.max(3, Math.round((d.rate/100)*52));
-    const c = d.rate >= 80 ? '#16A34A' : d.rate >= 60 ? '#D97706' : '#DC2626';
-    return `<div style="display:flex;flex-direction:column;align-items:center;gap:1px;flex:1;min-width:0">
-      <div style="font-size:7px;font-weight:700;color:${c};white-space:nowrap">${d.rate}%</div>
-      <div style="width:100%;background:${c};border-radius:2px 2px 0 0;height:${h}px"></div>
-      <div style="font-size:6.5px;color:#8A94A8;white-space:nowrap">${d.month.slice(5)}</div>
-    </div>`;
-  }).join('');
-
-  const sh = t => `<div style="display:flex;align-items:center;gap:6px;margin:10px 0 6px"><div style="width:3px;height:13px;background:#3872B8;border-radius:2px;flex-shrink:0"></div><div style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1E2E3D">${t}</div><div style="flex:1;height:1px;background:#E8ECF5"></div></div>`;
-  const pb = (n,tot,col='#3872B8') => `<div style="flex:1;background:#F0F4F8;border-radius:2px;height:4px"><div style="width:${tot?Math.round(n/tot*100):0}%;background:${col};height:100%;border-radius:2px"></div></div>`;
-
-  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Year End Review ${year}</title>
-<style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:18px 24px 14px;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:9px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.bcard{border:1px solid #E8ECF5;border-radius:7px;padding:10px 12px}
-.kpi{border-radius:7px;padding:10px 12px}
-.footer{margin-top:10px;padding-top:8px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:7.5px;color:#B0B8C8}
-@media print{@page{size:letter landscape;margin:7mm}}</style></head><body>
-
-<!-- HEADER -->
-<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;padding-bottom:10px;border-bottom:3px solid #1E2E3D">
-  <div style="display:flex;align-items:center;gap:14px">${logoTag}
-    <div><div style="font-size:18px;font-weight:900;line-height:1.1">${esc(selectedClient.name)}</div>
-    <div style="font-size:9px;color:#5A6B7B;margin-top:2px">Year End Review ${year}${producer?' \u00b7 '+esc(producer):''} \u00b7 ${usingLive?'Live Data':'Snapshot'}</div></div>
-  </div>
-  <div style="display:flex;gap:8px">
-    <div style="text-align:center;background:${last.rate>=80?'#E6F5EF':'#FDF0EE'};border-radius:8px;padding:8px 16px">
-      <div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${rateColor}">End Rate</div>
-      <div style="font-size:32px;font-weight:900;color:${rateColor};line-height:1">${last.rate}%</div>
-      <div style="font-size:8px;color:${rateColor}">${last.comp} of ${last.total}</div>
-    </div>
-    <div style="text-align:center;background:${change>=0?'#E6F5EF':'#FDF0EE'};border-radius:8px;padding:8px 14px">
-      <div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${changeColor}">YoY</div>
-      <div style="font-size:26px;font-weight:900;color:${changeColor};line-height:1">${change>=0?'+':''}${change}%</div>
-    </div>
-    ${sentSet.size?`<div style="text-align:center;background:${openRate>=50?'#E6F5EF':openRate>=25?'#FFF8E6':'#FDF0EE'};border-radius:8px;padding:8px 14px">
-      <div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${openColor}">Open Rate</div>
-      <div style="font-size:26px;font-weight:900;color:${openColor};line-height:1">${openRate}%</div>
-    </div>`:''}
+  criticalList.sort((a,b)=>(a.reason==='Delivery Issue'?0:1)-(b.reason==='Delivery Issue'?0:1));
+  const critShow=criticalList.slice(0,14);
+  const sh=t=>`<div style="display:flex;align-items:center;gap:6px;margin:7px 0 5px"><div style="width:3px;height:12px;background:#3872B8;border-radius:2px;flex-shrink:0"></div><div style="font-size:7.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1E2E3D">${t}</div><div style="flex:1;height:1px;background:#E8ECF5"></div></div>`;
+  const pb=(n,tot,col)=>`<div style="flex:1;background:#F0F4F8;border-radius:2px;height:4px"><div style="width:${tot?Math.min(100,Math.round(n/tot*100)):0}%;background:${col};height:100%;border-radius:2px"></div></div>`;
+  const bars=monthlyData.map(d=>{const h=Math.max(3,Math.round((d.rate/100)*50));const c=d.rate>=80?'#16A34A':d.rate>=60?'#D97706':'#DC2626';return`<div style="display:flex;flex-direction:column;align-items:center;gap:1px;flex:1;min-width:0"><div style="font-size:6.5px;font-weight:700;color:${c}">${d.rate}%</div><div style="width:100%;background:${c};border-radius:2px 2px 0 0;height:${h}px"></div><div style="font-size:6px;color:#8A94A8;white-space:nowrap">${d.month.replace(year+'-','').replace('-current','now')}</div></div>`;}).join('');
+  const ncEngaged=ncActive.filter(r=>openSet.has((r[C.email]||'').trim().toLowerCase())).length;
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Program Overview ${year}</title>
+<style>
+@page{size:letter landscape;margin:8mm}
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:14px 20px 10px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.bcard{border:1px solid #E8ECF5;border-radius:7px;padding:9px 11px}.kpi{border-radius:7px;padding:9px 11px}
+.footer{margin-top:8px;padding-top:7px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:7px;color:#B0B8C8}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style></head><body>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;padding-bottom:9px;border-bottom:3px solid #1E2E3D">
+  <div style="display:flex;align-items:center;gap:12px">${logoTag}<div><div style="font-size:17px;font-weight:900;line-height:1.1">${esc(selectedClient.name)}</div><div style="font-size:8.5px;color:#5A6B7B;margin-top:2px">Program Overview \u00b7 ${year}${producer?' \u00b7 '+esc(producer):''} \u00b7 ${usingLive?'Current Live Data':'Latest Snapshot'}</div></div></div>
+  <div style="display:flex;gap:7px">
+    <div style="background:${last.rate>=80?'#E6F5EF':'#FDF0EE'};border-radius:8px;padding:7px 14px;text-align:center"><div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${rateColor}">Compliance Rate</div><div style="font-size:30px;font-weight:900;color:${rateColor};line-height:1">${last.rate}%</div><div style="font-size:7.5px;color:${rateColor}">${last.comp} of ${last.total} active</div></div>
+    <div style="background:${change>=0?'#E6F5EF':'#FDF0EE'};border-radius:8px;padding:7px 12px;text-align:center"><div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${change>=0?'#16A34A':'#DC2626'}">YoY Change</div><div style="font-size:26px;font-weight:900;color:${change>=0?'#16A34A':'#DC2626'};line-height:1">${change>=0?'+':''}${change}%</div></div>
+    ${sentSet.size?`<div style="background:${openRate>=50?'#E6F5EF':openRate>=25?'#FFF8E6':'#FDF0EE'};border-radius:8px;padding:7px 12px;text-align:center"><div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${openColor}">Email Open Rate</div><div style="font-size:26px;font-weight:900;color:${openColor};line-height:1">${openRate}%</div></div>`:''}
   </div>
 </div>
-
-<!-- ROW 1: KPIs -->
-<div class="g4" style="margin-bottom:10px">
-  <div class="kpi" style="background:#EEF1F8"><div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:3px">Total Active</div><div style="font-size:22px;font-weight:800">${last.total}</div></div>
-  <div class="kpi" style="background:#E6F5EF"><div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#16A34A;margin-bottom:3px">Compliant</div><div style="font-size:22px;font-weight:800;color:#16A34A">${last.comp}</div><div style="font-size:8px;color:#16A34A">${last.total?Math.round(last.comp/last.total*100):0}% of active</div></div>
-  <div class="kpi" style="background:${last.nc>0?'#FDF0EE':'#E6F5EF'}"><div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${last.nc>0?'#DC2626':'#16A34A'};margin-bottom:3px">Non-Compliant</div><div style="font-size:22px;font-weight:800;color:${last.nc>0?'#DC2626':'#16A34A'}">${last.nc}</div><div style="font-size:8px;color:${last.nc>0?'#DC2626':'#16A34A'}">${last.total?Math.round(last.nc/last.total*100):0}% of active</div></div>
-  <div class="kpi" style="background:${openRate>=50?'#E6F5EF':openRate>=25?'#FFF8E6':'#EEF1F8'}"><div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${openColor};margin-bottom:3px">Engagement Rate</div><div style="font-size:22px;font-weight:800;color:${openColor}">${sentSet.size?openRate+'%':'N/A'}</div><div style="font-size:8px;color:#5A6B7B">${openSet.size} of ${sentSet.size} contacts</div></div>
+<div class="g4" style="margin-bottom:9px">
+  <div class="kpi" style="background:#EEF1F8"><div style="font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:2px">Total Active</div><div style="font-size:20px;font-weight:800">${last.total}</div></div>
+  <div class="kpi" style="background:#E6F5EF"><div style="font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#16A34A;margin-bottom:2px">Compliant</div><div style="font-size:20px;font-weight:800;color:#16A34A">${last.comp}</div><div style="font-size:7.5px;color:#16A34A">${last.total?Math.round(last.comp/last.total*100):0}%</div></div>
+  <div class="kpi" style="background:${last.nc>0?'#FDF0EE':'#E6F5EF'}"><div style="font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${last.nc>0?'#DC2626':'#16A34A'};margin-bottom:2px">Non-Compliant</div><div style="font-size:20px;font-weight:800;color:${last.nc>0?'#DC2626':'#16A34A'}">${last.nc}</div><div style="font-size:7.5px;color:${last.nc>0?'#DC2626':'#16A34A'}">${last.total?Math.round(last.nc/last.total*100):0}%</div></div>
+  <div class="kpi" style="background:#EBF2FB"><div style="font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3872B8;margin-bottom:2px">Contacts Reached</div><div style="font-size:20px;font-weight:800;color:#3872B8">${sentSet.size}</div><div style="font-size:7.5px;color:#3872B8">${openSet.size} opened</div></div>
 </div>
-
-<!-- ROW 2: Trend + NC Reasons -->
-<div class="g2" style="margin-bottom:10px">
+<div class="g2" style="margin-bottom:9px">
   <div class="bcard">
     ${sh('Monthly Compliance Trend \u2014 '+year)}
-    <div style="display:flex;gap:3px;align-items:flex-end;height:62px">${bars}</div>
-    ${monthlyData.length>1?`<div style="display:flex;justify-content:space-between;margin-top:4px;font-size:7.5px;color:#8A94A8">
-      <span>Start: <strong>${first.rate}%</strong></span><span>${monthlyData.length} snapshots</span><span>End: <strong style="color:${rateColor}">${last.rate}%</strong></span>
-    </div>`:'<div style="font-size:8px;color:#8A94A8;margin-top:4px">Full trend available after monthly snapshots are taken on the 1st of each month.</div>'}
-    <div style="display:flex;justify-content:space-between;margin-top:6px;padding-top:6px;border-top:1px solid #F5F7FA;font-size:8px">
-      <span style="color:#5A6B7B">Best rate: <strong style="color:#16A34A">${Math.max(...monthlyData.map(d=>d.rate))}%</strong></span>
-      <span style="color:#5A6B7B">Avg: <strong>${Math.round(monthlyData.reduce((s,d)=>s+d.rate,0)/monthlyData.length)}%</strong></span>
-      <span style="color:#5A6B7B">Lowest: <strong style="color:#DC2626">${Math.min(...monthlyData.map(d=>d.rate))}%</strong></span>
-    </div>
+    <div style="display:flex;gap:3px;align-items:flex-end;height:56px">${bars}</div>
+    ${monthlyData.length>1?`<div style="display:flex;justify-content:space-between;margin-top:3px;font-size:7px;color:#8A94A8"><span>Start: <strong>${first.rate}%</strong></span><span>${monthlyData.length} snapshots</span><span>Latest: <strong style="color:${rateColor}">${last.rate}%</strong></span></div>`:'<div style="font-size:7.5px;color:#8A94A8;margin-top:3px">Monthly snapshots begin June 1.</div>'}
+    <div style="display:flex;justify-content:space-between;margin-top:5px;padding-top:5px;border-top:1px solid #F5F7FA;font-size:7.5px"><span style="color:#5A6B7B">Best: <strong style="color:#16A34A">${Math.max(...monthlyData.map(d=>d.rate))}%</strong></span><span style="color:#5A6B7B">Avg: <strong>${Math.round(monthlyData.reduce((s,d)=>s+d.rate,0)/monthlyData.length)}%</strong></span><span style="color:#5A6B7B">Lowest: <strong style="color:#DC2626">${Math.min(...monthlyData.map(d=>d.rate))}%</strong></span></div>
   </div>
   <div class="bcard">
     ${sh('Top 5 Non-Compliance Reasons')}
-    ${topNC.length ? topNC.map(([r,n])=>`<div style="display:flex;align-items:center;gap:6px;padding:3px 0;border-bottom:1px solid #F5F7FA">
-      <div style="flex:1;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:8px">${esc(r.length>55?r.slice(0,55)+'\u2026':r)}</div>
-      ${pb(n,topNC[0]?.[1]||1,'#DC2626')}
-      <div style="width:18px;text-align:right;font-weight:700;color:#DC2626;font-size:8px">${n}</div>
-    </div>`).join('') : '<div style="font-size:9px;color:#8A94A8;padding:8px 0">No NC criteria data available.</div>'}
+    ${topNC.length?topNC.map(([r,n],i)=>`<div style="display:flex;align-items:center;gap:5px;padding:2.5px 0;border-bottom:1px solid #F5F7FA"><div style="font-size:7px;font-weight:700;color:#DC2626;width:10px">${i+1}</div><div style="flex:1;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:7.5px">${esc(r.length>58?r.slice(0,58)+'\u2026':r)}</div>${pb(n,topNC[0][1],'#DC2626')}<div style="width:16px;text-align:right;font-weight:700;color:#DC2626;font-size:7.5px">${n}</div></div>`).join(''):'<div style="font-size:8px;color:#8A94A8;padding:6px 0">No NC criteria data.</div>'}
   </div>
 </div>
-
-<!-- ROW 3: Engagement + Critical Engagement -->
 <div class="g2">
   <div class="bcard">
     ${sh('Email Engagement Overview')}
-    ${sentSet.size ? `
-    <div class="g4" style="gap:6px;margin-bottom:8px">
-      <div style="background:#EBF2FB;border-radius:6px;padding:7px 8px"><div style="font-size:6.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3872B8;margin-bottom:2px">Reached</div><div style="font-size:16px;font-weight:800;color:#3872B8">${sentSet.size}</div></div>
-      <div style="background:${openRate>=50?'#E6F5EF':openRate>=25?'#FFF8E6':'#FDF0EE'};border-radius:6px;padding:7px 8px"><div style="font-size:6.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:${openColor};margin-bottom:2px">Opened</div><div style="font-size:16px;font-weight:800;color:${openColor}">${openSet.size}</div></div>
-      <div style="background:#EEF1F8;border-radius:6px;padding:7px 8px"><div style="font-size:6.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5A6B7B;margin-bottom:2px">Delivered</div><div style="font-size:16px;font-weight:800;color:#1E2E3D">${delivRate}%</div></div>
-      <div style="background:${issueSet.size>0?'#FDF0EE':'#E6F5EF'};border-radius:6px;padding:7px 8px"><div style="font-size:6.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:${issueSet.size>0?'#DC2626':'#16A34A'};margin-bottom:2px">Issues</div><div style="font-size:16px;font-weight:800;color:${issueSet.size>0?'#DC2626':'#16A34A'}">${issueSet.size}</div></div>
+    ${sentSet.size?`<div class="g4" style="gap:5px;margin-bottom:6px">
+      <div style="background:#EBF2FB;border-radius:5px;padding:5px 7px"><div style="font-size:6px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#3872B8;margin-bottom:1px">Reached</div><div style="font-size:15px;font-weight:800;color:#3872B8">${sentSet.size}</div></div>
+      <div style="background:${openRate>=50?'#E6F5EF':openRate>=25?'#FFF8E6':'#FDF0EE'};border-radius:5px;padding:5px 7px"><div style="font-size:6px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${openColor};margin-bottom:1px">Opened</div><div style="font-size:15px;font-weight:800;color:${openColor}">${openSet.size}</div></div>
+      <div style="background:#EEF1F8;border-radius:5px;padding:5px 7px"><div style="font-size:6px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#5A6B7B;margin-bottom:1px">Clicked</div><div style="font-size:15px;font-weight:800">${clickSet.size}</div></div>
+      <div style="background:${issueSet.size?'#FDF0EE':'#E6F5EF'};border-radius:5px;padding:5px 7px"><div style="font-size:6px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${issueSet.size?'#DC2626':'#16A34A'};margin-bottom:1px">Issues</div><div style="font-size:15px;font-weight:800;color:${issueSet.size?'#DC2626':'#16A34A'}">${issueSet.size}</div></div>
     </div>
-    <div style="display:flex;justify-content:space-between;font-size:8px;color:#5A6B7B;padding-top:4px;border-top:1px solid #F5F7FA">
-      <span>Click-to-open: <strong>${openSet.size?Math.round(new Set(clientEng.filter(isEngClick).map(normEm).filter(Boolean)).size/openSet.size*100):0}%</strong></span>
+    <div style="display:flex;justify-content:space-between;font-size:7.5px;color:#5A6B7B;padding-top:4px;border-top:1px solid #F5F7FA">
       <span>Open rate: <strong style="color:${openColor}">${openRate}%</strong></span>
-      <span>NC engaged: <strong>${ncIns.length?Math.round((ncIns.length-ncNotEngaged.length)/ncIns.length*100):0}%</strong></span>
-    </div>` : '<div style="font-size:9px;color:#8A94A8;padding:8px 0">No engagement data available. Ensure engagement sync is running.</div>'}
+      <span>Deliverability: <strong>${delivRate}%</strong></span>
+      <span>NC engaged: <strong>${ncActive.length?Math.round(ncEngaged/ncActive.length*100):0}%</strong></span>
+    </div>`:'<div style="font-size:8px;color:#8A94A8;padding:6px 0">No engagement data. Ensure sync is running.</div>'}
   </div>
   <div class="bcard">
-    ${sh('Critical: NC + Not Engaged')}
-    ${ncNotEngaged.length ? `
-    <div style="display:grid;grid-template-columns:1fr auto;gap:4px;margin-bottom:4px;font-size:7px;font-weight:700;color:#8A94A8;text-transform:uppercase;letter-spacing:.08em;padding-bottom:3px;border-bottom:2px solid #E8ECF5">
-      <span>Entity</span><span>Email</span>
-    </div>
-    ${ncNotEngaged.map(r=>`<div style="display:grid;grid-template-columns:1fr auto;gap:4px;padding:2px 0;border-bottom:1px solid #F5F7FA;align-items:center">
-      <div style="font-size:8px;color:#1E2E3D;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc((r[C.entity_name]||'').slice(0,32))}</div>
-      <div style="font-size:7.5px;color:#DC2626;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px">${esc(r[C.email]||'\u2014')}</div>
-    </div>`).join('')}
-    ${ncIns.length-ncNotEngaged.length>0?`<div style="font-size:7.5px;color:#8A94A8;margin-top:3px">${ncIns.length} total NC \u00b7 ${ncNotEngaged.length} shown \u00b7 ${ncIns.length-ncNotEngaged.length-(ncIns.length-ncNotEngaged.length > (ncIns.length-ncNotEngaged.length) ? 0 : 0)} engaged</div>`:''}
-    ` : `<div style="font-size:9px;color:#16A34A;padding:8px 0">\u2713 All NC insureds have engaged, or no NC insureds found.</div>`}
+    ${sh('Critical for Engagement (NC Insureds)')}
+    ${critShow.length?`<div style="display:grid;grid-template-columns:auto 1fr auto;gap:3px;padding-bottom:3px;border-bottom:1px solid #E8ECF5;font-size:6.5px;font-weight:700;color:#8A94A8;text-transform:uppercase;letter-spacing:.06em"><span>Reason</span><span>Entity</span><span>Email</span></div>
+    ${critShow.map(r=>`<div style="display:grid;grid-template-columns:auto 1fr auto;gap:4px;padding:2px 0;border-bottom:1px solid #F5F7FA;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:8px;font-size:6.5px;font-weight:700;background:${r.bg};color:${r.color};white-space:nowrap">${r.reason}</span><div style="font-size:7.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc((r.name||'').slice(0,30))}</div><div style="font-size:6.5px;color:#8A94A8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:120px">${esc(r.email||'\u2014')}</div></div>`).join('')}
+    ${criticalList.length>14?`<div style="font-size:7px;color:#8A94A8;padding-top:3px">+${criticalList.length-14} more \u2014 see Engagement Detail Excel</div>`:''}`:'<div style="font-size:8px;color:#16A34A;padding:6px 0">\u2713 No critical engagement gaps found.</div>'}
   </div>
 </div>
-
-<div class="footer">
-  <div>\uD83D\uDD12 Confidential \u2014 HUB CertSecure \u00b7 ${esc(selectedClient.name)} \u00b7 Year End Review ${year}</div>
-  <div>${stamp}</div>
-</div>
-</body></html>`;
-}
-
-async function buildProducerOverviewHTML(producer, snapshotMonth) {
-  const s = getSettings();
-  const clientName = selectedClient.key;
-  const stamp = new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
-  const year = String(new Date().getFullYear());
-  const logoSrc = typeof CERTSECURE_LOGO_SRC !== 'undefined' ? CERTSECURE_LOGO_SRC : (document.querySelector('.header-logo')?.src?.startsWith('data:') ? document.querySelector('.header-logo').src : null);
-  const logoTag = logoSrc ? `<img src="${logoSrc}" style="height:28px;object-fit:contain">` : `<span style="font-weight:900;color:#1E2E3D">HUB CertSecure</span>`;
-
-  // ── Load data ──
-  const months = await listSnapshotMonths(year);
-  let usingLive = false;
-  let ins = [], usedMonth = snapshotMonth || (months.length ? months[months.length-1] : null);
-  if (usedMonth) { try { ins = await fetchSnapshotCSV(year, usedMonth, 'insureds.csv'); } catch(e) { usingLive = true; } }
-  if (usingLive || !ins.length) { try { ins = await fetchCSV(s.insuredsPath); usingLive = true; } catch(e) {} }
-
-  const clientIns = ins.filter(r => r[C.client] === clientName);
-  const active = clientIns.filter(r => r[C.active] !== 'false' && r[C.paused] !== 'true');
-  if (!active.length) throw new Error('No active insureds for ' + selectedClient.name);
-  const comp = active.filter(r => normStatus(r[C.status]) === 'compliant').length;
-  const nc   = active.filter(r => normStatus(r[C.status]) === 'non_compliant').length;
-  const newp = active.length - comp - nc;
-  const rate = Math.round(comp/active.length*100);
-  const rateColor = rate >= 80 ? '#16A34A' : rate >= 60 ? '#D97706' : '#DC2626';
-
-  // ── Monthly trend ──
-  const monthlyData = [];
-  for (const m of months) {
-    try {
-      const mi = await fetchSnapshotCSV(year, m, 'insureds.csv');
-      const mc = mi.filter(r => r[C.client] === clientName);
-      const ma = mc.filter(r => r[C.active] !== 'false' && r[C.paused] !== 'true');
-      if (ma.length > 0) { const mc2 = ma.filter(r => normStatus(r[C.status]) === 'compliant').length; monthlyData.push({ month: m, total: ma.length, comp: mc2, rate: Math.round(mc2/ma.length*100) }); }
-    } catch(e) {}
-  }
-
-  // ── NC reasons ──
-  let critData = [];
-  try { critData = usingLive ? await fetchCSV(s.criteriaPath||'data/evident/criteria.csv') : await fetchSnapshotCSV(year, usedMonth||months[months.length-1], 'criteria.csv'); } catch(e) {}
-  const clientCrit = critData.filter(r => r[C.client] === clientName);
-  const ncMap = {};
-  clientCrit.filter(r => normStatus(r[C.overall_comp]) === 'non_compliant').forEach(r => {
-    (r[C.nc_reasons]||'').split(' | ').forEach(p => { const ci=p.indexOf(':'); if(ci<0)return; const rs=p.slice(ci+1).trim(); if(rs) ncMap[rs]=(ncMap[rs]||0)+1; });
-  });
-  const topNC = Object.entries(ncMap).sort((a,b)=>b[1]-a[1]).slice(0,5);
-
-  // ── Engagement ──
-  let engData = [];
-  try { engData = await fetchCSV(s.notificationsPath||'data/evident/engagement.csv'); } catch(e) {}
-  const normEm = n => (n[C.notif_email]||'').trim().toLowerCase();
-  const clientEng = engData.filter(r => {
-    const v = r[C.notif_client]||'';
-    if (v === clientName) return true;
-    const rpn = (typeof CLIENT_META_MAP !== 'undefined' ? (CLIENT_META_MAP[clientName]||{}) : {}).rp_common_name||'';
-    if (rpn) { const rv=v.toLowerCase().replace(/[^a-z0-9]/g,''); const rp2=rpn.toLowerCase().replace(/[^a-z0-9]/g,''); if(rv.includes(rp2)||rp2.includes(rv)) return true; }
-    return false;
-  });
-  const sentSet = new Set(clientEng.filter(isEngSend).map(normEm).filter(Boolean));
-  const openSet = new Set(clientEng.filter(isEngOpen).map(normEm).filter(Boolean));
-  const issueSet = new Set(clientEng.filter(isEngIssue).map(normEm).filter(Boolean));
-  const openRate = sentSet.size ? Math.round(openSet.size/sentSet.size*100) : 0;
-  const openColor = openRate >= 50 ? '#16A34A' : openRate >= 25 ? '#D97706' : '#DC2626';
-
-  // ── Bar chart ──
-  const bars = monthlyData.length
-    ? monthlyData.map(d => {
-        const h = Math.max(3, Math.round((d.rate/100)*52));
-        const c = d.rate>=80?'#16A34A':d.rate>=60?'#D97706':'#DC2626';
-        return `<div style="display:flex;flex-direction:column;align-items:center;gap:1px;flex:1;min-width:0">
-          <div style="font-size:7px;font-weight:700;color:${c}">${d.rate}%</div>
-          <div style="width:100%;background:${c};border-radius:2px 2px 0 0;height:${h}px"></div>
-          <div style="font-size:6.5px;color:#8A94A8">${d.month.slice(5)}</div>
-        </div>`;
-      }).join('')
-    : `<div style="font-size:9px;color:#8A94A8;text-align:center;width:100%;padding:18px 0">Monthly trend available from June 1 onwards</div>`;
-
-  const sh = t => `<div style="display:flex;align-items:center;gap:6px;margin:10px 0 6px"><div style="width:3px;height:13px;background:#3872B8;border-radius:2px;flex-shrink:0"></div><div style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1E2E3D">${t}</div><div style="flex:1;height:1px;background:#E8ECF5"></div></div>`;
-  const pb = (n,tot,col='#3872B8') => `<div style="flex:1;background:#F0F4F8;border-radius:2px;height:4px"><div style="width:${tot?Math.round(n/tot*100):0}%;background:${col};height:100%;border-radius:2px"></div></div>`;
-
-  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Producer Stewardship</title>
-<style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:18px 24px 14px;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:9px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.bcard{border:1px solid #E8ECF5;border-radius:7px;padding:10px 12px}
-.kpi{border-radius:7px;padding:10px 12px}
-.footer{margin-top:10px;padding-top:8px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:7.5px;color:#B0B8C8}
-@media print{@page{size:letter landscape;margin:7mm}}</style></head><body>
-
-<!-- HEADER -->
-<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;padding-bottom:10px;border-bottom:3px solid #1E2E3D">
-  <div style="display:flex;align-items:center;gap:14px">${logoTag}
-    <div><div style="font-size:18px;font-weight:900;line-height:1.1">${esc(selectedClient.name)}</div>
-    <div style="font-size:9px;color:#5A6B7B;margin-top:2px">Producer Stewardship \u00b7 ${esc(producer)} \u00b7 ${usingLive?'Live Data':('Snapshot: '+usedMonth)} \u00b7 ${stamp}</div></div>
-  </div>
-  <div style="text-align:center;background:${rate>=80?'#E6F5EF':'#FDF0EE'};border-radius:8px;padding:8px 18px">
-    <div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${rateColor}">Compliance Rate</div>
-    <div style="font-size:34px;font-weight:900;color:${rateColor};line-height:1">${rate}%</div>
-    <div style="font-size:8px;color:${rateColor}">${comp} of ${active.length} active</div>
-  </div>
-</div>
-
-<!-- ROW 1: KPIs -->
-<div class="g4" style="margin-bottom:10px">
-  <div class="kpi" style="background:#EEF1F8"><div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:3px">Total Active</div><div style="font-size:22px;font-weight:800">${active.length}</div></div>
-  <div class="kpi" style="background:#E6F5EF"><div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#16A34A;margin-bottom:3px">Compliant</div><div style="font-size:22px;font-weight:800;color:#16A34A">${comp}</div><div style="font-size:8px;color:#16A34A">${pct(comp,active.length)} of active</div></div>
-  <div class="kpi" style="background:${nc>0?'#FDF0EE':'#E6F5EF'}"><div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${nc>0?'#DC2626':'#16A34A'};margin-bottom:3px">Non-Compliant</div><div style="font-size:22px;font-weight:800;color:${nc>0?'#DC2626':'#16A34A'}">${nc}</div><div style="font-size:8px;color:${nc>0?'#DC2626':'#16A34A'}">${pct(nc,active.length)} of active</div></div>
-  <div class="kpi" style="background:${openRate>=50?'#E6F5EF':openRate>=25?'#FFF8E6':'#EEF1F8'}"><div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${openColor};margin-bottom:3px">Eng. Open Rate</div><div style="font-size:22px;font-weight:800;color:${openColor}">${sentSet.size?openRate+'%':'N/A'}</div><div style="font-size:8px;color:#5A6B7B">${openSet.size} of ${sentSet.size}</div></div>
-</div>
-
-<!-- ROW 2: Trend + NC Reasons -->
-<div class="g2" style="margin-bottom:10px">
-  <div class="bcard">
-    ${sh('Annual Compliance Trend \u2014 '+year)}
-    <div style="display:flex;gap:3px;align-items:flex-end;height:56px">${bars}</div>
-    ${monthlyData.length>1?`<div style="display:flex;justify-content:space-between;margin-top:4px;font-size:7.5px;color:#8A94A8">
-      <span>Start: <strong>${monthlyData[0].rate}%</strong></span><span>${monthlyData.length} snapshots</span><span>Latest: <strong style="color:${rateColor}">${monthlyData[monthlyData.length-1].rate}%</strong></span>
-    </div>`:'<div style="font-size:8px;color:#8A94A8;margin-top:4px">Monthly snapshots begin June 1.</div>'}
-  </div>
-  <div class="bcard">
-    ${sh('Top 5 Non-Compliance Reasons')}
-    ${topNC.length ? topNC.map(([r,n])=>`<div style="display:flex;align-items:center;gap:6px;padding:3px 0;border-bottom:1px solid #F5F7FA">
-      <div style="flex:1;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:8px">${esc(r.length>55?r.slice(0,55)+'\u2026':r)}</div>
-      ${pb(n,topNC[0]?.[1]||1,'#DC2626')}<div style="width:18px;text-align:right;font-weight:700;color:#DC2626;font-size:8px">${n}</div>
-    </div>`).join('') : '<div style="font-size:9px;color:#8A94A8;padding:8px 0">No NC criteria data available.</div>'}
-  </div>
-</div>
-
-<!-- ROW 3: Engagement + Program Changes -->
-<div class="g2">
-  <div class="bcard">
-    ${sh('Engagement Summary')}
-    ${sentSet.size ? `<div class="g4" style="gap:6px">
-      <div style="background:#EBF2FB;border-radius:6px;padding:7px 8px"><div style="font-size:6.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3872B8;margin-bottom:2px">Reached</div><div style="font-size:16px;font-weight:800;color:#3872B8">${sentSet.size}</div></div>
-      <div style="background:${openRate>=50?'#E6F5EF':openRate>=25?'#FFF8E6':'#FDF0EE'};border-radius:6px;padding:7px 8px"><div style="font-size:6.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:${openColor};margin-bottom:2px">Opened</div><div style="font-size:16px;font-weight:800;color:${openColor}">${openSet.size}</div></div>
-      <div style="background:#EEF1F8;border-radius:6px;padding:7px 8px"><div style="font-size:6.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5A6B7B;margin-bottom:2px">Delivery</div><div style="font-size:16px;font-weight:800">${sentSet.size?Math.round((sentSet.size-issueSet.size)/sentSet.size*100):0}%</div></div>
-      <div style="background:${issueSet.size?'#FDF0EE':'#E6F5EF'};border-radius:6px;padding:7px 8px"><div style="font-size:6.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:${issueSet.size?'#DC2626':'#16A34A'};margin-bottom:2px">Issues</div><div style="font-size:16px;font-weight:800;color:${issueSet.size?'#DC2626':'#16A34A'}">${issueSet.size}</div></div>
-    </div>` : '<div style="font-size:9px;color:#8A94A8;padding:8px 0">No engagement data available.</div>'}
-  </div>
-  <div class="bcard" style="min-height:70px">
-    ${sh('Program Changes \u2014 '+year)}
-    <div style="font-size:9px;color:#8A94A8;font-style:italic;padding:8px 0">Program change notes will appear here as milestones are recorded throughout the year.</div>
-  </div>
-</div>
-
-<div class="footer">
-  <div>\uD83D\uDD12 Confidential \u2014 HUB CertSecure \u00b7 ${esc(selectedClient.name)} \u00b7 Producer Stewardship \u00b7 For: ${esc(producer)}</div>
-  <div>${stamp}</div>
-</div>
+<div class="footer"><div>\uD83D\uDD12 Confidential \u2014 HUB CertSecure \u00b7 ${esc(selectedClient.name)} \u00b7 Program Overview ${year}</div><div>${stamp}</div></div>
 </body></html>`;
 }
 
@@ -2677,7 +2446,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.51
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.55
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -2699,8 +2468,7 @@ const MONDAY_COL_MAP = {
   rptCD:        ['RPT: Compliance Detail'],
   rptES:        ['RPT: Engagement Summary'],
   rptED:        ['RPT: Engagement Detail'],
-  rptYER:       ['RPT: Year End Review'],
-  rptPRO:       ['RPT: Producer Stewardship'],
+  rptYER:       ['RPT: Program Overview'],
 };
 
 function mondayColId(key) {
@@ -2970,7 +2738,7 @@ const WS_BOARDS = [
       {t:'INV: Bill Mode',type:'text'},{t:'INV: Bill Schedule',type:'text'},{t:'INV: Producer Split',type:'text'},
       {t:'RPT: Compliance Summary',type:'link'},{t:'RPT: Compliance Detail',type:'link'},
       {t:'RPT: Engagement Summary',type:'link'},{t:'RPT: Engagement Detail',type:'link'},
-      {t:'RPT: Year End Review',type:'link'},{t:'RPT: Producer Stewardship',type:'link'},
+      {t:'RPT: Program Overview',type:'link'},
       {t:'RPT: Thank You Card',type:'link'},{t:'Connect: Prospects',type:'board_relation'},
       {t:'Connect: Onboarding',type:'board_relation'},
     ]
@@ -3206,7 +2974,7 @@ const WS_EXPECTED_BOARDS = [
 const WS_EXPECTED_COLS = [
   'Status','Platform','Structure','Go-Live Date','Est. Licenses','Producer',
   'INV: Renewal Date','INV: Renewal Status','INV: Current Fee','INV: Next Year Fee',
-  'RPT: Compliance Summary','RPT: Compliance Detail','RPT: Year End Review',
+  'RPT: Compliance Summary','RPT: Compliance Detail','RPT: Program Overview',
   'Connect: Prospects','Connect: Onboarding',
 ];
 
