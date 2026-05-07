@@ -149,7 +149,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.58</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.59</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -345,7 +345,7 @@
   <div class="tab-bar">
     <button class="tab-btn active" id="tab-btn-reports" onclick="switchTab('reports')">Report Generator</button>
     <button class="tab-btn" id="tab-btn-config" onclick="switchTab('config')">Client Configuration</button>
-    <button class="tab-btn" id="tab-btn-monday" onclick="switchTab('monday')">Monday Sync</button>
+    <button class="tab-btn" id="tab-btn-monday" onclick="switchTab('monday')">Monday.com Generator</button>
   </div>
   <div id="tab-reports">
   <div id="step-1" class="step-panel">
@@ -382,7 +382,7 @@
       <div style="margin-top:14px;border-top:1px solid var(--border);padding-top:14px">
         <div class="sec-div" style="margin-bottom:10px;padding-top:0;border-top:none;font-size:10px;letter-spacing:.09em">Additional Reports</div>
         <div class="report-grid">
-        <div class="report-card" id="rc-yer"><div class="report-card-hdr" onclick="toggleReport('yer')"><div class="rc-dot"></div><div><div class="rc-title">Program Overview</div><div class="rc-sub">Comprehensive annual program report</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Options</div><div class="form-grp"><label class="form-lbl">Report Year</label><input type="text" id="po-year" placeholder="e.g. 2026" maxlength="4" style="width:120px"><div class="form-hint">Reads from snapshots/YYYY/</div></div><div class="form-grp" style="margin-top:8px"><label class="form-lbl">Producer Name <span style="color:var(--muted);font-weight:400">(optional)</span></label><input type="text" id="po-producer" placeholder="e.g. Jane Smith"></div></div></div>
+        <div class="report-card" id="rc-yer"><div class="report-card-hdr" onclick="toggleReport('yer')"><div class="rc-dot"></div><div><div class="rc-title">Program Overview</div><div class="rc-sub">Comprehensive annual program report</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Options</div><div class="form-grp"><label class="form-lbl">Report Year</label><input type="text" id="po-year" placeholder="e.g. 2026" maxlength="4" style="width:120px"><div class="form-hint">Reads from snapshots/YYYY/</div></div><div class="form-grp" style="margin-top:8px"><label class="form-lbl">Producer Name <span style="color:#DC2626;font-weight:600;font-size:10px">*&nbsp;required</span></label><input type="text" id="po-producer" placeholder="e.g. Jane Smith"></div></div></div>
           
         <div class="report-card" id="rc-tyc"><div class="report-card-hdr" onclick="toggleReport('tyc')"><div class="rc-dot"></div><div><div class="rc-title">Thank You Card</div><div class="rc-sub">Personalised client postcard PDF</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Options</div><div class="form-grp"><label class="form-lbl">Contact Name</label><input type="text" id="tyc-contact" placeholder="e.g. Jane Smith"></div><div class="form-grp" style="margin-top:8px"><label class="form-lbl">Producer Name</label><input type="text" id="tyc-producer" placeholder="e.g. Philip Irving"></div></div></div>
         </div>
@@ -624,7 +624,7 @@
 </main>
 <div class="toast" id="toast"></div>
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.58</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.59</div>
 
 <script>
 // ── SUPABASE AUTH ──
@@ -1301,7 +1301,7 @@ const CLIENTS_FALLBACK = [
 let CLIENTS = buildClientsArray(CLIENTS_FALLBACK);
 let CLIENT_META_MAP = {};
 function buildClientsArray(data) {
-  return data.filter(c => c.active !== false).map(c => ({ name: c.client_name, key: c.client_name, structure: c.structure||'general', platform: c.platform||c.source||'evident' }));
+  return data.filter(c => c.active !== false).map(c => ({ name: c.client_name, key: c.client_name, structure: c.structure||'general', platform: c.platform||c.source||'evident', producer_name: c.producer_name||'', contact_name: c.contact_name||'' }));
 }
 function isTLClient(keyOrClient) {
   const c = typeof keyOrClient === 'string' ? CLIENTS.find(x => x.key === keyOrClient) : keyOrClient;
@@ -1459,12 +1459,16 @@ function pickClient(key) {
   const sk = key.replace(/[^a-z0-9]/gi,'_'); const card = document.getElementById('cc-' + sk); if (card) card.classList.add('selected');
   updateCustomFieldsUI(); _selectedReports.clear();
   ['cs','cd','es','ed','yer','pro','tyc'].forEach(id => { const c = document.getElementById('rc-' + id); if (c) c.classList.remove('on'); });
-  ['yer-year','yer-producer','pro-producer','pro-month'].forEach(function(id){ var el=document.getElementById(id); if(el) el.value=''; });
+  // Clear additional report fields on client change
+  ['po-year','po-producer','tyc-contact','tyc-producer'].forEach(function(id){ var el=document.getElementById(id); if(el) el.value=''; });
+  // Auto-fill from client config
   const meta = CLIENT_META_MAP[key] || {};
-  const tycContact = document.getElementById('tyc-contact'); const tycProducer = document.getElementById('tyc-producer');
+  const tycContact  = document.getElementById('tyc-contact');
+  const tycProducer = document.getElementById('tyc-producer');
+  const poProducer  = document.getElementById('po-producer');
   if (tycContact)  tycContact.value  = meta.contact_name  || '';
   if (tycProducer) tycProducer.value = meta.producer_name || '';
-  const proProducerEl = document.getElementById('pro-producer'); if (proProducerEl && meta.producer_name) proProducerEl.value = meta.producer_name;
+  if (poProducer)  poProducer.value  = meta.producer_name || '';
   setTimeout(function() { goTo(2); }, 80);
   if (typeof mondayPopulateClients === 'function') mondayPopulateClients();
 }
@@ -1847,7 +1851,7 @@ async function generate(){
     if(E.ed){setProgress('Building Engagement Detail\u2026','Generating Excel workbook',1);const wb=await buildEngagementDetailXL(insureds,notifications,{engWindow,reportDate});downloads.push({label:'Engagement Detail',type:'excel',blob:await xlBlob(wb),filename:`${selectedClient.name} - Engagement Detail - ${new Date().toISOString().split('T')[0]}.xlsx`});}
     if(E.cs){setProgress('Building Compliance Summary\u2026','Generating PDF',1);downloads.push({label:'Compliance Summary',type:'pdf',html:buildComplianceSummaryHTML(insureds,coverages,criteria,{reportDate}),filename:`${selectedClient.name} - Compliance Summary - ${new Date().toISOString().split('T')[0]}.pdf`});}
     if(E.es){setProgress('Building Engagement Summary\u2026','Generating PDF',1);downloads.push({label:'Engagement Summary',type:'pdf',html:buildEngagementSummaryHTML(notifications,{reportDate,engWindow:esWindow}),filename:`${selectedClient.name} - Engagement Summary - ${new Date().toISOString().split('T')[0]}.pdf`});}
-    if(E.yer){setProgress('Building Program Overview\u2026','Fetching snapshot data',1);const yerYear=document.getElementById('po-year')?.value?.trim()||String(new Date().getFullYear());const yerProducer=document.getElementById('po-producer')?.value?.trim()||'';downloads.push({label:`Program Overview ${yerYear}`,type:'pdf',html:await buildProgramOverviewHTML(String(new Date().getFullYear()),document.getElementById('po-producer')?.value?.trim()||''),filename:`${selectedClient.name} - Program Overview ${yerYear} - ${new Date().toISOString().split('T')[0]}.pdf`});}
+    if(E.yer){const _poProducer=document.getElementById('po-producer')?.value?.trim()||'';if(!_poProducer){toast('Producer name is required for Program Overview \u2014 please enter it in the options.','error');}else{setProgress('Building Program Overview\u2026','Fetching snapshot data',1);const yerYear=document.getElementById('po-year')?.value?.trim()||String(new Date().getFullYear());downloads.push({label:`Program Overview ${yerYear}`,type:'pdf',html:await buildProgramOverviewHTML(yerYear,_poProducer),filename:`${selectedClient.name} - Program Overview ${yerYear} - ${new Date().toISOString().split('T')[0]}.pdf`});}}
     
     if(E.tyc){const tycContact=document.getElementById('tyc-contact')?.value?.trim()||'Valued Partner';const tycProducer=document.getElementById('tyc-producer')?.value?.trim()||'';setProgress('Building Thank You Card\u2026','Calculating compliance stats',1);const meta=CLIENT_META_MAP[selectedClient.key]||{};downloads.push({label:'Thank You Card',type:'pdf',html:buildThankYouCardHTML(insureds,meta,tycContact,tycProducer),filename:`${selectedClient.name} - Thank You Card - ${new Date().toISOString().split('T')[0]}.pdf`});}
     setProgress('Finalizing\u2026','Preparing your downloads',2);
@@ -2449,7 +2453,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.58
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.59
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -2481,7 +2485,7 @@ function mondayColId(key) {
 
 async function mondayGQL(query, variables={}) {
   const token = _mondayToken || localStorage.getItem('cs-monday-token') || '';
-  if (!token) throw new Error('No Monday API token. Go to Settings → Monday tab.');
+  if (!token) throw new Error('No Monday API token. Go to Settings → Monday.');
   let res;
   try {
     res = await fetch('https://api.monday.com/v2', {
