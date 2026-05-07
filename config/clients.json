@@ -24,7 +24,10 @@
       "go_live_date": "2025-10-01",
       "structure": "project",
       "source": "evident",
-      "active": true
+      "active": true,
+      "platform": "evident",
+      "producer_name": "Craig Tappel",
+      "contact_name": "Mano Kirshnan & Zobeida Perez"
     },
     {
       "client_name": "Block Real Estate Services, LLC",
