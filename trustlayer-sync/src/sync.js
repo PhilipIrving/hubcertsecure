@@ -2,28 +2,32 @@
 // TrustLayer v2 → CSV Sync Script
 // Full coverage of all useful GET endpoints per OpenAPI spec
 //
-// Endpoints used:
-//   GET /context-objects          → project type definitions (1 call)
-//   GET /context-records          → all projects with names/dates (1 call)
-//   GET /primary-objects          → vendor type definitions (1 call)
-//   GET /primary-records          → all vendors with contacts/address
-//   GET /primary-records/{id}/contacts → full contact list per vendor
-//   GET /request-records          → all compliance records with full modules
-//   GET /request-records/{id}/compliance-certificate → cert URL, flag, status
+// Endpoints used (v2 unless noted):
+//   GET /context-objects                        → project type definitions
+//   GET /context-records                        → all projects
+//   GET /primary-objects                        → vendor type definitions
+//   GET /primary-records                        → all vendors with contacts
+//   GET /primary-records/{id}/contacts          → fallback contacts
+//   GET /primary-records/{id}/attributes        → custom field values (v2)
+//   GET /primary-records/{id}/tags              → tag assignments (v2)
+//   GET /request-records                        → compliance records + modules
+//   GET /request-records/{id}/compliance-certificate
 //
-// Skipped (per spec analysis):
-//   /primary-records/{id}/attributes   → returns {value, optionIds} with no
-//   /request-records/{id}/attributes     label — not useful without definitions
-//   /policies/{number}               → requires policy number as input
-//   /views                           → UI saved filters, not data
+//   [v1] GET /custom-fields                     → custom field definitions
+//   [v1] GET /tags                              → tag definitions
+//   [v1] GET /document-types                    → document type definitions
+//   [v1] GET /documents?filter[party]={id}      → documents per vendor
 //
 // Output files (written to /data/):
-//   vendors.csv          — vendors with address, all contacts, computed attrs
-//   contacts.csv         — all contacts per vendor (one row per contact)
-//   context_records.csv  — all projects with type, status, dates
-//   request_records.csv  — vendor+project compliance with cert info
-//   coverage_subjects.csv — one row per coverage subject (expiry, validity)
-//   requirements.csv     — most granular: actual vs required per attribute
+//   vendors.csv           — vendor master
+//   contacts.csv          — contacts per vendor
+//   context_records.csv   — projects
+//   request_records.csv   — compliance status + cert info
+//   coverage_subjects.csv — per-subject coverage status + dates
+//   requirements.csv      — per-attribute actual vs required
+//   custom_properties.csv — custom field values (long format, matches Evident)
+//   tags.csv              — tag assignments per vendor
+//   documents.csv         — document metadata per vendor
 // ============================================================
 
 const https = require("https");
@@ -33,23 +37,24 @@ const path  = require("path");
 const CLIENTS = [
   { name: "Block Real Estate Services, LLC", token: process.env.TL_TOKEN_BLOCK_REAL_ESTATE },
   { name: "Construction Management Inc.",    token: process.env.TL_TOKEN_CMI },
-  { name: "QTS Data Centers",                token: process.env.TL_TOKEN_QTS },
+  { name: "QTS Data Centers",               token: process.env.TL_TOKEN_QTS },
 ];
 
-const BASE_URL = "https://api.trustlayer.io/v2";
+const BASE_V2  = "https://api.trustlayer.io/v2";
+const BASE_V1  = "https://api.trustlayer.io/v1";
 const DATA_DIR = path.join(__dirname, "..", "data");
 
 // ------------------------------------------------------------
 // HTTP HELPER
 // ------------------------------------------------------------
-function apiGet(token, endpoint, params = {}) {
+function apiGet(token, baseUrl, endpoint, params = {}) {
   return new Promise((resolve, reject) => {
     const qs = Object.keys(params).length
       ? "?" + Object.entries(params)
           .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
           .join("&")
       : "";
-    const url = `${BASE_URL}${endpoint}${qs}`;
+    const url = `${baseUrl}${endpoint}${qs}`;
 
     https.get(url, {
       headers: {
@@ -72,19 +77,41 @@ function apiGet(token, endpoint, params = {}) {
   });
 }
 
-// skip/limit pagination — meta.count = total
+// v2 pagination: meta.count = total items
 async function fetchAll(token, endpoint, extraParams = {}) {
   const results = [];
   const limit   = 100;
   let   skip    = 0;
   while (true) {
-    const res = await apiGet(token, endpoint, { ...extraParams, limit, skip });
+    const res = await apiGet(token, BASE_V2, endpoint, { ...extraParams, limit, skip });
     if (!res?.data) break;
     const items = Array.isArray(res.data) ? res.data : [res.data];
     results.push(...items);
     const total = res.meta?.count ?? items.length;
     if (results.length >= total || items.length === 0) break;
     skip += limit;
+    await new Promise(r => setTimeout(r, 150));
+  }
+  return results;
+}
+
+// v1 pagination: meta.totalCount, page[number] / page[size]
+async function fetchAllV1(token, endpoint, extraParams = {}) {
+  const results = [];
+  const size    = 100;
+  let   page    = 1;
+  while (true) {
+    const res = await apiGet(token, BASE_V1, endpoint, {
+      ...extraParams,
+      "page[number]": page,
+      "page[size]":   size,
+    });
+    if (!res?.data) break;
+    const items = Array.isArray(res.data) ? res.data : [res.data];
+    results.push(...items);
+    const total = res.meta?.totalCount ?? items.length;
+    if (results.length >= total || items.length === 0) break;
+    page++;
     await new Promise(r => setTimeout(r, 150));
   }
   return results;
@@ -126,13 +153,16 @@ function date(val) {
 async function main() {
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
 
-  const vendorRows       = [];
-  const contactRows      = [];
-  const contextRows      = [];
-  const requestRows      = [];
-  const subjectRows      = [];
-  const requirementRows  = [];
-  const errorLog         = [];
+  const vendorRows          = [];
+  const contactRows         = [];
+  const contextRows         = [];
+  const requestRows         = [];
+  const subjectRows         = [];
+  const requirementRows     = [];
+  const customPropertyRows  = [];
+  const tagRows             = [];
+  const documentRows        = [];
+  const errorLog            = [];
 
   for (const client of CLIENTS) {
     if (!client.token) {
@@ -142,7 +172,46 @@ async function main() {
 
     console.log(`\n📋 Processing: ${client.name}`);
 
-    // ── 1. Context Objects (project type definitions — 1 call) ──
+    // ── A. Custom field definitions (v1) ──────────────────────
+    let customFieldMap = {}; // id → { name, type }
+    try {
+      const fields = await fetchAllV1(client.token, "/custom-fields");
+      for (const f of fields) {
+        const id = f.id || f._id;
+        if (id) customFieldMap[id] = { name: f.name || f.label || id, type: f.type || "" };
+      }
+      console.log(`   Custom field definitions: ${fields.length}`);
+    } catch (err) {
+      console.warn(`   ⚠️  Custom fields: ${err.message}`);
+    }
+
+    // ── B. Tag definitions (v1) ────────────────────────────────
+    let tagMap = {}; // id → name
+    try {
+      const tags = await fetchAllV1(client.token, "/tags");
+      for (const t of tags) {
+        const id = t.id || t._id;
+        if (id) tagMap[id] = t.name || id;
+      }
+      console.log(`   Tag definitions: ${tags.length}`);
+    } catch (err) {
+      console.warn(`   ⚠️  Tags: ${err.message}`);
+    }
+
+    // ── C. Document type definitions (v1) ─────────────────────
+    let docTypeMap = {}; // id → name
+    try {
+      const docTypes = await fetchAllV1(client.token, "/document-types");
+      for (const dt of docTypes) {
+        const id = dt.id || dt._id;
+        if (id) docTypeMap[id] = dt.name || dt.label || id;
+      }
+      console.log(`   Document type definitions: ${docTypes.length}`);
+    } catch (err) {
+      console.warn(`   ⚠️  Document types: ${err.message}`);
+    }
+
+    // ── 1. Context Objects ─────────────────────────────────────
     let contextObjectMap = {};
     try {
       const objs = await fetchAll(client.token, "/context-objects", {
@@ -157,9 +226,7 @@ async function main() {
       console.warn(`   ⚠️  Context objects: ${err.message}`);
     }
 
-    // ── 2. Context Records (all projects — 1 call) ─────────────
-    // Fields: _id, contextObjectId, status, name, description,
-    //         startDate, endDate, externalCodes, archivedAt, createdAt, updatedAt
+    // ── 2. Context Records ─────────────────────────────────────
     let contextRecords = [];
     try {
       contextRecords = await fetchAll(client.token, "/context-records", {
@@ -171,30 +238,28 @@ async function main() {
       errorLog.push({ client: client.name, stage: "context_records", error: err.message });
     }
 
-    // Build contextId → name lookup for enriching request records
     const contextMap = {};
     for (const ctx of contextRecords) {
       const id = ctx._id || ctx.id;
       if (id) contextMap[id] = ctx.name || "";
-
       contextRows.push({
-        client:           client.name,
-        context_id:       id || "",
-        context_name:     ctx.name || "",
-        context_type:     contextObjectMap[ctx.contextObjectId] || ctx.contextObjectId || "",
-        status:           ctx.status || "",
-        description:      ctx.description || "",
-        start_date:       date(ctx.startDate),
-        end_date:         date(ctx.endDate),
-        archived_at:      date(ctx.archivedAt),
-        external_codes:   (ctx.externalCodes || []).join("; "),
-        created_at:       date(ctx.createdAt),
-        updated_at:       date(ctx.updatedAt),
-        sync_date:        new Date().toISOString().split("T")[0],
+        client:         client.name,
+        context_id:     id || "",
+        context_name:   ctx.name || "",
+        context_type:   contextObjectMap[ctx.contextObjectId] || ctx.contextObjectId || "",
+        status:         ctx.status || "",
+        description:    ctx.description || "",
+        start_date:     date(ctx.startDate),
+        end_date:       date(ctx.endDate),
+        archived_at:    date(ctx.archivedAt),
+        external_codes: (ctx.externalCodes || []).join("; "),
+        created_at:     date(ctx.createdAt),
+        updated_at:     date(ctx.updatedAt),
+        sync_date:      new Date().toISOString().split("T")[0],
       });
     }
 
-    // ── 3. Primary Objects (vendor type definitions — 1 call) ───
+    // ── 3. Primary Objects ─────────────────────────────────────
     let primaryObjectMap = {};
     try {
       const objs = await fetchAll(client.token, "/primary-objects", {
@@ -209,10 +274,7 @@ async function main() {
       console.warn(`   ⚠️  Primary objects: ${err.message}`);
     }
 
-    // ── 4. Primary Records (vendors) ────────────────────────────
-    // Fields: _id, primaryObjectId, typeId, status, name, address,
-    //         automationsEnabled, externalCodes, additionalNotes,
-    //         createdAt, updatedAt, website, computedAttributes, contacts
+    // ── 4. Primary Records (vendors) ──────────────────────────
     let vendors = [];
     try {
       vendors = await fetchAll(client.token, "/primary-records", {
@@ -227,12 +289,10 @@ async function main() {
 
     const vendorMap = {};
     for (const v of vendors) {
-      const id = v._id || v.id || "";
-      vendorMap[id] = v.name || "";
-
-      // All contacts embedded in the list response
+      const id       = v._id || v.id || "";
+      vendorMap[id]  = v.name || "";
       const contacts = v.contacts || [];
-      const primaryContact = contacts.find(c => c.primary) || contacts[0] || {};
+      const primary  = contacts.find(c => c.primary) || contacts[0] || {};
 
       vendorRows.push({
         client:               client.name,
@@ -240,8 +300,8 @@ async function main() {
         vendor_name:          v.name || "",
         vendor_type:          primaryObjectMap[v.primaryObjectId] || v.primaryObjectId || "",
         status:               v.status || "",
-        email:                primaryContact.email || "",
-        contact_name:         primaryContact.contactPersonName || "",
+        email:                primary.email || "",
+        contact_name:         primary.contactPersonName || "",
         all_emails:           contacts.map(c => c.email).filter(Boolean).join("; "),
         website:              v.website || "",
         additional_notes:     v.additionalNotes || "",
@@ -259,29 +319,25 @@ async function main() {
         sync_date:            new Date().toISOString().split("T")[0],
       });
 
-      // contacts.csv — one row per contact per vendor
       for (const c of contacts) {
         contactRows.push({
-          client:                    client.name,
-          vendor_id:                 id,
-          vendor_name:               v.name || "",
-          email:                     c.email || "",
-          contact_name:              c.contactPersonName || "",
-          is_primary:                c.primary ?? false,
+          client:                       client.name,
+          vendor_id:                    id,
+          vendor_name:                  v.name || "",
+          email:                        c.email || "",
+          contact_name:                 c.contactPersonName || "",
+          is_primary:                   c.primary ?? false,
           is_default_request_recipient: c.defaultRequestRecipient ?? false,
-          external_code:             c.externalCode || "",
-          sync_date:                 new Date().toISOString().split("T")[0],
+          external_code:                c.externalCode || "",
+          sync_date:                    new Date().toISOString().split("T")[0],
         });
       }
     }
 
-    // ── 5. Fetch full contacts per vendor if not in list response ─
-    // The list endpoint includes contacts[] already, but let's also
-    // fetch /primary-records/{id}/contacts for completeness in case
-    // the list truncates. We only do this for vendors with 0 contacts.
+    // ── 5. Fallback contacts for vendors with no embedded contacts
     const vendorsWithNoContacts = vendors.filter(v => !(v.contacts?.length));
     if (vendorsWithNoContacts.length > 0) {
-      console.log(`   Fetching contacts for ${vendorsWithNoContacts.length} vendors with no embedded contacts...`);
+      console.log(`   Fetching contacts for ${vendorsWithNoContacts.length} vendors...`);
       await pooled(vendorsWithNoContacts, 10, async (v) => {
         const id = v._id || v.id;
         try {
@@ -305,10 +361,98 @@ async function main() {
       });
     }
 
-    // ── 6. Request Records (all compliance data — 1 paginated call) ──
-    // Fields: _id, primaryRecordId, contextRecordId, name, status,
-    //         complianceTracking, complianceProfile, complianceStatus,
-    //         createdAt, updatedAt, complianceModules
+    // ── 6. Attributes (custom properties) per vendor ──────────
+    console.log(`   Fetching attributes (custom properties) for ${vendors.length} vendors...`);
+    await pooled(vendors, 8, async (v) => {
+      const vid = v._id || v.id;
+      try {
+        const attrs = await fetchAll(client.token, `/primary-records/${vid}/attributes`);
+        for (const a of attrs) {
+          const fieldId   = a.id || "";
+          const fieldDef  = customFieldMap[fieldId] || {};
+          const fieldName = fieldDef.name || fieldId;
+          const rawValue  = a.value !== undefined ? a.value
+            : (a.optionIds ? a.optionIds.join("; ") : "");
+          customPropertyRows.push({
+            client:        client.name,
+            insured_name:  v.name || "",
+            contact_email: (v.contacts?.find(c => c.primary) || v.contacts?.[0] || {}).email || "",
+            field_name:    fieldName,
+            field_value:   String(rawValue),
+            field_id:      fieldId,
+            sync_date:     new Date().toISOString().split("T")[0],
+          });
+        }
+      } catch (err) {
+        errorLog.push({ client: client.name, stage: "attributes", vendor: vid, error: err.message });
+      }
+    });
+
+    // ── 7. Tags per vendor ────────────────────────────────────
+    console.log(`   Fetching tags for ${vendors.length} vendors...`);
+    await pooled(vendors, 8, async (v) => {
+      const vid = v._id || v.id;
+      try {
+        const tags = await fetchAll(client.token, `/primary-records/${vid}/tags`);
+        for (const t of tags) {
+          const tagId   = t.id || "";
+          const tagName = tagMap[tagId] || tagId;
+          tagRows.push({
+            client:      client.name,
+            vendor_id:   vid,
+            vendor_name: v.name || "",
+            tag_id:      tagId,
+            tag_name:    tagName,
+            expires_at:  date(t.expiresAt),
+            sync_date:   new Date().toISOString().split("T")[0],
+          });
+        }
+      } catch (err) {
+        errorLog.push({ client: client.name, stage: "tags", vendor: vid, error: err.message });
+      }
+    });
+
+    // ── 8. Documents per vendor (v1 API) ─────────────────────
+    // v1 /documents uses the same underlying MongoDB IDs as v2 primary-records
+    console.log(`   Fetching documents for ${vendors.length} vendors...`);
+    await pooled(vendors, 5, async (v) => {
+      const vid = v._id || v.id;
+      try {
+        const docs = await fetchAllV1(client.token, "/documents", {
+          "filter[party]": vid,
+          "filter[archived]": false,
+        });
+        for (const d of docs) {
+          const docId   = d.id || d._id || "";
+          const types   = (d.types || []).map(t => docTypeMap[t.id] || t.id).join("; ");
+          const flagged = !!(d.flag?.addedOn);
+          documentRows.push({
+            client:           client.name,
+            vendor_id:        vid,
+            vendor_name:      v.name || "",
+            document_id:      docId,
+            document_name:    d.name || "",
+            document_types:   types,
+            status:           d.status || "",
+            reviewed_at:      date(d.reviewedAt),
+            archived_at:      date(d.archivedAt),
+            expiration_date:  date(d.expirationDate),
+            issue_date:       date(d.issueDate),
+            flagged:          flagged,
+            flag_level:       d.flag?.severityLevel || "",
+            flag_notes:       d.flag?.notes || "",
+            applies_to_all:   d.appliesToAllProjects ?? "",
+            insurer_names:    (d.insurers || []).map(i => i.canonicalName || i.extractedName || "").filter(Boolean).join("; "),
+            created_at:       date(d.createdAt),
+            sync_date:        new Date().toISOString().split("T")[0],
+          });
+        }
+      } catch (err) {
+        errorLog.push({ client: client.name, stage: "documents", vendor: vid, error: err.message });
+      }
+    });
+
+    // ── 9. Request Records ────────────────────────────────────
     let requestRecords = [];
     try {
       requestRecords = await fetchAll(client.token, "/request-records", {
@@ -321,58 +465,53 @@ async function main() {
       continue;
     }
 
-    // ── 7. Compliance certificates per request record ────────────
-    // GET /request-records/{id}/compliance-certificate
-    // Returns: name, url, flag {level, subjects, notes}, status,
-    //          expirationDate, issueDate, reviewedAt, appliesToAllProjects
+    // ── 10. Compliance certificates ───────────────────────────
     console.log(`   Fetching compliance certificates...`);
     const certMap = {};
     await pooled(requestRecords, 10, async (req) => {
       const reqId = req._id || req.id;
       try {
-        const cert = await apiGet(client.token, `/request-records/${reqId}/compliance-certificate`);
+        const cert = await apiGet(client.token, BASE_V2, `/request-records/${reqId}/compliance-certificate`);
         if (cert) certMap[reqId] = cert;
       } catch (err) {
-        // 404 is normal — many request records have no cert yet
+        // 404 is normal — many request records have no cert
       }
     });
     console.log(`   Compliance certificates found: ${Object.keys(certMap).length}`);
 
-    // ── 8. Build output rows ─────────────────────────────────────
+    // ── 11. Build request/subject/requirement rows ─────────────
     for (const req of requestRecords) {
-      const reqId      = req._id || req.id || "";
-      const vendorId   = req.primaryRecordId || "";
-      const vendorName = vendorMap[vendorId] || req.name || "";
-      const contextId  = req.contextRecordId || "";
+      const reqId       = req._id || req.id || "";
+      const vendorId    = req.primaryRecordId || "";
+      const vendorName  = vendorMap[vendorId] || req.name || "";
+      const contextId   = req.contextRecordId || "";
       const contextName = contextMap[contextId] || "";
       const cert        = certMap[reqId] || {};
 
       requestRows.push({
-        client:               client.name,
-        request_id:           reqId,
-        vendor_id:            vendorId,
-        vendor_name:          vendorName,
-        context_id:           contextId,
-        context_name:         contextName,
-        request_name:         req.name || "",
-        status:               req.status || "",
-        compliance_status:    req.complianceStatus || "",
-        compliance_profile:   req.complianceProfile?.name || "",
-        compliance_tracking:  req.complianceTracking ?? "",
-        // Certificate fields
-        cert_status:          cert.status || "",
-        cert_expiration:      date(cert.expirationDate),
-        cert_issue_date:      date(cert.issueDate),
-        cert_reviewed_at:     date(cert.reviewedAt),
-        cert_url:             cert.url || "",
-        cert_flag_level:      cert.flag?.level || "",
-        cert_flag_notes:      cert.flag?.notes || "",
-        applies_to_all:       cert.appliesToAllProjects ?? "",
-        updated_at:           date(req.updatedAt),
-        sync_date:            new Date().toISOString().split("T")[0],
+        client:              client.name,
+        request_id:          reqId,
+        vendor_id:           vendorId,
+        vendor_name:         vendorName,
+        context_id:          contextId,
+        context_name:        contextName,
+        request_name:        req.name || "",
+        status:              req.status || "",
+        compliance_status:   req.complianceStatus || "",
+        compliance_profile:  req.complianceProfile?.name || "",
+        compliance_tracking: req.complianceTracking ?? "",
+        cert_status:         cert.status || "",
+        cert_expiration:     date(cert.expirationDate),
+        cert_issue_date:     date(cert.issueDate),
+        cert_reviewed_at:    date(cert.reviewedAt),
+        cert_url:            cert.url || "",
+        cert_flag_level:     cert.flag?.level || "",
+        cert_flag_notes:     cert.flag?.notes || "",
+        applies_to_all:      cert.appliesToAllProjects ?? "",
+        updated_at:          date(req.updatedAt),
+        sync_date:           new Date().toISOString().split("T")[0],
       });
 
-      // Flatten complianceModules → subjects → requirements
       for (const mod of (req.complianceModules || [])) {
         for (const subj of (mod.subjects || [])) {
           subjectRows.push({
@@ -440,6 +579,9 @@ async function main() {
   fs.writeFileSync(path.join(DATA_DIR, "request_records.csv"),   toCsv(requestRows));
   fs.writeFileSync(path.join(DATA_DIR, "coverage_subjects.csv"), toCsv(subjectRows));
   fs.writeFileSync(path.join(DATA_DIR, "requirements.csv"),      toCsv(requirementRows));
+  fs.writeFileSync(path.join(DATA_DIR, "custom_properties.csv"), toCsv(customPropertyRows));
+  fs.writeFileSync(path.join(DATA_DIR, "tags.csv"),              toCsv(tagRows));
+  fs.writeFileSync(path.join(DATA_DIR, "documents.csv"),         toCsv(documentRows));
 
   console.log(`\n✅ vendors.csv           — ${vendorRows.length} rows`);
   console.log(`✅ contacts.csv          — ${contactRows.length} rows`);
@@ -447,6 +589,9 @@ async function main() {
   console.log(`✅ request_records.csv   — ${requestRows.length} rows`);
   console.log(`✅ coverage_subjects.csv — ${subjectRows.length} rows`);
   console.log(`✅ requirements.csv      — ${requirementRows.length} rows`);
+  console.log(`✅ custom_properties.csv — ${customPropertyRows.length} rows`);
+  console.log(`✅ tags.csv              — ${tagRows.length} rows`);
+  console.log(`✅ documents.csv         — ${documentRows.length} rows`);
 
   if (errorLog.length > 0) {
     const summary = {};
