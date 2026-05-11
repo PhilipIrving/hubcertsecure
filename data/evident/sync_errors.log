@@ -1,14 +1,8 @@
 [
   {
-    "client": "Canadian Pacific Kansas City",
+    "client": "Action Plumbing Construction",
     "stage": "criteria",
-    "insured": "6f7035d5-b736-4220-945b-362db71d0ff3",
-    "error": "HTTP 502 on /insurance/insureds/6f7035d5-b736-4220-945b-362db71d0ff3/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "6fdbef48-932a-41f3-ba43-aa7a93a9fa83",
-    "error": "HTTP 502 on /insurance/insureds/6fdbef48-932a-41f3-ba43-aa7a93a9fa83/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    "insured": "0494d3c3-b756-43ca-bc83-9cd4bf6478f5",
+    "error": "HTTP 401 on /insurance/insureds/0494d3c3-b756-43ca-bc83-9cd4bf6478f5/status: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
   }
 ]
