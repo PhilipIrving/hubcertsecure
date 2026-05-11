@@ -66,7 +66,7 @@
     .header-logo{height:34px;object-fit:contain}.header-logo-fallback{display:none;font-size:18px;font-weight:700;color:white;letter-spacing:-0.5px}.header-logo-fallback span{background:var(--blue);padding:2px 7px;border-radius:4px;margin-left:1px}
     .header-right{display:flex;align-items:center;gap:10px}
     .btn-ghost{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:7px 14px;border-radius:7px;cursor:pointer;font-family:var(--font);font-size:13px;font-weight:500;display:flex;align-items:center;gap:6px;transition:background 0.15s}.btn-ghost:hover{background:rgba(255,255,255,0.2)}.btn-ghost:disabled{opacity:0.5;cursor:not-allowed}
-    .main{max-width:1100px;margin:0 auto;padding:20px 24px 40px;display:flex;flex-direction:column;box-sizing:border-box}
+    .main{width:100%;max-width:1400px;margin:0 auto;padding:20px 24px 40px;display:flex;flex-direction:column;box-sizing:border-box}
     .step-panel{display:flex;flex-direction:column;transition:opacity 0.3s ease}.step-panel.fading{animation:stepFade 0.35s cubic-bezier(0.16,1,0.3,1) both}@keyframes stepFade{from{opacity:0;transform:translateY(14px) scale(0.99)}to{opacity:1;transform:translateY(0) scale(1)}}
     .tab-bar{display:flex;gap:2px;border-bottom:2px solid var(--border);margin-bottom:22px;flex-shrink:0}
     .tab-btn{background:none;border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--muted);padding:10px 18px 11px;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color 0.15s,border-color 0.15s}.tab-btn:hover{color:var(--navy)}.tab-btn.active{color:var(--blue);border-bottom-color:var(--blue)}
@@ -77,7 +77,7 @@
     .page-title{font-size:22px;font-weight:700;color:var(--navy)}.page-sub{font-size:13px;color:var(--muted);margin-top:4px}.page-hdr{margin-bottom:14px;flex-shrink:0}
     .card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}.card-title{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:16px}
     .struct-label{font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin:20px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--border)}.struct-label:first-child{margin-top:0}
-    .client-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:9px}
+    .client-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
     .client-card{border:2px solid var(--border);border-radius:8px;padding:13px 15px;cursor:pointer;transition:all 0.15s;background:var(--white);user-select:none}.client-card:hover{border-color:var(--blue);background:var(--blue-light)}
     .platform-badge{display:inline-block;font-size:8px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:1px 5px;border-radius:4px;margin-left:4px;vertical-align:middle}.platform-badge.evident{background:#E8ECF5;color:#3872B8}.platform-badge.tl{background:#FFF3E0;color:#E65100}
     .client-card.selected{border-color:var(--blue);background:var(--blue-light);box-shadow:0 0 0 3px rgba(56,114,184,0.15)}
@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.67
+       SIDEBAR LAYOUT  v0.68
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:var(--navy);display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -157,7 +157,7 @@
     .sb-user-role{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:10px;display:inline-block}
     .content-wrap{flex:1;min-width:0;display:flex;flex-direction:column;overflow-x:hidden}
     /* Thin top bar replaces the full header */
-    .header{height:48px!important;padding:0 20px!important;background:var(--blue)!important;border-bottom:none!important}
+    .header{height:48px!important;padding:0 20px!important;background:var(--blue)!important;border-bottom:none!important;justify-content:flex-end!important}
     .header-logo,.header-logo-fallback{display:none!important}
     .btn-ghost{color:rgba(255,255,255,.85)!important}
     .btn-ghost:hover{background:rgba(255,255,255,.12)!important;color:white!important}
@@ -172,27 +172,17 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.67 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.68 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
-    body,html{background:#054ea3!important}
-    .content-wrap{background:#054ea3}
+    body,html{background:var(--bg)!important}
+    .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* Titles on blue bg */
-    .content-wrap .page-title{color:white!important}
-    .content-wrap .page-sub{color:rgba(255,255,255,.72)!important}
-    .content-wrap .struct-label{color:rgba(255,255,255,.6)!important;border-bottom-color:rgba(255,255,255,.15)!important}
-    .content-wrap .action-bar{background:transparent!important;border-top:1px solid rgba(255,255,255,.15)!important}
-    .content-wrap .card{box-shadow:0 4px 20px rgba(0,0,0,.18)!important}
-    /* Secondary button on blue */
-    .content-wrap .btn-secondary{background:rgba(255,255,255,.95)!important;border-color:transparent!important}
-    .content-wrap .btn-secondary:hover{background:white!important}
-    /* Pat warning on blue */
-    .content-wrap #pat-warning{background:rgba(255,255,255,.12)!important;border-color:rgba(255,255,255,.3)!important;color:rgba(255,255,255,.9)!important}
+    /* bg overrides removed v0.68 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:12px 24px 0;font-size:12px;font-weight:600;flex-shrink:0}
-    .bc-section{color:rgba(255,255,255,.6)}
-    .bc-sep{color:rgba(255,255,255,.35);font-size:11px}
-    .bc-page{color:rgba(255,255,255,.92)}
+    .bc-section{color:var(--muted)}
+    .bc-sep{color:var(--border);font-size:11px}
+    .bc-page{color:var(--navy)}
     /* Sidebar accordion: parent section items */
     .sb-section{display:flex;align-items:center;gap:9px;width:100%;padding:10px 12px;font-size:13px;font-weight:700;color:rgba(255,255,255,.55);background:none;border:none;border-radius:7px;cursor:pointer;font-family:inherit;text-align:left;transition:background .15s,color .15s;margin:1px 0;letter-spacing:.01em}
     .sb-section:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.85)}
@@ -222,7 +212,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.67</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.68</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -434,6 +424,10 @@
         <button class="sb-item" id="snav-config" onclick="sidebarNav('config')">
           <span class="sb-ic">&#128101;</span> Client Configuration
         </button>
+        <div style="padding:4px 8px 6px;display:flex;gap:5px">
+          <button class="sb-item" id="refresh-btn" onclick="triggerRefresh()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center">&#8635; Refresh</button>
+          <button class="sb-item" id="rg-diag-btn" onclick="runDataDiagnostic()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" title="Check Data">&#128269; Check</button>
+        </div>
       </div>
       <!-- ── Monday.com Section ── -->
       <button class="sb-section" id="sb-sec-monday" onclick="toggleSection('monday')">
@@ -489,14 +483,12 @@
       <span>&#9888;</span>
       <span><strong>No Access Token configured.</strong> Data cannot load without a GitHub PAT. <button onclick="openSettings()" style="background:none;border:none;color:var(--blue);cursor:pointer;font-weight:600;font-size:13px;padding:0;text-decoration:underline">Open Settings</button> to add one.</span>
     </div>
-    <div class="page-hdr" style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px">
+    <div class="page-hdr" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
       <div><div class="page-title">Report Generator</div><div class="page-sub">Select a client to get started</div></div>
-      <div style="display:flex;gap:8px;justify-self:center">
-        <button class="btn btn-secondary" id="refresh-btn" onclick="triggerRefresh()" style="white-space:nowrap">&#8635; Refresh Data</button>
-        <button class="btn btn-secondary" id="rg-diag-btn" onclick="runDataDiagnostic()" style="white-space:nowrap" title="Diagnose data">🔍 Check Data</button>
+      <div style="display:flex;gap:8px">
         <button class="btn btn-secondary" id="rg-monday-btn" onclick="reportGeneratorSyncMonday()" style="white-space:nowrap;display:none">&#8679; Monday</button>
+        <button class="btn btn-secondary" onclick="openHubWide()" style="gap:6px;white-space:nowrap">&#127962; HUB-Wide Annual</button>
       </div>
-      <div style="display:flex;justify-content:flex-end"><button class="btn btn-secondary" onclick="openHubWide()" style="gap:6px;white-space:nowrap">&#127962; HUB-Wide Annual</button></div>
     </div>
     <div class="card">
       <div class="struct-label">General &#8212; Shown by Entity Type</div><div class="client-grid" id="grid-general"></div>
@@ -553,8 +545,8 @@
       <button class="btn btn-secondary" style="margin-left:12px;font-size:12px;padding:5px 12px;border-radius:12px" onclick="openSettings();setTimeout(()=>switchSettingsTab('monday-cfg'),60)">Configure</button>
     </div>
 
-    <!-- SUB-TABS -->
-    <div style="display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:24px">
+    <!-- SUB-TABS hidden — navigation via sidebar -->
+    <div style="display:none">
       <button class="tab-btn" id="mtab-btn-clients" onclick="switchMondayTab('clients')">&#128101; Client Panel</button>
       <button class="tab-btn active" id="mtab-btn-setup" onclick="switchMondayTab('setup')">&#127959; Workspace Setup</button>
       <button class="tab-btn" id="mtab-btn-configure" onclick="switchMondayTab('configure')">&#9881;&#65039; Configure</button>
@@ -779,7 +771,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.67</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.68</div>
 
 <script>
 
@@ -1501,7 +1493,7 @@ async function triggerRefresh() {
       toast('Sync failed. Check your Access Token in Settings.', 'error');
     }
   } catch(e) { toast('Network error — could not trigger sync', 'error'); }
-  finally { btn.textContent = '↻ Refresh Data'; btn.disabled = false; }
+  finally { btn.textContent = '↻ Refresh'; btn.disabled = false; }
 }
 
 
@@ -1598,7 +1590,7 @@ async function runDataDiagnostic() {
     lines.push('\u2717 Error: ' + e.message);
   }
   alert('Data Diagnostic\n\n' + lines.join('\n'));
-  btn.disabled = false; btn.textContent = '\U0001f50d Check Data';
+  btn.disabled = false; btn.textContent = '&#128269; Check';
 }
 </script>
 <script>
@@ -2852,7 +2844,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.67
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.68
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
