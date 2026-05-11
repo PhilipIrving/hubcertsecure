@@ -5,7 +5,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HUB CertSecure</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+// ── NC REASON MAPPING ──
+function mapNCReason(reason) {
+  if (!reason) return reason;
+  const r = reason;
+  // No Coverage on File
+  if (/evidence of this (requirement|coverage) must be included/i.test(r) ||
+      /insurance is required for .+?\. please upload/i.test(r)) return 'NO COVERAGE ON FILE';
+  // Policy Expired
+  if (/auto insurance policy has expired/i.test(r)) return 'AUTO EXPIRED';
+  if (/aviation liability policy has expired/i.test(r)) return 'AVIATION EXPIRED';
+  if (/cargo liability policy has expired/i.test(r)) return 'CARGO EXPIRED';
+  if (/commercial auto liability policy has expired/i.test(r)) return 'COMMERCIAL AUTO EXPIRED';
+  if (/commercial general liability policy has expired/i.test(r)) return 'CGL EXPIRED';
+  if (/commercial property policy has expired/i.test(r)) return 'PROPERTY EXPIRED';
+  if (/commercial umbrella & excess policy has expired/i.test(r)) return 'UMBRELLA EXPIRED';
+  if (/farmowners policy has expired/i.test(r)) return 'FARMOWNERS EXPIRED';
+  if (/homeowners policy has expired/i.test(r)) return 'HOMEOWNERS EXPIRED';
+  if (/professional liability policy has expired/i.test(r)) return 'PROF LIABILITY EXPIRED';
+  if (/workers compensation policy has expired/i.test(r)) return 'WORKERS COMP EXPIRED';
+  // Certificate Holder
+  if (/certificate holder address for this policy must be/i.test(r)) return 'CERTIFICATE HOLDER ADDRESS MISMATCH';
+  if (/must be named as certificate holder/i.test(r)) return 'CERTIFICATE HOLDER NAME MISMATCH';
+  // Additional Insured
+  if (/additional insured in your policy must list the name/i.test(r)) return 'ADDITIONAL INSURED MISMATCH';
+  if (/policy must include an additional insured endorsement/i.test(r)) return 'AI ENDORSEMENT MISMATCH';
+  if (/CG 2037/i.test(r)) return 'CG 2037 FORM MISMATCH';
+  if (/CG 2010/i.test(r)) return 'CG 2010 FORM MISMATCH';
+  // Waiver of Subrogation
+  if (/policy must include a waiver of subrogation endorsement/i.test(r)) return 'WAIVER ENDORSEMENT MISMATCH';
+  if (/waiver of subrogation.*is required|policy must include a waiver of subrogation/i.test(r)) return 'WAIVER OF SUBROGATION MISMATCH';
+  // General Aggregate Limit
+  if (/general aggregate limit must apply per location/i.test(r)) return 'AGGREGATE NOT PER LOCATION';
+  if (/general aggregate limit must apply per project/i.test(r)) return 'AGGREGATE NOT PER PROJECT';
+  if (/general aggregate limit must be greater than or equal to/i.test(r)) return 'GENERAL AGGREGATE LIMIT INSUFFICIENT';
+  // Per Occurrence / Combined Single Limit
+  if (/combined single limit per occurrence/i.test(r)) return 'PER OCCURRENCE LIMIT INSUFFICIENT';
+  if (/per occurrence limit must be (greater than or equal to|equal or greater than)/i.test(r)) return 'PER OCCURRENCE LIMIT INSUFFICIENT';
+  // Umbrella Aggregate
+  if (/aggregate limit must be greater than or equal to/i.test(r)) return 'UMBRELLA AGGREGATE LIMIT INSUFFICIENT';
+  // Other Limits
+  if (/personal\/advertising injury per occurrence limit/i.test(r)) return 'PERSONAL/ADV INJURY LIMIT INSUFFICIENT';
+  if (/products completed operations aggregate limit/i.test(r)) return 'PRODUCTS/COMPLETED OPS LIMIT INSUFFICIENT';
+  if (/each accident limit must be greater than or equal to/i.test(r)) return 'EACH ACCIDENT LIMIT INSUFFICIENT';
+  if (/disease each employee limit/i.test(r)) return 'DISEASE PER EMPLOYEE LIMIT INSUFFICIENT';
+  if (/disease policy limit/i.test(r)) return 'DISEASE POLICY LIMIT INSUFFICIENT';
+  if (/limits for workers compensation.*must shown as per statute/i.test(r)) return 'WC STATUTORY LIMITS MISMATCH';
+  if (/liquor aggregate limit/i.test(r)) return 'LIQUOR AGGREGATE LIMIT INSUFFICIENT';
+  if (/liquor per occurrence limit/i.test(r)) return 'LIQUOR PER OCCURRENCE LIMIT INSUFFICIENT';
+  if (/personal liability must be greater than or equal to/i.test(r)) return 'PERSONAL LIABILITY LIMIT INSUFFICIENT';
+  // COI Deficiencies
+  if (/must include the policy number/i.test(r)) return 'NO POLICY NUMBER';
+  if (/must show the date when coverage begins/i.test(r)) return 'NO EFFECTIVE DATE';
+  if (/must show the date when it was issued/i.test(r)) return 'NO ISSUE DATE';
+  if (/ACORD forms must be signed/i.test(r)) return 'NO SIGNATURE';
+  // Cancellation Notice
+  if (/notified at least 30 days prior to cancellation/i.test(r)) return '30-DAY NOTICE MISMATCH';
+  if (/10 days following nonpayment/i.test(r)) return '10-DAY NONPAYMENT NOTICE MISMATCH';
+  // Primary & Noncontributory
+  if (/primary and noncontributory endorsement/i.test(r)) return 'P&NC ENDORSEMENT MISMATCH';
+  if (/primary and noncontributory language must apply/i.test(r)) return 'PRIMARY & NONCONTRIBUTORY MISMATCH';
+  // Name / Coverage Mismatches
+  if (/name of the insured provided in your policy does not match/i.test(r)) return 'INSURED NAME MISMATCH';
+  if (/auto liability policy must provide coverage for hired autos/i.test(r)) return 'COVERED AUTOS MISMATCH';
+  if (/must be on a follow form basis/i.test(r)) return 'FOLLOW FORM MISMATCH';
+  if (/commercial umbrella.*must include the following policies as following form/i.test(r)) return 'POLICIES FOLLOWING FORM MISMATCH';
+  // Coverage Requirements
+  if (/commercial general liability policy must apply per project/i.test(r)) return 'CGL PER PROJECT MISMATCH';
+  if (/broad form contractual liability/i.test(r)) return 'BROAD FORM CONTRACTUAL MISMATCH';
+  if (/within 50 feet of a railroad track/i.test(r)) return 'RAILROAD TRACK COVERAGE MISMATCH';
+  if (/coverage limits must apply on a\(n\) occurrence basis/i.test(r)) return 'OCCURRENCE BASIS MISMATCH';
+  if (/project requirement\(s\) listed in this policy must include/i.test(r)) return 'PROJECT REFERENCE MISMATCH';
+  if (/valuation of your commercial property policy must be replacement cost/i.test(r)) return 'REPLACEMENT COST MISMATCH';
+  if (/policy.*currency must be in us dollar/i.test(r)) return 'USD CURRENCY MISMATCH';
+  // AM Best
+  if (/AM Best rating must be greater than or equal to/i.test(r)) return 'AM BEST RATING INSUFFICIENT';
+  if (/AM Best financial size category/i.test(r)) return 'AM BEST SIZE INSUFFICIENT';
+  // Loss Payee / Declined
+  if (/must be named as loss payee/i.test(r)) return 'LOSS PAYEE MISMATCH';
+  if (/you indicated you did not have this coverage/i.test(r)) return 'COVERAGE DECLINED';
+  if (/you requested an exception or waiver/i.test(r)) return 'EXCEPTION REQUESTED';
+  return reason;
+}
+
+</script>
   <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
   <script>if(typeof ExcelJS==='undefined'){document.write('<scr'+'ipt src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"><\/scr'+'ipt>');}</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
@@ -420,7 +504,6 @@
       <button class="tab-btn" id="mtab-btn-clients" onclick="switchMondayTab('clients')">&#128101; Client Panel</button>
       <button class="tab-btn active" id="mtab-btn-setup" onclick="switchMondayTab('setup')">&#127959; Workspace Setup</button>
       <button class="tab-btn" id="mtab-btn-configure" onclick="switchMondayTab('configure')">&#9881;&#65039; Configure</button>
-      <button class="tab-btn" id="mtab-btn-activity" onclick="switchMondayTab('activity')">&#128203; Activity</button>
     </div>
 
     <!-- ══ WORKSPACE SETUP ══ -->
@@ -592,15 +675,7 @@
     </div>
 
     <!-- ══ ACTIVITY LOG ══ -->
-    <div id="mtab-activity" style="display:none">
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
-          <div><div class="card-title" style="margin-bottom:3px">Activity Log</div><div style="font-size:13px;color:var(--muted)">Report syncs and workspace build events this session</div></div>
-          <button class="btn btn-secondary" style="font-size:12px;padding:6px 14px" onclick="mondayClearAllLogs()">Clear</button>
-        </div>
-        <div id="monday-activity-combined"><div style="font-size:13px;color:var(--muted);text-align:center;padding:24px">No activity this session.</div></div>
-      </div>
-    </div>
+
 
     <!-- ══ CLIENT PANEL ══ -->
     <div id="mtab-clients" style="display:none">
@@ -1764,10 +1839,10 @@ async function triggerHubWide() {
     const improved = clientStats.filter(c => c.improvement !== null && c.improvement > 0).sort((a,b) => b.improvement - a.improvement).slice(0, 5);
     const ncMapAll = {};
     const critSource = snapshotsHaveData ? (lastSnap ? lastSnap.crit : []) : combinedCritLive;
-    if (critSource.length) { critSource.filter(r => normStatus(r[C.overall_comp]) === 'non_compliant').forEach(r => { (r[C.nc_reasons]||'').split(' | ').forEach(p => { const ci = p.indexOf(':'); if (ci < 0) return; const reason = p.slice(ci+1).trim(); if (!reason) return; ncMapAll[reason] = (ncMapAll[reason]||0) + 1; }); }); }
+    if (critSource.length) { critSource.filter(r => normStatus(r[C.overall_comp]) === 'non_compliant').forEach(r => { (r[C.nc_reasons]||'').split(' | ').forEach(p => { const ci = p.indexOf(':'); if (ci < 0) return; const reason = mapNCReason(p.slice(ci+1).trim()); if (!reason) return; ncMapAll[reason] = (ncMapAll[reason]||0) + 1; }); }); }
     const topNCAll = Object.entries(ncMapAll).sort((a,b)=>b[1]-a[1]).slice(0,6);
     const ncByCovType = {};
-    if (critSource.length) { critSource.filter(r => normStatus(r[C.overall_comp]) === 'non_compliant').forEach(r => { (r[C.nc_reasons]||'').split(' | ').forEach(p => { const ci = p.indexOf(':'); if (ci < 0) return; const covType = fmtCoverage(p.slice(0, ci).trim()); if (!covType) return; if (!ncByCovType[covType]) ncByCovType[covType] = { count: 0, reasons: {} }; ncByCovType[covType].count++; const reason = p.slice(ci+1).trim(); if (reason) ncByCovType[covType].reasons[reason] = (ncByCovType[covType].reasons[reason]||0)+1; }); }); }
+    if (critSource.length) { critSource.filter(r => normStatus(r[C.overall_comp]) === 'non_compliant').forEach(r => { (r[C.nc_reasons]||'').split(' | ').forEach(p => { const ci = p.indexOf(':'); if (ci < 0) return; const covType = fmtCoverage(p.slice(0, ci).trim()); if (!covType) return; if (!ncByCovType[covType]) ncByCovType[covType] = { count: 0, reasons: {} }; ncByCovType[covType].count++; const reason = mapNCReason(p.slice(ci+1).trim()); if (reason) ncByCovType[covType].reasons[reason] = (ncByCovType[covType].reasons[reason]||0)+1; }); }); }
     const ncByCovSorted = Object.entries(ncByCovType).sort((a,b) => b[1].count - a[1].count).slice(0,8).map(([type, d]) => ({ type, count: d.count, topReason: Object.entries(d.reasons).sort((a,b)=>b[1]-a[1])[0]?.[0] || '' }));
     btn.textContent = 'Building report\u2026';
     const htmlOut = buildHubWideHTML(year, { firstMonth, lastMonth, months, clientStats, monthlyTrend, totalActive, totalComp, totalNC, overallRate, firstRate, rateChange, sentSet, openSet, issueSet, engRate, improved, topNCAll, ncByCovSorted });
@@ -1913,7 +1988,7 @@ ${topNCAll.length ? `
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px">
     ${topNCAll.map(([reason,n],i)=>`<div class="prog-row">
       <div style="font-size:10px;font-weight:700;color:#B91C1C;width:18px">#${i+1}</div>
-      <div style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#5A6B7B">${esc(reason.length>55?reason.slice(0,55)+'\u2026':reason)}</div>
+      <div style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#5A6B7B">${esc(mapNCReason(reason))}</div>
       <div class="prog-bar-wrap"><div style="height:100%;background:#C0392B;border-radius:3px;width:${barPct(n,topNCAll[0][1])}%"></div></div>
       <div style="font-weight:700;color:#C0392B;width:24px;text-align:right">${n}</div>
     </div>`).join('')}
@@ -2181,7 +2256,7 @@ async function buildComplianceDetailXL(insureds,coverages,criteria,{statusFilter
     const cvMap={};
     criteria.filter(r=>normStatus(r[C.overall_comp])==='non_compliant').forEach(r=>{(r[C.nc_reasons]||'').split(' | ').forEach(p=>{const m=p.trim().match(/^([A-Z_]+):/);if(m){const t=fmtCoverage(m[1]);cvMap[t]=(cvMap[t]||0)+1;}});});
     const leftRows=Object.entries(cvMap).sort((a,b)=>b[1]-a[1]);
-    const criMap={};criteria.forEach(r=>{(r[C.nc_reasons]||'').split(' | ').forEach(p=>{const ci=p.indexOf(':');if(ci<0)return;const ct=fmtCoverage(p.slice(0,ci).trim()),reason=p.slice(ci+1).trim();if(!reason)return;const k=`${reason}||${ct}`;criMap[k]=(criMap[k]||0)+1;});});
+    const criMap={};criteria.forEach(r=>{(r[C.nc_reasons]||'').split(' | ').forEach(p=>{const ci=p.indexOf(':');if(ci<0)return;const ct=fmtCoverage(p.slice(0,ci).trim()),reason=p.slice(ci+1).trim();if(!reason)return;const k=`${mapNCReason(reason)}||${ct}`;criMap[k]=(criMap[k]||0)+1;});});
     const critTotal=Object.values(criMap).reduce((a,b)=>a+b,0)||1;const rightRows=Object.entries(criMap).sort((a,b)=>b[1]-a[1]);const maxR=Math.max(leftRows.length,rightRows.length);
     for(let ri=0;ri<maxR;ri++){
       const alt=ri%2===0,[lct,ln]=leftRows[ri]||['',''],[ k,rn]=rightRows[ri]||['',''];const[reason,rct]=k?k.split('||'):['',''];
@@ -2199,7 +2274,7 @@ async function buildComplianceDetailXL(insureds,coverages,criteria,{statusFilter
     criteria.filter(r=>normStatus(r[C.overall_comp])==='non_compliant'&&r[C.nc_reasons]).forEach(r=>{
       const ins=insuredById[r['insured_id']]||{};
       (r[C.nc_reasons]||'').split(' | ').map(s=>s.trim()).filter(Boolean).forEach(part=>{
-        const ci=part.indexOf(':'),ct=ci>0?fmtCoverage(part.slice(0,ci).trim()):'',reason=ci>0?part.slice(ci+1).trim():part;
+        const ci=part.indexOf(':'),ct=ci>0?fmtCoverage(part.slice(0,ci).trim()):'',reason=mapNCReason(ci>0?part.slice(ci+1).trim():part);
         const obj={'Insured Name':r[C.crit_name]||'',...(groupLabel?{[groupLabel]:ins[groupField]||''}:{}),'Coverage Type':ct,'Non-Compliance Reason':reason};
         cfFields.filter(f=>!grpSkip3.has(f.key)).forEach(f=>{obj[f.label]=ins._custom?.[f.key]||'';});ncRows.push(obj);
       });
@@ -2316,7 +2391,7 @@ function buildComplianceSummaryHTML(insureds,coverages,criteria,{reportDate}){
   const expTotal=Object.keys(expMap).length;
 
   // NC reasons
-  const ncMap={};criteria.filter(r=>normStatus(r[C.overall_comp])==='non_compliant').forEach(r=>{(r[C.nc_reasons]||'').split(' | ').forEach(p=>{const ci=p.indexOf(':');if(ci<0)return;const reason=p.slice(ci+1).trim();if(!reason)return;ncMap[reason]=(ncMap[reason]||0)+1;});});
+  const ncMap={};criteria.filter(r=>normStatus(r[C.overall_comp])==='non_compliant').forEach(r=>{(r[C.nc_reasons]||'').split(' | ').forEach(p=>{const ci=p.indexOf(':');if(ci<0)return;const reason=mapNCReason(p.slice(ci+1).trim());if(!reason)return;ncMap[reason]=(ncMap[reason]||0)+1;});});
   const topNC=Object.entries(ncMap).sort((a,b)=>b[1]-a[1]).slice(0,8);
 
   // Coverage & criteria distribution
@@ -2351,7 +2426,7 @@ function buildComplianceSummaryHTML(insureds,coverages,criteria,{reportDate}){
   const progBar=(n,tot2,color='#3872B8')=>`<div style="flex:1;background:#F0F4F8;border-radius:2px;height:5px"><div style="width:${tot2?Math.round(n/tot2*100):0}%;background:${color};height:100%;border-radius:2px"></div></div>`;
   const legend=(label,val,tot2,color)=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA"><div style="width:10px;height:10px;border-radius:50%;background:${color};flex-shrink:0"></div><div style="flex:1;font-size:10px;color:#5A6B7B">${label}</div><div style="font-size:11px;font-weight:700;color:#1E2E3D">${val}</div><div style="font-size:9px;color:#8A94A8;margin-left:4px">${tot2?Math.round(val/tot2*100)+'%':''}</div></div>`;
 
-  const ncRows=chk('cs-ncreasons')?topNC.map(([r,n])=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA;font-size:9px"><div style="flex:1;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(r.length>65?r.slice(0,65)+'\u2026':r)}</div>${progBar(n,topNC[0]?.[1]||1,'#DC2626')}<div style="width:22px;text-align:right;font-weight:700;color:#DC2626">${n}</div></div>`).join(''):'';
+  const ncRows=chk('cs-ncreasons')?topNC.map(([r,n])=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA;font-size:9px"><div style="flex:1;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(mapNCReason(r))}</div>${progBar(n,topNC[0]?.[1]||1,'#DC2626')}<div style="width:22px;text-align:right;font-weight:700;color:#DC2626">${n}</div></div>`).join(''):'';
 
   return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Compliance Summary</title><style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:960px;padding:26px 30px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{border-radius:8px;padding:12px 14px}.kpi-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;color:#5A6B7B}.kpi-val{font-size:28px;font-weight:800;line-height:1}.kpi-sub{font-size:10px;font-weight:600;margin-top:3px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.bcard{border:1px solid #E8ECF5;border-radius:8px;padding:12px 14px}.donut-wrap{display:flex;align-items:center;gap:14px}.footer{margin-top:18px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8.5px;color:#B0B8C8}@page{size:letter landscape;margin:8mm}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body>
 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;padding-bottom:14px;border-bottom:3px solid #1E2E3D"><div>${logoTag}<div style="margin-top:10px"><div style="font-size:22px;font-weight:900;color:#1E2E3D">${esc(selectedClient.name)}</div><div style="font-size:11px;color:#5A6B7B;margin-top:2px">Compliance Summary &nbsp;\u00b7&nbsp; ${stamp}</div></div></div><div style="text-align:center;background:${rate>=80?'#E6F5EF':'#FDF0EE'};border-radius:10px;padding:12px 22px"><div style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:${rateColor}">Compliance Rate</div><div style="font-size:46px;font-weight:900;color:${rateColor};line-height:1">${rate}%</div><div style="font-size:9px;color:${rateColor};margin-top:2px">${comp} of ${total} active</div></div></div>
@@ -2470,7 +2545,7 @@ async function buildProgramOverviewHTML(year, producer) {
   const rateColor=last.rate>=80?'#16A34A':last.rate>=60?'#D97706':'#DC2626';
   const critSrc=(lastCrit.length?lastCrit:liveCrit).filter(r=>r[C.client]===clientName);
   const ncMap={};
-  critSrc.filter(r=>normStatus(r[C.overall_comp])==='non_compliant').forEach(r=>{(r[C.nc_reasons]||'').split(' | ').forEach(p=>{const ci=p.indexOf(':');if(ci<0)return;const rs=p.slice(ci+1).trim();if(rs)ncMap[rs]=(ncMap[rs]||0)+1;});});
+  critSrc.filter(r=>normStatus(r[C.overall_comp])==='non_compliant').forEach(r=>{(r[C.nc_reasons]||'').split(' | ').forEach(p=>{const ci=p.indexOf(':');if(ci<0)return;const rs=mapNCReason(p.slice(ci+1).trim());if(rs)ncMap[rs]=(ncMap[rs]||0)+1;});});
   const topNC=Object.entries(ncMap).sort((a,b)=>b[1]-a[1]).slice(0,5);
   const normEm=n=>(n[C.notif_email]||'').trim().toLowerCase();
   const rpn=((typeof CLIENT_META_MAP!=='undefined'&&CLIENT_META_MAP[clientName])||{}).rp_common_name||'';
@@ -2534,7 +2609,7 @@ async function buildProgramOverviewHTML(year, producer) {
   </div>
   <div class="bcard">
     ${sh('Top 5 Non-Compliance Reasons')}
-    ${topNC.length?topNC.map(([r,n],i)=>`<div style="display:flex;align-items:center;gap:5px;padding:2.5px 0;border-bottom:1px solid #F5F7FA"><div style="font-size:7px;font-weight:700;color:#DC2626;width:10px">${i+1}</div><div style="flex:1;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:7.5px">${esc(r.length>58?r.slice(0,58)+'\u2026':r)}</div>${pb(n,topNC[0][1],'#DC2626')}<div style="width:16px;text-align:right;font-weight:700;color:#DC2626;font-size:7.5px">${n}</div></div>`).join(''):'<div style="font-size:8px;color:#8A94A8;padding:6px 0">No NC criteria data.</div>'}
+    ${topNC.length?topNC.map(([r,n],i)=>`<div style="display:flex;align-items:center;gap:5px;padding:2.5px 0;border-bottom:1px solid #F5F7FA"><div style="font-size:7px;font-weight:700;color:#DC2626;width:10px">${i+1}</div><div style="flex:1;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:7.5px">${esc(mapNCReason(r))}</div>${pb(n,topNC[0][1],'#DC2626')}<div style="width:16px;text-align:right;font-weight:700;color:#DC2626;font-size:7.5px">${n}</div></div>`).join(''):'<div style="font-size:8px;color:#8A94A8;padding:6px 0">No NC criteria data.</div>'}
   </div>
 </div>
 <div class="g2">
@@ -2782,7 +2857,7 @@ function switchMondayTab(tab) {
     if (btn) btn.classList.toggle('active', t===tab);
   });
   if (tab === 'configure') wsCfgInit();
-  if (tab === 'activity') mondayRenderActivityLog();
+  
   if (tab === 'clients') cpInit();
 }
 
@@ -3155,21 +3230,9 @@ async function cpOpenInMonday(key) {
   } catch(e) { toast('Could not open in Monday: '+e.message,'error'); }
 }
 
-// ── ACTIVITY LOG ──
-function mondayRenderActivityLog() {
-  const wrap = document.getElementById('monday-activity-combined'); if (!wrap) return;
-  const all = [...(_mondayReportLog||[]).map(r=>({...r,_src:'report'}))];
-  all.sort((a,b)=>(b._ts||0)-(a._ts||0));
-  if (!all.length) { wrap.innerHTML='<div style="font-size:13px;color:var(--muted);text-align:center;padding:24px">No activity this session.</div>'; return; }
-  wrap.innerHTML = all.map(r=>`
-    <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border)">
-      <div style="font-weight:600;color:var(--navy);flex:1;font-size:13px">${esc(r.client||r.name||'')}</div>
-      <div style="font-size:12px;color:var(--muted)">${r.date||''}</div>
-      <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--green-bg);color:var(--green)">Report${r.rate&&r.rate!=='\u2014'?' \u00b7 '+r.rate+'%':''}</span>
-    </div>`).join('');
-}
 
-function mondayClearAllLogs() { _mondayReportLog=[]; mondayRenderActivityLog(); mondayUpdateReportLog(); }
+
+function mondayClearAllLogs() { _mondayReportLog=[]; mondayUpdateReportLog(); }
 
 function mondayUpdateReportLog() {
   const wrap = document.getElementById('monday-last-synced-list'); if (!wrap) return;
