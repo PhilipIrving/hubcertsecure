@@ -138,6 +138,7 @@ jobs:
 
   sync-trustlayer:
     runs-on: ubuntu-latest
+    needs: [sync-evident]
     permissions:
       contents: write
 
@@ -170,24 +171,33 @@ jobs:
           done
           echo "Route complete"
 
-      - name: Take monthly snapshot (1st of month only)
+      - name: Merge TL data into monthly snapshot (1st of month only)
         run: |
           DAY=$(date -u +'%d')
           if [ "$DAY" = "01" ]; then
             MONTH=$(date -u +'%Y-%m')
             YEAR="${MONTH:0:4}"
-            DEST="snapshots/trustlayer/$YEAR/$MONTH"
+            DEST="snapshots/$YEAR/$MONTH"
             mkdir -p "$DEST"
-            COPIED=0
-            for f in data/trustlayer/*.csv; do
-              if [ -f "$f" ]; then
-                cp "$f" "$DEST/"
-                COPIED=$((COPIED + 1))
+            # Append TL rows into the Evident snapshot files (skip header — already present)
+            for f in data/trustlayer/insureds.csv data/trustlayer/coverages.csv data/trustlayer/criteria.csv; do
+              fname=$(basename "$f")
+              lines=$(wc -l < "$f" 2>/dev/null || echo 0)
+              if [ "$lines" -gt 1 ]; then
+                if [ -f "$DEST/$fname" ]; then
+                  tail -n +2 "$f" >> "$DEST/$fname"
+                  echo "  merged TL rows into snapshots/$fname"
+                else
+                  cp "$f" "$DEST/$fname"
+                  echo "  created $DEST/$fname (TL only — no Evident snapshot found)"
+                fi
+              else
+                echo "  skipped $fname (empty)"
               fi
             done
-            echo "TrustLayer snapshot taken: $DEST ($COPIED files)"
+            echo "TL snapshot merged into: $DEST"
           else
-            echo "Not 1st of month — skipping TrustLayer snapshot (day=$DAY)"
+            echo "Not 1st of month — skipping TL snapshot merge (day=$DAY)"
           fi
 
       - name: Commit TrustLayer data and snapshots
