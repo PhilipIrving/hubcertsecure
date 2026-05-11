@@ -100,25 +100,20 @@ jobs:
           echo "Final data/evident/ contents:"
           ls -lh data/evident/*.csv 2>/dev/null | awk '{print "  " $5, $9}'
 
-      - name: Take monthly snapshot (1st of month only)
+      - name: Take monthly snapshot
         run: |
-          DAY=$(date -u +'%d')
-          if [ "$DAY" = "01" ]; then
-            MONTH=$(date -u +'%Y-%m')
-            YEAR="${MONTH:0:4}"
-            DEST="snapshots/$YEAR/$MONTH"
-            mkdir -p "$DEST"
-            COPIED=0
-            for f in data/evident/*.csv; do
-              if [ -f "$f" ]; then
-                cp "$f" "$DEST/"
-                COPIED=$((COPIED + 1))
-              fi
-            done
-            echo "Snapshot taken: $DEST ($COPIED files)"
-          else
-            echo "Not 1st of month — skipping snapshot (day=$DAY)"
-          fi
+          MONTH=$(date -u +'%Y-%m')
+          YEAR="${MONTH:0:4}"
+          DEST="snapshots/$YEAR/$MONTH"
+          mkdir -p "$DEST"
+          COPIED=0
+          for f in data/evident/*.csv; do
+            if [ -f "$f" ]; then
+              cp "$f" "$DEST/"
+              COPIED=$((COPIED + 1))
+            fi
+          done
+          echo "Snapshot updated: $DEST ($COPIED files)"
 
       - name: Commit Evident data and snapshots
         run: |
@@ -137,6 +132,7 @@ jobs:
           git push
 
   sync-trustlayer:
+    needs: [sync-evident]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -180,34 +176,35 @@ jobs:
           echo "Final data/trustlayer/ contents:"
           ls -lh data/trustlayer/*.csv 2>/dev/null | awk '{print "  " $5, $9}'
 
-      - name: Merge TL data into monthly snapshot (1st of month only)
+      - name: Merge TL data into snapshot
         run: |
-          DAY=$(date -u +'%d')
-          if [ "$DAY" = "01" ]; then
-            MONTH=$(date -u +'%Y-%m')
-            YEAR="${MONTH:0:4}"
-            DEST="snapshots/$YEAR/$MONTH"
-            mkdir -p "$DEST"
-            # Append TL rows into the Evident snapshot files (skip header — already present)
-            for f in data/trustlayer/insureds.csv data/trustlayer/coverages.csv data/trustlayer/criteria.csv; do
-              fname=$(basename "$f")
-              lines=$(wc -l < "$f" 2>/dev/null || echo 0)
-              if [ "$lines" -gt 1 ]; then
-                if [ -f "$DEST/$fname" ]; then
-                  tail -n +2 "$f" >> "$DEST/$fname"
-                  echo "  merged TL rows into snapshots/$fname"
-                else
-                  cp "$f" "$DEST/$fname"
-                  echo "  created $DEST/$fname (TL only — no Evident snapshot found)"
+          MONTH=$(date -u +'%Y-%m')
+          YEAR="${MONTH:0:4}"
+          DEST="snapshots/$YEAR/$MONTH"
+          mkdir -p "$DEST"
+          # Overwrite TL rows in the Evident snapshot files (replace, don't append)
+          for f in data/trustlayer/insureds.csv data/trustlayer/coverages.csv data/trustlayer/criteria.csv; do
+            fname=$(basename "$f")
+            lines=$(wc -l < "$f" 2>/dev/null || echo 0)
+            if [ "$lines" -gt 1 ]; then
+              if [ -f "$DEST/$fname" ]; then
+                # Remove any previously merged TL rows (lines not matching Evident client names)
+                # Simplest safe approach: rebuild from Evident base + fresh TL rows
+                ev_file="data/evident/$fname"
+                if [ -f "$ev_file" ]; then
+                  cp "$ev_file" "$DEST/$fname"
                 fi
+                tail -n +2 "$f" >> "$DEST/$fname"
+                echo "  merged TL rows into snapshots/$fname"
               else
-                echo "  skipped $fname (empty)"
+                cp "$f" "$DEST/$fname"
+                echo "  created $DEST/$fname (TL only)"
               fi
-            done
-            echo "TL snapshot merged into: $DEST"
-          else
-            echo "Not 1st of month — skipping TL snapshot merge (day=$DAY)"
-          fi
+            else
+              echo "  skipped $fname (empty)"
+            fi
+          done
+          echo "TL snapshot merged into: $DEST"
 
       - name: Commit TrustLayer data and snapshots
         run: |
