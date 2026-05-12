@@ -183,7 +183,20 @@
       "go_live_date": "2025-09-08",
       "structure": "general",
       "source": "evident",
-      "active": true
+      "active": true,
+      "producer_name": "Chandler Cullor",
+      "contact_name": "",
+      "monday_fields": {
+        "epic_id": "UNITCOA-02",
+        "referring_hub": "KSMO",
+        "ivaas": "https://docs.google.com/spreadsheets/d/1ZiLwD8NpPKYjH2g4ONNIKs59hxxbXwLfRBpqeDc31nM/edit?gid=0#gid=0",
+        "decision_maker": "Paul Konstantly",
+        "day_to_day_1": "shelia.thompson@unitedcoal.com",
+        "_comp_rate": 24,
+        "_total_active": 217,
+        "_nc_count": 166,
+        "_open_rate": 70
+      }
     }
   ]
 }
