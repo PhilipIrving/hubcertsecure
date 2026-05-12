@@ -1,8 +1,14 @@
 [
   {
-    "client": "Action Plumbing Construction",
+    "client": "The Abbey Management Company",
     "stage": "criteria",
-    "insured": "0494d3c3-b756-43ca-bc83-9cd4bf6478f5",
-    "error": "HTTP 401 on /insurance/insureds/0494d3c3-b756-43ca-bc83-9cd4bf6478f5/status: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+    "insured": "046285cf-bf17-4e79-914c-db98310b7153",
+    "error": "read ETIMEDOUT"
+  },
+  {
+    "client": "Trinity Chemical Industries LLC",
+    "stage": "coverage_data",
+    "insured": "0925df57-4a8d-4419-a930-85dfb2cb8876",
+    "error": "read ETIMEDOUT"
   }
 ]
