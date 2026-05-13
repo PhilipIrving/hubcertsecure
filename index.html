@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.82
+       SIDEBAR LAYOUT  v0.84
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:var(--navy);display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.82 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.84 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.82 — using var(--bg) */
+    /* bg overrides removed v0.84 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:12px 24px 0;font-size:12px;font-weight:600;flex-shrink:0}
     .bc-section{color:var(--muted)}
@@ -209,7 +209,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.82</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.84</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -751,11 +751,11 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.82</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.84</div>
 
 <script>
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.82
+// DEBUG MODULE — HUB CertSecure v0.84
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -811,7 +811,7 @@ window.csDebug = (() => {
     if (document.getElementById('cs-debug-panel')) return;
     const panel = document.createElement('div');
     panel.id = 'cs-debug-panel';
-    panel.style.cssText = 'position:fixed;bottom:0;left:0;right:0;height:280px;background:#0f172a;border-top:2px solid #3b82f6;z-index:99999;display:flex;flex-direction:column;font-family:monospace';
+    panel.style.cssText = 'position:fixed;bottom:0;left:0;right:0;height:260px;background:#0f172a;border-top:2px solid #3b82f6;z-index:99999;display:flex;flex-direction:column;font-family:monospace;box-shadow:0 -4px 24px rgba(0,0,0,.5);pointer-events:auto';
     panel.innerHTML = `
       <div style="display:flex;align-items:center;gap:12px;padding:6px 12px;background:#1e293b;border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0">
         <span style="color:#3b82f6;font-weight:700;font-size:12px">🐛 CertSecure Debug</span>
@@ -831,6 +831,7 @@ window.csDebug = (() => {
     // Replay existing logs
     const list = panel.querySelector('#cs-debug-list');
     _logs.forEach(e => _appendRow(e));
+    document.body.style.paddingBottom = '260px';
   }
 
   function enable() {
@@ -845,7 +846,7 @@ window.csDebug = (() => {
     console.log('%c[CertSecure Debug] DISABLED', 'color:#94a3b8');
   }
   function show() { _buildPanel(); }
-  function hide() { const p = document.getElementById('cs-debug-panel'); if (p) p.remove(); _panel = null; }
+  function hide() { const p = document.getElementById('cs-debug-panel'); if (p) p.remove(); _panel = null; document.body.style.paddingBottom = ''; }
   function toggle() { _enabled ? disable() : enable(); document.getElementById('cs-debug-panel') ? hide() : show(); }
   function clear() { _logs = []; const l = document.getElementById('cs-debug-list'); if (l) l.innerHTML = ''; }
   function filter(cat) {
@@ -3040,7 +3041,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.82
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.84
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -3604,7 +3605,7 @@ async function cpSave(key) {
         push('referringHub', state['referring_hub']||(meta.monday_fields||{})['referring_hub']);
         push('epicId',      state['epic_id']||(meta.monday_fields||{})['epic_id']);
         push('estComplexity',state['est_complexity']||(meta.monday_fields||{})['est_complexity'], v=>({label:v}));
-        push('ivaas',       state['ivaas']||(meta.monday_fields||{})['ivaas'], v=>({url:v,text:'iVaaS'}));
+        push('ivaas',       state['ivaas']||(meta.monday_fields||{})['ivaas'], v=>({url:v,text:(key||'Client')+' iVaaS'}));
         push('renewalDate', state['inv_renewal_date']||(meta.monday_fields||{})['inv_renewal_date'], v=>({date:v}));
         push('renewalStatus',state['inv_renewal_status']||(meta.monday_fields||{})['inv_renewal_status']);
         push('estCost',     state['inv_est_cost']||(meta.monday_fields||{})['inv_est_cost'], v=>Number(v));
