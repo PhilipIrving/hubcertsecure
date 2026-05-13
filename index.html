@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.81
+       SIDEBAR LAYOUT  v0.82
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:var(--navy);display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.81 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.82 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.81 — using var(--bg) */
+    /* bg overrides removed v0.82 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:12px 24px 0;font-size:12px;font-weight:600;flex-shrink:0}
     .bc-section{color:var(--muted)}
@@ -209,7 +209,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.81</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.82</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -449,6 +449,7 @@
       <!-- user info moved to header -->
       <div id="sb-user" style="display:none"><div id="sb-user-name"></div><div id="sb-user-role"></div></div>
       <button class="sb-item" onclick="openSettings()"><span class="sb-ic">&#9881;&#65039;</span> Settings</button>
+      <button class="sb-item" id="sb-debug-btn" onclick="csDebug.enable();csDebug.show();this.style.color='#34d399'" title="Enable Debug Mode"><span class="sb-ic">&#128027;</span> Debug</button>
       <button class="sb-item" onclick="doSignOut()"><span class="sb-ic">&#11083;</span> Sign Out</button>
     </div>
   </nav>
@@ -750,9 +751,131 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.81</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.82</div>
 
 <script>
+// ══════════════════════════════════════════════════════════════
+// DEBUG MODULE — HUB CertSecure v0.82
+// Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
+// Access logs: csDebug.show() or csDebug.download()
+// ══════════════════════════════════════════════════════════════
+
+window.csDebug = (() => {
+  let _enabled = false;
+  let _logs = [];
+  let _panel = null;
+  const MAX_LOGS = 2000;
+
+  // Categories for filtering
+  const CAT = {
+    AUTH:    { label:'Auth',      color:'#60a5fa' },
+    DATA:    { label:'Data',      color:'#34d399' },
+    REPORT:  { label:'Reports',   color:'#a78bfa' },
+    MONDAY:  { label:'Monday',    color:'#fb923c' },
+    CLIENT:  { label:'Clients',   color:'#f472b6' },
+    NAV:     { label:'Nav/UI',    color:'#94a3b8' },
+    STORAGE: { label:'Storage',   color:'#fbbf24' },
+    ERROR:   { label:'Error',     color:'#f87171' },
+  };
+
+  function ts() {
+    return new Date().toISOString().split('T')[1].replace('Z','');
+  }
+
+  function log(cat, fn, msg, data) {
+    if (!_enabled) return;
+    const entry = { ts: ts(), cat, fn, msg, data: data !== undefined ? data : null };
+    _logs.push(entry);
+    if (_logs.length > MAX_LOGS) _logs.shift();
+    if (_panel) _appendRow(entry);
+    console.debug(`[CS:${cat}] ${fn} — ${msg}`, data !== undefined ? data : '');
+  }
+
+  function _appendRow(e) {
+    const list = document.getElementById('cs-debug-list');
+    if (!list) return;
+    const catColor = (CAT[e.cat]||{color:'#94a3b8'}).color;
+    const row = document.createElement('div');
+    row.style.cssText = 'display:grid;grid-template-columns:80px 70px 140px 1fr;gap:8px;padding:4px 8px;border-bottom:1px solid rgba(255,255,255,.06);font-size:11px;font-family:monospace;align-items:start';
+    row.innerHTML = `
+      <span style="color:#94a3b8">${e.ts}</span>
+      <span style="color:${catColor};font-weight:700">${e.cat}</span>
+      <span style="color:#e2e8f0">${e.fn}</span>
+      <span style="color:#cbd5e1">${e.msg}${e.data !== null ? ' <span style="color:#64748b">→ '+JSON.stringify(e.data).slice(0,120)+'</span>' : ''}</span>
+    `;
+    list.appendChild(row);
+    list.scrollTop = list.scrollHeight;
+  }
+
+  function _buildPanel() {
+    if (document.getElementById('cs-debug-panel')) return;
+    const panel = document.createElement('div');
+    panel.id = 'cs-debug-panel';
+    panel.style.cssText = 'position:fixed;bottom:0;left:0;right:0;height:280px;background:#0f172a;border-top:2px solid #3b82f6;z-index:99999;display:flex;flex-direction:column;font-family:monospace';
+    panel.innerHTML = `
+      <div style="display:flex;align-items:center;gap:12px;padding:6px 12px;background:#1e293b;border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0">
+        <span style="color:#3b82f6;font-weight:700;font-size:12px">🐛 CertSecure Debug</span>
+        <span id="cs-debug-count" style="font-size:10px;color:#64748b">0 entries</span>
+        <div style="display:flex;gap:6px;margin-left:auto">
+          ${Object.entries(CAT).map(([k,v])=>`<button onclick="csDebug.filter('${k}')" style="font-size:10px;padding:2px 7px;border-radius:4px;border:1px solid ${v.color};color:${v.color};background:none;cursor:pointer;font-family:monospace">${v.label}</button>`).join('')}
+          <button onclick="csDebug.filter('ALL')" style="font-size:10px;padding:2px 7px;border-radius:4px;border:1px solid #475569;color:#94a3b8;background:none;cursor:pointer;font-family:monospace">All</button>
+          <button onclick="csDebug.clear()" style="font-size:10px;padding:2px 7px;border-radius:4px;border:1px solid #475569;color:#94a3b8;background:none;cursor:pointer;font-family:monospace">Clear</button>
+          <button onclick="csDebug.download()" style="font-size:10px;padding:2px 7px;border-radius:4px;border:1px solid #34d399;color:#34d399;background:none;cursor:pointer;font-family:monospace">⬇ Export</button>
+          <button onclick="csDebug.hide()" style="font-size:10px;padding:2px 7px;border-radius:4px;border:1px solid #f87171;color:#f87171;background:none;cursor:pointer;font-family:monospace">✕</button>
+        </div>
+      </div>
+      <div id="cs-debug-list" style="flex:1;overflow-y:auto;padding:4px 0"></div>
+    `;
+    document.body.appendChild(panel);
+    _panel = panel;
+    // Replay existing logs
+    const list = panel.querySelector('#cs-debug-list');
+    _logs.forEach(e => _appendRow(e));
+  }
+
+  function enable() {
+    _enabled = true;
+    console.log('%c[CertSecure Debug] ENABLED — Ctrl+Shift+D to toggle panel', 'color:#3b82f6;font-weight:bold');
+    localStorage.setItem('cs-debug', '1');
+  }
+  function disable() {
+    _enabled = false;
+    hide();
+    localStorage.removeItem('cs-debug');
+    console.log('%c[CertSecure Debug] DISABLED', 'color:#94a3b8');
+  }
+  function show() { _buildPanel(); }
+  function hide() { const p = document.getElementById('cs-debug-panel'); if (p) p.remove(); _panel = null; }
+  function toggle() { _enabled ? disable() : enable(); document.getElementById('cs-debug-panel') ? hide() : show(); }
+  function clear() { _logs = []; const l = document.getElementById('cs-debug-list'); if (l) l.innerHTML = ''; }
+  function filter(cat) {
+    const list = document.getElementById('cs-debug-list');
+    if (!list) return;
+    list.innerHTML = '';
+    const filtered = cat === 'ALL' ? _logs : _logs.filter(e => e.cat === cat);
+    filtered.forEach(e => _appendRow(e));
+  }
+  function download() {
+    const lines = _logs.map(e => `[${e.ts}] [${e.cat}] ${e.fn} — ${e.msg}${e.data !== null ? ' | '+JSON.stringify(e.data) : ''}`).join('\n');
+    const blob = new Blob([lines], { type: 'text/plain' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `certsecure-debug-${new Date().toISOString().slice(0,19).replace(/:/g,'-')}.txt`;
+    a.click();
+  }
+  function getLogs() { return _logs; }
+
+  // Keyboard shortcut
+  document.addEventListener('keydown', e => {
+    if (e.ctrlKey && e.shiftKey && e.key === 'D') { e.preventDefault(); _buildPanel(); if (!_enabled) enable(); else { document.getElementById('cs-debug-panel') ? hide() : show(); } }
+  });
+
+  // Auto-enable if previously enabled
+  if (localStorage.getItem('cs-debug') === '1') { _enabled = true; }
+
+  return { log, enable, disable, show, hide, toggle, clear, filter, download, getLogs, CAT };
+})();
+
 
 // ── NC REASON MAPPING ──
 function mapNCReason(r) {
@@ -924,6 +1047,7 @@ function canEditClients()  { return ['account_manager','account_administrator','
 function canAdminClients() { return window._userRole === 'system_administrator'; }
 function canSeeSettings()  { return window._userRole === 'system_administrator'; }
 async function doLogin() {
+  csDebug.log("AUTH","doLogin","Login attempt started");
   if (typeof supabase === 'undefined') {
     showAuthMsg('signin-err', 'Auth library not loaded — try a hard refresh (Ctrl+Shift+R / Cmd+Shift+R).', true);
     return;
@@ -963,6 +1087,7 @@ async function doLogin() {
   }
 }
 async function doSignOut() {
+  csDebug.log("AUTH","doSignOut","Sign out triggered");
   await getSupabase().auth.signOut();
   window._userRole = null; window._userEmail = null;
   const wrap = document.getElementById('welcome-wrap');
@@ -1102,6 +1227,7 @@ function toggleCsvPaths() {
   const open = el.style.display === ''; el.style.display = open ? 'none' : ''; icon.textContent = open ? '\u25bc show' : '\u25b2 hide';
 }
 function onLoginSuccess(user, sharedPat) {
+  csDebug.log("AUTH","onLoginSuccess","Logged in",{uid:user?.id,email:user?.email});
   const s = getSettings();
   const effectivePat = s.pat || sharedPat || '';
   if (!effectivePat) {
@@ -1271,6 +1397,7 @@ function closeSettings() { document.getElementById('settings-overlay').classList
 // ════════════════════════════════════════════════════
 
 async function loadSharedSettings(pat) {
+  csDebug.log("STORAGE","loadSharedSettings","Loading shared settings");
   const s = getSettings();
   const url = 'https://api.github.com/repos/'+s.owner+'/'+s.repo+'/contents/config/shared-settings.json?ref='+s.branch;
   try {
@@ -1290,6 +1417,7 @@ async function loadSharedSettings(pat) {
 }
 
 async function publishSharedSettings() {
+  csDebug.log("STORAGE","publishSharedSettings","Publishing shared settings");
   const btn = document.getElementById('publish-team-btn');
   btn.disabled = true; btn.textContent = 'Publishing\u2026';
   const s = getSettings();
@@ -1344,6 +1472,7 @@ async function publishSharedSettings() {
 
 
 function saveSettings() {
+  csDebug.log("STORAGE","saveSettings","Settings saved");
   localStorage.setItem('cs-settings', JSON.stringify({
     owner: document.getElementById('s-owner').value.trim(), repo: document.getElementById('s-repo').value.trim(),
     branch: document.getElementById('s-branch').value.trim() || 'main', pat: document.getElementById('s-pat').value.trim(),
@@ -1394,6 +1523,7 @@ async function testDataConnection() {
 }
 
 async function fetchCSV(path) {
+  csDebug.log("DATA","fetchCSV","Fetching CSV",{path});
   const { owner, repo, branch, pat } = getSettings();
   const headers = { 'Accept': 'application/vnd.github.v3+json' };
   if (pat) headers['Authorization'] = `Bearer ${pat}`;
@@ -1425,6 +1555,7 @@ async function fetchCSV(path) {
 }
 
 async function fetchTLCSV(filename) {
+  csDebug.log("DATA","fetchTLCSV","Fetching TL CSV",{filename});
   const s = getSettings();
   const pathMap = {
     'insureds.csv':   s.tlInsuredsPath  || 'data/trustlayer/insureds.csv',
@@ -1457,6 +1588,7 @@ async function loadTLData(clientName) {
 }
 
 async function loadClientData(clientName) {
+  csDebug.log("DATA","loadClientData","Loading client data",{clientName});
   if (isTLClient(clientName)) return loadTLData(clientName);
   const s = getSettings();
   const [insureds, coverages, criteria, customProps, notifs] = await Promise.all([
@@ -1492,6 +1624,7 @@ async function loadClientData(clientName) {
 }
 
 async function triggerRefresh() {
+  csDebug.log("DATA","triggerRefresh","Manual data refresh triggered");
   const { owner, repo, pat } = getSettings();
   if (!pat) { toast('Add an Access Token in Settings to use Refresh Data', 'error'); return; }
   const btn = document.getElementById('refresh-btn'); btn.textContent = '↻ Syncing…'; btn.disabled = true;
@@ -1518,6 +1651,7 @@ async function triggerRefresh() {
 
 
 async function runDataDiagnostic() {
+  csDebug.log("DATA","runDataDiagnostic","Data diagnostic started");
   const s = getSettings();
   const btn = document.getElementById('rg-diag-btn');
   btn.disabled = true; btn.textContent = 'Checking\u2026';
@@ -1650,6 +1784,7 @@ function isTLClient(keyOrClient) {
   return c?.platform === 'trustlayer' || c?.source === 'trustlayer';
 }
 async function loadClientsFromConfig() {
+  csDebug.log("DATA","loadClientsFromConfig","Loading clients.json");
   const s = getSettings();
   try {
     const url = `https://api.github.com/repos/${s.owner}/${s.repo}/contents/config/clients.json?ref=${s.branch}`;
@@ -1672,6 +1807,7 @@ async function loadClientsFromConfig() {
   } catch(e) { console.warn('Could not load clients.json:', e.message); return false; }
 }
 async function saveClientsToConfig(updatedClients) {
+  csDebug.log("CLIENT","saveClientsToConfig","Writing clients.json",{count:updatedClients?.length});
   const s = getSettings(); if (!s.pat) throw new Error('No PAT configured in Settings');
   if (!updatedClients || !Array.isArray(updatedClients)) throw new Error('Invalid clients data — aborting save to prevent corruption.');
   const payload = JSON.stringify({ _instructions: { how_to_add_client: "Use the Client Configuration tab in the Report Generator app.", date_format: "YYYY-MM-DD", structure_options: "general | project | location" }, clients: updatedClients }, null, 2);
@@ -1738,6 +1874,7 @@ function toggleSection(sec) {
 }
 // Sidebar navigation controller
 function sidebarNav(dest) {
+  csDebug.log("NAV","sidebarNav","Navigate",{dest});
   // Clear all sub-item active states
   ['snav-generate','snav-config','snav-m-clients','snav-m-setup','snav-m-configure'].forEach(id => {
     const el = document.getElementById(id); if (el) el.classList.remove('active');
@@ -1812,6 +1949,7 @@ function openEditClient(idxOrName) {
 }
 function closeClientModal() { const ov=document.getElementById('client-edit-overlay'); ov.classList.remove('open'); ov.style.display=''; }
 async function saveClientEdit() {
+  csDebug.log("CLIENT","saveClientEdit","Saving client edit");
   const btn = document.getElementById('ce-save-btn'); const msgEl = document.getElementById('ce-msg');
   const name = document.getElementById('ce-client-name').value.trim(); const api = document.getElementById('ce-api-name').value.trim();
   const platform = document.getElementById('ce-platform').value; const struct = document.getElementById('ce-structure').value;
@@ -1898,6 +2036,7 @@ function renderGrids() {
   });
 }
 function pickClient(key) {
+  csDebug.log("NAV","pickClient","Client selected",{key});
   selectedClient = CLIENTS.find(c => c.key === key);
   document.querySelectorAll('.client-card').forEach(el => el.classList.remove('selected'));
   const sk = key.replace(/[^a-z0-9]/gi,'_'); const card = document.getElementById('cc-' + sk); if (card) card.classList.add('selected');
@@ -1931,6 +2070,7 @@ function getCustomFields(prefix) {
 }
 let _currentStep = 1;
 function goTo(n) {
+  csDebug.log("NAV","goTo","Step change",{step:n});
   [1,2,3].forEach(i => { const el = document.getElementById('step-' + i); if (el) el.style.display = 'none'; });
   const next = document.getElementById('step-' + n); if (!next) return;
   next.style.display = ''; next.classList.remove('fading'); void next.offsetWidth; next.classList.add('fading'); _currentStep = n;
@@ -2005,6 +2145,7 @@ function openHubWide() {
 }
 function closeHubWide() { document.getElementById('hubwide-overlay').classList.remove('open'); document.getElementById('hw-msg').style.display = 'none'; }
 async function triggerHubWide() {
+  csDebug.log("REPORT","triggerHubWide","HUB-Wide Annual triggered");
   const year = document.getElementById('hw-year').value.trim() || String(new Date().getFullYear());
   const btn = document.getElementById('hw-btn'); const msg = document.getElementById('hw-msg');
   btn.disabled = true; btn.textContent = 'Generating\u2026'; msg.style.display = 'none';
@@ -2263,6 +2404,7 @@ function resetProgress(){
   [0,1,2].forEach(i=>{const el=document.getElementById('ps-'+i);if(el){el.className='prog-step pending';el.querySelector('.prog-dot').textContent=String(i+1);}});
 }
 async function generate(){
+  csDebug.log("REPORT","generate","Report generation started",{reports:[..._selectedReports],client:_selectedClient?.name});
   if(typeof ExcelJS==='undefined'){alert('ExcelJS library failed to load. Please refresh the page.');return;}
   goTo(3);
   document.getElementById('gen-area').style.display='block';
@@ -2310,6 +2452,7 @@ async function generate(){
     await new Promise(r=>setTimeout(r,400));
     showDownloads(downloads);
   }catch(e){
+    csDebug.log('ERROR','generate','Generation failed',{err:e.message,stack:(e.stack||'').slice(0,300)});
     console.error(e);
     document.getElementById('gen-area').style.display='none';
     document.getElementById('err-area').style.display='block';
@@ -2897,7 +3040,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.81
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.82
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -2950,6 +3093,7 @@ function mondayColId(key) {
 }
 
 async function mondayGQL(query, variables={}) {
+  csDebug.log("MONDAY","mondayGQL","GQL request",{query:query.slice(0,80),variables});
   const token = _mondayToken || localStorage.getItem('cs-monday-token') || '';
   if (!token) throw new Error('No Monday API token. Go to Settings → Monday.');
   let res;
@@ -2965,13 +3109,14 @@ async function mondayGQL(query, variables={}) {
   if (res.status === 401) throw new Error('Unauthorized — check your Monday API token in Settings.');
   if (!res.ok) throw new Error('Monday API returned HTTP ' + res.status + '. Check your token.');
   const data = await res.json();
-  if (data.errors?.length) throw new Error(data.errors[0].message || 'Monday API error');
+  if (data.errors?.length) { csDebug.log('ERROR','mondayGQL','GraphQL error',{err:data.errors[0].message,query:query.slice(0,80)}); throw new Error(data.errors[0].message || 'Monday API error'); }
   if (data.error_message)  throw new Error(data.error_message);
   return data.data;
 }
 
 
 async function mondayFindBoards() {
+  csDebug.log("MONDAY","mondayFindBoards","Scanning workspace boards");
   const data = await mondayGQL('query($wid:[ID]){boards(workspace_ids:$wid,limit:50){id name}}', { wid:[_mondayWsId] });
   const boards = data.boards || [];
   const ob = boards.find(b=>b.name?.toLowerCase().includes('overview')&&b.name?.toLowerCase().includes('client'))
@@ -3001,6 +3146,7 @@ function settingsMondayTabActivated() {
 }
 
 async function settingsMondayConnect() {
+  csDebug.log("MONDAY","settingsMondayConnect","Monday connection attempt");
   const tokenInput = document.getElementById('s-monday-token');
   const token = tokenInput?.value?.trim();
   if (!token) { toast('Enter your Monday API token first', 'error'); return; }
@@ -3328,6 +3474,7 @@ async function cpLoadStats(key) {
 }
 
 async function cpPushStats(key) {
+  csDebug.log("CLIENT","cpPushStats","Pushing stats to Monday",{key});
   if (!_mondayWsId||!_mondayBoardId) { toast('Not connected to Monday','error'); return; }
   const btn=event.target; btn.disabled=true; btn.textContent='Pushing\u2026';
   try {
@@ -3353,6 +3500,7 @@ async function cpPushStats(key) {
 }
 
 async function cpFindMondayItem(key) {
+  csDebug.log("CLIENT","cpFindMondayItem","Searching Monday for client",{key});
   const data = await mondayGQL(
     'query($bid:[ID!]){boards(ids:$bid){items_page(limit:500){items{id name}}}}',
     {bid:[_mondayBoardId]}
@@ -3363,6 +3511,7 @@ async function cpFindMondayItem(key) {
 }
 
 async function cpPullMonday(key) {
+  csDebug.log("CLIENT","cpPullMonday","Pulling from Monday",{key});
   if (!_mondayWsId||!_mondayBoardId) { toast('Not connected to Monday','error'); return; }
   const btn=event.target; btn.disabled=true; btn.textContent='Pulling\u2026';
   try {
@@ -3389,6 +3538,7 @@ async function cpPullMonday(key) {
 }
 
 async function cpSave(key) {
+  csDebug.log("CLIENT","cpSave","Saving client panel",{key});
   const btn=document.querySelector(`[onclick="cpSave('${key}')"]`);
   if(btn){btn.disabled=true;btn.textContent='Saving\u2026';}
   const connected = !!(_mondayWsId&&_mondayBoardId);
@@ -3534,6 +3684,7 @@ function mondayPopulateClients() { /* no-op: kept for compatibility */ }
 
 // ── SYNC TO MONDAY FROM REPORT GENERATOR ──
 async function reportGeneratorSyncMonday() {
+  csDebug.log("MONDAY","reportGeneratorSyncMonday","Sync Monday triggered");
   if (!_mondayWsId) { toast('Connect to Monday in Settings \u2192 Monday tab first','error'); return; }
   if (!selectedClient) { toast('Select a client first','error'); return; }
   if (!_mondayBoardId) { toast('Clients \u2013 Overview board not found. Run workspace build first.','error'); return; }
@@ -3684,6 +3835,7 @@ const WS_CONNECT_COLS = [
 ];
 
 async function wsStartBuild() {
+  csDebug.log("MONDAY","wsStartBuild","Workspace build started",{wsId:_mondayWsId});
   if (!_mondayWsId) {
     const nc=document.getElementById('ws-no-conn'); if(nc) nc.style.display='';
     return;
@@ -3906,6 +4058,7 @@ function cfgLogClear(targetId) {
 
 // ── HEALTH CHECK ──
 async function wsRunHealthCheck() {
+  csDebug.log("MONDAY","wsRunHealthCheck","Health check started");
   if (!_mondayWsId) { toast('Connect to Monday first','error'); return; }
   const btn = document.getElementById('hc-run-btn');
   const running = document.getElementById('hc-running');
@@ -4095,6 +4248,7 @@ function ddAddLabel(ddIdx) {
 }
 
 async function wsApplyDropdowns() {
+  csDebug.log("MONDAY","wsApplyDropdowns","Applying dropdown values");
   if (!_mondayWsId) { toast('Connect to Monday first','error'); return; }
   const btn = document.getElementById('dd-apply-btn');
   btn.disabled = true; btn.textContent = 'Applying\u2026';
@@ -4155,6 +4309,7 @@ async function wsApplyDropdowns() {
 
 // ── CLIENT SCAN ──
 async function wsScanClients() {
+  csDebug.log("MONDAY","wsScanClients","Scanning clients in Monday");
   if (!_mondayWsId) { toast('Connect to Monday first','error'); return; }
   if (!_mondayBoardId) { toast('Clients \u2013 Overview not found. Run health check first.','error'); return; }
   const btn = document.getElementById('ci-scan-btn');
@@ -4192,6 +4347,7 @@ async function wsScanClients() {
 
 // ── CLIENT IMPORT ──
 async function wsImportClients() {
+  csDebug.log("MONDAY","wsImportClients","Importing clients to Monday");
   if (!_mondayWsId || !_mondayBoardId) { toast('Connect and scan first','error'); return; }
   if (!_wsClientsMissing.length) { toast('No missing clients to import','success'); return; }
   const btn = document.getElementById('ci-import-btn');
