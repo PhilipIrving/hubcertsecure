@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.92
+       SIDEBAR LAYOUT  v0.93
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:var(--navy);display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.92 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.93 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.92 — using var(--bg) */
+    /* bg overrides removed v0.93 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:12px 24px 0;font-size:12px;font-weight:600;flex-shrink:0}
     .bc-section{color:var(--muted)}
@@ -209,7 +209,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.92</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.93</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -751,11 +751,11 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.92</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.93</div>
 
 <script>
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.92
+// DEBUG MODULE — HUB CertSecure v0.93
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -2413,7 +2413,7 @@ function resetProgress(){
   [0,1,2].forEach(i=>{const el=document.getElementById('ps-'+i);if(el){el.className='prog-step pending';el.querySelector('.prog-dot').textContent=String(i+1);}});
 }
 async function generate(){
-  csDebug.log("REPORT","generate","Report generation started",{reports:[..._selectedReports],client:_selectedClient?.name});
+  csDebug.log("REPORT","generate","Report generation started",{reports:[..._selectedReports],client:selectedClient?.name});
   if(typeof ExcelJS==='undefined'){alert('ExcelJS library failed to load. Please refresh the page.');return;}
   goTo(3);
   document.getElementById('gen-area').style.display='block';
@@ -2426,7 +2426,14 @@ async function generate(){
   resetProgress();
   try{
     const s=getSettings();
-    if(!s.pat){throw new Error('No Access Token configured. Open Settings → Data Source and add your GitHub PAT.');}
+    if(!s.pat){
+      document.getElementById('gen-area').style.display='none';
+      document.getElementById('err-area').style.display='block';
+      document.getElementById('err-msg').textContent='No Access Token configured. Open Settings → Data Source and add your GitHub PAT.';
+      document.getElementById('s3-title').textContent='Cannot Generate';
+      document.getElementById('s3-sub').textContent='Access Token required';
+      return;
+    }
     setProgress('Fetching compliance data\u2026',`Loading data for ${selectedClient.name}`,0);
     let clientData;
     try { clientData = await loadClientData(selectedClient.key); }
@@ -3049,7 +3056,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.92
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.93
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
