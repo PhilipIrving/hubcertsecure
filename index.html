@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.79
+       SIDEBAR LAYOUT  v0.80
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:var(--navy);display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.79 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.80 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.79 — using var(--bg) */
+    /* bg overrides removed v0.80 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:12px 24px 0;font-size:12px;font-weight:600;flex-shrink:0}
     .bc-section{color:var(--muted)}
@@ -209,7 +209,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.79</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.80</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -750,7 +750,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.79</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.80</div>
 
 <script>
 
@@ -2897,7 +2897,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.79
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.80
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -3572,52 +3572,52 @@ const WS_BOARDS = [
     key:'prospects', name:'Prospects', folder:'bizdev', kind:'public',
     groups:[{name:'Active',color:'bright-blue'},{name:'Inactive',color:'trolley-grey'},{name:'Closed Won',color:'done-green'},{name:'Closed Lost',color:'dark-red'}],
     columns:[
-      {t:'Status',type:'color'},{t:'Stage',type:'dropdown'},{t:'Referring HUB',type:'text'},
+      {t:'Status',type:'status'},{t:'Stage',type:'dropdown'},{t:'Referring HUB',type:'text'},
       {t:'Referring Producer',type:'email'},{t:'Decision Maker',type:'email'},{t:'Day-to-Day 1',type:'email'},
       {t:'Day-to-Day 2',type:'email'},{t:'Initial Meeting Date',type:'date'},{t:'Proposal Deadline',type:'date'},
       {t:'Proposal Expiration',type:'date'},{t:'Targeted Go-Live',type:'date'},{t:'Est. Licenses',type:'numbers'},
       {t:'Est. Complexity',type:'dropdown'},{t:'Target Fee',type:'numbers'},{t:'Proposed Fee',type:'numbers'},
-      {t:'Connect: Clients \u2013 Overview',type:'board_relation'},
+      {t:'Connect: Clients \u2013 Overview',type:'text'},
     ]
   },
   {
     key:'overview', name:'Clients \u2013 Overview', folder:'clients', kind:'public',
     groups:[{name:'Onboarding',color:'dark-orange'},{name:'Active',color:'bright-blue'},{name:'Offboarding',color:'purple'},{name:'Inactive',color:'trolley-grey'}],
     columns:[
-      {t:'Status',type:'color'},{t:'Platform',type:'dropdown'},{t:'Structure',type:'dropdown'},
+      {t:'Status',type:'status'},{t:'Platform',type:'dropdown'},{t:'Structure',type:'dropdown'},
       {t:'EPIC ID',type:'text'},{t:'Referring HUB',type:'text'},{t:'Producer',type:'email'},
       {t:'Decision Maker',type:'email'},{t:'Day-to-Day 1',type:'email'},{t:'Day-to-Day 2',type:'email'},
       {t:'Service Start Date',type:'date'},{t:'Go-Live Date',type:'date'},{t:'Est. Licenses',type:'numbers'},
       {t:'Est. Complexity',type:'dropdown'},{t:'iVaaS',type:'link'},{t:'Generate Reports',type:'button'},
-      {t:'Files',type:'file'},{t:'INV: Renewal Date',type:'date'},{t:'INV: Renewal Status',type:'color'},
+      {t:'Files',type:'file'},{t:'INV: Renewal Date',type:'date'},{t:'INV: Renewal Status',type:'status'},
       {t:'INV: Est. Cost',type:'numbers'},{t:'INV: Current Fee',type:'numbers'},{t:'INV: Next Year Fee',type:'numbers'},
       {t:'INV: Bill Mode',type:'text'},{t:'INV: Bill Schedule',type:'text'},{t:'INV: Producer Split',type:'text'},
       {t:'RPT: Compliance Summary',type:'link'},{t:'RPT: Compliance Detail',type:'link'},
       {t:'RPT: Engagement Summary',type:'link'},{t:'RPT: Engagement Detail',type:'link'},
       {t:'RPT: Program Overview',type:'link'},
-      {t:'RPT: Thank You Card',type:'link'},{t:'Connect: Prospects',type:'board_relation'},
-      {t:'Connect: Onboarding',type:'board_relation'},
+      {t:'RPT: Thank You Card',type:'link'},{t:'Connect: Prospects',type:'text'},
+      {t:'Connect: Onboarding',type:'text'},
     ]
   },
   {
     key:'evident_ob', name:'Evident \u2013 Onboarding', folder:'installations', kind:'public',
     groups:[{name:'Active Installations',color:'bright-blue'},{name:'Complete',color:'done-green'},{name:'On Hold',color:'saladish'}],
-    columns:[{t:'Person',type:'multiple-person'},{t:'Go-Live Date',type:'date'},{t:'Deadline',type:'date'},{t:'Overall Status',type:'color'},{t:'Connect: Clients \u2013 Overview',type:'board_relation'}]
+    columns:[{t:'Person',type:'multiple_person'},{t:'Go-Live Date',type:'date'},{t:'Deadline',type:'date'},{t:'Overall Status',type:'status'},{t:'Connect: Clients \u2013 Overview',type:'text'}]
   },
   {
     key:'tl_ob', name:'TrustLayer \u2013 Onboarding', folder:'installations', kind:'public',
     groups:[{name:'Active Installations',color:'bright-blue'},{name:'Complete',color:'done-green'},{name:'On Hold',color:'saladish'}],
-    columns:[{t:'Person',type:'multiple-person'},{t:'Go-Live Date',type:'date'},{t:'Deadline',type:'date'},{t:'Overall Status',type:'color'},{t:'Connect: Clients \u2013 Overview',type:'board_relation'}]
+    columns:[{t:'Person',type:'multiple_person'},{t:'Go-Live Date',type:'date'},{t:'Deadline',type:'date'},{t:'Overall Status',type:'status'},{t:'Connect: Clients \u2013 Overview',type:'text'}]
   },
   {
     key:'evident_part', name:'Evident Partnership', folder:'partnerships', kind:'public',
     groups:[{name:'Platform Issues',color:'dark-red'},{name:'Feature Requests',color:'bright-blue'},{name:'Resolved',color:'done-green'}],
-    columns:[{t:'Category',type:'dropdown'},{t:'Rank',type:'dropdown'},{t:'Status',type:'color'},{t:'Date Reported',type:'date'},{t:'Est. Date',type:'date'},{t:'Ticket Number',type:'text'},{t:'Date Resolved',type:'date'},{t:'Description',type:'long-text'},{t:'Connect: Clients \u2013 Overview',type:'board_relation'},{t:'Files',type:'file'}]
+    columns:[{t:'Category',type:'dropdown'},{t:'Rank',type:'dropdown'},{t:'Status',type:'status'},{t:'Date Reported',type:'date'},{t:'Est. Date',type:'date'},{t:'Ticket Number',type:'text'},{t:'Date Resolved',type:'date'},{t:'Description',type:'long_text'},{t:'Connect: Clients \u2013 Overview',type:'text'},{t:'Files',type:'file'}]
   },
   {
     key:'tl_part', name:'TrustLayer Partnership', folder:'partnerships', kind:'public',
     groups:[{name:'Platform Issues',color:'dark-red'},{name:'Feature Requests',color:'bright-blue'},{name:'Resolved',color:'done-green'}],
-    columns:[{t:'Category',type:'dropdown'},{t:'Rank',type:'dropdown'},{t:'Status',type:'color'},{t:'Date Reported',type:'date'},{t:'Est. Date',type:'date'},{t:'Ticket Number',type:'text'},{t:'Date Resolved',type:'date'},{t:'Description',type:'long-text'},{t:'Connect: Clients \u2013 Overview',type:'board_relation'},{t:'Files',type:'file'}]
+    columns:[{t:'Category',type:'dropdown'},{t:'Rank',type:'dropdown'},{t:'Status',type:'status'},{t:'Date Reported',type:'date'},{t:'Est. Date',type:'date'},{t:'Ticket Number',type:'text'},{t:'Date Resolved',type:'date'},{t:'Description',type:'long_text'},{t:'Connect: Clients \u2013 Overview',type:'text'},{t:'Files',type:'file'}]
   },
 ];
 
