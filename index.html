@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.85
+       SIDEBAR LAYOUT  v0.86
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:var(--navy);display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.85 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.86 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.85 — using var(--bg) */
+    /* bg overrides removed v0.86 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:12px 24px 0;font-size:12px;font-weight:600;flex-shrink:0}
     .bc-section{color:var(--muted)}
@@ -209,7 +209,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.85</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.86</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -259,7 +259,7 @@
     </div>
     <div style="display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:24px">
       <button class="stab active" id="stab-datasource" onclick="switchSettingsTab('datasource')">Data Source</button>
-      <button class="stab" id="stab-monday-cfg" onclick="switchSettingsTab('monday-cfg')">Monday</button>
+      
       <button class="stab" id="stab-users" onclick="switchSettingsTab('users')">Users</button>
       <button class="stab" id="stab-admin" onclick="switchSettingsTab('admin')">Admin</button>
     </div>
@@ -423,22 +423,7 @@
           <button class="sb-item" id="rg-diag-btn" onclick="runDataDiagnostic()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" title="Check Data">&#128269; Check</button>
         </div>
       </div>
-      <!-- ── Monday.com Section ── -->
-      <button class="sb-section" id="sb-sec-monday" onclick="toggleSection('monday')">
-        <span class="sb-ic">&#128203;</span> Monday.com Generator
-        <span class="sb-arrow">&#9654;</span>
-      </button>
-      <div class="sb-section-content" id="sb-sec-monday-content">
-        <button class="sb-item" id="snav-m-clients" onclick="sidebarNav('m-clients')">
-          <span class="sb-ic">&#128101;</span> Client Panel
-        </button>
-        <button class="sb-item active" id="snav-m-setup" onclick="sidebarNav('m-setup')">
-          <span class="sb-ic">&#127959;</span> Workspace Setup
-        </button>
-        <button class="sb-item" id="snav-m-configure" onclick="sidebarNav('m-configure')">
-          <span class="sb-ic">&#9881;&#65039;</span> Configure
-        </button>
-      </div>
+
     </div>
     <div class="sidebar-footer">
       <!-- Recent activity log (compact) -->
@@ -463,7 +448,7 @@
 <main class="main">
   <div class="tab-bar">
     <button class="tab-btn active" id="tab-btn-reports" onclick="switchTab('reports')" style="display:none">Report Generator</button>
-    <button class="tab-btn" id="tab-btn-monday" onclick="switchTab('monday')" style="display:none">Monday.com Generator</button>
+    
   </div>
   <div id="tab-reports">
   <div id="rg-sub-generate">
@@ -475,7 +460,7 @@
     <div class="page-hdr" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
       <div><div class="page-title">Report Generator</div><div class="page-sub">Select a client to get started</div></div>
       <div style="display:flex;gap:8px">
-        <button class="btn btn-secondary" id="rg-monday-btn" onclick="reportGeneratorSyncMonday()" style="white-space:nowrap;display:none">&#8679; Monday</button>
+        
         <button class="btn btn-secondary" onclick="openHubWide()" style="gap:6px;white-space:nowrap">&#127962; HUB-Wide Annual</button>
       </div>
     </div>
@@ -519,7 +504,7 @@
   </div><!-- /rg-sub-generate -->
   </div>
 
-  <div id="tab-monday" style="display:none">
+  <div id="tab-monday" style="display:none;visibility:hidden;pointer-events:none">
 
     <!-- CONNECTION BANNER -->
     <div id="monday-conn-banner" style="display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border-radius:20px;margin-bottom:22px;border:1px solid #fecaca;background:var(--red-bg)">
@@ -751,11 +736,11 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.85</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.86</div>
 
 <script>
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.85
+// DEBUG MODULE — HUB CertSecure v0.86
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -1854,13 +1839,8 @@ async function saveClientsToConfig(updatedClients) {
   await attemptSave(1);
 }
 function switchTab(tab) {
-  ['reports','monday'].forEach(t => {
-    document.getElementById('tab-' + t).style.display = t === tab ? '' : 'none';
-    const btn = document.getElementById('tab-btn-' + t); if (btn) btn.classList.toggle('active', t === tab);
-  });
-  if (tab === 'monday') {
-    if (typeof mondayTabActivated === 'function') mondayTabActivated();
-  }
+  const el = document.getElementById('tab-reports');
+  if (el) el.style.display = '';
 }
 function switchRGTab(sub) {
   const el = document.getElementById('rg-sub-generate');
@@ -1879,13 +1859,12 @@ function toggleSection(sec) {
   });
   // Navigate to the default item of the section
   if (isReports) sidebarNav('generate');
-  else sidebarNav('m-setup');
 }
 // Sidebar navigation controller
 function sidebarNav(dest) {
   csDebug.log("NAV","sidebarNav","Navigate",{dest});
   // Clear all sub-item active states
-  ['snav-generate','snav-config','snav-m-clients','snav-m-setup','snav-m-configure'].forEach(id => {
+  ['snav-generate','snav-config'].forEach(id => {
     const el = document.getElementById(id); if (el) el.classList.remove('active');
   });
   // Activate selected item
@@ -1904,9 +1883,7 @@ function sidebarNav(dest) {
   const bcP = document.getElementById('bc-page');    if (bcP) bcP.textContent = page;
   // Route
   if (dest === 'generate')    { switchTab('reports'); switchRGTab('generate'); }
-  else if (dest === 'm-clients')   { switchTab('monday'); switchMondayTab('clients'); }
-  else if (dest === 'm-setup')     { switchTab('monday'); switchMondayTab('setup'); }
-  else if (dest === 'm-configure') { switchTab('monday'); switchMondayTab('configure'); }
+
 }
 async function loadAndRenderConfig() {
   const wrap = document.getElementById('cfg-table-wrap'); const s = getSettings();
@@ -3049,7 +3026,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.85
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.86
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -3183,7 +3160,7 @@ async function settingsMondayConnect() {
     btn.disabled = false;
     await mondayFindBoards();
     mondayUpdateConnectionBanner();
-    const rgBtn = document.getElementById('rg-monday-btn'); if (rgBtn) rgBtn.style.display = '';
+    
     toast('✓ Connected to ' + _mondayWsName, 'success');
   } catch(e) {
     _mondayToken = '';
@@ -4048,7 +4025,7 @@ function wsCfgInit() {
   ddRenderCards();
   const noConn = !_mondayWsId;
   // Show a gentle reminder if not connected
-  if (noConn) toast('Connect to Monday in Settings \u2192 Monday tab first', 'error');
+  if (noConn) 
 }
 
 // ── LOG HELPER ──
