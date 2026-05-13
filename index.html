@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.91
+       SIDEBAR LAYOUT  v0.92
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:var(--navy);display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.91 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.92 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.91 — using var(--bg) */
+    /* bg overrides removed v0.92 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:12px 24px 0;font-size:12px;font-weight:600;flex-shrink:0}
     .bc-section{color:var(--muted)}
@@ -209,7 +209,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.91</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.92</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -259,7 +259,7 @@
     </div>
     <div style="display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:24px">
       <button class="stab active" id="stab-datasource" onclick="switchSettingsTab('datasource')">Data Source</button>
-      
+      <button class="stab" id="stab-monday-cfg" onclick="switchSettingsTab('monday-cfg')">Monday</button>
       <button class="stab" id="stab-users" onclick="switchSettingsTab('users')">Users</button>
       <button class="stab" id="stab-admin" onclick="switchSettingsTab('admin')">Admin</button>
     </div>
@@ -424,9 +424,21 @@
         </div>
       </div>
       <!-- ── Monday.com Section ── -->
-      <button class="sb-item" id="snav-monday" onclick="sidebarNav('monday')">
-        <span class="sb-ic">&#128203;</span> Monday.com
+      <button class="sb-section" id="sb-sec-monday" onclick="toggleSection('monday')">
+        <span class="sb-ic">&#128203;</span> Monday.com Generator
+        <span class="sb-arrow">&#9654;</span>
       </button>
+      <div class="sb-section-content" id="sb-sec-monday-content">
+        <button class="sb-item" id="snav-m-clients" onclick="sidebarNav('m-clients')">
+          <span class="sb-ic">&#128101;</span> Client Panel
+        </button>
+        <button class="sb-item active" id="snav-m-setup" onclick="sidebarNav('m-setup')">
+          <span class="sb-ic">&#127959;</span> Workspace Setup
+        </button>
+        <button class="sb-item" id="snav-m-configure" onclick="sidebarNav('m-configure')">
+          <span class="sb-ic">&#9881;&#65039;</span> Configure
+        </button>
+      </div>
     </div>
     <div class="sidebar-footer">
       <!-- Recent activity log (compact) -->
@@ -509,56 +521,129 @@
 
   <div id="tab-monday" style="display:none">
 
-  <!-- ── Connection Banner (inline) ── -->
-  <div id="monday-conn-banner" style="display:flex;align-items:center;gap:12px;padding:11px 18px;border-radius:10px;margin-bottom:20px;border:1px solid #fecaca;background:var(--red-bg)">
-    <div id="monday-tab-dot" style="width:10px;height:10px;border-radius:50%;background:var(--red);flex-shrink:0"></div>
-    <div style="flex:1">
+    <!-- CONNECTION BANNER -->
+    <div id="monday-conn-banner" style="display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border-radius:20px;margin-bottom:22px;border:1px solid #fecaca;background:var(--red-bg)">
+      <div id="monday-tab-dot" style="width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0"></div>
       <span id="monday-tab-status" style="font-size:13px;font-weight:600;color:var(--red)">Not connected to Monday</span>
-      <div style="font-size:11px;color:var(--muted);margin-top:1px">Go to Settings → Monday tab to connect your API token</div>
+      <button class="btn btn-secondary" style="margin-left:12px;font-size:12px;padding:5px 12px;border-radius:12px" onclick="openSettings();setTimeout(()=>switchSettingsTab('monday-cfg'),60)">Configure</button>
     </div>
-    <button class="btn btn-secondary" style="font-size:12px;padding:6px 14px" onclick="openSettings();setTimeout(()=>switchSettingsTab('monday-cfg'),60)">Connect</button>
-  </div>
 
-  <!-- ── Client Panel ── -->
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-    <div>
-      <div style="font-size:16px;font-weight:800;color:var(--navy)">Client Panel</div>
-      <div style="font-size:12px;color:var(--muted)">Manage clients — saves to config and syncs to Monday simultaneously</div>
+    <!-- SUB-TABS hidden — navigation via sidebar -->
+    <div style="display:none">
+      <button class="tab-btn" id="mtab-btn-clients" onclick="switchMondayTab('clients')">&#128101; Client Panel</button>
+      <button class="tab-btn active" id="mtab-btn-setup" onclick="switchMondayTab('setup')">&#127959; Workspace Setup</button>
+      <button class="tab-btn" id="mtab-btn-configure" onclick="switchMondayTab('configure')">&#9881;&#65039; Configure</button>
     </div>
-    <div style="display:flex;gap:8px">
-      <button class="btn btn-secondary" id="cp-push-all-btn" onclick="cpPushAll()" style="white-space:nowrap;display:none">&#8679; Push All to Monday</button>
-      <button class="btn btn-primary" onclick="openAddClient()" style="white-space:nowrap">+ Add Client</button>
-    </div>
-  </div>
-  <div style="display:grid;grid-template-columns:250px 1fr;min-height:520px;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--white);margin-bottom:24px">
-    <div style="border-right:1px solid var(--border);display:flex;flex-direction:column">
-      <div style="padding:10px 12px;border-bottom:1px solid var(--border);background:var(--blue-light)">
-        <input type="text" id="cp-search" placeholder="&#128269; Search clients..." oninput="cpRenderList()" style="width:100%;font-size:12px;padding:6px 10px;border:1px solid var(--border);border-radius:6px;background:var(--white)">
-      </div>
-      <div id="cp-list" style="overflow-y:auto;flex:1;padding:6px"></div>
-    </div>
-    <div id="cp-editor" style="overflow-y:auto;padding:20px;background:#FAFBFC">
-      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--muted);gap:10px;padding:60px 0">
-        <div style="font-size:32px">&#128101;</div>
-        <div style="font-size:13px;font-weight:600">Select a client to edit</div>
-        <div style="font-size:12px;text-align:center;max-width:220px">Click any client on the left to view and edit all their information</div>
-      </div>
-    </div>
-  </div>
 
-  <!-- ── Admin Tools accordion ── -->
-  <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:24px">
-    <button onclick="toggleMondayTools()" id="monday-tools-toggle" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--bg);border:none;cursor:pointer;font-family:inherit">
-      <div style="display:flex;align-items:center;gap:10px">
-        <span style="font-size:14px">&#9881;&#65039;</span>
-        <span style="font-size:13px;font-weight:700;color:var(--navy)">Admin Tools</span>
-        <span style="font-size:12px;color:var(--muted)">Health Check &middot; Dropdowns &middot; Import Clients</span>
+    <!-- ══ WORKSPACE SETUP ══ -->
+    <div id="mtab-setup">
+      <!-- PHASE TRACKER -->
+      <div style="display:flex;background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow)">
+        <div id="ws-ph-1" style="flex:1;padding:13px 18px;display:flex;align-items:center;gap:10px;background:var(--blue-light);position:relative">
+          <div id="ws-pn-1" style="width:26px;height:26px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+          <span style="font-size:12px;font-weight:600;color:var(--blue)">Review</span>
+          <div style="position:absolute;right:-11px;top:50%;width:22px;height:22px;background:var(--blue-light);border-right:1.5px solid var(--border);border-top:1.5px solid var(--border);transform:translateY(-50%) rotate(45deg);z-index:2"></div>
+        </div>
+        <div id="ws-ph-2" style="flex:1;padding:13px 18px;display:flex;align-items:center;gap:10px;position:relative">
+          <div id="ws-pn-2" style="width:26px;height:26px;border-radius:50%;background:var(--border);color:var(--muted);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+          <span id="ws-pl-2" style="font-size:12px;font-weight:600;color:var(--muted)">Build</span>
+          <div style="position:absolute;right:-11px;top:50%;width:22px;height:22px;background:var(--white);border-right:1.5px solid var(--border);border-top:1.5px solid var(--border);transform:translateY(-50%) rotate(45deg);z-index:2"></div>
+        </div>
+        <div id="ws-ph-3" style="flex:1;padding:13px 18px;display:flex;align-items:center;gap:10px">
+          <div id="ws-pn-3" style="width:26px;height:26px;border-radius:50%;background:var(--border);color:var(--muted);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+          <span id="ws-pl-3" style="font-size:12px;font-weight:600;color:var(--muted)">Complete</span>
+        </div>
       </div>
-      <span id="monday-tools-arrow" style="font-size:11px;color:var(--muted);transition:transform .2s">&#9654;</span>
-    </button>
-    <div id="monday-tools-content" style="display:none;padding:20px;border-top:1px solid var(--border)">
 
-      <!-- Health Check -->
+      <!-- PHASE 1: REVIEW -->
+      <div id="ws-sec-review">
+        <div class="card" style="margin-bottom:18px">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+            <div style="width:40px;height:40px;background:var(--blue-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div>
+              <div class="card-title">Build Plan &#8212; HUB CertSecure Workspace</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:3px">6 boards &nbsp;&#183;&nbsp; 4 folders &nbsp;&#183;&nbsp; 100+ columns &nbsp;&#183;&nbsp; full group structure</div>
+            </div>
+          </div>
+          <div style="background:var(--blue-light);border:1px solid #bfdbfe;border-radius:8px;padding:12px 16px;font-size:13px;color:#1e40af;margin-bottom:20px;line-height:1.6">
+            &#9432;&nbsp; Creates board structure only. Automations, Power-Ups, mirror columns, and validation rules require manual setup &#8212; see the post-build checklist.
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px"><div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Clients</div><div style="font-size:14px;font-weight:700;color:var(--navy)">Clients &#8211; Overview</div><div style="font-size:12px;color:var(--muted);margin-top:3px">32 columns &nbsp;&#183;&nbsp; 4 groups &nbsp;&#183;&nbsp; Central hub</div></div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px"><div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Business Development</div><div style="font-size:14px;font-weight:700;color:var(--navy)">Prospects</div><div style="font-size:12px;color:var(--muted);margin-top:3px">16 columns &nbsp;&#183;&nbsp; 4 groups &nbsp;&#183;&nbsp; Sales pipeline</div></div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px"><div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Installations</div><div style="font-size:14px;font-weight:700;color:var(--navy)">Evident &#8211; Onboarding</div><div style="font-size:12px;color:var(--muted);margin-top:3px">5 columns &nbsp;&#183;&nbsp; 3 groups</div></div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px"><div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Installations</div><div style="font-size:14px;font-weight:700;color:var(--navy)">TrustLayer &#8211; Onboarding</div><div style="font-size:12px;color:var(--muted);margin-top:3px">5 columns &nbsp;&#183;&nbsp; 3 groups</div></div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px"><div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Partnerships</div><div style="font-size:14px;font-weight:700;color:var(--navy)">Evident Partnership</div><div style="font-size:12px;color:var(--muted);margin-top:3px">10 columns &nbsp;&#183;&nbsp; 3 groups</div></div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px"><div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">&#128193; Partnerships</div><div style="font-size:14px;font-weight:700;color:var(--navy)">TrustLayer Partnership</div><div style="font-size:12px;color:var(--muted);margin-top:3px">10 columns &nbsp;&#183;&nbsp; 3 groups</div></div>
+          </div>
+          <div id="ws-no-conn" style="display:none;padding:12px 16px;background:var(--red-bg);border:1px solid #fecaca;border-radius:8px;font-size:13px;color:var(--red);margin-bottom:16px">
+            &#9888;&nbsp; Not connected to Monday. Go to Settings &#8594; Monday to connect first.
+          </div>
+          <div style="display:flex;gap:12px;align-items:center">
+            <button class="btn btn-primary" id="ws-build-btn" onclick="wsStartBuild()">&#127959;&nbsp; Build Workspace</button>
+            <span style="font-size:12px;color:var(--muted)">~2&#8211;3 minutes &nbsp;&#183;&nbsp; Cannot be undone</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 2: BUILDING -->
+      <div id="ws-sec-build" style="display:none">
+        <div class="card" style="margin-bottom:18px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <div><div class="card-title">Building Workspace&#8230;</div><div style="font-size:13px;color:var(--muted);margin-top:3px" id="ws-subtitle">Initializing&#8230;</div></div>
+            <div style="font-size:12px;font-weight:700;color:var(--blue)" id="ws-pct">0%</div>
+          </div>
+          <div style="background:var(--border);border-radius:4px;height:6px;overflow:hidden;margin-bottom:20px">
+            <div id="ws-bar" style="height:100%;background:linear-gradient(90deg,var(--blue),#6BA3DE);border-radius:4px;transition:width .4s ease;width:0%"></div>
+          </div>
+          <div style="display:flex;gap:0;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:18px">
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--navy)" id="ws-s-boards">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Boards</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--navy)" id="ws-s-groups">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Groups</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--navy)" id="ws-s-cols">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Columns</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div style="flex:1;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--navy)" id="ws-s-folders">0</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Folders</div></div>
+          </div>
+          <div id="ws-log" style="background:#0f1924;border-radius:8px;padding:16px;font-family:monospace;font-size:11px;max-height:340px;overflow-y:auto;border:1px solid #1e2d3d">
+            <div style="color:#60a5fa">&#9432; Ready to build HUB CertSecure workspace&#8230;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 3: COMPLETE -->
+      <div id="ws-sec-complete" style="display:none">
+        <div style="background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:12px;padding:32px;text-align:center;color:white;margin-bottom:20px;box-shadow:var(--shadow-lg)">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px">&#9989;</div>
+          <div style="font-size:22px;font-weight:800;margin-bottom:8px">Workspace Built!</div>
+          <div style="font-size:14px;opacity:.8" id="ws-done-summary">Boards, groups, and columns created.</div>
+        </div>
+        <div class="card">
+          <div class="card-title" style="margin-bottom:18px">Post-Build Checklist</div>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:18px">These steps can&#8217;t be automated via the API &#8212; complete them manually in Monday.com:</div>
+          <div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div><div style="font-size:13px;line-height:1.6"><strong>Remove default group</strong> &#8212; Each board gets a "Topics" group. Delete or rename it.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">2</div><div style="font-size:13px;line-height:1.6"><strong>Set dropdown options</strong> &#8212; Platform, Structure, Stage, Rank, Category (use the Configure tab above).</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">3</div><div style="font-size:13px;line-height:1.6"><strong>Connect Boards columns</strong> &#8212; Link Onboarding and Partnership boards to Clients &#8211; Overview.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">4</div><div style="font-size:13px;line-height:1.6"><strong>Mirror columns on Clients &#8211; Overview</strong> &#8212; Onboarding Status, Configuration Deadline, Onboarding Progress.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">5</div><div style="font-size:13px;line-height:1.6"><strong>Install Power-Ups</strong> &#8212; Dependency (Onboarding), Progress Tracking (Overview), Files (Partnerships), Button (Overview &#8594; GitHub).</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">6</div><div style="font-size:13px;line-height:1.6"><strong>Build automations</strong> &#8212; Start with the Go-Live Cascade Workflow.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">7</div><div style="font-size:13px;line-height:1.6"><strong>Add validation rules</strong> &#8212; Status can&#8217;t go Active without Go-Live Date, etc.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">8</div><div style="font-size:13px;line-height:1.6"><strong>Create saved views</strong> &#8212; Daily View, Invoicing View, Reports View on Clients &#8211; Overview.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">9</div><div style="font-size:13px;line-height:1.6"><strong>Resolve invoicing permissions</strong> &#8212; Confirm visibility on INV: columns before migrating data.</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">10</div><div style="font-size:13px;line-height:1.6"><strong>Migrate existing clients</strong> &#8212; Move your 25 active clients into Clients &#8211; Overview (or use the Configure tab).</div></div>
+            <div style="display:flex;gap:12px;padding:12px 0"><div style="width:24px;height:24px;border-radius:50%;background:var(--navy);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">11</div><div style="font-size:13px;line-height:1.6"><strong>Configure GitHub Button</strong> &#8212; Wire the Button Power-Up to trigger the Report Generator workflow.</div></div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:22px">
+            <a href="https://hub-international10.monday.com" target="_blank" class="btn btn-primary">Open Monday.com &#8594;</a>
+            <button class="btn btn-secondary" onclick="wsReset()">&#8635; Build Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CONFIGURE ══ -->
+    <div id="mtab-configure" style="display:none">
       <div class="card" style="margin-bottom:18px">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
           <div><div class="card-title" style="margin-bottom:4px">&#128269; Workspace Health Check</div><div style="font-size:13px;color:var(--muted)">Scans boards, columns, dropdown values, and client coverage in one pass</div></div>
@@ -574,25 +659,24 @@
           </div>
           <div><div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Boards &amp; Folders</div><div id="hc-boards-list" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px"></div></div>
           <div><div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Key Columns on Clients &#8211; Overview</div><div id="hc-columns-list" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:18px"></div></div>
+          <div><div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Dropdown Columns</div><div id="hc-dropdowns-list" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px"></div></div>
           <div><div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Client Coverage</div><div id="hc-clients-list" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px"></div></div>
         </div>
         <div id="hc-running" style="display:none;margin-top:16px"><div style="background:#0f1924;border-radius:8px;padding:14px 16px;font-family:monospace;font-size:11px;max-height:220px;overflow-y:auto;border:1px solid #1e2d3d" id="hc-log"></div></div>
       </div>
 
-      <!-- Configure Dropdowns -->
       <div class="card" style="margin-bottom:18px">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
-          <div><div class="card-title" style="margin-bottom:4px">&#9660; Configure Dropdown Values</div><div style="font-size:13px;color:var(--muted)">Sets all dropdown options via the API</div></div>
+          <div><div class="card-title" style="margin-bottom:4px">&#9660; Configure Dropdown Values</div><div style="font-size:13px;color:var(--muted)">Automates post-build checklist step 2 &#8212; sets all dropdown options via the API</div></div>
           <button class="btn btn-primary" id="dd-apply-btn" onclick="wsApplyDropdowns()" style="white-space:nowrap;flex-shrink:0">Apply All Values</button>
         </div>
         <div id="dd-cards-grid" style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px"></div>
         <div id="dd-log" style="display:none;margin-top:14px;background:#0f1924;border-radius:8px;padding:14px 16px;font-family:monospace;font-size:11px;max-height:200px;overflow-y:auto;border:1px solid #1e2d3d"></div>
       </div>
 
-      <!-- Import Clients -->
       <div class="card">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
-          <div><div class="card-title" style="margin-bottom:4px">&#128101; Import Clients to Monday</div><div style="font-size:13px;color:var(--muted)">Reads clients.json and creates missing clients in Clients &#8211; Overview</div></div>
+          <div><div class="card-title" style="margin-bottom:4px">&#128101; Import Clients to Monday</div><div style="font-size:13px;color:var(--muted)">Reads clients.json and creates missing clients in Clients &#8211; Overview (Onboarding group)</div></div>
           <div style="display:flex;gap:8px;flex-shrink:0">
             <button class="btn btn-secondary" id="ci-scan-btn" onclick="wsScanClients()">&#128269; Scan</button>
             <button class="btn btn-primary" id="ci-import-btn" onclick="wsImportClients()" style="display:none">&#8679; Import Missing</button>
@@ -610,21 +694,68 @@
         </div>
         <div id="ci-import-log" style="display:none;margin-top:14px;background:#0f1924;border-radius:8px;padding:14px 16px;font-family:monospace;font-size:11px;max-height:200px;overflow-y:auto;border:1px solid #1e2d3d"></div>
       </div>
-
     </div>
+
+    <!-- ══ ACTIVITY LOG ══ -->
+    </div>
+
+    <!-- ══ CLIENT PANEL ══ -->
+    <div id="mtab-clients" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <div><div style="font-size:16px;font-weight:800;color:var(--navy)">Client Panel</div><div style="font-size:12px;color:var(--muted)">Manage clients — saves to config and syncs to Monday simultaneously</div></div>
+        <button class="btn btn-primary" onclick="openAddClient()" style="white-space:nowrap">+ Add Client</button>
+      </div>
+      <div style="display:grid;grid-template-columns:250px 1fr;min-height:520px;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--white)">
+        <!-- LEFT: client list -->
+        <div style="border-right:1px solid var(--border);display:flex;flex-direction:column">
+          <div style="padding:10px 12px;border-bottom:1px solid var(--border);background:var(--blue-light)">
+            <input type="text" id="cp-search" placeholder="&#128269; Search clients..." oninput="cpRenderList()" style="width:100%;font-size:12px;padding:6px 10px;border:1px solid var(--border);border-radius:6px;background:var(--white)">
+          </div>
+          <div id="cp-list" style="overflow-y:auto;flex:1;padding:6px"></div>
+        </div>
+        <!-- RIGHT: editor -->
+        <div id="cp-editor" style="overflow-y:auto;padding:20px;background:#FAFBFC">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--muted);gap:10px;padding:60px 0">
+            <div style="font-size:32px">&#128101;</div>
+            <div style="font-size:13px;font-weight:600">Select a client to edit</div>
+            <div style="font-size:12px;text-align:center;max-width:220px">Click any client on the left to view and edit all their information</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
+  <div class="overlay" id="client-edit-overlay">
+  
+    <div class="modal" style="max-width:520px">
+      <div class="modal-hdr"><span class="modal-title" id="client-modal-title">Edit Client</span><button class="modal-close" onclick="closeClientModal()">&#10005;</button></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="form-grp" style="grid-column:1/-1"><label class="form-lbl">Client Name <span id="client-name-lock" style="color:var(--muted);font-weight:400;font-size:10px">(locked &#8212; matches CSV data)</span></label><input type="text" id="ce-client-name" placeholder="e.g. Canadian Pacific Kansas City"><div class="form-hint" id="ce-name-hint" style="display:none">Must exactly match the <code>client</code> column in your CSVs.</div></div>
+        <div class="form-grp"><label class="form-lbl">API Name</label><input type="text" id="ce-api-name" placeholder="e.g. cpkansascity"></div>
+        <div class="form-grp"><label class="form-lbl">Platform</label><select id="ce-platform"><option value="evident">Evident</option><option value="trustlayer">TrustLayer</option></select></div>
+        <div class="form-grp"><label class="form-lbl">Structure</label><select id="ce-structure"><option value="general">General</option><option value="project">Project (Subcontractors)</option><option value="location">Location (Tenants)</option></select></div>
+        <div class="form-grp"><label class="form-lbl">Program Start Date</label><input type="date" id="ce-program-start"></div>
+        <div class="form-grp"><label class="form-lbl">Go-Live Date</label><input type="date" id="ce-go-live"></div>
+        <div class="form-grp"><label class="form-lbl">Producer Name</label><input type="text" id="ce-producer" placeholder="e.g. Philip Irving"></div>
+        <div class="form-grp"><label class="form-lbl">Primary Contact Name</label><input type="text" id="ce-contact-name" placeholder="e.g. Jane Smith"></div>
+        <div class="form-grp" style="display:flex;align-items:center;gap:10px;padding-top:20px"><label style="font-size:13px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="ce-active" style="width:15px;height:15px;accent-color:var(--blue)"> Active</label></div>
+      </div>
+      <div id="ce-msg" style="display:none;font-size:12px;padding:8px 12px;border-radius:7px;margin-top:12px"></div>
+      <div style="display:flex;gap:10px;justify-content:space-between;margin-top:20px;align-items:center"><div><button id="ce-delete-btn" class="btn" style="background:#FDF0EE;color:var(--red);border-color:#F5CFC9;display:none" onclick="deleteClient()">&#128465; Delete Client</button></div><div style="display:flex;gap:10px"><button class="btn btn-secondary" onclick="closeClientModal()">Cancel</button><button class="btn btn-primary" id="ce-save-btn" onclick="saveClientEdit()">Save Changes</button></div></div>
+    </div>
+  </div>
 </main>
   </div><!-- /content-wrap -->
 <div class="toast" id="toast"></div>
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.91</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.92</div>
 
 <script>
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.91
+// DEBUG MODULE — HUB CertSecure v0.92
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -1622,7 +1753,7 @@ async function runDataDiagnostic() {
     lines.push('\u2717 Error: ' + e.message);
   }
   alert('Data Diagnostic\n\n' + lines.join('\n'));
-  btn.disabled = false; btn.textContent = '&#128269; Check';
+  btn.disabled = false; btn.textContent = '🔍 Check';
 }
 </script>
 <script>
@@ -1724,8 +1855,7 @@ async function saveClientsToConfig(updatedClients) {
 }
 function switchTab(tab) {
   ['reports','monday'].forEach(t => {
-    const el = document.getElementById('tab-' + t);
-    if (el) el.style.display = t === tab ? '' : 'none';
+    document.getElementById('tab-' + t).style.display = t === tab ? '' : 'none';
     const btn = document.getElementById('tab-btn-' + t); if (btn) btn.classList.toggle('active', t === tab);
   });
   if (tab === 'monday') {
@@ -1740,17 +1870,22 @@ function switchRGTab(sub) {
 function toggleSection(sec) {
   const isReports = sec === 'reports';
   // Toggle sections
-  const btn = document.getElementById('sb-sec-reports');
-  const cont = document.getElementById('sb-sec-reports-content');
-  if (btn) btn.classList.toggle('open', true);
-  if (cont) cont.classList.toggle('open', true);
-  sidebarNav('generate');
+  ['reports','monday'].forEach(s => {
+    const btn = document.getElementById('sb-sec-' + s);
+    const cont = document.getElementById('sb-sec-' + s + '-content');
+    const opening = (s === sec);
+    if (btn) btn.classList.toggle('open', opening);
+    if (cont) cont.classList.toggle('open', opening);
+  });
+  // Navigate to the default item of the section
+  if (isReports) sidebarNav('generate');
+  else sidebarNav('m-setup');
 }
 // Sidebar navigation controller
 function sidebarNav(dest) {
   csDebug.log("NAV","sidebarNav","Navigate",{dest});
   // Clear all sub-item active states
-  ['snav-generate','snav-monday'].forEach(id => {
+  ['snav-generate','snav-config','snav-m-clients','snav-m-setup','snav-m-configure'].forEach(id => {
     const el = document.getElementById(id); if (el) el.classList.remove('active');
   });
   // Activate selected item
@@ -2914,7 +3049,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.91
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.92
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -2960,68 +3095,6 @@ const MONDAY_COL_MAP = {
   rptYER:       ['RPT: Program Overview'],
   rptTYC:       ['RPT: Thank You Card'],
 };
-
-
-function toggleMondayTools() {
-  const el = document.getElementById('monday-tools-content');
-  const arrow = document.getElementById('monday-tools-arrow');
-  const open = el.style.display === '';
-  el.style.display = open ? 'none' : '';
-  arrow.style.transform = open ? '' : 'rotate(90deg)';
-  if (!open) { ddLoadFromStorage(); ddRenderCards(); }
-}
-
-async function cpPushAll() {
-  if (!_mondayWsId || !_mondayBoardId) { toast('Connect to Monday first', 'error'); return; }
-  const btn = document.getElementById('cp-push-all-btn');
-  btn.disabled = true; btn.textContent = 'Pushing…';
-  const source = (_allClientsData && _allClientsData.length) ? _allClientsData : CLIENTS_FALLBACK;
-  const clients = source.filter(c => c.active !== false);
-  let ok = 0, err = 0;
-  const sleep = ms => new Promise(r => setTimeout(r, ms));
-  for (const c of clients) {
-    await sleep(300);
-    try {
-      // Ensure _cpState has preloaded data
-      if (!_cpState[c.client_name]) _cpState[c.client_name] = {};
-      // Merge preloaded state
-      const preloaded = {};
-      preloadClientPanelData();
-      const state = _cpState[c.client_name] || {};
-      const meta = CLIENT_META_MAP[c.client_name] || c;
-      let itemId = await cpFindMondayItem(c.client_name);
-      if (!itemId) { err++; continue; }
-      const platMap = {evident:'Evident', trustlayer:'TrustLayer'};
-      const structMap = {general:'General', project:'Subcontractors', location:'Tenants'};
-      const colVals = {};
-      const push = (colKey, val, transform) => { const id = mondayColId(colKey); if (id && val !== undefined && val !== '') colVals[id] = transform ? transform(val) : val; };
-      push('platform',    state['platform']||meta.platform||meta.source,  v=>({label:platMap[v]||v}));
-      push('structure',   state['structure']||meta.structure,              v=>({label:structMap[v]||v}));
-      push('serviceStart',state['program_start_date']||meta.program_start_date, v=>({date:v}));
-      push('golive',      state['go_live_date']||meta.go_live_date,        v=>({date:v}));
-      push('producer',    state['producer_name']||meta.producer_name);
-      push('producerEmail',state['producer_email']||meta.producer_email||'');
-      push('contactName', state['contact_name']||meta.contact_name||'');
-      push('contactEmail',state['contact_email']||meta.contact_email||'');
-      push('epicId',      state['epic_id']||(meta.monday_fields||{})['epic_id']||'');
-      push('referringHub',state['referring_hub']||(meta.monday_fields||{})['referring_hub']||'');
-      push('decisionMaker',state['decision_maker']||(meta.monday_fields||{})['decision_maker']||'');
-      push('decisionMakerEmail',state['decision_maker_email']||(meta.monday_fields||{})['decision_maker_email']||'');
-      push('dayToDay1',   state['day_to_day_1']||(meta.monday_fields||{})['day_to_day_1']||'');
-      push('dayToDay1Email',state['day_to_day_1_email']||(meta.monday_fields||{})['day_to_day_1_email']||'');
-      push('dayToDay2',   state['day_to_day_2']||(meta.monday_fields||{})['day_to_day_2']||'');
-      push('dayToDay2Email',state['day_to_day_2_email']||(meta.monday_fields||{})['day_to_day_2_email']||'');
-      push('ivaas',       state['ivaas']||(meta.monday_fields||{})['ivaas']||'', v=>({url:v,text:c.client_name+' iVaaS'}));
-      if (Object.keys(colVals).length) {
-        await mondayGQL('mutation($bid:ID!,$iid:ID!,$cv:JSON!){change_multiple_column_values(board_id:$bid,item_id:$iid,column_values:$cv){id}}',
-          {bid:_mondayBoardId, iid:itemId, cv:JSON.stringify(colVals)});
-      }
-      ok++;
-    } catch(e) { err++; console.warn('Push failed for', c.client_name, e.message); }
-  }
-  btn.disabled = false; btn.textContent = '♹ Push All to Monday';
-  toast(`✓ ${ok} clients pushed${err?' · '+err+' failed':''}`, err ? 'error' : 'success');
-}
 
 function mondayColId(key) {
   for (const name of (MONDAY_COL_MAP[key]||[])) { if (_mondayColumns[name]) return _mondayColumns[name]; }
@@ -3149,7 +3222,6 @@ function mondayUpdateConnectionBanner() {
     text.style.color     = '#166534';
     text.textContent     = 'Connected — ' + _mondayWsName + (_mondayBoardId ? ' · Overview board found' : ' · Run build to create boards');
     if (noConn) noConn.style.display = 'none';
-    const pushBtn = document.getElementById('cp-push-all-btn'); if(pushBtn) pushBtn.style.display='';
   } else {
     banner.style.cssText = 'display:flex;align-items:center;gap:12px;padding:11px 16px;border-radius:20px;margin-bottom:22px;border:1px solid #fecaca;background:var(--red-bg)';
     dot.style.cssText    = 'width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0';
@@ -3257,14 +3329,6 @@ let _cpKey = null;  // currently selected client key
 let _cpState = {};  // { [clientKey]: { field_key: value, ... } }
 
 function cpInit() {
-  if (!_allClientsData || !_allClientsData.length) {
-    _allClientsData = CLIENTS_FALLBACK.map(c => ({...c}));
-    CLIENT_META_MAP = {};
-    _allClientsData.forEach(c => { CLIENT_META_MAP[c.client_name] = c; });
-  }
-  // Show Push All button if connected
-  const pushBtn = document.getElementById('cp-push-all-btn');
-  if (pushBtn) pushBtn.style.display = (_mondayWsId && _mondayBoardId) ? '' : 'none';
   cpRenderList();
   if (_cpKey) cpRenderEditor(_cpKey);
 }
