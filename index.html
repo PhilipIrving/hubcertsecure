@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.90
+       SIDEBAR LAYOUT  v0.91
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:var(--navy);display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.90 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.91 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.90 — using var(--bg) */
+    /* bg overrides removed v0.91 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:12px 24px 0;font-size:12px;font-weight:600;flex-shrink:0}
     .bc-section{color:var(--muted)}
@@ -209,7 +209,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.90</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.91</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -420,14 +420,13 @@
         </button>
         <div style="padding:4px 8px 6px;display:flex;gap:5px">
           <button class="sb-item" id="refresh-btn" onclick="triggerRefresh()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center">&#8635; Refresh</button>
-          <button class="sb-item" id="rg-diag-btn" onclick="runDataDiagnostic()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" title="Check Data">🔍 Check</button>
+          <button class="sb-item" id="rg-diag-btn" onclick="runDataDiagnostic()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" title="Check Data">&#128269; Check</button>
         </div>
       </div>
       <!-- ── Monday.com Section ── -->
       <button class="sb-item" id="snav-monday" onclick="sidebarNav('monday')">
-        <span class="sb-ic">&#128101;</span> Monday.com
+        <span class="sb-ic">&#128203;</span> Monday.com
       </button>
-
     </div>
     <div class="sidebar-footer">
       <!-- Recent activity log (compact) -->
@@ -452,7 +451,7 @@
 <main class="main">
   <div class="tab-bar">
     <button class="tab-btn active" id="tab-btn-reports" onclick="switchTab('reports')" style="display:none">Report Generator</button>
-    
+    <button class="tab-btn" id="tab-btn-monday" onclick="switchTab('monday')" style="display:none">Monday.com Generator</button>
   </div>
   <div id="tab-reports">
   <div id="rg-sub-generate">
@@ -464,7 +463,7 @@
     <div class="page-hdr" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
       <div><div class="page-title">Report Generator</div><div class="page-sub">Select a client to get started</div></div>
       <div style="display:flex;gap:8px">
-        
+        <button class="btn btn-secondary" id="rg-monday-btn" onclick="reportGeneratorSyncMonday()" style="white-space:nowrap;display:none">&#8679; Monday</button>
         <button class="btn btn-secondary" onclick="openHubWide()" style="gap:6px;white-space:nowrap">&#127962; HUB-Wide Annual</button>
       </div>
     </div>
@@ -510,20 +509,34 @@
 
   <div id="tab-monday" style="display:none">
 
-  <!-- ══ CLIENT PANEL (main) ══ -->
+  <!-- ── Connection Banner (inline) ── -->
+  <div id="monday-conn-banner" style="display:flex;align-items:center;gap:12px;padding:11px 18px;border-radius:10px;margin-bottom:20px;border:1px solid #fecaca;background:var(--red-bg)">
+    <div id="monday-tab-dot" style="width:10px;height:10px;border-radius:50%;background:var(--red);flex-shrink:0"></div>
+    <div style="flex:1">
+      <span id="monday-tab-status" style="font-size:13px;font-weight:600;color:var(--red)">Not connected to Monday</span>
+      <div style="font-size:11px;color:var(--muted);margin-top:1px">Go to Settings → Monday tab to connect your API token</div>
+    </div>
+    <button class="btn btn-secondary" style="font-size:12px;padding:6px 14px" onclick="openSettings();setTimeout(()=>switchSettingsTab('monday-cfg'),60)">Connect</button>
+  </div>
+
+  <!-- ── Client Panel ── -->
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-    <div><div style="font-size:16px;font-weight:800;color:var(--navy)">Client Panel</div><div style="font-size:12px;color:var(--muted)">Manage clients — saves to config and syncs to Monday simultaneously</div></div>
-    <button class="btn btn-primary" onclick="openAddClient()" style="white-space:nowrap">+ Add Client</button>
+    <div>
+      <div style="font-size:16px;font-weight:800;color:var(--navy)">Client Panel</div>
+      <div style="font-size:12px;color:var(--muted)">Manage clients — saves to config and syncs to Monday simultaneously</div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-secondary" id="cp-push-all-btn" onclick="cpPushAll()" style="white-space:nowrap;display:none">&#8679; Push All to Monday</button>
+      <button class="btn btn-primary" onclick="openAddClient()" style="white-space:nowrap">+ Add Client</button>
+    </div>
   </div>
   <div style="display:grid;grid-template-columns:250px 1fr;min-height:520px;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--white);margin-bottom:24px">
-    <!-- LEFT: client list -->
     <div style="border-right:1px solid var(--border);display:flex;flex-direction:column">
       <div style="padding:10px 12px;border-bottom:1px solid var(--border);background:var(--blue-light)">
         <input type="text" id="cp-search" placeholder="&#128269; Search clients..." oninput="cpRenderList()" style="width:100%;font-size:12px;padding:6px 10px;border:1px solid var(--border);border-radius:6px;background:var(--white)">
       </div>
       <div id="cp-list" style="overflow-y:auto;flex:1;padding:6px"></div>
     </div>
-    <!-- RIGHT: editor -->
     <div id="cp-editor" style="overflow-y:auto;padding:20px;background:#FAFBFC">
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--muted);gap:10px;padding:60px 0">
         <div style="font-size:32px">&#128101;</div>
@@ -533,13 +546,13 @@
     </div>
   </div>
 
-  <!-- ══ ADMIN TOOLS (collapsible) ══ -->
+  <!-- ── Admin Tools accordion ── -->
   <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:24px">
     <button onclick="toggleMondayTools()" id="monday-tools-toggle" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--bg);border:none;cursor:pointer;font-family:inherit">
       <div style="display:flex;align-items:center;gap:10px">
         <span style="font-size:14px">&#9881;&#65039;</span>
         <span style="font-size:13px;font-weight:700;color:var(--navy)">Admin Tools</span>
-        <span style="font-size:12px;color:var(--muted)">Health Check · Dropdowns · Import Clients</span>
+        <span style="font-size:12px;color:var(--muted)">Health Check &middot; Dropdowns &middot; Import Clients</span>
       </div>
       <span id="monday-tools-arrow" style="font-size:11px;color:var(--muted);transition:transform .2s">&#9654;</span>
     </button>
@@ -607,11 +620,11 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.90</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.91</div>
 
 <script>
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.90
+// DEBUG MODULE — HUB CertSecure v0.91
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -1171,15 +1184,6 @@ function preloadClientPanelData() {
   _cpState["United Coal Company LLC"] = {"epic_id": "UNITCOA-02", "producer_name": "Chandler Cullor", "referring_hub": "KSMO", "decision_maker": "Paul Konstanty", "day_to_day_1": "Shelia Thompson", "go_live_date": "2025-09-08", "est_licenses": 241, "ivaas": "https://docs.google.com/spreadsheets/d/1ZiLwD8NpPKYjH2g4ONNIKs59hxxbXwLfRBpqeDc31nM/edit?gid=0#gid=0"};
 }
 document.addEventListener('DOMContentLoaded', preloadClientPanelData);
-function toggleMondayTools() {
-  const content = document.getElementById('monday-tools-content');
-  const arrow = document.getElementById('monday-tools-arrow');
-  const open = content.style.display === '';
-  content.style.display = open ? 'none' : '';
-  arrow.style.transform = open ? '' : 'rotate(90deg)';
-  if (!open) wsCfgInit();
-}
-
 </script>
 
 <script>
@@ -1618,7 +1622,7 @@ async function runDataDiagnostic() {
     lines.push('\u2717 Error: ' + e.message);
   }
   alert('Data Diagnostic\n\n' + lines.join('\n'));
-  btn.disabled = false; btn.textContent = '🔍 Check';
+  btn.disabled = false; btn.textContent = '&#128269; Check';
 }
 </script>
 <script>
@@ -1722,7 +1726,11 @@ function switchTab(tab) {
   ['reports','monday'].forEach(t => {
     const el = document.getElementById('tab-' + t);
     if (el) el.style.display = t === tab ? '' : 'none';
+    const btn = document.getElementById('tab-btn-' + t); if (btn) btn.classList.toggle('active', t === tab);
   });
+  if (tab === 'monday') {
+    if (typeof mondayTabActivated === 'function') mondayTabActivated();
+  }
 }
 function switchRGTab(sub) {
   const el = document.getElementById('rg-sub-generate');
@@ -1732,21 +1740,17 @@ function switchRGTab(sub) {
 function toggleSection(sec) {
   const isReports = sec === 'reports';
   // Toggle sections
-  ['reports','monday'].forEach(s => {
-    const btn = document.getElementById('sb-sec-' + s);
-    const cont = document.getElementById('sb-sec-' + s + '-content');
-    const opening = (s === sec);
-    if (btn) btn.classList.toggle('open', opening);
-    if (cont) cont.classList.toggle('open', opening);
-  });
-  // Navigate to the default item of the section
-  if (isReports) sidebarNav('generate');
+  const btn = document.getElementById('sb-sec-reports');
+  const cont = document.getElementById('sb-sec-reports-content');
+  if (btn) btn.classList.toggle('open', true);
+  if (cont) cont.classList.toggle('open', true);
+  sidebarNav('generate');
 }
 // Sidebar navigation controller
 function sidebarNav(dest) {
   csDebug.log("NAV","sidebarNav","Navigate",{dest});
   // Clear all sub-item active states
-  ['snav-generate','snav-config','snav-monday'].forEach(id => {
+  ['snav-generate','snav-monday'].forEach(id => {
     const el = document.getElementById(id); if (el) el.classList.remove('active');
   });
   // Activate selected item
@@ -1755,16 +1759,19 @@ function sidebarNav(dest) {
   if (itemEl) itemEl.classList.add('active');
   // Update breadcrumb
   const bcMap = {
-    'generate': ['Report Generator','Generate Reports'],
-    'monday':   ['Monday.com','Client Panel'],
+    'generate':    ['Report Generator','Generate Reports'],
+    'm-clients':   ['Monday.com Generator','Client Panel'],
+    'm-setup':     ['Monday.com Generator','Workspace Setup'],
+    'm-configure': ['Monday.com Generator','Configure'],
   };
   const [section, page] = bcMap[dest] || ['',''];
   const bcS = document.getElementById('bc-section'); if (bcS) bcS.textContent = section;
   const bcP = document.getElementById('bc-page');    if (bcP) bcP.textContent = page;
   // Route
   if (dest === 'generate')    { switchTab('reports'); switchRGTab('generate'); }
-  else if (dest === 'monday') { switchTab('monday'); cpInit(); mondayTabActivated(); }
-
+  else if (dest === 'm-clients')   { switchTab('monday'); switchMondayTab('clients'); }
+  else if (dest === 'm-setup')     { switchTab('monday'); switchMondayTab('setup'); }
+  else if (dest === 'm-configure') { switchTab('monday'); switchMondayTab('configure'); }
 }
 async function loadAndRenderConfig() {
   const wrap = document.getElementById('cfg-table-wrap'); const s = getSettings();
@@ -2907,7 +2914,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.90
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.91
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -2953,6 +2960,68 @@ const MONDAY_COL_MAP = {
   rptYER:       ['RPT: Program Overview'],
   rptTYC:       ['RPT: Thank You Card'],
 };
+
+
+function toggleMondayTools() {
+  const el = document.getElementById('monday-tools-content');
+  const arrow = document.getElementById('monday-tools-arrow');
+  const open = el.style.display === '';
+  el.style.display = open ? 'none' : '';
+  arrow.style.transform = open ? '' : 'rotate(90deg)';
+  if (!open) { ddLoadFromStorage(); ddRenderCards(); }
+}
+
+async function cpPushAll() {
+  if (!_mondayWsId || !_mondayBoardId) { toast('Connect to Monday first', 'error'); return; }
+  const btn = document.getElementById('cp-push-all-btn');
+  btn.disabled = true; btn.textContent = 'Pushing…';
+  const source = (_allClientsData && _allClientsData.length) ? _allClientsData : CLIENTS_FALLBACK;
+  const clients = source.filter(c => c.active !== false);
+  let ok = 0, err = 0;
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  for (const c of clients) {
+    await sleep(300);
+    try {
+      // Ensure _cpState has preloaded data
+      if (!_cpState[c.client_name]) _cpState[c.client_name] = {};
+      // Merge preloaded state
+      const preloaded = {};
+      preloadClientPanelData();
+      const state = _cpState[c.client_name] || {};
+      const meta = CLIENT_META_MAP[c.client_name] || c;
+      let itemId = await cpFindMondayItem(c.client_name);
+      if (!itemId) { err++; continue; }
+      const platMap = {evident:'Evident', trustlayer:'TrustLayer'};
+      const structMap = {general:'General', project:'Subcontractors', location:'Tenants'};
+      const colVals = {};
+      const push = (colKey, val, transform) => { const id = mondayColId(colKey); if (id && val !== undefined && val !== '') colVals[id] = transform ? transform(val) : val; };
+      push('platform',    state['platform']||meta.platform||meta.source,  v=>({label:platMap[v]||v}));
+      push('structure',   state['structure']||meta.structure,              v=>({label:structMap[v]||v}));
+      push('serviceStart',state['program_start_date']||meta.program_start_date, v=>({date:v}));
+      push('golive',      state['go_live_date']||meta.go_live_date,        v=>({date:v}));
+      push('producer',    state['producer_name']||meta.producer_name);
+      push('producerEmail',state['producer_email']||meta.producer_email||'');
+      push('contactName', state['contact_name']||meta.contact_name||'');
+      push('contactEmail',state['contact_email']||meta.contact_email||'');
+      push('epicId',      state['epic_id']||(meta.monday_fields||{})['epic_id']||'');
+      push('referringHub',state['referring_hub']||(meta.monday_fields||{})['referring_hub']||'');
+      push('decisionMaker',state['decision_maker']||(meta.monday_fields||{})['decision_maker']||'');
+      push('decisionMakerEmail',state['decision_maker_email']||(meta.monday_fields||{})['decision_maker_email']||'');
+      push('dayToDay1',   state['day_to_day_1']||(meta.monday_fields||{})['day_to_day_1']||'');
+      push('dayToDay1Email',state['day_to_day_1_email']||(meta.monday_fields||{})['day_to_day_1_email']||'');
+      push('dayToDay2',   state['day_to_day_2']||(meta.monday_fields||{})['day_to_day_2']||'');
+      push('dayToDay2Email',state['day_to_day_2_email']||(meta.monday_fields||{})['day_to_day_2_email']||'');
+      push('ivaas',       state['ivaas']||(meta.monday_fields||{})['ivaas']||'', v=>({url:v,text:c.client_name+' iVaaS'}));
+      if (Object.keys(colVals).length) {
+        await mondayGQL('mutation($bid:ID!,$iid:ID!,$cv:JSON!){change_multiple_column_values(board_id:$bid,item_id:$iid,column_values:$cv){id}}',
+          {bid:_mondayBoardId, iid:itemId, cv:JSON.stringify(colVals)});
+      }
+      ok++;
+    } catch(e) { err++; console.warn('Push failed for', c.client_name, e.message); }
+  }
+  btn.disabled = false; btn.textContent = '♹ Push All to Monday';
+  toast(`✓ ${ok} clients pushed${err?' · '+err+' failed':''}`, err ? 'error' : 'success');
+}
 
 function mondayColId(key) {
   for (const name of (MONDAY_COL_MAP[key]||[])) { if (_mondayColumns[name]) return _mondayColumns[name]; }
@@ -3041,7 +3110,7 @@ async function settingsMondayConnect() {
     btn.disabled = false;
     await mondayFindBoards();
     mondayUpdateConnectionBanner();
-    
+    const rgBtn = document.getElementById('rg-monday-btn'); if (rgBtn) rgBtn.style.display = '';
     toast('✓ Connected to ' + _mondayWsName, 'success');
   } catch(e) {
     _mondayToken = '';
@@ -3080,6 +3149,7 @@ function mondayUpdateConnectionBanner() {
     text.style.color     = '#166534';
     text.textContent     = 'Connected — ' + _mondayWsName + (_mondayBoardId ? ' · Overview board found' : ' · Run build to create boards');
     if (noConn) noConn.style.display = 'none';
+    const pushBtn = document.getElementById('cp-push-all-btn'); if(pushBtn) pushBtn.style.display='';
   } else {
     banner.style.cssText = 'display:flex;align-items:center;gap:12px;padding:11px 16px;border-radius:20px;margin-bottom:22px;border:1px solid #fecaca;background:var(--red-bg)';
     dot.style.cssText    = 'width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0';
@@ -3187,12 +3257,14 @@ let _cpKey = null;  // currently selected client key
 let _cpState = {};  // { [clientKey]: { field_key: value, ... } }
 
 function cpInit() {
-  // Ensure CLIENT_META_MAP is populated from fallback if not yet loaded
   if (!_allClientsData || !_allClientsData.length) {
     _allClientsData = CLIENTS_FALLBACK.map(c => ({...c}));
     CLIENT_META_MAP = {};
     _allClientsData.forEach(c => { CLIENT_META_MAP[c.client_name] = c; });
   }
+  // Show Push All button if connected
+  const pushBtn = document.getElementById('cp-push-all-btn');
+  if (pushBtn) pushBtn.style.display = (_mondayWsId && _mondayBoardId) ? '' : 'none';
   cpRenderList();
   if (_cpKey) cpRenderEditor(_cpKey);
 }
@@ -3913,7 +3985,7 @@ function wsCfgInit() {
   ddRenderCards();
   const noConn = !_mondayWsId;
   // Show a gentle reminder if not connected
-  if (noConn) 
+  if (noConn) toast('Connect to Monday in Settings \u2192 Monday tab first', 'error');
 }
 
 // ── LOG HELPER ──
