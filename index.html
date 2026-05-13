@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.78
+       SIDEBAR LAYOUT  v0.79
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:var(--navy);display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.78 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.79 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.78 — using var(--bg) */
+    /* bg overrides removed v0.79 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:12px 24px 0;font-size:12px;font-weight:600;flex-shrink:0}
     .bc-section{color:var(--muted)}
@@ -209,7 +209,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.78</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.79</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -750,7 +750,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.78</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.79</div>
 
 <script>
 
@@ -1167,7 +1167,7 @@ function initDark() {
 function preloadClientPanelData() {
   if (!window._cpState) window._cpState = {};
   _cpState["A G Equipment Company"] = {"epic_id": "AGEQUIP-02", "producer_name": "Brian Darnell", "referring_hub": "MAM", "decision_maker": "Scott Randall", "day_to_day_1": "Holly Hull", "go_live_date": "2025-07-21", "est_licenses": 448, "ivaas": "https://docs.google.com/spreadsheets/d/1_9N6HsJ42m9gXVFf8tc61gz1DPrX9yUcTQ0Bo4p8O3Y/edit?gid=0#gid=0"};
-  _cpState["Associated Wholesale Grocers, Inc."] = {"epic_id": "ASSOWHO-01", "producer_name": "Chandler Cullor", "referring_hub": "KSMO", "decision_maker": "Katie Toyne", "day_to_day_1": "Hope Earls", "day_to_day_2": "Drew Berry", "go_live_date": "2026-02-16", "est_licenses": 4629, "ivaas": "AWG iVaaS"};
+  _cpState["Associated Wholesale Grocers, Inc."] = {"epic_id": "ASSOWHO-01", "producer_name": "Chandler Cullor", "referring_hub": "KSMO", "decision_maker": "Katie Toyne", "day_to_day_1": "Hope Earls", "day_to_day_2": "Drew Berry", "go_live_date": "2026-02-16", "est_licenses": 4629};
   _cpState["Bauer Foundation Corp."] = {"epic_id": "BAUEFOU-02", "producer_name": "Craig Tappel", "referring_hub": "MSO Nashville", "day_to_day_2": "Mano Krishnan", "program_start_date": "2025-10-01", "go_live_date": "2025-11-24", "est_licenses": 1000, "ivaas": "BAUER iVaaS"};
   _cpState["Block Real Estate Services, LLC"] = {"epic_id": "BLOCREA-01", "producer_name": "Colby Sullivan", "referring_hub": "KSMO", "decision_maker": "Kim Mann", "day_to_day_1": "Ellen Ochampaugh", "go_live_date": "2026-01-12", "est_licenses": 1016};
   _cpState["Canadian Pacific Kansas City"] = {"epic_id": "KANSCIT-24", "producer_name": "Jerry Darnaby", "referring_hub": "KSMO", "decision_maker": "Kyle Johnson", "day_to_day_1": "Jaime Easdon", "program_start_date": "2025-05-01", "go_live_date": "2025-11-03", "est_licenses": 3100, "ivaas": "https://docs.google.com/spreadsheets/d/1vSNWtnbtdaDRWxXFlrDKMo0ihobmIxGb4ohhN4NDOwo/edit?gid=0#gid=0"};
@@ -1635,8 +1635,8 @@ const CLIENTS_FALLBACK = [
   { client_name:"Block Real Estate Services, LLC",    rp_common_name:"blockrealestate",  structure:"location", platform:"trustlayer", platform:"trustlayer", platform:"trustlayer", source:"trustlayer",  program_start_date:"2025-01-01", go_live_date:"2025-01-01", active:true },
   { client_name:"Construction Management Inc.",       rp_common_name:"constructionmgmt", structure:"project",  source:"trustlayer",  program_start_date:"2025-01-01", go_live_date:"2025-01-01", active:true },
   { client_name:"Alliance for Sustainable Energy, LLC", rp_common_name:"allianceenergy",       structure:"general",  source:"evident", producer_name:"Tom Quick",          active:true },
-  { client_name:"Associated Wholesale Grocers, Inc.",  rp_common_name:"assocwholesalegrocers",structure:"general",  source:"evident", producer_name:"Chandler Cullor",     active:true },
-  { client_name:"Excel Constructors, Inc.",            rp_common_name:"excelconstructors",    structure:"project",  source:"evident", producer_name:"Chandler Cullor",     active:true },
+  { client_name:"Associated Wholesale Grocers, Inc.",  rp_common_name:"assocwholesalegrocers",structure:"general",  source:"trustlayer", producer_name:"Chandler Cullor", active:true },
+  { client_name:"Excel Constructors, Inc.",            rp_common_name:"excelconstructors",    structure:"project",  source:"trustlayer", producer_name:"Chandler Cullor", active:true },
   { client_name:"Fincantieri Infrastructure Florida, Inc.", rp_common_name:"fincantieri",     structure:"project",  source:"evident", producer_name:"Kevin Scanlon",       active:true },
   { client_name:"QTS Data Centers",                   rp_common_name:"qtsdatacenters",   structure:"project",  source:"trustlayer",  program_start_date:"2025-01-01", go_live_date:"2025-01-01", active:true },
 ];
@@ -2897,7 +2897,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.78
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.79
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
