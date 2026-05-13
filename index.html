@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.74
+       SIDEBAR LAYOUT  v0.76
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:var(--navy);display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.74 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.76 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.74 — using var(--bg) */
+    /* bg overrides removed v0.76 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:12px 24px 0;font-size:12px;font-weight:600;flex-shrink:0}
     .bc-section{color:var(--muted)}
@@ -209,7 +209,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.74</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.76</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -669,14 +669,7 @@
           <div><div class="card-title" style="margin-bottom:4px">&#9660; Configure Dropdown Values</div><div style="font-size:13px;color:var(--muted)">Automates post-build checklist step 2 &#8212; sets all dropdown options via the API</div></div>
           <button class="btn btn-primary" id="dd-apply-btn" onclick="wsApplyDropdowns()" style="white-space:nowrap;flex-shrink:0">Apply All Values</button>
         </div>
-        <div style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px"><div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Clients &#8211; Overview &nbsp;&#183;&nbsp; Platform</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">Evident</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:#fff7ed;color:#ea580c;font-weight:600">TrustLayer</span></div></div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px"><div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Clients &#8211; Overview &nbsp;&#183;&nbsp; Structure</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">General</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">Subcontractors</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">Tenants</span></div></div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px"><div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Clients &amp; Prospects &nbsp;&#183;&nbsp; Est. Complexity</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--green-bg);color:var(--green);font-weight:600">Simple</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:#fff7ed;color:#ea580c;font-weight:600">Moderate</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--red-bg);color:var(--red);font-weight:600">Complex</span></div></div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px"><div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Prospects &nbsp;&#183;&nbsp; Stage</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Discovery</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Proposal Sent</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Negotiation</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Decision Pending</span></div></div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px"><div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Partnership Boards &nbsp;&#183;&nbsp; Category</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--red-bg);color:var(--red);font-weight:600">Platform Issue</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--blue-light);color:var(--blue);font-weight:600">Feature Request</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Bug Report</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-weight:600">Enhancement</span></div></div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px"><div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">Partnership Boards &nbsp;&#183;&nbsp; Rank</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--red-bg);color:var(--red);font-weight:600">P1 &#8211; Critical</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:#fff7ed;color:#ea580c;font-weight:600">P2 &#8211; High</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:#fef9c3;color:#a16207;font-weight:600">P3 &#8211; Medium</span><span style="font-size:12px;padding:3px 10px;border-radius:12px;background:var(--green-bg);color:var(--green);font-weight:600">P4 &#8211; Low</span></div></div>
-        </div>
+        <div id="dd-cards-grid" style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px"></div>
         <div id="dd-log" style="display:none;margin-top:14px;background:#0f1924;border-radius:8px;padding:14px 16px;font-family:monospace;font-size:11px;max-height:200px;overflow-y:auto;border:1px solid #1e2d3d"></div>
       </div>
 
@@ -757,7 +750,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.74</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.76</div>
 
 <script>
 
@@ -1801,6 +1794,7 @@ async function saveClientEdit() {
   btn.disabled = true; btn.textContent = 'Saving\u2026';
   const updated = [..._allClientsData];
   const entry = { client_name: name, rp_common_name: api, program_start_date: progStart, go_live_date: goLive, structure: struct, platform, producer_name: producer, contact_name: contactName, active };
+  // Preserve existing email fields if already set (modal doesn't have email inputs — managed via Client Panel)
   if (_editingIndex === null) { updated.push(entry); } else { updated[_editingIndex] = { ...updated[_editingIndex], ...entry }; }
   // Block if Monday not connected
   const connected = !!(_mondayWsId&&_mondayBoardId);
@@ -1827,7 +1821,10 @@ async function saveClientEdit() {
         push('structure', struct,   v=>({label:structMap[v]||v}));
         push('serviceStart',progStart,v=>({date:v}));
         push('golive',    goLive,   v=>({date:v}));
-        push('producer',  producer);
+        push('producer',        producer);
+        push('producerEmail',   (updated.find(c=>c.client_name===name)||{}).producer_email||'');
+        push('contactName',     contactName);
+        push('contactEmail',    (updated.find(c=>c.client_name===name)||{}).contact_email||'');
         if(Object.keys(colVals).length) await mondayGQL(
           'mutation($bid:ID!,$iid:ID!,$cv:JSON!){change_multiple_column_values(board_id:$bid,item_id:$iid,column_values:$cv){id}}',
           {bid:_mondayBoardId,iid:itemId,cv:JSON.stringify(colVals)}
@@ -2870,7 +2867,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.74
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.76
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -2883,10 +2880,16 @@ const MONDAY_COL_MAP = {
   serviceStart: ['Service Start Date'],
   golive:       ['Go-Live Date'],
   licenses:     ['Est. Licenses'],
-  producer:     ['Producer'],
-  dayToDay1:    ['Day-to-Day 1'],
-  dayToDay2:    ['Day-to-Day 2'],
-  decisionMaker:['Decision Maker'],
+  producer:          ['Producer'],
+  producerEmail:     ['Producer Email'],
+  contactName:       ['Primary Contact'],
+  contactEmail:      ['Primary Contact Email'],
+  decisionMaker:     ['Decision Maker'],
+  decisionMakerEmail:['Decision Maker Email'],
+  dayToDay1:         ['Day-to-Day 1'],
+  dayToDay1Email:    ['Day-to-Day 1 Email'],
+  dayToDay2:         ['Day-to-Day 2'],
+  dayToDay2Email:    ['Day-to-Day 2 Email'],
   referringHub: ['Referring HUB'],
   epicId:       ['EPIC ID'],
   estComplexity:['Est. Complexity'],
@@ -3079,11 +3082,16 @@ const CP_SECTIONS = [
     { key:'ivaas',             label:'iVaaS Link',         type:'url',    src:'monday' },
   ]},
   { id:'contacts', label:'Contacts', fields:[
-    { key:'producer_name',  label:'Producer',             type:'text',  src:'config' },
-    { key:'contact_name',   label:'Primary Contact',      type:'text',  src:'config' },
-    { key:'decision_maker', label:'Decision Maker',       type:'text',  src:'monday' },
-    { key:'day_to_day_1',   label:'Day-to-Day 1 (Email)', type:'email', src:'monday' },
-    { key:'day_to_day_2',   label:'Day-to-Day 2 (Email)', type:'email', src:'monday' },
+    { key:'producer_name',        label:'Producer Name',           type:'text',  src:'config' },
+    { key:'producer_email',       label:'Producer Email',          type:'email', src:'config' },
+    { key:'contact_name',         label:'Primary Contact Name',    type:'text',  src:'config' },
+    { key:'contact_email',        label:'Primary Contact Email',   type:'email', src:'config' },
+    { key:'decision_maker',       label:'Decision Maker Name',     type:'text',  src:'monday' },
+    { key:'decision_maker_email', label:'Decision Maker Email',    type:'email', src:'monday' },
+    { key:'day_to_day_1',         label:'Day-to-Day 1 Name',       type:'text',  src:'monday' },
+    { key:'day_to_day_1_email',   label:'Day-to-Day 1 Email',      type:'email', src:'monday' },
+    { key:'day_to_day_2',         label:'Day-to-Day 2 Name',       type:'text',  src:'monday' },
+    { key:'day_to_day_2_email',   label:'Day-to-Day 2 Email',      type:'email', src:'monday' },
   ]},
   { id:'stats', label:'Live Stats', readonly:true, fields:[
     { key:'_comp_rate',   label:'Compliance Rate',  type:'stat', unit:'%' },
@@ -3115,8 +3123,12 @@ const CP_SECTIONS = [
 // Maps CP field keys to MONDAY_COL_MAP keys
 const CP_MONDAY_KEY = {
   platform:'platform', structure:'structure', program_start_date:'serviceStart',
-  go_live_date:'golive', producer_name:'producer', day_to_day_1:'dayToDay1',
-  day_to_day_2:'dayToDay2', decision_maker:'decisionMaker', referring_hub:'referringHub',
+  go_live_date:'golive', producer_name:'producer', producer_email:'producerEmail',
+  contact_name:'contactName', contact_email:'contactEmail',
+  decision_maker:'decisionMaker', decision_maker_email:'decisionMakerEmail',
+  day_to_day_1:'dayToDay1', day_to_day_1_email:'dayToDay1Email',
+  day_to_day_2:'dayToDay2', day_to_day_2_email:'dayToDay2Email',
+  referring_hub:'referringHub',
   epic_id:'epicId', est_complexity:'estComplexity', ivaas:'ivaas',
   inv_renewal_date:'renewalDate', inv_renewal_status:'renewalStatus',
   inv_est_cost:'estCost', inv_current_fee:'currentFee', inv_next_fee:'nextFee',
@@ -3399,10 +3411,16 @@ async function cpSave(key) {
         push('structure',   state['structure']||meta.structure, v=>({label:structMap[v]||v}));
         push('serviceStart',state['program_start_date']||meta.program_start_date, v=>({date:v}));
         push('golive',      state['go_live_date']||meta.go_live_date,             v=>({date:v}));
-        push('producer',    state['producer_name']||meta.producer_name);
-        push('dayToDay1',   state['day_to_day_1']||((meta.monday_fields||{})['day_to_day_1']));
-        push('dayToDay2',   state['day_to_day_2']||((meta.monday_fields||{})['day_to_day_2']));
-        push('decisionMaker',state['decision_maker']||(meta.monday_fields||{})['decision_maker']);
+        push('producer',           state['producer_name']||meta.producer_name);
+        push('producerEmail',      state['producer_email']||meta.producer_email);
+        push('contactName',        state['contact_name']||meta.contact_name);
+        push('contactEmail',       state['contact_email']||meta.contact_email);
+        push('decisionMaker',      state['decision_maker']||(meta.monday_fields||{})['decision_maker']);
+        push('decisionMakerEmail', state['decision_maker_email']||(meta.monday_fields||{})['decision_maker_email']);
+        push('dayToDay1',          state['day_to_day_1']||(meta.monday_fields||{})['day_to_day_1']);
+        push('dayToDay1Email',     state['day_to_day_1_email']||(meta.monday_fields||{})['day_to_day_1_email']);
+        push('dayToDay2',          state['day_to_day_2']||(meta.monday_fields||{})['day_to_day_2']);
+        push('dayToDay2Email',     state['day_to_day_2_email']||(meta.monday_fields||{})['day_to_day_2_email']);
         push('referringHub', state['referring_hub']||(meta.monday_fields||{})['referring_hub']);
         push('epicId',      state['epic_id']||(meta.monday_fields||{})['epic_id']);
         push('estComplexity',state['est_complexity']||(meta.monday_fields||{})['est_complexity'], v=>({label:v}));
@@ -3721,7 +3739,7 @@ async function wsStartBuild() {
 // ════════════════════════════════════════════
 
 // ── DROPDOWN DEFINITIONS ──
-const WS_DROPDOWNS = [
+let WS_DROPDOWNS = [
   {
     boardKey: 'overview', boardName: 'Clients \u2013 Overview',
     column: 'Platform', type: 'dropdown',
@@ -3795,6 +3813,8 @@ let _wsClientsMissing = []; // clients not yet in Monday
 const _origSwitchMondayTab = switchMondayTab;
 
 function wsCfgInit() {
+  ddLoadFromStorage();
+  ddRenderCards();
   const noConn = !_mondayWsId;
   // Show a gentle reminder if not connected
   if (noConn) toast('Connect to Monday in Settings \u2192 Monday tab first', 'error');
@@ -3946,6 +3966,67 @@ async function wsRunHealthCheck() {
 }
 
 // ── DROPDOWN CONFIGURATOR ──
+
+// ── DROPDOWN CARD EDITOR ──
+const DD_STORAGE_KEY = 'hub_cs_ws_dropdowns';
+
+function ddLoadFromStorage() {
+  try {
+    const saved = localStorage.getItem(DD_STORAGE_KEY);
+    if (saved) { const parsed = JSON.parse(saved); if (Array.isArray(parsed) && parsed.length) WS_DROPDOWNS = parsed; }
+  } catch(e) {}
+}
+
+function ddSaveToStorage() {
+  try { localStorage.setItem(DD_STORAGE_KEY, JSON.stringify(WS_DROPDOWNS)); } catch(e) {}
+}
+
+function ddRenderCards() {
+  const grid = document.getElementById('dd-cards-grid'); if (!grid) return;
+  grid.innerHTML = WS_DROPDOWNS.map((dd, ddIdx) => {
+    const chips = dd.labels.map((lbl, lIdx) => `
+      <div style="display:inline-flex;align-items:center;gap:4px;background:var(--blue-light);border:1px solid var(--border);border-radius:12px;padding:2px 4px 2px 10px;font-size:12px;font-weight:600;color:var(--blue)">
+        <span contenteditable="true" spellcheck="false"
+          style="outline:none;min-width:20px;cursor:text"
+          onblur="ddEditLabel(${ddIdx},${lIdx},this.textContent.trim())"
+          onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur()}"
+        >${esc(lbl)}</span>
+        <button onclick="ddRemoveLabel(${ddIdx},${lIdx})" title="Remove"
+          style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:13px;line-height:1;padding:0 2px">&times;</button>
+      </div>`).join('');
+    return `
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <div style="font-size:11px;font-weight:700;color:var(--muted)">${esc(dd.boardName)} &nbsp;&#183;&nbsp; ${esc(dd.column)}</div>
+          <button onclick="ddAddLabel(${ddIdx})" title="Add value"
+            style="background:none;border:1px dashed var(--border);border-radius:10px;padding:1px 8px;font-size:11px;color:var(--muted);cursor:pointer">+ Add</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">${chips}</div>
+      </div>`;
+  }).join('');
+}
+
+function ddEditLabel(ddIdx, lIdx, newVal) {
+  if (!newVal) { ddRemoveLabel(ddIdx, lIdx); return; }
+  WS_DROPDOWNS[ddIdx].labels[lIdx] = newVal;
+  ddSaveToStorage();
+  ddRenderCards();
+}
+
+function ddRemoveLabel(ddIdx, lIdx) {
+  WS_DROPDOWNS[ddIdx].labels.splice(lIdx, 1);
+  ddSaveToStorage();
+  ddRenderCards();
+}
+
+function ddAddLabel(ddIdx) {
+  const val = prompt('New dropdown value:');
+  if (!val || !val.trim()) return;
+  WS_DROPDOWNS[ddIdx].labels.push(val.trim());
+  ddSaveToStorage();
+  ddRenderCards();
+}
+
 async function wsApplyDropdowns() {
   if (!_mondayWsId) { toast('Connect to Monday first','error'); return; }
   const btn = document.getElementById('dd-apply-btn');
