@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.70
+       SIDEBAR LAYOUT  v0.74
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:var(--navy);display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.70 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.74 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.70 — using var(--bg) */
+    /* bg overrides removed v0.74 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:12px 24px 0;font-size:12px;font-weight:600;flex-shrink:0}
     .bc-section{color:var(--muted)}
@@ -209,7 +209,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.70</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.74</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -418,9 +418,6 @@
         <button class="sb-item active" id="snav-generate" onclick="sidebarNav('generate')">
           <span class="sb-ic">&#128202;</span> Generate Reports
         </button>
-        <button class="sb-item" id="snav-config" onclick="sidebarNav('config')">
-          <span class="sb-ic">&#128101;</span> Client Configuration
-        </button>
         <div style="padding:4px 8px 6px;display:flex;gap:5px">
           <button class="sb-item" id="refresh-btn" onclick="triggerRefresh()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center">&#8635; Refresh</button>
           <button class="sb-item" id="rg-diag-btn" onclick="runDataDiagnostic()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" title="Check Data">&#128269; Check</button>
@@ -468,10 +465,6 @@
     <button class="tab-btn" id="tab-btn-monday" onclick="switchTab('monday')" style="display:none">Monday.com Generator</button>
   </div>
   <div id="tab-reports">
-  <div class="tab-bar" style="margin-bottom:18px">
-    <button class="tab-btn active" id="rg-sub-btn-generate" onclick="switchRGTab('generate')">&#128196; Generate Reports</button>
-    <button class="tab-btn" id="rg-sub-btn-clients" onclick="switchRGTab('clients')">&#128101; Client Configuration</button>
-  </div>
   <div id="rg-sub-generate">
   <div id="step-1" class="step-panel">
     <div id="pat-warning" style="display:none;align-items:center;gap:12px;padding:11px 16px;margin-bottom:14px;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;font-size:13px;color:#9a3412">
@@ -523,10 +516,6 @@
   </div>
 
   </div><!-- /rg-sub-generate -->
-  <div id="rg-sub-clients" style="display:none">
-    <div class="page-hdr" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px"><div><div class="page-title">Client Configuration</div><div class="page-sub">Manage clients, go-live dates, and program settings</div></div><button class="btn btn-primary" onclick="openAddClient()">+ Add Client</button></div>
-    <div class="card"><div style="display:flex;gap:10px;align-items:center;margin-bottom:14px"><input type="text" class="cfg-search" id="cfg-search" placeholder="Search clients&#8230;" oninput="renderConfigTable(this.value)"><button class="btn btn-secondary" onclick="loadAndRenderConfig()" style="white-space:nowrap;flex-shrink:0">&#8635; Reload</button></div><div id="cfg-table-wrap"><div style="text-align:center;padding:24px;color:var(--muted);font-size:13px">Switch to this tab to load client configuration.</div></div></div>
-  </div><!-- /rg-sub-clients -->
   </div>
 
   <div id="tab-monday" style="display:none">
@@ -718,6 +707,10 @@
 
     <!-- ══ CLIENT PANEL ══ -->
     <div id="mtab-clients" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <div><div style="font-size:16px;font-weight:800;color:var(--navy)">Client Panel</div><div style="font-size:12px;color:var(--muted)">Manage clients — saves to config and syncs to Monday simultaneously</div></div>
+        <button class="btn btn-primary" onclick="openAddClient()" style="white-space:nowrap">+ Add Client</button>
+      </div>
       <div style="display:grid;grid-template-columns:250px 1fr;min-height:520px;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--white)">
         <!-- LEFT: client list -->
         <div style="border-right:1px solid var(--border);display:flex;flex-direction:column">
@@ -764,7 +757,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.70</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.74</div>
 
 <script>
 
@@ -772,7 +765,8 @@
 function mapNCReason(r) {
   if (!r) return r;
   if (/evidence of this (requirement|coverage) must be included/i.test(r) ||
-      /insurance is required for .+?\.\s*please upload/i.test(r)) return 'NO COVERAGE ON FILE';
+      /insurance is required for .+?\.\s*please upload/i.test(r) ||
+      /this policy must be included in your submission/i.test(r)) return 'NO COVERAGE ON FILE';
   if (/auto insurance policy has expired/i.test(r)) return 'AUTO EXPIRED';
   if (/aviation liability policy has expired/i.test(r)) return 'AVIATION EXPIRED';
   if (/cargo liability policy has expired/i.test(r)) return 'CARGO EXPIRED';
@@ -784,6 +778,7 @@ function mapNCReason(r) {
   if (/homeowners policy has expired/i.test(r)) return 'HOMEOWNERS EXPIRED';
   if (/professional liability policy has expired/i.test(r)) return 'PROF LIABILITY EXPIRED';
   if (/workers compensation policy has expired/i.test(r)) return 'WORKERS COMP EXPIRED';
+  if (/workers compensation policy must indicate anyone excluded as: no/i.test(r)) return 'ANYONE EXCLUDED = NO';
   if (/certificate holder address for this policy must be/i.test(r)) return 'CERTIFICATE HOLDER ADDRESS MISMATCH';
   if (/must be named as certificate holder/i.test(r)) return 'CERTIFICATE HOLDER NAME MISMATCH';
   if (/additional insured in your policy must list the name/i.test(r)) return 'ADDITIONAL INSURED MISMATCH';
@@ -829,7 +824,8 @@ function mapNCReason(r) {
   if (/AM Best rating must be greater than or equal to/i.test(r)) return 'AM BEST RATING INSUFFICIENT';
   if (/AM Best financial size category/i.test(r)) return 'AM BEST SIZE INSUFFICIENT';
   if (/must be named as loss payee/i.test(r)) return 'LOSS PAYEE MISMATCH';
-  if (/you indicated you did not have this coverage/i.test(r)) return 'COVERAGE DECLINED';
+  if (/you indicated you did not have this coverage/i.test(r) ||
+      /you chose to decline this coverage/i.test(r)) return 'COVERAGE DECLINED';
   if (/you requested an exception or waiver/i.test(r)) return 'EXCEPTION REQUESTED';
   return r;
 }
@@ -1699,11 +1695,8 @@ function switchTab(tab) {
   }
 }
 function switchRGTab(sub) {
-  ['generate','clients'].forEach(s => {
-    document.getElementById('rg-sub-' + s).style.display = s === sub ? '' : 'none';
-    const btn = document.getElementById('rg-sub-btn-' + s); if (btn) btn.classList.toggle('active', s === sub);
-  });
-  if (sub === 'clients') loadAndRenderConfig();
+  const el = document.getElementById('rg-sub-generate');
+  if (el) el.style.display = '';
 }
 // Sidebar accordion toggle
 function toggleSection(sec) {
@@ -1733,7 +1726,6 @@ function sidebarNav(dest) {
   // Update breadcrumb
   const bcMap = {
     'generate':    ['Report Generator','Generate Reports'],
-    'config':      ['Report Generator','Client Configuration'],
     'm-clients':   ['Monday.com Generator','Client Panel'],
     'm-setup':     ['Monday.com Generator','Workspace Setup'],
     'm-configure': ['Monday.com Generator','Configure'],
@@ -1743,7 +1735,6 @@ function sidebarNav(dest) {
   const bcP = document.getElementById('bc-page');    if (bcP) bcP.textContent = page;
   // Route
   if (dest === 'generate')    { switchTab('reports'); switchRGTab('generate'); }
-  else if (dest === 'config') { switchTab('reports'); switchRGTab('clients'); }
   else if (dest === 'm-clients')   { switchTab('monday'); switchMondayTab('clients'); }
   else if (dest === 'm-setup')     { switchTab('monday'); switchMondayTab('setup'); }
   else if (dest === 'm-configure') { switchTab('monday'); switchMondayTab('configure'); }
@@ -1811,10 +1802,40 @@ async function saveClientEdit() {
   const updated = [..._allClientsData];
   const entry = { client_name: name, rp_common_name: api, program_start_date: progStart, go_live_date: goLive, structure: struct, platform, producer_name: producer, contact_name: contactName, active };
   if (_editingIndex === null) { updated.push(entry); } else { updated[_editingIndex] = { ...updated[_editingIndex], ...entry }; }
+  // Block if Monday not connected
+  const connected = !!(_mondayWsId&&_mondayBoardId);
+  if (!connected) { showCEMsg('Monday not connected — connect in Settings → Monday tab before saving.', true); btn.disabled=false; btn.textContent = _editingIndex===null?'Add Client':'Save Changes'; return; }
   try {
     await saveClientsToConfig(updated);
+    // Push to Monday — create or update item
+    try {
+      let itemId = await cpFindMondayItem(name);
+      if (!itemId) {
+        // New client — create in Clients – Overview Onboarding group
+        const createData = await mondayGQL(
+          'mutation($bid:ID!,$grp:String!,$nm:String!){create_item(board_id:$bid,group_id:$grp,item_name:$nm,create_labels_if_missing:true){id}}',
+          {bid:_mondayBoardId,grp:'onboarding',nm:name}
+        );
+        itemId = createData?.create_item?.id||null;
+      }
+      if (itemId) {
+        const platMap={evident:'Evident',trustlayer:'TrustLayer'};
+        const structMap={general:'General',project:'Subcontractors',location:'Tenants'};
+        const colVals={};
+        const push=(colKey,val,transform)=>{const id=mondayColId(colKey);if(id&&val!==undefined&&val!=='')colVals[id]=transform?transform(val):val;};
+        push('platform',  platform, v=>({label:platMap[v]||v}));
+        push('structure', struct,   v=>({label:structMap[v]||v}));
+        push('serviceStart',progStart,v=>({date:v}));
+        push('golive',    goLive,   v=>({date:v}));
+        push('producer',  producer);
+        if(Object.keys(colVals).length) await mondayGQL(
+          'mutation($bid:ID!,$iid:ID!,$cv:JSON!){change_multiple_column_values(board_id:$bid,item_id:$iid,column_values:$cv){id}}',
+          {bid:_mondayBoardId,iid:itemId,cv:JSON.stringify(colVals)}
+        );
+      }
+    } catch(me) { console.warn('Monday push failed (clients.json saved OK):', me.message); }
     const msgEl2 = document.getElementById('ce-msg'); if (msgEl2) msgEl2.style.display = 'none';
-    toast((_editingIndex === null ? 'Client added' : 'Client saved') + ' \u2713', 'success');
+    toast((_editingIndex === null ? 'Client added + pushed to Monday' : 'Client saved + pushed to Monday') + ' \u2713', 'success');
     closeClientModal(); renderConfigTable(document.getElementById('cfg-search')?.value || ''); renderGrids();
   } catch(e) { showCEMsg('Save failed: ' + e.message, true); }
   btn.disabled = false; btn.textContent = _editingIndex === null ? 'Add Client' : 'Save Changes';
@@ -2849,7 +2870,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.70
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.74
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -3329,6 +3350,7 @@ async function cpSave(key) {
   const btn=document.querySelector(`[onclick="cpSave('${key}')"]`);
   if(btn){btn.disabled=true;btn.textContent='Saving\u2026';}
   const connected = !!(_mondayWsId&&_mondayBoardId);
+  if (!connected) { toast('Monday not connected — connect in Settings → Monday tab before saving.','error'); if(btn){btn.disabled=false;btn.textContent='\u2713 Save + Push';} return; }
   const state = _cpState[key]||{};
   try {
     // 1. Update clients.json for config fields
@@ -3355,7 +3377,18 @@ async function cpSave(key) {
     // 2. Push to Monday if connected
     if (connected) {
       const itemId = await cpFindMondayItem(key);
-      if (itemId) {
+      let resolvedItemId = itemId;
+      if (!resolvedItemId) {
+        // New client — create item in Monday Clients – Overview (Onboarding group)
+        const groupId = 'onboarding'; // standard group name from workspace build
+        const createData = await mondayGQL(
+          'mutation($bid:ID!,$grp:String!,$name:String!){create_item(board_id:$bid,group_id:$grp,item_name:$name,create_labels_if_missing:true){id}}',
+          {bid:_mondayBoardId, grp:groupId, name:key}
+        );
+        resolvedItemId = createData?.create_item?.id || null;
+        if (!resolvedItemId) throw new Error('Could not create Monday item for ' + key);
+      }
+      if (resolvedItemId) {
         const colVals={};
         const meta = CLIENT_META_MAP[key]||{};
         const platMap={evident:'Evident',trustlayer:'TrustLayer'};
@@ -3399,7 +3432,7 @@ async function cpSave(key) {
     cpRenderList();
     cpRenderEditor(key);
   } catch(e) { toast('Save failed: '+e.message,'error'); }
-  if(btn){btn.disabled=false;btn.textContent='\u2713 Save'+(connected?' + Push':' to Config');}
+  if(btn){btn.disabled=false;btn.textContent='\u2713 Save + Push';}
 }
 
 async function cpOpenInMonday(key) {
