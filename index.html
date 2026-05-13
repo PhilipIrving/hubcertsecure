@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.80
+       SIDEBAR LAYOUT  v0.81
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:var(--navy);display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.80 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.81 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.80 — using var(--bg) */
+    /* bg overrides removed v0.81 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:12px 24px 0;font-size:12px;font-weight:600;flex-shrink:0}
     .bc-section{color:var(--muted)}
@@ -209,7 +209,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.80</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.81</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -750,7 +750,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.80</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.81</div>
 
 <script>
 
@@ -2897,7 +2897,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.80
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.81
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -3673,6 +3673,16 @@ function wsReset() {
   wsSetPhase(1);
 }
 
+const WS_CONNECT_COLS = [
+  { boardKey:'prospects',    colTitle:'Connect: Clients – Overview', targetKey:'overview' },
+  { boardKey:'overview',     colTitle:'Connect: Prospects',              targetKey:'prospects' },
+  { boardKey:'overview',     colTitle:'Connect: Onboarding',             targetKey:'evident_ob' },
+  { boardKey:'evident_ob',   colTitle:'Connect: Clients – Overview', targetKey:'overview' },
+  { boardKey:'tl_ob',        colTitle:'Connect: Clients – Overview', targetKey:'overview' },
+  { boardKey:'evident_part', colTitle:'Connect: Clients – Overview', targetKey:'overview' },
+  { boardKey:'tl_part',      colTitle:'Connect: Clients – Overview', targetKey:'overview' },
+];
+
 async function wsStartBuild() {
   if (!_mondayWsId) {
     const nc=document.getElementById('ws-no-conn'); if(nc) nc.style.display='';
@@ -3683,9 +3693,10 @@ async function wsStartBuild() {
   document.getElementById('ws-sec-build').style.display='';
   wsSetPhase(2);
   // Count steps
-  _wsTotal = WS_FOLDERS.length;
+  _wsTotal = WS_FOLDERS.length + WS_CONNECT_COLS.length;
   WS_BOARDS.forEach(b=>{ _wsTotal += 1 + b.groups.length + b.columns.length; });
   _wsDone=0; _wsStats={boards:0,groups:0,columns:0,folders:0};
+  _wsBoardBuilt = {};  // key → boardId, populated during Pass 1
   wsUpdateProgress();
   const sleep = ms => new Promise(r=>setTimeout(r,ms));
   const folderIds = {};
@@ -3717,6 +3728,7 @@ async function wsStartBuild() {
           mut = await mondayGQL(`mutation($name:String!,$kind:BoardKind!,$wid:ID!){create_board(board_name:$name,board_kind:$kind,workspace_id:$wid){id name}}`,{name:bd.name,kind:bd.kind,wid:_mondayWsId});
         }
         const boardId=parseInt(mut.create_board.id);
+        _wsBoardBuilt[bd.key] = boardId;
         _wsStats.boards++; _wsDone++; wsLog('ok','Board created',`${bd.name} (ID: ${boardId})`); wsUpdateProgress();
         // Groups
         for (const grp of bd.groups) {
@@ -3741,12 +3753,36 @@ async function wsStartBuild() {
         _wsDone++; wsUpdateProgress();
       }
     }
+    // ── PASS 2: Create board_relation connect columns ──
+    wsLog('info','Creating connect columns\u2026');
+    if (sub) sub.textContent='Connecting boards\u2026';
+    for (const cc of WS_CONNECT_COLS) {
+      await sleep(500);
+      const fromId = _wsBoardBuilt[cc.boardKey];
+      const toId   = _wsBoardBuilt[cc.targetKey];
+      if (!fromId || !toId) {
+        wsLog('err', '  Connect skipped (board ID missing)', cc.colTitle);
+        _wsDone++; wsUpdateProgress(); continue;
+      }
+      try {
+        const colDefaults = JSON.stringify({ boardIds: [toId] });
+        await mondayGQL(
+          'mutation($bid:ID!,$title:String!,$defaults:String!){create_column(board_id:$bid,title:$title,column_type:board_relation,defaults:$defaults){id title}}',
+          { bid: fromId, title: cc.colTitle, defaults: colDefaults }
+        );
+        wsLog('ok', '  Connected', cc.colTitle + ' (' + cc.boardKey + ' \u2192 ' + cc.targetKey + ')');
+      } catch(e) {
+        wsLog('err', '  Connect failed', cc.colTitle + ': ' + e.message);
+      }
+      _wsDone++; wsUpdateProgress();
+    }
+
     // Done
     const bar=document.getElementById('ws-bar'); if(bar) bar.style.width='100%';
     const pctEl=document.getElementById('ws-pct'); if(pctEl) pctEl.textContent='100%';
     if (sub) sub.textContent='Build complete!';
     wsLog('info','\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500');
-    wsLog('ok',`Build complete! ${_wsStats.boards} boards \u00b7 ${_wsStats.groups} groups \u00b7 ${_wsStats.columns} columns \u00b7 ${_wsStats.folders} folders`);
+    wsLog('ok',`Build complete! ${_wsStats.boards} boards \u00b7 ${_wsStats.groups} groups \u00b7 ${_wsStats.columns} columns \u00b7 ${_wsStats.folders} folders \u00b7 ${WS_CONNECT_COLS.length} connect columns`);
     // Log to activity
     _mondayReportLog.unshift({client:'Workspace Build',date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}),rate:'\u2014',_ts:Date.now()});
     await sleep(1200);
@@ -3836,6 +3872,7 @@ const WS_EXPECTED_COLS = [
 
 // Cached board IDs from workspace scan
 let _wsBoardMap = {}; // boardName → boardId
+let _wsBoardBuilt = {}; // boardKey → boardId (populated during build)
 let _wsBoardCols = {}; // boardId → {colTitle: colId}
 let _wsClientsMissing = []; // clients not yet in Monday
 
