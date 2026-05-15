@@ -2371,9 +2371,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1a62446148bd848f5e,"Mariner Holdings, LLC",accountspayable@marinerwealth.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",69fded1a62446148bd848f5e,"Mariner Holdings, LLC",accountspayable@marinerwealth.com,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",69fded1a62446148bd848f5e,"Mariner Holdings, LLC",accountspayable@marinerwealth.com,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-15
-"Block Real Estate Services, LLC",69fded2262446148bd849225,T-Mobile USA,llstatements@t-mobile.com,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-05-15
-"Block Real Estate Services, LLC",69fded2262446148bd849225,T-Mobile USA,llstatements@t-mobile.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-05-15
-"Block Real Estate Services, LLC",69fded2262446148bd849225,T-Mobile USA,llstatements@t-mobile.com,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-05-15
+"Block Real Estate Services, LLC",69fded2262446148bd849225,T-Mobile USA,llstatements@t-mobile.com,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-15
+"Block Real Estate Services, LLC",69fded2262446148bd849225,T-Mobile USA,llstatements@t-mobile.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
+"Block Real Estate Services, LLC",69fded2262446148bd849225,T-Mobile USA,llstatements@t-mobile.com,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",69fded2262446148bd849225,T-Mobile USA,llstatements@t-mobile.com,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",69fded1062446148bd848c37,Butler Suppy Inc,sdevore@butlersupply.com,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",69fded1062446148bd848c37,Butler Suppy Inc,sdevore@butlersupply.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
@@ -2883,10 +2883,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a07292df523b35823695b7d,ENGINEERING DESIGN & TESTING CORPORATION,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07292df523b35823695b7d,ENGINEERING DESIGN & TESTING CORPORATION,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07292df523b35823695b7d,ENGINEERING DESIGN & TESTING CORPORATION,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-15
-"Block Real Estate Services, LLC",6a07292df523b35823695b82,"AKZO NOBEL PAINTS - PPG ARCHITECTURAL FINISHES, INC.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-15
-"Block Real Estate Services, LLC",6a07292df523b35823695b82,"AKZO NOBEL PAINTS - PPG ARCHITECTURAL FINISHES, INC.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
-"Block Real Estate Services, LLC",6a07292df523b35823695b82,"AKZO NOBEL PAINTS - PPG ARCHITECTURAL FINISHES, INC.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-15
-"Block Real Estate Services, LLC",6a07292df523b35823695b82,"AKZO NOBEL PAINTS - PPG ARCHITECTURAL FINISHES, INC.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-15
+"Block Real Estate Services, LLC",6a07292df523b35823695b82,"AKZO NOBEL PAINTS - PPG ARCHITECTURAL FINISHES, INC.",Leslie.A.Kress@marsh.com,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-15
+"Block Real Estate Services, LLC",6a07292df523b35823695b82,"AKZO NOBEL PAINTS - PPG ARCHITECTURAL FINISHES, INC.",Leslie.A.Kress@marsh.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
+"Block Real Estate Services, LLC",6a07292df523b35823695b82,"AKZO NOBEL PAINTS - PPG ARCHITECTURAL FINISHES, INC.",Leslie.A.Kress@marsh.com,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-15
+"Block Real Estate Services, LLC",6a07292df523b35823695b82,"AKZO NOBEL PAINTS - PPG ARCHITECTURAL FINISHES, INC.",Leslie.A.Kress@marsh.com,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07292df523b35823695b87,"ERGO MIDWEST, INC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07292df523b35823695b87,"ERGO MIDWEST, INC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07292df523b35823695b87,"ERGO MIDWEST, INC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-15
@@ -3671,10 +3671,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a07293cf523b35823695f56,EATON CORPORATION,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07293cf523b35823695f56,EATON CORPORATION,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07293cf523b35823695f56,EATON CORPORATION,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-15
-"Block Real Estate Services, LLC",6a07293cf523b35823695f5b,PAYLESS BUILDING SURPLUS LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-15
-"Block Real Estate Services, LLC",6a07293cf523b35823695f5b,PAYLESS BUILDING SURPLUS LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
-"Block Real Estate Services, LLC",6a07293cf523b35823695f5b,PAYLESS BUILDING SURPLUS LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-15
-"Block Real Estate Services, LLC",6a07293cf523b35823695f5b,PAYLESS BUILDING SURPLUS LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-15
+"Block Real Estate Services, LLC",6a07293cf523b35823695f5b,PAYLESS BUILDING SURPLUS LLC,Janice@twinlakesins.com,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-15
+"Block Real Estate Services, LLC",6a07293cf523b35823695f5b,PAYLESS BUILDING SURPLUS LLC,Janice@twinlakesins.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
+"Block Real Estate Services, LLC",6a07293cf523b35823695f5b,PAYLESS BUILDING SURPLUS LLC,Janice@twinlakesins.com,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-15
+"Block Real Estate Services, LLC",6a07293cf523b35823695f5b,PAYLESS BUILDING SURPLUS LLC,Janice@twinlakesins.com,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07293cf523b35823695f60,MCCLURE ENGINEERING COMPANY,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07293cf523b35823695f60,MCCLURE ENGINEERING COMPANY,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07293cf523b35823695f60,MCCLURE ENGINEERING COMPANY,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-15
@@ -3703,10 +3703,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a07293df523b35823695f7e,"G-K FITTINGS, INC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07293df523b35823695f7e,"G-K FITTINGS, INC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07293df523b35823695f7e,"G-K FITTINGS, INC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-15
-"Block Real Estate Services, LLC",6a07293df523b35823695f83,"EDWARD D. JONES & CO., L.P., ET AL.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-15
-"Block Real Estate Services, LLC",6a07293df523b35823695f83,"EDWARD D. JONES & CO., L.P., ET AL.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
-"Block Real Estate Services, LLC",6a07293df523b35823695f83,"EDWARD D. JONES & CO., L.P., ET AL.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-15
-"Block Real Estate Services, LLC",6a07293df523b35823695f83,"EDWARD D. JONES & CO., L.P., ET AL.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-15
+"Block Real Estate Services, LLC",6a07293df523b35823695f83,"EDWARD D. JONES & CO., L.P., ET AL.",StLouis.CertRequest@Marsh.Com,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-15
+"Block Real Estate Services, LLC",6a07293df523b35823695f83,"EDWARD D. JONES & CO., L.P., ET AL.",StLouis.CertRequest@Marsh.Com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
+"Block Real Estate Services, LLC",6a07293df523b35823695f83,"EDWARD D. JONES & CO., L.P., ET AL.",StLouis.CertRequest@Marsh.Com,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-15
+"Block Real Estate Services, LLC",6a07293df523b35823695f83,"EDWARD D. JONES & CO., L.P., ET AL.",StLouis.CertRequest@Marsh.Com,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07293df523b35823695f88,"ESSENSE OF AUSTRALIA, INC.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07293df523b35823695f88,"ESSENSE OF AUSTRALIA, INC.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-15
 "Block Real Estate Services, LLC",6a07293df523b35823695f88,"ESSENSE OF AUSTRALIA, INC.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-15
