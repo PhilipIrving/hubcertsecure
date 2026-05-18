@@ -44,6 +44,7 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",69fded0d62446148bd848b71,Anthony Vasquez,anthonyvasquez131@gmail.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded0d62446148bd848b74,Anytime Labor-KC Metro,leases@labormaxstaffing.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded0d62446148bd848b77,"Apex Products, LLC",Jim@apexprod.com,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",69fded0d62446148bd848b77,"Apex Products, LLC",trey@thesloanagency.com,,false,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded0d62446148bd848b7a,Apexsite Cleaning,laura@apexsitecleaning.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded0e62446148bd848b7d,APLOS INC,andy@aplos.world,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded0e62446148bd848b80,Apple Central LLC,Darlene.Valentine@issvc.com,,true,false,,2026-05-18
@@ -114,6 +115,7 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",69fded0f62446148bd848c19,Briggs Inc,accountspayable@briggsinc.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1062446148bd848c1c,Brown & Root Industrial Services LLC,ap.invoices@brownandroot.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1062446148bd848c1f,Bryan Torez,batorez@yahoo.com,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",69fded1062446148bd848c1f,Bryan Torez,sydney@insurancekcmetro.com,Sydney Posey,false,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1062446148bd848c22,Bryght Labs,wigh@bryghtlabs.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1062446148bd848c25,"Buckeye International, Inc",dwildt@buckeyeinternational.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1062446148bd848c28,Builder Direct LLC,builderdirectkc@gmail.com,,true,false,,2026-05-18
@@ -350,6 +352,7 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",69fded1862446148bd848ea1,Jayci Lynn Stratton,jayci.stratton@gmail.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1862446148bd848ea4,JES Business Solutions,ksteiniger@idologymg.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1862446148bd848ea7,"JetAlum, LLC",invoice@jetalum.com,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",69fded1862446148bd848ea7,"JetAlum, LLC",businessproductsdirect@sentry.com,Sentry Customer Service,false,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1862446148bd848eaa,Jimmy John's,Sandra.h@hinzcorp.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1862446148bd848ead,JLJ Holdings LLC,john.nilges@gmail.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1862446148bd848eb0,Johnson Controls Fire Protection LP,ca.jci@cbre.com,,true,false,,2026-05-18
@@ -420,6 +423,7 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",69fded1a62446148bd848f67,Massage Envy,jenmeents@gmail.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1a62446148bd848f6a,Matthew David Allen,,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1a62446148bd848f6d,Mattress Firm Inc,LeaseAdmin@MFRM.com,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",69fded1a62446148bd848f6d,Mattress Firm Inc,request@sterlingrisk.com,,false,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1a62446148bd848f70,Mavs LLC,bryan@mavskc.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1a62446148bd848f73,MAWD Pathology Group P.A.,bbartz@mawdpathology.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1a62446148bd848f76,MB Properties LLC,CCMS.Rents@clearchoice.com,,true,false,,2026-05-18
@@ -729,6 +733,7 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",69fded2462446148bd8492c1,World Acceptance Corporation,scrowe@worldacceptance.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded2462446148bd8492c4,"Worldpac, Inc.",rent@worldpac.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded2462446148bd8492c7,WWEX Franchise Holdings LLC,realestate@wwex.com,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",69fded2462446148bd8492c7,WWEX Franchise Holdings LLC,certificates@willis.com,Willis Towers Watson Certificate Center,false,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded2462446148bd8492ca,WWMAJ Systems LLC,willyoung@wwmajsystemsllc.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded2462446148bd8492cd,Xpress Stop 2 LLC,luckytrucking92@gmail.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded2562446148bd8492d0,Yan Zhao,372311940@qq.com,,true,false,,2026-05-18
@@ -746,6 +751,7 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",6a07293df523b35823695f83,"EDWARD D. JONES & CO., L.P., ET AL.",StLouis.CertRequest@Marsh.Com,Marsh IU.S. Operations,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a072942f523b358236960ff,"EVERJOY, LLC DBA SERVPRO OF PLATTE COUNTY",RRRGInsurance@aon.com,SERVPRO Franchisee Insurance Center,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a072945f523b358236961b3,"DAIOH̢���S USA, INC",ChicagoCertRequest@marsh.com,Marsh | U.S. Operations,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a072945f523b358236961c2,KAWNEER COMPANY - ARCONIC CORPORATION,certificates@wtwco.com,,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a072945f523b358236961c7,"W + D NORTH AMERICAN, INC. / PAPER CONVERTING MACHINE CORPORATION",jwibbenmeyer@hmrisk.com,Jenni Wibbenmeyer,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a072946f523b358236961ef,MUTUAL OF OMAHA / CITI BANK DBA FIRST CITIZENS BANK,jade_mayo@ajg.com,Jade Mayo,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a072946f523b358236961f4,LONG MOTOR CORPORATION,karen.hoskins@assuredpartners.com,Karen Hoskins,false,false,,2026-05-18
@@ -760,12 +766,62 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",6a072948f523b35823696280,CONFLUENCE,michelle.sinclair@northriskpartners.com,Michelle Sinclair,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a072948f523b35823696280,CONFLUENCE,akrist@kristinsurance.com,"Alexander Krist , CIC , CAWC , CISR",false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a072948f523b35823696280,CONFLUENCE,ADP.COI.Center@Aon.com,"Aon Risk Services , Inc of Florida",false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a072949f523b358236962cb,"MIKE'S LIQUOR / WALDO SPIRITS, INC.",Robert.Deal@CBIZ.com,,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a072949f523b358236962cb,"MIKE'S LIQUOR / WALDO SPIRITS, INC.",dcrist@CBIZ.com,Deborah Crist,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a072949f523b358236962cb,"MIKE'S LIQUOR / WALDO SPIRITS, INC.",nmace@cbiz.com,Nikki Mace,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a072949f523b358236962e4,WESTPORT SOLUTION / WESTPORT RESEARCH ASSOCIATES,mountain@nortoninsurance.com,,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294af523b358236962e9,"LIVING WORD TESTAMENT CHURCH / PCJW, LLC & DR. FLOYD WIGGINS, III",becky@insuranceoneagency.com,Becky Moyer,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294af523b358236962f8,THE UNIQUE,brenda.l.pardo.we6i@statefarm.com,Brenda Pardo,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294bf523b35823696343,"WORLDWIDE EXPRESS / WWEX FRANCHISE HOLDINGS, LLC",certificates@willis.com,Willis Towers Watson Certificate Center,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294bf523b3582369634d,RBC MEDICAL INNOVATIONS / REVOLUTIONARY BUSINESS CONCEPTS,tamra.oyster@creativeplanning.com,Tamra Oyster,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294bf523b3582369635c,"ALLY ENERGY SOLUTIONS, LLC",susan.carleton@choosemylo.com,,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294cf523b3582369637a,"AGILITI HEALTH, INC.",elemire@hayscompanies.com,Melody Kronbach or Evan LeMire,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294cf523b3582369637a,"AGILITI HEALTH, INC.",asalem@rampartinsurance.com,Adam Salem,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294cf523b3582369637a,"AGILITI HEALTH, INC.",ChicagoCertRequest@marsh.com,Marsh | U.S. Operations,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294cf523b3582369638e,SALTY IGUANA RESTAURANT,,Sandy Bell,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a07294df523b358236963ed,THREE D METALS,Joan.Walters@BrittonGallagher.com,Joan Walters,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a072950f523b35823696483,"B STREET COLLISION SHAWNEE, INC",skennedy@intrepiddirect.com,Shaughn Kennedy,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a072956f523b3582369663b,FRESENIUS MEDICAL CARE,Gabrielle.Laspina@marsh.com,Gabrielle LaSpina,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a07295ff523b3582369689d,"SNSA, INC DBA CHURCH'S CHICKEN",certs@walnutrisk.com,Kevin Prochaska,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a072961f523b358236968fc,"BSN SPORTS, LLC",certificates@willis.com,Willis Towers Watson Certificate Center,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a072966f523b35823696a55,BOUQUET COLLECTION SERVICES INC.,Evan.Award@ioausa.com,Evan Award,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a072969f523b35823696b13,EASTERN SURGICAL ASSOCIATES PC,shelby.niblett.sk2p@statefarm.com,Shelby Niblett,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b0e81198e7a1a09874780,"Courtesy Group, LLC",,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b0e82198e7a1a09874785,"Athletico, LTD",,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b0e82198e7a1a09874785,"Athletico, LTD",Meagan.Rago@alliant.com,Meagan Rago,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b0e82198e7a1a0987478a,Athletico Physical Therapy,,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b0e82198e7a1a0987478a,Athletico Physical Therapy,mrogers@connerstrong.com,Megan Rogers,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b0e82198e7a1a0987478f,"CNO Financial Group, Inc.",,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b0e82198e7a1a0987478f,"CNO Financial Group, Inc.",StLouis.CertRequest@Marsh.Com,Marsh IU.S. Operations,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b138e198e7a1a098747af,"Advantage Solutions, Inc.",,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b138e198e7a1a098747b4,SDS of Kansas City,,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b138e198e7a1a098747b4,SDS of Kansas City,jwhite@wgwinsurance.com,Jeffrey White,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b138e198e7a1a098747b9,"OnPoint Group, LLC",,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b138e198e7a1a098747b9,"OnPoint Group, LLC",OnPointCertificates@Hylant.com,Courtney Cox,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b138e198e7a1a098747be,Washington Iron Works Inc.,,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b138e198e7a1a098747be,Washington Iron Works Inc.,tedh@hentschell.com,,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b138e198e7a1a098747c3,Derrick Brooks,,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b138e198e7a1a098747c3,Derrick Brooks,brenda.l.pardo.we6i@statefarm.com,Brenda Pardo,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b175bb969c617163dce53,"Gastro Health, LLC",,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b175bb969c617163dce53,"Gastro Health, LLC",certificates@willis.com,Willis Towers Watson Certificate Center,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b175bb969c617163dce58,"AssistRx, Inc.; AssistRx Holdings, LLC and and its wholly owned subsidiaries",,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b175bb969c617163dce58,"AssistRx, Inc.; AssistRx Holdings, LLC and and its wholly owned subsidiaries",CertRequests@AJG.com,CertRequests@AJG.com,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b175bb969c617163dce5d,Mutual of Omaha Insurance Company,,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b175bb969c617163dce62,"STANLEY BLACK & DECKER, INC.",,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b175cb969c617163dce67,First Citizens Bancshares Inc,,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b175cb969c617163dce67,First Citizens Bancshares Inc,certificates@willis.com,Willis Towers Watson Certificate Center,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b1e81b969c617163dce82,"USR Superco, Inc.Office Super Store East LLC",,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b1e81b969c617163dce87,"ZL Central Engineering Plastics, Inc",,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b1e81b969c617163dce87,"ZL Central Engineering Plastics, Inc",karen.lore@reillyinsurance.com,Karen Lore,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b1e81b969c617163dce8c,"WIRELESS VISION HOLDINGS, LLC",,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b1e81b969c617163dce91,COMCAST BUSINESS SERVICES,,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b1e82b969c617163dce96,"ONE Gas, Inc. incl. respective divisions, affiliates & subsidiaries",,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b2c54b969c617163dceb5,Nanak Corp.,,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b2c54b969c617163dceb5,Nanak Corp.,.Ihewlett@johnstonfiss.com,Linda Hewlett,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b2c54b969c617163dceba,"Alphabet Inc. and all subsidiaries including Google Fiber Missouri, LLC",,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b2c54b969c617163dcebf,TPG TAX PREP FIRM LLC,,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b2c54b969c617163dcebf,TPG TAX PREP FIRM LLC,Alicia@insurnacekcmetro.com,Alicia Scott,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a0b2c54b969c617163dcec4,"Premium Retail Services, Inc.",,,true,false,,2026-05-18
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,,true,false,,2026-05-18
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",certificates@wtwco.com,,false,false,,2026-05-18
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,,true,false,,2026-05-18

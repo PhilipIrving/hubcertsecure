@@ -1,5 +1,5 @@
 client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,status,compliance_status,compliance_profile,compliance_tracking,cert_status,cert_expiration,cert_issue_date,cert_reviewed_at,cert_url,cert_flag_level,cert_flag_notes,applies_to_all,updated_at,sync_date
-"Block Real Estate Services, LLC",6a072945f523b358236961c3,6a072945f523b358236961c2,KAWNEER COMPANY - ARCONIC CORPORATION,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a072945f523b358236961c3,6a072945f523b358236961c2,KAWNEER COMPANY - ARCONIC CORPORATION,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a072945f523b358236961c8,6a072945f523b358236961c7,"W + D NORTH AMERICAN, INC. / PAPER CONVERTING MACHINE CORPORATION",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a072945f523b358236961cd,6a072945f523b358236961cc,"J-CON PRINTING, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a072945f523b358236961d2,6a072945f523b358236961d1,ROSEN'S INC.,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
@@ -51,16 +51,16 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",6a072949f523b358236962bd,6a072949f523b358236962bc,"TACO BELL / ROYAL CITY BELL, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a072949f523b358236962c2,6a072949f523b358236962c1,WHIRLPOOL,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a072949f523b358236962c7,6a072949f523b358236962c6,"POWERSCHOOL FKA PEOPLEADMIN, INC",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072949f523b358236962cc,6a072949f523b358236962cb,"MIKE'S LIQUOR / WALDO SPIRITS, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a072949f523b358236962cc,6a072949f523b358236962cb,"MIKE'S LIQUOR / WALDO SPIRITS, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a072949f523b358236962d1,6a072949f523b358236962d0,"GOOGLE FIBER, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a072949f523b358236962d6,6a072949f523b358236962d5,PERSONAL CARE DENTAL GROUP,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072949f523b358236962db,6a072949f523b358236962da,COFFEL CONSTRUCTION,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a072949f523b358236962db,6a072949f523b358236962da,COFFEL CONSTRUCTION,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a072949f523b358236962e0,6a072949f523b358236962df,LIFE'S WORK CONSULTING,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072949f523b358236962e5,6a072949f523b358236962e4,WESTPORT SOLUTION / WESTPORT RESEARCH ASSOCIATES,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07294af523b358236962ea,6a07294af523b358236962e9,"LIVING WORD TESTAMENT CHURCH / PCJW, LLC & DR. FLOYD WIGGINS, III",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a072949f523b358236962e5,6a072949f523b358236962e4,WESTPORT SOLUTION / WESTPORT RESEARCH ASSOCIATES,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a07294af523b358236962ea,6a07294af523b358236962e9,"LIVING WORD TESTAMENT CHURCH / PCJW, LLC & DR. FLOYD WIGGINS, III",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a07294af523b358236962ef,6a07294af523b358236962ee,JAMAICAN ME TAN / JEFF JONES,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294af523b358236962f4,6a07294af523b358236962f3,THE PROFESSIONAL GROUP / BRYAN TOREZ,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07294af523b358236962f9,6a07294af523b358236962f8,THE UNIQUE,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a07294af523b358236962f9,6a07294af523b358236962f8,THE UNIQUE,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a07294af523b358236962fe,6a07294af523b358236962fd,PREMIUM OUTLETS,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294af523b35823696303,6a07294af523b35823696302,STARBUCKS CORPORATION,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294af523b35823696308,6a07294af523b35823696307,CHIPOTLE MEXICAN GRILL,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
@@ -72,28 +72,28 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",6a07294af523b35823696326,6a07294af523b35823696325,MATTRESS FIRM,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294af523b3582369632b,6a07294af523b3582369632a,"ROYAL GYROS (ROYAL DONUTS, LLC) / AHED KALIFA",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294bf523b35823696330,6a07294bf523b3582369632f,PAPA MURPHY'S / PAPA'S PARTNERS,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07294bf523b35823696335,6a07294bf523b35823696334,DOLLAR TREE,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a07294bf523b35823696335,6a07294bf523b35823696334,DOLLAR TREE,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a07294bf523b3582369633a,6a07294bf523b35823696339,"BETALLIC, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294bf523b3582369633f,6a07294bf523b3582369633e,CAMELOT CAR WASH,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07294bf523b35823696344,6a07294bf523b35823696343,"WORLDWIDE EXPRESS / WWEX FRANCHISE HOLDINGS, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a07294bf523b35823696344,6a07294bf523b35823696343,"WORLDWIDE EXPRESS / WWEX FRANCHISE HOLDINGS, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a07294bf523b35823696349,6a07294bf523b35823696348,WELLSKY CORPORATION,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07294bf523b3582369634e,6a07294bf523b3582369634d,RBC MEDICAL INNOVATIONS / REVOLUTIONARY BUSINESS CONCEPTS,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a07294bf523b3582369634e,6a07294bf523b3582369634d,RBC MEDICAL INNOVATIONS / REVOLUTIONARY BUSINESS CONCEPTS,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a07294bf523b35823696353,6a07294bf523b35823696352,ARROWHEAD FORENSICS,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294bf523b35823696358,6a07294bf523b35823696357,"INFINITY FASTENERS, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07294bf523b3582369635d,6a07294bf523b3582369635c,"ALLY ENERGY SOLUTIONS, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07294bf523b35823696362,6a07294bf523b35823696361,"ADVANTAGE WAYPOINT, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07294bf523b35823696367,6a07294bf523b35823696366,"KITCHEN AND BATH BY BRIGGS / BRIGGS, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a07294bf523b3582369635d,6a07294bf523b3582369635c,"ALLY ENERGY SOLUTIONS, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a07294bf523b35823696362,6a07294bf523b35823696361,"ADVANTAGE WAYPOINT, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a07294bf523b35823696367,6a07294bf523b35823696366,"KITCHEN AND BATH BY BRIGGS / BRIGGS, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a07294bf523b3582369636c,6a07294bf523b3582369636b,"JOHNSON CONTROLS FIRE PROTECTION, LP (FKA SIMPLEX GRINNELL)",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294bf523b35823696371,6a07294bf523b35823696370,"IMS / INTEGRATED MANUFACTURING SOLUTIONS, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294cf523b35823696376,6a07294cf523b35823696375,HERITAGE FIRST INC.,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07294cf523b3582369637b,6a07294cf523b3582369637a,"AGILITI HEALTH, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a07294cf523b3582369637b,6a07294cf523b3582369637a,"AGILITI HEALTH, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a07294cf523b35823696380,6a07294cf523b3582369637f,"VIALS / GUNN & RICHARDS, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07294cf523b35823696385,6a07294cf523b35823696384,"ICON / PRA HEALTH SCIENCES / PHARMACEUTICAL RESEARCH ASSOCIATES, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a07294cf523b35823696385,6a07294cf523b35823696384,"ICON / PRA HEALTH SCIENCES / PHARMACEUTICAL RESEARCH ASSOCIATES, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a07294cf523b3582369638a,6a07294cf523b35823696389,CEVA / BIOIMMUNE COMPANY,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07294cf523b3582369638f,6a07294cf523b3582369638e,SALTY IGUANA RESTAURANT,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a07294cf523b3582369638f,6a07294cf523b3582369638e,SALTY IGUANA RESTAURANT,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a07294cf523b35823696394,6a07294cf523b35823696393,SMART KARTON,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294cf523b35823696399,6a07294cf523b35823696398,SHOE COVER MAGIC,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07294cf523b3582369639e,6a07294cf523b3582369639d,DISH NETWORK,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a07294cf523b3582369639e,6a07294cf523b3582369639d,DISH NETWORK,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a07294cf523b358236963a3,6a07294cf523b358236963a2,KANSAS CITY UROLOGY CARE,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294cf523b358236963a8,6a07294cf523b358236963a7,"SHELDON FLEISHMAN, DPM, PA",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294cf523b358236963ad,6a07294cf523b358236963ac,"METRO SPINE & REHAB PA (DR. GALATE) / PRECISION SPINE & ORTHOPEDIC SPECIALISTS, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
@@ -115,7 +115,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",6a07294ef523b358236963fd,6a07294ef523b358236963fc,"BRAVE, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294ef523b35823696402,6a07294ef523b35823696401,"OFFICE MAX, INC. #472",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294ef523b35823696407,6a07294ef523b35823696406,"RAY'S DONUTS & DELI / 6TINOS, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07294ef523b3582369640c,6a07294ef523b3582369640b,RENT-A-CENTER,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a07294ef523b3582369640c,6a07294ef523b3582369640b,RENT-A-CENTER,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a07294ef523b35823696411,6a07294ef523b35823696410,"CINGULAR WIRELESS, LLC ***SEE AT&T CORPORATION***",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294ef523b35823696416,6a07294ef523b35823696415,SCHLOTZKY'S DELI,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07294ef523b3582369641b,6a07294ef523b3582369641a,"ACE CASH EXPRESS, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
@@ -227,7 +227,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",6a072956f523b3582369662d,6a072956f523b3582369662c,PETSENSE LLC,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a072956f523b35823696632,6a072956f523b35823696631,"SHOE SENSATION, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a072956f523b35823696637,6a072956f523b35823696636,"BIG LOTS STORES, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072956f523b3582369663c,6a072956f523b3582369663b,FRESENIUS MEDICAL CARE,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a072956f523b3582369663c,6a072956f523b3582369663b,FRESENIUS MEDICAL CARE,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a072956f523b35823696641,6a072956f523b35823696640,"ORSCHELN FARM & HOME, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a072956f523b35823696646,6a072956f523b35823696645,LIBERTY URGENT CARE,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a072956f523b3582369664b,6a072956f523b3582369664a,GIBBS TECHNOLOGY,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
@@ -497,7 +497,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",6a07296af523b35823696b73,6a07296af523b35823696b72,HYPER COMPUTERS AND BATTLE GAMES  LEE A. SHAFFER,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07296af523b35823696b78,6a07296af523b35823696b77,SUNBELT RENTALS,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07296af523b35823696b7d,6a07296af523b35823696b7c,"PURE FISHING, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07296af523b35823696b82,6a07296af523b35823696b81,DUNBARTON SC LLC,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a07296af523b35823696b82,6a07296af523b35823696b81,DUNBARTON SC LLC,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a07296af523b35823696b87,6a07296af523b35823696b86,HERE WE GROW AGAIN,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07296af523b35823696b8c,6a07296af523b35823696b8b,GRAIN VALLEY CHOP SHOP,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07296af523b35823696b91,6a07296af523b35823696b90,CIGA WATT,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
@@ -639,6 +639,29 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",6a072975f523b35823696e3b,6a072975f523b35823696e3a,SB TRADING / JOHN KIM,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a072975f523b35823696e40,6a072975f523b35823696e3f,BANK OF LABOR,,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a072975f523b35823696e45,6a072975f523b35823696e44,"KC COCKTAIL COMPANY, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a0b0e81198e7a1a09874781,6a0b0e81198e7a1a09874780,"Courtesy Group, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b0e82198e7a1a09874786,6a0b0e82198e7a1a09874785,"Athletico, LTD",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b0e82198e7a1a0987478b,6a0b0e82198e7a1a0987478a,Athletico Physical Therapy,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b0e82198e7a1a09874790,6a0b0e82198e7a1a0987478f,"CNO Financial Group, Inc.",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b138e198e7a1a098747b0,6a0b138e198e7a1a098747af,"Advantage Solutions, Inc.",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b138e198e7a1a098747b5,6a0b138e198e7a1a098747b4,SDS of Kansas City,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b138e198e7a1a098747ba,6a0b138e198e7a1a098747b9,"OnPoint Group, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b138e198e7a1a098747bf,6a0b138e198e7a1a098747be,Washington Iron Works Inc.,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b138e198e7a1a098747c4,6a0b138e198e7a1a098747c3,Derrick Brooks,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b175bb969c617163dce54,6a0b175bb969c617163dce53,"Gastro Health, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b175bb969c617163dce59,6a0b175bb969c617163dce58,"AssistRx, Inc.; AssistRx Holdings, LLC and and its wholly owned subsidiaries",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b175bb969c617163dce5e,6a0b175bb969c617163dce5d,Mutual of Omaha Insurance Company,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b175bb969c617163dce63,6a0b175bb969c617163dce62,"STANLEY BLACK & DECKER, INC.",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b175cb969c617163dce68,6a0b175cb969c617163dce67,First Citizens Bancshares Inc,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b1e81b969c617163dce83,6a0b1e81b969c617163dce82,"USR Superco, Inc.Office Super Store East LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b1e81b969c617163dce88,6a0b1e81b969c617163dce87,"ZL Central Engineering Plastics, Inc",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b1e81b969c617163dce8d,6a0b1e81b969c617163dce8c,"WIRELESS VISION HOLDINGS, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b1e81b969c617163dce92,6a0b1e81b969c617163dce91,COMCAST BUSINESS SERVICES,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b1e82b969c617163dce97,6a0b1e82b969c617163dce96,"ONE Gas, Inc. incl. respective divisions, affiliates & subsidiaries",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b2c54b969c617163dceb6,6a0b2c54b969c617163dceb5,Nanak Corp.,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b2c54b969c617163dcebb,6a0b2c54b969c617163dceba,"Alphabet Inc. and all subsidiaries including Google Fiber Missouri, LLC",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b2c54b969c617163dcec0,6a0b2c54b969c617163dcebf,TPG TAX PREP FIRM LLC,,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
+"Block Real Estate Services, LLC",6a0b2c54b969c617163dcec5,6a0b2c54b969c617163dcec4,"Premium Retail Services, Inc.",,,Request,active,compliant,,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",69fdf74a62446148bd854b50,69fded1162446148bd848caf,Cornerstones Barbershop LLC,69fdef653b208288e0a7a89f,3rd654,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf74a62446148bd854b53,69fded1662446148bd848e02,GMRG ACQ 1 LLC #034258,69fdef653b208288e0a7a89f,3rd654,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf74a62446148bd854b58,69fded2162446148bd849180,Sobriety First,69fdef653b208288e0a7a89f,3rd654,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
@@ -647,7 +670,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",69fdf74a62446148bd854b15,69fded2362446148bd84924c,UB Dental LLC,69fdef0303a2257cd27d83e8,3rd074,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf74a62446148bd854b1f,69fded1262446148bd848ccd,Crescent Springs Healing Center,69fdef1003a2257cd27d8605,3rd202,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf74a62446148bd854b34,69fded1b62446148bd848fbe,Mills Record Company LLC,69fdef2cbf1df2fe96920b3f,3rd312,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
-"Block Real Estate Services, LLC",69fdf74a62446148bd854b3a,69fded1062446148bd848c1f,Bryan Torez,69fdef3f3b208288e0a7a0f6,3rd387,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf74a62446148bd854b3a,69fded1062446148bd848c1f,Bryan Torez,69fdef3f3b208288e0a7a0f6,3rd387,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",69fdf74a62446148bd854b52,69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,69fdef653b208288e0a7a89f,3rd654,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf74a62446148bd854b66,69fded1a62446148bd848f3d,Mactan Asian Market,69fdef6abf1df2fe969214c6,3rd657,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf74a62446148bd854b11,69fded1762446148bd848e8c,Iris Corporation,69fdef0303a2257cd27d83e8,3rd074,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
@@ -737,7 +760,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",69fdf74a62446148bd854b30,69fded1862446148bd848ead,JLJ Holdings LLC,69fdef2cbf1df2fe96920b3f,3rd312,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf74a62446148bd854b3b,69fded1162446148bd848c6d,Chin Asian Restaurant,69fdef3f3b208288e0a7a0f6,3rd387,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf74a62446148bd854b41,69fded0d62446148bd848b56,"Amazon.com Services, Inc.",69fdef4802bb2c42a879de8a,3rd464,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",69fdf74a62446148bd854b42,69fded1862446148bd848ea7,"JetAlum, LLC",69fdef4d3b208288e0a7a2ed,3rd488,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf74a62446148bd854b42,69fded1862446148bd848ea7,"JetAlum, LLC",69fdef4d3b208288e0a7a2ed,3rd488,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",69fdf74a62446148bd854b5e,69fded0d62446148bd848b6e,Anntippia Young,69fdef6abf1df2fe969214c6,3rd657,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f63,69fded1962446148bd848f28,Lincare Inc,69fdef7403a2257cd27da147,3rd698,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f66,69fded1c62446148bd848feb,Neenan Company,69fdef7403a2257cd27da147,3rd698,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-14,2026-05-18
@@ -751,7 +774,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f65,69fded1b62446148bd848fb8,MIdwest Model Railroad LLC,69fdef7403a2257cd27da147,3rd698,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f79,69fded1162446148bd848c70,Chipotle Mexican Grill,69fdef8fbf1df2fe9692198a,3rd959,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f7e,69fded1762446148bd848e4d,Heather Laird,69fdef8fbf1df2fe9692198a,3rd959,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
-"Block Real Estate Services, LLC",69fdf75c62446148bd855f89,69fded1a62446148bd848f6d,Mattress Firm Inc,69fdf5c2e84e20262bb42483,3rd979,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf75c62446148bd855f89,69fded1a62446148bd848f6d,Mattress Firm Inc,69fdf5c2e84e20262bb42483,3rd979,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f8c,69fded2462446148bd8492c1,World Acceptance Corporation,69fdf5c2e84e20262bb42483,3rd979,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f99,69fded0f62446148bd848bd7,BDM Inc,69fdefb2fa0b60fcd50d6be7,bf3944,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-14,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855fa1,69fded1062446148bd848c4f,CBD American Shaman LLC,69fdefb802bb2c42a879f4b6,bf3945,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
@@ -784,7 +807,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f85,69fded2462446148bd849285,Veterans Ascent Corporation,69fdef8fbf1df2fe9692198a,3rd959,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f96,69fded1062446148bd848c4f,CBD American Shaman LLC,69fdefae0bb484cab51399d2,bf3943,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f9b,69fded1462446148bd848d90,"Farm & Home Builders, Inc",69fdefb2fa0b60fcd50d6be7,bf3944,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",69fdf75c62446148bd855fae,69fded1a62446148bd848f6d,Mattress Firm Inc,69fdefeafa0b60fcd50d7a68,bkp363,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf75c62446148bd855fae,69fded1a62446148bd848f6d,Mattress Firm Inc,69fdefeafa0b60fcd50d7a68,bkp363,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855fb0,69fded2562446148bd8492d9,ZSF USA LLC,69fdefeafa0b60fcd50d7a68,bkp363,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f61,69fded1462446148bd848d96,FastSigns,69fdef7403a2257cd27da147,3rd698,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f6b,69fded2362446148bd849243,Truman Medical Center,69fdef7403a2257cd27da147,3rd698,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
@@ -807,7 +830,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f98,69fded1e62446148bd8490b7,Pro Concrete Design Inc,69fdefae0bb484cab51399d2,bf3943,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f9d,69fded1662446148bd848e0e,"Golden Distributing Company, Inc.",69fdefb2fa0b60fcd50d6be7,bf3944,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855fb1,69fded0c62446148bd848b1a,Actuarial Resources Corporation of Kansas LLC,69fdeff702bb2c42a87a062f,ccc268,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
-"Block Real Estate Services, LLC",69fdf75c62446148bd855f5a,69fded1a62446148bd848f6d,Mattress Firm Inc,69fdef6fe45e7dcf5c433fc2,3rd667,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf75c62446148bd855f5a,69fded1a62446148bd848f6d,Mattress Firm Inc,69fdef6fe45e7dcf5c433fc2,3rd667,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f6c,69fded2062446148bd849171,Skechers USA Inc,69fdef780bb484cab5138997,3rd743,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f78,69fded1062446148bd848c64,Chazmine English,69fdef8fbf1df2fe9692198a,3rd959,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855fac,69fded2462446148bd8492c4,"Worldpac, Inc.",69fdefe60bb484cab513acd9,bkp362,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
@@ -847,7 +870,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",69fdf76e62446148bd8573a7,69fded1462446148bd848da8,"First Biomedical, Inc",69fdf0023b208288e0a7c731,cck640,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf76e62446148bd8573e6,69fded0d62446148bd848b47,All Copy Products Inc,69fdf05002bb2c42a87a1859,kc2704,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf76e62446148bd8573f3,69fded1962446148bd848f2e,Link Media Omaha LLC,69fdf0590bb484cab513c4cc,kci283,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
-"Block Real Estate Services, LLC",69fdf76e62446148bd8573a5,69fded2462446148bd8492c7,WWEX Franchise Holdings LLC,69fdeff702bb2c42a87a062f,ccc268,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf76e62446148bd8573a5,69fded2462446148bd8492c7,WWEX Franchise Holdings LLC,69fdeff702bb2c42a87a062f,ccc268,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",69fdf76e62446148bd8573a8,69fded1762446148bd848e83,"Image Quest, Inc",69fdf0023b208288e0a7c731,cck640,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf76e62446148bd8573ae,69fded1962446148bd848f04,Ku Gynecology and Obstetrical Foundation - unit 200,69fdf00902bb2c42a87a0a88,cm2757,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf76e62446148bd8573b8,69fded1162446148bd848c94,"College Park Endoscopy Center, LLC",69fdf00d0e86e2f8723da443,cm3758,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
@@ -889,7 +912,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",69fdf76e62446148bd8573b1,69fded1b62446148bd848fa3,"Metro Spine & Rehab, P.A.",69fdf00902bb2c42a87a0a88,cm2757,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf76e62446148bd8573b6,69fded0d62446148bd848b4a,Allergy & Asthma Care,69fdf00d0e86e2f8723da443,cm3758,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf76e62446148bd8573bd,69fded2262446148bd8491f2,"Teva Neuroscience, Inc",69fdf01138cbea6b3a68e74b,cna251,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
-"Block Real Estate Services, LLC",69fdf76e62446148bd8573c2,69fded1662446148bd848e35,H M Cragg Co,69fdf0150bb484cab513b4eb,col720,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-14,2026-05-18
+"Block Real Estate Services, LLC",69fdf76e62446148bd8573c2,69fded1662446148bd848e35,H M Cragg Co,69fdf0150bb484cab513b4eb,col720,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",69fdf76e62446148bd8573c4,69fded1f62446148bd8490ff,"Revolutionary Business Concepts, Inc",69fdf0150bb484cab513b4eb,col720,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf76e62446148bd8573d9,69fded1d62446148bd849042,"Oz Accommodations, Inc.",69fdf03902bb2c42a87a13b8,hig143,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-14,2026-05-18
 "Block Real Estate Services, LLC",69fdf76e62446148bd8573f2,69fded1962446148bd848f25,Lightning Logistics,69fdf0590bb484cab513c4cc,kci283,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
@@ -952,7 +975,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",69fdf78062446148bd85880b,69fded1962446148bd848f01,"Kruger Technologies, Inc",69fdf0d602bb2c42a87a37d2,prg803,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf78062446148bd8587b8,69fded1062446148bd848c46,Carstar Riverside,69fdf08238cbea6b3a6909f0,kci864,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf78062446148bd8587ba,69fded0d62446148bd848b68,AN Cubed Marketing LLC,69fdf0850bb484cab513cb76,kci865,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
-"Block Real Estate Services, LLC",69fdf78062446148bd8587bd,69fded1b62446148bd848fc7,Miner Ltd,69fdf0850bb484cab513cb76,kci865,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-14,2026-05-18
+"Block Real Estate Services, LLC",69fdf78062446148bd8587bd,69fded1b62446148bd848fc7,Miner Ltd,69fdf0850bb484cab513cb76,kci865,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",69fdf78062446148bd8587de,69fded1362446148bd848d5a,Elliott Electric Supply Inc,69fdf0a3e45e7dcf5c438149,lne435,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf78062446148bd8587e9,69fded1b62446148bd848fca,Missouri Wings XIV LLC,69fdf0a60bb484cab513d2da,mil708,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf78062446148bd858800,69fded2262446148bd849216,The Waldinger Corporation,69fdf0c43b208288e0a7f2ab,pas774,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
@@ -1066,7 +1089,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",69fdf79262446148bd859c4c,69fded1b62446148bd848f9d,Men Sui Tial and Naa Aung,69fdf11fbf1df2fe9692924c,prm791,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf79262446148bd859c55,69fded1f62446148bd8490d5,Quiktrip #248,69fdf1283b208288e0a82668,rid017,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf79262446148bd859c06,69fded1f62446148bd8490d8,R & R Communications Inc,69fdf0dc02bb2c42a87a39b3,prg805,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
-"Block Real Estate Services, LLC",69fdf79262446148bd859c0a,69fded0d62446148bd848b77,"Apex Products, LLC",69fdf0e0e45e7dcf5c43916b,prg806,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf79262446148bd859c0a,69fded0d62446148bd848b77,"Apex Products, LLC",69fdf0e0e45e7dcf5c43916b,prg806,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",69fdf79262446148bd859c2a,69fded2262446148bd849207,The Compatibility Center LLC,69fdf0f63b208288e0a8013d,prg835,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf79262446148bd859c38,69fded0c62446148bd848b23,ADEMCO Inc,69fdf10643ffeed6de3b1f8e,prg841,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf79262446148bd859c47,69fded2262446148bd8491fe,The American National Red Cross,69fdf10de45e7dcf5c439a2b,prg845,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
@@ -1199,7 +1222,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",69fdf7a362446148bd85b06d,69fded1b62446148bd848f94,Melcar Enterprises Inc,69fdf1a78e25e7a0d91889e0,tic682,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf7a362446148bd85b017,69fded0e62446148bd848b92,Arthur J Gallagher Risk Management Services Inc,69fdf15ebf1df2fe9692af51,tic001,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf7a362446148bd85b03b,69fded1e62446148bd8490c0,Promotional Headwear International Inc,69fdf179d3bfa5e4945e2ba8,tic441,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
-"Block Real Estate Services, LLC",69fdf7a362446148bd85b041,69fded1362446148bd848d21,Dollar Stree Stores Inc #4448,69fdf181e45e7dcf5c43c857,tic472,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7a362446148bd85b041,69fded1362446148bd848d21,Dollar Stree Stores Inc #4448,69fdf181e45e7dcf5c43c857,tic472,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",69fdf7a362446148bd85b04c,69fded1d62446148bd849081,Pharmaceutical Research Associates Inc,69fdf18bd3bfa5e4945e2e28,tic630,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf7a362446148bd85b059,69fded1e62446148bd84909c,Polaris LLC,69fdf19902bb2c42a87a78b8,tic663,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf7a362446148bd85b063,69fded1062446148bd848c22,Bryght Labs,69fdf1a03b208288e0a84a8c,tic680,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
@@ -1219,7 +1242,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",69fdf7a362446148bd85b047,69fded1462446148bd848d93,Fastenal Company,69fdf18bd3bfa5e4945e2e28,tic630,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf7a362446148bd85b061,69fded2362446148bd849249,Twentyseven Global LLC,69fdf19c8e25e7a0d918870f,tic665,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf7a362446148bd85b064,69fded1a62446148bd848f7c,McClure Engineering Company,69fdf1a03b208288e0a84a8c,tic680,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
-"Block Real Estate Services, LLC",69fdf7a362446148bd85b067,69fded0f62446148bd848c19,Briggs Inc,69fdf1a402bb2c42a87a79ca,tic681,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7a362446148bd85b067,69fded0f62446148bd848c19,Briggs Inc,69fdf1a402bb2c42a87a79ca,tic681,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",69fdf7a362446148bd85b06a,69fded1262446148bd848d03,DCB Homes LLC,69fdf1a78e25e7a0d91889e0,tic682,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf7a362446148bd85b01c,69fded1562446148bd848de7,Gantry Inc,69fdf15ebf1df2fe9692af51,tic001,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf7a362446148bd85b01d,69fded1762446148bd848e68,Hoefer Welker LLC,69fdf15ebf1df2fe9692af51,tic001,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
@@ -1355,13 +1378,13 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",6a07292cf523b35823695b5b,6a07292cf523b35823695b5a,TAKE 5 OIL CHANGE,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07292cf523b35823695b60,6a07292cf523b35823695b5f,BANKERS LIFE AND CASUALTY COMPANY,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07292cf523b35823695b65,6a07292cf523b35823695b64,DAIRY FARMERS OF AMERICA,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07292cf523b35823695b6a,6a07292cf523b35823695b69,"SONO BELLO / BODY CONTOUR CENTERS, LLC",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a07292cf523b35823695b6a,6a07292cf523b35823695b69,"SONO BELLO / BODY CONTOUR CENTERS, LLC",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a07292cf523b35823695b6f,6a07292cf523b35823695b6e,PERRY PLAZA DENTAL,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07292df523b35823695b74,6a07292df523b35823695b73,ATHLETICO MANAGEMENT LLC,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07292df523b35823695b79,6a07292df523b35823695b78,ADVANTAGE SALES AND MARKETING,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07292df523b35823695b7e,6a07292df523b35823695b7d,ENGINEERING DESIGN & TESTING CORPORATION,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07292df523b35823695b83,6a07292df523b35823695b82,"AKZO NOBEL PAINTS - PPG ARCHITECTURAL FINISHES, INC.",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a07292df523b35823695b88,6a07292df523b35823695b87,"ERGO MIDWEST, INC",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",6a07292df523b35823695b88,6a07292df523b35823695b87,"ERGO MIDWEST, INC",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",6a07292df523b35823695b8d,6a07292df523b35823695b8c,"ACOSTA, INC.",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07292df523b35823695b92,6a07292df523b35823695b91,KANSAS GAS CO,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a07292df523b35823695b97,6a07292df523b35823695b96,WORLD OF SPIRITS,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
@@ -1676,29 +1699,29 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",6a072945f523b358236961a0,6a072945f523b3582369619f,"HUNTER, INC.",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a072945f523b358236961a5,6a072945f523b358236961a4,KC CLASSIC AUTO DISPLAY,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
 "Block Real Estate Services, LLC",6a072945f523b358236961aa,6a072945f523b358236961a9,LEGACY FINANCIAL STRATEGIES LLC,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072945f523b358236961af,6a072945f523b358236961ae,MHC SYSTEMS,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072945f523b358236961b4,6a072945f523b358236961b3,"DAIOH̢���S USA, INC",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072945f523b358236961b9,6a072945f523b358236961b8,R&R COMMUNICATIONS,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072975f523b35823696e4a,6a072975f523b35823696e49,"WEST SHORE HOME, LLC (LICENSE AGREEMENT)",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072975f523b35823696e4f,6a072975f523b35823696e4e,"JOHNSON GRANITE SUPPLY, INC. (NEW 11/1/23)",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072975f523b35823696e54,6a072975f523b35823696e53,"IMA FINANCIAL GROUP, INC.",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072975f523b35823696e59,6a072975f523b35823696e58,FOXX EQUIPMENT COMPANY,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072975f523b35823696e5e,6a072975f523b35823696e5d,"TEST & MEASUREMENT, INC.",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072975f523b35823696e63,6a072975f523b35823696e62,"HAMILTON PLUMBING/ROGER THE PLUMBER / AMERICAN RESIDENTIAL SERVICES, LLC (ARS)",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072975f523b35823696e68,6a072975f523b35823696e67,GENUINE AUTO PARTS / NAPA,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072975f523b35823696e6d,6a072975f523b35823696e6c,"ABWA MANAGEMENT, LLC",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072976f523b35823696e72,6a072976f523b35823696e71,"TEAMSMILE, INC.",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072976f523b35823696e77,6a072976f523b35823696e76,"SPRINT / WIRELESS LIFESTYLE, INC.",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072976f523b35823696e7c,6a072976f523b35823696e7b,PROPPAK,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072976f523b35823696e81,6a072976f523b35823696e80,"COMPANION PROTECT AGENCY, LLC",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072976f523b35823696e86,6a072976f523b35823696e85,EDWARD D. JONES & CO.,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072976f523b35823696e8b,6a072976f523b35823696e8a,"Z.S.F USA, LLC",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072976f523b35823696e90,6a072976f523b35823696e8f,"REPAIRS UNLIMITED, LLC",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072976f523b35823696e95,6a072976f523b35823696e94,STARBUCKS,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072976f523b35823696e9a,6a072976f523b35823696e99,GREAT CLIPS,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072976f523b35823696e9f,6a072976f523b35823696e9e,BELTONE HEARING CARE CENTER,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072976f523b35823696ea4,6a072976f523b35823696ea3,"FIREPLACE & BAR-B-Q CENTER, INC.",,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
-"Block Real Estate Services, LLC",6a072976f523b35823696ea9,6a072976f523b35823696ea8,CORVEL HEALTHCARE CORPORATION,,,Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-15,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c43c,69fded1362446148bd848d2d,Dr Darren Perry DDS LLC,69fdf1fad3bfa5e4945e603a,tic752,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-14,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c436,69fded0c62446148bd848b0b,717 Office Group LLC,69fdf1fad3bfa5e4945e603a,tic752,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c43e,69fded1562446148bd848df0,Gateway Spine & Joint LLC,69fdf1fad3bfa5e4945e603a,tic752,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c438,69fded0f62446148bd848c07,BMO Bank N.A.,69fdf1fad3bfa5e4945e603a,tic752,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c43b,69fded1262446148bd848cdf,DA Davidson & Co,69fdf1fad3bfa5e4945e603a,tic752,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c440,69fded1862446148bd848ebc,Juro International Systems Inc,69fdf1fad3bfa5e4945e603a,tic752,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-14,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c43a,69fded1162446148bd848c91,Colarelli Meyer & Associates,69fdf1fad3bfa5e4945e603a,tic752,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c437,69fded0e62446148bd848bb3,Axiom Strategies LLC,69fdf1fad3bfa5e4945e603a,tic752,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c445,69fded2162446148bd8491bf,Studio Local LLC,69fdf1fad3bfa5e4945e603a,tic752,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c442,69fded1e62446148bd8490ae,Prestige Land Title LLC,69fdf1fad3bfa5e4945e603a,tic752,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c443,69fded1e62446148bd8490cc,"Psychology Office Management, Inc.",69fdf1fad3bfa5e4945e603a,tic752,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-14,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c43d,69fded1362446148bd848d4b,Edward D Jones & Co LP,69fdf1fad3bfa5e4945e603a,tic752,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c441,69fded1b62446148bd848f97,"Melcher Investment Company, LP",69fdf1fad3bfa5e4945e603a,tic752,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c463,69fded0c62446148bd848b14,Academy Bank,69fdf1fc3b208288e0a86ed1,tic827,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c46b,69fded1762446148bd848e7d,Hy-Vee Inc,69fdf1fc3b208288e0a86ed1,tic827,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c476,69fded2262446148bd8491ec,Tesla Inc,69fdf1fc3b208288e0a86ed1,tic827,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c478,69fded2462446148bd8492be,Workout Anytime,69fdf1fc3b208288e0a86ed1,tic827,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c467,69fded1362446148bd848d45,Edible Arrangements,69fdf1fc3b208288e0a86ed1,tic827,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c46f,69fded2062446148bd84912c,Salon Ji,69fdf1fc3b208288e0a86ed1,tic827,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c466,69fded1362446148bd848d27,Dollar Tree #4044,69fdf1fc3b208288e0a86ed1,tic827,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c46e,69fded1a62446148bd848f67,Massage Envy,69fdf1fc3b208288e0a86ed1,tic827,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c473,69fded2162446148bd8491aa,Star Beauty,69fdf1fc3b208288e0a86ed1,tic827,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf7b562446148bd85c46d,69fded1a62446148bd848f49,Mainland Valuation Services,69fdf1fc3b208288e0a86ed1,tic827,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf7b562446148bd85c470,69fded2062446148bd84914a,Senior Day KC,69fdf1fc3b208288e0a86ed1,tic827,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf7b562446148bd85c471,69fded2062446148bd849165,Side Pockets Inc,69fdf1fc3b208288e0a86ed1,tic827,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf7b562446148bd85c465,69fded1062446148bd848c67,Check Into Cash of Kansas LLC,69fdf1fc3b208288e0a86ed1,tic827,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
@@ -1743,7 +1766,7 @@ client,request_id,vendor_id,vendor_name,context_id,context_name,request_name,sta
 "Block Real Estate Services, LLC",69fdf7c762446148bd85d881,69fded1462446148bd848d72,"Enterprise Leasing Company of KS, LLC",69fdf22b19e1eeeaeb9add38,wjb111,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf74a62446148bd854b0c,69fded0f62446148bd848bda,Bella's Italian Restaurant Inc,69fdf5c2e84e20262bb42482,3bo890,Insurance Request - 3bo890,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f8b,69fded1f62446148bd849114,Royal Gyros,69fdf5c2e84e20262bb42483,3rd979,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
-"Block Real Estate Services, LLC",69fdf75c62446148bd855f89,69fded1a62446148bd848f6d,Mattress Firm Inc,69fdf5c2e84e20262bb42483,3rd979,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
+"Block Real Estate Services, LLC",69fdf75c62446148bd855f89,69fded1a62446148bd848f6d,Mattress Firm Inc,69fdf5c2e84e20262bb42483,3rd979,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-18,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f8c,69fded2462446148bd8492c1,World Acceptance Corporation,69fdf5c2e84e20262bb42483,3rd979,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f8a,69fded1d62446148bd849054,Papa's Partners LLC,69fdf5c2e84e20262bb42483,3rd979,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
 "Block Real Estate Services, LLC",69fdf75c62446148bd855f87,69fded0d62446148bd848b71,Anthony Vasquez,69fdf5c2e84e20262bb42483,3rd979,Insurance Request,active,non_compliant,Block Requirements,true,,,,,,,,,2026-05-08,2026-05-18
