@@ -200,6 +200,7 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",69fded1262446148bd848d06,"Dental Health Essentials, LLC",ruslan33@yahoo.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1262446148bd848d09,Dentek Inc,Shauna@npgkc.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1262446148bd848d0c,Dermatology Consultants,Barb@dermcomw.com,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",69fded1262446148bd848d0c,Dermatology Consultants,select@bukatyagency.com,Allyssa Diel,false,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1262446148bd848d0f,"Diamond Towel and Supply Company, LLC",dant@diamondtowel.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1362446148bd848d12,Diana M Dang,dianadang1000@gmail.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1362446148bd848d15,Dineshkumar P Patel and Jigneshkumar D Patel,jignesh125@gmail.com,,true,false,,2026-05-18
@@ -310,6 +311,7 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",69fded1662446148bd848e29,GSA,,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1662446148bd848e2c,Guardian Water & Air Systems LLC,debrak@llwholesale.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1662446148bd848e2f,Gunn & Richards Inc,customerservice@vials.com,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",69fded1662446148bd848e2f,Gunn & Richards Inc,rachel.burton@assuredpartners.com,Rachel Burton,false,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1662446148bd848e32,H & R Block Enterprises LLC,Geoffrey.Hibbs@cushwake.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1662446148bd848e35,H M Cragg Co,ap@hmcragg.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1662446148bd848e35,H M Cragg Co,Amy_Boll@ajg.com,Amy Boll,false,false,,2026-05-18
@@ -368,6 +370,7 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",69fded1862446148bd848ecb,"Kansas City Gymnastics, Inc.",angela778@gmail.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1862446148bd848ece,Kansas City Urology Care,accountspayable@kcurology.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1862446148bd848ed1,"Kansas City Urology Care, PA",accountspayable@kcurology.com,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",69fded1862446148bd848ed1,"Kansas City Urology Care, PA",HUB-KC.Certificates@HUBInternational.com,Certificate Department,false,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1862446148bd848ed4,Kansas City Winair Co,avshepherd@winsupply.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1862446148bd848ed7,Kansas Gas Service,rbower@onegas.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1862446148bd848eda,Kansas Granite Mart,christine@kansasgranitemart.com,,true,false,,2026-05-18
@@ -443,6 +446,7 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",69fded1b62446148bd848f9d,Men Sui Tial and Naa Aung,vanceuling17@gmail.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1b62446148bd848fa0,Merkos Linyonci Chinuch of Kansas,rabbimendy@kansasjewish.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1b62446148bd848fa3,"Metro Spine & Rehab, P.A.",amy@metrospine.com,,true,false,,2026-05-18
+"Block Real Estate Services, LLC",69fded1b62446148bd848fa3,"Metro Spine & Rehab, P.A.",mdunn@bukatyagency.com,Margaret Dunn,false,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1b62446148bd848fa6,MicroProtein Technologies Inc,sandeep@mptbiotechs.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1b62446148bd848fa9,Midland Exteriors LLC,danielle@midlandexteriors.com,,true,false,,2026-05-18
 "Block Real Estate Services, LLC",69fded1b62446148bd848fac,"Midland Steel Erection, LLC",accounting@midlandsteelerection.com,,true,false,,2026-05-18
@@ -778,9 +782,25 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",6a07294cf523b3582369637a,"AGILITI HEALTH, INC.",elemire@hayscompanies.com,Melody Kronbach or Evan LeMire,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a07294cf523b3582369637a,"AGILITI HEALTH, INC.",asalem@rampartinsurance.com,Adam Salem,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a07294cf523b3582369637a,"AGILITI HEALTH, INC.",ChicagoCertRequest@marsh.com,Marsh | U.S. Operations,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294cf523b35823696389,CEVA / BIOIMMUNE COMPANY,derek.young@bbrown.com,,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294cf523b35823696389,CEVA / BIOIMMUNE COMPANY,ChicagoCertRequest@marsh.com,Marsh | U.S. Operations,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a07294cf523b3582369638e,SALTY IGUANA RESTAURANT,,Sandy Bell,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294cf523b35823696393,SMART KARTON,info@danielandhenry.com,,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294cf523b35823696393,SMART KARTON,CouillardK@danielandhenry.com,Kelly Couillard,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294df523b358236963b6,DERMATOLOGY CONSULTANTS MIDWEST,select@bukatyagency.com,Allyssa Diel,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294df523b358236963c0,"JAY MAHAKALI, LLC",batul@trusthouseinsurance.com,,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294df523b358236963cf,TELLWORKS,mpsmith@McGriff.com,,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a07294df523b358236963ed,THREE D METALS,Joan.Walters@BrittonGallagher.com,Joan Walters,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294ef523b35823696406,"RAY'S DONUTS & DELI / 6TINOS, LLC",info@turnerassocllc.com,Phyllis Turner,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294ff523b35823696447,"ALSIDE SUPPLY / ASSOCIATED MATERIAL, INC.",certificates@willis.com,Willis Towers Watson Certificate Center,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294ff523b3582369645b,MOHAWK,,?,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294ff523b35823696460,BYK,Laura.rosanelli@hubinternational.com,Laura Rosanelli,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294ff523b35823696465,LANSING BUILDING PRODUCTS,certificates@rutherfoord.com,,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294ff523b3582369646f,JON DON,Kate.Findlay@epicbrokers.com,Kate Findlay,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294ff523b35823696474,"RGMI CONSULTANT / CENTRINEX, LLC",info@srains.com,,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a07294ff523b35823696474,"RGMI CONSULTANT / CENTRINEX, LLC",denise.kordes@assuredpartners.com,Denise Kordes,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a072950f523b35823696483,"B STREET COLLISION SHAWNEE, INC",skennedy@intrepiddirect.com,Shaughn Kennedy,false,false,,2026-05-18
+"Block Real Estate Services, LLC",6a072950f523b3582369648d,"SUPPLEMENTAL HEALTH CARE / SHC SERVICES, INC",nisrine.berry@alliant.com,,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a072956f523b3582369663b,FRESENIUS MEDICAL CARE,Gabrielle.Laspina@marsh.com,Gabrielle LaSpina,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a07295ff523b3582369689d,"SNSA, INC DBA CHURCH'S CHICKEN",certs@walnutrisk.com,Kevin Prochaska,false,false,,2026-05-18
 "Block Real Estate Services, LLC",6a072961f523b358236968fc,"BSN SPORTS, LLC",certificates@willis.com,Willis Towers Watson Certificate Center,false,false,,2026-05-18
