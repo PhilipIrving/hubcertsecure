@@ -778,10 +778,10 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a072933f523b35823695d35,LARON L. GREEN,,NON_COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072933f523b35823695d3a,LINCOLN ELECTRIC COMPANY,,NON_COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d3f,"ADVENA LIVING /CORNERSTONE GROUP HOLDINGS, INC.",,NON_COMPLIANT,,,true,false,2026-05-19
-"Block Real Estate Services, LLC",6a072934f523b35823695d44,"LYNTEC, INC. / RDC, INC. (EXPANSION)",,NON_COMPLIANT,,,true,false,2026-05-19
+"Block Real Estate Services, LLC",6a072934f523b35823695d44,"LYNTEC, INC. / RDC, INC. (EXPANSION)",fiatinsurance.service@gmail.com,NON_COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d49,PHYSICIANS PRIMARY CARE,yenitza.guzman@bks-partners.com,NON_COMPLIANT,,,true,false,2026-05-19
-"Block Real Estate Services, LLC",6a072934f523b35823695d4e,KC NEEDLEPOINT,,NON_COMPLIANT,,,true,false,2026-05-19
-"Block Real Estate Services, LLC",6a072934f523b35823695d53,"ROXY / KILROY ENTERTAINMENT GROUP, LLC",,NON_COMPLIANT,,,true,false,2026-05-19
+"Block Real Estate Services, LLC",6a072934f523b35823695d4e,KC NEEDLEPOINT,bperez@bpminsurance.com,NON_COMPLIANT,,,true,false,2026-05-19
+"Block Real Estate Services, LLC",6a072934f523b35823695d53,"ROXY / KILROY ENTERTAINMENT GROUP, LLC",.faccurso@summitinsurancegroup.com,NON_COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d58,LAS VEGAS UROLOGY,,NON_COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d5d,MEDICAL MIDWEST / LINCARE,,NON_COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d62,"WORKFORCE PARTNERSHIP / LOCAL WORKFORCE INVESTMENT AREA, III",,NON_COMPLIANT,,,true,false,2026-05-19
@@ -817,7 +817,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a072936f523b35823695df8,"PROMEX, LTD",,NON_COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072937f523b35823695dfd,"SILOAM SPRINGS CLINIC COMPANY, LLC",,NON_COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072937f523b35823695e02,GRANDMARK SIGNS,,NON_COMPLIANT,,,true,false,2026-05-19
-"Block Real Estate Services, LLC",6a072937f523b35823695e07,"GNC HOLDINGS, LLC",,NON_COMPLIANT,,,true,false,2026-05-19
+"Block Real Estate Services, LLC",6a072937f523b35823695e07,"GNC HOLDINGS, LLC",certificates@willis.com,NON_COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072937f523b35823695e0c,HENSLEY ELECTRIC INC,,NON_COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072937f523b35823695e11,"SIEVERLING INVESTMENTS COMPANY, INC. - DOUBLE EAGLE EXPLORATION, INC.",,NON_COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072937f523b35823695e16,"INCOMM FKA GIFT CARD IMPRESSIONS, INC.",,NON_COMPLIANT,,,true,false,2026-05-19
@@ -1331,7 +1331,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a07295df523b3582369680c,"SUMMIT SPORTSWEAR, INC",,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a07295df523b35823696811,ONE80 CAPITAL ADISORS,,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a07295df523b35823696816,LAURA HOREN,,COMPLIANT,,,true,false,2026-05-19
-"Block Real Estate Services, LLC",6a07295df523b3582369681b,CROSSROADS REAL ESTATE GROUP,,COMPLIANT,,,true,false,2026-05-19
+"Block Real Estate Services, LLC",6a07295df523b3582369681b,CROSSROADS REAL ESTATE GROUP,wmreichmeler@its-ins.com,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a07295df523b35823696820,SASHA INVESTMENTS LLC,,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a07295df523b35823696825,DA DAVIDSON & CO.,,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a07295df523b3582369682a,"APPLIED INDUSTRIAL TECHNOLOGIES, INC.",,COMPLIANT,,,true,false,2026-05-19
@@ -1441,7 +1441,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a072965f523b35823696a32,A-SALON / ELISA GRAY,,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072965f523b35823696a37,"SATELLITE ENGINEERING / WESCO DISTRIBUTION, INC",,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072965f523b35823696a3c,"GOPUFF LEASE / GOBRANDS, INC.",,COMPLIANT,,,true,false,2026-05-19
-"Block Real Estate Services, LLC",6a072965f523b35823696a41,BRINKMANN CONSTRUCTORS,,COMPLIANT,,,true,false,2026-05-19
+"Block Real Estate Services, LLC",6a072965f523b35823696a41,BRINKMANN CONSTRUCTORS,astringer@APMissouri.com,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072966f523b35823696a46,SEEN MERCHANDISING,,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072966f523b35823696a4b,"ITG HOLDINGS USA, INC - ITG BRANDS, LLC",,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072966f523b35823696a50,"SFG ISF KC STADIUM, LLC TERMINUS 100",,COMPLIANT,,,true,false,2026-05-19
@@ -1450,7 +1450,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a072966f523b35823696a5f,CLASSONEMODELWORKS.COM. LLC,,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072966f523b35823696a64,"ARC PHYSICAL THERAPY PLUS, LP",,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072966f523b35823696a69,"RHINO GARDEN SUPPLY, LLC",,COMPLIANT,,,true,false,2026-05-19
-"Block Real Estate Services, LLC",6a072966f523b35823696a6e,DIGITAL INSURANCE LLC,,COMPLIANT,,,true,false,2026-05-19
+"Block Real Estate Services, LLC",6a072966f523b35823696a6e,DIGITAL INSURANCE LLC,becky.stallons@onedigital.com,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072966f523b35823696a73,"PLANET VAN LINES, INC.",,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072966f523b35823696a78,"BXB GEAR VENTURES, INC.",,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a072966f523b35823696a7d,"PRIORITY LOGISTICS, INC.",,COMPLIANT,,,true,false,2026-05-19
@@ -1565,7 +1565,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a07296ef523b35823696c9e,INSPIRE THERAPY,,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a07296ff523b35823696ca3,"CHERISH THE FURS, LLC",,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a07296ff523b35823696ca8,VENTURE STUDIO,,COMPLIANT,,,true,false,2026-05-19
-"Block Real Estate Services, LLC",6a07296ff523b35823696cad,"MOSS MARKETING GROUP / RDM DETAILING AND SUPPLIES, LLC",,COMPLIANT,,,true,false,2026-05-19
+"Block Real Estate Services, LLC",6a07296ff523b35823696cad,"MOSS MARKETING GROUP / RDM DETAILING AND SUPPLIES, LLC",tracy.tucker.r79b@statefarm.com,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a07296ff523b35823696cb2,BAKING WITH A BASS / KAYLA BASS,,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a07296ff523b35823696cb7,"TRANE U.S., INC.",,COMPLIANT,,,true,false,2026-05-19
 "Block Real Estate Services, LLC",6a07296ff523b35823696cbc,"C'S SENSATIONAL SMOOTHIES, LLC",,COMPLIANT,,,true,false,2026-05-19
