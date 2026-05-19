@@ -228,7 +228,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",69fded1462446148bd848d9f,FILGR LLC,Party,active,pop@popculturekc.com,,pop@popculturekc.com,,,"801 South Franklin Street, Raymore, Missouri, 64083",Raymore,Missouri,United States,64083,0,,,,2026-05-08,2026-05-08,2026-05-19
 "Block Real Estate Services, LLC",69fded1462446148bd848da2,"Fine Line Graphics, Inc.",Party,active,aberthelette@flgcorp.com,,aberthelette@flgcorp.com,,,"14 Breakneck Hill Road, Lincoln, Rhode Island, 02865",Lincoln,Rhode Island,United States,02865,0,,,,2026-05-08,2026-05-08,2026-05-19
 "Block Real Estate Services, LLC",69fded1462446148bd848da5,Fireplace & Bar-B-Q Center Inc,Party,active,ckelly@fireplacecenterkc.com,,ckelly@fireplacecenterkc.com,,,"10470 Metcalf Avenue, Overland Park, Kansas, 66212",Overland Park,Kansas,United States,66212,0,,,,2026-05-08,2026-05-08,2026-05-19
-"Block Real Estate Services, LLC",69fded1462446148bd848da8,"First Biomedical, Inc",Party,active,AccountsPayable@Infusystem.com,,AccountsPayable@Infusystem.com,,,"3851 West Hamlin Road, Rochester Hills, Michigan, 48309",Rochester Hills,Michigan,United States,48309,0,,,,2026-05-08,2026-05-08,2026-05-19
+"Block Real Estate Services, LLC",69fded1462446148bd848da8,"First Biomedical, Inc",Party,active,AccountsPayable@Infusystem.com,,AccountsPayable@Infusystem.com; Michael.Greene@alliant.com; amber.duckett@alliant.com,,,"3851 West Hamlin Road, Rochester Hills, Michigan, 48309",Rochester Hills,Michigan,United States,48309,4,,,,2026-05-08,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",69fded1462446148bd848dab,First Church of Christ Scientist,Party,active,,,,,,"6401 West 87th Street, Overland Park, Kansas, 66212",Overland Park,Kansas,United States,66212,0,,,,2026-05-08,2026-05-08,2026-05-19
 "Block Real Estate Services, LLC",69fded1462446148bd848dae,First Citizens Bank & Trust Company,Party,active,crelease@firstcitizens.com,,crelease@firstcitizens.com; certificates@willis.com,,,"1299 Farnam Street, Omaha, Nebraska, 68102",Omaha,Nebraska,United States,68102,1,,,,2026-05-08,2026-05-15,2026-05-19
 "Block Real Estate Services, LLC",69fded1462446148bd848db1,First Key Homes,Party,active,officeleases@firstkeyhomes.com,,officeleases@firstkeyhomes.com,,,"1850 Parkway Place, Marietta, Georgia, 30067",Marietta,Georgia,United States,30067,0,,,,2026-05-08,2026-05-08,2026-05-19
@@ -655,7 +655,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",69fded2462446148bd8492a0,Waldo Thai Place LLC,Party,active,svimagingandinterior@gmail.com,,svimagingandinterior@gmail.com,,,"8431 Wornall Road, Kansas City, Missouri, 64114",Kansas City,Missouri,United States,64114,0,,,,2026-05-08,2026-05-08,2026-05-19
 "Block Real Estate Services, LLC",69fded2462446148bd8492a3,Warners Stellian Co Inc,Party,active,cgullickson@warnersstellian.com,,cgullickson@warnersstellian.com,,,"550 Atwater Circle, Saint Paul, Minnesota, 55103",Saint Paul,Minnesota,United States,55103,0,,,,2026-05-08,2026-05-08,2026-05-19
 "Block Real Estate Services, LLC",69fded2462446148bd8492a6,Wayfair LLC,Party,active,leaseadministration@wayfair.com,,leaseadministration@wayfair.com,,,"10804 Strang Line Road, Lenexa, Kansas, 66215",Lenexa,Kansas,United States,66215,0,,,,2026-05-08,2026-05-08,2026-05-19
-"Block Real Estate Services, LLC",69fded2462446148bd8492a9,WCG IRB Inc,Party,active,wcgap@wcgclinical.com,,wcgap@wcgclinical.com,,,"5000 Centregreen Way, Cary, North Carolina, 27513",Cary,North Carolina,United States,27513,0,,,,2026-05-08,2026-05-08,2026-05-19
+"Block Real Estate Services, LLC",69fded2462446148bd8492a9,WCG IRB Inc,Party,active,wcgap@wcgclinical.com,,wcgap@wcgclinical.com,,,"5000 Centregreen Way, Cary, North Carolina, 27513",Cary,North Carolina,United States,27513,1,,,,2026-05-08,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",69fded2462446148bd8492ac,WellSky Corporation,Party,active,accountspayable@wellsky.com,,accountspayable@wellsky.com,,,"11300 Switzer Road, Overland Park, Kansas, 66212",Overland Park,Kansas,United States,66212,0,,,,2026-05-08,2026-05-08,2026-05-19
 "Block Real Estate Services, LLC",69fded2462446148bd8492af,"Wesco Distribution, Inc",Party,active,Wesco.valo@cresa.com,,Wesco.valo@cresa.com; mickey.wood@stephens.com,,,"167 North Green Street, Chicago, Illinois, 60607",Chicago,Illinois,United States,60607,1,,,,2026-05-08,2026-05-15,2026-05-19
 "Block Real Estate Services, LLC",69fded2462446148bd8492b2,West Shore Home LLC,Party,active,realestate@westshorehome.com,,realestate@westshorehome.com,,,"3 Crossgate Drive, Mechanicsburg, Pennsylvania, 17050",Mechanicsburg,Pennsylvania,United States,17050,0,,,,2026-05-08,2026-05-08,2026-05-19
@@ -730,11 +730,11 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a072930f523b35823695c45,MAZZARESE & ASSOCIATES,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072930f523b35823695c4a,MIDWEST MODEL RAILROAD,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072930f523b35823695c4f,NEENAN COMPANY,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072930f523b35823695c54,NEW MEXICO BONE & JOINT INSTITUTE,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072930f523b35823695c54,NEW MEXICO BONE & JOINT INSTITUTE,Party,active,bart@hicountryagency.com,Bart Garrison,bart@hicountryagency.com,,,,,,,,3,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072930f523b35823695c59,RED SHOES,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072930f523b35823695c5e,REINVENT YOUR HEALTH,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072930f523b35823695c5e,REINVENT YOUR HEALTH,Party,active,,,,,,,,,,,3,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072930f523b35823695c63,SELECT PHYSICAL THERAPY / HEALTHSOUTH CORP,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072930f523b35823695c68,"SLIM 4 LIFE WEIGHT LOSS / 4 LIFE WEIGHT LOSS CENTERS, INC.",Party,active,Wward@inszoneins.com,Wendy Ward,Wward@inszoneins.com,,,,,,,,2,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072930f523b35823695c68,"SLIM 4 LIFE WEIGHT LOSS / 4 LIFE WEIGHT LOSS CENTERS, INC.",Party,active,Wward@inszoneins.com,Wendy Ward,Wward@inszoneins.com; certs@inszoneins.com,,,,,,,,11,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072930f523b35823695c6d,ST. LUKE'S HOSPITAL,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072930f523b35823695c72,TAIKAN DEVELOPMENT CORPORATION,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072930f523b35823695c77,"TAILGATE GUYS, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
@@ -746,7 +746,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a072931f523b35823695c95,EYE HEALTH AMERICA LLC,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072931f523b35823695c9a,FLOORING SYSTEMS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072931f523b35823695c9f,FLORENCE SURGERY & LASER CENTER LLC,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072931f523b35823695ca4,FREEDOM HEARING,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072931f523b35823695ca4,FREEDOM HEARING,Party,active,,,,,,,,,,,1,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072931f523b35823695ca9,HANGER CLINIC,Party,active,megan.bruce@usi.com,Megan Bruce,megan.bruce@usi.com,,,,,,,,7,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072931f523b35823695cae,INRI MEDICAL ASSOC.,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072931f523b35823695cb3,"LIBERDA CONSULTING, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
@@ -763,7 +763,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a072932f523b35823695cea,YIA YIAS TATTOO PARLOR,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072932f523b35823695cef,CONVERGINT TECHNOLOGIES,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072932f523b35823695cf4,WENDY'S / JADE PROPERTIES,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072932f523b35823695cf9,"GILHOULY'S / JS 39TH STREET INVESTORS, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072932f523b35823695cf9,"GILHOULY'S / JS 39TH STREET INVESTORS, LLC",Party,active,jerrif@twinlakesins.com,Jerri Fulkerson,jerrif@twinlakesins.com,,,,,,,,2,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072933f523b35823695cfe,RARE HOSPITALITY OF KANSAS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072933f523b35823695d03,SALON 152,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072933f523b35823695d08,"TIME WARNER CABLE / SPECTRUM MID-AMERICA, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
@@ -779,7 +779,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a072933f523b35823695d3a,LINCOLN ELECTRIC COMPANY,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d3f,"ADVENA LIVING /CORNERSTONE GROUP HOLDINGS, INC.",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d44,"LYNTEC, INC. / RDC, INC. (EXPANSION)",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072934f523b35823695d49,PHYSICIANS PRIMARY CARE,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072934f523b35823695d49,PHYSICIANS PRIMARY CARE,Party,active,yenitza.guzman@bks-partners.com,,yenitza.guzman@bks-partners.com,,,,,,,,20,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d4e,KC NEEDLEPOINT,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d53,"ROXY / KILROY ENTERTAINMENT GROUP, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d58,LAS VEGAS UROLOGY,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
@@ -811,7 +811,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a072936f523b35823695dda,CENTRAL LINKS GOLF / KANSAS CITY GOLF ASSOCIATION FKA KCGA,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072936f523b35823695ddf,"MOW EQUIPMENT SOLUTIONS, INC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072936f523b35823695de4,"PSYCHOLOGY OFFICE MANAGEMENT, INC.",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072936f523b35823695de9,"THE DIALYSIS CENTER OF GARY, LLC / AMERICAN RENAL ASSOCIATES LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072936f523b35823695de9,"THE DIALYSIS CENTER OF GARY, LLC / AMERICAN RENAL ASSOCIATES LLC",Party,active,certificates@willis.com,Willis Towers Watson Certificate Center,certificates@willis.com,,,,,,,,3,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072936f523b35823695dee,"HARTE-HANKS, INC. / HARTE-HANKS DIRECT MARKETING KC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072936f523b35823695df3,"BLUE ENDO / MARKET-TIERS, INC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072936f523b35823695df8,"PROMEX, LTD",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
@@ -913,7 +913,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a07293ef523b35823695fd8,"CLEAR CHOICE DENTAL IMPLANT CENTER / MB PROPERTIES, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a07293ef523b35823695fdd,RECOGNITION PLUS AUDIO VIDEO GRAPHICS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a07293ef523b35823695fe2,"ALABAMA ORAL AND FACIAL SURGERY, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a07293ef523b35823695fe7,"FARMOBILE, INC  (AGI - WESTFIELD DISTRIBUTING (ND), INC)",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a07293ef523b35823695fe7,"FARMOBILE, INC  (AGI - WESTFIELD DISTRIBUTING (ND), INC)",Party,active,certificate@epicbrokers.com,Certificate Unit,certificate@epicbrokers.com,,,,,,,,3,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a07293ef523b35823695fec,"BIOWEST, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a07293ef523b35823695ff1,"LVT TRUCKING, INC.",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a07293ef523b35823695ff6,B-ENVIED SALON / DAVID M & LISA WALLA,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
@@ -1210,7 +1210,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a072954f523b358236965af,"UBS FINANCIAL SERVICES, INC.",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072954f523b358236965b4,"TRIAD CAPITAL ADVISORS, INC.",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072954f523b358236965b9,"RSM US, LLP",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072954f523b358236965be,CROSSFIRST BANK,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072954f523b358236965be,CROSSFIRST BANK,Party,active,,,,,,,,,,,6,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072954f523b358236965c3,WING LOVERS / VEWISER L DIXON,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072954f523b358236965c8,BIG BISCUITS,Party,active,certificates@imacorp.com,IMA Certificate Team,certificates@imacorp.com,,,,,,,,5,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072954f523b358236965cd,"MECHANICAL SALES MIDWEST, INC.",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
@@ -1399,43 +1399,43 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a072962f523b35823696960,GAS EQUIPMENT CO,Party,active,krystal.burton@hubinternational.com,"Krystal Burton , CISR , CIC",krystal.burton@hubinternational.com,,,,,,,,6,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072962f523b35823696965,"BDM, INC.",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072962f523b3582369696a,LEAF HOME SOLUTIONS LLC,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072962f523b3582369696f,G & L OUTDOOR,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072962f523b3582369696f,G & L OUTDOOR,Party,active,Istratton@jpperry.com,Lori A. Stratton,Istratton@jpperry.com,,,,,,,,8,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072962f523b35823696974,JAX COIN LAUNDRY/B&G,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072962f523b35823696979,AMIGO MOTOR SPORTS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072962f523b35823696979,AMIGO MOTOR SPORTS,Party,active,alex@alexrue.com,Alex Rue,alex@alexrue.com,,,,,,,,7,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072962f523b3582369697e,SARAH & AYA,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072963f523b35823696983,SOUTHEAST PACKAGING,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072963f523b35823696988,MILLER WINDOWS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072963f523b3582369698d,CUSTOM WOOD PRODUCTS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072963f523b3582369698d,CUSTOM WOOD PRODUCTS,Party,active,marie@ricciinsurancegroup.com,,marie@ricciinsurancegroup.com; CLIENTCONTACTCENTER@FEDINS.COM,,,,,,,,7,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072963f523b35823696992,SHERWIN WILLIAMS.,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072963f523b35823696997,CITY WIDE INSULATION,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072963f523b3582369699c,C & B SALVAGE,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072963f523b358236969a1,BILLIARD FACTORY,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072963f523b358236969a6,AVIGNA GRANITE,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072963f523b358236969ab,FOAM RECYCLE CENTER,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072963f523b358236969a1,BILLIARD FACTORY,Party,active,mconnell@jpperry.com,Melanie D. Connell,mconnell@jpperry.com,,,,,,,,8,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072963f523b358236969a6,AVIGNA GRANITE,Party,active,coifm@acentria.com,Certificate Team,coifm@acentria.com,,,,,,,,4,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072963f523b358236969ab,FOAM RECYCLE CENTER,Party,active,Toledo-office@hylant.com,,Toledo-office@hylant.com,,,,,,,,4,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072963f523b358236969b0,PRINTS R US,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072963f523b358236969b5,HYDRO PURE,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072963f523b358236969b5,HYDRO PURE,Party,active,Joan.Hoskie@ioausa.com,Joan Hoskie,Joan.Hoskie@ioausa.com,,,,,,,,2,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072963f523b358236969ba,THOMAS & PEGGY JUNG,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072964f523b358236969bf,OZZIE'S WHOLESALE,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072964f523b358236969bf,OZZIE'S WHOLESALE,Party,active,,,,,,,,,,,1,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072964f523b358236969c4,DIRECT LINE,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072964f523b358236969c9,DKM MACHINE,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072964f523b358236969ce,E & A COUNTERTOPS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072964f523b358236969d3,DKM WINE PACKAGING,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072964f523b358236969d3,DKM WINE PACKAGING,Party,active,doug@meyerhoffinsurance.com,Douglas Meyerhoff,doug@meyerhoffinsurance.com,,,,,,,,2,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072964f523b358236969d8,NEXT GENERATION,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072964f523b358236969dd,DISTRAKT ART,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072964f523b358236969dd,DISTRAKT ART,Party,active,contactus@insurancebee.com,,contactus@insurancebee.com,,,,,,,,1,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072964f523b358236969e2,FLORIDA GARAGE DOOR,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072964f523b358236969e7,SPECIALTY PARTS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072964f523b358236969ec,SPORTS MEDIA TECHNOLOGY CORP.,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072964f523b358236969f1,ABOUT FLOORS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072964f523b358236969f6,SIGN PRO,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072964f523b358236969ec,SPORTS MEDIA TECHNOLOGY CORP.,Party,active,,Barry C. Curtis,,,,,,,,,1,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072964f523b358236969f1,ABOUT FLOORS,Party,active,tcollins@dellaportagroup.com,Terry Collins,tcollins@dellaportagroup.com,,,,,,,,3,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072964f523b358236969f6,SIGN PRO,Party,active,,Kathy Miller,,,,,,,,,1,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072964f523b358236969fb,"W & R COPRORATE, LLC AKA WADDELL & REED",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072964f523b35823696a00,CROSS FIRST BANK,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072965f523b35823696a05,SERVICE SUCCESS DBA: ANTHONY'S PLUMBING,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072965f523b35823696a05,SERVICE SUCCESS DBA: ANTHONY'S PLUMBING,Party,active,,,,,,,,,,,3,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072965f523b35823696a0a,KCK MAINTENANCE SOLUTIONS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072965f523b35823696a0f,"RENEW TRANSFER / CHANGING YOUR LATITUDE, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072965f523b35823696a0f,"RENEW TRANSFER / CHANGING YOUR LATITUDE, LLC",Party,active,certificates@willis.com,Willis Towers Watson Certificate Center,certificates@willis.com,,,,,,,,2,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072965f523b35823696a14,AFRAH EVENT CENTER,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072965f523b35823696a19,ESSENCE OF AUSTRALIA,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072965f523b35823696a19,ESSENCE OF AUSTRALIA,Party,active,certificates@ckcins.com,Karen Holzmark,certificates@ckcins.com,,,,,,,,2,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072965f523b35823696a1e,FS INVESTMENTS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
-"Block Real Estate Services, LLC",6a072965f523b35823696a23,"KCK MAINTENANCE SOLUTIONS, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
+"Block Real Estate Services, LLC",6a072965f523b35823696a23,"KCK MAINTENANCE SOLUTIONS, LLC",Party,active,jluengo@engage-ins.com,Juan Luengo,jluengo@engage-ins.com,,,,,,,,5,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072965f523b35823696a28,DISCOVER CHURCH,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072965f523b35823696a2d,GARAGE EXPERTS OF KANSAS CITY / WIN-WIN CONCRETE & STORAGE LLC,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19
 "Block Real Estate Services, LLC",6a072965f523b35823696a32,A-SALON / ELISA GRAY,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-19

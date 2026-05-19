@@ -260,6 +260,8 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",69fded1462446148bd848da2,"Fine Line Graphics, Inc.",aberthelette@flgcorp.com,,true,false,,2026-05-19
 "Block Real Estate Services, LLC",69fded1462446148bd848da5,Fireplace & Bar-B-Q Center Inc,ckelly@fireplacecenterkc.com,,true,false,,2026-05-19
 "Block Real Estate Services, LLC",69fded1462446148bd848da8,"First Biomedical, Inc",AccountsPayable@Infusystem.com,,true,false,,2026-05-19
+"Block Real Estate Services, LLC",69fded1462446148bd848da8,"First Biomedical, Inc",Michael.Greene@alliant.com,Michael Greene,false,false,,2026-05-19
+"Block Real Estate Services, LLC",69fded1462446148bd848da8,"First Biomedical, Inc",amber.duckett@alliant.com,Amber Duckett,false,false,,2026-05-19
 "Block Real Estate Services, LLC",69fded1462446148bd848dab,First Church of Christ Scientist,,,true,false,,2026-05-19
 "Block Real Estate Services, LLC",69fded1462446148bd848dae,First Citizens Bank & Trust Company,crelease@firstcitizens.com,,true,false,,2026-05-19
 "Block Real Estate Services, LLC",69fded1462446148bd848dae,First Citizens Bank & Trust Company,certificates@willis.com,Willis Towers Watson Certificate Center,false,false,,2026-05-19
@@ -754,15 +756,21 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",6a07292df523b35823695b87,"ERGO MIDWEST, INC",Kim.Kulish@vgm.comINSURER(S)AFFORDINGCOVERAGENAIC#,Kim Kulish,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a07292df523b35823695b96,WORLD OF SPIRITS,,Robert B. Fiss,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a07292df523b35823695ba0,ZL WEST ENGINEERING PLASTICS,karen.lore@reillyinsurance,,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072930f523b35823695c54,NEW MEXICO BONE & JOINT INSTITUTE,bart@hicountryagency.com,Bart Garrison,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a072930f523b35823695c68,"SLIM 4 LIFE WEIGHT LOSS / 4 LIFE WEIGHT LOSS CENTERS, INC.",Wward@inszoneins.com,Wendy Ward,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072930f523b35823695c68,"SLIM 4 LIFE WEIGHT LOSS / 4 LIFE WEIGHT LOSS CENTERS, INC.",certs@inszoneins.com,,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a072931f523b35823695c90,"ENERGY INSURANCE AGENCY, INC",eia@energyinsagency.com,,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a072931f523b35823695ca9,HANGER CLINIC,megan.bruce@usi.com,Megan Bruce,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072932f523b35823695cf9,"GILHOULY'S / JS 39TH STREET INVESTORS, LLC",jerrif@twinlakesins.com,Jerri Fulkerson,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072934f523b35823695d49,PHYSICIANS PRIMARY CARE,yenitza.guzman@bks-partners.com,,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a072935f523b35823695dad,"CARSTAR - AUTOBODY ON THE RUN, LLC",skennedy@intrepiddirect.com,Shaughn Kennedy,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072936f523b35823695de9,"THE DIALYSIS CENTER OF GARY, LLC / AMERICAN RENAL ASSOCIATES LLC",certificates@willis.com,Willis Towers Watson Certificate Center,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a072937f523b35823695e1b,JERMAINE MITCHELL - EEROMA RESOURCES LLC,,913-856-3816,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a07293bf523b35823695f15,"WORKVIEW, LLC",barb@bvia.com,Barbara Eswein,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a07293bf523b35823695f15,"WORKVIEW, LLC",Joan.Walters@BrittonGallagher.com,Joan Walters,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a07293cf523b35823695f5b,PAYLESS BUILDING SURPLUS LLC,Janice@twinlakesins.com,Janice Helverson,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a07293df523b35823695f83,"EDWARD D. JONES & CO., L.P., ET AL.",StLouis.CertRequest@Marsh.Com,Marsh IU.S. Operations,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a07293ef523b35823695fe7,"FARMOBILE, INC  (AGI - WESTFIELD DISTRIBUTING (ND), INC)",certificate@epicbrokers.com,Certificate Unit,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a072942f523b358236960ff,"EVERJOY, LLC DBA SERVPRO OF PLATTE COUNTY",RRRGInsurance@aon.com,SERVPRO Franchisee Insurance Center,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a072945f523b358236961b3,"DAIOH̢���S USA, INC",ChicagoCertRequest@marsh.com,Marsh | U.S. Operations,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a072945f523b358236961c2,KAWNEER COMPANY - ARCONIC CORPORATION,certificates@wtwco.com,,false,false,,2026-05-19
@@ -838,6 +846,23 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",6a07295ff523b3582369689d,"SNSA, INC DBA CHURCH'S CHICKEN",certs@walnutrisk.com,Kevin Prochaska,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a072961f523b358236968fc,"BSN SPORTS, LLC",certificates@willis.com,Willis Towers Watson Certificate Center,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a072962f523b35823696960,GAS EQUIPMENT CO,krystal.burton@hubinternational.com,"Krystal Burton , CISR , CIC",false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072962f523b3582369696f,G & L OUTDOOR,Istratton@jpperry.com,Lori A. Stratton,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072962f523b3582369696f,G & L OUTDOOR,,NAME,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072962f523b35823696979,AMIGO MOTOR SPORTS,alex@alexrue.com,Alex Rue,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072963f523b3582369698d,CUSTOM WOOD PRODUCTS,marie@ricciinsurancegroup.com,,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072963f523b3582369698d,CUSTOM WOOD PRODUCTS,CLIENTCONTACTCENTER@FEDINS.COM,CLIENT CONTACT CENTER,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072963f523b358236969a1,BILLIARD FACTORY,mconnell@jpperry.com,Melanie D. Connell,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072963f523b358236969a6,AVIGNA GRANITE,coifm@acentria.com,Certificate Team,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072963f523b358236969ab,FOAM RECYCLE CENTER,Toledo-office@hylant.com,,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072963f523b358236969b5,HYDRO PURE,Joan.Hoskie@ioausa.com,Joan Hoskie,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072964f523b358236969d3,DKM WINE PACKAGING,doug@meyerhoffinsurance.com,Douglas Meyerhoff,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072964f523b358236969dd,DISTRAKT ART,contactus@insurancebee.com,,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072964f523b358236969ec,SPORTS MEDIA TECHNOLOGY CORP.,,Barry C. Curtis,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072964f523b358236969f1,ABOUT FLOORS,tcollins@dellaportagroup.com,Terry Collins,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072964f523b358236969f6,SIGN PRO,,Kathy Miller,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072965f523b35823696a0f,"RENEW TRANSFER / CHANGING YOUR LATITUDE, LLC",certificates@willis.com,Willis Towers Watson Certificate Center,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072965f523b35823696a19,ESSENCE OF AUSTRALIA,certificates@ckcins.com,Karen Holzmark,false,false,,2026-05-19
+"Block Real Estate Services, LLC",6a072965f523b35823696a23,"KCK MAINTENANCE SOLUTIONS, LLC",jluengo@engage-ins.com,Juan Luengo,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a072966f523b35823696a55,BOUQUET COLLECTION SERVICES INC.,Evan.Award@ioausa.com,Evan Award,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a072969f523b35823696b13,EASTERN SURGICAL ASSOCIATES PC,shelby.niblett.sk2p@statefarm.com,Shelby Niblett,false,false,,2026-05-19
 "Block Real Estate Services, LLC",6a072969f523b35823696b40,"MANHATTAN MEDICAL GROUP, LLC - MAIN BLDG",HUB-KC.Certificates@HUBInternational.com,Certificate Department,false,false,,2026-05-19

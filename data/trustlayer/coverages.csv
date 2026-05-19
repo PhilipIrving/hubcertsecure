@@ -819,9 +819,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1d62446148bd84904e,Pack3000 LLC,Samuel.weder@pack3000.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",69fded1d62446148bd84904e,Pack3000 LLC,Samuel.weder@pack3000.com,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",69fded1d62446148bd84904e,Pack3000 LLC,Samuel.weder@pack3000.com,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",69fded1462446148bd848da8,"First Biomedical, Inc",AccountsPayable@Infusystem.com,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",69fded1462446148bd848da8,"First Biomedical, Inc",AccountsPayable@Infusystem.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",69fded1462446148bd848da8,"First Biomedical, Inc",AccountsPayable@Infusystem.com,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",69fded1462446148bd848da8,"First Biomedical, Inc",AccountsPayable@Infusystem.com,Commercial General Liability,commercialGeneralLiability,,,2025-01-01,2027-01-01,,,,,2026-05-19
+"Block Real Estate Services, LLC",69fded1462446148bd848da8,"First Biomedical, Inc",AccountsPayable@Infusystem.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-01-01,2027-01-01,,,,,2026-05-19
+"Block Real Estate Services, LLC",69fded1462446148bd848da8,"First Biomedical, Inc",AccountsPayable@Infusystem.com,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-01-01,2027-01-01,,,,,2026-05-19
 "Block Real Estate Services, LLC",69fded1462446148bd848da8,"First Biomedical, Inc",AccountsPayable@Infusystem.com,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",69fded0d62446148bd848b47,All Copy Products Inc,Accountspayable@allcopyproducts.com,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",69fded0d62446148bd848b47,All Copy Products Inc,Accountspayable@allcopyproducts.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
@@ -3051,10 +3051,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a072930f523b35823695c4f,NEENAN COMPANY,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072930f523b35823695c4f,NEENAN COMPANY,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072930f523b35823695c4f,NEENAN COMPANY,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072930f523b35823695c54,NEW MEXICO BONE & JOINT INSTITUTE,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072930f523b35823695c54,NEW MEXICO BONE & JOINT INSTITUTE,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072930f523b35823695c54,NEW MEXICO BONE & JOINT INSTITUTE,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072930f523b35823695c54,NEW MEXICO BONE & JOINT INSTITUTE,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072930f523b35823695c54,NEW MEXICO BONE & JOINT INSTITUTE,bart@hicountryagency.com,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072930f523b35823695c54,NEW MEXICO BONE & JOINT INSTITUTE,bart@hicountryagency.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072930f523b35823695c54,NEW MEXICO BONE & JOINT INSTITUTE,bart@hicountryagency.com,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072930f523b35823695c54,NEW MEXICO BONE & JOINT INSTITUTE,bart@hicountryagency.com,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072930f523b35823695c59,RED SHOES,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072930f523b35823695c59,RED SHOES,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072930f523b35823695c59,RED SHOES,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
@@ -3183,10 +3183,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a072932f523b35823695cf4,WENDY'S / JADE PROPERTIES,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072932f523b35823695cf4,WENDY'S / JADE PROPERTIES,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072932f523b35823695cf4,WENDY'S / JADE PROPERTIES,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072932f523b35823695cf9,"GILHOULY'S / JS 39TH STREET INVESTORS, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072932f523b35823695cf9,"GILHOULY'S / JS 39TH STREET INVESTORS, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072932f523b35823695cf9,"GILHOULY'S / JS 39TH STREET INVESTORS, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072932f523b35823695cf9,"GILHOULY'S / JS 39TH STREET INVESTORS, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072932f523b35823695cf9,"GILHOULY'S / JS 39TH STREET INVESTORS, LLC",jerrif@twinlakesins.com,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072932f523b35823695cf9,"GILHOULY'S / JS 39TH STREET INVESTORS, LLC",jerrif@twinlakesins.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072932f523b35823695cf9,"GILHOULY'S / JS 39TH STREET INVESTORS, LLC",jerrif@twinlakesins.com,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072932f523b35823695cf9,"GILHOULY'S / JS 39TH STREET INVESTORS, LLC",jerrif@twinlakesins.com,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072933f523b35823695cfe,RARE HOSPITALITY OF KANSAS,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072933f523b35823695cfe,RARE HOSPITALITY OF KANSAS,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072933f523b35823695cfe,RARE HOSPITALITY OF KANSAS,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
@@ -3247,10 +3247,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a072934f523b35823695d44,"LYNTEC, INC. / RDC, INC. (EXPANSION)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d44,"LYNTEC, INC. / RDC, INC. (EXPANSION)",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d44,"LYNTEC, INC. / RDC, INC. (EXPANSION)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072934f523b35823695d49,PHYSICIANS PRIMARY CARE,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072934f523b35823695d49,PHYSICIANS PRIMARY CARE,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072934f523b35823695d49,PHYSICIANS PRIMARY CARE,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072934f523b35823695d49,PHYSICIANS PRIMARY CARE,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072934f523b35823695d49,PHYSICIANS PRIMARY CARE,yenitza.guzman@bks-partners.com,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072934f523b35823695d49,PHYSICIANS PRIMARY CARE,yenitza.guzman@bks-partners.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072934f523b35823695d49,PHYSICIANS PRIMARY CARE,yenitza.guzman@bks-partners.com,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072934f523b35823695d49,PHYSICIANS PRIMARY CARE,yenitza.guzman@bks-partners.com,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d4e,KC NEEDLEPOINT,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d4e,KC NEEDLEPOINT,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072934f523b35823695d4e,KC NEEDLEPOINT,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
@@ -3375,10 +3375,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a072936f523b35823695de4,"PSYCHOLOGY OFFICE MANAGEMENT, INC.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072936f523b35823695de4,"PSYCHOLOGY OFFICE MANAGEMENT, INC.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072936f523b35823695de4,"PSYCHOLOGY OFFICE MANAGEMENT, INC.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072936f523b35823695de9,"THE DIALYSIS CENTER OF GARY, LLC / AMERICAN RENAL ASSOCIATES LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072936f523b35823695de9,"THE DIALYSIS CENTER OF GARY, LLC / AMERICAN RENAL ASSOCIATES LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072936f523b35823695de9,"THE DIALYSIS CENTER OF GARY, LLC / AMERICAN RENAL ASSOCIATES LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a072936f523b35823695de9,"THE DIALYSIS CENTER OF GARY, LLC / AMERICAN RENAL ASSOCIATES LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072936f523b35823695de9,"THE DIALYSIS CENTER OF GARY, LLC / AMERICAN RENAL ASSOCIATES LLC",certificates@willis.com,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072936f523b35823695de9,"THE DIALYSIS CENTER OF GARY, LLC / AMERICAN RENAL ASSOCIATES LLC",certificates@willis.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072936f523b35823695de9,"THE DIALYSIS CENTER OF GARY, LLC / AMERICAN RENAL ASSOCIATES LLC",certificates@willis.com,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a072936f523b35823695de9,"THE DIALYSIS CENTER OF GARY, LLC / AMERICAN RENAL ASSOCIATES LLC",certificates@willis.com,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072936f523b35823695dee,"HARTE-HANKS, INC. / HARTE-HANKS DIRECT MARKETING KC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072936f523b35823695dee,"HARTE-HANKS, INC. / HARTE-HANKS DIRECT MARKETING KC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a072936f523b35823695dee,"HARTE-HANKS, INC. / HARTE-HANKS DIRECT MARKETING KC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
@@ -3783,10 +3783,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a07293ef523b35823695fe2,"ALABAMA ORAL AND FACIAL SURGERY, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a07293ef523b35823695fe2,"ALABAMA ORAL AND FACIAL SURGERY, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a07293ef523b35823695fe2,"ALABAMA ORAL AND FACIAL SURGERY, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a07293ef523b35823695fe7,"FARMOBILE, INC  (AGI - WESTFIELD DISTRIBUTING (ND), INC)",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a07293ef523b35823695fe7,"FARMOBILE, INC  (AGI - WESTFIELD DISTRIBUTING (ND), INC)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a07293ef523b35823695fe7,"FARMOBILE, INC  (AGI - WESTFIELD DISTRIBUTING (ND), INC)",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
-"Block Real Estate Services, LLC",6a07293ef523b35823695fe7,"FARMOBILE, INC  (AGI - WESTFIELD DISTRIBUTING (ND), INC)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a07293ef523b35823695fe7,"FARMOBILE, INC  (AGI - WESTFIELD DISTRIBUTING (ND), INC)",certificate@epicbrokers.com,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a07293ef523b35823695fe7,"FARMOBILE, INC  (AGI - WESTFIELD DISTRIBUTING (ND), INC)",certificate@epicbrokers.com,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a07293ef523b35823695fe7,"FARMOBILE, INC  (AGI - WESTFIELD DISTRIBUTING (ND), INC)",certificate@epicbrokers.com,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
+"Block Real Estate Services, LLC",6a07293ef523b35823695fe7,"FARMOBILE, INC  (AGI - WESTFIELD DISTRIBUTING (ND), INC)",certificate@epicbrokers.com,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a07293ef523b35823695fec,"BIOWEST, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a07293ef523b35823695fec,"BIOWEST, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-05-19
 "Block Real Estate Services, LLC",6a07293ef523b35823695fec,"BIOWEST, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-05-19
