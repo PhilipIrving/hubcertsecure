@@ -1,14 +1,38 @@
 [
   {
-    "client": "The Abbey Management Company",
+    "client": "A G Equipment Company",
     "stage": "criteria",
-    "insured": "046285cf-bf17-4e79-914c-db98310b7153",
-    "error": "read ETIMEDOUT"
+    "insured": "33315b97-b7c5-49ad-a218-a7986d83cddf",
+    "error": "HTTP 502 on /insurance/insureds/33315b97-b7c5-49ad-a218-a7986d83cddf/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
   },
   {
-    "client": "Trinity Chemical Industries LLC",
+    "client": "A G Equipment Company",
     "stage": "coverage_data",
-    "insured": "0925df57-4a8d-4419-a930-85dfb2cb8876",
-    "error": "read ETIMEDOUT"
+    "insured": "34438931-f0ad-410a-93ab-ce3ed5dde210",
+    "error": "HTTP 502 on /insurance/insureds/34438931-f0ad-410a-93ab-ce3ed5dde210/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+  },
+  {
+    "client": "The Abbey Management Company",
+    "stage": "criteria",
+    "insured": "31f71b70-4b22-43a7-9776-085e149e0231",
+    "error": "HTTP 502 on /insurance/insureds/31f71b70-4b22-43a7-9776-085e149e0231/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+  },
+  {
+    "client": "The Abbey Management Company",
+    "stage": "criteria",
+    "insured": "33f15d91-8eff-488e-92f0-810b5c61dff4",
+    "error": "HTTP 502 on /insurance/insureds/33f15d91-8eff-488e-92f0-810b5c61dff4/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+  },
+  {
+    "client": "United Coal Company LLC",
+    "stage": "coverage_data",
+    "insured": "35d72508-5874-47f0-960d-d03e7a0e90a5",
+    "error": "HTTP 502 on /insurance/insureds/35d72508-5874-47f0-960d-d03e7a0e90a5/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+  },
+  {
+    "client": "United Coal Company LLC",
+    "stage": "criteria",
+    "insured": "34700ac1-418d-41ab-b3de-a4a3b80129c6",
+    "error": "HTTP 502 on /insurance/insureds/34700ac1-418d-41ab-b3de-a4a3b80129c6/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
   }
 ]
