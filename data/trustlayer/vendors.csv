@@ -99,10 +99,10 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",69fded1062446148bd848c1c,Brown & Root Industrial Services LLC,Party,active,ap.invoices@brownandroot.com,,ap.invoices@brownandroot.com; ashley_kennard@ajg.com,,,"4171 Essen Lane, Baton Rouge, Louisiana, 70809",Baton Rouge,Louisiana,United States,70809,1,,,,2026-05-08,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",69fded1062446148bd848c1f,Bryan Torez,Party,active,batorez@yahoo.com,,batorez@yahoo.com; sydney@insurancekcmetro.com,,,"8131 Parallel Parkway, Kansas City, Kansas, 66112",Kansas City,Kansas,United States,66112,9,,,,2026-05-08,2026-05-18,2026-05-20
 "Block Real Estate Services, LLC",69fded1062446148bd848c22,Bryght Labs,Party,active,wigh@bryghtlabs.com,,wigh@bryghtlabs.com,,,"11069 Strang Line Road, Lenexa, Kansas, 66215",Lenexa,Kansas,United States,66215,0,,,,2026-05-08,2026-05-08,2026-05-20
-"Block Real Estate Services, LLC",69fded1062446148bd848c25,"Buckeye International, Inc",Party,active,dwildt@buckeyeinternational.com,,dwildt@buckeyeinternational.com,,,"2700 Wagner Place, Maryland Heights, Missouri, 63043",Maryland Heights,Missouri,United States,63043,0,,,,2026-05-08,2026-05-08,2026-05-20
+"Block Real Estate Services, LLC",69fded1062446148bd848c25,"Buckeye International, Inc",Party,active,dwildt@buckeyeinternational.com,,dwildt@buckeyeinternational.com; Dana.Wolfe@MarshMMA.com,,,"2700 Wagner Place, Maryland Heights, Missouri, 63043",Maryland Heights,Missouri,United States,63043,1,,,,2026-05-08,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",69fded1062446148bd848c28,Builder Direct LLC,Party,active,builderdirectkc@gmail.com,,builderdirectkc@gmail.com,,,"13215 Logan Lane, Lenexa, Kansas, 66215",Lenexa,Kansas,United States,66215,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded1062446148bd848c2b,Bunzl Distribution Inc,Party,active,Amy.west@bunzlusa.com,,Amy.west@bunzlusa.com,,,"Creve Coeur, Missouri, 63141",Creve Coeur,Missouri,United States,63141,0,,,,2026-05-08,2026-05-08,2026-05-20
-"Block Real Estate Services, LLC",69fded1062446148bd848c2e,Bunzl Processor Distribution LLC,Party,active,,,lora_redford@ajg.com,,,"5710 Northwest 41st Street, Riverside, Missouri, 64150",Riverside,Missouri,United States,64150,2,,,,2026-05-08,2026-05-20,2026-05-20
+"Block Real Estate Services, LLC",69fded1062446148bd848c2e,Bunzl Processor Distribution LLC,Party,active,,,lora_redford@ajg.com,,,"5710 Northwest 41st Street, Riverside, Missouri, 64150",Riverside,Missouri,United States,64150,4,,,,2026-05-08,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",69fded1062446148bd848c31,Burlis Lawson Group Inc,Party,active,jay@burlislawson.com,,jay@burlislawson.com,,,,,,,,0,,,,2026-05-08,2026-05-18,2026-05-20
 "Block Real Estate Services, LLC",69fded1062446148bd848c34,Busey Bank,Party,active,accounts.payable@busey.com,,accounts.payable@busey.com,,,"Urbandale, Illinois, 62914",Urbandale,Illinois,United States,62914,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded1062446148bd848c37,Butler Suppy Inc,Party,active,sdevore@butlersupply.com,,sdevore@butlersupply.com,,,,,,,,0,,,,2026-05-08,2026-05-08,2026-05-20
@@ -328,7 +328,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",69fded1862446148bd848ecb,"Kansas City Gymnastics, Inc.",Party,active,angela778@gmail.com,,angela778@gmail.com,,,"Riverside, Missouri, 64150",Riverside,Missouri,United States,64150,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded1862446148bd848ece,Kansas City Urology Care,Party,active,accountspayable@kcurology.com,,accountspayable@kcurology.com,,,"8551 Bluejacket Street, Lenexa, Kansas, 66214",Lenexa,Kansas,United States,66214,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded1862446148bd848ed1,"Kansas City Urology Care, PA",Party,active,accountspayable@kcurology.com,,accountspayable@kcurology.com; HUB-KC.Certificates@HUBInternational.com,,,"8551 Bluejacket Street, Lenexa, Kansas, 66214",Lenexa,Kansas,United States,66214,9,,,,2026-05-08,2026-05-18,2026-05-20
-"Block Real Estate Services, LLC",69fded1862446148bd848ed4,Kansas City Winair Co,Party,active,avshepherd@winsupply.com,,avshepherd@winsupply.com,,,,,,,,0,,,,2026-05-08,2026-05-08,2026-05-20
+"Block Real Estate Services, LLC",69fded1862446148bd848ed4,Kansas City Winair Co,Party,active,avshepherd@winsupply.com,,avshepherd@winsupply.com; jennifer.mcgee@hylant.com,,,,,,,,2,,,,2026-05-08,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",69fded1862446148bd848ed7,Kansas Gas Service,Party,active,rbower@onegas.com,,rbower@onegas.com,,,"Topeka, Kansas, 66601",Topeka,Kansas,United States,66601,8,,,,2026-05-08,2026-05-15,2026-05-20
 "Block Real Estate Services, LLC",69fded1862446148bd848eda,Kansas Granite Mart,Party,active,christine@kansasgranitemart.com,,christine@kansasgranitemart.com,,,"1223 Macon Street, Kansas City, Missouri, 64116",Kansas City,Missouri,United States,64116,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded1862446148bd848edd,Kansas Granite Mart Inc,Party,active,dongranite@hotmail.com,,dongranite@hotmail.com,,,"9831 Lackman Road, Lenexa, Kansas, 66215",Lenexa,Kansas,United States,66215,0,,,,2026-05-08,2026-05-08,2026-05-20
@@ -487,7 +487,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",69fded1e62446148bd8490a8,Power Sales & Advertising Inc,Party,active,alintner@psakc.com,,alintner@psakc.com,,,"9909 Lakeview Avenue, Lenexa, Kansas, 66219",Lenexa,Kansas,United States,66219,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded1e62446148bd8490ab,Prairie Engineers PC,Party,active,accounting@prairieengineers.com,,accounting@prairieengineers.com,,,"404 North Main Street, Columbia, Illinois, 62236",Columbia,Illinois,United States,62236,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded1e62446148bd8490ae,Prestige Land Title LLC,Party,active,jbrown@plandtitle.com,,jbrown@plandtitle.com,,,"600 Southwest Jefferson Street, Lee's Summit, Missouri, 64063",Lee's Summit,Missouri,United States,64063,0,,,,2026-05-08,2026-05-08,2026-05-20
-"Block Real Estate Services, LLC",69fded1e62446148bd8490b1,"Prime Source Building Products, Inc.",Party,active,PrimeSourceLA@nmrk.com,,PrimeSourceLA@nmrk.com; certificates@willis.com,,,,,,,,2,,,,2026-05-08,2026-05-20,2026-05-20
+"Block Real Estate Services, LLC",69fded1e62446148bd8490b1,"Prime Source Building Products, Inc.",Party,active,PrimeSourceLA@nmrk.com,,PrimeSourceLA@nmrk.com; certificates@willis.com,,,,,,,,3,,,,2026-05-08,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",69fded1e62446148bd8490b4,Principal Life Insurance Company,Party,active,PrincipalLeaseAdmin@am.jll.com,,PrincipalLeaseAdmin@am.jll.com,,,"711 High Street, Des Moines, Iowa, 50392",Des Moines,Iowa,United States,50392,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded1e62446148bd8490b7,Pro Concrete Design Inc,Party,active,donna@proconcretedesign.com,,donna@proconcretedesign.com,,,"2462 Northwest Tullison Road, Riverside, Missouri, 64150",Riverside,Missouri,United States,64150,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded1e62446148bd8490ba,Professional Toxicology Services Inc,Party,active,barb@protoxservices.com,,barb@protoxservices.com,,,"7917 Bond Street, Lenexa, Kansas, 66214",Lenexa,Kansas,United States,66214,0,,,,2026-05-08,2026-05-08,2026-05-20
@@ -510,7 +510,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",69fded1f62446148bd8490ed,Releve Performing Arts,Party,active,RelevePACinfo@gmail.com,,RelevePACinfo@gmail.com,,,"1446 Southwest Eagles Parkway, Grain Valley, Missouri, 64029",Grain Valley,Missouri,United States,64029,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f0,REMAX Real Estate,Party,active,chetm@remax.net,,chetm@remax.net,,,"17000 East 40th Street, Independence, Missouri, 64057",Independence,Missouri,United States,64057,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,Party,active,miriam.flores@rentacenter.com,,miriam.flores@rentacenter.com,,,"5501 Headquarters Drive, Plano, Texas, 75024",Plano,Texas,United States,75024,0,,,,2026-05-08,2026-05-08,2026-05-20
-"Block Real Estate Services, LLC",69fded1f62446148bd8490f6,"Rentokil North America, Inc",Party,active,realestatena@rentokil-terminix.com,,realestatena@rentokil-terminix.com; certificate@epicbrokers.com,,,"1125 Berkshire Boulevard, Wyomissing, Pennsylvania, 19610",Wyomissing,Pennsylvania,United States,19610,6,,,,2026-05-08,2026-05-20,2026-05-20
+"Block Real Estate Services, LLC",69fded1f62446148bd8490f6,"Rentokil North America, Inc",Party,active,realestatena@rentokil-terminix.com,,realestatena@rentokil-terminix.com; certificate@epicbrokers.com; Certificate@epicbrokers.com,,,"1125 Berkshire Boulevard, Wyomissing, Pennsylvania, 19610",Wyomissing,Pennsylvania,United States,19610,28,,,,2026-05-08,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f9,Repairs Unlimited LLC,Party,active,suer@repairs-unlimited.com,,suer@repairs-unlimited.com,,,"8416 Melrose Drive, Lenexa, Kansas, 66214",Lenexa,Kansas,United States,66214,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded1f62446148bd8490fc,Reserve Applied Management of Kansas City LLC,Party,active,seansmith@reserveam.com,,seansmith@reserveam.com,,,"202 Bradley Street, Carrollton, Georgia, 30117",Carrollton,Georgia,United States,30117,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded1f62446148bd8490ff,"Revolutionary Business Concepts, Inc",Party,active,ap@rbccorp.com,,ap@rbccorp.com,,,"15200 Santa Fe Trail Drive, Lenexa, Kansas, 66219",Lenexa,Kansas,United States,66219,0,,,,2026-05-08,2026-05-08,2026-05-20
@@ -568,7 +568,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",69fded2162446148bd84919b,SRS Commercial AVL LLC,Party,active,accounting@starkravingsolutions.com,,accounting@starkravingsolutions.com,,,"10413 West 84th Terrace, Lenexa, Kansas, 66214",Lenexa,Kansas,United States,66214,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded2162446148bd84919e,SRS Distribution Inc,Party,active,SRS.PS@cbre.com,,SRS.PS@cbre.com,,,"801 South 7th Street, Kansas City, Kansas, 66103",Kansas City,Kansas,United States,66103,1,,,,2026-05-08,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",69fded2162446148bd8491a1,SSB LLC,Party,active,ssbllc24@gmail.com,,ssbllc24@gmail.com,,,"1618 South Highway 7, Blue Springs, Missouri, 64014",Blue Springs,Missouri,United States,64014,0,,,,2026-05-08,2026-05-08,2026-05-20
-"Block Real Estate Services, LLC",69fded2162446148bd8491a4,STA-MOT-KS LLC,Party,active,ap@summitaffiliates.com,,ap@summitaffiliates.com; lpower@cpcinsurance.com,,,"6294 Northeast 14th Street, Des Moines, Iowa, 50313",Des Moines,Iowa,United States,50313,3,,,,2026-05-08,2026-05-20,2026-05-20
+"Block Real Estate Services, LLC",69fded2162446148bd8491a4,STA-MOT-KS LLC,Party,active,ap@summitaffiliates.com,,ap@summitaffiliates.com; lpower@cpcinsurance.com,,,"6294 Northeast 14th Street, Des Moines, Iowa, 50313",Des Moines,Iowa,United States,50313,7,,,,2026-05-08,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",69fded2162446148bd8491a7,"Staples, Inc.",Party,active,amy.allegretta@staples.com,,amy.allegretta@staples.com; certificates@willis.com,,,"500 Staples Drive, Framingham, Massachusetts, 01702",Framingham,Massachusetts,United States,01702,10,,,,2026-05-08,2026-05-15,2026-05-20
 "Block Real Estate Services, LLC",69fded2162446148bd8491aa,Star Beauty,Party,active,info@shopstarbeauty.com,,info@shopstarbeauty.com,,,,,,,,0,,,,2026-05-08,2026-05-08,2026-05-20
 "Block Real Estate Services, LLC",69fded2162446148bd8491ad,Starbucks #2436,Party,active,financialleaseadmi@starbucks.com,,financialleaseadmi@starbucks.com,,,"Seattle, Washington",Seattle,Washington,United States,,0,,,,2026-05-08,2026-05-08,2026-05-20
@@ -784,7 +784,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a072934f523b35823695d53,"ROXY / KILROY ENTERTAINMENT GROUP, LLC",Party,active,.faccurso@summitinsurancegroup.com,Frank Accurso,.faccurso@summitinsurancegroup.com,,,,,,,,2,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a072934f523b35823695d58,LAS VEGAS UROLOGY,Party,active,christina.williams@usi.com,Christina Williams,christina.williams@usi.com,,,,,,,,6,,,,2026-05-15,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",6a072934f523b35823695d5d,MEDICAL MIDWEST / LINCARE,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
-"Block Real Estate Services, LLC",6a072934f523b35823695d62,"WORKFORCE PARTNERSHIP / LOCAL WORKFORCE INVESTMENT AREA, III",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
+"Block Real Estate Services, LLC",6a072934f523b35823695d62,"WORKFORCE PARTNERSHIP / LOCAL WORKFORCE INVESTMENT AREA, III",Party,active,Mary_Richardson@ajg.com,Mary Richardson,Mary_Richardson@ajg.com,,,,,,,,1,,,,2026-05-15,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",6a072934f523b35823695d67,LIQUOR KING AND SMOKE SHOP / LUVKUSH,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a072934f523b35823695d6c,"MAREL, USA",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a072934f523b35823695d71,NATIONAL GENERAL MANAGEMENT,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
@@ -860,7 +860,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a07293af523b35823695ecf,"FREEPOINT COMMODITIES, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a07293af523b35823695ed4,"PENSKE TRUCK LEASING CO., L.P.",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a07293af523b35823695ed9,SABIC POLYMERSHAPES,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
-"Block Real Estate Services, LLC",6a07293af523b35823695ede,ABSOLUTE INTERLOCK,Party,active,nicolek@twinlakesins.com,"Nicole Kehl , CIC , CISR",nicolek@twinlakesins.com,,,,,,,,2,,,,2026-05-15,2026-05-20,2026-05-20
+"Block Real Estate Services, LLC",6a07293af523b35823695ede,ABSOLUTE INTERLOCK,Party,active,nicolek@twinlakesins.com,"Nicole Kehl , CIC , CISR",nicolek@twinlakesins.com,,,,,,,,3,,,,2026-05-15,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",6a07293af523b35823695ee3,ADVANCED TURF,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a07293af523b35823695ee8,"IVXPRESS, INC. (FKA RIVERSIDE PHARMACY ASSOCIATES)",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a07293bf523b35823695eed,"SUNFLOWER FOOD COMPANY / SUNFLOWER HILLS, INC.",Party,active,businessproductsdirect@sentry.com,Sentry Customer Service,businessproductsdirect@sentry.com,,,,,,,,1,,,,2026-05-15,2026-05-20,2026-05-20
@@ -915,7 +915,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a07293ef523b35823695fe2,"ALABAMA ORAL AND FACIAL SURGERY, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a07293ef523b35823695fe7,"FARMOBILE, INC  (AGI - WESTFIELD DISTRIBUTING (ND), INC)",Party,active,certificate@epicbrokers.com,Certificate Unit,certificate@epicbrokers.com,,,,,,,,3,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a07293ef523b35823695fec,"BIOWEST, LLC",Party,active,agency@jenkinsandjames.com,Ashley Hillyard,agency@jenkinsandjames.com,,,,,,,,12,,,,2026-05-15,2026-05-20,2026-05-20
-"Block Real Estate Services, LLC",6a07293ef523b35823695ff1,"LVT TRUCKING, INC.",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
+"Block Real Estate Services, LLC",6a07293ef523b35823695ff1,"LVT TRUCKING, INC.",Party,active,certs@clinewood.com,Certificate Desk,certs@clinewood.com,,,,,,,,2,,,,2026-05-15,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",6a07293ef523b35823695ff6,B-ENVIED SALON / DAVID M & LISA WALLA,Party,active,JEANNE@BERRYJENNINGS.NET,JEANNE,JEANNE@BERRYJENNINGS.NET,,,,,,,,6,,,,2026-05-15,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",6a07293ff523b35823695ffb,MAWD PATHOLOGY GROUP PA,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a07293ff523b35823696000,"LENEXA MANUFACTURING COMPANY, INC.",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
@@ -945,7 +945,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a072940f523b35823696078,THE WALDINGER CORPORATION,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a072941f523b3582369607d,"TITAN BUILT, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a072941f523b35823696082,"MERCY HEALTH CINCINATTI, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
-"Block Real Estate Services, LLC",6a072941f523b35823696087,REGAL DISTRIBUTING CO,Party,active,awenzl@holmesmurphy.com,Andrea Wenzl,awenzl@holmesmurphy.com,,,,,,,,1,,,,2026-05-15,2026-05-20,2026-05-20
+"Block Real Estate Services, LLC",6a072941f523b35823696087,REGAL DISTRIBUTING CO,Party,active,awenzl@holmesmurphy.com,Andrea Wenzl,awenzl@holmesmurphy.com,,,,,,,,2,,,,2026-05-15,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",6a072941f523b3582369608c,"UNITED REFRIGERATION, INC.",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a072941f523b35823696091,"PROFESSIONAL TOXICOLOGY SERVICES, INC. (FKA KAMMERER )",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a072941f523b35823696096,CATCH UP LOGISTICS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
@@ -991,7 +991,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a072944f523b3582369615e,"YRC FREIGHT, INC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a072944f523b35823696163,ENTERPRISE LEASING COMPANY OF KANSAS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a072944f523b35823696168,"DISCOUNT TIRE / HALLE PROPERTIES, INC.",Party,active,,,,,,,,,,,1,,,,2026-05-15,2026-05-20,2026-05-20
-"Block Real Estate Services, LLC",6a072944f523b3582369616d,"DELTA DENTAL OF KANSAS, INC",Party,active,certs@imacorp.com,IMA Wichita Team,certs@imacorp.com,,,,,,,,2,,,,2026-05-15,2026-05-20,2026-05-20
+"Block Real Estate Services, LLC",6a072944f523b3582369616d,"DELTA DENTAL OF KANSAS, INC",Party,active,certs@imacorp.com,IMA Wichita Team,certs@imacorp.com,,,,,,,,4,,,,2026-05-15,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",6a072944f523b35823696172,CLOPAY BUILDING PRODUCTS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a072944f523b35823696177,MILL CREEK ANIMAL HOSPITAL,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a072944f523b3582369617c,1ST CHOICE DELIVERY,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
@@ -1301,7 +1301,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a07295bf523b35823696776,HIPPO POWER FKA MOBILE HYDRAULICS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a07295bf523b3582369677b,ROTTLER PEST CONTROL,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a07295bf523b35823696780,F&M TRADERS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
-"Block Real Estate Services, LLC",6a07295bf523b35823696785,INSULUSA,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
+"Block Real Estate Services, LLC",6a07295bf523b35823696785,INSULUSA,Party,active,jfaucett@connell.com,Jennica Faucett,jfaucett@connell.com,,,,,,,,2,,,,2026-05-15,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",6a07295bf523b3582369678a,RENTOKIL NORTH AMERICA (FKA JC EHRLICH COMPANY),Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a07295bf523b3582369678f,REEVES-WIEDEMAN COMPANY,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a07295bf523b35823696794,LANDERS VISIONS,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
@@ -1341,7 +1341,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a07295df523b3582369683e,LOOMIS ARMORED SERVICES,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a07295df523b35823696843,ARA INSURANCE,Party,active,,,,,,,,,,,1,,,,2026-05-15,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",6a07295ef523b35823696848,"HYALOGIC, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
-"Block Real Estate Services, LLC",6a07295ef523b3582369684d,KONECRANES,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
+"Block Real Estate Services, LLC",6a07295ef523b3582369684d,KONECRANES,Party,active,,,,,,,,,,,2,,,,2026-05-15,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",6a07295ef523b35823696852,COSTCO-INNOVEL PROPERTIES LLC,Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a07295ef523b35823696857,ACTION STAINLESS & ALLOYS,Party,active,ljorz@oswaldcompanies.com,Lucy Jorz,ljorz@oswaldcompanies.com; shannon_sellers@ajg.com; rosemary_bruscino@ajg.com,,,,,,,,9,,,,2026-05-15,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",6a07295ef523b3582369685c,"CORNERSTONE SYSTEMS, INC",Party,active,laura.paylor@usi.com,Laura Paylor,laura.paylor@usi.com,,,,,,,,1,,,,2026-05-15,2026-05-20,2026-05-20
@@ -1376,7 +1376,7 @@ client,vendor_id,vendor_name,vendor_type,status,email,contact_name,all_emails,we
 "Block Real Estate Services, LLC",6a072960f523b358236968ed,"KTI / KRUGER TECHNOLOGIES, INC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a072960f523b358236968f2,"EPIC VISION CENTER / SMITHVILLE EYE CENTER, LLC",Party,active,jvolkens@advancedrisksolutions.com,Jamie Volkens,jvolkens@advancedrisksolutions.com,,,,,,,,1,,,,2026-05-15,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",6a072960f523b358236968f7,"CASEY ENTERPRISES, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
-"Block Real Estate Services, LLC",6a072961f523b358236968fc,"BSN SPORTS, LLC",Party,active,certificates@willis.com,Willis Towers Watson Certificate Center,certificates@willis.com,,,,,,,,9,,,,2026-05-15,2026-05-20,2026-05-20
+"Block Real Estate Services, LLC",6a072961f523b358236968fc,"BSN SPORTS, LLC",Party,active,certificates@willis.com,Willis Towers Watson Certificate Center,certificates@willis.com,,,,,,,,10,,,,2026-05-15,2026-05-20,2026-05-20
 "Block Real Estate Services, LLC",6a072961f523b35823696901,"MIDWEST OFFICE TECHNOLOGY / STA-MOT-KS, LLC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a072961f523b35823696906,"FOG SOFTWARE GROUP / CADRE TECHNOLOGIES, INC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
 "Block Real Estate Services, LLC",6a072961f523b3582369690b,"MIDWEST ADMINISTRATIVE SERVICES, LLC FKA FAIL-SAFE PRODUCT PROTECTION, INC",Party,active,,,,,,,,,,,0,,,,2026-05-15,2026-05-19,2026-05-20
