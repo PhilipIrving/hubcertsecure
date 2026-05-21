@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HUB CertSecure</title>
+  <title>CertSecure Tools</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
@@ -209,7 +209,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.93</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.19</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -437,6 +437,16 @@
         </button>
         <button class="sb-item" id="snav-m-configure" onclick="sidebarNav('m-configure')">
           <span class="sb-ic">&#9881;&#65039;</span> Configure
+        </button>
+      </div>
+      <!-- ── Template Generator Section ── -->
+      <button class="sb-section" id="sb-sec-template" onclick="toggleSection('template')">
+        <span class="sb-ic">&#128462;</span> Template Generator
+        <span class="sb-arrow">&#9654;</span>
+      </button>
+      <div class="sb-section-content" id="sb-sec-template-content">
+        <button class="sb-item" id="snav-tg-build" onclick="sidebarNav('tg-build')">
+          <span class="sb-ic">&#9998;</span> Build Template
         </button>
       </div>
     </div>
@@ -726,6 +736,102 @@
 
   </div>
 
+  <div id="tab-template" style="display:none">
+    <!-- STEP 1: Client Selection -->
+    <div id="tg-step-1">
+      <div class="page-hdr">
+        <div class="page-title">Template Generator</div>
+        <div class="page-sub">Select a client to build a branded intake form</div>
+      </div>
+      <div class="card">
+        <div class="struct-label">General &#8212; Shown by Entity Type</div><div class="client-grid" id="tg-grid-general"></div>
+        <div class="struct-label">Subcontractors &#8212; Shown by Project</div><div class="client-grid" id="tg-grid-project"></div>
+        <div class="struct-label">Tenants &#8212; Shown by Location</div><div class="client-grid" id="tg-grid-location"></div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Configure -->
+    <div id="tg-step-2" style="display:none">
+      <div class="client-banner" id="tg-client-banner">
+        <div><div class="banner-name" id="tg-banner-name"></div><div class="banner-struct" id="tg-banner-struct"></div></div>
+        <span class="banner-change" onclick="tgGoStep(1)">&#8592; Change Client</span>
+      </div>
+
+      <!-- Branding -->
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-title" style="margin-bottom:16px">&#127912; Branding</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="form-grp">
+            <label class="form-lbl">Form Title</label>
+            <input type="text" id="tg-title" placeholder="e.g. New Third-Party Request">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Subtitle</label>
+            <input type="text" id="tg-subtitle" placeholder="Complete all required fields and return to your HUB account team">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:4px">
+          <div class="form-grp">
+            <label class="form-lbl">Accent Color</label>
+            <div style="display:flex;gap:6px;align-items:center">
+              <input type="color" id="tg-accent-picker" value="#EE3442" oninput="tgSyncColor('accent')" style="width:36px;height:34px;padding:2px;border:1.5px solid var(--border);border-radius:6px;cursor:pointer">
+              <input type="text" id="tg-accent-hex" value="#EE3442" oninput="tgSyncColorFromHex('accent')" style="flex:1;font-family:monospace" maxlength="7">
+            </div>
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Header Color</label>
+            <div style="display:flex;gap:6px;align-items:center">
+              <input type="color" id="tg-header-picker" value="#283847" oninput="tgSyncColor('header')" style="width:36px;height:34px;padding:2px;border:1.5px solid var(--border);border-radius:6px;cursor:pointer">
+              <input type="text" id="tg-header-hex" value="#283847" oninput="tgSyncColorFromHex('header')" style="flex:1;font-family:monospace" maxlength="7">
+            </div>
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Logo</label>
+            <div style="display:flex;gap:6px;align-items:center">
+              <input type="file" id="tg-logo-input" accept="image/png,image/jpeg,image/gif,image/svg+xml" style="display:none" onchange="tgHandleLogoUpload(this)">
+              <button class="btn btn-secondary" style="font-size:12px;padding:7px 14px;white-space:nowrap" onclick="document.getElementById('tg-logo-input').click()">&#128247; Upload Logo</button>
+              <button class="btn btn-secondary" style="font-size:12px;padding:7px 14px;white-space:nowrap" id="tg-autodetect-btn" onclick="tgAutoDetectColors()" style="display:none">&#127752; Auto-Detect Colors</button>
+            </div>
+            <div id="tg-logo-preview-wrap" style="display:none;margin-top:8px">
+              <img id="tg-logo-preview" style="max-height:40px;max-width:180px;border:1px solid var(--border);border-radius:6px;padding:4px" alt="Logo preview">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Standard Fields -->
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-title" style="margin-bottom:4px">&#128203; Standard Fields</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Always included. Toggle optional fields on/off.</div>
+        <div id="tg-standard-fields" style="display:grid;grid-template-columns:1fr 1fr;gap:6px"></div>
+      </div>
+
+      <!-- Custom Fields -->
+      <div class="card" id="tg-custom-card" style="margin-bottom:14px;display:none">
+        <div class="card-title" style="margin-bottom:4px">&#128296; Custom Fields <span id="tg-custom-source-badge" style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--blue-light);color:var(--blue);margin-left:6px"></span></div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Fields found in your CSV data for this client. Toggle to include in the form.</div>
+        <div id="tg-custom-fields" style="display:grid;grid-template-columns:1fr 1fr;gap:6px"></div>
+      </div>
+
+      <!-- Dropdown Options -->
+      <div class="card" id="tg-dropdowns-card" style="margin-bottom:14px;display:none">
+        <div class="card-title" style="margin-bottom:4px">&#9660; Dropdown Options</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Edit the options for dropdown fields. Click any chip to rename, × to remove, + to add.</div>
+        <div id="tg-dropdowns-wrap"></div>
+      </div>
+
+      <!-- Loading state -->
+      <div id="tg-loading" style="display:none;text-align:center;padding:30px;color:var(--muted)">
+        <div class="spinner" style="width:32px;height:32px;border-width:3px;margin:0 auto 12px"></div>
+        <div style="font-size:13px" id="tg-loading-msg">Loading custom fields…</div>
+      </div>
+
+      <div class="action-bar" style="margin-top:10px">
+        <button class="btn btn-secondary" onclick="tgGoStep(1)">&#8592; Back</button>
+        <button class="btn btn-primary" id="tg-gen-btn" onclick="tgGenerate()">&#128462; Generate Template</button>
+      </div>
+    </div>
+  </div>
   <div class="overlay" id="client-edit-overlay">
   
     <div class="modal" style="max-width:520px">
@@ -741,6 +847,37 @@
         <div class="form-grp"><label class="form-lbl">Primary Contact Name</label><input type="text" id="ce-contact-name" placeholder="e.g. Jane Smith"></div>
         <div class="form-grp" style="display:flex;align-items:center;gap:10px;padding-top:20px"><label style="font-size:13px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="ce-active" style="width:15px;height:15px;accent-color:var(--blue)"> Active</label></div>
       </div>
+      <hr class="modal-divider">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Branding</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="form-grp">
+          <label class="form-lbl">Accent Color</label>
+          <div style="display:flex;gap:6px;align-items:center">
+            <input type="color" id="ce-accent-picker" value="#3872B8" oninput="document.getElementById('ce-accent-hex').value=this.value.toUpperCase()" style="width:36px;height:34px;padding:2px;border:1.5px solid var(--border);border-radius:6px;cursor:pointer">
+            <input type="text" id="ce-accent-hex" value="#3872B8" oninput="if(/^#[0-9a-fA-F]{6}$/.test(this.value))document.getElementById('ce-accent-picker').value=this.value" style="flex:1;font-family:monospace;font-size:12px;padding:7px 10px;border:1.5px solid var(--border);border-radius:7px" maxlength="7">
+          </div>
+        </div>
+        <div class="form-grp">
+          <label class="form-lbl">Header Color</label>
+          <div style="display:flex;gap:6px;align-items:center">
+            <input type="color" id="ce-header-picker" value="#283847" oninput="document.getElementById('ce-header-hex').value=this.value.toUpperCase()" style="width:36px;height:34px;padding:2px;border:1.5px solid var(--border);border-radius:6px;cursor:pointer">
+            <input type="text" id="ce-header-hex" value="#283847" oninput="if(/^#[0-9a-fA-F]{6}$/.test(this.value))document.getElementById('ce-header-picker').value=this.value" style="flex:1;font-family:monospace;font-size:12px;padding:7px 10px;border:1.5px solid var(--border);border-radius:7px" maxlength="7">
+          </div>
+        </div>
+        <div class="form-grp" style="grid-column:1/-1">
+          <label class="form-lbl">Logo</label>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input type="file" id="ce-logo-input" accept="image/png,image/jpeg,image/gif" style="display:none" onchange="ceHandleLogoUpload(this)">
+            <button class="btn btn-secondary" style="font-size:12px;padding:6px 14px" onclick="document.getElementById('ce-logo-input').click()">&#128247; Upload Logo</button>
+            <button class="btn btn-secondary" style="font-size:12px;padding:6px 14px;display:none" id="ce-autodetect-btn" onclick="ceAutoDetectColors()">&#127752; Auto-Detect Colors</button>
+            <span id="ce-logo-status" style="font-size:11px;color:var(--muted)"></span>
+          </div>
+          <div id="ce-logo-preview-wrap" style="display:none;margin-top:8px">
+            <img id="ce-logo-preview" style="max-height:36px;max-width:160px;border:1px solid var(--border);border-radius:5px;padding:3px" alt="Logo">
+          </div>
+          <canvas id="ce-logo-canvas" style="display:none"></canvas>
+        </div>
+      </div>
       <div id="ce-msg" style="display:none;font-size:12px;padding:8px 12px;border-radius:7px;margin-top:12px"></div>
       <div style="display:flex;gap:10px;justify-content:space-between;margin-top:20px;align-items:center"><div><button id="ce-delete-btn" class="btn" style="background:#FDF0EE;color:var(--red);border-color:#F5CFC9;display:none" onclick="deleteClient()">&#128465; Delete Client</button></div><div style="display:flex;gap:10px"><button class="btn btn-secondary" onclick="closeClientModal()">Cancel</button><button class="btn btn-primary" id="ce-save-btn" onclick="saveClientEdit()">Save Changes</button></div></div>
     </div>
@@ -751,7 +888,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.93</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.19</div>
 
 <script>
 // ══════════════════════════════════════════════════════════════
@@ -1854,7 +1991,7 @@ async function saveClientsToConfig(updatedClients) {
   await attemptSave(1);
 }
 function switchTab(tab) {
-  ['reports','monday'].forEach(t => {
+  ['reports','monday','template'].forEach(t => {
     document.getElementById('tab-' + t).style.display = t === tab ? '' : 'none';
     const btn = document.getElementById('tab-btn-' + t); if (btn) btn.classList.toggle('active', t === tab);
   });
@@ -1869,8 +2006,9 @@ function switchRGTab(sub) {
 // Sidebar accordion toggle
 function toggleSection(sec) {
   const isReports = sec === 'reports';
+  const isTemplate = sec === 'template';
   // Toggle sections
-  ['reports','monday'].forEach(s => {
+  ['reports','monday','template'].forEach(s => {
     const btn = document.getElementById('sb-sec-' + s);
     const cont = document.getElementById('sb-sec-' + s + '-content');
     const opening = (s === sec);
@@ -1879,13 +2017,14 @@ function toggleSection(sec) {
   });
   // Navigate to the default item of the section
   if (isReports) sidebarNav('generate');
+  else if (isTemplate) sidebarNav('tg-build');
   else sidebarNav('m-setup');
 }
 // Sidebar navigation controller
 function sidebarNav(dest) {
   csDebug.log("NAV","sidebarNav","Navigate",{dest});
   // Clear all sub-item active states
-  ['snav-generate','snav-config','snav-m-clients','snav-m-setup','snav-m-configure'].forEach(id => {
+  ['snav-generate','snav-config','snav-m-clients','snav-m-setup','snav-m-configure','snav-tg-build'].forEach(id => {
     const el = document.getElementById(id); if (el) el.classList.remove('active');
   });
   // Activate selected item
@@ -1898,6 +2037,7 @@ function sidebarNav(dest) {
     'm-clients':   ['Monday.com Generator','Client Panel'],
     'm-setup':     ['Monday.com Generator','Workspace Setup'],
     'm-configure': ['Monday.com Generator','Configure'],
+    'tg-build':    ['Template Generator','Build Template'],
   };
   const [section, page] = bcMap[dest] || ['',''];
   const bcS = document.getElementById('bc-section'); if (bcS) bcS.textContent = section;
@@ -1907,6 +2047,7 @@ function sidebarNav(dest) {
   else if (dest === 'm-clients')   { switchTab('monday'); switchMondayTab('clients'); }
   else if (dest === 'm-setup')     { switchTab('monday'); switchMondayTab('setup'); }
   else if (dest === 'm-configure') { switchTab('monday'); switchMondayTab('configure'); }
+  else if (dest === 'tg-build')    { switchTab('template'); tgInit(); }
 }
 async function loadAndRenderConfig() {
   const wrap = document.getElementById('cfg-table-wrap'); const s = getSettings();
@@ -1936,7 +2077,14 @@ function openAddClient() {
   document.getElementById('ce-name-hint').style.display = ''; document.getElementById('client-name-lock').style.display = 'none';
   document.getElementById('ce-api-name').value = ''; document.getElementById('ce-platform').value = 'evident'; document.getElementById('ce-structure').value = 'general';
   document.getElementById('ce-save-btn').textContent = 'Add Client'; document.getElementById('ce-producer').value = ''; document.getElementById('ce-contact-name').value = '';
-  document.getElementById('ce-msg').style.display = 'none'; document.getElementById('client-edit-overlay').classList.add('open');
+  document.getElementById('ce-msg').style.display = 'none';
+  const ah=document.getElementById('ce-accent-hex'),ap=document.getElementById('ce-accent-picker');
+  const hh=document.getElementById('ce-header-hex'),hp=document.getElementById('ce-header-picker');
+  if(ah){ah.value='#3872B8';ap.value='#3872B8';} if(hh){hh.value='#283847';hp.value='#283847';}
+  const lpw=document.getElementById('ce-logo-preview-wrap');if(lpw)lpw.style.display='none';
+  const ls=document.getElementById('ce-logo-status');if(ls)ls.textContent='';
+  window._ceLogo={data:null,path:null};
+  document.getElementById('client-edit-overlay').classList.add('open');
 }
 function openEditClient(idxOrName) {
   let idx = (typeof idxOrName === 'string' && isNaN(+idxOrName))
@@ -1954,6 +2102,15 @@ function openEditClient(idxOrName) {
   document.getElementById('ce-contact-name').value = c.contact_name||''; document.getElementById('ce-active').checked = c.active !== false;
   document.getElementById('ce-delete-btn').style.display = canAdminClients() ? '' : 'none';
   document.getElementById('ce-save-btn').textContent = 'Save Changes'; document.getElementById('ce-msg').style.display = 'none';
+  // Populate branding fields
+  const ceAccH=document.getElementById('ce-accent-hex'),ceAccP=document.getElementById('ce-accent-picker');
+  const ceHdrH=document.getElementById('ce-header-hex'),ceHdrP=document.getElementById('ce-header-picker');
+  if(ceAccH){const av=c.accent_color||'#3872B8';ceAccH.value=av;ceAccP.value=av;}
+  if(ceHdrH){const hv=c.header_color||'#283847';ceHdrH.value=hv;ceHdrP.value=hv;}
+  const ceLogoPrev=document.getElementById('ce-logo-preview');const ceLogoWrap=document.getElementById('ce-logo-preview-wrap');
+  if(c.logo_data&&ceLogoPrev){ceLogoPrev.src=c.logo_data;ceLogoWrap.style.display='';} else if(ceLogoWrap){ceLogoWrap.style.display='none';}
+  const ceStatus=document.getElementById('ce-logo-status');if(ceStatus)ceStatus.textContent=c.logo_path?'Logo saved':'No logo';
+  window._ceLogo={data:c.logo_data||null,path:c.logo_path||null};
   const ov=document.getElementById('client-edit-overlay'); ov.style.display='flex'; ov.classList.add('open');
 }
 function closeClientModal() { const ov=document.getElementById('client-edit-overlay'); ov.classList.remove('open'); ov.style.display=''; }
@@ -1970,15 +2127,21 @@ async function saveClientEdit() {
   if (_editingIndex === null && _allClientsData.some(c => c.client_name === name)) { showCEMsg(`A client named "${name}" already exists.`, true); return; }
   btn.disabled = true; btn.textContent = 'Saving\u2026';
   const updated = [..._allClientsData];
-  const entry = { client_name: name, rp_common_name: api, program_start_date: progStart, go_live_date: goLive, structure: struct, platform, producer_name: producer, contact_name: contactName, active };
+  const accentVal = document.getElementById('ce-accent-hex')?.value?.trim() || '';
+  const headerVal = document.getElementById('ce-header-hex')?.value?.trim() || '';
+  const logoData  = window._ceLogo?.data || null;
+  const entry = { client_name: name, rp_common_name: api, program_start_date: progStart, go_live_date: goLive, structure: struct, platform, producer_name: producer, contact_name: contactName, active,
+    ...(accentVal ? { accent_color: accentVal } : {}),
+    ...(headerVal ? { header_color: headerVal } : {}),
+    ...(logoData  ? { logo_data: logoData }      : {}),
+  };
   // Preserve existing email fields if already set (modal doesn't have email inputs — managed via Client Panel)
   if (_editingIndex === null) { updated.push(entry); } else { updated[_editingIndex] = { ...updated[_editingIndex], ...entry }; }
-  // Block if Monday not connected
   const connected = !!(_mondayWsId&&_mondayBoardId);
-  if (!connected) { showCEMsg('Monday not connected — connect in Settings → Monday tab before saving.', true); btn.disabled=false; btn.textContent = _editingIndex===null?'Add Client':'Save Changes'; return; }
   try {
     await saveClientsToConfig(updated);
-    // Push to Monday — create or update item
+    // Push to Monday if connected
+    if (!connected) { showCEMsg('Saved to config ✓  (Connect Monday in Settings to also push there)', false); btn.disabled=false; btn.textContent = _editingIndex===null?'Add Client':'Save Changes'; closeClientModal(); renderConfigTable(document.getElementById('cfg-search')?.value||''); renderGrids(); return; }
     try {
       let itemId = await cpFindMondayItem(name);
       if (!itemId) {
@@ -4415,6 +4578,497 @@ async function wsImportClients() {
   if (!err) setTimeout(wsScanClients, 800);
 }
 
+</script>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.19
+// ══════════════════════════════════════════════════════════════
+
+let _tgClient = null;
+let _tgLogoData = null;
+let _tgCustomFields = [];
+
+const TG_STANDARD_FIELDS = [
+  { key:'entity_name',       label:'Entity Name',           required:true,  type:'text',     section:'entity' },
+  { key:'entity_type',       label:'Entity Type',           required:true,  type:'dropdown', section:'entity',  optsKey:'entity_types' },
+  { key:'legal_name',        label:'Legal Name',            required:true,  type:'text',     section:'entity' },
+  { key:'dba_name',          label:'DBA Name',              required:false, type:'text',     section:'entity' },
+  { key:'entity_id',         label:'Entity ID',             required:false, type:'text',     section:'entity' },
+  { key:'contact_name',      label:'Primary Contact Name',  required:true,  type:'text',     section:'contact' },
+  { key:'contact_phone',     label:'Primary Contact Phone', required:true,  type:'text',     section:'contact' },
+  { key:'contact_email',     label:'Primary Contact Email', required:false, type:'text',     section:'contact' },
+  { key:'street',            label:'Street Address',        required:true,  type:'text',     section:'address' },
+  { key:'suite',             label:'Apt / Suite / Floor',   required:false, type:'text',     section:'address' },
+  { key:'city',              label:'City',                  required:true,  type:'text',     section:'address' },
+  { key:'state',             label:'State',                 required:true,  type:'dropdown', section:'address', optsKey:'states' },
+  { key:'zip',               label:'ZIP Code',              required:true,  type:'text',     section:'address' },
+  { key:'property_location', label:'Property Location',     required:false, type:'dropdown', section:'property', optsKey:'property_locations' },
+  { key:'pollution',         label:'Pollution Liability',   required:false, type:'checkbox', section:'property' },
+  { key:'professional',      label:'Professional Liability',required:false, type:'checkbox', section:'property' },
+  { key:'notes',             label:'Additional Notes',      required:false, type:'textarea', section:'notes' },
+];
+
+const TG_US_STATES = ['-- Select --','AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
+
+// Field toggles (which standard fields are enabled)
+let _tgFieldOn = {};
+// Dropdown options per field
+let _tgOpts = {
+  entity_types: ['-- Select --','Vendor','Contractor','Tenant','Subtenant'],
+  property_locations: ['-- Select --','Blanket','Office','Retail'],
+  states: [...TG_US_STATES],
+};
+
+function tgInit() {
+  tgRenderGrid();
+}
+
+function tgRenderGrid() {
+  ['general','project','location'].forEach(struct => {
+    const grid = document.getElementById('tg-grid-' + struct); if (!grid) return;
+    grid.innerHTML = CLIENTS.filter(c => c.structure === struct).map(c => {
+      const sk = c.key.replace(/[^a-z0-9]/gi,'_');
+      const platClass = (c.platform==='trustlayer'||c.source==='trustlayer') ? 'plat-tl' : 'plat-ev';
+      return '<div class="client-card ' + platClass + '" onclick="tgSelectClient(\'' + c.key.replace(/'/g,"\\'").replace(/&/g,'\\x26') + '\')">' +
+        '<div class="client-name"><span class="platform-badge ' + (c.platform==='trustlayer'?'tl">TL':'evident">EV') + '</span> ' + c.name + '</div>' +
+        '<span class="client-badge ' + STRUCT[struct].badgeClass + '">' + STRUCT[struct].label + '</span></div>';
+    }).join('');
+  });
+}
+
+async function tgSelectClient(key) {
+  _tgClient = CLIENTS.find(c => c.key === key);
+  if (!_tgClient) return;
+  const meta = CLIENT_META_MAP[key] || {};
+
+  // Set banner
+  document.getElementById('tg-banner-name').textContent = _tgClient.name;
+  document.getElementById('tg-banner-struct').textContent = STRUCT[_tgClient.structure]?.label || '';
+
+  // Pre-fill title
+  document.getElementById('tg-title').value = _tgClient.name + ' — New Third-Party Request';
+  document.getElementById('tg-subtitle').value = 'Complete all required fields (*) and return to your HUB account team';
+
+  // Pre-fill colors from clients.json
+  const accentVal = meta.accent_color || '#3872B8';
+  const headerVal = meta.header_color || '#283847';
+  document.getElementById('tg-accent-hex').value = accentVal;
+  document.getElementById('tg-accent-picker').value = accentVal;
+  document.getElementById('tg-header-hex').value = headerVal;
+  document.getElementById('tg-header-picker').value = headerVal;
+
+  // Load logo from clients.json
+  _tgLogoData = meta.logo_data || null;
+  const lpw = document.getElementById('tg-logo-preview-wrap');
+  const lp  = document.getElementById('tg-logo-preview');
+  if (_tgLogoData && lp) {
+    lp.src = _tgLogoData; lpw.style.display = '';
+    document.getElementById('tg-autodetect-btn').style.display = '';
+  } else {
+    lpw.style.display = 'none';
+    document.getElementById('tg-autodetect-btn').style.display = 'none';
+  }
+
+  // Load dropdown options from clients.json if stored
+  if (meta.entity_types) _tgOpts.entity_types = meta.entity_types;
+  else _tgOpts.entity_types = ['-- Select --','Vendor','Contractor','Tenant','Subtenant'];
+  if (meta.property_locations) _tgOpts.property_locations = meta.property_locations;
+  else _tgOpts.property_locations = ['-- Select --','Blanket','Office','Retail'];
+
+  // Default all standard fields on
+  TG_STANDARD_FIELDS.forEach(f => { _tgFieldOn[f.key] = true; });
+
+  tgGoStep(2);
+  tgRenderStandardFields();
+  tgRenderDropdownEditors();
+
+  // Load custom fields async
+  tgLoadCustomFields(key, meta);
+}
+
+function tgGoStep(n) {
+  [1,2].forEach(i => {
+    const el = document.getElementById('tg-step-' + i);
+    if (el) el.style.display = i === n ? '' : 'none';
+  });
+}
+
+function tgRenderStandardFields() {
+  const wrap = document.getElementById('tg-standard-fields'); if (!wrap) return;
+  wrap.innerHTML = TG_STANDARD_FIELDS.map(f => {
+    const on = _tgFieldOn[f.key] !== false;
+    const req = f.required;
+    const opaque = req ? 'opacity:0.5;pointer-events:none' : '';
+    return `<label style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:7px;background:${on?'var(--blue-light)':'var(--bg)'};border:1px solid ${on?'#BFDBFE':'var(--border)'};cursor:${req?'default':'pointer'};${opaque}">
+      <input type="checkbox" ${on?'checked':''} ${req?'disabled':''} onchange="tgFieldToggle('${f.key}',this.checked)" style="accent-color:var(--blue)">
+      <span style="flex:1;font-size:12px;font-weight:600;color:var(--text)">${f.label}</span>
+      ${req?'<span style="font-size:9px;font-weight:700;color:var(--blue);background:var(--blue-light);padding:1px 6px;border-radius:8px">Required</span>':''}
+      <span style="font-size:9px;color:var(--muted);text-transform:capitalize">${f.type}</span>
+    </label>`;
+  }).join('');
+}
+
+function tgFieldToggle(key, on) {
+  _tgFieldOn[key] = on;
+  tgRenderStandardFields();
+}
+
+function tgRenderDropdownEditors() {
+  const wrap = document.getElementById('tg-dropdowns-wrap');
+  const card = document.getElementById('tg-dropdowns-card');
+  if (!wrap || !card) return;
+  const dropdownFields = TG_STANDARD_FIELDS.filter(f => f.type === 'dropdown' && _tgFieldOn[f.key] !== false);
+  if (!dropdownFields.length) { card.style.display = 'none'; return; }
+  card.style.display = '';
+  wrap.innerHTML = dropdownFields.map(f => {
+    const opts = _tgOpts[f.optsKey] || [];
+    const chips = opts.map((o,i) =>
+      `<span style="display:inline-flex;align-items:center;gap:3px;background:var(--blue-light);border:1px solid var(--border);border-radius:12px;padding:2px 4px 2px 10px;font-size:12px;font-weight:600;color:var(--blue);margin:3px 3px 3px 0">
+        <span contenteditable="true" spellcheck="false" style="outline:none;min-width:16px;cursor:text"
+          onblur="tgEditOpt('${f.optsKey}',${i},this.textContent.trim())"
+          onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur()}"
+        >${esc(o)}</span>
+        <button onclick="tgRemoveOpt('${f.optsKey}',${i})" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:13px;line-height:1;padding:0 2px">&times;</button>
+      </span>`
+    ).join('');
+    return `<div style="margin-bottom:14px">
+      <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">${f.label}</div>
+      <div id="tg-chips-${f.optsKey}">${chips}<button onclick="tgAddOpt('${f.optsKey}')" style="display:inline-flex;align-items:center;gap:4px;margin:3px 0;padding:2px 10px;border:1px dashed var(--border);border-radius:12px;background:none;cursor:pointer;font-size:12px;color:var(--muted)">+ Add</button></div>
+    </div>`;
+  }).join('');
+}
+
+function tgEditOpt(optsKey, idx, val) {
+  if (!val) { tgRemoveOpt(optsKey, idx); return; }
+  if (!_tgOpts[optsKey]) return;
+  _tgOpts[optsKey][idx] = val;
+  tgRenderDropdownEditors();
+}
+function tgRemoveOpt(optsKey, idx) {
+  if (!_tgOpts[optsKey]) return;
+  _tgOpts[optsKey].splice(idx, 1);
+  tgRenderDropdownEditors();
+}
+function tgAddOpt(optsKey) {
+  const val = prompt('New option:'); if (!val || !val.trim()) return;
+  if (!_tgOpts[optsKey]) _tgOpts[optsKey] = [];
+  _tgOpts[optsKey].push(val.trim());
+  tgRenderDropdownEditors();
+}
+
+async function tgLoadCustomFields(key, meta) {
+  const loadEl = document.getElementById('tg-loading');
+  const msgEl  = document.getElementById('tg-loading-msg');
+  const card   = document.getElementById('tg-custom-card');
+  if (loadEl) loadEl.style.display = '';
+  if (card)   card.style.display = 'none';
+  _tgCustomFields = [];
+
+  try {
+    const isTL = isTLClient(key);
+    if (isTL) {
+      if (msgEl) msgEl.textContent = 'Loading TrustLayer insureds…';
+      const ins = await fetchTLCSV('insureds.csv');
+      const clientRows = ins.filter(r => r[C.client] === key || (r[C.client]||'').toLowerCase().replace(/[^a-z0-9]/g,'') === (key||'').toLowerCase().replace(/[^a-z0-9]/g,''));
+      const standardCols = new Set(['client','insured_id','insured_name','primary_contact_email','compliance_status','active','paused','next_expiration','verification_status']);
+      const extraCols = clientRows.length ? Object.keys(clientRows[0]).filter(k => !standardCols.has(k.toLowerCase()) && k !== '') : [];
+      _tgCustomFields = extraCols.map(k => ({
+        key: k.toLowerCase().replace(/[^a-z0-9]/g,'_'),
+        label: k.replace(/_/g,' ').replace(/\b\w/g, c => c.toUpperCase()),
+        source: 'TrustLayer',
+        on: true,
+      }));
+      const badge = document.getElementById('tg-custom-source-badge');
+      if (badge) badge.textContent = 'TrustLayer';
+    } else {
+      if (msgEl) msgEl.textContent = 'Loading Evident custom properties…';
+      const s = getSettings();
+      const cp = await fetchCSV(s.customPropsPath || 'data/evident/custom_properties.csv');
+      const rpn = (meta.rp_common_name||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+      const clientCp = cp.filter(r => {
+        const v = r['client'] || '';
+        if (v === key) return true;
+        if (rpn && v) { const rv = v.toLowerCase().replace(/[^a-z0-9]/g,''); if (rv.includes(rpn)||rpn.includes(rv)) return true; }
+        return false;
+      });
+      const fieldNames = [...new Set(clientCp.map(r => (r['field_name']||'').trim()).filter(Boolean))];
+      _tgCustomFields = fieldNames.map(fn => ({
+        key: fn.toLowerCase().replace(/[^a-z0-9]/g,'_'),
+        label: fn.replace(/_/g,' ').replace(/\b\w/g, c => c.toUpperCase()),
+        source: 'Evident',
+        on: true,
+      }));
+      const badge = document.getElementById('tg-custom-source-badge');
+      if (badge) badge.textContent = 'Evident';
+    }
+
+    // Merge with CLIENT_FIELD_CONFIG hardcoded fields (deduplicate)
+    const hardcoded = (CLIENT_FIELD_CONFIG[key] || []);
+    hardcoded.forEach(hf => {
+      if (!_tgCustomFields.some(cf => cf.key === hf.key)) {
+        _tgCustomFields.push({ key: hf.key, label: hf.label, source: 'Config', on: hf.on !== false });
+      }
+    });
+
+  } catch(e) {
+    console.warn('tgLoadCustomFields error:', e.message);
+    // Fall back to CLIENT_FIELD_CONFIG
+    _tgCustomFields = (CLIENT_FIELD_CONFIG[key] || []).map(f => ({...f, source:'Config', on: f.on !== false}));
+  }
+
+  if (loadEl) loadEl.style.display = 'none';
+  tgRenderCustomFields();
+}
+
+function tgRenderCustomFields() {
+  const wrap = document.getElementById('tg-custom-fields');
+  const card = document.getElementById('tg-custom-card');
+  if (!wrap || !card) return;
+  if (!_tgCustomFields.length) { card.style.display = 'none'; return; }
+  card.style.display = '';
+  const srcColors = { Evident:'#3872B8', TrustLayer:'#EA580C', Config:'#16A34A' };
+  wrap.innerHTML = _tgCustomFields.map((f,i) => {
+    const srcCol = srcColors[f.source] || '#5A6B7B';
+    const srcBg  = f.source==='Evident'?'#EBF2FB':f.source==='TrustLayer'?'#FFF3E0':'#E6F5EF';
+    return `<label style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:7px;background:${f.on?'var(--blue-light)':'var(--bg)'};border:1px solid ${f.on?'#BFDBFE':'var(--border)'};cursor:pointer">
+      <input type="checkbox" ${f.on?'checked':''} onchange="tgCustomToggle(${i},this.checked)" style="accent-color:var(--blue)">
+      <span style="flex:1;font-size:12px;font-weight:600;color:var(--text)">${f.label}</span>
+      <span style="font-size:9px;font-weight:700;color:${srcCol};background:${srcBg};padding:1px 6px;border-radius:8px">${f.source}</span>
+    </label>`;
+  }).join('');
+}
+
+function tgCustomToggle(idx, on) {
+  if (_tgCustomFields[idx]) _tgCustomFields[idx].on = on;
+  tgRenderCustomFields();
+}
+
+// ── Color sync ────────────────────────────────────────────────
+function tgSyncColor(which) {
+  const picker = document.getElementById('tg-'+which+'-picker');
+  const hex    = document.getElementById('tg-'+which+'-hex');
+  if (picker && hex) hex.value = picker.value.toUpperCase();
+}
+function tgSyncColorFromHex(which) {
+  const hex    = document.getElementById('tg-'+which+'-hex');
+  const picker = document.getElementById('tg-'+which+'-picker');
+  if (hex && picker && /^#[0-9a-fA-F]{6}$/.test(hex.value)) picker.value = hex.value;
+}
+
+// ── Logo upload ───────────────────────────────────────────────
+function tgHandleLogoUpload(input) {
+  const file = input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    _tgLogoData = e.target.result;
+    const lp = document.getElementById('tg-logo-preview');
+    const lpw = document.getElementById('tg-logo-preview-wrap');
+    if (lp) { lp.src = _tgLogoData; lpw.style.display = ''; }
+    document.getElementById('tg-autodetect-btn').style.display = '';
+    toast('Logo uploaded ✓', 'success');
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── Canvas color extraction ───────────────────────────────────
+function extractDominantColors(imgSrc, cb) {
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    const W = 80, H = 80;
+    canvas.width = W; canvas.height = H;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, W, H);
+    let data;
+    try { data = ctx.getImageData(0, 0, W, H).data; } catch(e) { cb(null); return; }
+    const buckets = {};
+    for (let i = 0; i < data.length; i += 16) {
+      const r = data[i], g = data[i+1], b = data[i+2], a = data[i+3];
+      if (a < 128) continue;
+      if (r > 230 && g > 230 && b > 230) continue; // near-white
+      if (r < 25  && g < 25  && b < 25)  continue; // near-black
+      const key = [Math.round(r/24)*24, Math.round(g/24)*24, Math.round(b/24)*24].join(',');
+      buckets[key] = (buckets[key] || 0) + 1;
+    }
+    const sorted = Object.entries(buckets).sort((a,b)=>b[1]-a[1]);
+    if (!sorted.length) { cb(null); return; }
+    const colors = [];
+    for (const [key] of sorted) {
+      const [r,g,b] = key.split(',').map(Number);
+      const isDistinct = colors.every(c => {
+        const dr=c[0]-r, dg=c[1]-g, db=c[2]-b;
+        return Math.sqrt(dr*dr+dg*dg+db*db) > 80;
+      });
+      if (isDistinct) colors.push([r,g,b]);
+      if (colors.length >= 3) break;
+    }
+    cb(colors.map(([r,g,b]) => '#' + [r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase()));
+  };
+  img.onerror = () => cb(null);
+  img.src = imgSrc;
+}
+
+function tgAutoDetectColors() {
+  if (!_tgLogoData) return;
+  extractDominantColors(_tgLogoData, colors => {
+    if (!colors || !colors.length) { toast('Could not extract colors from logo', 'error'); return; }
+    const accent = colors[0], header = colors[1] || colors[0];
+    document.getElementById('tg-accent-hex').value = accent;
+    document.getElementById('tg-accent-picker').value = accent;
+    document.getElementById('tg-header-hex').value = header;
+    document.getElementById('tg-header-picker').value = header;
+    toast('Colors detected ✓  Accent: ' + accent + '  Header: ' + header, 'success');
+  });
+}
+
+// ── Generate PDF ──────────────────────────────────────────────
+function tgGenerate() {
+  if (!_tgClient) return;
+  const title    = document.getElementById('tg-title').value.trim() || (_tgClient.name + ' — Third-Party Request');
+  const subtitle = document.getElementById('tg-subtitle').value.trim();
+  const accent   = document.getElementById('tg-accent-hex').value || '#3872B8';
+  const header   = document.getElementById('tg-header-hex').value || '#283847';
+  const html     = tgBuildFormHTML(title, subtitle, accent, header);
+  printHTMLasPDF(html);
+  // Also add to notifications
+  const blobUrl = URL.createObjectURL(new Blob([html], {type:'text/html'}));
+  _notifs.unshift({msg: title, type:'success', time:new Date(), _download:{type:'pdf', html, _blobUrl:blobUrl, filename: _tgClient.name+' - Template - '+new Date().toISOString().split('T')[0]+'.pdf'}});
+  if (_notifs.length > 15) _notifs.pop();
+  renderNotifList();
+  const drawer = document.getElementById('notif-drawer');
+  if (drawer) { drawer.style.display = ''; _unread = 0; updateNotifBadge(); }
+  toast('Template generating — save as PDF from print dialog', 'success');
+}
+
+function tgBuildFormHTML(title, subtitle, accent, header) {
+  const logoTag = _tgLogoData
+    ? `<img src="${_tgLogoData}" style="height:44px;object-fit:contain;max-width:220px">`
+    : `<div style="font-family:Arial,sans-serif;font-size:18px;font-weight:900;color:${header}">CERT<span style="background:${accent};color:white;padding:2px 8px;border-radius:4px;margin-left:2px">SECURE</span></div>`;
+
+  // Build sections
+  const sections = {
+    entity:   { title:'ENTITY INFORMATION',   fields:[] },
+    contact:  { title:'CONTACT INFORMATION',  fields:[] },
+    address:  { title:'ADDRESS',              fields:[] },
+    property: { title:'PROPERTY & COVERAGE',  fields:[] },
+    custom:   { title:'ADDITIONAL INFORMATION',fields:[] },
+    notes:    { title:'ADDITIONAL NOTES',     fields:[] },
+  };
+
+  // Standard fields
+  TG_STANDARD_FIELDS.forEach(f => {
+    if (_tgFieldOn[f.key] === false) return;
+    const sec = sections[f.section] || sections.notes;
+    const opts = f.optsKey ? (_tgOpts[f.optsKey] || []) : [];
+    sec.fields.push({...f, opts});
+  });
+
+  // Custom fields
+  _tgCustomFields.filter(f => f.on !== false).forEach(f => {
+    sections.custom.fields.push({...f, type:'text', required:false, opts:[]});
+  });
+
+  const renderField = (f) => {
+    const req = f.required ? ' <span style="color:'+accent+'">*</span>' : '';
+    const lbl = `<div style="font-size:8px;font-weight:700;color:${header};letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px">${esc(f.label)}${req}</div>`;
+    if (f.type === 'dropdown') {
+      const optHtml = (f.opts||[]).map(o => `<option>${esc(o)}</option>`).join('');
+      return `<div style="margin-bottom:10px">${lbl}<select style="width:100%;padding:7px 8px;border:1px solid #C8D4DF;border-radius:4px;font-size:12px;background:#FAFCFF;font-family:Arial,sans-serif">${optHtml}</select></div>`;
+    }
+    if (f.type === 'checkbox') {
+      return `<div style="margin-bottom:10px;display:flex;align-items:center;gap:8px"><input type="checkbox" style="width:14px;height:14px;accent-color:${accent}"><span style="font-size:12px;color:#1E2E3D;font-family:Arial,sans-serif">${esc(f.label)}</span></div>`;
+    }
+    if (f.type === 'textarea') {
+      return `<div style="margin-bottom:10px">${lbl}<textarea style="width:100%;padding:7px 8px;border:1px solid #C8D4DF;border-radius:4px;font-size:12px;min-height:60px;resize:vertical;font-family:Arial,sans-serif"></textarea></div>`;
+    }
+    return `<div style="margin-bottom:10px">${lbl}<input type="text" style="width:100%;padding:7px 8px;border:1px solid #C8D4DF;border-radius:4px;font-size:12px;background:#FAFCFF;font-family:Arial,sans-serif"></div>`;
+  };
+
+  const renderSection = (sec) => {
+    if (!sec.fields.length) return '';
+    const fieldHtml = sec.fields.map(renderField).join('');
+    const cols = sec.fields.length === 1 ? '1fr' : '1fr 1fr';
+    return `<div style="margin-bottom:14px">
+      <div style="background:${header};color:white;font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;margin-bottom:8px;border-left:4px solid ${accent}">  ${sec.title}</div>
+      <div style="display:grid;grid-template-columns:${cols};gap:0 16px;padding:0 4px">${fieldHtml}</div>
+    </div>`;
+  };
+
+  const sectionsHtml = Object.values(sections).map(renderSection).join('');
+  const stamp = new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8">
+<title>${esc(title)}</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:760px;padding:24px 28px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@page{size:letter portrait;margin:10mm}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head><body>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;padding-bottom:12px;border-bottom:4px solid ${accent}">
+  <div>
+    ${logoTag}
+    <div style="margin-top:10px">
+      <div style="font-size:18px;font-weight:900;color:${header}">${esc(title)}</div>
+      <div style="font-size:11px;color:#5A6B7B;margin-top:3px">${esc(subtitle)}</div>
+    </div>
+  </div>
+  <div style="text-align:right;font-size:9px;color:#8A94A8">
+    <div>${stamp}</div>
+    <div style="margin-top:4px">HUB CertSecure</div>
+    <div>9200 Ward Parkway Suite 500</div>
+    <div>Kansas City, MO 64114</div>
+    <div style="margin-top:4px">Certs.CertSecure@hubinternational.com</div>
+  </div>
+</div>
+${sectionsHtml}
+<div style="margin-top:16px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8px;color:#B0B8C8">
+  <div>&#x1F512; Confidential — ${esc(_tgClient.name)} · HUB CertSecure</div>
+  <div>* Required field</div>
+</div>
+</body></html>`;
+}
+
+// ══════════════════════════════════════════════════════════════
+//  CLIENT CONFIG — Logo upload + color extraction
+// ══════════════════════════════════════════════════════════════
+
+function ceHandleLogoUpload(input) {
+  const file = input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const data = e.target.result;
+    window._ceLogo = window._ceLogo || {};
+    window._ceLogo.data = data;
+    const lp  = document.getElementById('ce-logo-preview');
+    const lpw = document.getElementById('ce-logo-preview-wrap');
+    const ls  = document.getElementById('ce-logo-status');
+    if (lp)  { lp.src = data; lpw.style.display = ''; }
+    if (ls)  ls.textContent = 'Logo ready — save to store';
+    const btn = document.getElementById('ce-autodetect-btn');
+    if (btn) btn.style.display = '';
+    toast('Logo uploaded ✓', 'success');
+  };
+  reader.readAsDataURL(file);
+}
+
+function ceAutoDetectColors() {
+  const lp = document.getElementById('ce-logo-preview');
+  if (!lp || !lp.src) return;
+  extractDominantColors(lp.src, colors => {
+    if (!colors || !colors.length) { toast('Could not extract colors', 'error'); return; }
+    const accent = colors[0], header = colors[1] || colors[0];
+    const ah=document.getElementById('ce-accent-hex'),ap=document.getElementById('ce-accent-picker');
+    const hh=document.getElementById('ce-header-hex'),hp=document.getElementById('ce-header-picker');
+    if(ah){ah.value=accent;} if(ap){ap.value=accent;}
+    if(hh){hh.value=header;} if(hp){hp.value=header;}
+    toast('Colors detected ✓  Accent: '+accent+'  Header: '+header, 'success');
+  });
+}
 </script>
 </body>
 </html>
