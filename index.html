@@ -736,9 +736,9 @@
 
   </div>
 
-  <div id="tab-template" style="display:none">
+  <div id="tab-template" style="display:none;width:100%;min-width:0">
     <!-- STEP 1: Client Selection -->
-    <div id="tg-step-1">
+    <div id="tg-step-1" style="width:100%">
       <div class="page-hdr">
         <div class="page-title">Template Generator</div>
         <div class="page-sub">Select a client to build a branded intake form</div>
@@ -751,7 +751,7 @@
     </div>
 
     <!-- STEP 2: Configure -->
-    <div id="tg-step-2" style="display:none">
+    <div id="tg-step-2" style="display:none;width:100%">
       <div class="client-banner" id="tg-client-banner">
         <div><div class="banner-name" id="tg-banner-name"></div><div class="banner-struct" id="tg-banner-struct"></div></div>
         <span class="banner-change" onclick="tgGoStep(1)">&#8592; Change Client</span>
@@ -2196,6 +2196,16 @@ function showCEMsg(msg, isErr) {
 let selectedClient = null;
 function renderGrids() {
   ['general','project','location'].forEach(struct => {
+    // Also refresh TG grids if they exist
+    const tgGrid = document.getElementById('tg-grid-' + struct);
+    if (tgGrid) {
+      tgGrid.innerHTML = CLIENTS.filter(c => c.structure === struct).map(c => {
+        const platClass = (c.platform==='trustlayer') ? 'plat-tl' : 'plat-ev';
+        return '<div class="client-card ' + platClass + '" onclick="tgSelectClient('' + c.key.replace(/'/g,"\'").replace(/&/g,'\x26') + '')">' +
+          '<div class="client-name"><span class="platform-badge ' + (c.platform==='trustlayer'?'tl">TL':'evident">EV') + '</span> ' + c.name + '</div>' +
+          '<span class="client-badge ' + STRUCT[struct].badgeClass + '">' + STRUCT[struct].label + '</span></div>';
+      }).join('');
+    }
     const grid = document.getElementById('grid-' + struct); if (!grid) return;
     grid.innerHTML = CLIENTS.filter(c => c.structure === struct).map(c => {
       const sk = c.key.replace(/[^a-z0-9]/gi,'_');
@@ -4688,7 +4698,10 @@ let _tgOpts = {
 
 // ── Init ──────────────────────────────────────────────────────────────────
 function tgInit() {
+  // Re-render grid each time (clients may have loaded since last visit)
   tgRenderGrid();
+  // If grids are still empty, clients haven't loaded yet — they'll render
+  // when loadClientsFromConfig completes and calls renderGrids()
 }
 
 function tgRenderGrid() {
