@@ -738,7 +738,7 @@
 
   <div id="tab-template" style="display:none">
     <!-- STEP 1: Client Selection -->
-    <div id="tg-step-1">
+    <div id="tg-step-1" class="step-panel">
       <div class="page-hdr">
         <div class="page-title">Template Generator</div>
         <div class="page-sub">Select a client to build a branded intake form</div>
@@ -751,7 +751,7 @@
     </div>
 
     <!-- STEP 2: Configure -->
-    <div id="tg-step-2" style="display:none">
+    <div id="tg-step-2" class="step-panel" style="display:none">
       <div class="client-banner" id="tg-client-banner">
         <div><div class="banner-name" id="tg-banner-name"></div><div class="banner-struct" id="tg-banner-struct"></div></div>
         <span class="banner-change" onclick="tgGoStep(1)">&#8592; Change Client</span>
@@ -1951,7 +1951,10 @@ async function loadClientsFromConfig() {
     }
     _clientsFileSHA = fileInfo.sha; _clientsFileLoaded = true;
     CLIENTS = buildClientsArray(_allClientsData); CLIENT_META_MAP = {};
-    _allClientsData.forEach(c => { CLIENT_META_MAP[c.client_name] = c; }); return true;
+    _allClientsData.forEach(c => { CLIENT_META_MAP[c.client_name] = c; });
+    // If TG tab was opened before clients loaded, render grids now
+    if (window._tgNeedsRender) { window._tgNeedsRender = false; tgRenderGrid(); }
+    return true;
   } catch(e) { console.warn('Could not load clients.json:', e.message); return false; }
 }
 async function saveClientsToConfig(updatedClients) {
@@ -4692,9 +4695,19 @@ function tgRenderGrid() {
   });
 }
 
-// tgInit called from sidebarNav — always re-render in case CLIENTS just loaded
+// tgInit called from sidebarNav
 function tgInit() {
-  tgRenderGrid();
+  if (CLIENTS && CLIENTS.length > 0) {
+    tgRenderGrid();
+  } else {
+    // Clients not loaded yet — show waiting message
+    ['general','project','location'].forEach(struct => {
+      const grid = document.getElementById('tg-grid-' + struct);
+      if (grid) grid.innerHTML = '<div style="font-size:12px;color:var(--muted);padding:8px 0">Loading clients…</div>';
+    });
+    // Mark that TG needs a render when clients arrive
+    window._tgNeedsRender = true;
+  }
 }
 
 // ── Select client → bootstrap form ────────────────────────────────────────
