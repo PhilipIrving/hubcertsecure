@@ -2060,7 +2060,7 @@ function sidebarNav(dest) {
   else if (dest === 'm-clients')   { switchTab('monday'); switchMondayTab('clients'); }
   else if (dest === 'm-setup')     { switchTab('monday'); switchMondayTab('setup'); }
   else if (dest === 'm-configure') { switchTab('monday'); switchMondayTab('configure'); }
-  else if (dest === 'tg-build')    { switchTab('template'); tgInit(); }
+  else if (dest === 'tg-build')    { switchTab('template'); if(CLIENTS&&CLIENTS.length>0){tgRenderGrid();window._tgNeedsRender=false;}else{tgInit();} }
 }
 async function loadAndRenderConfig() {
   const wrap = document.getElementById('cfg-table-wrap'); const s = getSettings();
@@ -2207,6 +2207,12 @@ function showCEMsg(msg, isErr) {
 let selectedClient = null;
 function renderGrids() {
   ['general','project','location'].forEach(struct => {
+    // Sync TG grids too if they exist and TG tab is active
+    const tgGrid = document.getElementById('tg-grid-' + struct);
+    const tgTab  = document.getElementById('tab-template');
+    if (tgGrid && tgTab && tgTab.style.display !== 'none') {
+      tgRenderGrid();
+    }
     const grid = document.getElementById('grid-' + struct); if (!grid) return;
     grid.innerHTML = CLIENTS.filter(c => c.structure === struct).map(c => {
       const sk = c.key.replace(/[^a-z0-9]/gi,'_');
@@ -4703,18 +4709,26 @@ function tgRenderGrid() {
   });
 }
 
-// tgInit called from sidebarNav
+// tgInit called from sidebarNav — always render, handles both timing cases
 function tgInit() {
   if (CLIENTS && CLIENTS.length > 0) {
+    // Clients already loaded — render immediately
     tgRenderGrid();
+    window._tgNeedsRender = false;
   } else {
-    // Clients not loaded yet — show waiting message
+    // Clients still loading from GitHub — show placeholder and set flag
     ['general','project','location'].forEach(struct => {
       const grid = document.getElementById('tg-grid-' + struct);
       if (grid) grid.innerHTML = '<div style="font-size:12px;color:var(--muted);padding:8px 0">Loading clients…</div>';
     });
-    // Mark that TG needs a render when clients arrive
     window._tgNeedsRender = true;
+    // Also poll in case loadClientsFromConfig already finished silently
+    setTimeout(() => {
+      if (CLIENTS && CLIENTS.length > 0 && window._tgNeedsRender) {
+        window._tgNeedsRender = false;
+        tgRenderGrid();
+      }
+    }, 2000);
   }
 }
 
