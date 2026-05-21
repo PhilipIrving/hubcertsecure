@@ -4601,7 +4601,11 @@ async function wsImportClients() {
   cfgLog('ci-import-log','ok',`Import complete \u2014 ${ok} created, ${err} failed`);
   toast(`\u2713 ${ok} clients imported to Monday`, 'success');
   btn.disabled = false; btn.textContent = '\u8679 Import Missing';
-  // Re-scan to up// ══════════════════════════════════════════════════════════════
+  // Re-scan to update the list
+  if (!err) setTimeout(wsScanClients, 800);
+}
+
+// ══════════════════════════════════════════════════════════════
 //  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.20
 // ══════════════════════════════════════════════════════════════
 
@@ -5110,11 +5114,6 @@ ${sections.map(renderSection).join('')}
 </div></body></html>`;
 }
 
- · HUB CertSecure</div>
-  <div>* Required field</div>
-</div>
-</body></html>`;
-}
 
 // ══════════════════════════════════════════════════════════════
 //  CLIENT CONFIG — Logo upload + color extraction
