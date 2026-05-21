@@ -2012,13 +2012,7 @@ function switchTab(tab) {
     if (typeof mondayTabActivated === 'function') mondayTabActivated();
   }
   if (tab === 'template') {
-    // Render immediately if clients loaded, then poll until they are
     tgRenderGrid();
-    let _r = 0;
-    const _p = setInterval(() => {
-      tgRenderGrid();
-      if ((typeof CLIENTS !== 'undefined' && CLIENTS && CLIENTS.length > 0) || ++_r >= 10) clearInterval(_p);
-    }, 500);
   }
 }
 function switchRGTab(sub) {
@@ -4756,8 +4750,10 @@ function tgInit() {
 
 // ── Select client → bootstrap form ────────────────────────────────────────
 async function tgSelectClient(key) {
+  csDebug.log('CLIENT','tgSelectClient','Client selected',{key});
+  try {
   _tgClient = CLIENTS.find(c => c.key === key);
-  if (!_tgClient) return;
+  if (!_tgClient) { csDebug.log('ERROR','tgSelectClient','Client not found in CLIENTS',{key,count:CLIENTS.length}); return; }
   const meta   = CLIENT_META_MAP[key] || {};
   const struct = _tgClient.structure || 'general';
 
@@ -4815,6 +4811,14 @@ async function tgSelectClient(key) {
   document.getElementById('tg-gen-btn').disabled = false;
   tgRenderBuilder();
   tgRenderDropdownEditors();
+  } catch(e) {
+    csDebug.log('ERROR','tgSelectClient','Crashed: '+e.message,{stack:(e.stack||'').slice(0,200)});
+    console.error('tgSelectClient error:', e);
+    // Still try to show step 2 even if something failed
+    tgGoStep(2);
+    document.getElementById('tg-loading').style.display = 'none';
+    document.getElementById('tg-form-builder').style.display = '';
+  }
 }
 
 // ── Load non-standard coverages + custom fields ───────────────────────────
