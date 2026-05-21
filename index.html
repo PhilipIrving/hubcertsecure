@@ -831,7 +831,8 @@
 
       <div class="action-bar" style="margin-top:10px">
         <button class="btn btn-secondary" onclick="tgGoStep(1)">&#8592; Back</button>
-        <button class="btn btn-primary" id="tg-gen-btn" onclick="tgGenerate()">&#128462; Generate Template</button>
+        <button class="btn btn-primary" id="tg-gen-btn" onclick="tgGenerate()">&#11015; Download Form</button>
+        <button class="btn btn-secondary" onclick="tgGeneratePDF()" style="font-size:12px">&#128462; Print / PDF</button>
       </div>
     </div>
   </div>
@@ -4816,15 +4817,30 @@ function tgAutoDetectColors(){
 
 function tgGenerate(){
   if(!_tgClient)return;
-  const title=document.getElementById('tg-title').value.trim()||(_tgClient.name+' — Third-Party Request');
+  const title=document.getElementById('tg-title').value.trim()||(_tgClient.name+' \u2014 Third-Party Request');
   const subtitle=document.getElementById('tg-subtitle').value.trim();
   const accent=document.getElementById('tg-accent-hex').value||'#3872B8';
   const header=document.getElementById('tg-header-hex').value||'#283847';
   const formHtml=tgBuildFormHTML(title,subtitle,accent,header);
-  // Open in a new tab so the recipient can fill it out first
+  const blob=new Blob([formHtml],{type:'text/html'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download=(_tgClient.name+' - Third-Party Request - '+new Date().toISOString().split('T')[0]+'.html');
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  _notifs.unshift({msg:title,type:'success',time:new Date()});
+  if(_notifs.length>15)_notifs.pop();renderNotifList();
+  const drawer=document.getElementById('notif-drawer');if(drawer){drawer.style.display='';_unread=0;updateNotifBadge();}
+  toast('\u2713 Form downloaded \u2014 email the HTML file to your client to fill out and return','success');
+}
+function tgGeneratePDF(){
+  if(!_tgClient)return;
+  const title=document.getElementById('tg-title').value.trim()||(_tgClient.name+' \u2014 Third-Party Request');
+  const subtitle=document.getElementById('tg-subtitle').value.trim();
+  const accent=document.getElementById('tg-accent-hex').value||'#3872B8';
+  const header=document.getElementById('tg-header-hex').value||'#283847';
   const win=window.open('','_blank');
-  if(win){ win.document.write(formHtml); win.document.close(); }
-  toast('Form opened in new tab — fill it out, then click Send or Print to PDF','success');
+  if(win){win.document.write(tgBuildFormHTML(title,subtitle,accent,header));win.document.close();setTimeout(()=>win.print(),600);}
+  toast('Print dialog opened \u2014 save as PDF for a paper copy','success');
 }
 
 function tgBuildFormHTML(title,subtitle,accent,header){
@@ -4851,66 +4867,59 @@ function tgBuildFormHTML(title,subtitle,accent,header){
 
   function rf(f){
     const req=f.required?' <span style="color:'+accent+'">*</span>':'';
-    const lbl='<div style="font-size:9px;font-weight:700;color:'+header+';letter-spacing:.04em;text-transform:uppercase;margin-bottom:3px">'+esc(f.label)+req+'</div>';
-    const inp='width:100%;padding:6px 8px;border:1px solid #C8D4DF;border-radius:4px;font-size:12px;font-family:inherit';
+    const lbl='<div style="font-size:7px;font-weight:700;color:'+header+';letter-spacing:.05em;text-transform:uppercase;margin-bottom:2px">'+esc(f.label)+req+'</div>';
+    const inp='width:100%;padding:4px 6px;border:1px solid #C8D4DF;border-radius:3px;font-size:10.5px;font-family:Arial,sans-serif';
     if(f.type==='dropdown'){
-      const opts=(_tgOpts[f.optsKey]||['-- Select --']).map(o=>'<option>'+esc(o)+'</option>').join('');
-      return '<div style="margin-bottom:12px">'+lbl+'<select data-label="'+esc(f.label)+'" style="'+inp+'">'+opts+'</select></div>';
+      const opts=(_tgOpts[f.optsKey]||[]).filter(o=>o&&o!=='-- Select --');
+      const gid='grp_'+f.key;
+      const sel='<select data-label="'+esc(f.label)+'" style="'+inp+'">'+'<option value="">-- Select --</option>'+opts.map(o=>'<option value="'+esc(o)+'">'+esc(o)+'</option>').join('')+'</select>';
+      const boxes=opts.map(o=>'<label style="display:inline-flex;align-items:center;gap:4px;margin-right:12px;font-size:10.5px;font-family:Arial,sans-serif;cursor:pointer"><input type="checkbox" data-group="'+gid+'" data-label="'+esc(f.label)+'" data-value="'+esc(o)+'" onchange="chkOnce(this,''+gid+'')" style="width:11px;height:11px;accent-color:'+accent+'"> '+esc(o)+'</label>').join('');
+      return '<div style="margin-bottom:6px">'+lbl+'<div class="scr">'+sel+'</div><div class="prt" style="display:none;flex-wrap:wrap;padding:2px 0">'+boxes+'</div></div>'
     }
-    if(f.type==='checkbox')return '<div style="margin-bottom:10px;display:flex;align-items:center;gap:8px"><input type="checkbox" data-label="'+esc(f.label)+'" style="width:14px;height:14px;accent-color:'+accent+';flex-shrink:0;cursor:pointer"> <span style="font-size:12px;font-family:inherit">'+esc(f.label)+'</span></div>';
-    if(f.type==='textarea')return '<div style="margin-bottom:12px">'+lbl+'<textarea data-label="'+esc(f.label)+'" style="'+inp+';min-height:52px;resize:vertical"></textarea></div>';
-    return '<div style="margin-bottom:12px">'+lbl+'<input type="text" data-label="'+esc(f.label)+'" style="'+inp+'"></div>';
+    if(f.type==='checkbox')return '<div style="margin-bottom:5px;display:flex;align-items:center;gap:6px"><input type="checkbox" data-label="'+esc(f.label)+'" style="width:11px;height:11px;accent-color:'+accent+';flex-shrink:0"> <span style="font-size:10.5px;font-family:Arial,sans-serif">'+esc(f.label)+'</span></div>';
+    if(f.type==='textarea')return '<div style="margin-bottom:6px">'+lbl+'<textarea data-label="'+esc(f.label)+'" style="'+inp+';min-height:32px;resize:none"></textarea></div>';
+    return '<div style="margin-bottom:6px">'+lbl+'<input type="text" data-label="'+esc(f.label)+'" style="'+inp+'"></div>';
   }
 
   function rs(sec){
     const rows=sectionRows[sec.id]||[];if(!rows.length)return'';
     const cbs=rows.filter(r=>r.type==='checkbox'),others=rows.filter(r=>r.type!=='checkbox');
     let body='';
-    if(others.length)body+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px">'+others.map(rf).join('')+'</div>';
-    if(cbs.length)body+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 20px;margin-top:4px">'+cbs.map(rf).join('')+'</div>';
-    return '<div style="margin-bottom:14px"><div style="background:'+header+';color:white;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;margin-bottom:8px;border-left:4px solid '+accent+'">'+sec.title+'</div><div style="padding:0 4px">'+body+'</div></div>';
+    if(others.length)body+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px">'+others.map(rf).join('')+'</div>';
+    if(cbs.length)body+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:2px 16px;margin-top:2px">'+cbs.map(rf).join('')+'</div>';
+    return '<div style="margin-bottom:6px"><div style="background:'+header+';color:white;font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;margin-bottom:4px;border-left:3px solid '+accent+'">'+sec.title+'</div><div style="padding:0 2px">'+body+'</div></div>';
   }
 
-  const logoHtml=_tgLogoData?'<img src="'+_tgLogoData+'" style="max-height:44px;max-width:300px;object-fit:contain">':'';
+  const logoHtml=_tgLogoData?'<img src="'+_tgLogoData+'" style="max-height:38px;max-width:280px;object-fit:contain">':'';
 
   return '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>'+esc(title)+'</title>'
     +'<style>'
     +'@import url(\'https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap\');'
     +'*{box-sizing:border-box;margin:0;padding:0}'
-    +'body{font-family:\'Outfit\',Arial,sans-serif;background:#F0F2F5;color:#1E2E3D}'
-    +'.page{background:white;max-width:780px;margin:20px auto;padding:28px 32px 24px;box-shadow:0 2px 12px rgba(0,0,0,0.1);border-radius:8px}'
-    +'input,select,textarea{font-family:\'Outfit\',Arial,sans-serif}'
-    +'select{cursor:pointer}'
-    +'@media print{'
-    +'body{background:white}'
-    +'.page{box-shadow:none;margin:0;max-width:100%;border-radius:0;padding:16px 20px}'
-    +'.no-print{display:none!important}'
-    +'@page{size:letter portrait;margin:8mm}'
-    +'}'
+    +'body{font-family:\'Outfit\',Arial,sans-serif;background:white;color:#1E2E3D;padding:12px 16px 8px;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
+    +'@page{size:letter portrait;margin:7mm}.scr{display:block}.prt{display:none}@media print{.scr{display:none!important}.prt{display:flex!important}}'
+    +'@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}'
     +'</style></head><body>'
-    +'<div class="page">'
-    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding-bottom:10px;border-bottom:3px solid '+accent+'">'
-    +(logoHtml?'<div>'+logoHtml+'</div>':'')
-    +'<div style="'+(logoHtml?'text-align:right':'')+'"><div style="font-size:'+(logoHtml?'15':'18')+'px;font-weight:900;color:'+header+'">'+esc(title)+'</div><div style="font-size:10px;color:#5A6B7B;margin-top:3px">'+esc(subtitle)+'</div></div></div>'
-    +'<div style="display:flex;justify-content:space-between;font-size:9px;color:#8A94A8;margin-bottom:16px">'
+    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding-bottom:7px;border-bottom:3px solid '+accent+'">'
+    +(logoHtml?'<div style="display:flex;align-items:center;gap:12px">'+logoHtml+'</div>':'')
+    +'<div style="'+(logoHtml?'text-align:right':'')+'"><div style="font-size:'+(logoHtml?'13':'15')+'px;font-weight:900;color:'+header+'">'+esc(title)+'</div><div style="font-size:9px;color:#5A6B7B;margin-top:2px">'+esc(subtitle)+'</div></div></div>'
+    +'<div style="display:flex;justify-content:space-between;font-size:7.5px;color:#8A94A8;margin-bottom:8px">'
     +'<div>'+stamp+'</div>'
-    +'<div><span style="font-weight:700;color:#1E2E3D">Return to:</span> HUB CertSecure &nbsp;&middot;&nbsp; Client.CertSecure@hubinternational.com</div>'
+    +'<div style="text-align:right"><span style="font-weight:700;color:#1E2E3D">Return to:</span> HUB CertSecure &nbsp;&middot;&nbsp; Client.CertSecure@hubinternational.com</div>'
     +'</div>'
     +sections.map(rs).join('')
-    +'<div style="margin-top:16px;padding-top:12px;border-top:2px solid '+accent+';display:flex;justify-content:space-between;align-items:center" class="no-print">'
-    +'<div style="font-size:9px;color:#B0B8C8">&#x1F512; Confidential &mdash; '+esc(clientName)+' &middot; HUB CertSecure &nbsp;&nbsp; * Required field</div>'
-    +'<div style="display:flex;gap:10px">'
-    +'<button onclick="window.print()" style="background:white;color:'+header+';border:2px solid '+header+';padding:8px 18px;border-radius:6px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer">&#128438; Print to PDF</button>'
-    +'<button onclick="sendForm()" style="background:'+accent+';color:white;border:none;padding:8px 18px;border-radius:6px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer">&#9993; Send Completed Form</button>'
-    +'</div></div>'
-    +'<div style="font-size:8px;color:#B0B8C8;margin-top:8px">&#x1F512; Confidential &mdash; '+esc(clientName)+' &middot; HUB CertSecure &nbsp;&nbsp; * Required field</div>'
+    +'<div style="margin-top:8px;padding-top:6px;border-top:2px solid '+accent+';display:flex;justify-content:space-between;align-items:center">'
+    +'<div style="font-size:7px;color:#B0B8C8">&#x1F512; Confidential &mdash; '+esc(clientName)+' &middot; HUB CertSecure &nbsp; * Required field</div>'
+    +'<button onclick="sendForm()" style="background:'+accent+';color:white;border:none;padding:6px 16px;border-radius:5px;font-size:11px;font-weight:700;font-family:Arial,sans-serif;cursor:pointer">&#9993; Send Completed Form</button>'
     +'</div>'
     +'<script>'
+    +'function chkOnce(el,g){if(el.checked){document.querySelectorAll(\'input[data-group="\'+g+\'"]\').forEach(function(c){if(c!==el)c.checked=false;})}}'
     +'function sendForm(){'
-    +'var lines=[],cn="'+esc(clientName).replace(/\\/g,'\\\\').replace(/"/g,'\\"')+'";'
-    +'document.querySelectorAll("input[data-label]:not([type=\'checkbox\']),textarea[data-label],select[data-label]").forEach(function(el){'
-    +'var v=(el.value||"").trim();if(v&&v!=="-- Select --")lines.push(el.getAttribute("data-label")+": "+v);});'
-    +'document.querySelectorAll("input[type=\'checkbox\'][data-label]").forEach(function(el){if(el.checked)lines.push(el.getAttribute("data-label")+": Yes");});'
+    +'var lines=[],groups={},cn="'+esc(clientName).replace(/"/g,'\\"')+'";'
+    +'document.querySelectorAll(\'input[data-label]:not([data-group]):not([type="checkbox"]),textarea[data-label]\').forEach(function(el){var v=(el.value||"").trim();if(v)lines.push(el.getAttribute("data-label")+": "+v);});'
+    +'document.querySelectorAll(\'input[type="checkbox"][data-label]:not([data-group])\').forEach(function(el){if(el.checked)lines.push(el.getAttribute("data-label")+": Yes");});'
+    +'document.querySelectorAll(\'input[type="checkbox"][data-group]\').forEach(function(el){if(el.checked){var g=el.getAttribute("data-group");if(!groups[g])groups[g]={label:el.getAttribute("data-label"),vals:[]};groups[g].vals.push(el.getAttribute("data-value"));}});'
+    +'Object.values(groups).forEach(function(g){lines.push(g.label+": "+g.vals.join(", "));});'
     +'if(!lines.length){alert("Please fill in at least one field before sending.");return;}'
     +'var sub=encodeURIComponent("Third-Party Request \u2014 "+cn);'
     +'var bod=encodeURIComponent("CLIENT: "+cn+"\\n\\n"+lines.join("\\n")+"\\n\\n---\\nSubmitted via HUB CertSecure");'
