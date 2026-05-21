@@ -2011,6 +2011,15 @@ function switchTab(tab) {
   if (tab === 'monday') {
     if (typeof mondayTabActivated === 'function') mondayTabActivated();
   }
+  if (tab === 'template') {
+    // Render immediately if clients loaded, then poll until they are
+    tgRenderGrid();
+    let _r = 0;
+    const _p = setInterval(() => {
+      tgRenderGrid();
+      if ((typeof CLIENTS !== 'undefined' && CLIENTS && CLIENTS.length > 0) || ++_r >= 10) clearInterval(_p);
+    }, 500);
+  }
 }
 function switchRGTab(sub) {
   const el = document.getElementById('rg-sub-generate');
@@ -4695,10 +4704,18 @@ let _tgOpts = {
 
 // ── Render client selection grid ──────────────────────────────────────────
 function tgRenderGrid() {
+  const _clients = (typeof CLIENTS !== 'undefined' && CLIENTS) ? CLIENTS : [];
   ['general','project','location'].forEach(struct => {
     const grid = document.getElementById('tg-grid-' + struct);
     if (!grid) return;
-    grid.innerHTML = CLIENTS.filter(c => c.structure === struct).map(c => {
+    const filtered = _clients.filter(c => c.structure === struct);
+    if (!filtered.length) {
+      if (_clients.length === 0) {
+        grid.innerHTML = '<div style="font-size:12px;color:var(--muted);padding:4px 0">Loading… <button onclick="tgRenderGrid()" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:12px;text-decoration:underline;font-family:inherit">Retry</button></div>';
+      }
+      return;
+    }
+    grid.innerHTML = filtered.map(c => {
       const platClass = (c.platform === 'trustlayer') ? 'plat-tl' : 'plat-ev';
       const safeName  = c.key.replace(/'/g, "\\'").replace(/&/g, '\\x26');
       return '<div class="client-card ' + platClass + '" onclick="tgSelectClient(\'' + safeName + '\')">' +
