@@ -5004,14 +5004,19 @@ function tgHandleLogoUpload(input) {
 function extractDominantColors(imgSrc,cb){
   const img=new Image(); img.crossOrigin='anonymous';
   img.onload=()=>{
-    const canvas=document.createElement('canvas'),W=80,H=80; canvas.width=W; canvas.height=H;
+    const canvas=document.createElement('canvas'),W=120,H=60; canvas.width=W; canvas.height=H;
     const ctx=canvas.getContext('2d'); ctx.drawImage(img,0,0,W,H);
-    let data; try{data=ctx.getImageData(0,0,W,H).data;}catch(e){cb(null);return;}
+    // Only sample LEFT HALF — the right half is the CertSecure logo
+    const halfW=Math.floor(W/2);
+    let data; try{data=ctx.getImageData(0,0,halfW,H).data;}catch(e){cb(null);return;}
     const buckets={};
-    for(let i=0;i<data.length;i+=16){
+    for(let i=0;i<data.length;i+=12){
       const r=data[i],g=data[i+1],b=data[i+2],a=data[i+3];
       if(a<128||r>230&&g>230&&b>230||r<25&&g<25&&b<25) continue;
-      const key=[Math.round(r/24)*24,Math.round(g/24)*24,Math.round(b/24)*24].join(',');
+      // Prefer saturated colors — skip near-grey (low saturation)
+      const max=Math.max(r,g,b),min=Math.min(r,g,b);
+      if(max-min<30) continue; // skip low-saturation
+      const key=[Math.round(r/20)*20,Math.round(g/20)*20,Math.round(b/20)*20].join(',');
       buckets[key]=(buckets[key]||0)+1;
     }
     const sorted=Object.entries(buckets).sort((a,b)=>b[1]-a[1]);
@@ -5055,9 +5060,8 @@ function tgGenerate(){
 }
 
 function tgBuildFormHTML(title,subtitle,accent,header){
-  const logoTag=_tgLogoData
-    ?`<img src="${_tgLogoData}" style="height:44px;object-fit:contain;max-width:220px">`
-    :`<div style="font-family:Arial,sans-serif;font-size:18px;font-weight:900;color:${header}">CERT<span style="background:${accent};color:white;padding:2px 8px;border-radius:4px;margin-left:2px">SECURE</span></div>`;
+  // logoTag kept for compatibility but new template uses _tgLogoData directly
+  const logoTag=_tgLogoData?`<img src="${_tgLogoData}" style="max-height:38px;object-fit:contain">`:'';
 
   const sections=[
     {id:'entity',   title:'ENTITY INFORMATION',    keys:['entity_name','legal_name','dba_name','entity_id','entity_type']},
@@ -5080,11 +5084,12 @@ function tgBuildFormHTML(title,subtitle,accent,header){
 
   const renderField=f=>{
     const req=f.required?` <span style="color:${accent}">*</span>`:'';
-    const lbl=`<div style="font-size:8px;font-weight:700;color:${header};letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px">${esc(f.label)}${req}</div>`;
-    if(f.type==='dropdown'){const opts=(_tgOpts[f.optsKey]||['-- Select --']).map(o=>`<option>${esc(o)}</option>`).join('');return`<div style="margin-bottom:10px">${lbl}<select style="width:100%;padding:7px 8px;border:1px solid #C8D4DF;border-radius:4px;font-size:12px;font-family:Arial,sans-serif">${opts}</select></div>`;}
-    if(f.type==='checkbox')return`<div style="margin-bottom:10px;display:flex;align-items:center;gap:8px"><input type="checkbox" style="width:14px;height:14px;accent-color:${accent}"><span style="font-size:12px;font-family:Arial,sans-serif">${esc(f.label)}</span></div>`;
-    if(f.type==='textarea')return`<div style="margin-bottom:10px">${lbl}<textarea style="width:100%;padding:7px 8px;border:1px solid #C8D4DF;border-radius:4px;font-size:12px;min-height:60px;resize:vertical;font-family:Arial,sans-serif"></textarea></div>`;
-    return`<div style="margin-bottom:10px">${lbl}<input type="text" style="width:100%;padding:7px 8px;border:1px solid #C8D4DF;border-radius:4px;font-size:12px;font-family:Arial,sans-serif"></div>`;
+    const lbl=`<div style="font-size:7px;font-weight:700;color:${header};letter-spacing:.05em;text-transform:uppercase;margin-bottom:2px">${esc(f.label)}${req}</div>`;
+    const baseInp=`width:100%;padding:4px 6px;border:1px solid #C8D4DF;border-radius:3px;font-size:10.5px;font-family:Arial,sans-serif`;
+    if(f.type==='dropdown'){const opts=(_tgOpts[f.optsKey]||['-- Select --']).map(o=>`<option>${esc(o)}</option>`).join('');return`<div style="margin-bottom:6px">${lbl}<select style="${baseInp}">${opts}</select></div>`;}
+    if(f.type==='checkbox')return`<div style="margin-bottom:5px;display:flex;align-items:center;gap:6px"><input type="checkbox" style="width:11px;height:11px;accent-color:${accent};flex-shrink:0"><span style="font-size:10.5px;font-family:Arial,sans-serif">${esc(f.label)}</span></div>`;
+    if(f.type==='textarea')return`<div style="margin-bottom:6px">${lbl}<textarea style="${baseInp};min-height:32px;resize:none"></textarea></div>`;
+    return`<div style="margin-bottom:6px">${lbl}<input type="text" style="${baseInp}"></div>`;
   };
 
   const renderSection=sec=>{
@@ -5093,23 +5098,34 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     let body='';
     if(others.length)body+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 18px">${others.map(renderField).join('')}</div>`;
     if(cbs.length)body+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;margin-top:4px">${cbs.map(renderField).join('')}</div>`;
-    return`<div style="margin-bottom:16px">
-      <div style="background:${header};color:white;font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;margin-bottom:8px;border-left:4px solid ${accent}">${sec.title}</div>
-      <div style="padding:0 4px">${body}</div>
+    return`<div style="margin-bottom:6px">
+      <div style="background:${header};color:white;font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;margin-bottom:4px;border-left:3px solid ${accent}">${sec.title}</div>
+      <div style="padding:0 2px">${body}</div>
     </div>`;
   };
 
   const stamp=new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
   return`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(title)}</title>
-<style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap');
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:760px;padding:24px 28px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-@page{size:letter portrait;margin:10mm}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body>
-<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;padding-bottom:14px;border-bottom:4px solid ${accent}">
-  <div>${logoTag}<div style="margin-top:10px"><div style="font-size:18px;font-weight:900;color:${header}">${esc(title)}</div><div style="font-size:11px;color:#5A6B7B;margin-top:3px">${esc(subtitle)}</div></div></div>
-  <div style="text-align:right;font-size:9px;color:#8A94A8;line-height:1.7"><div>${stamp}</div><div>HUB CertSecure</div><div>9200 Ward Parkway Suite 500</div><div>Kansas City, MO 64114</div><div>Certs.CertSecure@hubinternational.com</div></div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;padding:12px 16px 8px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@page{size:letter portrait;margin:7mm}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style></head><body>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding-bottom:7px;border-bottom:3px solid ${accent}">
+  <div style="display:flex;align-items:center;gap:12px">
+    ${_tgLogoData?`<img src="${_tgLogoData}" style="max-height:38px;max-width:280px;object-fit:contain">`:''}
+    ${!_tgLogoData?`<div><div style="font-size:14px;font-weight:900;color:${header}">${esc(title)}</div><div style="font-size:9px;color:#5A6B7B">${esc(subtitle)}</div></div>`:''}
+  </div>
+  ${_tgLogoData?`<div style="text-align:right"><div style="font-size:13px;font-weight:800;color:${header}">${esc(title)}</div><div style="font-size:9px;color:#5A6B7B">${esc(subtitle)}</div></div>`:''}
+</div>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;font-size:7.5px;color:#8A94A8">
+  <div style="color:#5A6B7B;font-size:8px">${stamp}</div>
+  <div style="text-align:right;line-height:1.5"><span style="font-weight:700;color:#1E2E3D">Return to:</span> HUB CertSecure &nbsp;&middot;&nbsp; Certs.CertSecure@hubinternational.com</div>
 </div>
 ${sections.map(renderSection).join('')}
-<div style="margin-top:16px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8px;color:#B0B8C8">
+<div style="margin-top:6px;padding-top:5px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:7px;color:#B0B8C8">
   <div>&#x1F512; Confidential \u2014 ${esc(_tgClient?.name||'')} \u00b7 HUB CertSecure</div><div>* Required field</div>
 </div></body></html>`;
 }
