@@ -176,6 +176,7 @@
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
+    #tab-template{width:100%;min-width:0;box-sizing:border-box;}
     /* bg overrides removed v0.93 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:12px 24px 0;font-size:12px;font-weight:600;flex-shrink:0}
@@ -1997,7 +1998,14 @@ async function saveClientsToConfig(updatedClients) {
 }
 function switchTab(tab) {
   ['reports','monday','template'].forEach(t => {
-    document.getElementById('tab-' + t).style.display = t === tab ? '' : 'none';
+    const el = document.getElementById('tab-' + t);
+    if (!el) return;
+    if (t === tab) {
+      // Use block for template (was display:none inline), empty string for others
+      el.style.display = t === 'template' ? 'block' : '';
+    } else {
+      el.style.display = 'none';
+    }
     const btn = document.getElementById('tab-btn-' + t); if (btn) btn.classList.toggle('active', t === tab);
   });
   if (tab === 'monday') {
