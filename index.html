@@ -736,9 +736,9 @@
 
   </div>
 
-  <div id="tab-template" style="display:none;width:100%;min-width:0">
+  <div id="tab-template" style="display:none">
     <!-- STEP 1: Client Selection -->
-    <div id="tg-step-1" style="width:100%">
+    <div id="tg-step-1">
       <div class="page-hdr">
         <div class="page-title">Template Generator</div>
         <div class="page-sub">Select a client to build a branded intake form</div>
@@ -751,7 +751,7 @@
     </div>
 
     <!-- STEP 2: Configure -->
-    <div id="tg-step-2" style="display:none;width:100%">
+    <div id="tg-step-2" style="display:none">
       <div class="client-banner" id="tg-client-banner">
         <div><div class="banner-name" id="tg-banner-name"></div><div class="banner-struct" id="tg-banner-struct"></div></div>
         <span class="banner-change" onclick="tgGoStep(1)">&#8592; Change Client</span>
@@ -804,9 +804,9 @@
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
           <div>
             <div class="card-title" style="margin-bottom:2px">&#128203; Form Fields</div>
-            <div style="font-size:12px;color:var(--muted)">Drag to reorder &#9650;&#9660; · Click label to rename · Toggle required · Change type · Remove fields or add new ones</div>
+            <div style="font-size:12px;color:var(--muted)">&#9650;&#9660; reorder &nbsp;&#183;&nbsp; click label to rename &nbsp;&#183;&nbsp; toggle required &nbsp;&#183;&nbsp; change type &nbsp;&#183;&nbsp; remove or add fields</div>
           </div>
-          <div style="display:flex;gap:6px">
+          <div style="display:flex;gap:6px;flex-shrink:0">
             <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px;background:var(--blue-light);color:var(--blue)">Standard</span>
             <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px;background:#FFF8E6;color:#D97706">Coverage</span>
             <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px;background:#E6F5EF;color:#16A34A">Custom</span>
@@ -2196,16 +2196,6 @@ function showCEMsg(msg, isErr) {
 let selectedClient = null;
 function renderGrids() {
   ['general','project','location'].forEach(struct => {
-    // Also refresh TG grids if they exist
-    const tgGrid = document.getElementById('tg-grid-' + struct);
-    if (tgGrid) {
-      tgGrid.innerHTML = CLIENTS.filter(c => c.structure === struct).map(c => {
-        const platClass = (c.platform==='trustlayer') ? 'plat-tl' : 'plat-ev';
-        return '<div class="client-card ' + platClass + '" onclick="tgSelectClient('' + c.key.replace(/'/g,"\'").replace(/&/g,'\x26') + '')">' +
-          '<div class="client-name"><span class="platform-badge ' + (c.platform==='trustlayer'?'tl">TL':'evident">EV') + '</span> ' + c.name + '</div>' +
-          '<span class="client-badge ' + STRUCT[struct].badgeClass + '">' + STRUCT[struct].label + '</span></div>';
-      }).join('');
-    }
     const grid = document.getElementById('grid-' + struct); if (!grid) return;
     grid.innerHTML = CLIENTS.filter(c => c.structure === struct).map(c => {
       const sk = c.key.replace(/[^a-z0-9]/gi,'_');
@@ -4586,19 +4576,15 @@ async function wsImportClients() {
   cfgLog('ci-import-log','ok',`Import complete \u2014 ${ok} created, ${err} failed`);
   toast(`\u2713 ${ok} clients imported to Monday`, 'success');
   btn.disabled = false; btn.textContent = '\u8679 Import Missing';
-  // Re-scan to update the list
-  if (!err) setTimeout(wsScanClients, 800);
-}
-
-</sc// ══════════════════════════════════════════════════════════════
+  // Re-scan to up// ══════════════════════════════════════════════════════════════
 //  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.20
 // ══════════════════════════════════════════════════════════════
 
-let _tgClient    = null;
-let _tgLogoData  = null;
-let _tgFormRows  = [];   // the live editable field list
+let _tgClient   = null;
+let _tgLogoData = null;
+let _tgFormRows = [];
 
-// ── Internal Evident fields to EXCLUDE from intake forms ──────────────────
+// ── Internal Evident fields to strip from intake forms ────────────────────
 const TG_INTERNAL_FIELDS = new Set([
   'email','email2','notificationList','verificationType','effectiveGroup',
   'effective group','expiration','latestsubmissiondate','latest submission date',
@@ -4607,7 +4593,7 @@ const TG_INTERNAL_FIELDS = new Set([
   'gl','auto','wc','umb','liq','air','mtc','pol','prof','wcel',
   'glEo','glGa','glPa','glPcoa','ccgReference','compOpsDate',
   'projectStatus','jobStatus','projectCompOps','sampleCoi',
-  'referenceId','insuredId','criteriagroup','referenceId',
+  'referenceId','insuredId',
 ]);
 function tgIsInternal(fn) {
   const low = (fn||'').toLowerCase().replace(/[\s_-]/g,'');
@@ -4621,7 +4607,6 @@ function tgIsInternal(fn) {
 const TG_STANDARD_COVS = new Set([
   'COMMERCIAL_GENERAL_LIABILITY','BUSINESS_AUTO_LIABILITY',
   'WORKERS_COMPENSATION','UMBRELLA_EXCESS_LIABILITY',
-  // TrustLayer full-text equivalents
   "Commercial General Liability","Automobile Liability",
   "Workers' Compensation and Employer's Liability","Umbrella/Excess Liability",
 ]);
@@ -4637,7 +4622,6 @@ const TG_COV_LABELS = {
   FARMOWNERS:              'Farmowners Policy',
   HOMEOWNERS:              'Homeowners Policy',
   RIGGERS_LIABILITY:       'Riggers Liability',
-  // TrustLayer labels
   'Professional Liability':  'Professional Liability',
   'Pollution Liability':     'Pollution Liability',
   'Cyber Liability':         'Cyber Liability',
@@ -4646,45 +4630,41 @@ const TG_COV_LABELS = {
 
 // ── Structure-specific base fields ────────────────────────────────────────
 const TG_BASE_FIELDS = {
-  // shared core — always present
   core: [
-    { key:'entity_name',  label:'Entity Name',     required:true,  type:'text'     },
-    { key:'legal_name',   label:'Legal Name',       required:true,  type:'text'     },
-    { key:'dba_name',     label:'DBA Name',         required:false, type:'text'     },
-    { key:'contact_name', label:'Contact Name',     required:true,  type:'text'     },
-    { key:'phone',        label:'Phone Number',     required:true,  type:'text'     },
-    { key:'email',        label:'Email Address',    required:true,  type:'text'     },
-    { key:'street',       label:'Street Address',   required:true,  type:'text'     },
-    { key:'suite',        label:'Suite / Floor',    required:false, type:'text'     },
-    { key:'city',         label:'City',             required:true,  type:'text'     },
-    { key:'state',        label:'State',            required:true,  type:'dropdown', optsKey:'states' },
-    { key:'zip',          label:'ZIP Code',         required:true,  type:'text'     },
-    { key:'entity_id',    label:'Entity ID',        required:false, type:'text'     },
+    { key:'entity_name',  label:'Entity Name',      required:true,  type:'text'     },
+    { key:'legal_name',   label:'Legal Name',        required:true,  type:'text'     },
+    { key:'dba_name',     label:'DBA Name',          required:false, type:'text'     },
+    { key:'contact_name', label:'Contact Name',      required:true,  type:'text'     },
+    { key:'phone',        label:'Phone Number',      required:true,  type:'text'     },
+    { key:'email',        label:'Email Address',     required:true,  type:'text'     },
+    { key:'street',       label:'Street Address',    required:true,  type:'text'     },
+    { key:'suite',        label:'Suite / Floor',     required:false, type:'text'     },
+    { key:'city',         label:'City',              required:true,  type:'text'     },
+    { key:'state',        label:'State',             required:true,  type:'dropdown', optsKey:'states' },
+    { key:'zip',          label:'ZIP Code',          required:true,  type:'text'     },
+    { key:'entity_id',    label:'Entity ID',         required:false, type:'text'     },
   ],
-  // general / vendor
   general: [
-    { key:'entity_type',  label:'Entity Type',      required:false, type:'dropdown', optsKey:'entity_types' },
+    { key:'entity_type',  label:'Entity Type',       required:false, type:'dropdown', optsKey:'entity_types' },
   ],
-  // project / subcontractor
   project: [
-    { key:'project_name',       label:'Project Name',        required:false, type:'text' },
+    { key:'project_name',       label:'Project Name',         required:false, type:'text' },
     { key:'project_number',     label:'Project / Job Number', required:false, type:'text' },
     { key:'contract_number',    label:'Contract Number',      required:false, type:'text' },
     { key:'subcontract_number', label:'Subcontract Number',   required:false, type:'text' },
     { key:'job_description',    label:'Job Description',      required:false, type:'text' },
     { key:'insurance_type',     label:'Insurance Type',       required:false, type:'dropdown', optsKey:'insurance_types' },
   ],
-  // location / tenant
   location: [
-    { key:'entity_type',        label:'Entity Type',          required:false, type:'dropdown', optsKey:'entity_types' },
-    { key:'property_location',  label:'Property Location',    required:false, type:'dropdown', optsKey:'property_locations' },
-    { key:'property_manager',   label:'Property Manager',     required:false, type:'text' },
-    { key:'tenant_type',        label:'Tenant Type',          required:false, type:'dropdown', optsKey:'tenant_types' },
-    { key:'rsf',                label:'Rentable Sq. Footage', required:false, type:'text' },
+    { key:'entity_type',       label:'Entity Type',           required:false, type:'dropdown', optsKey:'entity_types' },
+    { key:'property_location', label:'Property Location',     required:false, type:'dropdown', optsKey:'property_locations' },
+    { key:'property_manager',  label:'Property Manager',      required:false, type:'text' },
+    { key:'tenant_type',       label:'Tenant Type',           required:false, type:'dropdown', optsKey:'tenant_types' },
+    { key:'rsf',               label:'Rentable Sq. Footage',  required:false, type:'text' },
   ],
 };
 
-// ── Default dropdown options (editable) ───────────────────────────────────
+// ── Default dropdown options ───────────────────────────────────────────────
 let _tgOpts = {
   states:            ['-- Select --','AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA',
                       'HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN',
@@ -4696,100 +4676,96 @@ let _tgOpts = {
   insurance_types:   ['-- Select --','General','Project Specific'],
 };
 
-// ── Init ──────────────────────────────────────────────────────────────────
-function tgInit() {
-  // Re-render grid each time (clients may have loaded since last visit)
-  tgRenderGrid();
-  // If grids are still empty, clients haven't loaded yet — they'll render
-  // when loadClientsFromConfig completes and calls renderGrids()
-}
-
+// ── Render client selection grid ──────────────────────────────────────────
 function tgRenderGrid() {
   ['general','project','location'].forEach(struct => {
-    const grid = document.getElementById('tg-grid-' + struct); if (!grid) return;
+    const grid = document.getElementById('tg-grid-' + struct);
+    if (!grid) return;
     grid.innerHTML = CLIENTS.filter(c => c.structure === struct).map(c => {
-      const platClass = (c.platform==='trustlayer') ? 'plat-tl' : 'plat-ev';
-      return '<div class="client-card ' + platClass + '" onclick="tgSelectClient(\'' +
-        c.key.replace(/'/g,"\\'").replace(/&/g,'\\x26') + '\')">' +
+      const platClass = (c.platform === 'trustlayer') ? 'plat-tl' : 'plat-ev';
+      const safeName  = c.key.replace(/'/g, "\\'").replace(/&/g, '\\x26');
+      return '<div class="client-card ' + platClass + '" onclick="tgSelectClient(\'' + safeName + '\')">' +
         '<div class="client-name"><span class="platform-badge ' +
-        (c.platform==='trustlayer'?'tl">TL':'evident">EV') + '</span> ' + c.name + '</div>' +
-        '<span class="client-badge ' + STRUCT[struct].badgeClass + '">' +
-        STRUCT[struct].label + '</span></div>';
+        (c.platform === 'trustlayer' ? 'tl">TL' : 'evident">EV') + '</span> ' + c.name + '</div>' +
+        '<span class="client-badge ' + STRUCT[struct].badgeClass + '">' + STRUCT[struct].label + '</span></div>';
     }).join('');
   });
+}
+
+// tgInit called from sidebarNav — always re-render in case CLIENTS just loaded
+function tgInit() {
+  tgRenderGrid();
 }
 
 // ── Select client → bootstrap form ────────────────────────────────────────
 async function tgSelectClient(key) {
   _tgClient = CLIENTS.find(c => c.key === key);
   if (!_tgClient) return;
-  const meta = CLIENT_META_MAP[key] || {};
+  const meta   = CLIENT_META_MAP[key] || {};
   const struct = _tgClient.structure || 'general';
 
-  // Banner
   document.getElementById('tg-banner-name').textContent   = _tgClient.name;
   document.getElementById('tg-banner-struct').textContent = STRUCT[struct]?.label || struct;
 
-  // Branding defaults from clients.json
   const accent = meta.accent_color || '#3872B8';
   const header = meta.header_color || '#283847';
   document.getElementById('tg-accent-hex').value    = accent;
   document.getElementById('tg-accent-picker').value = accent;
   document.getElementById('tg-header-hex').value    = header;
   document.getElementById('tg-header-picker').value = header;
-  document.getElementById('tg-title').value    = _tgClient.name + ' — New Third-Party Request';
+  document.getElementById('tg-title').value    = _tgClient.name + ' \u2014 New Third-Party Request';
   document.getElementById('tg-subtitle').value = 'Complete all required fields (*) and return to your HUB account team';
 
-  // Logo
   _tgLogoData = meta.logo_data || null;
   const lpw = document.getElementById('tg-logo-preview-wrap');
   const lp  = document.getElementById('tg-logo-preview');
   if (_tgLogoData && lp) { lp.src = _tgLogoData; lpw.style.display = ''; document.getElementById('tg-autodetect-btn').style.display = ''; }
-  else { if(lpw) lpw.style.display = 'none'; document.getElementById('tg-autodetect-btn').style.display = 'none'; }
+  else { if (lpw) lpw.style.display = 'none'; document.getElementById('tg-autodetect-btn').style.display = 'none'; }
 
-  // Dropdown options from clients.json
-  if (meta.entity_types)        _tgOpts.entity_types        = meta.entity_types;
-  else                          _tgOpts.entity_types         = ['-- Select --','Vendor','Contractor','Subtenant','Other'];
-  if (meta.property_locations)  _tgOpts.property_locations  = meta.property_locations;
-  else                          _tgOpts.property_locations   = ['-- Select --','Blanket','Office','Retail'];
+  if (meta.entity_types)       _tgOpts.entity_types       = meta.entity_types;
+  else                         _tgOpts.entity_types        = ['-- Select --','Vendor','Contractor','Subtenant','Other'];
+  if (meta.property_locations) _tgOpts.property_locations = meta.property_locations;
+  else                         _tgOpts.property_locations  = ['-- Select --','Blanket','Office','Retail'];
 
-  // Switch to step 2 and show loading
   tgGoStep(2);
   document.getElementById('tg-form-builder').style.display = 'none';
   document.getElementById('tg-loading').style.display = '';
   document.getElementById('tg-gen-btn').disabled = true;
 
-  // Build base fields from structure
   const baseFields = [
     ...TG_BASE_FIELDS.core,
     ...(TG_BASE_FIELDS[struct] || []),
   ].map(f => ({ ...f, _type: 'standard' }));
 
-  // Load coverage checkboxes + custom fields async
   try {
     const { coverageFields, customFields } = await tgLoadDataFields(key, meta);
-    _tgFormRows = [...baseFields, ...coverageFields, ...customFields,
-      { key:'notes', label:'Additional Notes', required:false, type:'textarea', _type:'standard' }];
+    _tgFormRows = [
+      ...baseFields,
+      ...coverageFields,
+      ...customFields,
+      { key:'notes', label:'Additional Notes', required:false, type:'textarea', _type:'standard' },
+    ];
   } catch(e) {
-    console.warn('tgLoadDataFields failed:', e.message);
-    _tgFormRows = [...baseFields,
-      { key:'notes', label:'Additional Notes', required:false, type:'textarea', _type:'standard' }];
+    console.warn('tgLoadDataFields:', e.message);
+    _tgFormRows = [
+      ...baseFields,
+      { key:'notes', label:'Additional Notes', required:false, type:'textarea', _type:'standard' },
+    ];
   }
 
   document.getElementById('tg-loading').style.display  = 'none';
   document.getElementById('tg-form-builder').style.display = '';
   document.getElementById('tg-gen-btn').disabled = false;
-
   tgRenderBuilder();
   tgRenderDropdownEditors();
 }
 
-// ── Load coverage + custom fields from CSVs ───────────────────────────────
+// ── Load non-standard coverages + custom fields ───────────────────────────
 async function tgLoadDataFields(key, meta) {
-  const isTL = isTLClient(key);
+  const isTL    = isTLClient(key);
   const coverageFields = [];
   const customFields   = [];
-  const rpn = (meta.rp_common_name||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+  const rpn = (meta.rp_common_name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
 
   const matchRow = r => {
     const v = r.client || r.Client || '';
@@ -4798,56 +4774,52 @@ async function tgLoadDataFields(key, meta) {
     return false;
   };
 
-  // ── Coverage detection ────────────────────────────────────────────────
-  document.getElementById('tg-loading-msg').textContent = 'Detecting non-standard coverages…';
+  // Coverage detection
+  document.getElementById('tg-loading-msg').textContent = 'Detecting non-standard coverages\u2026';
   try {
-    let nonStandardCovs = new Set();
+    const nonStd = new Set();
     if (isTL) {
       const reqs = await fetchTLCSV('criteria.csv').catch(() => []);
       reqs.filter(matchRow).forEach(r => {
-        const subj = r['subject_label'] || r['module_label'] || '';
-        if (subj && !TG_STANDARD_COVS.has(subj)) nonStandardCovs.add(subj);
+        const s = r.subject_label || r.module_label || '';
+        if (s && !TG_STANDARD_COVS.has(s)) nonStd.add(s);
       });
     } else {
       const s = getSettings();
       const crit = await fetchCSV(s.criteriaPath || 'data/evident/criteria.csv').catch(() => []);
       crit.filter(matchRow).forEach(r => {
-        const reasons = r.non_compliance_reasons || '';
-        const matches = reasons.match(/([A-Z_]{4,}):/g) || [];
-        matches.forEach(m => {
+        (r.non_compliance_reasons || '').match(/([A-Z_]{4,}):/g || []).forEach(m => {
           const code = m.replace(':','');
-          if (!TG_STANDARD_COVS.has(code)) nonStandardCovs.add(code);
+          if (!TG_STANDARD_COVS.has(code)) nonStd.add(code);
         });
       });
     }
-    nonStandardCovs.forEach(cov => {
+    nonStd.forEach(cov => {
       const label = TG_COV_LABELS[cov] || cov.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
       coverageFields.push({
-        key:   'cov_' + cov.toLowerCase().replace(/[^a-z0-9]/g,'_'),
+        key: 'cov_' + cov.toLowerCase().replace(/[^a-z0-9]/g,'_'),
         label: label + ' Required',
-        required: false,
-        type: 'checkbox',
-        _type: 'coverage',
+        required: false, type: 'checkbox', _type: 'coverage',
         _source: isTL ? 'TrustLayer' : 'Evident',
       });
     });
-  } catch(e) { console.warn('Coverage detection error:', e.message); }
+  } catch(e) { console.warn('Coverage detection:', e.message); }
 
-  // ── Custom fields ─────────────────────────────────────────────────────
-  document.getElementById('tg-loading-msg').textContent = 'Loading client-specific fields…';
+  // Custom fields
+  document.getElementById('tg-loading-msg').textContent = 'Loading client-specific fields\u2026';
   try {
     if (isTL) {
       const ins = await fetchTLCSV('insureds.csv').catch(() => []);
-      const clientRows = ins.filter(matchRow);
-      const standardCols = new Set(['client','insured_id','insured_name','primary_contact_email',
+      const stdCols = new Set(['client','insured_id','insured_name','primary_contact_email',
         'compliance_status','active','paused','next_expiration','verification_status']);
+      const clientRows = ins.filter(matchRow);
       if (clientRows.length) {
         Object.keys(clientRows[0]).forEach(k => {
-          if (!standardCols.has(k.toLowerCase()) && k && !tgIsInternal(k)) {
+          if (!stdCols.has(k.toLowerCase()) && k && !tgIsInternal(k)) {
             customFields.push({
-              key:   k.toLowerCase().replace(/[^a-z0-9]/g,'_'),
+              key: k.toLowerCase().replace(/[^a-z0-9]/g,'_'),
               label: k.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase()),
-              required: false, type: 'text', _type: 'custom', _source: 'TrustLayer',
+              required:false, type:'text', _type:'custom', _source:'TrustLayer',
             });
           }
         });
@@ -4856,318 +4828,231 @@ async function tgLoadDataFields(key, meta) {
       const s = getSettings();
       const cp = await fetchCSV(s.customPropsPath || 'data/evident/custom_properties.csv').catch(() => []);
       const fieldNames = [...new Set(
-        cp.filter(matchRow)
-          .map(r => (r.field_name||'').trim())
-          .filter(fn => fn && !tgIsInternal(fn))
+        cp.filter(matchRow).map(r => (r.field_name||'').trim()).filter(fn => fn && !tgIsInternal(fn))
       )];
       fieldNames.forEach(fn => {
         customFields.push({
-          key:   fn.toLowerCase().replace(/[^a-z0-9]/g,'_'),
+          key: fn.toLowerCase().replace(/[^a-z0-9]/g,'_'),
           label: fn.replace(/([A-Z])/g,' $1').replace(/_/g,' ').trim().replace(/\b\w/g,c=>c.toUpperCase()),
-          required: false, type: 'text', _type: 'custom', _source: 'Evident',
+          required:false, type:'text', _type:'custom', _source:'Evident',
         });
       });
     }
-  } catch(e) { console.warn('Custom field load error:', e.message); }
+  } catch(e) { console.warn('Custom fields:', e.message); }
 
   return { coverageFields, customFields };
 }
 
-// ── Render the form builder ───────────────────────────────────────────────
+// ── Form builder render ───────────────────────────────────────────────────
 function tgRenderBuilder() {
-  const wrap = document.getElementById('tg-builder-rows'); if (!wrap) return;
-  const srcColors = { standard:'#3872B8', coverage:'#D97706', custom:'#16A34A', Evident:'#3872B8', TrustLayer:'#EA580C' };
-  const srcBg     = { standard:'var(--blue-light)', coverage:'#FFF8E6', custom:'#E6F5EF' };
-  const typePill  = t => `<span style="font-size:9px;color:var(--muted);background:var(--bg);padding:1px 6px;border-radius:8px;text-transform:capitalize">${t}</span>`;
-  const srcPill   = (row) => {
-    if (row._type === 'coverage' || row._type === 'custom') {
-      const col = row._source === 'TrustLayer' ? '#EA580C' : '#3872B8';
-      const bg  = row._source === 'TrustLayer' ? '#FFF3E0' : 'var(--blue-light)';
-      return `<span style="font-size:9px;font-weight:700;color:${col};background:${bg};padding:1px 6px;border-radius:8px">${row._source||row._type}</span>`;
-    }
-    return '';
-  };
+  const wrap = document.getElementById('tg-builder-rows');
+  if (!wrap) return;
+  const srcBg = { standard:'var(--blue-light)', coverage:'#FFF8E6', custom:'#E6F5EF' };
 
   wrap.innerHTML = _tgFormRows.map((row, i) => {
-    const bg = srcBg[row._type] || 'var(--bg)';
-    const canEdit = true;
-    return `<div id="tg-row-${i}" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:7px;background:${bg};border:1px solid var(--border);margin-bottom:4px">
-      <!-- reorder -->
-      <div style="display:flex;flex-direction:column;gap:1px;cursor:ns-resize;color:var(--muted)">
-        <button onclick="tgMoveRow(${i},-1)" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:10px;line-height:1;padding:0">▲</button>
-        <button onclick="tgMoveRow(${i},+1)" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:10px;line-height:1;padding:0">▼</button>
+    const bg = row._hidden ? 'var(--bg)' : (srcBg[row._type] || 'var(--bg)');
+    const srcPill = (row._type === 'coverage' || row._type === 'custom')
+      ? `<span style="font-size:9px;font-weight:700;color:${row._source==='TrustLayer'?'#EA580C':'#3872B8'};background:${row._source==='TrustLayer'?'#FFF3E0':'var(--blue-light)'};padding:1px 6px;border-radius:8px">${row._source||row._type}</span>`
+      : '';
+    return `<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:7px;background:${bg};border:1px solid var(--border);margin-bottom:4px;opacity:${row._hidden?'0.45':'1'}">
+      <div style="display:flex;flex-direction:column;gap:1px">
+        <button onclick="tgMoveRow(${i},-1)" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:10px;line-height:1;padding:0">&#9650;</button>
+        <button onclick="tgMoveRow(${i},+1)" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:10px;line-height:1;padding:0">&#9660;</button>
       </div>
-      <!-- visible toggle -->
-      <input type="checkbox" checked onchange="tgRowToggle(${i},this.checked)" style="accent-color:var(--blue);flex-shrink:0">
-      <!-- label (editable) -->
+      <input type="checkbox" ${row._hidden?'':'checked'} onchange="tgRowToggle(${i},this.checked)" style="accent-color:var(--blue);flex-shrink:0">
       <span contenteditable="true" spellcheck="false"
         style="flex:1;font-size:12px;font-weight:600;color:var(--text);outline:none;min-width:80px;cursor:text"
         onblur="tgRowRename(${i},this.textContent.trim())"
         onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur()}"
       >${esc(row.label)}</span>
-      <!-- type selector -->
       <select onchange="tgRowType(${i},this.value)" style="font-size:11px;padding:3px 6px;border:1px solid var(--border);border-radius:5px;background:var(--white)">
         ${['text','dropdown','checkbox','textarea'].map(t=>`<option value="${t}"${row.type===t?' selected':''}>${t}</option>`).join('')}
       </select>
-      <!-- required toggle -->
       <label style="display:flex;align-items:center;gap:4px;font-size:11px;color:var(--muted);cursor:pointer;white-space:nowrap">
         <input type="checkbox" ${row.required?'checked':''} onchange="tgRowRequired(${i},this.checked)" style="accent-color:var(--blue)"> Req
       </label>
-      <!-- source badge -->
-      ${srcPill(row)}
-      <!-- delete -->
-      <button onclick="tgRowDelete(${i})" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:15px;line-height:1;padding:0 2px" title="Remove field">&times;</button>
+      ${srcPill}
+      <button onclick="tgRowDelete(${i})" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:16px;line-height:1;padding:0 2px" title="Remove">&times;</button>
     </div>`;
-  }).join('') + `
-    <button onclick="tgAddRow()" style="width:100%;margin-top:6px;padding:8px;border:1.5px dashed var(--border);border-radius:7px;background:none;cursor:pointer;font-size:12px;color:var(--muted);font-family:inherit">+ Add Field</button>`;
+  }).join('') +
+  `<button onclick="tgAddRow()" style="width:100%;margin-top:6px;padding:8px;border:1.5px dashed var(--border);border-radius:7px;background:none;cursor:pointer;font-size:12px;color:var(--muted);font-family:inherit">+ Add Field</button>`;
 }
 
-// ── Form builder actions ──────────────────────────────────────────────────
-function tgMoveRow(i, dir) {
-  const j = i + dir;
-  if (j < 0 || j >= _tgFormRows.length) return;
-  [_tgFormRows[i], _tgFormRows[j]] = [_tgFormRows[j], _tgFormRows[i]];
-  tgRenderBuilder();
-}
-function tgRowToggle(i, on) {
-  _tgFormRows[i]._hidden = !on;
-}
-function tgRowRename(i, val) {
-  if (val && _tgFormRows[i]) _tgFormRows[i].label = val;
-}
-function tgRowType(i, val) {
-  if (_tgFormRows[i]) { _tgFormRows[i].type = val; tgRenderDropdownEditors(); }
-}
-function tgRowRequired(i, on) {
-  if (_tgFormRows[i]) _tgFormRows[i].required = on;
-}
-function tgRowDelete(i) {
-  _tgFormRows.splice(i, 1);
-  tgRenderBuilder();
-  tgRenderDropdownEditors();
-}
-function tgAddRow() {
-  _tgFormRows.push({ key: 'custom_' + Date.now(), label: 'New Field', required: false, type: 'text', _type: 'custom', _source: 'Manual' });
-  tgRenderBuilder();
-}
+function tgMoveRow(i,dir){ const j=i+dir; if(j<0||j>=_tgFormRows.length)return; [_tgFormRows[i],_tgFormRows[j]]=[_tgFormRows[j],_tgFormRows[i]]; tgRenderBuilder(); }
+function tgRowToggle(i,on){ if(_tgFormRows[i])_tgFormRows[i]._hidden=!on; }
+function tgRowRename(i,v){ if(v&&_tgFormRows[i])_tgFormRows[i].label=v; }
+function tgRowType(i,v){ if(_tgFormRows[i]){_tgFormRows[i].type=v; tgRenderDropdownEditors();} }
+function tgRowRequired(i,on){ if(_tgFormRows[i])_tgFormRows[i].required=on; }
+function tgRowDelete(i){ _tgFormRows.splice(i,1); tgRenderBuilder(); tgRenderDropdownEditors(); }
+function tgAddRow(){ _tgFormRows.push({key:'custom_'+Date.now(),label:'New Field',required:false,type:'text',_type:'custom',_source:'Manual'}); tgRenderBuilder(); }
 
-// ── Dropdown option editor ────────────────────────────────────────────────
+// ── Dropdown editors ──────────────────────────────────────────────────────
 function tgRenderDropdownEditors() {
   const wrap = document.getElementById('tg-dropdowns-wrap');
   const card = document.getElementById('tg-dropdowns-card');
-  if (!wrap || !card) return;
-  const ddRows = _tgFormRows.filter(r => r.type === 'dropdown' && !r._hidden && r.optsKey);
-  if (!ddRows.length) { card.style.display = 'none'; return; }
-  card.style.display = '';
+  if (!wrap||!card) return;
+  const ddRows = _tgFormRows.filter(r=>r.type==='dropdown'&&!r._hidden&&r.optsKey);
+  if (!ddRows.length) { card.style.display='none'; return; }
+  card.style.display='';
   wrap.innerHTML = ddRows.map(f => {
-    const opts = _tgOpts[f.optsKey] || [];
-    const chips = opts.map((o,i) =>
+    const opts = _tgOpts[f.optsKey]||[];
+    const chips = opts.map((o,i)=>
       `<span style="display:inline-flex;align-items:center;gap:3px;background:var(--blue-light);border:1px solid var(--border);border-radius:12px;padding:2px 4px 2px 10px;font-size:12px;font-weight:600;color:var(--blue);margin:3px 3px 3px 0">
         <span contenteditable="true" spellcheck="false" style="outline:none;min-width:16px;cursor:text"
           onblur="tgEditOpt('${f.optsKey}',${i},this.textContent.trim())"
           onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur()}"
         >${esc(o)}</span>
         <button onclick="tgRemoveOpt('${f.optsKey}',${i})" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:13px;line-height:1;padding:0 2px">&times;</button>
-      </span>`
-    ).join('');
+      </span>`).join('');
     return `<div style="margin-bottom:14px">
       <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">${esc(f.label)}</div>
       <div>${chips}<button onclick="tgAddOpt('${f.optsKey}')" style="display:inline-flex;align-items:center;gap:4px;margin:3px 0;padding:2px 10px;border:1px dashed var(--border);border-radius:12px;background:none;cursor:pointer;font-size:12px;color:var(--muted)">+ Add</button></div>
     </div>`;
   }).join('');
 }
-
-function tgEditOpt(k,i,v){ if(!v){tgRemoveOpt(k,i);return;} if(_tgOpts[k])_tgOpts[k][i]=v; tgRenderDropdownEditors(); }
-function tgRemoveOpt(k,i){ if(_tgOpts[k])_tgOpts[k].splice(i,1); tgRenderDropdownEditors(); }
-function tgAddOpt(k){ const v=prompt('New option:'); if(!v||!v.trim())return; if(!_tgOpts[k])_tgOpts[k]=[]; _tgOpts[k].push(v.trim()); tgRenderDropdownEditors(); }
+function tgEditOpt(k,i,v){if(!v){tgRemoveOpt(k,i);return;}if(_tgOpts[k])_tgOpts[k][i]=v;tgRenderDropdownEditors();}
+function tgRemoveOpt(k,i){if(_tgOpts[k])_tgOpts[k].splice(i,1);tgRenderDropdownEditors();}
+function tgAddOpt(k){const v=prompt('New option:');if(!v||!v.trim())return;if(!_tgOpts[k])_tgOpts[k]=[];_tgOpts[k].push(v.trim());tgRenderDropdownEditors();}
 
 // ── Navigation ────────────────────────────────────────────────────────────
-function tgGoStep(n) {
-  [1,2].forEach(i => { const el = document.getElementById('tg-step-' + i); if (el) el.style.display = i===n?'':'none'; });
-}
+function tgGoStep(n){ [1,2].forEach(i=>{const el=document.getElementById('tg-step-'+i);if(el)el.style.display=i===n?'':'none';}); }
 
-// ── Color sync ────────────────────────────────────────────────────────────
-function tgSyncColor(which) {
-  const p = document.getElementById('tg-'+which+'-picker');
-  const h = document.getElementById('tg-'+which+'-hex');
-  if (p && h) h.value = p.value.toUpperCase();
-}
-function tgSyncColorFromHex(which) {
-  const h = document.getElementById('tg-'+which+'-hex');
-  const p = document.getElementById('tg-'+which+'-picker');
-  if (h && p && /^#[0-9a-fA-F]{6}$/.test(h.value)) p.value = h.value;
-}
+// ── Color helpers ─────────────────────────────────────────────────────────
+function tgSyncColor(w){ const p=document.getElementById('tg-'+w+'-picker'),h=document.getElementById('tg-'+w+'-hex'); if(p&&h)h.value=p.value.toUpperCase(); }
+function tgSyncColorFromHex(w){ const h=document.getElementById('tg-'+w+'-hex'),p=document.getElementById('tg-'+w+'-picker'); if(h&&p&&/^#[0-9a-fA-F]{6}$/.test(h.value))p.value=h.value; }
 
 // ── Logo upload ───────────────────────────────────────────────────────────
 function tgHandleLogoUpload(input) {
-  const file = input.files[0]; if (!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    _tgLogoData = e.target.result;
-    const lp = document.getElementById('tg-logo-preview');
-    const lpw = document.getElementById('tg-logo-preview-wrap');
-    if (lp) { lp.src = _tgLogoData; lpw.style.display = ''; }
-    document.getElementById('tg-autodetect-btn').style.display = '';
-    toast('Logo uploaded ✓', 'success');
+  const file=input.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    _tgLogoData=e.target.result;
+    const lp=document.getElementById('tg-logo-preview'),lpw=document.getElementById('tg-logo-preview-wrap');
+    if(lp){lp.src=_tgLogoData;lpw.style.display='';}
+    document.getElementById('tg-autodetect-btn').style.display='';
+    toast('Logo uploaded \u2713','success');
   };
   reader.readAsDataURL(file);
 }
 
 // ── Color extraction ──────────────────────────────────────────────────────
-function extractDominantColors(imgSrc, cb) {
-  const img = new Image();
-  img.crossOrigin = 'anonymous';
-  img.onload = () => {
-    const canvas = document.createElement('canvas');
-    const W=80, H=80; canvas.width=W; canvas.height=H;
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0, 0, W, H);
-    let data; try { data = ctx.getImageData(0,0,W,H).data; } catch(e) { cb(null); return; }
-    const buckets = {};
-    for (let i=0; i<data.length; i+=16) {
+function extractDominantColors(imgSrc,cb){
+  const img=new Image(); img.crossOrigin='anonymous';
+  img.onload=()=>{
+    const canvas=document.createElement('canvas'),W=80,H=80; canvas.width=W; canvas.height=H;
+    const ctx=canvas.getContext('2d'); ctx.drawImage(img,0,0,W,H);
+    let data; try{data=ctx.getImageData(0,0,W,H).data;}catch(e){cb(null);return;}
+    const buckets={};
+    for(let i=0;i<data.length;i+=16){
       const r=data[i],g=data[i+1],b=data[i+2],a=data[i+3];
-      if (a<128) continue;
-      if (r>230&&g>230&&b>230) continue;
-      if (r<25&&g<25&&b<25) continue;
-      const key = [Math.round(r/24)*24,Math.round(g/24)*24,Math.round(b/24)*24].join(',');
-      buckets[key] = (buckets[key]||0)+1;
+      if(a<128||r>230&&g>230&&b>230||r<25&&g<25&&b<25) continue;
+      const key=[Math.round(r/24)*24,Math.round(g/24)*24,Math.round(b/24)*24].join(',');
+      buckets[key]=(buckets[key]||0)+1;
     }
-    const sorted = Object.entries(buckets).sort((a,b)=>b[1]-a[1]);
-    if (!sorted.length) { cb(null); return; }
-    const colors = [];
-    for (const [key] of sorted) {
-      const [r,g,b] = key.split(',').map(Number);
-      const isDistinct = colors.every(c => { const dr=c[0]-r,dg=c[1]-g,db=c[2]-b; return Math.sqrt(dr*dr+dg*dg+db*db)>80; });
-      if (isDistinct) colors.push([r,g,b]);
-      if (colors.length>=3) break;
+    const sorted=Object.entries(buckets).sort((a,b)=>b[1]-a[1]);
+    if(!sorted.length){cb(null);return;}
+    const colors=[];
+    for(const[key]of sorted){
+      const[r,g,b]=key.split(',').map(Number);
+      const ok=colors.every(c=>{const dr=c[0]-r,dg=c[1]-g,db=c[2]-b;return Math.sqrt(dr*dr+dg*dg+db*db)>80;});
+      if(ok)colors.push([r,g,b]); if(colors.length>=3)break;
     }
     cb(colors.map(([r,g,b])=>'#'+[r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase()));
   };
-  img.onerror = () => cb(null);
-  img.src = imgSrc;
+  img.onerror=()=>cb(null); img.src=imgSrc;
 }
-
-function tgAutoDetectColors() {
-  if (!_tgLogoData) return;
-  extractDominantColors(_tgLogoData, colors => {
-    if (!colors||!colors.length) { toast('Could not extract colors from logo','error'); return; }
-    const accent=colors[0], header=colors[1]||colors[0];
+function tgAutoDetectColors(){
+  if(!_tgLogoData)return;
+  extractDominantColors(_tgLogoData,colors=>{
+    if(!colors||!colors.length){toast('Could not extract colors','error');return;}
+    const accent=colors[0],header=colors[1]||colors[0];
     document.getElementById('tg-accent-hex').value=accent; document.getElementById('tg-accent-picker').value=accent;
     document.getElementById('tg-header-hex').value=header; document.getElementById('tg-header-picker').value=header;
-    toast('Colors detected ✓  Accent: '+accent+'  Header: '+header,'success');
+    toast('Colors detected \u2713  Accent: '+accent+'  Header: '+header,'success');
   });
 }
 
 // ── Generate PDF ──────────────────────────────────────────────────────────
-function tgGenerate() {
-  if (!_tgClient) return;
-  const title    = document.getElementById('tg-title').value.trim() || (_tgClient.name+' — Third-Party Request');
-  const subtitle = document.getElementById('tg-subtitle').value.trim();
-  const accent   = document.getElementById('tg-accent-hex').value || '#3872B8';
-  const header   = document.getElementById('tg-header-hex').value || '#283847';
-  const html     = tgBuildFormHTML(title, subtitle, accent, header);
+function tgGenerate(){
+  if(!_tgClient)return;
+  const title=document.getElementById('tg-title').value.trim()||(_tgClient.name+' \u2014 Third-Party Request');
+  const subtitle=document.getElementById('tg-subtitle').value.trim();
+  const accent=document.getElementById('tg-accent-hex').value||'#3872B8';
+  const header=document.getElementById('tg-header-hex').value||'#283847';
+  const html=tgBuildFormHTML(title,subtitle,accent,header);
   printHTMLasPDF(html);
-  const blobUrl = URL.createObjectURL(new Blob([html],{type:'text/html'}));
+  const blobUrl=URL.createObjectURL(new Blob([html],{type:'text/html'}));
   _notifs.unshift({msg:title,type:'success',time:new Date(),_download:{type:'pdf',html,_blobUrl:blobUrl,filename:_tgClient.name+' - Template - '+new Date().toISOString().split('T')[0]+'.pdf'}});
-  if(_notifs.length>15)_notifs.pop();
-  renderNotifList();
+  if(_notifs.length>15)_notifs.pop(); renderNotifList();
   const drawer=document.getElementById('notif-drawer');
   if(drawer){drawer.style.display='';_unread=0;updateNotifBadge();}
-  toast('Template generating — save as PDF from print dialog','success');
+  toast('Template generating \u2014 save as PDF from print dialog','success');
 }
 
-function tgBuildFormHTML(title, subtitle, accent, header) {
-  const logoTag = _tgLogoData
-    ? `<img src="${_tgLogoData}" style="height:44px;object-fit:contain;max-width:220px">`
-    : `<div style="font-family:Arial,sans-serif;font-size:18px;font-weight:900;color:${header}">CERT<span style="background:${accent};color:white;padding:2px 8px;border-radius:4px;margin-left:2px">SECURE</span></div>`;
+function tgBuildFormHTML(title,subtitle,accent,header){
+  const logoTag=_tgLogoData
+    ?`<img src="${_tgLogoData}" style="height:44px;object-fit:contain;max-width:220px">`
+    :`<div style="font-family:Arial,sans-serif;font-size:18px;font-weight:900;color:${header}">CERT<span style="background:${accent};color:white;padding:2px 8px;border-radius:4px;margin-left:2px">SECURE</span></div>`;
 
-  // Group visible rows into sections
-  const sections = [
-    { id:'entity',    title:'ENTITY INFORMATION',    keys:['entity_name','legal_name','dba_name','entity_id','entity_type'] },
-    { id:'contact',   title:'CONTACT INFORMATION',   keys:['contact_name','phone','email'] },
-    { id:'address',   title:'ADDRESS',               keys:['street','suite','city','state','zip'] },
-    { id:'project',   title:'PROJECT INFORMATION',   keys:['project_name','project_number','contract_number','subcontract_number','job_description','insurance_type'] },
-    { id:'property',  title:'PROPERTY & LOCATION',   keys:['property_location','property_manager','tenant_type','rsf'] },
-    { id:'coverage',  title:'ADDITIONAL COVERAGES',  keys:[] },   // catches all _type='coverage'
-    { id:'custom',    title:'ADDITIONAL INFORMATION',keys:[] },   // catches all _type='custom'
-    { id:'notes',     title:'NOTES',                 keys:['notes'] },
+  const sections=[
+    {id:'entity',   title:'ENTITY INFORMATION',    keys:['entity_name','legal_name','dba_name','entity_id','entity_type']},
+    {id:'contact',  title:'CONTACT INFORMATION',   keys:['contact_name','phone','email']},
+    {id:'address',  title:'ADDRESS',               keys:['street','suite','city','state','zip']},
+    {id:'project',  title:'PROJECT INFORMATION',   keys:['project_name','project_number','contract_number','subcontract_number','job_description','insurance_type']},
+    {id:'property', title:'PROPERTY & LOCATION',   keys:['property_location','property_manager','tenant_type','rsf']},
+    {id:'coverage', title:'ADDITIONAL COVERAGES',  keys:[]},
+    {id:'custom',   title:'ADDITIONAL INFORMATION',keys:[]},
+    {id:'notes',    title:'NOTES',                 keys:['notes']},
   ];
-
-  // Map rows to sections
-  const sectionRows = {};
-  sections.forEach(s => { sectionRows[s.id] = []; });
-  _tgFormRows.filter(r => !r._hidden).forEach(r => {
-    if (r._type === 'coverage') { sectionRows['coverage'].push(r); return; }
-    if (r._type === 'custom')   { sectionRows['custom'].push(r); return; }
-    const matched = sections.find(s => s.keys.includes(r.key));
-    if (matched) sectionRows[matched.id].push(r);
-    else sectionRows['custom'].push(r); // fallback
+  const sectionRows={};
+  sections.forEach(s=>{sectionRows[s.id]=[];});
+  _tgFormRows.filter(r=>!r._hidden).forEach(r=>{
+    if(r._type==='coverage'){sectionRows['coverage'].push(r);return;}
+    if(r._type==='custom'){sectionRows['custom'].push(r);return;}
+    const m=sections.find(s=>s.keys.includes(r.key));
+    if(m)sectionRows[m.id].push(r); else sectionRows['custom'].push(r);
   });
 
-  const renderField = (f) => {
-    const req = f.required ? ` <span style="color:${accent}">*</span>` : '';
-    const lbl = `<div style="font-size:8px;font-weight:700;color:${header};letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px">${esc(f.label)}${req}</div>`;
-    if (f.type==='dropdown') {
-      const optHtml = (_tgOpts[f.optsKey]||['-- Select --']).map(o=>`<option>${esc(o)}</option>`).join('');
-      return `<div style="margin-bottom:10px">${lbl}<select style="width:100%;padding:7px 8px;border:1px solid #C8D4DF;border-radius:4px;font-size:12px;font-family:Arial,sans-serif">${optHtml}</select></div>`;
-    }
-    if (f.type==='checkbox') {
-      return `<div style="margin-bottom:10px;display:flex;align-items:center;gap:8px"><input type="checkbox" style="width:14px;height:14px;accent-color:${accent}"><span style="font-size:12px;font-family:Arial,sans-serif">${esc(f.label)}</span></div>`;
-    }
-    if (f.type==='textarea') {
-      return `<div style="margin-bottom:10px">${lbl}<textarea style="width:100%;padding:7px 8px;border:1px solid #C8D4DF;border-radius:4px;font-size:12px;min-height:60px;resize:vertical;font-family:Arial,sans-serif"></textarea></div>`;
-    }
-    return `<div style="margin-bottom:10px">${lbl}<input type="text" style="width:100%;padding:7px 8px;border:1px solid #C8D4DF;border-radius:4px;font-size:12px;font-family:Arial,sans-serif"></div>`;
+  const renderField=f=>{
+    const req=f.required?` <span style="color:${accent}">*</span>`:'';
+    const lbl=`<div style="font-size:8px;font-weight:700;color:${header};letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px">${esc(f.label)}${req}</div>`;
+    if(f.type==='dropdown'){const opts=(_tgOpts[f.optsKey]||['-- Select --']).map(o=>`<option>${esc(o)}</option>`).join('');return`<div style="margin-bottom:10px">${lbl}<select style="width:100%;padding:7px 8px;border:1px solid #C8D4DF;border-radius:4px;font-size:12px;font-family:Arial,sans-serif">${opts}</select></div>`;}
+    if(f.type==='checkbox')return`<div style="margin-bottom:10px;display:flex;align-items:center;gap:8px"><input type="checkbox" style="width:14px;height:14px;accent-color:${accent}"><span style="font-size:12px;font-family:Arial,sans-serif">${esc(f.label)}</span></div>`;
+    if(f.type==='textarea')return`<div style="margin-bottom:10px">${lbl}<textarea style="width:100%;padding:7px 8px;border:1px solid #C8D4DF;border-radius:4px;font-size:12px;min-height:60px;resize:vertical;font-family:Arial,sans-serif"></textarea></div>`;
+    return`<div style="margin-bottom:10px">${lbl}<input type="text" style="width:100%;padding:7px 8px;border:1px solid #C8D4DF;border-radius:4px;font-size:12px;font-family:Arial,sans-serif"></div>`;
   };
 
-  const renderSection = (sec) => {
-    const rows = sectionRows[sec.id] || [];
-    if (!rows.length) return '';
-    const checkboxRows = rows.filter(r=>r.type==='checkbox');
-    const otherRows    = rows.filter(r=>r.type!=='checkbox');
-    let body = '';
-    if (otherRows.length) body += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 18px">${otherRows.map(renderField).join('')}</div>`;
-    if (checkboxRows.length) body += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;margin-top:4px">${checkboxRows.map(renderField).join('')}</div>`;
-    return `<div style="margin-bottom:16px">
+  const renderSection=sec=>{
+    const rows=sectionRows[sec.id]||[]; if(!rows.length)return'';
+    const cbs=rows.filter(r=>r.type==='checkbox'),others=rows.filter(r=>r.type!=='checkbox');
+    let body='';
+    if(others.length)body+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 18px">${others.map(renderField).join('')}</div>`;
+    if(cbs.length)body+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;margin-top:4px">${cbs.map(renderField).join('')}</div>`;
+    return`<div style="margin-bottom:16px">
       <div style="background:${header};color:white;font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;margin-bottom:8px;border-left:4px solid ${accent}">${sec.title}</div>
       <div style="padding:0 4px">${body}</div>
     </div>`;
   };
 
-  const stamp = new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
-  return `<!DOCTYPE html><html><head><meta charset="UTF-8">
-<title>${esc(title)}</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap');
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:760px;padding:24px 28px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-@page{size:letter portrait;margin:10mm}
-@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
-</style></head><body>
+  const stamp=new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+  return`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(title)}</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:white;color:#1E2E3D;width:760px;padding:24px 28px 20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@page{size:letter portrait;margin:10mm}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body>
 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;padding-bottom:14px;border-bottom:4px solid ${accent}">
-  <div>${logoTag}
-    <div style="margin-top:10px">
-      <div style="font-size:18px;font-weight:900;color:${header}">${esc(title)}</div>
-      <div style="font-size:11px;color:#5A6B7B;margin-top:3px">${esc(subtitle)}</div>
-    </div>
-  </div>
-  <div style="text-align:right;font-size:9px;color:#8A94A8;line-height:1.7">
-    <div>${stamp}</div>
-    <div>HUB CertSecure</div>
-    <div>9200 Ward Parkway Suite 500</div>
-    <div>Kansas City, MO 64114</div>
-    <div>Certs.CertSecure@hubinternational.com</div>
-  </div>
+  <div>${logoTag}<div style="margin-top:10px"><div style="font-size:18px;font-weight:900;color:${header}">${esc(title)}</div><div style="font-size:11px;color:#5A6B7B;margin-top:3px">${esc(subtitle)}</div></div></div>
+  <div style="text-align:right;font-size:9px;color:#8A94A8;line-height:1.7"><div>${stamp}</div><div>HUB CertSecure</div><div>9200 Ward Parkway Suite 500</div><div>Kansas City, MO 64114</div><div>Certs.CertSecure@hubinternational.com</div></div>
 </div>
 ${sections.map(renderSection).join('')}
 <div style="margin-top:16px;padding-top:10px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;font-size:8px;color:#B0B8C8">
-  <div>&#x1F512; Confidential — ${esc(_tgClient?.name||'')} · HUB CertSecure</div>
+  <div>&#x1F512; Confidential \u2014 ${esc(_tgClient?.name||'')} \u00b7 HUB CertSecure</div><div>* Required field</div>
+</div></body></html>`;
+}
+
+ · HUB CertSecure</div>
   <div>* Required field</div>
 </div>
 </body></html>`;
-}
-
-dy></html>`;
 }
 
 // ══════════════════════════════════════════════════════════════
