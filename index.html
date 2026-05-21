@@ -2216,12 +2216,6 @@ function showCEMsg(msg, isErr) {
 let selectedClient = null;
 function renderGrids() {
   ['general','project','location'].forEach(struct => {
-    // Sync TG grids too if they exist and TG tab is active
-    const tgGrid = document.getElementById('tg-grid-' + struct);
-    const tgTab  = document.getElementById('tab-template');
-    if (tgGrid && tgTab && tgTab.style.display !== 'none') {
-      tgRenderGrid();
-    }
     const grid = document.getElementById('grid-' + struct); if (!grid) return;
     grid.innerHTML = CLIENTS.filter(c => c.structure === struct).map(c => {
       const sk = c.key.replace(/[^a-z0-9]/gi,'_');
@@ -2233,6 +2227,17 @@ function renderGrids() {
         '<span class="client-badge ' + STRUCT[struct].badgeClass + '">' + STRUCT[struct].label + '</span>' +
         (lr ? '<div style="font-size:9px;color:var(--muted);margin-top:4px">' + lr + '</div>' : '') + '</div>';
     }).join('');
+    // Mirror into TG grid with tgSelectClient handler
+    const tgGrid = document.getElementById('tg-grid-' + struct);
+    if (tgGrid) {
+      tgGrid.innerHTML = CLIENTS.filter(c => c.structure === struct).map(c => {
+        const pc = (c.platform==='trustlayer'||c.source==='trustlayer') ? 'plat-tl' : 'plat-ev';
+        const sn = c.key.replace(/'/g,"\\'").replace(/&/g,'\\x26');
+        return '<div class="client-card ' + pc + '" onclick="tgSelectClient(\'' + sn + '\')">' +
+          '<div class="client-name"><span class="platform-badge ' + (c.platform==='trustlayer'?'tl">TL':'evident">EV') + '</span> ' + c.name + '</div>' +
+          '<span class="client-badge ' + STRUCT[struct].badgeClass + '">' + STRUCT[struct].label + '</span></div>';
+      }).join('');
+    }
   });
 }
 function pickClient(key) {
