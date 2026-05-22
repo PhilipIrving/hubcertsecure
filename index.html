@@ -754,7 +754,7 @@
     <!-- STEP 2: Configure -->
     <div id="tg-step-2" class="step-panel" style="display:none">
       <div class="client-banner" id="tg-client-banner">
-        <div><div class="banner-name" id="tg-banner-name"></div><div class="banner-struct" id="tg-banner-struct"></div></div>
+        <div style="display:flex;align-items:center;gap:8px"><div><div class="banner-name" id="tg-banner-name"></div><div class="banner-struct" id="tg-banner-struct"></div></div><span id="tg-saved-badge" style="display:none;font-size:9px;font-weight:700;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);padding:2px 8px;border-radius:10px">&#10003; Saved</span></div>
         <span class="banner-change" onclick="tgGoStep(1)">&#8592; Change Client</span>
       </div>
 
@@ -831,6 +831,7 @@
 
       <div class="action-bar" style="margin-top:10px">
         <button class="btn btn-secondary" onclick="tgGoStep(1)">&#8592; Back</button>
+        <button class="btn btn-secondary" id="tg-save-btn" onclick="tgSaveSetup()" title="Save this field layout to the client's config so it reloads next time">&#128190; Save Setup</button>
         <button class="btn btn-primary" id="tg-gen-btn" onclick="tgGenerate()">&#11015; Download Form</button>
       </div>
     </div>
@@ -4684,17 +4685,64 @@ async function tgSelectClient(key){
     document.getElementById('tg-loading').style.display='';
     document.getElementById('tg-gen-btn').disabled=true;
     const baseFields=[...TG_BASE.core,...(TG_BASE[struct]||[])].map(f=>({...f,_type:'standard'}));
-    try{
-      const {coverageFields,customFields}=await tgLoadDataFields(key,meta);
-      _tgFormRows=[...baseFields,...coverageFields,...customFields,{key:'notes',label:'Additional Notes',required:false,type:'textarea',_type:'standard'}];
-    }catch(e){
-      _tgFormRows=[...baseFields,{key:'notes',label:'Additional Notes',required:false,type:'textarea',_type:'standard'}];
+    // Check for a previously saved setup for this client
+    if(meta.tg_setup&&meta.tg_setup.tg_form_rows&&meta.tg_setup.tg_form_rows.length){
+      // Restore saved field layout
+      _tgFormRows=JSON.parse(JSON.stringify(meta.tg_setup.tg_form_rows));
+      if(meta.tg_setup.tg_opts)Object.assign(_tgOpts,meta.tg_setup.tg_opts);
+      if(meta.tg_setup.tg_title)document.getElementById('tg-title').value=meta.tg_setup.tg_title;
+      if(meta.tg_setup.tg_subtitle)document.getElementById('tg-subtitle').value=meta.tg_setup.tg_subtitle;
+      const badge=document.getElementById('tg-saved-badge');if(badge)badge.style.display='';
+      document.getElementById('tg-loading').style.display='none';
+    } else {
+      const badge=document.getElementById('tg-saved-badge');if(badge)badge.style.display='none';
+      try{
+        const {coverageFields,customFields}=await tgLoadDataFields(key,meta);
+        _tgFormRows=[...baseFields,...coverageFields,...customFields,{key:'notes',label:'Additional Notes',required:false,type:'textarea',_type:'standard'}];
+      }catch(e){
+        _tgFormRows=[...baseFields,{key:'notes',label:'Additional Notes',required:false,type:'textarea',_type:'standard'}];
+      }
+      document.getElementById('tg-loading').style.display='none';
     }
-    document.getElementById('tg-loading').style.display='none';
     document.getElementById('tg-form-builder').style.display='';
     document.getElementById('tg-gen-btn').disabled=false;
     tgRenderBuilder(); tgRenderDropdownEditors();
   }catch(e){csDebug.log('ERROR','tgSelectClient','Crashed: '+e.message);}
+}
+
+
+async function tgSaveSetup(){
+  if(!_tgClient){toast('No client selected','error');return;}
+  const key=_tgClient.key;
+  const btn=document.getElementById('tg-save-btn');
+  if(btn){btn.disabled=true;btn.textContent='Saving…';}
+  try{
+    const setup={
+      tg_title:document.getElementById('tg-title').value.trim(),
+      tg_subtitle:document.getElementById('tg-subtitle').value.trim(),
+      tg_form_rows:_tgFormRows,
+      tg_opts:_tgOpts,
+    };
+    // Update in-memory maps
+    const meta=CLIENT_META_MAP[key]||{};
+    meta.tg_setup=setup;
+    CLIENT_META_MAP[key]=meta;
+    // Update _allClientsData entry and save to clients.json
+    const updated=(_allClientsData||[]).map(c=>{
+      if(c.client_name!==key)return c;
+      return Object.assign({},c,{tg_setup:setup});
+    });
+    if(!updated.length)throw new Error('No clients data loaded — try refreshing first');
+    await saveClientsToConfig(updated);
+    _allClientsData=updated;
+    const badge=document.getElementById('tg-saved-badge');if(badge)badge.style.display='';
+    toast('✓ Template setup saved for '+_tgClient.name,'success');
+  }catch(e){
+    toast('Save failed: '+e.message,'error');
+    csDebug.log('ERROR','tgSaveSetup',e.message);
+  }finally{
+    if(btn){btn.disabled=false;btn.innerHTML='&#128190; Save Setup';}
+  }
 }
 
 async function tgLoadDataFields(key,meta){
