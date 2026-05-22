@@ -379,6 +379,10 @@
             "-- Select --",
             "General",
             "Project Specific"
+          ],
+          "zip_code_opts": [
+            "Option 1",
+            "Option 2"
           ]
         }
       }
