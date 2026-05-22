@@ -4906,26 +4906,32 @@ function tgBuildFormHTML(title,subtitle,accent,header){
 
   var Q='"';
 
-  // Address fields that get 3-col compact treatment
-  var addressCompact=['city','state','zip','suite'];
-
-  function rf(f,colHint){
+  function rf(f,colClass){
+    colClass=colClass||'field';
     var req=f.required?' <span class=__Q__req__Q__>*</span>':'';
     var lbl='<div class=__Q__flabel__Q__>'+esc(f.label)+req+'</div>';
-    var colClass=colHint||'field';
+
     if(f.type==='dropdown'){
       var opts=(_tgOpts[f.optsKey]||[]).filter(function(o){return o&&o!=='-- Select --';});
+      // > 8 options → native select (e.g. states, long lists)
+      if(opts.length>8){
+        var optHtml='<option value=__Q____Q__>&mdash; Select &mdash;</option>'+
+          opts.map(function(o){return '<option value=__Q__'+esc(o)+'__Q__>'+esc(o)+'</option>';}).join('');
+        return '<div class=__Q__'+colClass+'__Q__>'+lbl+'<select class=__Q__finput__Q__ data-label=__Q__'+esc(f.label)+'__Q__>'+optHtml+'</select></div>';
+      }
+      // ≤ 8 options → chip pills
       var gid='grp_'+f.key;
       var chips=opts.map(function(o){
         return '<label class=__Q__chip__Q__><input type=__Q__checkbox__Q__ data-group=__Q__'+gid+'__Q__ data-label=__Q__'+esc(f.label)+'__Q__ data-value=__Q__'+esc(o)+'__Q__ onchange=__Q__chkOnce(this,this.dataset.group)__Q__>'+esc(o)+'</label>';
       }).join('');
       return '<div class=__Q__'+colClass+'__Q__>'+lbl+'<div class=__Q__opts__Q__>'+chips+'</div></div>';
     }
+
     if(f.type==='checkbox'){
       return '<label class=__Q__cov__Q__><input type=__Q__checkbox__Q__ data-label=__Q__'+esc(f.label)+'__Q__ onchange=__Q__this.closest(\'.cov\').classList.toggle(\'on\',this.checked)__Q__><span>'+esc(f.label)+'</span></label>';
     }
     if(f.type==='textarea'){
-      return '<div class=__Q__field span3__Q__>'+lbl+'<textarea class=__Q__finput__Q__ data-label=__Q__'+esc(f.label)+'__Q__></textarea></div>';
+      return '<div class=__Q__'+colClass+'__Q__>'+lbl+'<textarea class=__Q__finput__Q__ data-label=__Q__'+esc(f.label)+'__Q__></textarea></div>';
     }
     return '<div class=__Q__'+colClass+'__Q__>'+lbl+'<input type=__Q__text__Q__ class=__Q__finput__Q__ data-label=__Q__'+esc(f.label)+'__Q__></div>';
   }
@@ -4935,24 +4941,30 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     var cbs=rows.filter(function(r){return r.type==='checkbox';});
     var others=rows.filter(function(r){return r.type!=='checkbox';});
     var body='';
-    if(others.length){
-      // Address section: street spans full width, then city/state/zip in 3-col
-      if(sec.id==='address'){
-        var street=others.filter(function(r){return r.key==='street';});
-        var rest=others.filter(function(r){return r.key!=='street';});
-        var streetHtml=street.map(function(r){return rf(r,'field span3');}).join('');
-        var restHtml=rest.map(function(r){
-          return rf(r, r.key==='zip'||r.key==='suite'?'field narrow':(r.key==='state'?'field narrow':'field'));
-        }).join('');
-        body+='<div class=__Q__grid3__Q__>'+streetHtml+restHtml+'</div>';
-      } else {
-        body+='<div class=__Q__grid3__Q__>'+others.map(function(r){
-          // notes, job_description go full width
-          var wide=r.key==='notes'||r.key==='job_description'||r.type==='textarea';
-          return rf(r, wide?'field span3':'field');
-        }).join('')+'</div>';
-      }
+
+    if(sec.id==='address'){
+      // Fixed professional address layout:
+      // Row 1: Street Address (full width)
+      // Row 2: City (wide) | State (select) | ZIP (narrow)
+      // Row 3: Suite / Floor (if present)
+      var byKey={};
+      others.forEach(function(r){byKey[r.key]=r;});
+      var extra=others.filter(function(r){return ['street','city','state','zip','suite'].indexOf(r.key)<0;});
+      var row1='', row2='', row3='', row4='';
+      if(byKey.street) row1=rf(byKey.street,'field span3');
+      if(byKey.city)   row2+=rf(byKey.city,  'field');
+      if(byKey.state)  row2+=rf(byKey.state, 'field');
+      if(byKey.zip)    row2+=rf(byKey.zip,   'field zip');
+      if(byKey.suite)  row3=rf(byKey.suite,  'field suite');
+      extra.forEach(function(r){row4+=rf(r,'field');});
+      body='<div class=__Q__grid3__Q__>'+row1+row2+row3+row4+'</div>';
+    } else {
+      body='<div class=__Q__grid3__Q__>'+others.map(function(r){
+        var wide=r.type==='textarea'||r.key==='notes'||r.key==='job_description';
+        return rf(r,wide?'field span3':'field');
+      }).join('')+'</div>';
     }
+
     if(cbs.length)body+='<div class=__Q__covgrid__Q__>'+cbs.map(function(r){return rf(r);}).join('')+'</div>';
     return '<div class=__Q__sec__Q__><div class=__Q__sec-hdr__Q__><div class=__Q__sec-bar__Q__></div><div class=__Q__sec-lbl__Q__>'+sec.title+'</div></div>'+body+'</div>';
   }
@@ -4979,18 +4991,19 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     '.sec-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px}',
     '.sec-bar{width:3px;height:14px;background:'+accent+';border-radius:2px;flex-shrink:0}',
     '.sec-lbl{font-size:8px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:'+header+'}',
-    // 3-col grid — the main layout engine
     '.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 16px}',
     '.field{margin-bottom:12px}',
-    '.field.span3{grid-column:1/-1}',   // full width
-    '.field.narrow{max-width:160px}',   // zip, state
+    '.field.span3{grid-column:1/-1}',
+    '.field.zip{max-width:130px}',       // ZIP: compact but not cramped
+    '.field.suite{grid-column:1/3}',     // Suite spans 2 cols, sits below city/state/zip
     '.flabel{font-size:7.5px;font-weight:700;color:'+header+';letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}',
     '.req{color:'+accent+'}',
     '.finput{width:100%;padding:8px 11px;border:1.5px solid #DDE5EE;border-radius:7px;font-size:12px;font-family:inherit;color:#1E2E3D;background:#FAFBFD;outline:none;transition:border-color .15s,box-shadow .15s}',
     '.finput:focus{border-color:'+accent+';box-shadow:0 0 0 3px '+accent+'22}',
+    'select.finput{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url(\'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" stroke="%235A6B7B" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>\');background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}',
     'textarea.finput{min-height:56px;resize:vertical}',
     '.opts{display:flex;flex-wrap:wrap;gap:7px;padding:2px 0}',
-    ".chip{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border:1.5px solid #DDE5EE;border-radius:20px;font-size:11px;cursor:pointer;transition:all .15s;background:white;font-family:inherit;user-select:none}",
+    '.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border:1.5px solid #DDE5EE;border-radius:20px;font-size:11px;cursor:pointer;transition:all .15s;background:white;font-family:inherit;user-select:none}',
     '.chip:hover{border-color:'+accent+'}',
     '.chip.on{background:'+accent+';border-color:'+accent+';color:white;font-weight:600}',
     '.chip input{display:none}',
@@ -5003,12 +5016,11 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     '.ftr-note{font-size:8px;color:#B0BCC8}',
     '.send{background:'+accent+';color:white;border:none;padding:11px 26px;border-radius:8px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:opacity .15s}',
     '.send:hover{opacity:.88}',
-    '@media(max-width:700px){.grid3,.covgrid{grid-template-columns:1fr 1fr}.field.span3{grid-column:1/-1}}',
+    '@media(max-width:700px){.grid3,.covgrid{grid-template-columns:1fr 1fr}.field.span3,.field.suite{grid-column:1/-1}.field.zip{max-width:100%}}',
     '@media(max-width:480px){.grid3,.covgrid{grid-template-columns:1fr}}',
     '@media print{body{background:white}.instr{display:none}.wrap{padding:0}.card{box-shadow:none;border-radius:0}@page{margin:10mm}}'
   ].join('\n');
 
-  // Improved email body — grouped by section with clear labels
   var formJS=[
     'function chkOnce(el,g){',
     '  var all=document.querySelectorAll(\'[data-group="\'+g+\'"]\');',
@@ -5019,50 +5031,44 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     'function sendForm(){',
     '  var sections={};',
     '  var sectionOrder=[];',
-    '  // Collect text/textarea fields',
+    '  function addToSec(el,val){',
+    '    var sec=el.closest(\'.sec\');',
+    '    var name=sec?sec.querySelector(\'.sec-lbl\').textContent:"OTHER";',
+    '    if(!sections[name]){sections[name]=[];sectionOrder.push(name);}',
+    '    sections[name].push(val);',
+    '  }',
+    '  // Text inputs and textareas',
     '  document.querySelectorAll(\'input[data-label]:not([data-group]):not([type="checkbox"]),textarea[data-label]\').forEach(function(el){',
-    '    var v=(el.value||"").trim();',
-    '    if(!v)return;',
-    '    var sec=el.closest(\'.sec\');',
-    '    var secName=sec?sec.querySelector(\'.sec-lbl\').textContent:"OTHER";',
-    '    if(!sections[secName]){sections[secName]=[];sectionOrder.push(secName);}',
-    '    sections[secName].push(el.getAttribute("data-label")+": "+v);',
+    '    var v=(el.value||"").trim();if(v)addToSec(el,el.getAttribute("data-label")+": "+v);',
     '  });',
-    '  // Collect regular checkboxes',
+    '  // Native selects',
+    '  document.querySelectorAll(\'select[data-label]\').forEach(function(el){',
+    '    var v=(el.value||"").trim();if(v)addToSec(el,el.getAttribute("data-label")+": "+v);',
+    '  });',
+    '  // Standalone checkboxes',
     '  document.querySelectorAll(\'input[type="checkbox"][data-label]:not([data-group])\').forEach(function(el){',
-    '    if(!el.checked)return;',
-    '    var sec=el.closest(\'.sec\');',
-    '    var secName=sec?sec.querySelector(\'.sec-lbl\').textContent:"OTHER";',
-    '    if(!sections[secName]){sections[secName]=[];sectionOrder.push(secName);}',
-    '    sections[secName].push(el.getAttribute("data-label")+": Yes");',
+    '    if(el.checked)addToSec(el,el.getAttribute("data-label")+": Yes");',
     '  });',
-    '  // Collect chip groups',
+    '  // Chip groups',
     '  var groups={};',
     '  document.querySelectorAll(\'input[data-group]\').forEach(function(el){',
     '    if(!el.checked)return;',
     '    var g=el.getAttribute("data-group");',
-    '    if(!groups[g])groups[g]={label:el.getAttribute("data-label"),vals:[],sec:el.closest(\'.sec\')};',
+    '    if(!groups[g])groups[g]={label:el.getAttribute("data-label"),vals:[],el:el};',
     '    groups[g].vals.push(el.getAttribute("data-value"));',
     '  });',
-    '  Object.values(groups).forEach(function(g){',
-    '    var secName=g.sec?g.sec.querySelector(\'.sec-lbl\').textContent:"OTHER";',
-    '    if(!sections[secName]){sections[secName]=[];sectionOrder.push(secName);}',
-    '    sections[secName].push(g.label+": "+g.vals.join(", "));',
-    '  });',
-    '  var totalFields=Object.values(sections).reduce(function(n,a){return n+a.length;},0);',
-    '  if(!totalFields){alert("Please fill in at least one field before sending.");return;}',
+    '  Object.values(groups).forEach(function(g){addToSec(g.el,g.label+": "+g.vals.join(", "));});',
+    '  var total=Object.values(sections).reduce(function(n,a){return n+a.length;},0);',
+    '  if(!total){alert("Please fill in at least one field before sending.");return;}',
     '  var cn='+JSON.stringify(clientName)+';',
-    '  var divider="----------------------------------------";',
+    '  var div="----------------------------------------";',
     '  var lines=["CLIENT: "+cn,"Submitted: "+new Date().toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}),""];',
     '  sectionOrder.forEach(function(name){',
-    '    lines.push(divider);',
-    '    lines.push(name);',
-    '    lines.push(divider);',
+    '    lines.push(div,name,div);',
     '    sections[name].forEach(function(l){lines.push("  "+l);});',
     '    lines.push("");',
     '  });',
-    '  lines.push(divider);',
-    '  lines.push("Submitted via HUB CertSecure Template");',
+    '  lines.push(div,"Submitted via HUB CertSecure Template");',
     '  var sub=encodeURIComponent("Third-Party Request \u2014 "+cn);',
     '  var bod=encodeURIComponent(lines.join("\\n"));',
     '  window.location.href="mailto:Client.CertSecure@hubinternational.com?subject="+sub+"&body="+bod;',
@@ -5085,7 +5091,7 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     '<ol>',
     '<li>Fill in all required fields marked <strong style=__Q__color:white__Q__>*</strong></li>',
     '<li>For dropdown fields, click the pill buttons to select an option</li>',
-    '<li>Click <strong style=__Q__color:white__Q__>Send Completed Form</strong> when done &mdash; your email app will open with everything pre-filled, just click Send</li>',
+    '<li>Click <strong style=__Q__color:white__Q__>Send Completed Form</strong> when done &mdash; your email app will open with everything pre-filled</li>',
     '</ol></div></div>',
     '<div class=__Q__card__Q__>',
     '<div class=__Q__card-hdr__Q__>',
