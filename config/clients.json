@@ -75,7 +75,298 @@
       "go_live_date": "2025-10-01",
       "structure": "location",
       "source": "evident",
-      "active": true
+      "active": true,
+      "tg_setup": {
+        "tg_title": "EMMES — New Third-Party Request",
+        "tg_subtitle": "Complete all required fields (*) and return to your HUB account team",
+        "tg_form_rows": [
+          {
+            "key": "entity_name",
+            "label": "Entity Name",
+            "required": true,
+            "type": "text",
+            "_type": "standard"
+          },
+          {
+            "key": "legal_name",
+            "label": "Legal Name",
+            "required": false,
+            "type": "text",
+            "_type": "standard"
+          },
+          {
+            "key": "dba_name",
+            "label": "DBA Name",
+            "required": false,
+            "type": "text",
+            "_type": "standard"
+          },
+          {
+            "key": "contact_name",
+            "label": "Contact Name",
+            "required": false,
+            "type": "text",
+            "_type": "standard"
+          },
+          {
+            "key": "phone",
+            "label": "Phone Number",
+            "required": false,
+            "type": "text",
+            "_type": "standard"
+          },
+          {
+            "key": "email",
+            "label": "Email Address",
+            "required": true,
+            "type": "text",
+            "_type": "standard"
+          },
+          {
+            "key": "street",
+            "label": "Street Address",
+            "required": false,
+            "type": "text",
+            "_type": "standard"
+          },
+          {
+            "key": "suite",
+            "label": "Suite / Floor",
+            "required": false,
+            "type": "text",
+            "_type": "standard"
+          },
+          {
+            "key": "city",
+            "label": "City",
+            "required": false,
+            "type": "text",
+            "_type": "standard"
+          },
+          {
+            "key": "state",
+            "label": "State",
+            "required": false,
+            "type": "dropdown",
+            "optsKey": "states",
+            "_type": "standard"
+          },
+          {
+            "key": "zip",
+            "label": "ZIP Code",
+            "required": false,
+            "type": "text",
+            "_type": "standard"
+          },
+          {
+            "key": "entity_id",
+            "label": "Entity ID",
+            "required": false,
+            "type": "text",
+            "_type": "standard"
+          },
+          {
+            "key": "entity_type",
+            "label": "Entity Type",
+            "required": true,
+            "type": "dropdown",
+            "optsKey": "entity_types",
+            "_type": "standard"
+          },
+          {
+            "key": "property_location",
+            "label": "Property Location",
+            "required": true,
+            "type": "dropdown",
+            "optsKey": "property_locations",
+            "_type": "standard"
+          },
+          {
+            "key": "property_manager",
+            "label": "Property Manager",
+            "required": false,
+            "type": "text",
+            "_type": "standard",
+            "_hidden": true
+          },
+          {
+            "key": "tenant_type",
+            "label": "Tenant Type",
+            "required": false,
+            "type": "dropdown",
+            "optsKey": "tenant_types",
+            "_type": "standard",
+            "_hidden": true
+          },
+          {
+            "key": "rsf",
+            "label": "Rentable Sq. Footage",
+            "required": false,
+            "type": "text",
+            "_type": "standard",
+            "_hidden": true
+          },
+          {
+            "key": "cov_professional_liability",
+            "label": "Professional Liability Required",
+            "required": false,
+            "type": "checkbox",
+            "_type": "coverage",
+            "_source": "Evident",
+            "_hidden": true
+          },
+          {
+            "key": "entitytype",
+            "label": "Entity Type",
+            "required": false,
+            "type": "text",
+            "_type": "custom",
+            "_source": "Evident",
+            "_hidden": true
+          },
+          {
+            "key": "propertylocation",
+            "label": "Property Location",
+            "required": false,
+            "type": "text",
+            "_type": "custom",
+            "_source": "Evident",
+            "_hidden": true
+          },
+          {
+            "key": "zip_code",
+            "label": "Zip Code",
+            "required": false,
+            "type": "text",
+            "_type": "custom",
+            "_source": "Evident",
+            "_hidden": true
+          },
+          {
+            "key": "entityid",
+            "label": "Entity Id",
+            "required": false,
+            "type": "text",
+            "_type": "custom",
+            "_source": "Evident",
+            "_hidden": true
+          },
+          {
+            "key": "notes",
+            "label": "Notes",
+            "required": false,
+            "type": "text",
+            "_type": "custom",
+            "_source": "Evident",
+            "_hidden": true
+          },
+          {
+            "key": "apt_suite_or_unit",
+            "label": "Apt  Suite Or  Unit",
+            "required": false,
+            "type": "text",
+            "_type": "custom",
+            "_source": "Evident",
+            "_hidden": true
+          },
+          {
+            "key": "professional",
+            "label": "Professional",
+            "required": false,
+            "type": "text",
+            "_type": "custom",
+            "_source": "Evident",
+            "_hidden": true
+          },
+          {
+            "key": "property",
+            "label": "Property",
+            "required": false,
+            "type": "text",
+            "_type": "custom",
+            "_source": "Evident",
+            "_hidden": true
+          },
+          {
+            "key": "notes",
+            "label": "Additional Notes",
+            "required": false,
+            "type": "textarea",
+            "_type": "standard"
+          }
+        ],
+        "tg_opts": {
+          "states": [
+            "-- Select --",
+            "AL",
+            "AK",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "FL",
+            "GA",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"
+          ],
+          "entity_types": [
+            "-- Select --"
+          ],
+          "property_locations": [
+            "-- Select --"
+          ],
+          "tenant_types": [
+            "Office Tenant",
+            "Retail Tenant",
+            "Subtenant"
+          ],
+          "insurance_types": [
+            "-- Select --",
+            "General",
+            "Project Specific"
+          ]
+        }
+      }
     },
     {
       "client_name": "ESS Companies",
