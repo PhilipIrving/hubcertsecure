@@ -1246,6 +1246,7 @@ async function doLogin() {
     onLoginSuccess(data.user, sharedPat);
     document.getElementById('auth-overlay').style.display = 'none';
     document.getElementById('main-app').style.display = '';
+    switchTab('reports');
   } catch(e) {
     // Show the real error so we can diagnose it
     const msg = e?.message || String(e) || 'Unknown error';
@@ -1298,7 +1299,7 @@ async function doResetPassword() {
     showAuthMsg('reset-msg', error.message, true); btn.disabled = false; btn.textContent = 'Set New Password';
   } else {
     showAuthMsg('reset-msg', 'Password updated! Signing you in\u2026', false);
-    setTimeout(() => { document.getElementById('auth-overlay').style.display = 'none'; document.getElementById('main-app').style.display = ''; window.location.hash = ''; }, 1500);
+    setTimeout(() => { document.getElementById('auth-overlay').style.display = 'none'; document.getElementById('main-app').style.display = ''; switchTab('reports'); window.location.hash = ''; }, 1500);
   }
 }
 function showAuthMsg(id, msg, isErr) {
@@ -1441,6 +1442,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         onLoginSuccess(session.user);
         document.getElementById('auth-overlay').style.display = 'none';
         document.getElementById('main-app').style.display = '';
+        switchTab('reports');
       }
     } catch(e) { /* no session */ }
   }
