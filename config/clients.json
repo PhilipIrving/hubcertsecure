@@ -77,7 +77,7 @@
       "source": "evident",
       "active": true,
       "tg_setup": {
-        "tg_title": "EMMES — New Third-Party Request",
+        "tg_title": "EMMES â New Third-Party Request",
         "tg_subtitle": "Complete all required fields (*) and return to your HUB account team",
         "tg_form_rows": [
           {
@@ -350,10 +350,25 @@
             "WY"
           ],
           "entity_types": [
-            "-- Select --"
+            "-- Select --",
+            "NY Office",
+            "NY Retail",
+            "NY Vendor"
           ],
           "property_locations": [
-            "-- Select --"
+            "-- Select --",
+            "NR 219 Office",
+            "NR 219 Retail",
+            "NR 261",
+            "NR 266",
+            "NR 274",
+            "NR 276",
+            "NR 277",
+            "NR 290",
+            "NR 291",
+            "NR 307",
+            "NR Blanket",
+            "RBT Office"
           ],
           "tenant_types": [
             "Office Tenant",
