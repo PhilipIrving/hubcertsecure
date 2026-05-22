@@ -831,7 +831,7 @@
 
       <div class="action-bar" style="margin-top:10px">
         <button class="btn btn-secondary" onclick="tgGoStep(1)">&#8592; Back</button>
-        <button class="btn btn-primary" id="tg-gen-btn" onclick="tgGenerate()">&#128462; Generate Template</button>
+        <button class="btn btn-primary" id="tg-gen-btn" onclick="tgGenerate()">&#11015; Download Form</button>
       </div>
     </div>
   </div>
@@ -4821,27 +4821,32 @@ function tgGenerate(){
   const accent=document.getElementById('tg-accent-hex').value||'#3872B8';
   const header=document.getElementById('tg-header-hex').value||'#283847';
   const formHtml=tgBuildFormHTML(title,subtitle,accent,header);
-  printHTMLasPDF(formHtml);
-  const blobUrl=URL.createObjectURL(new Blob([formHtml],{type:'text/html'}));
-  _notifs.unshift({msg:title,type:'success',time:new Date(),_download:{type:'pdf',html:formHtml,_blobUrl:blobUrl,filename:_tgClient.name+' - Template - '+new Date().toISOString().split('T')[0]+'.pdf'}});
+  const blob=new Blob([formHtml],{type:'text/html'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=_tgClient.name+' - Third-Party Request - '+new Date().toISOString().split('T')[0]+'.html';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  _notifs.unshift({msg:title,type:'success',time:new Date()});
   if(_notifs.length>15)_notifs.pop();renderNotifList();
   const drawer=document.getElementById('notif-drawer');if(drawer){drawer.style.display='';_unread=0;updateNotifBadge();}
-  toast('Template generating \u2014 save as PDF from print dialog','success');
+  toast('\u2713 Form downloaded \u2014 open in browser, fill out, and send to your client','success');
 }
 
 function tgBuildFormHTML(title,subtitle,accent,header){
   const clientName=_tgClient?_tgClient.name:'';
   const stamp=new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+  const logoHtml=_tgLogoData?'<img src="'+_tgLogoData+'" style="max-height:44px;max-width:200px;object-fit:contain">':'';
 
   const sections=[
-    {id:'entity',title:'ENTITY INFORMATION',keys:['entity_name','legal_name','dba_name','entity_id','entity_type']},
+    {id:'entity', title:'ENTITY INFORMATION', keys:['entity_name','legal_name','dba_name','entity_id','entity_type']},
     {id:'contact',title:'CONTACT INFORMATION',keys:['contact_name','phone','email']},
-    {id:'address',title:'ADDRESS',keys:['street','suite','city','state','zip']},
+    {id:'address',title:'ADDRESS',           keys:['street','suite','city','state','zip']},
     {id:'project',title:'PROJECT INFORMATION',keys:['project_name','project_number','contract_number','subcontract_number','job_description','insurance_type']},
     {id:'property',title:'PROPERTY & LOCATION',keys:['property_location','property_manager','tenant_type','rsf']},
     {id:'coverage',title:'ADDITIONAL COVERAGES',keys:[]},
-    {id:'custom',title:'ADDITIONAL INFORMATION',keys:[]},
-    {id:'notes',title:'NOTES',keys:['notes']},
+    {id:'custom', title:'ADDITIONAL INFORMATION',keys:[]},
+    {id:'notes',  title:'NOTES',             keys:['notes']},
   ];
   const sectionRows={};sections.forEach(s=>{sectionRows[s.id]=[];});
   _tgFormRows.filter(r=>!r._hidden).forEach(r=>{
@@ -4851,69 +4856,149 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     if(m)sectionRows[m.id].push(r);else sectionRows['custom'].push(r);
   });
 
+  // Use __Q__ as placeholder for " inside generated HTML strings
+  var Q='"';
+
   function rf(f){
-    const req=f.required?' <span style="color:'+accent+'">*</span>':'';
-    const lbl='<div style="font-size:7px;font-weight:700;color:'+header+';letter-spacing:.05em;text-transform:uppercase;margin-bottom:2px">'+esc(f.label)+req+'</div>';
-    const inp='width:100%;padding:4px 6px;border:1px solid #C8D4DF;border-radius:3px;font-size:10.5px;font-family:Arial,sans-serif';
+    var req=f.required?' <span class=__Q__req__Q__>*</span>':'';
+    var lbl='<div class=__Q__flabel__Q__>'+esc(f.label)+req+'</div>';
     if(f.type==='dropdown'){
-      // Render as checkbox list — works when printed to PDF
-      const opts=(_tgOpts[f.optsKey]||[]).filter(o=>o&&o!=='-- Select --');
-      const gid='grp_'+f.key;
-      const boxes=opts.map(o=>'<label style="display:inline-flex;align-items:center;gap:4px;margin-right:10px;cursor:pointer;font-size:10.5px;font-family:Arial,sans-serif"><input type="checkbox" data-group="'+gid+'" data-label="'+esc(f.label)+'" data-value="'+esc(o)+'" onclick="chkOnce(this,\''+gid+'\')" style="width:11px;height:11px;accent-color:'+accent+';flex-shrink:0"> '+esc(o)+'</label>').join('');
-      return '<div style="margin-bottom:6px">'+lbl+'<div style="display:flex;flex-wrap:wrap;padding:2px 0">'+boxes+'</div></div>';
+      var opts=(_tgOpts[f.optsKey]||[]).filter(function(o){return o&&o!=='-- Select --';});
+      var gid='grp_'+f.key;
+      var chips=opts.map(function(o){
+        return '<label class=__Q__chip__Q__><input type=__Q__checkbox__Q__ data-group=__Q__'+gid+'__Q__ data-label=__Q__'+esc(f.label)+'__Q__ data-value=__Q__'+esc(o)+'__Q__ onchange=__Q__chkOnce(this,this.dataset.group)__Q__>'+esc(o)+'</label>';
+      }).join('');
+      return '<div class=__Q__field__Q__>'+lbl+'<div class=__Q__opts__Q__>'+chips+'</div></div>';
     }
-    if(f.type==='checkbox')return '<div style="margin-bottom:5px;display:flex;align-items:center;gap:6px"><input type="checkbox" data-label="'+esc(f.label)+'" style="width:11px;height:11px;accent-color:'+accent+';flex-shrink:0"> <span style="font-size:10.5px;font-family:Arial,sans-serif">'+esc(f.label)+'</span></div>';
-    if(f.type==='textarea')return '<div style="margin-bottom:6px">'+lbl+'<textarea data-label="'+esc(f.label)+'" style="'+inp+';min-height:32px;resize:none"></textarea></div>';
-    return '<div style="margin-bottom:6px">'+lbl+'<input type="text" data-label="'+esc(f.label)+'" style="'+inp+'"></div>';
+    if(f.type==='checkbox'){
+      return '<div class=__Q__cov__Q__ onclick=__Q__this.querySelector(\'input\').click()__Q__><input type=__Q__checkbox__Q__ data-label=__Q__'+esc(f.label)+'__Q__ onchange=__Q__this.closest(\'.cov\').classList.toggle(\'on\',this.checked)__Q__><span>'+esc(f.label)+'</span></div>';
+    }
+    if(f.type==='textarea'){
+      return '<div class=__Q__field full__Q__>'+lbl+'<textarea class=__Q__finput__Q__ data-label=__Q__'+esc(f.label)+'__Q__></textarea></div>';
+    }
+    return '<div class=__Q__field__Q__>'+lbl+'<input type=__Q__text__Q__ class=__Q__finput__Q__ data-label=__Q__'+esc(f.label)+'__Q__></div>';
   }
 
   function rs(sec){
-    const rows=sectionRows[sec.id]||[];if(!rows.length)return'';
-    const cbs=rows.filter(r=>r.type==='checkbox'),others=rows.filter(r=>r.type!=='checkbox');
-    let body='';
-    if(others.length)body+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px">'+others.map(rf).join('')+'</div>';
-    if(cbs.length)body+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:2px 16px;margin-top:2px">'+cbs.map(rf).join('')+'</div>';
-    return '<div style="margin-bottom:6px"><div style="background:'+header+';color:white;font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;margin-bottom:4px;border-left:3px solid '+accent+'">'+sec.title+'</div><div style="padding:0 2px">'+body+'</div></div>';
+    var rows=sectionRows[sec.id]||[];if(!rows.length)return'';
+    var cbs=rows.filter(function(r){return r.type==='checkbox';});
+    var others=rows.filter(function(r){return r.type!=='checkbox';});
+    var body='';
+    if(others.length)body+='<div class=__Q__grid2__Q__>'+others.map(rf).join('')+'</div>';
+    if(cbs.length)body+='<div class=__Q__covgrid__Q__>'+cbs.map(rf).join('')+'</div>';
+    return '<div class=__Q__sec__Q__><div class=__Q__sec-hdr__Q__><div class=__Q__sec-bar__Q__></div><div class=__Q__sec-lbl__Q__>'+sec.title+'</div></div>'+body+'</div>';
   }
 
-  const logoHtml=_tgLogoData?'<img src="'+_tgLogoData+'" style="max-height:38px;max-width:280px;object-fit:contain">':'';
+  var bodyHtml=sections.map(rs).join('');
 
-  return '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>'+esc(title)+'</title>'
-    +'<style>'
-    +'@import url(\'https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap\');'
-    +'*{box-sizing:border-box;margin:0;padding:0}'
-    +'body{font-family:\'Outfit\',Arial,sans-serif;background:white;color:#1E2E3D;padding:12px 16px 8px;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
-    +'@page{size:letter portrait;margin:7mm}'
-    +'@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}'
-    +'</style></head><body>'
-    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding-bottom:7px;border-bottom:3px solid '+accent+'">'
-    +(logoHtml?'<div style="display:flex;align-items:center;gap:12px">'+logoHtml+'</div>':'')
-    +'<div style="'+(logoHtml?'text-align:right':'')+'"><div style="font-size:'+(logoHtml?'13':'15')+'px;font-weight:900;color:'+header+'">'+esc(title)+'</div><div style="font-size:9px;color:#5A6B7B;margin-top:2px">'+esc(subtitle)+'</div></div></div>'
-    +'<div style="display:flex;justify-content:space-between;font-size:7.5px;color:#8A94A8;margin-bottom:8px">'
-    +'<div>'+stamp+'</div>'
-    +'<div style="text-align:right"><span style="font-weight:700;color:#1E2E3D">Return to:</span> HUB CertSecure &nbsp;&middot;&nbsp; Client.CertSecure@hubinternational.com</div>'
-    +'</div>'
-    +sections.map(rs).join('')
-    +'<div style="margin-top:8px;padding-top:6px;border-top:2px solid '+accent+';display:flex;justify-content:space-between;align-items:center">'
-    +'<div style="font-size:7px;color:#B0B8C8">&#x1F512; Confidential &mdash; '+esc(clientName)+' &middot; HUB CertSecure &nbsp; * Required field</div>'
-    +'<button onclick="sendForm()" style="background:'+accent+';color:white;border:none;padding:6px 16px;border-radius:5px;font-size:11px;font-weight:700;font-family:Arial,sans-serif;cursor:pointer">&#9993; Send Completed Form</button>'
-    +'</div>'
-    +'<script>'
-    +'function chkOnce(el,g){if(el.checked){document.querySelectorAll(\'input[data-group="\'+g+\'"]\').forEach(function(c){if(c!==el)c.checked=false;})}}'
-    +'function sendForm(){'
-    +'var lines=[],groups={},cn="'+esc(clientName).replace(/"/g,'\\"')+'";'
-    +'document.querySelectorAll(\'input[data-label]:not([data-group]):not([type="checkbox"]),textarea[data-label]\').forEach(function(el){var v=(el.value||"").trim();if(v)lines.push(el.getAttribute("data-label")+": "+v);});'
-    +'document.querySelectorAll(\'input[type="checkbox"][data-label]:not([data-group])\').forEach(function(el){if(el.checked)lines.push(el.getAttribute("data-label")+": Yes");});'
-    +'document.querySelectorAll(\'input[type="checkbox"][data-group]\').forEach(function(el){if(el.checked){var g=el.getAttribute("data-group");if(!groups[g])groups[g]={label:el.getAttribute("data-label"),vals:[]};groups[g].vals.push(el.getAttribute("data-value"));}});'
-    +'Object.values(groups).forEach(function(g){lines.push(g.label+": "+g.vals.join(", "));});'
-    +'if(!lines.length){alert("Please fill in at least one field before sending.");return;}'
-    +'var sub=encodeURIComponent("Third-Party Request \u2014 "+cn);'
-    +'var bod=encodeURIComponent("CLIENT: "+cn+"\\n\\n"+lines.join("\\n")+"\\n\\n---\\nSubmitted via HUB CertSecure");'
-    +'window.location.href="mailto:Client.CertSecure@hubinternational.com?subject="+sub+"&body="+bod;'
-    +'}'
-    +'<\/script>'
-    +'</body></html>';
+  var css=[
+    '*{box-sizing:border-box;margin:0;padding:0}',
+    "body{font-family:'Outfit',Arial,sans-serif;background:#EEF2F7;color:#1E2E3D;min-height:100vh}",
+    ".wrap{max-width:760px;margin:0 auto;padding:32px 16px 64px}",
+    '.instr{background:linear-gradient(135deg,'+accent+','+header+');color:white;border-radius:12px;padding:20px 24px;margin-bottom:24px;display:flex;gap:16px;align-items:flex-start}',
+    '.instr-icon{font-size:28px;flex-shrink:0}',
+    '.instr h2{font-size:14px;font-weight:800;margin-bottom:6px}',
+    '.instr ol{font-size:12px;opacity:.9;line-height:2;padding-left:18px}',
+    '.card{background:white;border-radius:14px;box-shadow:0 4px 24px rgba(0,0,0,.08);overflow:hidden}',
+    '.card-hdr{padding:20px 24px 18px;border-bottom:3px solid '+accent+';display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}',
+    '.hdr-left{display:flex;align-items:center;gap:14px}',
+    '.form-title{font-size:16px;font-weight:900;color:'+header+';line-height:1.2}',
+    '.form-sub{font-size:10px;color:#7A8A9B;margin-top:3px}',
+    '.hdr-right{font-size:8px;color:#9AAABB;text-align:right;line-height:1.9}',
+    '.hdr-right strong{color:#3A4A5B}',
+    '.card-body{padding:22px 24px}',
+    '.sec{margin-bottom:22px}',
+    '.sec-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px}',
+    '.sec-bar{width:3px;height:16px;background:'+accent+';border-radius:2px;flex-shrink:0}',
+    '.sec-lbl{font-size:8.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:'+header+'}',
+    '.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}',
+    '.field{margin-bottom:14px}.field.full{grid-column:1/-1}',
+    '.flabel{font-size:8px;font-weight:700;color:'+header+';letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}',
+    '.req{color:'+accent+'}',
+    '.finput{width:100%;padding:9px 12px;border:1.5px solid #DDE5EE;border-radius:8px;font-size:12px;font-family:inherit;color:#1E2E3D;background:#FAFBFD;outline:none;transition:border-color .15s,box-shadow .15s}',
+    '.finput:focus{border-color:'+accent+';box-shadow:0 0 0 3px '+accent+'26}',
+    'textarea.finput{min-height:64px;resize:vertical}',
+    '.opts{display:flex;flex-wrap:wrap;gap:8px;padding:2px 0}',
+    ".chip{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1.5px solid #DDE5EE;border-radius:20px;font-size:11.5px;cursor:pointer;transition:all .15s;background:white;font-family:inherit;user-select:none}",
+    '.chip:hover{border-color:'+accent+';color:'+accent+'}',
+    '.chip.on,.chip input:checked~*{font-weight:600}',
+    '.chip input{display:none}',
+    '.chip:has(input:checked){background:'+accent+';border-color:'+accent+';color:white}',
+    '.covgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}',
+    '.cov{display:flex;align-items:center;gap:10px;padding:10px 13px;border:1.5px solid #DDE5EE;border-radius:9px;cursor:pointer;font-size:12px;transition:all .15s;background:white;user-select:none}',
+    '.cov:hover{border-color:'+accent+'}',
+    '.cov.on{border-color:'+accent+';background:#F0F5FF}',
+    '.cov input{width:14px;height:14px;flex-shrink:0;accent-color:'+accent+'}',
+    '.card-ftr{padding:16px 24px;background:#F8FAFC;border-top:1px solid #EEF2F7;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}',
+    '.ftr-note{font-size:8px;color:#B0BCC8}',
+    '.send{background:'+accent+';color:white;border:none;padding:12px 28px;border-radius:9px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:8px;letter-spacing:.01em;transition:opacity .15s}',
+    '.send:hover{opacity:.88}',
+    '@media(max-width:560px){.grid2,.covgrid{grid-template-columns:1fr}.card-hdr{flex-direction:column;align-items:flex-start}}',
+    '@media print{body{background:white}.instr{display:none}.wrap{padding:0}.card{box-shadow:none;border-radius:0}@page{margin:10mm}}'
+  ].join('\n');
+
+  var formJS=[
+    'function chkOnce(el,g){',
+    '  var all=document.querySelectorAll(\'[data-group="\'+g+\'"]\');',
+    '  all.forEach(function(c){c.closest(\'.chip\').classList.remove(\'on\');});',
+    '  if(el.checked){el.closest(\'.chip\').classList.add(\'on\');}',
+    '}',
+    'function sendForm(){',
+    '  var lines=[],groups={};',
+    '  var cn='+JSON.stringify(clientName)+';',
+    '  document.querySelectorAll(\'input[data-label]:not([data-group]):not([type="checkbox"]),textarea[data-label]\').forEach(function(el){',
+    '    var v=(el.value||"").trim();if(v)lines.push(el.getAttribute("data-label")+": "+v);',
+    '  });',
+    '  document.querySelectorAll(\'input[type="checkbox"][data-label]:not([data-group])\').forEach(function(el){',
+    '    if(el.checked)lines.push(el.getAttribute("data-label")+": Yes");',
+    '  });',
+    '  document.querySelectorAll(\'input[data-group]\').forEach(function(el){',
+    '    if(el.checked){var g=el.getAttribute("data-group");if(!groups[g])groups[g]={label:el.getAttribute("data-label"),vals:[]};groups[g].vals.push(el.getAttribute("data-value"));}',
+    '  });',
+    '  Object.values(groups).forEach(function(g){lines.push(g.label+": "+g.vals.join(", "));});',
+    '  if(!lines.length){alert("Please fill in at least one field before sending.");return;}',
+    '  var sub=encodeURIComponent("Third-Party Request \u2014 "+cn);',
+    '  var bod=encodeURIComponent("CLIENT: "+cn+"\\n\\n"+lines.join("\\n")+"\\n\\n---\\nSubmitted via HUB CertSecure");',
+    '  window.location.href="mailto:Client.CertSecure@hubinternational.com?subject="+sub+"&body="+bod;',
+    '}'
+  ].join('\n');
+
+  var raw= [
+    '<!DOCTYPE html><html><head>',
+    '<meta charset="UTF-8">',
+    '<meta name="viewport" content="width=device-width,initial-scale=1">',
+    '<title>'+esc(title)+'</title>',
+    '<link rel="preconnect" href="https://fonts.googleapis.com">',
+    '<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">',
+    '<style>'+css+'</style>',
+    '<'+'script>'+formJS+'<'+'/script>',
+    '</head><body><div class=__Q__wrap__Q__>',
+    '<div class=__Q__instr__Q__>',
+    '<div class=__Q__instr-icon__Q__>&#128203;</div>',
+    '<div><h2>How to complete this form</h2>',
+    '<ol>',
+    '<li>Fill in all required fields marked <strong style=__Q__color:white__Q__>*</strong></li>',
+    '<li>For dropdown fields, click the pill buttons to select an option</li>',
+    '<li>When done, click <strong style=__Q__color:white__Q__>Send Completed Form</strong> — your email app will open pre-filled and ready to send</li>',
+    '</ol></div></div>',
+    '<div class=__Q__card__Q__>',
+    '<div class=__Q__card-hdr__Q__>',
+    '<div class=__Q__hdr-left__Q__>'+logoHtml+'<div><div class=__Q__form-title__Q__>'+esc(title)+'</div><div class=__Q__form-sub__Q__>'+esc(subtitle)+'</div></div></div>',
+    '<div class=__Q__hdr-right__Q__><strong>Return completed form to:</strong><br>HUB CertSecure<br>Client.CertSecure@hubinternational.com<br>'+stamp+'</div>',
+    '</div>',
+    '<div class=__Q__card-body__Q__>'+bodyHtml+'</div>',
+    '<div class=__Q__card-ftr__Q__>',
+    '<div class=__Q__ftr-note__Q__>&#128274; Confidential &mdash; '+esc(clientName)+' &middot; HUB CertSecure &nbsp;&nbsp; * Required field</div>',
+    '<button class=__Q__send__Q__ onclick=__Q__sendForm()__Q__>&#9993;&nbsp; Send Completed Form</button>',
+    '</div>',
+    '</div>',
+    '</div></body></html>'
+  ].join('');
+
+  return raw.replace(/__Q__/g, '"');
 }
+
+
 
 // ══════════════════════════════════════════════════════════════
 //  CLIENT CONFIG — Logo upload + color extraction
