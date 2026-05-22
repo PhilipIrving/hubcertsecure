@@ -4672,7 +4672,7 @@ async function tgSelectClient(key){
     const accent=meta.accent_color||'#3872B8', header=meta.header_color||'#283847';
     document.getElementById('tg-accent-hex').value=accent; document.getElementById('tg-accent-picker').value=accent;
     document.getElementById('tg-header-hex').value=header; document.getElementById('tg-header-picker').value=header;
-    document.getElementById('tg-title').value=_tgClient.name+' \u2014 New Third-Party Request';
+    document.getElementById('tg-title').value=_tgClient.name+' — New Third-Party Request';
     document.getElementById('tg-subtitle').value='Complete all required fields (*) and return to your HUB account team';
     _tgLogoData=meta.logo_data||null;
     const lpw=document.getElementById('tg-logo-preview-wrap'),lp=document.getElementById('tg-logo-preview');
@@ -4864,7 +4864,7 @@ function tgAutoDetectColors(){
 
 function tgGenerate(){
   if(!_tgClient)return;
-  const title=document.getElementById('tg-title').value.trim()||(_tgClient.name+' \u2014 Third-Party Request');
+  const title=document.getElementById('tg-title').value.trim()||(_tgClient.name+' — Third-Party Request');
   const subtitle=document.getElementById('tg-subtitle').value.trim();
   const accent=document.getElementById('tg-accent-hex').value||'#3872B8';
   const header=document.getElementById('tg-header-hex').value||'#283847';
