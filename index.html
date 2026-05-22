@@ -4856,7 +4856,6 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     if(m)sectionRows[m.id].push(r);else sectionRows['custom'].push(r);
   });
 
-  // Use __Q__ as placeholder for " inside generated HTML strings
   var Q='"';
 
   function rf(f){
@@ -4870,8 +4869,9 @@ function tgBuildFormHTML(title,subtitle,accent,header){
       }).join('');
       return '<div class=__Q__field__Q__>'+lbl+'<div class=__Q__opts__Q__>'+chips+'</div></div>';
     }
+    // FIX: use <label> wrapper so clicking anywhere on the row toggles the checkbox — no double-click issue
     if(f.type==='checkbox'){
-      return '<div class=__Q__cov__Q__ onclick=__Q__this.querySelector(\'input\').click()__Q__><input type=__Q__checkbox__Q__ data-label=__Q__'+esc(f.label)+'__Q__ onchange=__Q__this.closest(\'.cov\').classList.toggle(\'on\',this.checked)__Q__><span>'+esc(f.label)+'</span></div>';
+      return '<label class=__Q__cov__Q__><input type=__Q__checkbox__Q__ data-label=__Q__'+esc(f.label)+'__Q__ onchange=__Q__this.closest(\'.cov\').classList.toggle(\'on\',this.checked)__Q__><span>'+esc(f.label)+'</span></label>';
     }
     if(f.type==='textarea'){
       return '<div class=__Q__field full__Q__>'+lbl+'<textarea class=__Q__finput__Q__ data-label=__Q__'+esc(f.label)+'__Q__></textarea></div>';
@@ -4919,16 +4919,17 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     '.finput:focus{border-color:'+accent+';box-shadow:0 0 0 3px '+accent+'26}',
     'textarea.finput{min-height:64px;resize:vertical}',
     '.opts{display:flex;flex-wrap:wrap;gap:8px;padding:2px 0}',
+    // Chip: all visual state driven by .on class (JS-managed) — no :has() dependency
     ".chip{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1.5px solid #DDE5EE;border-radius:20px;font-size:11.5px;cursor:pointer;transition:all .15s;background:white;font-family:inherit;user-select:none}",
-    '.chip:hover{border-color:'+accent+';color:'+accent+'}',
-    '.chip.on,.chip input:checked~*{font-weight:600}',
+    '.chip:hover{border-color:'+accent+'}',
+    '.chip.on{background:'+accent+';border-color:'+accent+';color:white;font-weight:600}',
     '.chip input{display:none}',
-    '.chip:has(input:checked){background:'+accent+';border-color:'+accent+';color:white}',
+    // Cov: use <label> so any click toggles — .on class driven by onchange
     '.covgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}',
     '.cov{display:flex;align-items:center;gap:10px;padding:10px 13px;border:1.5px solid #DDE5EE;border-radius:9px;cursor:pointer;font-size:12px;transition:all .15s;background:white;user-select:none}',
     '.cov:hover{border-color:'+accent+'}',
     '.cov.on{border-color:'+accent+';background:#F0F5FF}',
-    '.cov input{width:14px;height:14px;flex-shrink:0;accent-color:'+accent+'}',
+    '.cov input{width:14px;height:14px;flex-shrink:0;accent-color:'+accent+';cursor:pointer}',
     '.card-ftr{padding:16px 24px;background:#F8FAFC;border-top:1px solid #EEF2F7;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}',
     '.ftr-note{font-size:8px;color:#B0BCC8}',
     '.send{background:'+accent+';color:white;border:none;padding:12px 28px;border-radius:9px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:8px;letter-spacing:.01em;transition:opacity .15s}',
@@ -4937,11 +4938,17 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     '@media print{body{background:white}.instr{display:none}.wrap{padding:0}.card{box-shadow:none;border-radius:0}@page{margin:10mm}}'
   ].join('\n');
 
+  // FIX: chkOnce now also unchecks other inputs (not just removes CSS class)
+  // so both the .on class and the actual checkbox state stay in sync
   var formJS=[
     'function chkOnce(el,g){',
     '  var all=document.querySelectorAll(\'[data-group="\'+g+\'"]\');',
-    '  all.forEach(function(c){c.closest(\'.chip\').classList.remove(\'on\');});',
-    '  if(el.checked){el.closest(\'.chip\').classList.add(\'on\');}',
+    '  all.forEach(function(c){',
+    '    c.checked=false;',
+    '    c.closest(\'.chip\').classList.remove(\'on\');',
+    '  });',
+    '  el.checked=true;',
+    '  el.closest(\'.chip\').classList.add(\'on\');',
     '}',
     'function sendForm(){',
     '  var lines=[],groups={};',
@@ -4963,7 +4970,7 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     '}'
   ].join('\n');
 
-  var raw= [
+  var raw=[
     '<!DOCTYPE html><html><head>',
     '<meta charset="UTF-8">',
     '<meta name="viewport" content="width=device-width,initial-scale=1">',
@@ -4979,7 +4986,7 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     '<ol>',
     '<li>Fill in all required fields marked <strong style=__Q__color:white__Q__>*</strong></li>',
     '<li>For dropdown fields, click the pill buttons to select an option</li>',
-    '<li>When done, click <strong style=__Q__color:white__Q__>Send Completed Form</strong> — your email app will open pre-filled and ready to send</li>',
+    '<li>When done, click <strong style=__Q__color:white__Q__>Send Completed Form</strong> &mdash; your email app will open pre-filled and ready to send</li>',
     '</ol></div></div>',
     '<div class=__Q__card__Q__>',
     '<div class=__Q__card-hdr__Q__>',
@@ -4995,7 +5002,7 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     '</div></body></html>'
   ].join('');
 
-  return raw.replace(/__Q__/g, '"');
+  return raw.replace(/__Q__/g,'"');
 }
 
 
