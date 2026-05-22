@@ -4858,25 +4858,28 @@ function tgBuildFormHTML(title,subtitle,accent,header){
 
   var Q='"';
 
-  function rf(f){
+  // Address fields that get 3-col compact treatment
+  var addressCompact=['city','state','zip','suite'];
+
+  function rf(f,colHint){
     var req=f.required?' <span class=__Q__req__Q__>*</span>':'';
     var lbl='<div class=__Q__flabel__Q__>'+esc(f.label)+req+'</div>';
+    var colClass=colHint||'field';
     if(f.type==='dropdown'){
       var opts=(_tgOpts[f.optsKey]||[]).filter(function(o){return o&&o!=='-- Select --';});
       var gid='grp_'+f.key;
       var chips=opts.map(function(o){
         return '<label class=__Q__chip__Q__><input type=__Q__checkbox__Q__ data-group=__Q__'+gid+'__Q__ data-label=__Q__'+esc(f.label)+'__Q__ data-value=__Q__'+esc(o)+'__Q__ onchange=__Q__chkOnce(this,this.dataset.group)__Q__>'+esc(o)+'</label>';
       }).join('');
-      return '<div class=__Q__field__Q__>'+lbl+'<div class=__Q__opts__Q__>'+chips+'</div></div>';
+      return '<div class=__Q__'+colClass+'__Q__>'+lbl+'<div class=__Q__opts__Q__>'+chips+'</div></div>';
     }
-    // FIX: use <label> wrapper so clicking anywhere on the row toggles the checkbox — no double-click issue
     if(f.type==='checkbox'){
       return '<label class=__Q__cov__Q__><input type=__Q__checkbox__Q__ data-label=__Q__'+esc(f.label)+'__Q__ onchange=__Q__this.closest(\'.cov\').classList.toggle(\'on\',this.checked)__Q__><span>'+esc(f.label)+'</span></label>';
     }
     if(f.type==='textarea'){
-      return '<div class=__Q__field full__Q__>'+lbl+'<textarea class=__Q__finput__Q__ data-label=__Q__'+esc(f.label)+'__Q__></textarea></div>';
+      return '<div class=__Q__field span3__Q__>'+lbl+'<textarea class=__Q__finput__Q__ data-label=__Q__'+esc(f.label)+'__Q__></textarea></div>';
     }
-    return '<div class=__Q__field__Q__>'+lbl+'<input type=__Q__text__Q__ class=__Q__finput__Q__ data-label=__Q__'+esc(f.label)+'__Q__></div>';
+    return '<div class=__Q__'+colClass+'__Q__>'+lbl+'<input type=__Q__text__Q__ class=__Q__finput__Q__ data-label=__Q__'+esc(f.label)+'__Q__></div>';
   }
 
   function rs(sec){
@@ -4884,8 +4887,25 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     var cbs=rows.filter(function(r){return r.type==='checkbox';});
     var others=rows.filter(function(r){return r.type!=='checkbox';});
     var body='';
-    if(others.length)body+='<div class=__Q__grid2__Q__>'+others.map(rf).join('')+'</div>';
-    if(cbs.length)body+='<div class=__Q__covgrid__Q__>'+cbs.map(rf).join('')+'</div>';
+    if(others.length){
+      // Address section: street spans full width, then city/state/zip in 3-col
+      if(sec.id==='address'){
+        var street=others.filter(function(r){return r.key==='street';});
+        var rest=others.filter(function(r){return r.key!=='street';});
+        var streetHtml=street.map(function(r){return rf(r,'field span3');}).join('');
+        var restHtml=rest.map(function(r){
+          return rf(r, r.key==='zip'||r.key==='suite'?'field narrow':(r.key==='state'?'field narrow':'field'));
+        }).join('');
+        body+='<div class=__Q__grid3__Q__>'+streetHtml+restHtml+'</div>';
+      } else {
+        body+='<div class=__Q__grid3__Q__>'+others.map(function(r){
+          // notes, job_description go full width
+          var wide=r.key==='notes'||r.key==='job_description'||r.type==='textarea';
+          return rf(r, wide?'field span3':'field');
+        }).join('')+'</div>';
+      }
+    }
+    if(cbs.length)body+='<div class=__Q__covgrid__Q__>'+cbs.map(function(r){return rf(r);}).join('')+'</div>';
     return '<div class=__Q__sec__Q__><div class=__Q__sec-hdr__Q__><div class=__Q__sec-bar__Q__></div><div class=__Q__sec-lbl__Q__>'+sec.title+'</div></div>'+body+'</div>';
   }
 
@@ -4894,78 +4914,109 @@ function tgBuildFormHTML(title,subtitle,accent,header){
   var css=[
     '*{box-sizing:border-box;margin:0;padding:0}',
     "body{font-family:'Outfit',Arial,sans-serif;background:#EEF2F7;color:#1E2E3D;min-height:100vh}",
-    ".wrap{max-width:760px;margin:0 auto;padding:32px 16px 64px}",
-    '.instr{background:linear-gradient(135deg,'+accent+','+header+');color:white;border-radius:12px;padding:20px 24px;margin-bottom:24px;display:flex;gap:16px;align-items:flex-start}',
-    '.instr-icon{font-size:28px;flex-shrink:0}',
-    '.instr h2{font-size:14px;font-weight:800;margin-bottom:6px}',
-    '.instr ol{font-size:12px;opacity:.9;line-height:2;padding-left:18px}',
+    '.wrap{max-width:980px;margin:0 auto;padding:28px 20px 60px}',
+    '.instr{background:linear-gradient(135deg,'+accent+','+header+');color:white;border-radius:12px;padding:18px 24px;margin-bottom:22px;display:flex;gap:16px;align-items:flex-start}',
+    '.instr-icon{font-size:26px;flex-shrink:0}',
+    '.instr h2{font-size:13px;font-weight:800;margin-bottom:5px}',
+    '.instr ol{font-size:11.5px;opacity:.92;line-height:1.9;padding-left:18px}',
     '.card{background:white;border-radius:14px;box-shadow:0 4px 24px rgba(0,0,0,.08);overflow:hidden}',
-    '.card-hdr{padding:20px 24px 18px;border-bottom:3px solid '+accent+';display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}',
+    '.card-hdr{padding:18px 24px 16px;border-bottom:3px solid '+accent+';display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}',
     '.hdr-left{display:flex;align-items:center;gap:14px}',
-    '.form-title{font-size:16px;font-weight:900;color:'+header+';line-height:1.2}',
-    '.form-sub{font-size:10px;color:#7A8A9B;margin-top:3px}',
+    '.form-title{font-size:15px;font-weight:900;color:'+header+';line-height:1.2}',
+    '.form-sub{font-size:9.5px;color:#7A8A9B;margin-top:3px}',
     '.hdr-right{font-size:8px;color:#9AAABB;text-align:right;line-height:1.9}',
     '.hdr-right strong{color:#3A4A5B}',
-    '.card-body{padding:22px 24px}',
-    '.sec{margin-bottom:22px}',
-    '.sec-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px}',
-    '.sec-bar{width:3px;height:16px;background:'+accent+';border-radius:2px;flex-shrink:0}',
-    '.sec-lbl{font-size:8.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:'+header+'}',
-    '.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}',
-    '.field{margin-bottom:14px}.field.full{grid-column:1/-1}',
-    '.flabel{font-size:8px;font-weight:700;color:'+header+';letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}',
+    '.card-body{padding:20px 24px}',
+    '.sec{margin-bottom:18px}',
+    '.sec-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px}',
+    '.sec-bar{width:3px;height:14px;background:'+accent+';border-radius:2px;flex-shrink:0}',
+    '.sec-lbl{font-size:8px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:'+header+'}',
+    // 3-col grid — the main layout engine
+    '.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 16px}',
+    '.field{margin-bottom:12px}',
+    '.field.span3{grid-column:1/-1}',   // full width
+    '.field.narrow{max-width:160px}',   // zip, state
+    '.flabel{font-size:7.5px;font-weight:700;color:'+header+';letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}',
     '.req{color:'+accent+'}',
-    '.finput{width:100%;padding:9px 12px;border:1.5px solid #DDE5EE;border-radius:8px;font-size:12px;font-family:inherit;color:#1E2E3D;background:#FAFBFD;outline:none;transition:border-color .15s,box-shadow .15s}',
-    '.finput:focus{border-color:'+accent+';box-shadow:0 0 0 3px '+accent+'26}',
-    'textarea.finput{min-height:64px;resize:vertical}',
-    '.opts{display:flex;flex-wrap:wrap;gap:8px;padding:2px 0}',
-    // Chip: all visual state driven by .on class (JS-managed) — no :has() dependency
-    ".chip{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1.5px solid #DDE5EE;border-radius:20px;font-size:11.5px;cursor:pointer;transition:all .15s;background:white;font-family:inherit;user-select:none}",
+    '.finput{width:100%;padding:8px 11px;border:1.5px solid #DDE5EE;border-radius:7px;font-size:12px;font-family:inherit;color:#1E2E3D;background:#FAFBFD;outline:none;transition:border-color .15s,box-shadow .15s}',
+    '.finput:focus{border-color:'+accent+';box-shadow:0 0 0 3px '+accent+'22}',
+    'textarea.finput{min-height:56px;resize:vertical}',
+    '.opts{display:flex;flex-wrap:wrap;gap:7px;padding:2px 0}',
+    ".chip{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border:1.5px solid #DDE5EE;border-radius:20px;font-size:11px;cursor:pointer;transition:all .15s;background:white;font-family:inherit;user-select:none}",
     '.chip:hover{border-color:'+accent+'}',
     '.chip.on{background:'+accent+';border-color:'+accent+';color:white;font-weight:600}',
     '.chip input{display:none}',
-    // Cov: use <label> so any click toggles — .on class driven by onchange
-    '.covgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}',
-    '.cov{display:flex;align-items:center;gap:10px;padding:10px 13px;border:1.5px solid #DDE5EE;border-radius:9px;cursor:pointer;font-size:12px;transition:all .15s;background:white;user-select:none}',
+    '.covgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:4px}',
+    '.cov{display:flex;align-items:center;gap:9px;padding:9px 12px;border:1.5px solid #DDE5EE;border-radius:8px;cursor:pointer;font-size:11.5px;transition:all .15s;background:white;user-select:none}',
     '.cov:hover{border-color:'+accent+'}',
     '.cov.on{border-color:'+accent+';background:#F0F5FF}',
-    '.cov input{width:14px;height:14px;flex-shrink:0;accent-color:'+accent+';cursor:pointer}',
-    '.card-ftr{padding:16px 24px;background:#F8FAFC;border-top:1px solid #EEF2F7;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}',
+    '.cov input{width:13px;height:13px;flex-shrink:0;accent-color:'+accent+';cursor:pointer}',
+    '.card-ftr{padding:14px 24px;background:#F8FAFC;border-top:1px solid #EEF2F7;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}',
     '.ftr-note{font-size:8px;color:#B0BCC8}',
-    '.send{background:'+accent+';color:white;border:none;padding:12px 28px;border-radius:9px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:8px;letter-spacing:.01em;transition:opacity .15s}',
+    '.send{background:'+accent+';color:white;border:none;padding:11px 26px;border-radius:8px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:opacity .15s}',
     '.send:hover{opacity:.88}',
-    '@media(max-width:560px){.grid2,.covgrid{grid-template-columns:1fr}.card-hdr{flex-direction:column;align-items:flex-start}}',
+    '@media(max-width:700px){.grid3,.covgrid{grid-template-columns:1fr 1fr}.field.span3{grid-column:1/-1}}',
+    '@media(max-width:480px){.grid3,.covgrid{grid-template-columns:1fr}}',
     '@media print{body{background:white}.instr{display:none}.wrap{padding:0}.card{box-shadow:none;border-radius:0}@page{margin:10mm}}'
   ].join('\n');
 
-  // FIX: chkOnce now also unchecks other inputs (not just removes CSS class)
-  // so both the .on class and the actual checkbox state stay in sync
+  // Improved email body — grouped by section with clear labels
   var formJS=[
     'function chkOnce(el,g){',
     '  var all=document.querySelectorAll(\'[data-group="\'+g+\'"]\');',
-    '  all.forEach(function(c){',
-    '    c.checked=false;',
-    '    c.closest(\'.chip\').classList.remove(\'on\');',
-    '  });',
+    '  all.forEach(function(c){c.checked=false;c.closest(\'.chip\').classList.remove(\'on\');});',
     '  el.checked=true;',
     '  el.closest(\'.chip\').classList.add(\'on\');',
     '}',
     'function sendForm(){',
-    '  var lines=[],groups={};',
-    '  var cn='+JSON.stringify(clientName)+';',
+    '  var sections={};',
+    '  var sectionOrder=[];',
+    '  // Collect text/textarea fields',
     '  document.querySelectorAll(\'input[data-label]:not([data-group]):not([type="checkbox"]),textarea[data-label]\').forEach(function(el){',
-    '    var v=(el.value||"").trim();if(v)lines.push(el.getAttribute("data-label")+": "+v);',
+    '    var v=(el.value||"").trim();',
+    '    if(!v)return;',
+    '    var sec=el.closest(\'.sec\');',
+    '    var secName=sec?sec.querySelector(\'.sec-lbl\').textContent:"OTHER";',
+    '    if(!sections[secName]){sections[secName]=[];sectionOrder.push(secName);}',
+    '    sections[secName].push(el.getAttribute("data-label")+": "+v);',
     '  });',
+    '  // Collect regular checkboxes',
     '  document.querySelectorAll(\'input[type="checkbox"][data-label]:not([data-group])\').forEach(function(el){',
-    '    if(el.checked)lines.push(el.getAttribute("data-label")+": Yes");',
+    '    if(!el.checked)return;',
+    '    var sec=el.closest(\'.sec\');',
+    '    var secName=sec?sec.querySelector(\'.sec-lbl\').textContent:"OTHER";',
+    '    if(!sections[secName]){sections[secName]=[];sectionOrder.push(secName);}',
+    '    sections[secName].push(el.getAttribute("data-label")+": Yes");',
     '  });',
+    '  // Collect chip groups',
+    '  var groups={};',
     '  document.querySelectorAll(\'input[data-group]\').forEach(function(el){',
-    '    if(el.checked){var g=el.getAttribute("data-group");if(!groups[g])groups[g]={label:el.getAttribute("data-label"),vals:[]};groups[g].vals.push(el.getAttribute("data-value"));}',
+    '    if(!el.checked)return;',
+    '    var g=el.getAttribute("data-group");',
+    '    if(!groups[g])groups[g]={label:el.getAttribute("data-label"),vals:[],sec:el.closest(\'.sec\')};',
+    '    groups[g].vals.push(el.getAttribute("data-value"));',
     '  });',
-    '  Object.values(groups).forEach(function(g){lines.push(g.label+": "+g.vals.join(", "));});',
-    '  if(!lines.length){alert("Please fill in at least one field before sending.");return;}',
+    '  Object.values(groups).forEach(function(g){',
+    '    var secName=g.sec?g.sec.querySelector(\'.sec-lbl\').textContent:"OTHER";',
+    '    if(!sections[secName]){sections[secName]=[];sectionOrder.push(secName);}',
+    '    sections[secName].push(g.label+": "+g.vals.join(", "));',
+    '  });',
+    '  var totalFields=Object.values(sections).reduce(function(n,a){return n+a.length;},0);',
+    '  if(!totalFields){alert("Please fill in at least one field before sending.");return;}',
+    '  var cn='+JSON.stringify(clientName)+';',
+    '  var divider="----------------------------------------";',
+    '  var lines=["CLIENT: "+cn,"Submitted: "+new Date().toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}),""];',
+    '  sectionOrder.forEach(function(name){',
+    '    lines.push(divider);',
+    '    lines.push(name);',
+    '    lines.push(divider);',
+    '    sections[name].forEach(function(l){lines.push("  "+l);});',
+    '    lines.push("");',
+    '  });',
+    '  lines.push(divider);',
+    '  lines.push("Submitted via HUB CertSecure Template");',
     '  var sub=encodeURIComponent("Third-Party Request \u2014 "+cn);',
-    '  var bod=encodeURIComponent("CLIENT: "+cn+"\\n\\n"+lines.join("\\n")+"\\n\\n---\\nSubmitted via HUB CertSecure");',
+    '  var bod=encodeURIComponent(lines.join("\\n"));',
     '  window.location.href="mailto:Client.CertSecure@hubinternational.com?subject="+sub+"&body="+bod;',
     '}'
   ].join('\n');
@@ -4986,7 +5037,7 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     '<ol>',
     '<li>Fill in all required fields marked <strong style=__Q__color:white__Q__>*</strong></li>',
     '<li>For dropdown fields, click the pill buttons to select an option</li>',
-    '<li>When done, click <strong style=__Q__color:white__Q__>Send Completed Form</strong> &mdash; your email app will open pre-filled and ready to send</li>',
+    '<li>Click <strong style=__Q__color:white__Q__>Send Completed Form</strong> when done &mdash; your email app will open with everything pre-filled, just click Send</li>',
     '</ol></div></div>',
     '<div class=__Q__card__Q__>',
     '<div class=__Q__card-hdr__Q__>',
