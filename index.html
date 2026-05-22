@@ -176,6 +176,7 @@
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
+    #tab-template,#tab-clients{width:100%;min-width:0;box-sizing:border-box;}
     #tab-template{width:100%;min-width:0;box-sizing:border-box;}
     /* bg overrides removed v0.93 — using var(--bg) */
     /* Breadcrumb bar */
@@ -210,7 +211,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.21</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.22</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -410,29 +411,12 @@
   <!-- ═══ SIDEBAR ═══ -->
   <nav class="sidebar" id="app-sidebar">
     <div class="sidebar-nav" style="padding-top:12px">
-      <!-- ── Report Generator Section ── -->
-      <button class="sb-section open" id="sb-sec-reports" onclick="toggleSection('reports')">
-        <span class="sb-ic">&#128196;</span> Report Generator
-        <span class="sb-arrow">&#9654;</span>
-      </button>
-      <div class="sb-section-content open" id="sb-sec-reports-content">
-        <button class="sb-item active" id="snav-generate" onclick="sidebarNav('generate')">
-          <span class="sb-ic">&#128202;</span> Generate Reports
-        </button>
-        <div style="padding:4px 8px 6px;display:flex;gap:5px">
-          <button class="sb-item" id="refresh-btn" onclick="triggerRefresh()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center">&#8635; Refresh</button>
-          <button class="sb-item" id="rg-diag-btn" onclick="runDataDiagnostic()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" title="Check Data">&#128269; Check</button>
-        </div>
-      </div>
-      <!-- ── Monday.com Section ── -->
+      <!-- Monday.com Generator -->
       <button class="sb-section" id="sb-sec-monday" onclick="toggleSection('monday')">
-        <span class="sb-ic">&#128203;</span> Monday.com Generator
+        <span class="sb-ic">&#128197;</span> Monday.com Generator
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content" id="sb-sec-monday-content">
-        <button class="sb-item" id="snav-m-clients" onclick="sidebarNav('m-clients')">
-          <span class="sb-ic">&#128101;</span> Client Panel
-        </button>
         <button class="sb-item active" id="snav-m-setup" onclick="sidebarNav('m-setup')">
           <span class="sb-ic">&#127959;</span> Workspace Setup
         </button>
@@ -440,7 +424,21 @@
           <span class="sb-ic">&#9881;&#65039;</span> Configure
         </button>
       </div>
-      <!-- ── Template Generator Section ── -->
+      <!-- Report Generator -->
+      <button class="sb-section" id="sb-sec-reports" onclick="toggleSection('reports')">
+        <span class="sb-ic">&#128196;</span> Report Generator
+        <span class="sb-arrow">&#9654;</span>
+      </button>
+      <div class="sb-section-content" id="sb-sec-reports-content">
+        <button class="sb-item" id="snav-generate" onclick="sidebarNav('generate')">
+          <span class="sb-ic">&#128202;</span> Generate Reports
+        </button>
+        <div style="padding:4px 8px 6px;display:flex;gap:5px">
+          <button class="sb-item" id="refresh-btn" onclick="triggerRefresh()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center">&#8635; Refresh</button>
+          <button class="sb-item" id="rg-diag-btn" onclick="runDataDiagnostic()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" title="Check Data">&#128269; Check</button>
+        </div>
+      </div>
+      <!-- Template Generator -->
       <button class="sb-section" id="sb-sec-template" onclick="toggleSection('template')">
         <span class="sb-ic">&#128462;</span> Template Generator
         <span class="sb-arrow">&#9654;</span>
@@ -450,6 +448,12 @@
           <span class="sb-ic">&#9998;</span> Build Template
         </button>
       </div>
+      <!-- Client Manager (bottom) -->
+      <div style="margin-top:8px;border-top:1px solid rgba(255,255,255,.12);padding-top:8px">
+        <button class="sb-section" id="sb-sec-clients" onclick="sidebarNav('clients')" style="margin-bottom:0">
+          <span class="sb-ic">&#128101;</span> Client Manager
+        </button>
+      </div>      </div>
     </div>
     <div class="sidebar-footer">
       <!-- Recent activity log (compact) -->
@@ -541,8 +545,7 @@
 
     <!-- SUB-TABS hidden — navigation via sidebar -->
     <div style="display:none">
-      <button class="tab-btn" id="mtab-btn-clients" onclick="switchMondayTab('clients')">&#128101; Client Panel</button>
-      <button class="tab-btn active" id="mtab-btn-setup" onclick="switchMondayTab('setup')">&#127959; Workspace Setup</button>
+        <button class="tab-btn active" id="mtab-btn-setup" onclick="switchMondayTab('setup')">&#127959; Workspace Setup</button>
       <button class="tab-btn" id="mtab-btn-configure" onclick="switchMondayTab('configure')">&#9881;&#65039; Configure</button>
     </div>
 
@@ -831,8 +834,7 @@
 
       <div class="action-bar" style="margin-top:10px">
         <button class="btn btn-secondary" onclick="tgGoStep(1)">&#8592; Back</button>
-        <button class="btn btn-primary" id="tg-gen-btn" onclick="tgGenerate()">&#11015; Download Form</button>
-        <button class="btn btn-secondary" onclick="tgGeneratePDF()" style="font-size:12px">&#128462; Print / PDF</button>
+        <button class="btn btn-primary" id="tg-gen-btn" onclick="tgGenerate()">&#128462; Generate Template</button>
       </div>
     </div>
   </div>
@@ -886,13 +888,40 @@
       <div style="display:flex;gap:10px;justify-content:space-between;margin-top:20px;align-items:center"><div><button id="ce-delete-btn" class="btn" style="background:#FDF0EE;color:var(--red);border-color:#F5CFC9;display:none" onclick="deleteClient()">&#128465; Delete Client</button></div><div style="display:flex;gap:10px"><button class="btn btn-secondary" onclick="closeClientModal()">Cancel</button><button class="btn btn-primary" id="ce-save-btn" onclick="saveClientEdit()">Save Changes</button></div></div>
     </div>
   </div>
+  <div id="tab-clients" style="display:none" class="step-panel">
+    <div class="page-hdr"><div class="page-title">Client Manager</div><div class="page-sub">Manage clients, logos and branding — shared across all generators</div></div>
+    <div id="tab-clients-inner" style="display:block;width:100%">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <div><div style="font-size:16px;font-weight:800;color:var(--navy)">Client Manager</div><div style="font-size:12px;color:var(--muted)">Manage clients, logos and branding — shared across all generators</div></div>
+        <button class="btn btn-primary" onclick="openAddClient()" style="white-space:nowrap">+ Add Client</button>
+      </div>
+      <div style="display:grid;grid-template-columns:250px 1fr;min-height:520px;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--white)">
+        <!-- LEFT: client list -->
+        <div style="border-right:1px solid var(--border);display:flex;flex-direction:column">
+          <div style="padding:10px 12px;border-bottom:1px solid var(--border);background:var(--blue-light)">
+            <input type="text" id="cp-search" placeholder="&#128269; Search clients..." oninput="cpRenderList()" style="width:100%;font-size:12px;padding:6px 10px;border:1px solid var(--border);border-radius:6px;background:var(--white)">
+          </div>
+          <div id="cp-list" style="overflow-y:auto;flex:1;padding:6px"></div>
+        </div>
+        <!-- RIGHT: editor -->
+        <div id="cp-editor" style="overflow-y:auto;padding:20px;background:#FAFBFC">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--muted);gap:10px;padding:60px 0">
+            <div style="font-size:32px">&#128101;</div>
+            <div style="font-size:13px;font-weight:600">Select a client to edit</div>
+            <div style="font-size:12px;text-align:center;max-width:220px">Click any client on the left to view and edit all their information</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </main>
   </div><!-- /content-wrap -->
 <div class="toast" id="toast"></div>
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.21</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.22</div>
 
 <script>
 // ══════════════════════════════════════════════════════════════
@@ -1995,9 +2024,9 @@ async function saveClientsToConfig(updatedClients) {
   await attemptSave(1);
 }
 function switchTab(tab) {
-  ['reports','monday','template'].forEach(t => {
+  ['reports','monday','template','clients'].forEach(t => {
     const el = document.getElementById('tab-' + t); if (!el) return;
-    el.style.display = t === tab ? (t === 'template' ? 'block' : '') : 'none';
+    el.style.display = t === tab ? 'block' : 'none';
     const btn = document.getElementById('tab-btn-' + t); if (btn) btn.classList.toggle('active', t === tab);
   });
   if (tab === 'monday') { if (typeof mondayTabActivated === 'function') mondayTabActivated(); }
@@ -2038,7 +2067,7 @@ function sidebarNav(dest) {
   // Update breadcrumb
   const bcMap = {
     'generate':    ['Report Generator','Generate Reports'],
-    'm-clients':   ['Monday.com Generator','Client Panel'],
+    'clients':     ['Client Manager','Manage Clients'],
     'm-setup':     ['Monday.com Generator','Workspace Setup'],
     'm-configure': ['Monday.com Generator','Configure'],
     'tg-build':    ['Template Generator','Build Template'],
@@ -2048,7 +2077,7 @@ function sidebarNav(dest) {
   const bcP = document.getElementById('bc-page');    if (bcP) bcP.textContent = page;
   // Route
   if (dest === 'generate')    { switchTab('reports'); switchRGTab('generate'); }
-  else if (dest === 'm-clients')   { switchTab('monday'); switchMondayTab('clients'); }
+  else if (dest === 'clients')      { switchTab('clients'); loadAndRenderConfig(); }
   else if (dest === 'm-setup')     { switchTab('monday'); switchMondayTab('setup'); }
   else if (dest === 'm-configure') { switchTab('monday'); switchMondayTab('configure'); }
   else if (dest === 'tg-build')    { switchTab('template'); tgRenderGrid(); }
@@ -3428,7 +3457,7 @@ function mondayTabActivated() {
 
 // ── SUB-TAB NAVIGATION ──
 function switchMondayTab(tab) {
-  ['setup','configure','activity','clients'].forEach(t => {
+  ['setup','configure','activity'].forEach(t => {
     const el  = document.getElementById('mtab-' + t);
     const btn = document.getElementById('mtab-btn-' + t);
     if (el)  el.style.display  = t===tab ? '' : 'none';
@@ -4596,7 +4625,7 @@ async function wsImportClients() {
 
 <script>
 // ══════════════════════════════════════════════════════════════
-//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.21
+//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.22
 // ══════════════════════════════════════════════════════════════
 
 let _tgClient = null, _tgLogoData = null, _tgFormRows = [];
@@ -4655,7 +4684,7 @@ function tgRenderGrid(){
     grid.innerHTML=clients.filter(c=>c.structure===struct).map(c=>{
       const pc=(c.platform==='trustlayer')?'plat-tl':'plat-ev';
       const sn=c.key.replace(/'/g,"\\'").replace(/&/g,'\\x26');
-      return '<div class="client-card '+pc+'" onclick="tgSelectClient(\''+sn+'\')">'+'<div class="client-name"><span class="platform-badge '+(c.platform==='trustlayer'?'tl">TL':'evident">EV')+'</span> '+c.name+'</div>'+'<span class="client-badge '+STRUCT[struct].badgeClass+'">'+STRUCT[struct].label+'</span></div>';
+      return '<div class="client-card '+pc+'" onclick="tgSelectClient(\''+sn+'\')"><div class="client-name"><span class="platform-badge '+(c.platform==='trustlayer'?'tl">TL':'evident">EV')+'</span> '+c.name+'</div><span class="client-badge '+STRUCT[struct].badgeClass+'">'+STRUCT[struct].label+'</span></div>';
     }).join('');
   });
 }
@@ -4677,9 +4706,9 @@ async function tgSelectClient(key){
     _tgLogoData=meta.logo_data||null;
     const lpw=document.getElementById('tg-logo-preview-wrap'),lp=document.getElementById('tg-logo-preview');
     if(_tgLogoData&&lp){lp.src=_tgLogoData;lpw.style.display='';}else if(lpw){lpw.style.display='none';}
-    const adb=document.getElementById('tg-autodetect-btn'); if(adb)adb.style.display=_tgLogoData?'':'none';
-    if(meta.entity_types)_tgOpts.entity_types=meta.entity_types; else _tgOpts.entity_types=['-- Select --','Vendor','Contractor','Subtenant','Other'];
-    if(meta.property_locations)_tgOpts.property_locations=meta.property_locations; else _tgOpts.property_locations=['-- Select --','Blanket','Office','Retail'];
+    const adb=document.getElementById('tg-autodetect-btn');if(adb)adb.style.display=_tgLogoData?'':'none';
+    if(meta.entity_types)_tgOpts.entity_types=meta.entity_types;else _tgOpts.entity_types=['-- Select --','Vendor','Contractor','Subtenant','Other'];
+    if(meta.property_locations)_tgOpts.property_locations=meta.property_locations;else _tgOpts.property_locations=['-- Select --','Blanket','Office','Retail'];
     tgGoStep(2);
     document.getElementById('tg-form-builder').style.display='none';
     document.getElementById('tg-loading').style.display='';
@@ -4699,7 +4728,7 @@ async function tgSelectClient(key){
 }
 
 async function tgLoadDataFields(key,meta){
-  const isTL=isTLClient(key), coverageFields=[], customFields=[];
+  const isTL=isTLClient(key),coverageFields=[],customFields=[];
   const rpn=(meta.rp_common_name||'').toLowerCase().replace(/[^a-z0-9]/g,'');
   const matchRow=r=>{const v=r.client||r.Client||'';if(v===key)return true;if(rpn&&v){const rv=v.toLowerCase().replace(/[^a-z0-9]/g,'');if(rv.includes(rpn)||rpn.includes(rv))return true;}return false;};
   document.getElementById('tg-loading-msg').textContent='Detecting non-standard coverages\u2026';
@@ -4718,13 +4747,13 @@ async function tgLoadDataFields(key,meta){
 }
 
 function tgRenderBuilder(){
-  const wrap=document.getElementById('tg-builder-rows'); if(!wrap)return;
+  const wrap=document.getElementById('tg-builder-rows');if(!wrap)return;
   const srcBg={standard:'var(--blue-light)',coverage:'#FFF8E6',custom:'#E6F5EF'};
   wrap.innerHTML=_tgFormRows.map((row,i)=>{
     const bg=row._hidden?'var(--bg)':(srcBg[row._type]||'var(--bg)');
     const srcPill=(row._type==='coverage'||row._type==='custom')?'<span style="font-size:9px;font-weight:700;color:'+(row._source==='TrustLayer'?'#EA580C':'#3872B8')+';background:'+(row._source==='TrustLayer'?'#FFF3E0':'var(--blue-light)')+';padding:1px 6px;border-radius:8px">'+(row._source||row._type)+'</span>':'';
     return '<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:7px;background:'+bg+';border:1px solid var(--border);margin-bottom:4px;opacity:'+(row._hidden?'0.45':'1')+'">'
-      +'<div style="display:flex;flex-direction:column;gap:1px"><button onclick="tgMoveRow('+i+',-1)" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:10px;line-height:1;padding:0">&#9650;</button><button onclick="tgMoveRow('+i+',+1)" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:10px;line-height:1;padding:0">&#9660;</button></div>'
+      +'<div style="display:flex;flex-direction:column;gap:1px"><button onclick="tgMoveRow('+i+',-1)" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:10px;line-height:1;padding:0">\u25b2</button><button onclick="tgMoveRow('+i+',+1)" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:10px;line-height:1;padding:0">\u25bc</button></div>'
       +'<input type="checkbox" '+(row._hidden?'':'checked')+' onchange="tgRowToggle('+i+',this.checked)" style="accent-color:var(--blue);flex-shrink:0">'
       +'<span contenteditable="true" spellcheck="false" style="flex:1;font-size:12px;font-weight:600;color:var(--text);outline:none;min-width:80px;cursor:text" onblur="tgRowRename('+i+',this.textContent.trim())" onkeydown="if(event.key===\'Enter\'){event.preventDefault();this.blur()}">'+esc(row.label)+'</span>'
       +'<select onchange="tgRowType('+i+',this.value)" style="font-size:11px;padding:3px 6px;border:1px solid var(--border);border-radius:5px;background:var(--white)">'
@@ -4784,7 +4813,6 @@ function extractDominantColors(imgSrc,cb){
   img.onload=()=>{
     const canvas=document.createElement('canvas'),W=120,H=60;canvas.width=W;canvas.height=H;
     const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0,W,H);
-    // Sample LEFT HALF only — right half is CertSecure branding
     const halfW=Math.floor(W/2);
     let data;try{data=ctx.getImageData(0,0,halfW,H).data;}catch(e){cb(null);return;}
     const buckets={};
@@ -4792,7 +4820,7 @@ function extractDominantColors(imgSrc,cb){
       const r=data[i],g=data[i+1],b=data[i+2],a=data[i+3];
       if(a<128||r>230&&g>230&&b>230||r<25&&g<25&&b<25)continue;
       const max=Math.max(r,g,b),min=Math.min(r,g,b);
-      if(max-min<30)continue; // skip low-saturation/grey
+      if(max-min<30)continue;
       const key=[Math.round(r/20)*20,Math.round(g/20)*20,Math.round(b/20)*20].join(',');
       buckets[key]=(buckets[key]||0)+1;
     }
@@ -4825,109 +4853,170 @@ function tgGenerate(){
   const blob=new Blob([formHtml],{type:'text/html'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
-  a.href=url;a.download=(_tgClient.name+' - Third-Party Request - '+new Date().toISOString().split('T')[0]+'.html');
+  a.href=url;
+  a.download=_tgClient.name+' - Third-Party Request - '+new Date().toISOString().split('T')[0]+'.html';
   document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
   _notifs.unshift({msg:title,type:'success',time:new Date()});
   if(_notifs.length>15)_notifs.pop();renderNotifList();
   const drawer=document.getElementById('notif-drawer');if(drawer){drawer.style.display='';_unread=0;updateNotifBadge();}
-  toast('\u2713 Form downloaded \u2014 email the HTML file to your client to fill out and return','success');
-}
-function tgGeneratePDF(){
-  if(!_tgClient)return;
-  const title=document.getElementById('tg-title').value.trim()||(_tgClient.name+' \u2014 Third-Party Request');
-  const subtitle=document.getElementById('tg-subtitle').value.trim();
-  const accent=document.getElementById('tg-accent-hex').value||'#3872B8';
-  const header=document.getElementById('tg-header-hex').value||'#283847';
-  const win=window.open('','_blank');
-  if(win){win.document.write(tgBuildFormHTML(title,subtitle,accent,header));win.document.close();setTimeout(()=>win.print(),600);}
-  toast('Print dialog opened \u2014 save as PDF for a paper copy','success');
+  toast('\u2713 Form downloaded \u2014 send the .html file to your client to fill out and return','success');
 }
 
 function tgBuildFormHTML(title,subtitle,accent,header){
   const clientName=_tgClient?_tgClient.name:'';
   const stamp=new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+  const logoHtml=_tgLogoData?'<img src="'+_tgLogoData+'" style="max-height:42px;max-width:220px;object-fit:contain">':'';
 
+  // Map form rows to named sections
   const sections=[
-    {id:'entity',title:'ENTITY INFORMATION',keys:['entity_name','legal_name','dba_name','entity_id','entity_type']},
+    {id:'entity', title:'ENTITY INFORMATION', keys:['entity_name','legal_name','dba_name','entity_id','entity_type']},
     {id:'contact',title:'CONTACT INFORMATION',keys:['contact_name','phone','email']},
-    {id:'address',title:'ADDRESS',keys:['street','suite','city','state','zip']},
+    {id:'address',title:'ADDRESS',          keys:['street','suite','city','state','zip']},
     {id:'project',title:'PROJECT INFORMATION',keys:['project_name','project_number','contract_number','subcontract_number','job_description','insurance_type']},
     {id:'property',title:'PROPERTY & LOCATION',keys:['property_location','property_manager','tenant_type','rsf']},
     {id:'coverage',title:'ADDITIONAL COVERAGES',keys:[]},
-    {id:'custom',title:'ADDITIONAL INFORMATION',keys:[]},
-    {id:'notes',title:'NOTES',keys:['notes']},
+    {id:'custom', title:'ADDITIONAL INFORMATION',keys:[]},
+    {id:'notes',  title:'NOTES',             keys:['notes']},
   ];
-  const sectionRows={};sections.forEach(s=>{sectionRows[s.id]=[];});
+  const sR={};sections.forEach(s=>{sR[s.id]=[];});
   _tgFormRows.filter(r=>!r._hidden).forEach(r=>{
-    if(r._type==='coverage'){sectionRows['coverage'].push(r);return;}
-    if(r._type==='custom'){sectionRows['custom'].push(r);return;}
-    const m=sections.find(s=>s.keys.includes(r.key));
-    if(m)sectionRows[m.id].push(r);else sectionRows['custom'].push(r);
+    if(r._type==='coverage'){sR['coverage'].push(r);return;}
+    if(r._type==='custom'){sR['custom'].push(r);return;}
+    const sec=sections.find(s=>s.keys.includes(r.key));
+    if(sec)sR[sec.id].push(r);else sR['custom'].push(r);
   });
 
+  // Render a single field — returns HTML string
+  // Uses __DQ__ as placeholder for double-quote inside the outer single-quoted string
   function rf(f){
-    const req=f.required?' <span style="color:'+accent+'">*</span>':'';
-    const lbl='<div style="font-size:7px;font-weight:700;color:'+header+';letter-spacing:.05em;text-transform:uppercase;margin-bottom:2px">'+esc(f.label)+req+'</div>';
-    const inp='width:100%;padding:4px 6px;border:1px solid #C8D4DF;border-radius:3px;font-size:10.5px;font-family:Arial,sans-serif';
+    const req=f.required?' <span class=__DQ__req__DQ__>*</span>':'';
+    const lbl='<div class=__DQ__flabel__DQ__>'+esc(f.label)+req+'</div>';
     if(f.type==='dropdown'){
       const opts=(_tgOpts[f.optsKey]||[]).filter(o=>o&&o!=='-- Select --');
       const gid='grp_'+f.key;
-      const sel='<select data-label="'+esc(f.label)+'" style="'+inp+'">'+'<option value="">-- Select --</option>'+opts.map(o=>'<option value="'+esc(o)+'">'+esc(o)+'</option>').join('')+'</select>';
-      const boxes=opts.map(o=>'<label style="display:inline-flex;align-items:center;gap:4px;margin-right:12px;font-size:10.5px;font-family:Arial,sans-serif;cursor:pointer"><input type="checkbox" data-group="'+gid+'" data-label="'+esc(f.label)+'" data-value="'+esc(o)+'" onchange="chkOnce(this,this.dataset.group)" style="width:11px;height:11px;accent-color:'+accent+'"> '+esc(o)+'</label>').join('');
-      return '<div style="margin-bottom:6px">'+lbl+'<div class="scr">'+sel+'</div><div class="prt" style="display:none;flex-wrap:wrap;padding:2px 0">'+boxes+'</div></div>'
+      return '<div class=__DQ__field__DQ__>'+lbl+'<div class=__DQ__opts__DQ__>'+
+        opts.map(o=>'<label class=__DQ__chip__DQ__><input type=__DQ__checkbox__DQ__ data-group=__DQ__'+gid+'__DQ__ data-label=__DQ__'+esc(f.label)+'__DQ__ data-value=__DQ__'+esc(o)+'__DQ__ onchange=__DQ__chkOnce(this,this.dataset.group)__DQ__>'+esc(o)+'</label>').join('')+
+        '</div></div>';
     }
-    if(f.type==='checkbox')return '<div style="margin-bottom:5px;display:flex;align-items:center;gap:6px"><input type="checkbox" data-label="'+esc(f.label)+'" style="width:11px;height:11px;accent-color:'+accent+';flex-shrink:0"> <span style="font-size:10.5px;font-family:Arial,sans-serif">'+esc(f.label)+'</span></div>';
-    if(f.type==='textarea')return '<div style="margin-bottom:6px">'+lbl+'<textarea data-label="'+esc(f.label)+'" style="'+inp+';min-height:32px;resize:none"></textarea></div>';
-    return '<div style="margin-bottom:6px">'+lbl+'<input type="text" data-label="'+esc(f.label)+'" style="'+inp+'"></div>';
+    if(f.type==='checkbox')return '<div class=__DQ__cov__DQ__ onclick=__DQ__this.querySelector(\'input\').click()__DQ__><input type=__DQ__checkbox__DQ__ data-label=__DQ__'+esc(f.label)+'__DQ__ onchange=__DQ__this.closest(\'.cov\').classList.toggle(\'on\',this.checked)__DQ__><span>'+esc(f.label)+'</span></div>';
+    if(f.type==='textarea')return '<div class=__DQ__field__DQ__ style=__DQ__grid-column:1/-1__DQ__>'+lbl+'<textarea class=__DQ__finput__DQ__ data-label=__DQ__'+esc(f.label)+'__DQ__ style=__DQ__min-height:60px;resize:vertical__DQ__></textarea></div>';
+    return '<div class=__DQ__field__DQ__>'+lbl+'<input type=__DQ__text__DQ__ class=__DQ__finput__DQ__ data-label=__DQ__'+esc(f.label)+'__DQ__></div>';
   }
 
+  // Render a section
   function rs(sec){
-    const rows=sectionRows[sec.id]||[];if(!rows.length)return'';
+    const rows=sR[sec.id]||[];if(!rows.length)return'';
     const cbs=rows.filter(r=>r.type==='checkbox'),others=rows.filter(r=>r.type!=='checkbox');
     let body='';
-    if(others.length)body+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px">'+others.map(rf).join('')+'</div>';
-    if(cbs.length)body+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:2px 16px;margin-top:2px">'+cbs.map(rf).join('')+'</div>';
-    return '<div style="margin-bottom:6px"><div style="background:'+header+';color:white;font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;margin-bottom:4px;border-left:3px solid '+accent+'">'+sec.title+'</div><div style="padding:0 2px">'+body+'</div></div>';
+    if(others.length)body+='<div class=__DQ__grid2__DQ__>'+others.map(rf).join('')+'</div>';
+    if(cbs.length)body+='<div class=__DQ__cov-grid__DQ__ style=__DQ__margin-top:6px__DQ__>'+cbs.map(rf).join('')+'</div>';
+    return '<div class=__DQ__sec__DQ__><div class=__DQ__sec-hdr__DQ__><div class=__DQ__sec-bar__DQ__></div><div class=__DQ__sec-lbl__DQ__>'+sec.title+'</div></div>'+body+'</div>';
   }
 
-  const logoHtml=_tgLogoData?'<img src="'+_tgLogoData+'" style="max-height:38px;max-width:280px;object-fit:contain">':'';
+  // Build all sections HTML then replace placeholder
+  const bodyHtml=sections.map(rs).join('').replace(/__DQ__/g,'"');
 
-  return '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>'+esc(title)+'</title>'
-    +'<style>'
-    +'@import url(\'https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap\');'
-    +'*{box-sizing:border-box;margin:0;padding:0}'
-    +'body{font-family:\'Outfit\',Arial,sans-serif;background:white;color:#1E2E3D;padding:12px 16px 8px;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
-    +'@page{size:letter portrait;margin:7mm}.scr{display:block}.prt{display:none}@media print{.scr{display:none!important}.prt{display:flex!important}}'
-    +'@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}'
-    +'</style></head><body>'
-    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding-bottom:7px;border-bottom:3px solid '+accent+'">'
-    +(logoHtml?'<div style="display:flex;align-items:center;gap:12px">'+logoHtml+'</div>':'')
-    +'<div style="'+(logoHtml?'text-align:right':'')+'"><div style="font-size:'+(logoHtml?'13':'15')+'px;font-weight:900;color:'+header+'">'+esc(title)+'</div><div style="font-size:9px;color:#5A6B7B;margin-top:2px">'+esc(subtitle)+'</div></div></div>'
-    +'<div style="display:flex;justify-content:space-between;font-size:7.5px;color:#8A94A8;margin-bottom:8px">'
-    +'<div>'+stamp+'</div>'
-    +'<div style="text-align:right"><span style="font-weight:700;color:#1E2E3D">Return to:</span> HUB CertSecure &nbsp;&middot;&nbsp; Client.CertSecure@hubinternational.com</div>'
-    +'</div>'
-    +sections.map(rs).join('')
-    +'<div style="margin-top:8px;padding-top:6px;border-top:2px solid '+accent+';display:flex;justify-content:space-between;align-items:center">'
-    +'<div style="font-size:7px;color:#B0B8C8">&#x1F512; Confidential &mdash; '+esc(clientName)+' &middot; HUB CertSecure &nbsp; * Required field</div>'
-    +'<button onclick="sendForm()" style="background:'+accent+';color:white;border:none;padding:6px 16px;border-radius:5px;font-size:11px;font-weight:700;font-family:Arial,sans-serif;cursor:pointer">&#9993; Send Completed Form</button>'
-    +'</div>'
-    +'<scr'+'ipt>'
-    +'function chkOnce(el,g){if(el.checked){document.querySelectorAll(\'input[data-group="\'+g+\'"]\').forEach(function(c){if(c!==el)c.checked=false;})}}'
-    +'function sendForm(){'
-    +'var lines=[],groups={},cn="'+esc(clientName).replace(/"/g,'\\"')+'";'
-    +'document.querySelectorAll(\'input[data-label]:not([data-group]):not([type="checkbox"]),textarea[data-label]\').forEach(function(el){var v=(el.value||"").trim();if(v)lines.push(el.getAttribute("data-label")+": "+v);});'
-    +'document.querySelectorAll(\'input[type="checkbox"][data-label]:not([data-group])\').forEach(function(el){if(el.checked)lines.push(el.getAttribute("data-label")+": Yes");});'
-    +'document.querySelectorAll(\'input[type="checkbox"][data-group]\').forEach(function(el){if(el.checked){var g=el.getAttribute("data-group");if(!groups[g])groups[g]={label:el.getAttribute("data-label"),vals:[]};groups[g].vals.push(el.getAttribute("data-value"));}});'
-    +'Object.values(groups).forEach(function(g){lines.push(g.label+": "+g.vals.join(", "));});'
-    +'if(!lines.length){alert("Please fill in at least one field before sending.");return;}'
-    +'var sub=encodeURIComponent("Third-Party Request \u2014 "+cn);'
-    +'var bod=encodeURIComponent("CLIENT: "+cn+"\\n\\n"+lines.join("\\n")+"\\n\\n---\\nSubmitted via HUB CertSecure");'
-    +'window.location.href="mailto:Client.CertSecure@hubinternational.com?subject="+sub+"&body="+bod;'
-    +'}'
-    +'<\/scr'+'ipt>'
-    +'</body></html>';
+  // Inline JS for the generated form
+  const formJS=[
+    "function chkOnce(el,g){",
+    "  var all=document.querySelectorAll('[data-group=\"'+g+'\"]');",
+    "  if(el.checked){all.forEach(function(c){if(c!==el){c.checked=false;c.closest('.chip').classList.remove('on');}});el.closest('.chip').classList.add('on');}",
+    "  else{el.closest('.chip').classList.remove('on');}",
+    "}",
+    "function sendForm(){",
+    "  var lines=[],groups={};",
+    "  var cn="+JSON.stringify(clientName)+";",
+    "  document.querySelectorAll('input[data-label]:not([data-group]):not([type=\"checkbox\"]),textarea[data-label]').forEach(function(el){",
+    "    var v=(el.value||'').trim();if(v)lines.push(el.getAttribute('data-label')+': '+v);",
+    "  });",
+    "  document.querySelectorAll('input[type=\"checkbox\"][data-label]:not([data-group])').forEach(function(el){",
+    "    if(el.checked)lines.push(el.getAttribute('data-label')+': Yes');",
+    "  });",
+    "  document.querySelectorAll('input[data-group]').forEach(function(el){",
+    "    if(el.checked){var g=el.getAttribute('data-group');if(!groups[g])groups[g]={label:el.getAttribute('data-label'),vals:[]};groups[g].vals.push(el.getAttribute('data-value'));}",
+    "  });",
+    "  Object.values(groups).forEach(function(g){lines.push(g.label+': '+g.vals.join(', '));});",
+    "  if(!lines.length){alert('Please fill in at least one field before sending.');return;}",
+    "  var sub=encodeURIComponent('Third-Party Request \u2014 '+cn);",
+    "  var bod=encodeURIComponent('CLIENT: '+cn+'\\n\\n'+lines.join('\\n')+'\\n\\n---\\nSubmitted via HUB CertSecure');",
+    "  window.location.href='mailto:Client.CertSecure@hubinternational.com?subject='+sub+'&body='+bod;",
+    "}"
+  ].join('\n');
+
+  const css=[
+    "*{box-sizing:border-box;margin:0;padding:0}",
+    "body{font-family:'Outfit',Arial,sans-serif;background:#EEF2F7;color:#1E2E3D;min-height:100vh}",
+    ".wrap{max-width:760px;margin:0 auto;padding:28px 16px 60px}",
+    ".instr{background:linear-gradient(135deg,"+accent+","+header+");color:white;border-radius:12px;padding:18px 22px;margin-bottom:20px;display:flex;gap:16px;align-items:flex-start}",
+    ".instr-icon{font-size:26px;flex-shrink:0}",
+    ".instr h2{font-size:14px;font-weight:800;margin-bottom:6px}",
+    ".instr ol{font-size:11.5px;opacity:.92;line-height:1.9;padding-left:16px}",
+    ".card{background:white;border-radius:14px;box-shadow:0 4px 24px rgba(0,0,0,.08);overflow:hidden}",
+    ".card-hdr{padding:18px 24px 16px;border-bottom:3px solid "+accent+";display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}",
+    ".hdr-left{display:flex;align-items:center;gap:14px}",
+    ".form-title{font-size:15px;font-weight:900;color:"+header+";line-height:1.2}",
+    ".form-sub{font-size:9.5px;color:#7A8A9B;margin-top:2px}",
+    ".hdr-right{text-align:right;font-size:8px;color:#9AAABB;line-height:1.8}",
+    ".hdr-right strong{color:#3A4A5B}",
+    ".card-body{padding:20px 24px}",
+    ".sec{margin-bottom:20px}",
+    ".sec-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px}",
+    ".sec-bar{width:3px;height:16px;background:"+accent+";border-radius:2px;flex-shrink:0}",
+    ".sec-lbl{font-size:8.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:"+header+"}",
+    ".grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}",
+    ".field{margin-bottom:13px}",
+    ".flabel{font-size:7.5px;font-weight:700;color:"+header+";letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}",
+    ".req{color:"+accent+"}",
+    ".finput{width:100%;padding:8px 11px;border:1.5px solid #DDE5EE;border-radius:7px;font-size:12px;font-family:'Outfit',Arial,sans-serif;color:#1E2E3D;background:#FAFBFD;transition:border-color .15s}",
+    ".finput:focus{outline:none;border-color:"+accent+";box-shadow:0 0 0 3px "+accent+"22}",
+    "textarea.finput{min-height:60px;resize:vertical}",
+    ".opts{display:flex;flex-wrap:wrap;gap:7px;padding:2px 0}",
+    ".chip{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border:1.5px solid #DDE5EE;border-radius:20px;font-size:11.5px;cursor:pointer;transition:all .15s;background:white;font-family:'Outfit',Arial,sans-serif;user-select:none}",
+    ".chip:hover{border-color:"+accent+"}",
+    ".chip.on{background:"+accent+";border-color:"+accent+";color:white;font-weight:600}",
+    ".chip input{display:none}",
+    ".cov-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}",
+    ".cov{display:flex;align-items:center;gap:9px;padding:9px 12px;border:1.5px solid #DDE5EE;border-radius:8px;cursor:pointer;font-size:11.5px;transition:all .15s;background:white}",
+    ".cov:hover,.cov.on{border-color:"+accent+";background:#F0F5FF}",
+    ".cov input{width:13px;height:13px;flex-shrink:0;accent-color:"+accent+"}",
+    ".card-ftr{padding:14px 24px;background:#F8FAFC;border-top:1px solid #EEF2F7;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}",
+    ".ftr-note{font-size:8px;color:#B0BCC8}",
+    ".send{background:"+accent+";color:white;border:none;padding:11px 26px;border-radius:8px;font-size:13px;font-weight:700;font-family:'Outfit',Arial,sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:opacity .15s}",
+    ".send:hover{opacity:.88}",
+    "@media(max-width:580px){.grid2,.cov-grid{grid-template-columns:1fr}}",
+    "@media print{body{background:white}.instr{display:none}.wrap{padding:0}.card{box-shadow:none}@page{margin:8mm}}"
+  ].join('\n');
+
+  return [
+    '<!DOCTYPE html><html><head>',
+    '<meta charset="UTF-8">',
+    '<meta name="viewport" content="width=device-width,initial-scale=1">',
+    '<title>'+esc(title)+'</title>',
+    '<style>'+css+'</style>',
+    '<'+'script>'+formJS+'<'+'/script>',
+    '</head><body><div class="wrap">',
+    '<div class="instr"><div class="instr-icon">&#128203;</div><div>',
+    '<h2>How to complete this form</h2>',
+    '<ol>',
+    '<li>Fill in all required fields marked <strong style="color:white">*</strong></li>',
+    '<li>For dropdowns, click the pill buttons to select an option</li>',
+    '<li>Click <strong style="color:white">Send Completed Form</strong> when done &mdash; your email app opens pre-filled</li>',
+    '</ol></div></div>',
+    '<div class="card">',
+    '<div class="card-hdr">',
+    '<div class="hdr-left">'+logoHtml+'<div><div class="form-title">'+esc(title)+'</div><div class="form-sub">'+esc(subtitle)+'</div></div></div>',
+    '<div class="hdr-right"><strong>Return to:</strong><br>HUB CertSecure<br>Client.CertSecure@hubinternational.com<br>'+stamp+'</div>',
+    '</div>',
+    '<div class="card-body">'+bodyHtml+'</div>',
+    '<div class="card-ftr">',
+    '<div class="ftr-note">&#x1F512; Confidential &mdash; '+esc(clientName)+' &middot; HUB CertSecure &nbsp; * Required field</div>',
+    '<button class="send" onclick="sendForm()">&#9993;&nbsp; Send Completed Form</button>',
+    '</div>',
+    '</div>',
+    '</div></body></html>'
+  ].join('');
 }
+
 
 // ══════════════════════════════════════════════════════════════
 //  CLIENT CONFIG — Logo upload + color extraction
