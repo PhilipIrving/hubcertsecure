@@ -988,7 +988,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a072944f523b3582369614f,MAGNUM SYSTEMS,,NON_COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a072944f523b35823696154,"TALLGRASS MLP OPERATIONS, LLC",,NON_COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a072944f523b35823696159,"THE HOME DEPOT, INC",,NON_COMPLIANT,,,true,false,2026-05-22
-"Block Real Estate Services, LLC",6a072944f523b3582369615e,"YRC FREIGHT, INC",,NON_COMPLIANT,,,true,false,2026-05-22
+"Block Real Estate Services, LLC",6a072944f523b3582369615e,"YRC FREIGHT, INC",certificates@willis.com,NON_COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a072944f523b35823696163,ENTERPRISE LEASING COMPANY OF KANSAS,,NON_COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a072944f523b35823696168,"DISCOUNT TIRE / HALLE PROPERTIES, INC.",,NON_COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a072944f523b3582369616d,"DELTA DENTAL OF KANSAS, INC",certs@imacorp.com,NON_COMPLIANT,,,true,false,2026-05-22
@@ -1354,7 +1354,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a07295ef523b3582369687f,"HOEFER WELKER, LLC",,COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a07295ff523b35823696884,"APERTURE CREDENTIALING, LLC",rveccia@arcxs.com,COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a07295ff523b35823696889,ANN D. ROBERTSON,,COMPLIANT,,,true,false,2026-05-22
-"Block Real Estate Services, LLC",6a07295ff523b3582369688e,"HORIZON PSI FKA HORIZON SYSTEMS, INC",,COMPLIANT,,,true,false,2026-05-22
+"Block Real Estate Services, LLC",6a07295ff523b3582369688e,"HORIZON PSI FKA HORIZON SYSTEMS, INC",info@srains.com,COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a07295ff523b35823696893,"DESIGN & DETAIL / MEL B, LLC",,COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a07295ff523b35823696898,"SRS COMMERCIAL AVL, LLC FKA STARK RAVING SOLUTIONS , LLC",info@srains.com,COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a07295ff523b3582369689d,"SNSA, INC DBA CHURCH'S CHICKEN",certs@walnutrisk.com,COMPLIANT,,,true,false,2026-05-22
@@ -1594,7 +1594,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a072971f523b35823696d34,"GENTRY DENTAL / JAMES D GENTRY, DMD",,COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a072971f523b35823696d39,LEAWOOD COSMETIC AND FAMILY DENTISTRY,,COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a072971f523b35823696d3e,"E2 OPTICS, LLC",,COMPLIANT,,,true,false,2026-05-22
-"Block Real Estate Services, LLC",6a072971f523b35823696d43,"KCBR DESIGN/REMODEL / UNLIMITED CONTRACTING, LLC",,COMPLIANT,,,true,false,2026-05-22
+"Block Real Estate Services, LLC",6a072971f523b35823696d43,"KCBR DESIGN/REMODEL / UNLIMITED CONTRACTING, LLC",info@srains.com,COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a072971f523b35823696d48,"CNR CONSTRUCTION KC, LLC",,COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a072971f523b35823696d4d,GATEWAY FIBER OPERATING LLC,aaraiza@craneagency.com,COMPLIANT,,,true,false,2026-05-22
 "Block Real Estate Services, LLC",6a072971f523b35823696d52,TEST,,COMPLIANT,,,true,false,2026-05-22
