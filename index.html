@@ -4821,12 +4821,12 @@ function tgGenerate(){
   const accent=document.getElementById('tg-accent-hex').value||'#3872B8';
   const header=document.getElementById('tg-header-hex').value||'#283847';
   const formHtml=tgBuildFormHTML(title,subtitle,accent,header);
-  const blob=new Blob([formHtml],{type:'text/html'});
+  const blob=new Blob([formHtml],{type:'application/octet-stream'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
   a.href=url;
   a.download=_tgClient.name+' - Third-Party Request - '+new Date().toISOString().split('T')[0]+'.html';
-  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  document.body.appendChild(a);a.click();setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},2000);
   _notifs.unshift({msg:title,type:'success',time:new Date()});
   if(_notifs.length>15)_notifs.pop();renderNotifList();
   const drawer=document.getElementById('notif-drawer');if(drawer){drawer.style.display='';_unread=0;updateNotifBadge();}
