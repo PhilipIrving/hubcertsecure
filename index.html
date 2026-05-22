@@ -4873,7 +4873,7 @@ function tgBuildFormHTML(title,subtitle,accent,header){
       const opts=(_tgOpts[f.optsKey]||[]).filter(o=>o&&o!=='-- Select --');
       const gid='grp_'+f.key;
       const sel='<select data-label="'+esc(f.label)+'" style="'+inp+'">'+'<option value="">-- Select --</option>'+opts.map(o=>'<option value="'+esc(o)+'">'+esc(o)+'</option>').join('')+'</select>';
-      const boxes=opts.map(o=>'<label style="display:inline-flex;align-items:center;gap:4px;margin-right:12px;font-size:10.5px;font-family:Arial,sans-serif;cursor:pointer"><input type="checkbox" data-group="'+gid+'" data-label="'+esc(f.label)+'" data-value="'+esc(o)+'" onchange="chkOnce(this,''+gid+'')" style="width:11px;height:11px;accent-color:'+accent+'"> '+esc(o)+'</label>').join('');
+      const boxes=opts.map(o=>'<label style="display:inline-flex;align-items:center;gap:4px;margin-right:12px;font-size:10.5px;font-family:Arial,sans-serif;cursor:pointer"><input type="checkbox" data-group="'+gid+'" data-label="'+esc(f.label)+'" data-value="'+esc(o)+'" onchange="chkOnce(this,this.dataset.group)" style="width:11px;height:11px;accent-color:'+accent+'"> '+esc(o)+'</label>').join('');
       return '<div style="margin-bottom:6px">'+lbl+'<div class="scr">'+sel+'</div><div class="prt" style="display:none;flex-wrap:wrap;padding:2px 0">'+boxes+'</div></div>'
     }
     if(f.type==='checkbox')return '<div style="margin-bottom:5px;display:flex;align-items:center;gap:6px"><input type="checkbox" data-label="'+esc(f.label)+'" style="width:11px;height:11px;accent-color:'+accent+';flex-shrink:0"> <span style="font-size:10.5px;font-family:Arial,sans-serif">'+esc(f.label)+'</span></div>';
@@ -4912,7 +4912,7 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     +'<div style="font-size:7px;color:#B0B8C8">&#x1F512; Confidential &mdash; '+esc(clientName)+' &middot; HUB CertSecure &nbsp; * Required field</div>'
     +'<button onclick="sendForm()" style="background:'+accent+';color:white;border:none;padding:6px 16px;border-radius:5px;font-size:11px;font-weight:700;font-family:Arial,sans-serif;cursor:pointer">&#9993; Send Completed Form</button>'
     +'</div>'
-    +'<script>'
+    +'<scr'+'ipt>'
     +'function chkOnce(el,g){if(el.checked){document.querySelectorAll(\'input[data-group="\'+g+\'"]\').forEach(function(c){if(c!==el)c.checked=false;})}}'
     +'function sendForm(){'
     +'var lines=[],groups={},cn="'+esc(clientName).replace(/"/g,'\\"')+'";'
@@ -4925,7 +4925,7 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     +'var bod=encodeURIComponent("CLIENT: "+cn+"\\n\\n"+lines.join("\\n")+"\\n\\n---\\nSubmitted via HUB CertSecure");'
     +'window.location.href="mailto:Client.CertSecure@hubinternational.com?subject="+sub+"&body="+bod;'
     +'}'
-    +'<\/script>'
+    +'<\/scr'+'ipt>'
     +'</body></html>';
 }
 
