@@ -437,7 +437,7 @@
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content" id="sb-sec-monday-content">
-        <button class="sb-item" id="snav-m-clients" onclick="sidebarNav('m-clients')">
+        <button class="sb-item" id="snav-m-clients" onclick="sidebarNav('m-clients')" style="display:none">
           <span class="sb-ic">&#128101;</span> Client Panel
         </button>
         <button class="sb-item active" id="snav-m-setup" onclick="sidebarNav('m-setup')">
@@ -505,7 +505,7 @@
     </div>
   </div>
   <div id="step-2" class="step-panel" style="display:none">
-    <div class="page-banner"><div class="page-banner-icon">&#9881;&#65039;</div><div><div class="page-banner-title">Configure Report</div><div class="page-banner-sub">Choose which reports to generate and customize each option</div></div></div>ne</div></div>
+    <div class="page-banner"><div class="page-banner-icon">&#9881;&#65039;</div><div><div class="page-banner-title">Configure Report</div><div class="page-banner-sub">Choose which reports to generate and customize each option</div></div></div>
     <div class="client-banner" id="client-banner"><div><div class="banner-name" id="banner-name"></div><div class="banner-struct" id="banner-struct"></div></div><span class="banner-change" onclick="goTo(1)">&#8592; Change Client</span></div>
     <div class="card">
       <div class="card-title">Select Reports to Generate</div>
@@ -722,7 +722,6 @@
 
     <!-- ══ CLIENT PANEL ══ -->
     <div id="mtab-clients" style="display:none">
-      <div class="page-banner"><div class="page-banner-icon">&#128101;</div><div><div class="page-banner-title">Client Manager</div><div class="page-banner-sub">Manage clients, logos and branding across all generators</div></div></div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
         <div><div style="font-size:16px;font-weight:800;color:var(--navy)">Client Panel</div><div style="font-size:12px;color:var(--muted)">Manage clients — saves to config and syncs to Monday simultaneously</div></div>
         <button class="btn btn-primary" onclick="openAddClient()" style="white-space:nowrap">+ Add Client</button>
