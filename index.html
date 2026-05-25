@@ -799,24 +799,22 @@
         </div>
       </div>
 
-      <!-- Standard Fields -->
+      <!-- Field Builder -->
       <div class="card" style="margin-bottom:14px">
-        <div class="card-title" style="margin-bottom:4px">&#128203; Standard Fields</div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Always included. Toggle optional fields on/off.</div>
-        <div id="tg-standard-fields" style="display:grid;grid-template-columns:1fr 1fr;gap:6px"></div>
-      </div>
-
-      <!-- Custom Fields -->
-      <div class="card" id="tg-custom-card" style="margin-bottom:14px;display:none">
-        <div class="card-title" style="margin-bottom:4px">&#128296; Custom Fields <span id="tg-custom-source-badge" style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--blue-light);color:var(--blue);margin-left:6px"></span></div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Fields found in your CSV data for this client. Toggle to include in the form.</div>
-        <div id="tg-custom-fields" style="display:grid;grid-template-columns:1fr 1fr;gap:6px"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div class="card-title" style="margin-bottom:0">&#128203; Form Fields</div>
+          <button class="btn btn-secondary" style="font-size:11px;padding:5px 12px" onclick="tgAddField()">+ Add Field</button>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:12px;display:flex;gap:16px">
+          <span>&#9650;&#9660; Reorder &nbsp;&bull;&nbsp; &#9744; Toggle &nbsp;&bull;&nbsp; Click label to rename &nbsp;&bull;&nbsp; Set type &amp; required</span>
+        </div>
+        <div id="tg-builder-rows"></div>
       </div>
 
       <!-- Dropdown Options -->
       <div class="card" id="tg-dropdowns-card" style="margin-bottom:14px;display:none">
         <div class="card-title" style="margin-bottom:4px">&#9660; Dropdown Options</div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Edit the options for dropdown fields. Click any chip to rename, × to remove, + to add.</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Edit options for dropdown fields. Click to rename, × to remove, + to add.</div>
         <div id="tg-dropdowns-wrap"></div>
       </div>
 
@@ -4591,23 +4589,12 @@ let _tgLogoData = null;
 let _tgCustomFields = [];
 
 const TG_STANDARD_FIELDS = [
-  { key:'entity_name',       label:'Entity Name',           required:true,  type:'text',     section:'entity' },
-  { key:'entity_type',       label:'Entity Type',           required:true,  type:'dropdown', section:'entity',  optsKey:'entity_types' },
-  { key:'legal_name',        label:'Legal Name',            required:true,  type:'text',     section:'entity' },
-  { key:'dba_name',          label:'DBA Name',              required:false, type:'text',     section:'entity' },
-  { key:'entity_id',         label:'Entity ID',             required:false, type:'text',     section:'entity' },
-  { key:'contact_name',      label:'Primary Contact Name',  required:true,  type:'text',     section:'contact' },
-  { key:'contact_phone',     label:'Primary Contact Phone', required:true,  type:'text',     section:'contact' },
-  { key:'contact_email',     label:'Primary Contact Email', required:false, type:'text',     section:'contact' },
-  { key:'street',            label:'Street Address',        required:true,  type:'text',     section:'address' },
-  { key:'suite',             label:'Apt / Suite / Floor',   required:false, type:'text',     section:'address' },
-  { key:'city',              label:'City',                  required:true,  type:'text',     section:'address' },
-  { key:'state',             label:'State',                 required:true,  type:'dropdown', section:'address', optsKey:'states' },
-  { key:'zip',               label:'ZIP Code',              required:true,  type:'text',     section:'address' },
-  { key:'property_location', label:'Property Location',     required:false, type:'dropdown', section:'property', optsKey:'property_locations' },
-  { key:'pollution',         label:'Pollution Liability',   required:false, type:'checkbox', section:'property' },
-  { key:'professional',      label:'Professional Liability',required:false, type:'checkbox', section:'property' },
-  { key:'notes',             label:'Additional Notes',      required:false, type:'textarea', section:'notes' },
+  { key:'entity_name', label:'Entity Name',      required:true,  type:'text',     section:'entity' },
+  { key:'legal_name',  label:'Legal Name',        required:true,  type:'text',     section:'entity' },
+  { key:'dba_name',    label:'DBA Name',          required:false, type:'text',     section:'entity' },
+  { key:'entity_id',   label:'Entity ID',         required:false, type:'text',     section:'entity' },
+  { key:'entity_type', label:'Entity Type',       required:false, type:'dropdown', section:'entity', optsKey:'entity_types' },
+  { key:'notes',       label:'Additional Notes',  required:false, type:'textarea', section:'notes' },
 ];
 
 const TG_US_STATES = ['-- Select --','AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
@@ -4664,17 +4651,7 @@ async function tgSelectClient(key) {
   document.getElementById('tg-header-hex').value = headerVal;
   document.getElementById('tg-header-picker').value = headerVal;
 
-  // Load logo from clients.json
-  _tgLogoData = meta.logo_data || null;
-  const lpw = document.getElementById('tg-logo-preview-wrap');
-  const lp  = document.getElementById('tg-logo-preview');
-  if (_tgLogoData && lp) {
-    lp.src = _tgLogoData; lpw.style.display = '';
-    document.getElementById('tg-autodetect-btn').style.display = '';
-  } else {
-    lpw.style.display = 'none';
-    document.getElementById('tg-autodetect-btn').style.display = 'none';
-  }
+  // logo restored in setup restore block below
 
   // Load dropdown options from clients.json if stored
   if (meta.entity_types) _tgOpts.entity_types = meta.entity_types;
@@ -4682,15 +4659,28 @@ async function tgSelectClient(key) {
   if (meta.property_locations) _tgOpts.property_locations = meta.property_locations;
   else _tgOpts.property_locations = ['-- Select --','Blanket','Office','Retail'];
 
-  // Default all standard fields on
-  TG_STANDARD_FIELDS.forEach(f => { _tgFieldOn[f.key] = true; });
+  // Restore logo from saved setup or meta
+  _tgLogoData = (meta.tg_setup?.tg_logo) || meta.logo_data || null;
+  const lpw = document.getElementById('tg-logo-preview-wrap');
+  const lp  = document.getElementById('tg-logo-preview');
+  const adb = document.getElementById('tg-autodetect-btn');
+  if (_tgLogoData && lp) { lp.src = _tgLogoData; lpw.style.display = ''; if(adb)adb.style.display=''; }
+  else { lpw.style.display = 'none'; if(adb)adb.style.display='none'; }
+
+  // Restore saved rows or init from standard fields
+  if (meta.tg_setup?.tg_rows?.length) {
+    _tgFormRows = JSON.parse(JSON.stringify(meta.tg_setup.tg_rows));
+    const badge = document.getElementById('tg-saved-badge');
+    if (badge) badge.style.display = '';
+  } else {
+    tgInitRows();
+  }
 
   tgGoStep(2);
-  tgRenderStandardFields();
-  tgRenderDropdownEditors();
+  tgRenderBuilder();
 
-  // Load custom fields async
-  tgLoadCustomFields(key, meta);
+  // Load custom fields async if no saved rows (appends to builder)
+  if (!meta.tg_setup?.tg_rows?.length) tgLoadCustomFields(key, meta);
 }
 
 function tgGoStep(n) {
@@ -4724,7 +4714,7 @@ function tgRenderDropdownEditors() {
   const wrap = document.getElementById('tg-dropdowns-wrap');
   const card = document.getElementById('tg-dropdowns-card');
   if (!wrap || !card) return;
-  const dropdownFields = TG_STANDARD_FIELDS.filter(f => f.type === 'dropdown' && _tgFieldOn[f.key] !== false);
+  const dropdownFields = _tgFormRows.filter(f => f.type === 'dropdown' && !f._hidden);
   if (!dropdownFields.length) { card.style.display = 'none'; return; }
   card.style.display = '';
   wrap.innerHTML = dropdownFields.map(f => {
@@ -4824,7 +4814,23 @@ async function tgLoadCustomFields(key, meta) {
   }
 
   if (loadEl) loadEl.style.display = 'none';
-  tgRenderCustomFields();
+
+  // Dedup against standard fields already in _tgFormRows, then append custom ones
+  const existingKeys = new Set(_tgFormRows.map(r => r.key));
+  _tgCustomFields.forEach(f => {
+    if (!existingKeys.has(f.key)) {
+      _tgFormRows.push({
+        key: f.key,
+        label: f.label,
+        required: false,
+        type: 'text',
+        _type: 'custom',
+        _hidden: false,
+      });
+      existingKeys.add(f.key);
+    }
+  });
+  tgRenderBuilder();
 }
 
 function tgRenderCustomFields() {
@@ -4930,6 +4936,138 @@ function tgAutoDetectColors() {
 }
 
 // ── Generate PDF ──────────────────────────────────────────────
+// ── Field Builder ──────────────────────────────────────────────────────
+let _tgFormRows = [];
+
+function tgInitRows() {
+  // Build initial rows from standard fields
+  _tgFormRows = TG_STANDARD_FIELDS.map(f => ({...f, _hidden: false, _type: 'standard'}));
+}
+
+function tgRenderBuilder() {
+  const wrap = document.getElementById('tg-builder-rows');
+  if (!wrap) return;
+  const typeOpts = ['text','dropdown','checkbox','textarea'].map(t =>
+    `<option value="${t}">${t}</option>`).join('');
+  wrap.innerHTML = _tgFormRows.map((row, i) => {
+    const bg = row._hidden ? '#F8FAFC' : (row._type === 'custom' ? 'rgba(62,189,62,0.05)' : '#fff');
+    const border = row._hidden ? '#E8ECF5' : (row._type === 'custom' ? 'rgba(62,189,62,0.2)' : 'rgba(6,120,213,0.18)');
+    const srcPill = row._type === 'custom'
+      ? `<span style="font-size:9px;font-weight:700;padding:1px 7px;border-radius:8px;background:rgba(62,189,62,0.12);color:#2E8B2E;flex-shrink:0">CUSTOM</span>`
+      : '';
+    // Build type selector with current value selected
+    const typeSelect = ['text','dropdown','checkbox','textarea'].map(t =>
+      `<option value="${t}"${row.type===t?' selected':''}>${t}</option>`).join('');
+    return `<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:7px;background:${bg};border:1.5px solid ${border};margin-bottom:5px;opacity:${row._hidden?'0.5':'1'}">
+      <div style="display:flex;flex-direction:column;gap:1px;cursor:pointer;flex-shrink:0">
+        <button onclick="tgMoveRow(${i},-1)" style="background:none;border:none;cursor:pointer;color:#8A99AA;font-size:10px;line-height:1;padding:1px 3px">&#9650;</button>
+        <button onclick="tgMoveRow(${i},1)"  style="background:none;border:none;cursor:pointer;color:#8A99AA;font-size:10px;line-height:1;padding:1px 3px">&#9660;</button>
+      </div>
+      <input type="checkbox" ${row._hidden?'':'checked'} onchange="tgRowToggle(${i},this.checked)"
+        style="accent-color:#0678D5;width:15px;height:15px;flex-shrink:0;cursor:pointer">
+      <span contenteditable="true" spellcheck="false"
+        style="flex:1;font-size:12.5px;font-weight:600;color:#263746;outline:none;min-width:60px;cursor:text;padding:1px 4px;border-radius:4px;border:1px solid transparent"
+        onfocus="this.style.borderColor='#0678D5';this.style.background='#EBF4FF'"
+        onblur="this.style.borderColor='transparent';this.style.background='transparent';tgRowRename(${i},this.textContent.trim())"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur()}"
+      >${esc(row.label)}</span>
+      <select onchange="tgRowType(${i},this.value)"
+        style="font-size:11px;padding:4px 7px;border:1.5px solid #D1DCE8;border-radius:5px;background:#fff;color:#263746;cursor:pointer">
+        ${typeSelect}
+      </select>
+      <label style="display:flex;align-items:center;gap:4px;font-size:11px;color:#5A6B7B;cursor:pointer;white-space:nowrap;flex-shrink:0">
+        <input type="checkbox" ${row.required?'checked':''} onchange="tgRowRequired(${i},this.checked)"
+          style="accent-color:#0678D5;cursor:pointer"> Req
+      </label>
+      ${srcPill}
+      <button onclick="tgRowDelete(${i})"
+        style="background:none;border:none;cursor:pointer;color:#B0B8C8;font-size:17px;line-height:1;padding:0 2px;flex-shrink:0" title="Remove">&times;</button>
+    </div>`;
+  }).join('') +
+  `<button onclick="tgAddField()"
+    style="width:100%;margin-top:6px;padding:8px;border:1.5px dashed #D1DCE8;border-radius:7px;
+    background:none;cursor:pointer;font-size:12px;color:#5A6B7B;font-family:inherit;transition:border-color .15s"
+    onmouseover="this.style.borderColor='#0678D5'" onmouseout="this.style.borderColor='#D1DCE8'">+ Add Field</button>`;
+  // Re-render dropdown editors whenever builder updates
+  tgRenderDropdownEditors();
+}
+
+function tgMoveRow(i, dir) {
+  const j = i + dir;
+  if (j < 0 || j >= _tgFormRows.length) return;
+  [_tgFormRows[i], _tgFormRows[j]] = [_tgFormRows[j], _tgFormRows[i]];
+  tgRenderBuilder();
+}
+function tgRowToggle(i, on) {
+  if (_tgFormRows[i]) _tgFormRows[i]._hidden = !on;
+}
+function tgRowRename(i, v) {
+  if (v && _tgFormRows[i]) _tgFormRows[i].label = v;
+}
+function tgRowType(i, v) {
+  if (!_tgFormRows[i]) return;
+  _tgFormRows[i].type = v;
+  if (v === 'dropdown' && !_tgFormRows[i].optsKey) {
+    const optsKey = (_tgFormRows[i].key || ('field' + i)).replace(/[^a-z0-9]/gi, '_') + '_opts';
+    _tgFormRows[i].optsKey = optsKey;
+    if (!_tgOpts[optsKey]) _tgOpts[optsKey] = ['Option 1', 'Option 2'];
+  }
+  tgRenderBuilder();
+}
+function tgRowRequired(i, on) {
+  if (_tgFormRows[i]) _tgFormRows[i].required = on;
+}
+function tgRowDelete(i) {
+  _tgFormRows.splice(i, 1);
+  tgRenderBuilder();
+}
+function tgAddField() {
+  _tgFormRows.push({
+    key: 'custom_' + Date.now(),
+    label: 'New Field',
+    required: false,
+    type: 'text',
+    _type: 'custom',
+    _hidden: false,
+  });
+  tgRenderBuilder();
+}
+
+async function tgSaveSetup() {
+  if (!_tgClient) { toast('No client selected', 'error'); return; }
+  const key = _tgClient.key;
+  const btn = document.getElementById('tg-save-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Saving…'; }
+  try {
+    const setup = {
+      tg_title:    document.getElementById('tg-title').value.trim(),
+      tg_subtitle: document.getElementById('tg-subtitle').value.trim(),
+      tg_accent:   document.getElementById('tg-accent-hex')?.value || '',
+      tg_header:   document.getElementById('tg-header-hex')?.value || '',
+      tg_logo:     _tgLogoData || null,
+      tg_rows:     _tgFormRows.length ? _tgFormRows : null,
+    };
+    const meta = CLIENT_META_MAP[key] || {};
+    meta.tg_setup = setup;
+    CLIENT_META_MAP[key] = meta;
+    const updated = (_allClientsData || []).map(c => {
+      if (c.client_name !== key) return c;
+      return Object.assign({}, c, { tg_setup: setup });
+    });
+    if (!updated.length) throw new Error('No clients data loaded — refresh first');
+    await saveClientsToConfig(updated);
+    _allClientsData = updated;
+    const badge = document.getElementById('tg-saved-badge');
+    if (badge) badge.style.display = '';
+    toast('✓ Setup saved for ' + _tgClient.name, 'success');
+  } catch(e) {
+    toast('Save failed: ' + e.message, 'error');
+  } finally {
+    if (btn) { btn.disabled = false; btn.innerHTML = '&#128190; Save Setup'; }
+  }
+}
+
+
 function tgGenerate() {
   if (!_tgClient) return;
   const title    = document.getElementById('tg-title').value.trim() || (_tgClient.name + ' — Third-Party Request');
