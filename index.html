@@ -179,7 +179,7 @@
     #tab-template{width:100%;min-width:0;box-sizing:border-box;}
     /* bg overrides removed v0.93 — using var(--bg) */
     /* Breadcrumb bar */
-    .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:10px 24px;font-size:12px;font-weight:600;flex-shrink:0;border-bottom:1px solid rgba(6,120,213,0.12)}
+    .breadcrumb-bar{display:none}
     .bc-section{color:var(--muted)}
     .bc-sep{color:rgba(6,120,213,0.4);font-size:11px}
     .bc-page{color:#263746;font-weight:700}
@@ -491,11 +491,11 @@
       <span>&#9888;</span>
       <span><strong>No Access Token configured.</strong> Data cannot load without a GitHub PAT. <button onclick="openSettings()" style="background:none;border:none;color:var(--blue);cursor:pointer;font-weight:600;font-size:13px;padding:0;text-decoration:underline">Open Settings</button> to add one.</span>
     </div>
-    <div class="page-hdr" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-      <div><div class="page-title">Report Generator</div><div class="page-sub">Select a client to get started</div></div>
-      <div style="display:flex;gap:8px">
-        <button class="btn btn-secondary" id="rg-monday-btn" onclick="reportGeneratorSyncMonday()" style="white-space:nowrap;display:none">&#8679; Monday</button>
-        <button class="btn btn-secondary" onclick="openHubWide()" style="gap:6px;white-space:nowrap">&#127962; HUB-Wide Annual</button>
+    <div class="page-banner" style="justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:16px"><div class="page-banner-icon">&#128202;</div><div><div class="page-banner-title">Report Generator</div><div class="page-banner-sub">Select a client and choose reports to generate</div></div></div>
+      <div style="display:flex;gap:8px;flex-shrink:0">
+        <button class="btn btn-secondary" id="rg-monday-btn" onclick="reportGeneratorSyncMonday()" style="white-space:nowrap;display:none;border-color:rgba(0,174,239,0.5);color:#00AEEF">&#8679; Monday</button>
+        <button class="btn btn-secondary" onclick="openHubWide()" style="gap:6px;white-space:nowrap;border-color:rgba(0,174,239,0.5);color:#00AEEF">&#127962; HUB-Wide Annual</button>
       </div>
     </div>
     <div class="card">
@@ -527,7 +527,7 @@
     <div class="action-bar" style="flex-shrink:0"><button class="btn btn-secondary" onclick="goTo(1)">&#8592; Back</button><button class="btn btn-primary" id="gen-btn" onclick="generate()" disabled>&#11015; Generate Reports</button></div>
   </div>
   <div id="step-3" class="step-panel" style="display:none;flex:1;min-height:0">
-    <div class="page-hdr"><div class="page-title" id="s3-title">Generating Reports&#8230;</div><div class="page-sub" id="s3-sub">Please wait while your reports are built</div></div>
+    <div class="page-banner"><div class="page-banner-icon">&#9881;&#65039;</div><div><div class="page-banner-title" id="s3-title">Generating Reports&#8230;</div><div class="page-banner-sub" id="s3-sub">Please wait while your reports are built</div></div></div>
     <div class="card">
       <div id="gen-area"><div class="prog-steps" id="prog-steps"><div class="prog-step pending" id="ps-0"><div class="prog-dot">1</div><div class="prog-step-lbl">Fetching Data</div></div><div class="prog-step pending" id="ps-1"><div class="prog-dot">2</div><div class="prog-step-lbl">Building Reports</div></div><div class="prog-step pending" id="ps-2"><div class="prog-dot">3</div><div class="prog-step-lbl">Finalizing</div></div></div><div style="text-align:center;padding:10px 0 4px;font-size:13px;font-weight:600;color:var(--navy)" id="prog-lbl">Fetching data&#8230;</div><div style="text-align:center;font-size:12px;color:var(--muted)" id="prog-sub">Loading data files&#8230;</div></div>
       <div id="done-area" style="display:none"><div style="text-align:center;padding:16px 0 24px"><div style="font-size:44px;margin-bottom:10px">&#9989;</div><div style="font-size:17px;font-weight:700;color:var(--navy)">Reports Ready</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Click Download on each report below</div></div><div class="dl-grid" id="dl-grid"></div><div class="action-bar" style="margin-top:22px"><button class="btn btn-secondary" onclick="goTo(2)">&#8592; Reconfigure</button><button class="btn btn-primary" onclick="goTo(1)">Generate for Another Client &#8594;</button></div></div>
