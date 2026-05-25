@@ -179,7 +179,7 @@
     #tab-template{width:100%;min-width:0;box-sizing:border-box;}
     /* bg overrides removed v0.93 — using var(--bg) */
     /* Breadcrumb bar */
-    .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:12px 24px 0;font-size:12px;font-weight:600;flex-shrink:0}
+    .breadcrumb-bar{display:flex;align-items:center;gap:6px;padding:10px 24px;font-size:12px;font-weight:600;flex-shrink:0;border-bottom:1px solid rgba(6,120,213,0.12)}
     .bc-section{color:var(--muted)}
     .bc-sep{color:rgba(6,120,213,0.4);font-size:11px}
     .bc-page{color:#263746;font-weight:700}
@@ -196,7 +196,7 @@
     /* Notification in sidebar */
     .sb-notif-wrap{position:relative;width:100%}
     .notif-drawer-sb{position:absolute;bottom:100%;left:0;right:0;width:280px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:0 -4px 24px rgba(0,0,0,.2);z-index:200;overflow:hidden;display:none}
-</style>
+.page-banner{display:flex;align-items:center;gap:16px;background:#18252D;border-left:4px solid #0678D5;border-radius:0 8px 8px 0;padding:14px 20px;margin-bottom:22px;flex-shrink:0}.page-banner-icon{font-size:22px;flex-shrink:0;opacity:.9}.page-banner-title{font-size:17px;font-weight:800;color:#fff;letter-spacing:.02em;line-height:1.2}.page-banner-sub{font-size:11.5px;color:rgba(255,255,255,.5);margin-top:2px;font-weight:500}</style>
 </head>
 <body>
 <div id="auth-overlay" style="display:flex">
@@ -486,6 +486,7 @@
   <div id="tab-reports">
   <div id="rg-sub-generate">
   <div id="step-1" class="step-panel">
+    <div class="page-banner"><div class="page-banner-icon">&#128202;</div><div><div class="page-banner-title">Generate Reports</div><div class="page-banner-sub">Compliance data across all clients — Evident &amp; TrustLayer</div></div></div>
     <div id="pat-warning" style="display:none;align-items:center;gap:12px;padding:11px 16px;margin-bottom:14px;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;font-size:13px;color:#9a3412">
       <span>&#9888;</span>
       <span><strong>No Access Token configured.</strong> Data cannot load without a GitHub PAT. <button onclick="openSettings()" style="background:none;border:none;color:var(--blue);cursor:pointer;font-weight:600;font-size:13px;padding:0;text-decoration:underline">Open Settings</button> to add one.</span>
@@ -555,6 +556,7 @@
 
     <!-- ══ WORKSPACE SETUP ══ -->
     <div id="mtab-setup">
+      <div class="page-banner"><div class="page-banner-icon">&#127959;</div><div><div class="page-banner-title">Workspace Setup</div><div class="page-banner-sub">Connect and configure your Monday.com workspace</div></div></div>
       <!-- PHASE TRACKER -->
       <div style="display:flex;background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow)">
         <div id="ws-ph-1" style="flex:1;padding:13px 18px;display:flex;align-items:center;gap:10px;background:var(--blue-light);position:relative">
@@ -662,6 +664,7 @@
 
     <!-- ══ CONFIGURE ══ -->
     <div id="mtab-configure" style="display:none">
+      <div class="page-banner"><div class="page-banner-icon">&#9881;&#65039;</div><div><div class="page-banner-title">Configure</div><div class="page-banner-sub">Board settings, field mapping, and dropdown values</div></div></div>
       <div class="card" style="margin-bottom:18px">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
           <div><div class="card-title" style="margin-bottom:4px">&#128269; Workspace Health Check</div><div style="font-size:13px;color:var(--muted)">Scans boards, columns, dropdown values, and client coverage in one pass</div></div>
@@ -719,6 +722,7 @@
 
     <!-- ══ CLIENT PANEL ══ -->
     <div id="mtab-clients" style="display:none">
+      <div class="page-banner"><div class="page-banner-icon">&#128101;</div><div><div class="page-banner-title">Client Manager</div><div class="page-banner-sub">Manage clients, logos and branding across all generators</div></div></div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
         <div><div style="font-size:16px;font-weight:800;color:var(--navy)">Client Panel</div><div style="font-size:12px;color:var(--muted)">Manage clients — saves to config and syncs to Monday simultaneously</div></div>
         <button class="btn btn-primary" onclick="openAddClient()" style="white-space:nowrap">+ Add Client</button>
@@ -747,10 +751,7 @@
   <div id="tab-template" style="display:none">
     <!-- STEP 1: Client Selection -->
     <div id="tg-step-1" class="step-panel">
-      <div class="page-hdr">
-        <div class="page-title">Template Generator</div>
-        <div class="page-sub">Select a client to build a branded intake form</div>
-      </div>
+      <div class="page-banner"><div class="page-banner-icon">&#9998;</div><div><div class="page-banner-title">Build Template</div><div class="page-banner-sub">Select a client to build a branded vendor intake form</div></div></div>
       <div class="card">
         <div class="struct-label">General &#8212; Shown by Entity Type</div><div class="client-grid" id="tg-grid-general"></div>
         <div class="struct-label">Subcontractors &#8212; Shown by Project</div><div class="client-grid" id="tg-grid-project"></div>
