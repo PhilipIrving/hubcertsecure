@@ -4672,14 +4672,18 @@ let _tgLogoData = null;
 let _tgCustomFields = [];
 
 const TG_STANDARD_FIELDS = [
-  { key:'entity_name',    label:'Entity Name',      required:true,  type:'text',     section:'entity' },
-  { key:'legal_name',     label:'Legal Name',        required:true,  type:'text',     section:'entity' },
-  { key:'dba_name',       label:'DBA Name',          required:false, type:'text',     section:'entity' },
-  { key:'entity_address', label:'Entity Address',    required:false, type:'text',     section:'entity' },
-  { key:'entity_email',   label:'Entity Email',      required:false, type:'text',     section:'entity' },
-  { key:'entity_id',      label:'Entity ID',         required:false, type:'text',     section:'entity' },
-  { key:'entity_type',    label:'Entity Type',       required:false, type:'dropdown', section:'entity', optsKey:'entity_types' },
-  { key:'notes',          label:'Additional Notes',  required:false, type:'textarea', section:'notes' },
+  { key:'entity_name',      label:'Entity Name',      required:true,  type:'text',     section:'entity' },
+  { key:'legal_name',       label:'Legal Name',        required:true,  type:'text',     section:'entity' },
+  { key:'dba_name',         label:'DBA Name',          required:false, type:'text',     section:'entity' },
+  { key:'street_address',   label:'Street Address',    required:false, type:'text',     section:'address' },
+  { key:'ste_flr',          label:'Ste/Flr',           required:false, type:'text',     section:'address' },
+  { key:'city',             label:'City',              required:false, type:'text',     section:'address' },
+  { key:'state',            label:'State',             required:false, type:'text',     section:'address' },
+  { key:'zip_code',         label:'Zip Code',          required:false, type:'text',     section:'address' },
+  { key:'entity_email',     label:'Entity Email',      required:false, type:'text',     section:'entity' },
+  { key:'entity_id',        label:'Entity ID',         required:false, type:'text',     section:'entity' },
+  { key:'entity_type',      label:'Entity Type',       required:false, type:'dropdown', section:'entity', optsKey:'entity_types' },
+  { key:'notes',            label:'Additional Notes',  required:false, type:'textarea', section:'notes' },
 ];
 
 const TG_US_STATES = ['-- Select --','AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
