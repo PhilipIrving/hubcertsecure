@@ -1402,7 +1402,7 @@ async function doLogin() {
     const dbgBtn = document.getElementById('sb-debug-btn'); if (dbgBtn) dbgBtn.style.display = role === 'system_administrator' ? '' : 'none';
     onLoginSuccess(data.user, sharedPat);
     document.getElementById('auth-overlay').style.display = 'none';
-    document.getElementById('main-app').style.display = '';
+    document.getElementById('main-app').style.display = '';document.getElementById('fixed-bell-wrap').style.display='';
   } catch(e) {
     // Show the real error so we can diagnose it
     const msg = e?.message || String(e) || 'Unknown error';
@@ -1455,7 +1455,7 @@ async function doResetPassword() {
     showAuthMsg('reset-msg', error.message, true); btn.disabled = false; btn.textContent = 'Set New Password';
   } else {
     showAuthMsg('reset-msg', 'Password updated! Signing you in\u2026', false);
-    setTimeout(() => { document.getElementById('auth-overlay').style.display = 'none'; document.getElementById('main-app').style.display = ''; window.location.hash = ''; }, 1500);
+    setTimeout(() => { document.getElementById('auth-overlay').style.display = 'none'; document.getElementById('main-app').style.display = '';document.getElementById('fixed-bell-wrap').style.display=''; window.location.hash = ''; }, 1500);
   }
 }
 function showAuthMsg(id, msg, isErr) {
@@ -1467,7 +1467,7 @@ function switchSettingsTab(tab) {
     const btn = document.getElementById('stab-' + t);
     const pane = document.getElementById('stab-content-' + t);
     if (btn) btn.classList.toggle('active', t === tab);
-    if (pane) pane.style.display = t === tab ? '' : 'none';
+    if (pane) pane.style.display = t === tab ? 'block' : 'none';
   });
   if (tab === 'users') loadUsers();
   if (tab === 'monday-cfg') settingsMondayTabActivated();
@@ -1598,7 +1598,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const dbgBtn = document.getElementById('sb-debug-btn'); if (dbgBtn) dbgBtn.style.display = role === 'system_administrator' ? '' : 'none';
         onLoginSuccess(session.user);
         document.getElementById('auth-overlay').style.display = 'none';
-        document.getElementById('main-app').style.display = '';
+        document.getElementById('main-app').style.display = '';document.getElementById('fixed-bell-wrap').style.display='';
       }
     } catch(e) { /* no session */ }
   }
@@ -2184,7 +2184,7 @@ async function saveClientsToConfig(updatedClients) {
 function switchTab(tab) {
   ['reports','monday','template'].forEach(t => {
     const el = document.getElementById('tab-' + t);
-    if (el) el.style.display = t === tab ? '' : 'none';
+    if (el) el.style.display = t === tab ? 'block' : 'none';
     const btn = document.getElementById('tab-btn-' + t); if (btn) btn.classList.toggle('active', t === tab);
   });
   if (tab === 'monday') {
@@ -3782,7 +3782,7 @@ function switchMondayTab(tab) {
   ['setup','configure','activity','clients'].forEach(t => {
     const el  = document.getElementById('mtab-' + t);
     const btn = document.getElementById('mtab-btn-' + t);
-    if (el)  el.style.display  = t===tab ? '' : 'none';
+    if (el)  el.style.display  = t===tab ? 'block' : 'none';
     if (btn) btn.classList.toggle('active', t===tab);
   });
   if (tab === 'configure') wsCfgInit();
