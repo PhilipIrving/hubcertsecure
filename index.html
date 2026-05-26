@@ -548,12 +548,12 @@
     <div class="sidebar-nav" style="padding-top:12px">
       <!-- ── Report Generator ── -->
       <button class="sb-section open" id="sb-sec-reports" onclick="toggleSection('reports')" data-tip="Reports">
-        <span class="sb-ic">&#128196;</span><span class="sb-label"> Report Generator</span>
+        <span class="sb-ic">&#128200;</span><span class="sb-label"> Report Generator</span>
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content open" id="sb-sec-reports-content">
         <button class="sb-item active" id="snav-generate" onclick="sidebarNav('generate')" data-tip="Generate Reports">
-          <span class="sb-ic">&#128202;</span><span class="sb-label"> Generate Reports</span>
+          <span class="sb-ic">&#128203;</span><span class="sb-label"> Generate Reports</span>
         </button>
         <div style="padding:4px 8px 6px;display:flex;gap:5px">
           <button class="sb-item" id="refresh-btn" onclick="triggerRefresh()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" data-tip="Refresh"><span class="sb-ic">&#8635;</span><span class="sb-label"> Refresh</span></button>
@@ -562,35 +562,35 @@
       </div>
       <!-- ── Monday.com ── -->
       <button class="sb-section" id="sb-sec-monday" onclick="toggleSection('monday')" data-tip="Monday.com">
-        <span class="sb-ic">&#128203;</span><span class="sb-label"> Monday.com Generator</span>
+        <span class="sb-ic">&#128197;</span><span class="sb-label"> Monday.com Generator</span>
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content" id="sb-sec-monday-content">
         <button class="sb-item" id="snav-m-setup" onclick="sidebarNav('m-setup')" data-tip="Workspace Setup">
-          <span class="sb-ic">&#127959;</span><span class="sb-label"> Workspace Setup</span>
+          <span class="sb-ic">&#127959;&#65039;</span><span class="sb-label"> Workspace Setup</span>
         </button>
         <button class="sb-item" id="snav-m-configure" onclick="sidebarNav('m-configure')" data-tip="Configure">
-          <span class="sb-ic">&#9881;&#65039;</span><span class="sb-label"> Configure</span>
+          <span class="sb-ic">&#128295;</span><span class="sb-label"> Configure</span>
         </button>
       </div>
       <!-- ── Template Generator ── -->
       <button class="sb-section" id="sb-sec-template" onclick="toggleSection('template')" data-tip="Templates">
-        <span class="sb-ic">&#128462;</span><span class="sb-label"> Template Generator</span>
+        <span class="sb-ic">&#128196;</span><span class="sb-label"> Template Generator</span>
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content" id="sb-sec-template-content">
         <button class="sb-item" id="snav-tg-build" onclick="sidebarNav('tg-build')" data-tip="Build Template">
-          <span class="sb-ic">&#9998;</span><span class="sb-label"> Build Template</span>
+          <span class="sb-ic">&#9999;&#65039;</span><span class="sb-label"> Build Template</span>
         </button>
       </div>
       <!-- ── Client Manager ── -->
       <button class="sb-section" id="sb-sec-cm" onclick="toggleSection('cm')" data-tip="Clients">
-        <span class="sb-ic">&#128101;</span><span class="sb-label"> Client Manager</span>
+        <span class="sb-ic">&#127968;</span><span class="sb-label"> Client Manager</span>
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content" id="sb-sec-cm-content">
         <button class="sb-item" id="snav-cm-clients" onclick="sidebarNav('cm-clients')" data-tip="All Clients">
-          <span class="sb-ic">&#128203;</span><span class="sb-label"> All Clients</span>
+          <span class="sb-ic">&#128101;</span><span class="sb-label"> All Clients</span>
         </button>
       </div>
     </div>
@@ -602,7 +602,7 @@
       <div id="sb-user" style="display:none"><div id="sb-user-name"></div><div id="sb-user-role"></div></div>
       <button class="sb-item" onclick="openSettings()" aria-label="Open settings"><span class="sb-ic">&#9881;&#65039;</span><span class="sb-label"> Settings</span></button>
       <button class="sb-item" id="sb-debug-btn" onclick="csDebug.enable();csDebug.show();this.style.color='#34d399'" title="Enable Debug Mode" aria-label="Enable debug mode" style="display:none"><span class="sb-ic">&#128027;</span><span class="sb-label"> Debug</span></button>
-      <button class="sb-item" onclick="doSignOut()" aria-label="Sign out of CertSecure Hub"><span class="sb-ic">&#11083;</span><span class="sb-label"> Sign Out</span></button>
+      <button class="sb-item" onclick="doSignOut()" aria-label="Sign out of CertSecure Hub"><span class="sb-ic">&#128682;</span><span class="sb-label"> Sign Out</span></button>
       <div class="sb-support-section">
         <div class="sb-support-label">Support</div>
         <div class="sb-contact-row">&#128100; Philip Irving</div>
@@ -2854,6 +2854,11 @@ function showDownloads(downloads){
   let excelIdx=0;
   downloads.forEach(d=>{
     if(d.type==='excel'){setTimeout(()=>{const a=document.createElement('a');a.href=URL.createObjectURL(d.blob);a.download=d.filename;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(a.href),5000);},excelIdx++*350);}
+    else if(dl.type==='html'){
+      // Re-download the .html template file
+      if(!dl._blobUrl){dl._blobUrl=URL.createObjectURL(dl.blob);}
+      actionBtn = dl._blobUrl ? '<a href="'+dl._blobUrl+'" download="'+dl.filename+'" style="font-size:10px;color:var(--blue);font-weight:600;text-decoration:none;white-space:nowrap">\u2193 Download</a>' : '';
+    }
     else{printHTMLasPDF(d.html);const blob=new Blob([d.html],{type:'text/html'});d._blobUrl=URL.createObjectURL(blob);}
   });
   goTo(2);renderGrids();
@@ -5324,15 +5329,26 @@ function tgGenerate() {
   const accent   = document.getElementById('tg-accent-hex').value || '#3872B8';
   const header   = document.getElementById('tg-header-hex').value || '#283847';
   const html     = tgBuildFormHTML(title, subtitle, accent, header);
-  printHTMLasPDF(html);
-  // Also add to notifications
-  const blobUrl = URL.createObjectURL(new Blob([html], {type:'text/html'}));
-  _notifs.unshift({msg: title, type:'success', time:new Date(), _download:{type:'pdf', html, _blobUrl:blobUrl, filename: _tgClient.name+' - Template - '+new Date().toISOString().split('T')[0]+'.pdf'}});
+  // Download as .html file so clients can open it directly in their browser
+  const safeTitle = _tgClient.name.replace(/[^a-z0-9\s-]/gi,'').trim();
+  const dateStr   = new Date().toISOString().split('T')[0];
+  const filename  = safeTitle + ' - Template - ' + dateStr + '.html';
+  const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+  // Add to notifications for re-download
+  _notifs.unshift({msg: title, type:'success', time:new Date(), _download:{type:'html', blob, filename}});
   if (_notifs.length > 15) _notifs.pop();
   renderNotifList();
   const drawer = document.getElementById('notif-drawer');
   if (drawer) { drawer.style.display = ''; _unread = 0; updateNotifBadge(); }
-  toast('Template generating — save as PDF from print dialog', 'success');
+  toast('✓ Template downloaded — ' + filename, 'success');
 }
 
 function tgBuildFormHTML(title,subtitle,accent,header){
@@ -5372,9 +5388,12 @@ function tgBuildFormHTML(title,subtitle,accent,header){
   const sectionRows={};sections.forEach(s=>{sectionRows[s.id]=[];});
   _tgFormRows.filter(r=>!r._hidden).forEach(r=>{
     if(r._type==='coverage'){sectionRows['coverage'].push(r);return;}
-    if(r._type==='custom'){sectionRows['custom'].push(r);return;}
+    // Key-based routing takes precedence — standard-section keys always route correctly
+    // regardless of whether _type was set to 'custom' by the API loader
     const m=sections.find(s=>s.keys.includes(r.key));
-    if(m)sectionRows[m.id].push(r);else sectionRows['custom'].push(r);
+    if(m){sectionRows[m.id].push(r);return;}
+    // Fall through: unknown keys go to ADDITIONAL INFORMATION
+    sectionRows['custom'].push(r);
   });
 
   function rf(f,colClass){
