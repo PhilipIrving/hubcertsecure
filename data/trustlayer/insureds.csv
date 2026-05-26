@@ -901,7 +901,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a07293df523b35823695f9c,BANK OF AMERICA,,NON_COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07293df523b35823695fa1,"GRAPEVINE DESIGNS, LLC",Jerry@Aegis.Insurance,NON_COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07293df523b35823695fa6,WAYFAIR,,NON_COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a07293df523b35823695fab,PLUMB SUPPLY,,NON_COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a07293df523b35823695fab,PLUMB SUPPLY,rstraw@sycamoreins.com,NON_COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07293df523b35823695fb0,"1&1 INTERNET / IONOS, INC.",,NON_COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07293ef523b35823695fb5,MITCHELL CAPITAL MANAGEMENT CO.,,NON_COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07293ef523b35823695fba,UNION BANK AND TRUST COMPANY,,NON_COMPLIANT,,,true,false,2026-05-26
@@ -1518,7 +1518,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a07296bf523b35823696bb8,LAWYERS TITLE OF KANSAS CITY,,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07296bf523b35823696bbd,CHRISTIAN CENTER / JERRY GATSON SR. & SHEVELLA GATSON,,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07296bf523b35823696bc2,KW KEY PARTNERS / TODD & AMY BIEBER,,COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a07296bf523b35823696bc7,CHINA KING / BI SHUI LIU,,COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a07296bf523b35823696bc7,CHINA KING / BI SHUI LIU,baosinsurance@gmail.com,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07296bf523b35823696bcc,DELIVERY SERVICE / BARRY & MARIA GARNER,,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07296bf523b35823696bd1,LA CARRETA,,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07296bf523b35823696bd6,JOANN'S,,COMPLIANT,,,true,false,2026-05-26
@@ -1796,14 +1796,14 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a1065014a2eb9d3229f95d4,Marietta Memorial Hospital; Marietta Health Care Physicians Inc; MHC Physicians Inc; Selby General Hospital,,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a1065014a2eb9d3229f95d9,"About Floors N' More, Inc.",,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a1065014a2eb9d3229f95de,Eemployers Solutions Inc.,,COMPLIANT,,,true,false,2026-05-26
-QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",jakins@a-p.com,NON_COMPLIANT,,,true,false,2026-05-26
+QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",jakins@a-p.com,PENDING,,,true,false,2026-05-26
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,pherrin@brasfieldgorrie.com,NON_COMPLIANT,,,true,false,2026-05-26
 QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",porterd@claycorp.com,NON_COMPLIANT,,,true,false,2026-05-26
 QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,msanchez@evans-gc.com,NON_COMPLIANT,,,true,false,2026-05-26
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,dbuser@gilbaneco.com,NON_COMPLIANT,,,true,false,2026-05-26
 QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",ajolly@gray.com,NON_COMPLIANT,,,true,false,2026-05-26
 QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",nmorgan@hitt-gc.com,NON_COMPLIANT,,,true,false,2026-05-26
-QTS Data Centers,69f0f3c5beb6279e947be0f3,"Holder Construction Group, LLC",internalemail@noemail.com,NON_COMPLIANT,,,true,false,2026-05-26
+QTS Data Centers,69f0f3c5beb6279e947be0f3,"Holder Construction Group, LLC",internalemail@noemail.com,PENDING,,,true,false,2026-05-26
 QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",rickie.sanchez@laytonconstruction.com,NON_COMPLIANT,,,true,false,2026-05-26
 QTS Data Centers,69f0f3c5beb6279e947be0fd,M. A. Mortenson Company,dan.bavaro@mortenson.com,NON_COMPLIANT,,,true,false,2026-05-26
 QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,lcouey@r-o.com,NON_COMPLIANT,,,true,false,2026-05-26
