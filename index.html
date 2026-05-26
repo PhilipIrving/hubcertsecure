@@ -2723,33 +2723,7 @@ ${topNCAll.length ? `
   <div>&#x1F512; <strong>Confidential \u2014 HUB CertSecure Internal.</strong> HUB-Wide Annual Review \u00b7 ${year} \u00b7 Do not distribute outside HUB International.</div>
   <div>HUB CertSecure \u00b7 ${year}</div>
 </div>
-<style>
 
-/* Sidebar brand text */
-.sidebar-brand{flex:1!important;min-width:0;overflow:hidden}
-.sidebar-brand-cert{font-size:18px!important;font-weight:900!important;letter-spacing:.03em;color:#ffffff!important;line-height:1.1;white-space:nowrap}
-.sidebar-brand-cert span{color:#00AEEF!important}
-.sidebar-brand-sub{font-size:8px!important;font-weight:700!important;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)!important;margin-top:2px;white-space:nowrap}
-.sidebar-logo{padding:12px 14px 10px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;border-bottom:1px solid rgba(0,174,239,.18)!important;flex-shrink:0!important;background:#18252D!important;background-image:radial-gradient(circle,rgba(0,174,239,0.11) 1px,transparent 1px)!important;background-size:14px 14px!important}
-
-/* v0.27 sidebar profile — injected last for specificity */
-.sb-profile{display:flex!important;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;border-top:1px solid rgba(0,174,239,.2);position:relative;transition:background .15s;user-select:none;flex-shrink:0;margin-top:auto}
-.sb-profile:hover{background:rgba(255,255,255,.07)!important}
-.sb-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#0678D5,#00AEEF)!important;color:#fff!important;display:flex!important;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;letter-spacing:.03em}
-.sb-profile-info-wrap{flex:1;min-width:0;overflow:hidden}
-.sb-profile-name{font-size:13px!important;font-weight:600!important;color:rgba(255,255,255,.92)!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sb-profile-role{font-size:9.5px!important;font-weight:600!important;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55)!important;margin-top:2px;white-space:nowrap}
-.sb-profile-chevron{font-size:13px;color:rgba(255,255,255,.45)!important;flex-shrink:0;transition:transform .2s}
-.sb-profile.open .sb-profile-chevron{transform:rotate(180deg)}
-.sb-user-menu{position:absolute!important;bottom:100%!important;left:6px!important;right:6px!important;background:#162535!important;border:1px solid rgba(255,255,255,.12)!important;border-radius:10px!important;box-shadow:0 -8px 24px rgba(0,0,0,.5)!important;z-index:9999!important;margin-bottom:4px;overflow:hidden}
-.sb-menu-item{width:100%;display:flex;align-items:center;gap:10px;padding:11px 16px;background:none!important;border:none;color:rgba(255,255,255,.85)!important;font-size:13px;font-weight:500;font-family:inherit;cursor:pointer;text-align:left;transition:background .12s}
-.sb-menu-item:hover{background:rgba(255,255,255,.09)!important}
-.sb-menu-divider{height:1px;background:rgba(255,255,255,.1);margin:2px 0}
-.sb-menu-signout{color:rgba(255,110,110,.9)!important}.sb-menu-signout:hover{background:rgba(172,21,52,.2)!important}
-/* Breadcrumb */
-.breadcrumb-bar{display:block!important;padding:14px 28px 8px!important;border-bottom:2px solid rgba(6,120,213,0.1)!important;flex-shrink:0!important;min-height:46px!important;background:#fff!important}
-#bc-page{display:block!important;font-size:17px!important;font-weight:700!important;color:#1E2E3D!important;letter-spacing:.01em}
-</style>
 </body></html>`;
 }
 </script>
@@ -5825,5 +5799,29 @@ function ceAutoDetectColors() {
   });
 }
 </script>
+<style>
+/* v0.27 final CSS */
+.sidebar-brand{flex:1!important;min-width:0;overflow:hidden}
+.sidebar-brand-cert{font-size:18px!important;font-weight:900!important;letter-spacing:.03em!important;color:#fff!important;line-height:1.1;white-space:nowrap}
+.sidebar-brand-cert span{color:#00AEEF!important}
+.sidebar-brand-sub{font-size:8px!important;font-weight:700!important;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55)!important;margin-top:2px;white-space:nowrap;display:block}
+.sidebar-logo{padding:12px 14px 10px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;border-bottom:1px solid rgba(0,174,239,.18)!important;flex-shrink:0!important;background:#18252D!important}
+.hub-logo-btn{width:34px!important;height:34px!important;object-fit:contain!important;display:block!important;border-radius:50%!important;background:none!important}
+.sb-profile{display:flex!important;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;border-top:1px solid rgba(0,174,239,.2);position:relative;transition:background .15s;user-select:none;flex-shrink:0}
+.sb-profile:hover{background:rgba(255,255,255,.07)!important}
+.sb-avatar{width:34px!important;height:34px!important;border-radius:50%!important;background:linear-gradient(135deg,#0678D5,#00AEEF)!important;color:#fff!important;display:flex!important;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
+.sb-profile-info-wrap{flex:1!important;min-width:0;overflow:hidden}
+.sb-profile-name{font-size:13px!important;font-weight:600!important;color:rgba(255,255,255,.92)!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.sb-profile-role{font-size:9.5px!important;font-weight:600!important;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55)!important;margin-top:2px;display:block}
+.sb-profile-chevron{font-size:13px;color:rgba(255,255,255,.45)!important;flex-shrink:0;transition:transform .2s}
+.sb-profile.open .sb-profile-chevron{transform:rotate(180deg)}
+.sb-user-menu{position:absolute!important;bottom:100%!important;left:6px!important;right:6px!important;background:#162535!important;border:1px solid rgba(255,255,255,.12)!important;border-radius:10px!important;box-shadow:0 -8px 24px rgba(0,0,0,.5)!important;z-index:9999!important;margin-bottom:4px;overflow:hidden}
+.sb-menu-item{width:100%;display:flex;align-items:center;gap:10px;padding:11px 16px;background:none!important;border:none;color:rgba(255,255,255,.85)!important;font-size:13px;font-weight:500;font-family:inherit;cursor:pointer;text-align:left}
+.sb-menu-item:hover{background:rgba(255,255,255,.09)!important}
+.sb-menu-divider{height:1px;background:rgba(255,255,255,.1);margin:2px 0}
+.sb-menu-signout{color:rgba(255,110,110,.9)!important}
+.breadcrumb-bar{display:block!important;padding:14px 28px 8px!important;border-bottom:2px solid rgba(6,120,213,.1)!important;flex-shrink:0!important;min-height:46px!important;background:#fff!important}
+#bc-page{display:block!important;font-size:17px!important;font-weight:700!important;color:#1E2E3D!important}
+</style>
 </body>
 </html>
