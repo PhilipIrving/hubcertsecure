@@ -436,9 +436,6 @@
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content" id="sb-sec-monday-content">
-        <button class="sb-item" id="snav-m-clients" onclick="sidebarNav('m-clients')" style="display:none">
-          <span class="sb-ic">&#128101;</span> Client Panel
-        </button>
         <button class="sb-item active" id="snav-m-setup" onclick="sidebarNav('m-setup')">
           <span class="sb-ic">&#127959;</span> Workspace Setup
         </button>
@@ -456,12 +453,12 @@
           <span class="sb-ic">&#9998;</span> Build Template
         </button>
       </div>
-      <!-- ── Client Manager Section ── -->
-      <button class="sb-section" id="sb-sec-clients" onclick="toggleSection('clients')">
+      <!-- ── Client Manager ── -->
+      <button class="sb-section" id="sb-sec-cm" onclick="toggleSection('cm')">
         <span class="sb-ic">&#128101;</span> Client Manager
         <span class="sb-arrow">&#9654;</span>
       </button>
-      <div class="sb-section-content" id="sb-sec-clients-content">
+      <div class="sb-section-content" id="sb-sec-cm-content">
         <button class="sb-item" id="snav-cm-clients" onclick="sidebarNav('cm-clients')">
           <span class="sb-ic">&#128203;</span> All Clients
         </button>
@@ -839,101 +836,6 @@
         <button class="btn btn-secondary" onclick="tgGoStep(1)">&#8592; Back</button>
         <button class="btn btn-secondary" id="tg-save-btn" onclick="tgSaveSetup()" title="Save field layout for this client">&#128190; Save Setup</button>
         <button class="btn btn-primary" id="tg-gen-btn" onclick="tgGenerate()">&#11015; Download Form</button>
-      </div>
-    </div>
-  </div>
-  <div id="tab-clients" style="display:none">
-    <div class="main">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-        <div>
-          <div style="font-size:18px;font-weight:800;color:#263746">Client Manager</div>
-          <div style="font-size:12px;color:#5A6B7B;margin-top:2px">Manage logos, colors and contacts used across all generators</div>
-        </div>
-        <button class="btn btn-secondary" onclick="cmSaveAll()" id="cm-save-btn">&#128190; Save All</button>
-      </div>
-      <div class="cm-grid" id="cm-grid"></div>
-      <div id="cm-edit-panel" style="display:none">
-        <div class="cm-edit-panel">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
-            <div style="font-size:15px;font-weight:700;color:#263746" id="cm-edit-title">Edit Client</div>
-            <button onclick="cmCloseEdit()" style="background:none;border:none;cursor:pointer;color:#5A6B7B;font-size:18px">&times;</button>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-            <!-- Branding -->
-            <div style="grid-column:1/-1">
-              <div class="cm-section-title">&#127912; Branding</div>
-              <div style="display:flex;align-items:center;gap:20px">
-                <div id="cm-logo-wrap" style="display:none">
-                  <img id="cm-logo-preview" src="" style="width:80px;height:60px;object-fit:contain;border-radius:8px;border:1px solid #EEF2F7;background:#F8FAFC">
-                  <button onclick="cmRemoveLogo()" style="display:block;margin-top:4px;font-size:10px;color:#AC1534;background:none;border:none;cursor:pointer;font-family:var(--font)">Remove</button>
-                </div>
-                <div>
-                  <label class="btn btn-secondary" style="cursor:pointer;font-size:12px;padding:7px 14px">
-                    &#128444; Upload Logo
-                    <input type="file" id="cm-logo-input" accept="image/*" style="display:none" onchange="cmHandleLogo(this)">
-                  </label>
-                  <div class="form-hint" style="margin-top:6px">PNG with transparent background recommended</div>
-                </div>
-                <div style="display:flex;gap:12px">
-                  <div class="form-grp">
-                    <label class="form-lbl">Accent Color</label>
-                    <div style="display:flex;gap:6px;align-items:center">
-                      <input type="color" id="cm-accent-picker" value="#0678D5" oninput="cmSyncColor('accent')" style="width:34px;height:32px;padding:2px;border:1.5px solid #D1DCE8;border-radius:5px;cursor:pointer">
-                      <input type="text" id="cm-accent-hex" value="#0678D5" oninput="cmSyncHex('accent')" style="width:90px;font-family:monospace" maxlength="7">
-                    </div>
-                  </div>
-                  <div class="form-grp">
-                    <label class="form-lbl">Header Color</label>
-                    <div style="display:flex;gap:6px;align-items:center">
-                      <input type="color" id="cm-header-picker" value="#283847" oninput="cmSyncColor('header')" style="width:34px;height:32px;padding:2px;border:1.5px solid #D1DCE8;border-radius:5px;cursor:pointer">
-                      <input type="text" id="cm-header-hex" value="#283847" oninput="cmSyncHex('header')" style="width:90px;font-family:monospace" maxlength="7">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Contacts -->
-            <div style="grid-column:1/-1">
-              <div class="cm-section-title">&#128100; Contacts</div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-                <div class="form-grp">
-                  <label class="form-lbl">Contact Name</label>
-                  <input type="text" id="cm-contact-name" placeholder="e.g. Brian Darnell">
-                </div>
-                <div class="form-grp">
-                  <label class="form-lbl">Contact Email</label>
-                  <input type="text" id="cm-contact-email" placeholder="e.g. brian@hub.com">
-                </div>
-                <div class="form-grp">
-                  <label class="form-lbl">Producer Name</label>
-                  <input type="text" id="cm-producer-name" placeholder="e.g. Jane Smith">
-                </div>
-                <div class="form-grp">
-                  <label class="form-lbl">Referring HUB</label>
-                  <input type="text" id="cm-referring-hub" placeholder="e.g. MAM">
-                </div>
-              </div>
-            </div>
-            <!-- Entity -->
-            <div style="grid-column:1/-1">
-              <div class="cm-section-title">&#127970; Entity</div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-                <div class="form-grp">
-                  <label class="form-lbl">Legal Name</label>
-                  <input type="text" id="cm-legal-name" placeholder="Full legal entity name">
-                </div>
-                <div class="form-grp">
-                  <label class="form-lbl">Entity Type</label>
-                  <input type="text" id="cm-entity-type" placeholder="e.g. Tenant, General">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(6,120,213,0.1)">
-            <button class="btn btn-secondary" onclick="cmCloseEdit()">Cancel</button>
-            <button class="btn btn-primary" onclick="cmSaveClient()">&#128190; Save Client</button>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -2104,7 +2006,7 @@ async function saveClientsToConfig(updatedClients) {
   await attemptSave(1);
 }
 function switchTab(tab) {
-  ['reports','monday','template','clients'].forEach(t => {
+  ['reports','monday','template'].forEach(t => {
     const el = document.getElementById('tab-' + t);
     if (el) el.style.display = t === tab ? '' : 'none';
     const btn = document.getElementById('tab-btn-' + t); if (btn) btn.classList.toggle('active', t === tab);
@@ -2112,7 +2014,6 @@ function switchTab(tab) {
   if (tab === 'monday') {
     if (typeof mondayTabActivated === 'function') mondayTabActivated();
   }
-  if (tab === 'clients') cmInit();
 }
 function switchRGTab(sub) {
   const el = document.getElementById('rg-sub-generate');
@@ -2124,7 +2025,7 @@ function toggleSection(sec) {
   const isTemplate = sec === 'template';
   const isClients = sec === 'clients';
   // Toggle sections
-  ['reports','monday','template'].forEach(s => {
+  ['reports','monday','template','cm'].forEach(s => {
     const btn = document.getElementById('sb-sec-' + s);
     const cont = document.getElementById('sb-sec-' + s + '-content');
     const opening = (s === sec);
@@ -2134,6 +2035,7 @@ function toggleSection(sec) {
   // Navigate to the default item of the section
   if (isReports) sidebarNav('generate');
   else if (isTemplate) sidebarNav('tg-build');
+  else if (sec === 'cm') sidebarNav('cm-clients');
   else sidebarNav('m-setup');
 }
 // Sidebar navigation controller
@@ -2174,7 +2076,7 @@ function sidebarNav(dest) {
   else if (dest === 'm-setup')     { switchTab('monday'); switchMondayTab('setup'); }
   else if (dest === 'm-configure') { switchTab('monday'); switchMondayTab('configure'); }
   else if (dest === 'tg-build')    { switchTab('template'); tgInit(); }
-  else if (dest === 'cm-clients')  { switchTab('clients'); }
+  else if (dest === 'cm-clients')  { switchTab('monday'); switchMondayTab('clients'); }
 }
 async function loadAndRenderConfig() {
   const wrap = document.getElementById('cfg-table-wrap'); const s = getSettings();
@@ -5200,166 +5102,6 @@ async function tgSaveSetup() {
   }
 }
 
-
-// ══════════════════════════════════════════════════════════════
-//  CLIENT MANAGER
-// ══════════════════════════════════════════════════════════════
-let _cmSelectedKey = null;
-let _cmLogoData    = null;
-
-function cmInit() {
-  const grid = document.getElementById('cm-grid');
-  if (!grid) return;
-  const clients = _allClientsData || [];
-  if (!clients.length) {
-    grid.innerHTML = '<div style="color:#5A6B7B;font-size:13px;padding:20px 0">No clients loaded. Refresh data first.</div>';
-    return;
-  }
-  grid.innerHTML = clients.map(c => {
-    const meta = CLIENT_META_MAP[c.client_name] || {};
-    const hasLogo = !!(meta.logo_data || c.logo_data);
-    const logoHTML = hasLogo
-      ? `<img class="cm-logo" src="${meta.logo_data || c.logo_data}">`
-      : `<div class="cm-logo-placeholder">&#127970;</div>`;
-    const contact = meta.contact_name || c.contact_name || '';
-    const producer = meta.producer_name || c.producer_name || '';
-    return `<div class="cm-card" id="cm-card-${CSS.escape(c.client_name)}" onclick="cmEditClient('${c.client_name.replace(/'/g,"\\'")}')">
-      ${logoHTML}
-      <div>
-        <div class="cm-name">${c.client_name}</div>
-        <div class="cm-meta">${contact || producer || (c.structure||'general')}</div>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function cmEditClient(key) {
-  _cmSelectedKey = key;
-  _cmLogoData    = null;
-  const meta     = CLIENT_META_MAP[key] || {};
-  const client   = (_allClientsData||[]).find(c => c.client_name === key) || {};
-
-  // Header
-  const titleEl = document.getElementById('cm-edit-title');
-  if (titleEl) titleEl.textContent = key;
-
-  // Logo
-  const existingLogo = meta.logo_data || client.logo_data || null;
-  _cmLogoData = existingLogo;
-  const wrap = document.getElementById('cm-logo-wrap');
-  const prev = document.getElementById('cm-logo-preview');
-  if (existingLogo && prev) { prev.src = existingLogo; wrap.style.display = ''; }
-  else if (wrap) wrap.style.display = 'none';
-
-  // Colors
-  const accent = meta.tg_setup?.tg_accent || meta.accent_color || '#0678D5';
-  const header = meta.tg_setup?.tg_header || meta.header_color || '#283847';
-  document.getElementById('cm-accent-picker').value = accent;
-  document.getElementById('cm-accent-hex').value    = accent;
-  document.getElementById('cm-header-picker').value = header;
-  document.getElementById('cm-header-hex').value    = header;
-
-  // Contacts
-  document.getElementById('cm-contact-name').value  = meta.contact_name  || client.contact_name  || '';
-  document.getElementById('cm-contact-email').value = meta.contact_email || client.contact_email || '';
-  document.getElementById('cm-producer-name').value = meta.producer_name || client.producer_name || '';
-  document.getElementById('cm-referring-hub').value = meta.referring_hub || client.referring_hub || '';
-
-  // Entity
-  document.getElementById('cm-legal-name').value   = meta.legal_name   || client.legal_name   || '';
-  document.getElementById('cm-entity-type').value  = meta.entity_type  || client.structure    || '';
-
-  // Highlight card
-  document.querySelectorAll('.cm-card').forEach(el => el.classList.remove('selected'));
-  const card = document.getElementById('cm-card-' + CSS.escape(key));
-  if (card) { card.classList.add('selected'); card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
-
-  document.getElementById('cm-edit-panel').style.display = '';
-}
-
-function cmCloseEdit() {
-  _cmSelectedKey = null;
-  document.getElementById('cm-edit-panel').style.display = 'none';
-  document.querySelectorAll('.cm-card').forEach(el => el.classList.remove('selected'));
-}
-
-function cmHandleLogo(input) {
-  const file = input.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    _cmLogoData = e.target.result;
-    const prev = document.getElementById('cm-logo-preview');
-    const wrap = document.getElementById('cm-logo-wrap');
-    if (prev) { prev.src = _cmLogoData; wrap.style.display = ''; }
-  };
-  reader.readAsDataURL(file);
-}
-
-function cmRemoveLogo() {
-  _cmLogoData = null;
-  const wrap = document.getElementById('cm-logo-wrap');
-  if (wrap) wrap.style.display = 'none';
-  const input = document.getElementById('cm-logo-input');
-  if (input) input.value = '';
-}
-
-function cmSyncColor(which) {
-  const picker = document.getElementById('cm-' + which + '-picker');
-  const hex    = document.getElementById('cm-' + which + '-hex');
-  if (picker && hex) hex.value = picker.value;
-}
-function cmSyncHex(which) {
-  const hex    = document.getElementById('cm-' + which + '-hex');
-  const picker = document.getElementById('cm-' + which + '-picker');
-  if (hex && picker && /^#[0-9A-Fa-f]{6}$/.test(hex.value)) picker.value = hex.value;
-}
-
-async function cmSaveClient() {
-  if (!_cmSelectedKey) return;
-  const key = _cmSelectedKey;
-  const btn = document.querySelector('#cm-edit-panel .btn-primary');
-  if (btn) { btn.disabled = true; btn.textContent = 'Saving…'; }
-  try {
-    const meta = CLIENT_META_MAP[key] || {};
-    // Merge new values
-    const updated = Object.assign({}, meta, {
-      logo_data:     _cmLogoData !== null ? _cmLogoData : (meta.logo_data || null),
-      accent_color:  document.getElementById('cm-accent-hex').value,
-      header_color:  document.getElementById('cm-header-hex').value,
-      contact_name:  document.getElementById('cm-contact-name').value.trim(),
-      contact_email: document.getElementById('cm-contact-email').value.trim(),
-      producer_name: document.getElementById('cm-producer-name').value.trim(),
-      referring_hub: document.getElementById('cm-referring-hub').value.trim(),
-      legal_name:    document.getElementById('cm-legal-name').value.trim(),
-      entity_type:   document.getElementById('cm-entity-type').value.trim(),
-    });
-    // Sync TG setup colors too
-    if (updated.tg_setup) {
-      updated.tg_setup.tg_accent = updated.accent_color;
-      updated.tg_setup.tg_header = updated.header_color;
-      if (_cmLogoData !== null) updated.tg_setup.tg_logo = _cmLogoData;
-    }
-    CLIENT_META_MAP[key] = updated;
-    const allClients = (_allClientsData || []).map(c => {
-      if (c.client_name !== key) return c;
-      return Object.assign({}, c, updated);
-    });
-    await saveClientsToConfig(allClients);
-    _allClientsData = allClients;
-    toast('✓ Saved ' + key, 'success');
-    cmInit(); // refresh grid
-    cmCloseEdit();
-  } catch(e) {
-    toast('Save failed: ' + e.message, 'error');
-  } finally {
-    if (btn) { btn.disabled = false; btn.innerHTML = '&#128190; Save Client'; }
-  }
-}
-
-async function cmSaveAll() {
-  toast('All clients saved', 'success');
-}
 
 
 function tgGenerate() {
