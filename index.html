@@ -145,9 +145,10 @@
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:#18252D;background-image:radial-gradient(circle,rgba(0,174,239,0.11) 1px,transparent 1px);background-size:14px 14px;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
-    .sidebar-logo{padding:16px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(0,174,239,0.2)}
-    .sidebar-logo img{height:26px;width:auto;object-fit:contain;flex-shrink:0}
-    .sidebar-logo-text{font-size:14px;font-weight:800;letter-spacing:.04em;color:white}.sidebar-logo-text span{color:#00AEEF}
+    .sidebar-logo{padding:14px 10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid rgba(0,174,239,0.18);flex-shrink:0}
+    .sidebar-logo-brand{display:flex;flex-direction:column;gap:1px;overflow:hidden;min-width:0}
+    .sidebar-logo-cert{font-size:15px;font-weight:800;letter-spacing:.06em;color:white;white-space:nowrap}.sidebar-logo-cert span{color:#00AEEF}
+    .sidebar-logo-sub{font-size:7.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);white-space:nowrap}
     .sidebar-nav{flex:1;padding:10px 8px;overflow-y:auto}
     .sb-group{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:14px 10px 4px}
     .sb-item{display:flex;align-items:center;gap:9px;width:100%;padding:9px 12px;font-size:13px;font-weight:600;color:rgba(255,255,255,.6);background:none;border:none;border-radius:7px;cursor:pointer;font-family:inherit;text-align:left;transition:background .15s,color .15s;margin:1px 0}
@@ -239,15 +240,27 @@
   .sidebar-toggle{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.07);border:1px solid rgba(0,174,239,0.25);color:rgba(255,255,255,0.6);cursor:pointer;font-size:13px;transition:all .15s;flex-shrink:0;font-family:inherit}
   .sidebar-toggle:hover{background:rgba(6,120,213,0.25);color:#fff;border-color:rgba(0,174,239,0.5)}
   .sidebar.collapsed{width:52px}
-  .sidebar.collapsed .sidebar-logo-text,.sidebar.collapsed .sb-group{display:none!important}
-  .sidebar.collapsed .sb-section span:not(.sb-ic){display:none!important}
-  .sidebar.collapsed .sb-item span:not(.sb-ic){display:none!important}
+  /* ── Sidebar toggle button: HUB round blue circle ── */
+  .sidebar-toggle{width:30px;height:30px;border-radius:50%;background:#0678D5;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:300;flex-shrink:0;transition:background .15s,transform .15s;line-height:1;font-family:inherit}
+  .sidebar-toggle:hover{background:#005BB5;transform:scale(1.08)}
+  /* Collapsed state: expand arrow flips */
+  .sidebar.collapsed .sidebar-toggle{content:'›'}
+
+  /* ── Sidebar collapse ── */
+  .sidebar.collapsed{width:54px}
+  .sidebar.collapsed .sidebar-logo-brand{display:none!important}
+  .sidebar.collapsed .sidebar-logo{justify-content:center;padding:12px 0}
+  .sidebar.collapsed .sb-label{display:none!important}
+  .sidebar.collapsed .sb-arrow{display:none!important}
+  .sidebar.collapsed .sb-group{display:none!important}
   .sidebar.collapsed .sb-section-content{display:none!important}
-  .sidebar.collapsed .sb-support-section,.sidebar.collapsed .sb-version{display:none!important}
+  .sidebar.collapsed .sb-support-section{display:none!important}
+  .sidebar.collapsed .sb-version{display:none!important}
   .sidebar.collapsed .sb-section,.sidebar.collapsed .sb-item{justify-content:center;padding:9px 4px;border-left:none!important}
-  .sidebar.collapsed .sb-ic{font-size:16px;width:auto;margin:0}
-  .sidebar.collapsed .sb-section[data-tip]:hover::after,.sidebar.collapsed .sb-item[data-tip]:hover::after{content:attr(data-tip);position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);background:#1E2E3D;color:#fff;padding:5px 10px;border-radius:6px;font-size:11px;font-weight:600;white-space:nowrap;z-index:200;border:1px solid rgba(6,120,213,0.3);pointer-events:none}
+  .sidebar.collapsed .sb-ic{font-size:17px;width:auto;margin:0}
+  /* Tooltips when collapsed */
   .sidebar.collapsed .sb-section,.sidebar.collapsed .sb-item{position:relative}
+  .sidebar.collapsed .sb-section[data-tip]:hover::after,.sidebar.collapsed .sb-item[data-tip]:hover::after{content:attr(data-tip);position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);background:#1E2E3D;color:#fff;padding:5px 11px;border-radius:6px;font-size:11px;font-weight:600;white-space:nowrap;z-index:300;border:1px solid rgba(6,120,213,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.2);pointer-events:none}
   @keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
   .skeleton-card{border-radius:8px;background:linear-gradient(90deg,#eef2f7 25%,#e2e8f0 50%,#eef2f7 75%);background-size:800px 100%;animation:shimmer 1.4s infinite linear;border:1.5px solid #e2e8f0;height:72px}
   @keyframes fadeSlideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -524,78 +537,78 @@
 <div id="main-app" class="app-shell" style="display:none">
   <!-- ═══ SIDEBAR ═══ -->
   <nav class="sidebar" id="app-sidebar" aria-label="Main navigation">
-    <div class="sidebar-logo" style="display:flex;align-items:center;gap:10px;padding:14px 10px">
-      <img class="sidebar-logo-img" src="" id="sb-logo-img" style="height:26px;display:none">
-      <div class="sidebar-logo-text">CERT<span>SECURE</span></div>
-      <button class="sidebar-toggle" id="sb-toggle" onclick="toggleSidebar()" title="Collapse sidebar" aria-label="Toggle sidebar">&#8942;</button>
+    <!-- Logo / header -->
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-brand">
+        <div class="sidebar-logo-cert">CERT<span>SECURE</span></div>
+        <div class="sidebar-logo-sub">SERVICED BY HUB</div>
+      </div>
+      <button class="sidebar-toggle" id="sb-toggle" onclick="toggleSidebar()" title="Collapse sidebar" aria-label="Toggle sidebar">&#8249;</button>
     </div>
     <div class="sidebar-nav" style="padding-top:12px">
-      <!-- ── Report Generator Section ── -->
+      <!-- ── Report Generator ── -->
       <button class="sb-section open" id="sb-sec-reports" onclick="toggleSection('reports')" data-tip="Reports">
-        <span class="sb-ic">&#128196;</span> Report Generator
+        <span class="sb-ic">&#128196;</span><span class="sb-label"> Report Generator</span>
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content open" id="sb-sec-reports-content">
-        <button class="sb-item active" id="snav-generate" onclick="sidebarNav('generate')" data-tip="Generate">
-          <span class="sb-ic">&#128202;</span> Generate Reports
+        <button class="sb-item active" id="snav-generate" onclick="sidebarNav('generate')" data-tip="Generate Reports">
+          <span class="sb-ic">&#128202;</span><span class="sb-label"> Generate Reports</span>
         </button>
         <div style="padding:4px 8px 6px;display:flex;gap:5px">
-          <button class="sb-item" id="refresh-btn" onclick="triggerRefresh()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" data-tip="Refresh">&#8635; Refresh</button>
-          <button class="sb-item" id="rg-diag-btn" onclick="runDataDiagnostic()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" title="Check Data" data-tip="Check">&#128269; Check</button>
+          <button class="sb-item" id="refresh-btn" onclick="triggerRefresh()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" data-tip="Refresh"><span class="sb-ic">&#8635;</span><span class="sb-label"> Refresh</span></button>
+          <button class="sb-item" id="rg-diag-btn" onclick="runDataDiagnostic()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" title="Check Data" data-tip="Check"><span class="sb-ic">&#128269;</span><span class="sb-label"> Check</span></button>
         </div>
       </div>
-      <!-- ── Monday.com Section ── -->
-      <button class="sb-section" id="sb-sec-monday" onclick="toggleSection('monday')" data-tip="Monday">
-        <span class="sb-ic">&#128203;</span> Monday.com Generator
+      <!-- ── Monday.com ── -->
+      <button class="sb-section" id="sb-sec-monday" onclick="toggleSection('monday')" data-tip="Monday.com">
+        <span class="sb-ic">&#128203;</span><span class="sb-label"> Monday.com Generator</span>
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content" id="sb-sec-monday-content">
-        <button class="sb-item active" id="snav-m-setup" onclick="sidebarNav('m-setup')" data-tip="Workspace">
-          <span class="sb-ic">&#127959;</span> Workspace Setup
+        <button class="sb-item" id="snav-m-setup" onclick="sidebarNav('m-setup')" data-tip="Workspace Setup">
+          <span class="sb-ic">&#127959;</span><span class="sb-label"> Workspace Setup</span>
         </button>
         <button class="sb-item" id="snav-m-configure" onclick="sidebarNav('m-configure')" data-tip="Configure">
-          <span class="sb-ic">&#9881;&#65039;</span> Configure
+          <span class="sb-ic">&#9881;&#65039;</span><span class="sb-label"> Configure</span>
         </button>
       </div>
-      <!-- ── Template Generator Section ── -->
+      <!-- ── Template Generator ── -->
       <button class="sb-section" id="sb-sec-template" onclick="toggleSection('template')" data-tip="Templates">
-        <span class="sb-ic">&#128462;</span> Template Generator
+        <span class="sb-ic">&#128462;</span><span class="sb-label"> Template Generator</span>
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content" id="sb-sec-template-content">
-        <button class="sb-item" id="snav-tg-build" onclick="sidebarNav('tg-build')" data-tip="Build">
-          <span class="sb-ic">&#9998;</span> Build Template
+        <button class="sb-item" id="snav-tg-build" onclick="sidebarNav('tg-build')" data-tip="Build Template">
+          <span class="sb-ic">&#9998;</span><span class="sb-label"> Build Template</span>
         </button>
       </div>
       <!-- ── Client Manager ── -->
       <button class="sb-section" id="sb-sec-cm" onclick="toggleSection('cm')" data-tip="Clients">
-        <span class="sb-ic">&#128101;</span> Client Manager
+        <span class="sb-ic">&#128101;</span><span class="sb-label"> Client Manager</span>
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content" id="sb-sec-cm-content">
         <button class="sb-item" id="snav-cm-clients" onclick="sidebarNav('cm-clients')" data-tip="All Clients">
-          <span class="sb-ic">&#128203;</span> All Clients
+          <span class="sb-ic">&#128203;</span><span class="sb-label"> All Clients</span>
         </button>
       </div>
     </div>
     <div class="sidebar-footer">
-      <!-- Recent activity log (compact) -->
       <div id="sb-activity" style="display:none;margin-bottom:6px">
         <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:4px 10px 4px">Recent Activity</div>
         <div id="sb-activity-list" style="max-height:100px;overflow-y:auto;padding:0 8px"></div>
       </div>
-      <!-- user info moved to header -->
       <div id="sb-user" style="display:none"><div id="sb-user-name"></div><div id="sb-user-role"></div></div>
-      <button class="sb-item" onclick="openSettings()" aria-label="Open settings"><span class="sb-ic">&#9881;&#65039;</span> Settings</button>
-      <button class="sb-item" id="sb-debug-btn" onclick="csDebug.enable();csDebug.show();this.style.color='#34d399'" title="Enable Debug Mode" aria-label="Enable debug mode" style="display:none"><span class="sb-ic">&#128027;</span> Debug</button>
-      <button class="sb-item" onclick="doSignOut()" aria-label="Sign out of CertSecure Hub"><span class="sb-ic">&#11083;</span> Sign Out</button>
-      <!-- Support contact -->
+      <button class="sb-item" onclick="openSettings()" aria-label="Open settings"><span class="sb-ic">&#9881;&#65039;</span><span class="sb-label"> Settings</span></button>
+      <button class="sb-item" id="sb-debug-btn" onclick="csDebug.enable();csDebug.show();this.style.color='#34d399'" title="Enable Debug Mode" aria-label="Enable debug mode" style="display:none"><span class="sb-ic">&#128027;</span><span class="sb-label"> Debug</span></button>
+      <button class="sb-item" onclick="doSignOut()" aria-label="Sign out of CertSecure Hub"><span class="sb-ic">&#11083;</span><span class="sb-label"> Sign Out</span></button>
       <div class="sb-support-section">
         <div class="sb-support-label">Support</div>
         <div class="sb-contact-row">&#128100; Philip Irving</div>
         <div class="sb-contact-row">&#9993; <a href="mailto:philip.irving@hubinternational.com">philip.irving@hubinternational.com</a></div>
         <div class="sb-confidential-notice">
-          <p>&#128274; Confidential — Internal Use Only. This platform is restricted to authorised HUB CertSecure personnel. Unauthorised access is prohibited.</p>
+          <p>&#128274; Confidential — Internal Use Only. Restricted to authorised HUB CertSecure personnel.</p>
         </div>
         <div class="sb-version">v0.20 &nbsp;&middot;&nbsp; HUB CertSecure</div>
       </div>
@@ -2150,14 +2163,14 @@ function toggleSidebar() {
   const btn = document.getElementById('sb-toggle');
   const collapsed = sb.classList.toggle('collapsed');
   localStorage.setItem('cs-sidebar-collapsed', collapsed ? '1' : '0');
-  if (btn) btn.title = collapsed ? 'Expand sidebar' : 'Collapse sidebar';
+  if (btn) { btn.innerHTML = collapsed ? '&#8250;' : '&#8249;'; btn.title = collapsed ? 'Expand sidebar' : 'Collapse sidebar'; }
 }
 function initSidebarState() {
   if (localStorage.getItem('cs-sidebar-collapsed') === '1') {
     const sb = document.getElementById('app-sidebar');
     const btn = document.getElementById('sb-toggle');
     if (sb) sb.classList.add('collapsed');
-    if (btn) btn.title = 'Expand sidebar';
+    if (btn) { btn.innerHTML = '&#8250;'; btn.title = 'Expand sidebar'; }
   }
 }
 
@@ -4874,11 +4887,15 @@ async function tgSelectClient(key) {
 
   // logo restored in setup restore block below
 
-  // Load dropdown options from clients.json if stored
-  if (meta.entity_types) _tgOpts.entity_types = meta.entity_types;
-  else _tgOpts.entity_types = ['-- Select --','Vendor','Contractor','Tenant','Subtenant'];
-  if (meta.property_locations) _tgOpts.property_locations = meta.property_locations;
-  else _tgOpts.property_locations = ['-- Select --','Blanket','Office','Retail'];
+  // Load dropdown options — prefer saved tg_opts, then client meta, then defaults
+  if (meta.tg_setup?.tg_opts) {
+    Object.assign(_tgOpts, meta.tg_setup.tg_opts);
+  } else {
+    if (meta.entity_types) _tgOpts.entity_types = meta.entity_types;
+    else _tgOpts.entity_types = ['-- Select --','Vendor','Contractor','Tenant','Subtenant'];
+    if (meta.property_locations) _tgOpts.property_locations = meta.property_locations;
+    else _tgOpts.property_locations = ['-- Select --','Blanket','Office','Retail'];
+  }
 
   // Restore logo from saved setup or meta
   _tgLogoData = (meta.tg_setup?.tg_logo) || meta.logo_data || null;
@@ -5276,6 +5293,7 @@ async function tgSaveSetup() {
       tg_header:   document.getElementById('tg-header-hex')?.value || '',
       tg_logo:     _tgLogoData || null,
       tg_rows:     _tgFormRows.length ? _tgFormRows : null,
+      tg_opts:     Object.assign({}, _tgOpts),
     };
     const meta = CLIENT_META_MAP[key] || {};
     meta.tg_setup = setup;
