@@ -147,13 +147,12 @@
             "_type": "standard"
           },
           {
-            "key": "entity_address",
-            "label": "Entity Address",
+            "key": "zip_code",
+            "label": "Zip Code",
             "required": false,
             "type": "text",
-            "section": "entity",
-            "_hidden": false,
-            "_type": "standard"
+            "_type": "custom",
+            "_hidden": false
           },
           {
             "key": "entity_email",
@@ -273,14 +272,6 @@
             "_hidden": true
           },
           {
-            "key": "zip_code",
-            "label": "Zip Code",
-            "required": false,
-            "type": "text",
-            "_type": "custom",
-            "_hidden": true
-          },
-          {
             "key": "entityid",
             "label": "EntityId",
             "required": false,
@@ -369,7 +360,87 @@
             "_hidden": false,
             "optsKey": "propertyLocation_opts"
           }
-        ]
+        ],
+        "tg_opts": {
+          "entity_types": [
+            "NY Office",
+            "NY Retail",
+            "NY Vendor"
+          ],
+          "property_locations": [
+            "-- Select --",
+            "Blanket",
+            "Office",
+            "Retail"
+          ],
+          "states": [
+            "-- Select --",
+            "AL",
+            "AK",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "FL",
+            "GA",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"
+          ],
+          "propertyLocation_opts": [
+            "NR 219 Office",
+            "NR 219 Retail",
+            "NR 261",
+            "NR266",
+            "NR 274",
+            "NR 276",
+            "NR 277",
+            "NR 290",
+            "NR 291",
+            "NR 307",
+            "NR Blanket",
+            "RBT Office"
+          ]
+        }
       }
     },
     {
