@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.24
+       SIDEBAR LAYOUT  v0.25
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:#18252D;background-image:radial-gradient(circle,rgba(0,174,239,0.11) 1px,transparent 1px);background-size:14px 14px;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.24 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.25 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.24 — using var(--bg) */
+    /* bg overrides removed v0.25 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;padding:10px 24px 0;flex-shrink:0}
     .bc-section{display:none}
@@ -216,7 +216,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.24</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.25</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -929,14 +929,20 @@
       <div id="ce-msg" style="display:none;font-size:12px;padding:8px 12px;border-radius:7px;margin-top:12px"></div>
       <div style="display:flex;gap:10px;justify-content:space-between;margin-top:20px;align-items:center"><div><button id="ce-delete-btn" class="btn" style="background:#FDF0EE;color:var(--red);border-color:#F5CFC9;display:none" onclick="deleteClient()">&#128465; Delete Client</button></div><div style="display:flex;gap:10px"><button class="btn btn-secondary" onclick="closeClientModal()">Cancel</button><button class="btn btn-primary" id="ce-save-btn" onclick="saveClientEdit()">Save Changes</button></div></div>
     </div>
+  
+  <div id="tab-clients" style="display:none">
+    <div class="card" style="margin-bottom:0">
+      <div id="cm-grid-wrap"></div>
+    </div>
   </div>
+</div>
 </main>
   </div><!-- /content-wrap -->
 <div class="toast" id="toast"></div>
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.24</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.25</div>
 
 <script>
 
@@ -949,45 +955,32 @@ function toggleSidebar(){
   if(sb) sb.classList.toggle('collapsed');
 }
 
-function showClientManagerPanel(){
-  // Hide report generator sub-sections, show client manager panel
-  const rgSub = document.getElementById('rg-sub-generate');
-  if(rgSub) rgSub.style.display='none';
-  let cmPanel = document.getElementById('cm-panel');
-  if(!cmPanel){
-    cmPanel = document.createElement('div');
-    cmPanel.id='cm-panel';
-    cmPanel.style.cssText='padding:0';
-    const main = document.querySelector('.main');
-    if(main) main.appendChild(cmPanel);
-  }
-  cmPanel.style.display='';
-  // Render client list
-  const source = (_allClientsData && _allClientsData.length) ? _allClientsData : CLIENTS_FALLBACK;
-  const clients = source.filter(c=>c.active!==false);
-  const groups = {general:'General \u2014 Shown by Entity Type', project:'Subcontractors \u2014 Shown by Project', location:'Tenants \u2014 Shown by Location'};
-  let html='<div class="card" style="margin-bottom:0">';
-  ['general','project','location'].forEach(struct=>{
-    const grp = clients.filter(c=>(c.structure||'general')===struct);
+
+
+function renderCmClients(){
+  var wrap=document.getElementById('cm-grid-wrap');
+  if(!wrap) return;
+  var source=(_allClientsData&&_allClientsData.length)?_allClientsData:CLIENTS_FALLBACK;
+  var clients=source.filter(function(cl){return cl.active!==false;});
+  var groups={general:'General — Shown by Entity Type',project:'Subcontractors — Shown by Project',location:'Tenants — Shown by Location'};
+  var html='';
+  ['general','project','location'].forEach(function(struct){
+    var grp=clients.filter(function(cl){return (cl.structure||'general')===struct;});
     if(!grp.length) return;
-    html+=`<div class="struct-label">${groups[struct]||struct}</div><div class="client-grid" id="cm-grid-${struct}">`;
-    grp.forEach(cl=>{
-      const plat=(cl.platform||cl.source||'evident').toLowerCase();
-      const badge=plat.includes('trust')?'tl':'ev';
-      const producer=(cl.producer_name||'');
-      html+=`<div class="client-card plat-${badge}" style="cursor:default">
-        <div class="client-name"><span class="platform-badge ${badge}">${badge.toUpperCase()}</span> ${cl.client_name}</div>
-        <span class="client-badge ${struct}">${struct.toUpperCase()}</span>
-        ${producer?`<div style="font-size:10px;color:var(--muted);margin-top:4px">${producer}</div>`:''}
-      </div>`;
+    html+='<div class="struct-label">'+groups[struct]+'</div><div class="client-grid">';
+    grp.forEach(function(cl){
+      var plat=(cl.platform||cl.source||'evident').toLowerCase();
+      var badge=plat.indexOf('trust')>=0?'tl':'ev';
+      var prod=cl.producer_name||'';
+      html+='<div class="client-card plat-'+badge+'" style="cursor:default">'+
+        '<div class="client-name"><span class="platform-badge '+badge+'">'+badge.toUpperCase()+'</span> '+cl.client_name+'</div>'+
+        '<span class="client-badge '+struct+'">'+struct.toUpperCase()+'</span>'+
+        (prod?'<div style="font-size:10px;color:var(--muted);margin-top:4px">'+prod+'</div>':'')+
+      '</div>';
     });
     html+='</div>';
   });
-  html+='</div>';
-  cmPanel.innerHTML=html;
-  // Ensure rg-sub-generate hides when navigating away
-  const origGoTo = window._origGoTo || goTo;
-  window._origGoTo = origGoTo;
+  wrap.innerHTML=html;
 }
 
 function switchPoMode(mode){
@@ -1046,7 +1039,7 @@ function setHeaderTitle(title, sub) {
   if (s) s.textContent = sub || '';
 }
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.24
+// DEBUG MODULE — HUB CertSecure v0.25
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -2142,7 +2135,7 @@ async function saveClientsToConfig(updatedClients) {
   await attemptSave(1);
 }
 function switchTab(tab) {
-  ['reports','monday','template'].forEach(t => {
+  ['reports','monday','template','clients'].forEach(t => {
     const el = document.getElementById('tab-' + t);
     if (el) el.style.display = t === tab ? '' : 'none';
     const btn = document.getElementById('tab-btn-' + t); if (btn) btn.classList.toggle('active', t === tab);
@@ -2208,12 +2201,12 @@ function sidebarNav(dest) {
   };
   setHeaderTitle(hTitles[dest] || 'CertSecure');
   // Route
-  if (dest === 'generate')         { switchTab('reports'); switchRGTab('generate'); const cmp=document.getElementById('cm-panel'); if(cmp) cmp.style.display='none'; const rgsub=document.getElementById('rg-sub-generate'); if(rgsub) rgsub.style.display=''; }
+  if (dest === 'generate')         { switchTab('reports'); switchRGTab('generate');  }
   else if (dest === 'm-clients')   { switchTab('monday'); switchMondayTab('clients'); }
   else if (dest === 'm-setup')     { switchTab('monday'); switchMondayTab('setup'); }
   else if (dest === 'm-configure') { switchTab('monday'); switchMondayTab('configure'); }
   else if (dest === 'tg-build')    { switchTab('template'); tgInit(); }
-  else if (dest === 'cm-clients')  { switchTab('reports'); showClientManagerPanel(); }
+  else if (dest === 'cm-clients')  { switchTab('clients'); renderCmClients(); }
 }
 async function loadAndRenderConfig() {
   const wrap = document.getElementById('cfg-table-wrap'); const s = getSettings();
@@ -2724,7 +2717,15 @@ ${topNCAll.length ? `
   <div>HUB CertSecure \u00b7 ${year}</div>
 </div>
 <style>
-/* v0.24 sidebar profile — injected last for specificity */
+
+/* Sidebar brand text */
+.sidebar-brand{flex:1!important;min-width:0;overflow:hidden}
+.sidebar-brand-cert{font-size:18px!important;font-weight:900!important;letter-spacing:.03em;color:#ffffff!important;line-height:1.1;white-space:nowrap}
+.sidebar-brand-cert span{color:#00AEEF!important}
+.sidebar-brand-sub{font-size:8px!important;font-weight:700!important;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)!important;margin-top:2px;white-space:nowrap}
+.sidebar-logo{padding:12px 14px 10px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;border-bottom:1px solid rgba(0,174,239,.18)!important;flex-shrink:0!important}
+
+/* v0.25 sidebar profile — injected last for specificity */
 .sb-profile{display:flex!important;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;border-top:1px solid rgba(0,174,239,.2);position:relative;transition:background .15s;user-select:none;flex-shrink:0;margin-top:auto}
 .sb-profile:hover{background:rgba(255,255,255,.07)!important}
 .sb-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#0678D5,#00AEEF)!important;color:#fff!important;display:flex!important;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;letter-spacing:.03em}
@@ -3522,7 +3523,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.24
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.25
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -4885,7 +4886,7 @@ async function wsImportClients() {
 
 <script>
 // ══════════════════════════════════════════════════════════════
-//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.24
+//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.25
 // ══════════════════════════════════════════════════════════════
 
 let _tgClient = null;
