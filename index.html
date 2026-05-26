@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.25
+       SIDEBAR LAYOUT  v0.27
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:#18252D;background-image:radial-gradient(circle,rgba(0,174,239,0.11) 1px,transparent 1px);background-size:14px 14px;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.25 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.27 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.25 — using var(--bg) */
+    /* bg overrides removed v0.27 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;padding:10px 24px 0;flex-shrink:0}
     .bc-section{display:none}
@@ -216,7 +216,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.25</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.27</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -850,8 +850,8 @@
       <!-- Field Builder -->
       <div class="card" style="margin-bottom:14px">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-          <div class="card-title" style="margin-bottom:0">&#128203; Form Fields</div>
-          <button class="btn btn-secondary" style="font-size:11px;padding:5px 12px" onclick="tgAddField()">+ Add Field</button>
+          <div class="card-title" style="margin-bottom:0" id="tg-fields-title">&#128203; Entities</div>
+          <button class="btn btn-secondary" style="font-size:11px;padding:5px 12px" id="tg-add-field-btn" onclick="tgAddField()">+Add Entity</button>
         </div>
         <div style="font-size:11px;color:var(--muted);margin-bottom:12px;display:flex;gap:16px">
           <span>&#9650;&#9660; Reorder &nbsp;&bull;&nbsp; &#9744; Toggle &nbsp;&bull;&nbsp; Click label to rename &nbsp;&bull;&nbsp; Set type &amp; required</span>
@@ -942,7 +942,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.25</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.27</div>
 
 <script>
 
@@ -959,27 +959,34 @@ function toggleSidebar(){
 
 function renderCmClients(){
   var wrap=document.getElementById('cm-grid-wrap');
-  if(!wrap) return;
+  if(!wrap){console.warn('[CM] cm-grid-wrap not found');return;}
   var source=(_allClientsData&&_allClientsData.length)?_allClientsData:CLIENTS_FALLBACK;
   var clients=source.filter(function(cl){return cl.active!==false;});
-  var groups={general:'General — Shown by Entity Type',project:'Subcontractors — Shown by Project',location:'Tenants — Shown by Location'};
-  var html='';
+  if(!clients.length){wrap.innerHTML='<p style="color:#5A6B7B;padding:16px">No clients. Check Settings.</p>';return;}
+  var groups={general:'General \u2014 Shown by Entity Type',project:'Subcontractors \u2014 Shown by Project',location:'Tenants \u2014 Shown by Location'};
+  var html='<div style="padding:16px">';
   ['general','project','location'].forEach(function(struct){
     var grp=clients.filter(function(cl){return (cl.structure||'general')===struct;});
     if(!grp.length) return;
-    html+='<div class="struct-label">'+groups[struct]+'</div><div class="client-grid">';
+    html+='<div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5A6B7B;margin:16px 0 10px;padding-bottom:6px;border-bottom:2px solid rgba(6,120,213,0.1)">'+groups[struct]+'</div>';
+    html+='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">';
     grp.forEach(function(cl){
-      var plat=(cl.platform||cl.source||'evident').toLowerCase();
-      var badge=plat.indexOf('trust')>=0?'tl':'ev';
+      var isTL=(cl.platform||cl.source||'').toLowerCase().indexOf('trust')>=0;
+      var clr=isTL?'#D4570A':'#0678D5';
+      var lbl=isTL?'TL':'EV';
       var prod=cl.producer_name||'';
-      html+='<div class="client-card plat-'+badge+'" style="cursor:default">'+
-        '<div class="client-name"><span class="platform-badge '+badge+'">'+badge.toUpperCase()+'</span> '+cl.client_name+'</div>'+
-        '<span class="client-badge '+struct+'">'+struct.toUpperCase()+'</span>'+
-        (prod?'<div style="font-size:10px;color:var(--muted);margin-top:4px">'+prod+'</div>':'')+
+      html+='<div style="background:#fff;border:1.5px solid #D1DCE8;border-left:4px solid '+clr+';border-radius:8px;padding:12px 14px">'+
+        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">'+
+          '<span style="font-size:9px;font-weight:800;padding:2px 7px;border-radius:10px;background:'+(isTL?'#FFF3E0':'#EBF4FF')+';color:'+clr+'">'+lbl+'</span>'+
+          '<span style="font-size:13px;font-weight:600;color:#263746">'+cl.client_name+'</span>'+
+        '</div>'+
+        '<span style="font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:'+clr+'">'+struct.toUpperCase()+'</span>'+
+        (prod?'<div style="font-size:10px;color:#5A6B7B;margin-top:4px">'+prod+'</div>':'')+
       '</div>';
     });
     html+='</div>';
   });
+  html+='</div>';
   wrap.innerHTML=html;
 }
 
@@ -1039,7 +1046,7 @@ function setHeaderTitle(title, sub) {
   if (s) s.textContent = sub || '';
 }
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.25
+// DEBUG MODULE — HUB CertSecure v0.27
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -2723,9 +2730,9 @@ ${topNCAll.length ? `
 .sidebar-brand-cert{font-size:18px!important;font-weight:900!important;letter-spacing:.03em;color:#ffffff!important;line-height:1.1;white-space:nowrap}
 .sidebar-brand-cert span{color:#00AEEF!important}
 .sidebar-brand-sub{font-size:8px!important;font-weight:700!important;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)!important;margin-top:2px;white-space:nowrap}
-.sidebar-logo{padding:12px 14px 10px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;border-bottom:1px solid rgba(0,174,239,.18)!important;flex-shrink:0!important}
+.sidebar-logo{padding:12px 14px 10px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;border-bottom:1px solid rgba(0,174,239,.18)!important;flex-shrink:0!important;background:#18252D!important;background-image:radial-gradient(circle,rgba(0,174,239,0.11) 1px,transparent 1px)!important;background-size:14px 14px!important}
 
-/* v0.25 sidebar profile — injected last for specificity */
+/* v0.27 sidebar profile — injected last for specificity */
 .sb-profile{display:flex!important;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;border-top:1px solid rgba(0,174,239,.2);position:relative;transition:background .15s;user-select:none;flex-shrink:0;margin-top:auto}
 .sb-profile:hover{background:rgba(255,255,255,.07)!important}
 .sb-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#0678D5,#00AEEF)!important;color:#fff!important;display:flex!important;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;letter-spacing:.03em}
@@ -2740,8 +2747,8 @@ ${topNCAll.length ? `
 .sb-menu-divider{height:1px;background:rgba(255,255,255,.1);margin:2px 0}
 .sb-menu-signout{color:rgba(255,110,110,.9)!important}.sb-menu-signout:hover{background:rgba(172,21,52,.2)!important}
 /* Breadcrumb */
-.breadcrumb-bar{display:flex!important;align-items:center;padding:12px 28px 4px;flex-shrink:0}
-#bc-page{font-size:16px!important;font-weight:700!important;color:#1E2E3D!important;letter-spacing:.01em}
+.breadcrumb-bar{display:block!important;padding:14px 28px 8px!important;border-bottom:2px solid rgba(6,120,213,0.1)!important;flex-shrink:0!important;min-height:46px!important;background:#fff!important}
+#bc-page{display:block!important;font-size:17px!important;font-weight:700!important;color:#1E2E3D!important;letter-spacing:.01em}
 </style>
 </body></html>`;
 }
@@ -3523,7 +3530,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.25
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.27
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -4886,7 +4893,7 @@ async function wsImportClients() {
 
 <script>
 // ══════════════════════════════════════════════════════════════
-//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.25
+//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.27
 // ══════════════════════════════════════════════════════════════
 
 let _tgClient = null;
@@ -4983,6 +4990,14 @@ async function tgSelectClient(key) {
 
   tgGoStep(2);
   tgRenderBuilder();
+  // Update entity/party labels based on platform
+  (function(){
+    var isTL = typeof isTLClient === 'function' ? isTLClient(key) : false;
+    var titleEl = document.getElementById('tg-fields-title');
+    var btnEl   = document.getElementById('tg-add-field-btn');
+    if(titleEl) titleEl.innerHTML = '\u{1F4CB} ' + (isTL ? 'Parties' : 'Entities');
+    if(btnEl)   btnEl.textContent = isTL ? '+Add Parties' : '+Add Entity';
+  })();
 
   // Load custom fields async if no saved rows (appends to builder)
   if (!meta.tg_setup?.tg_rows?.length) tgLoadCustomFields(key, meta);
