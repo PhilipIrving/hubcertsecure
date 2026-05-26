@@ -769,7 +769,6 @@
     </div>
 
     <!-- ══ ACTIVITY LOG ══ -->
-    </div>
 
     <!-- ══ CLIENT PANEL ══ -->
     <div id="mtab-clients" style="display:none">
@@ -4998,7 +4997,7 @@ function tgHandleLogoUpload(input) {
 }
 
 // ── Canvas color extraction ───────────────────────────────────
-function extractDominantColors(imgSrc, cb) {
+function extractDominantColors(imgSrc, cb, region = 'full') {
   const img = new Image();
   img.crossOrigin = 'anonymous';
   img.onload = () => {
@@ -5006,7 +5005,12 @@ function extractDominantColors(imgSrc, cb) {
     const W = 80, H = 80;
     canvas.width = W; canvas.height = H;
     const ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0, 0, W, H);
+    // Sample only the requested region of the image
+    const iw = img.naturalWidth || W, ih = img.naturalHeight || H;
+    let sx = 0, sw = iw;
+    if (region === 'left')  { sw = Math.floor(iw / 2); }
+    if (region === 'right') { sx = Math.floor(iw / 2); sw = Math.ceil(iw / 2); }
+    ctx.drawImage(img, sx, 0, sw, ih, 0, 0, W, H);
     let data;
     try { data = ctx.getImageData(0, 0, W, H).data; } catch(e) { cb(null); return; }
     const buckets = {};
@@ -5046,7 +5050,7 @@ function tgAutoDetectColors() {
     document.getElementById('tg-header-hex').value = header;
     document.getElementById('tg-header-picker').value = header;
     toast('Colors detected ✓  Accent: ' + accent + '  Header: ' + header, 'success');
-  });
+  }, 'left');
 }
 
 // ── Generate PDF ──────────────────────────────────────────────
@@ -5614,7 +5618,7 @@ function ceAutoDetectColors() {
     if(ah){ah.value=accent;} if(ap){ap.value=accent;}
     if(hh){hh.value=header;} if(hp){hp.value=header;}
     toast('Colors detected ✓  Accent: '+accent+'  Header: '+header, 'success');
-  });
+  }, 'left');
 }
 </script>
 </body>
