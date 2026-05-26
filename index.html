@@ -235,6 +235,74 @@
   .sb-version{font-size:9px;color:rgba(255,255,255,.18);text-align:center;padding:4px 0 2px;letter-spacing:.06em;font-weight:600}
   @media (prefers-contrast: high){.btn-primary{border:2px solid #fff}.login-btn{border:2px solid #fff}.sb-item.active{border-left:3px solid #fff!important}}
   @media (prefers-reduced-motion: reduce){*{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}}
+  .sidebar{transition:width 0.26s cubic-bezier(0.16,1,0.3,1);overflow:hidden}
+  .sidebar-toggle{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.07);border:1px solid rgba(0,174,239,0.25);color:rgba(255,255,255,0.6);cursor:pointer;font-size:13px;transition:all .15s;flex-shrink:0;font-family:inherit}
+  .sidebar-toggle:hover{background:rgba(6,120,213,0.25);color:#fff;border-color:rgba(0,174,239,0.5)}
+  .sidebar.collapsed{width:52px}
+  .sidebar.collapsed .sidebar-logo-text,.sidebar.collapsed .sb-group{display:none!important}
+  .sidebar.collapsed .sb-section span:not(.sb-ic){display:none!important}
+  .sidebar.collapsed .sb-item span:not(.sb-ic){display:none!important}
+  .sidebar.collapsed .sb-section-content{display:none!important}
+  .sidebar.collapsed .sb-support-section,.sidebar.collapsed .sb-version{display:none!important}
+  .sidebar.collapsed .sb-section,.sidebar.collapsed .sb-item{justify-content:center;padding:9px 4px;border-left:none!important}
+  .sidebar.collapsed .sb-ic{font-size:16px;width:auto;margin:0}
+  .sidebar.collapsed .sb-section[data-tip]:hover::after,.sidebar.collapsed .sb-item[data-tip]:hover::after{content:attr(data-tip);position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);background:#1E2E3D;color:#fff;padding:5px 10px;border-radius:6px;font-size:11px;font-weight:600;white-space:nowrap;z-index:200;border:1px solid rgba(6,120,213,0.3);pointer-events:none}
+  .sidebar.collapsed .sb-section,.sidebar.collapsed .sb-item{position:relative}
+  @keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+  .skeleton-card{border-radius:8px;background:linear-gradient(90deg,#eef2f7 25%,#e2e8f0 50%,#eef2f7 75%);background-size:800px 100%;animation:shimmer 1.4s infinite linear;border:1.5px solid #e2e8f0;height:72px}
+  @keyframes fadeSlideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .step-panel.fading{animation:fadeSlideIn 0.28s cubic-bezier(0.16,1,0.3,1) both}
+  .overlay.open .modal{animation:fadeSlideIn 0.22s cubic-bezier(0.16,1,0.3,1) both}
+  .cfg-table th.sortable{cursor:pointer;user-select:none}
+  .cfg-table th.sortable:hover{background:#EBF4FF;color:#0678D5}
+  .cfg-table th.sortable::after{content:' \2195';font-size:9px;opacity:0.4}
+  .cfg-table th.sort-asc::after{content:' \2191';opacity:1;color:#0678D5}
+  .cfg-table th.sort-desc::after{content:' \2193';opacity:1;color:#0678D5}
+
+
+  /* ═══════════════════════════════════════════════
+     SIDEBAR COLLAPSE — v0.20
+  ═══════════════════════════════════════════════ */
+  .sidebar{transition:width 0.26s cubic-bezier(0.16,1,0.3,1);overflow:hidden}
+  .sidebar-toggle{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.07);border:1px solid rgba(0,174,239,0.25);color:rgba(255,255,255,0.6);cursor:pointer;font-size:13px;transition:all .15s;flex-shrink:0;font-family:inherit}
+  .sidebar-toggle:hover{background:rgba(6,120,213,0.25);color:#fff;border-color:rgba(0,174,239,0.5)}
+  .sidebar.collapsed{width:52px}
+  .sidebar.collapsed .sidebar-logo-text,.sidebar.collapsed .sb-group,
+  .sidebar.collapsed .sb-section .sb-arrow,
+  .sidebar.collapsed .sb-section span:not(.sb-ic),
+  .sidebar.collapsed .sb-item span:not(.sb-ic),
+  .sidebar.collapsed .sb-section-content,
+  .sidebar.collapsed .sb-support-section,
+  .sidebar.collapsed .sb-version{display:none!important}
+  .sidebar.collapsed .sb-section,.sidebar.collapsed .sb-item{justify-content:center;padding:9px 0;border-left:none!important}
+  .sidebar.collapsed .sb-ic{font-size:16px;width:auto;margin:0}
+  /* Tooltip on collapsed items */
+  .sidebar.collapsed .sb-section,.sidebar.collapsed .sb-item{position:relative}
+  .sidebar.collapsed .sb-section[data-tip]:hover::after,
+  .sidebar.collapsed .sb-item[data-tip]:hover::after{content:attr(data-tip);position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);background:#1E2E3D;color:#fff;padding:5px 10px;border-radius:6px;font-size:11px;font-weight:600;white-space:nowrap;z-index:200;border:1px solid rgba(6,120,213,0.3);pointer-events:none}
+
+  /* ═══════════════════════════════════════════════
+     SKELETON LOADERS — v0.20
+  ═══════════════════════════════════════════════ */
+  @keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+  .skeleton-card{border-radius:8px;background:linear-gradient(90deg,#eef2f7 25%,#e2e8f0 50%,#eef2f7 75%);background-size:800px 100%;animation:shimmer 1.4s infinite linear;border:1.5px solid #e2e8f0}
+  .skeleton-line{border-radius:4px;background:linear-gradient(90deg,#eef2f7 25%,#e2e8f0 50%,#eef2f7 75%);background-size:800px 100%;animation:shimmer 1.4s infinite linear}
+  .skeleton-card{height:72px;padding:0}
+
+  /* ═══════════════════════════════════════════════
+     MICRO-ANIMATIONS — v0.20
+  ═══════════════════════════════════════════════ */
+  @keyframes fadeSlideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .content-wrap>*,.main>*{animation:fadeSlideIn 0.28s cubic-bezier(0.16,1,0.3,1) both}
+  .overlay.open .modal{animation:fadeSlideIn 0.22s cubic-bezier(0.16,1,0.3,1) both}
+  .cp-list-item{transition:background 0.12s,border-color 0.12s}
+  .cfg-table tr{transition:background 0.1s}
+  /* Sortable table headers */
+  .cfg-table th.sortable{cursor:pointer;user-select:none}
+  .cfg-table th.sortable:hover{background:#EBF4FF;color:#0678D5}
+  .cfg-table th.sortable::after{content:' ⇅';font-size:9px;opacity:0.4}
+  .cfg-table th.sort-asc::after{content:' ↑';opacity:1;color:#0678D5}
+  .cfg-table th.sort-desc::after{content:' ↓';opacity:1;color:#0678D5}
 </style>
 </head>
 <body>
@@ -256,7 +324,7 @@
       <div class="login-field"><label class="login-label" for="login-password">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password" aria-required="true" aria-label="Password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()" aria-label="Sign in to CertSecure Hub">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.19</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.20</div>
       <div class="login-footer">&#128274; This electronic message and any attachments are intended solely for the authorised recipient. It may contain privileged or confidential information. Any dissemination, distribution or copying is strictly prohibited. If received in error, please notify philip.irving@hubinternational.com immediately and delete all copies. &mdash; HUB CertSecure, Internal Use Only.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -456,51 +524,56 @@
 <div id="main-app" class="app-shell" style="display:none">
   <!-- ═══ SIDEBAR ═══ -->
   <nav class="sidebar" id="app-sidebar" aria-label="Main navigation">
+    <div class="sidebar-logo" style="display:flex;align-items:center;gap:10px;padding:14px 10px">
+      <img class="sidebar-logo-img" src="" id="sb-logo-img" style="height:26px;display:none">
+      <div class="sidebar-logo-text">CERT<span>SECURE</span></div>
+      <button class="sidebar-toggle" id="sb-toggle" onclick="toggleSidebar()" title="Collapse sidebar" aria-label="Toggle sidebar">&#8942;</button>
+    </div>
     <div class="sidebar-nav" style="padding-top:12px">
       <!-- ── Report Generator Section ── -->
-      <button class="sb-section open" id="sb-sec-reports" onclick="toggleSection('reports')">
+      <button class="sb-section open" id="sb-sec-reports" onclick="toggleSection('reports')" data-tip="Reports">
         <span class="sb-ic">&#128196;</span> Report Generator
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content open" id="sb-sec-reports-content">
-        <button class="sb-item active" id="snav-generate" onclick="sidebarNav('generate')">
+        <button class="sb-item active" id="snav-generate" onclick="sidebarNav('generate')" data-tip="Generate">
           <span class="sb-ic">&#128202;</span> Generate Reports
         </button>
         <div style="padding:4px 8px 6px;display:flex;gap:5px">
-          <button class="sb-item" id="refresh-btn" onclick="triggerRefresh()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center">&#8635; Refresh</button>
-          <button class="sb-item" id="rg-diag-btn" onclick="runDataDiagnostic()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" title="Check Data">&#128269; Check</button>
+          <button class="sb-item" id="refresh-btn" onclick="triggerRefresh()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" data-tip="Refresh">&#8635; Refresh</button>
+          <button class="sb-item" id="rg-diag-btn" onclick="runDataDiagnostic()" style="flex:1;font-size:11px;padding:6px 8px;justify-content:center" title="Check Data" data-tip="Check">&#128269; Check</button>
         </div>
       </div>
       <!-- ── Monday.com Section ── -->
-      <button class="sb-section" id="sb-sec-monday" onclick="toggleSection('monday')">
+      <button class="sb-section" id="sb-sec-monday" onclick="toggleSection('monday')" data-tip="Monday">
         <span class="sb-ic">&#128203;</span> Monday.com Generator
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content" id="sb-sec-monday-content">
-        <button class="sb-item active" id="snav-m-setup" onclick="sidebarNav('m-setup')">
+        <button class="sb-item active" id="snav-m-setup" onclick="sidebarNav('m-setup')" data-tip="Workspace">
           <span class="sb-ic">&#127959;</span> Workspace Setup
         </button>
-        <button class="sb-item" id="snav-m-configure" onclick="sidebarNav('m-configure')">
+        <button class="sb-item" id="snav-m-configure" onclick="sidebarNav('m-configure')" data-tip="Configure">
           <span class="sb-ic">&#9881;&#65039;</span> Configure
         </button>
       </div>
       <!-- ── Template Generator Section ── -->
-      <button class="sb-section" id="sb-sec-template" onclick="toggleSection('template')">
+      <button class="sb-section" id="sb-sec-template" onclick="toggleSection('template')" data-tip="Templates">
         <span class="sb-ic">&#128462;</span> Template Generator
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content" id="sb-sec-template-content">
-        <button class="sb-item" id="snav-tg-build" onclick="sidebarNav('tg-build')">
+        <button class="sb-item" id="snav-tg-build" onclick="sidebarNav('tg-build')" data-tip="Build">
           <span class="sb-ic">&#9998;</span> Build Template
         </button>
       </div>
       <!-- ── Client Manager ── -->
-      <button class="sb-section" id="sb-sec-cm" onclick="toggleSection('cm')">
+      <button class="sb-section" id="sb-sec-cm" onclick="toggleSection('cm')" data-tip="Clients">
         <span class="sb-ic">&#128101;</span> Client Manager
         <span class="sb-arrow">&#9654;</span>
       </button>
       <div class="sb-section-content" id="sb-sec-cm-content">
-        <button class="sb-item" id="snav-cm-clients" onclick="sidebarNav('cm-clients')">
+        <button class="sb-item" id="snav-cm-clients" onclick="sidebarNav('cm-clients')" data-tip="All Clients">
           <span class="sb-ic">&#128203;</span> All Clients
         </button>
       </div>
@@ -514,7 +587,7 @@
       <!-- user info moved to header -->
       <div id="sb-user" style="display:none"><div id="sb-user-name"></div><div id="sb-user-role"></div></div>
       <button class="sb-item" onclick="openSettings()" aria-label="Open settings"><span class="sb-ic">&#9881;&#65039;</span> Settings</button>
-      <button class="sb-item" id="sb-debug-btn" onclick="csDebug.enable();csDebug.show();this.style.color='#34d399'" title="Enable Debug Mode" aria-label="Enable debug mode"><span class="sb-ic">&#128027;</span> Debug</button>
+      <button class="sb-item" id="sb-debug-btn" onclick="csDebug.enable();csDebug.show();this.style.color='#34d399'" title="Enable Debug Mode" aria-label="Enable debug mode" style="display:none"><span class="sb-ic">&#128027;</span> Debug</button>
       <button class="sb-item" onclick="doSignOut()" aria-label="Sign out of CertSecure Hub"><span class="sb-ic">&#11083;</span> Sign Out</button>
       <!-- Support contact -->
       <div class="sb-support-section">
@@ -946,7 +1019,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.19</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.20</div>
 
 <script>
 
@@ -1275,6 +1348,7 @@ async function doLogin() {
     applyUserDisplay(displayName, role);
     const adminTab = document.getElementById('stab-admin');
     if (adminTab) adminTab.style.display = role === 'system_administrator' ? '' : 'none';
+    const dbgBtn = document.getElementById('sb-debug-btn'); if (dbgBtn) dbgBtn.style.display = role === 'system_administrator' ? '' : 'none';
     onLoginSuccess(data.user, sharedPat);
     document.getElementById('auth-overlay').style.display = 'none';
     document.getElementById('main-app').style.display = '';
@@ -1451,7 +1525,7 @@ function onLoginSuccess(user, sharedPat) {
   });
 }
 document.addEventListener('DOMContentLoaded', async () => {
-  initDark(); renderGrids();
+  initDark(); initSidebarState(); showSkeletonGrids(); renderGrids();
   [2,3].forEach(i => { const el=document.getElementById(`step-${i}`); if(el) el.style.display='none'; });
   const s1 = document.getElementById('step-1'); if(s1) s1.style.display='';
   ['login-email','login-password'].forEach(id => { document.getElementById(id)?.addEventListener('keydown', e => { if (e.key==='Enter') doLogin(); }); });
@@ -1470,6 +1544,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         applyUserDisplay(displayName, role);
         const adminTab = document.getElementById('stab-admin');
         if (adminTab) adminTab.style.display = role === 'system_administrator' ? '' : 'none';
+        const dbgBtn = document.getElementById('sb-debug-btn'); if (dbgBtn) dbgBtn.style.display = role === 'system_administrator' ? '' : 'none';
         onLoginSuccess(session.user);
         document.getElementById('auth-overlay').style.display = 'none';
         document.getElementById('main-app').style.display = '';
@@ -2069,6 +2144,33 @@ function switchRGTab(sub) {
   const el = document.getElementById('rg-sub-generate');
   if (el) el.style.display = '';
 }
+// Sidebar collapse toggle
+function toggleSidebar() {
+  const sb = document.getElementById('app-sidebar');
+  const btn = document.getElementById('sb-toggle');
+  const collapsed = sb.classList.toggle('collapsed');
+  localStorage.setItem('cs-sidebar-collapsed', collapsed ? '1' : '0');
+  if (btn) btn.title = collapsed ? 'Expand sidebar' : 'Collapse sidebar';
+}
+function initSidebarState() {
+  if (localStorage.getItem('cs-sidebar-collapsed') === '1') {
+    const sb = document.getElementById('app-sidebar');
+    const btn = document.getElementById('sb-toggle');
+    if (sb) sb.classList.add('collapsed');
+    if (btn) btn.title = 'Expand sidebar';
+  }
+}
+
+// Skeleton loaders for client card grids
+function showSkeletonGrids() {
+  const skeletonCard = '<div class="skeleton-card client-card" style="pointer-events:none"></div>';
+  const skeletons = Array(5).fill(skeletonCard).join('');
+  ['grid-general','grid-project','grid-location','tg-grid-general','tg-grid-project','tg-grid-location'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.children.length === 0) el.innerHTML = skeletons;
+  });
+}
+
 // Sidebar accordion toggle
 function toggleSection(sec) {
   const isReports = sec === 'reports';
@@ -4664,7 +4766,7 @@ async function wsImportClients() {
 
 <script>
 // ══════════════════════════════════════════════════════════════
-//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.19
+//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.20
 // ══════════════════════════════════════════════════════════════
 
 let _tgClient = null;
@@ -4702,6 +4804,12 @@ let _tgOpts = {
 // fields (e.g. Entity Address / Entity Email) are inserted at their canonical
 // position so existing clients get them automatically on next open.
 function tgMergeStandardFields(savedRows) {
+  const standardKeys = TG_STANDARD_FIELDS.map(f => f.key);
+
+  // Purge standard fields no longer in TG_STANDARD_FIELDS (e.g. entity_address was removed)
+  savedRows = savedRows.filter(r => r._type !== 'standard' || standardKeys.includes(r.key));
+
+  // Add any missing standard fields at their canonical position
   const savedKeys = savedRows.map(r => r.key);
   const missing = TG_STANDARD_FIELDS.filter(f => !savedKeys.includes(f.key));
   if (!missing.length) return savedRows;
@@ -5234,9 +5342,9 @@ function tgBuildFormHTML(title,subtitle,accent,header){
   var btnText=_lum(btnBg)>0.4?'#1E2E3D':'white';
 
   const sections=[
-    {id:'entity', title:'ENTITY INFORMATION', keys:['entity_name','legal_name','dba_name','entity_id','entity_type']},
+    {id:'entity', title:'ENTITY INFORMATION', keys:['entity_name','legal_name','dba_name','entity_email','entity_id','entity_type']},
     {id:'contact',title:'CONTACT INFORMATION',keys:['contact_name','phone','email']},
-    {id:'address',title:'ADDRESS',           keys:['street','suite','city','state','zip']},
+    {id:'address',title:'ADDRESS',           keys:['street_address','ste_flr','city','state','zip_code']},
     {id:'project',title:'PROJECT INFORMATION',keys:['project_name','project_number','contract_number','subcontract_number','job_description','insurance_type']},
     {id:'property',title:'PROPERTY & LOCATION',keys:['property_location','property_manager','tenant_type','rsf']},
     {id:'coverage',title:'ADDITIONAL COVERAGES',keys:[]},
@@ -5281,13 +5389,13 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     var body='';
     if(sec.id==='address'){
       var byKey={};others.forEach(function(r){byKey[r.key]=r;});
-      var extra=others.filter(function(r){return ['street','city','state','zip','suite'].indexOf(r.key)<0;});
+      var extra=others.filter(function(r){return ['street_address','city','state','zip_code','ste_flr'].indexOf(r.key)<0;});
       var out='';
-      if(byKey.street)out+=rf(byKey.street,'field span3');
+      if(byKey.street_address)out+=rf(byKey.street_address,'field span3');
       if(byKey.city)  out+=rf(byKey.city,  'field');
       if(byKey.state) out+=rf(byKey.state, 'field');
-      if(byKey.zip)   out+=rf(byKey.zip,   'field zip');
-      if(byKey.suite) out+=rf(byKey.suite, 'field suite');
+      if(byKey.zip_code)   out+=rf(byKey.zip_code,   'field zip');
+      if(byKey.ste_flr) out+=rf(byKey.ste_flr, 'field suite');
       extra.forEach(function(r){out+=rf(r,'field');});
       body='<div class=__Q__grid3__Q__>'+out+'</div>';
     } else {
@@ -5360,6 +5468,7 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     '.cov input{width:13px;height:13px;flex-shrink:0;accent-color:'+safeAccent+';cursor:pointer}',
     // Footer with Save + Send All
     '.card-ftr{padding:13px 22px;background:#F8FAFC;border-top:1px solid #EEF2F7;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}',
+    '.save-err{font-size:11px;color:#AC1534;background:#FEF2F2;border:1px solid #FECACA;border-radius:6px;padding:6px 12px;display:none;margin-bottom:8px;width:100%}',
     '.ftr-note{font-size:8px;color:#B0BCC8}',
     '.ftr-btns{display:flex;gap:10px;align-items:center}',
     '.btn-save{background:white;color:'+safeAccent+';border:1.5px solid '+safeAccent+';padding:9px 20px;border-radius:8px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .15s}',
@@ -5460,9 +5569,17 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     // Save current form as a vendor entry
     'function saveVendor(){',
     '  var data=collectFields();',
+    '  var _req='+JSON.stringify(_tgFormRows.filter(r=>!r._hidden&&r.required).map(r=>r.label))+';',
+    '  var missing=_req.filter(function(l){var v=data[l];return !v||v.toString().trim()==="";});',
+    '  if(missing.length){',
+    '    var e=document.getElementById("save-err");',
+    '    if(e){e.textContent="Required fields missing: "+missing.join(", ");e.style.display="";}',
+    '    setTimeout(function(){var e=document.getElementById("save-err");if(e)e.style.display="none";},5000);',
+    '    return;',
+    '  }',
     '  var name=data["Entity Name"]||data["Legal Name"]||"Vendor "+(_vendors.length+1);',
     '  var hasData=Object.keys(data).length>0;',
-    '  if(!hasData){alert("Please fill in at least one field before saving.");return;}',
+    '  if(!hasData){alert("Please fill in at least one field before saving.");return;}',,
     '  if(_activeIdx>=0&&_activeIdx<_vendors.length){',
     '    _vendors[_activeIdx]={fields:data,name:name};',
     '  } else {',
@@ -5577,6 +5694,7 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     '<button class=__Q__btn-save__Q__ onclick=__Q__saveVendor()__Q__>&#10003; Save Vendor</button>',
     '<button class=__Q__send__Q__ id=__Q__send-btn__Q__ onclick=__Q__sendAll()__Q__ disabled>&#9993; Send All <span class=__Q__send-badge__Q__ id=__Q__send-badge__Q__>(0)</span></button>',
     '</div>',
+    '<div class=__Q__save-err__Q__ id=__Q__save-err__Q__></div>',
     '</div>',
     '</div>',
     '</div>',
