@@ -667,7 +667,48 @@
     <div class="card">
       <div class="card-title">Select Reports to Generate</div>
       <div class="report-grid">
-        <div class="report-card" id="rc-cs"><div class="report-card-hdr" onclick="toggleReport('cs')"><div class="rc-dot"></div><div><div class="rc-title">Compliance Summary</div><div class="rc-sub">Executive compliance overview</div></div>
+        <div class="report-card" id="rc-cs"><div class="report-card-hdr" onclick="toggleReport('cs')"><div class="rc-dot"></div><div><div class="rc-title">Compliance Summary</div><div class="rc-sub">Executive compliance overview</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Sections to Include</div><div class="cb-group"><label class="cb-item"><input type="checkbox" id="cs-kpi" checked> Program KPI Cards</label><label class="cb-item"><input type="checkbox" id="cs-breakdown" checked> Compliance Status Breakdown</label><label class="cb-item"><input type="checkbox" id="cs-coi" checked> COI Submission Status</label><label class="cb-item"><input type="checkbox" id="cs-nocoi" checked> No COI on File &#8212; Breakdown</label><label class="cb-item"><input type="checkbox" id="cs-expiring" checked> Expiring Coverage (7 / 30 / 60 / 90 days)</label><label class="cb-item"><input type="checkbox" id="cs-ncreasons" checked> Top Non-Compliance Reasons</label><label class="cb-item"><input type="checkbox" id="cs-criteriadist" checked> Insured Criteria Breakdown</label><label class="cb-item"><input type="checkbox" id="cs-coveragedist" checked> Insured Coverage Breakdown</label></div></div></div>
+        <div class="report-card" id="rc-cd"><div class="report-card-hdr" onclick="toggleReport('cd')"><div class="rc-dot"></div><div><div class="rc-title">Compliance Detail</div><div class="rc-sub">Full entity-level compliance data</div></div><span class="rc-type type-excel">Excel</span></div><div class="report-card-body"><div class="sec-div">Sheets to Include</div><div class="cb-group"><label class="cb-item"><input type="checkbox" id="cd-summary" checked> Summary</label><label class="cb-item"><input type="checkbox" id="cd-entitylist" checked> <span id="cd-entity-lbl">Entity List</span></label><label class="cb-item"><input type="checkbox" id="cd-expiring" checked> Expiring Coverage</label><label class="cb-item"><input type="checkbox" id="cd-nccoverage" checked> NC by Coverage &amp; Criteria</label><label class="cb-item"><input type="checkbox" id="cd-ncreasons" checked> Non-Compliance Reasons</label></div><div class="sec-div">Compliance Status Filter</div><select id="cd-status"><option value="all">All Statuses</option><option value="non_compliant">Non-Compliant Only</option><option value="compliant">Compliant Only</option><option value="pending">New / Pending Only</option></select><div class="sec-div" id="cd-cf-hdr" style="display:none">Custom Fields</div><div class="cb-group" id="cd-cf-list"></div></div></div>
+        <div class="report-card" id="rc-es"><div class="report-card-hdr" onclick="toggleReport('es')"><div class="rc-dot"></div><div><div class="rc-title">Engagement Summary</div><div class="rc-sub">Email engagement overview</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Sections to Include</div><div class="cb-group"><label class="cb-item"><input type="checkbox" id="es-kpi" checked> Email KPI Cards</label><label class="cb-item"><input type="checkbox" id="es-openrate" checked> Open Rate Breakdown</label><label class="cb-item"><input type="checkbox" id="es-delivery" checked> Deliverability Status</label><label class="cb-item"><input type="checkbox" id="es-issues" checked> Delivery Issue Breakdown</label><label class="cb-item"><input type="checkbox" id="es-60day" checked> Activity Window &amp; Funnel</label><label class="cb-item"><input type="checkbox" id="es-nceng" checked> NC Insured Engagement Rate</label><label class="cb-item"><input type="checkbox" id="es-topsubjects"> Top Email Subjects by Open Rate</label></div><div class="sec-div">Engagement Window</div><select id="es-window"><option value="60">Last 60 Days</option><option value="30">Last 30 Days</option><option value="90">Last 90 Days</option></select></div></div>
+        <div class="report-card" id="rc-ed"><div class="report-card-hdr" onclick="toggleReport('ed')"><div class="rc-dot"></div><div><div class="rc-title">Engagement Detail</div><div class="rc-sub">Full engagement data</div></div><span class="rc-type type-excel">Excel</span></div><div class="report-card-body"><div class="sec-div">Sheets to Include</div><div class="cb-group"><label class="cb-item"><input type="checkbox" id="ed-summary" checked> Summary</label><label class="cb-item"><input type="checkbox" id="ed-nocoi" checked> No COIs on File</label><label class="cb-item"><input type="checkbox" id="ed-noeng" checked> No Engagement Since Go-Live</label><label class="cb-item"><input type="checkbox" id="ed-ncnoeng" checked> NC + No Recent Engagement</label><label class="cb-item"><input type="checkbox" id="ed-undel" checked> Undeliverable Emails</label></div><div class="sec-div">Engagement Window</div><select id="ed-window"><option value="60">Last 60 Days</option><option value="30">Last 30 Days</option><option value="90">Last 90 Days</option></select><div class="sec-div" id="ed-cf-hdr" style="display:none">Custom Fields</div><div class="cb-group" id="ed-cf-list"></div></div></div>
+      </div>
+      <div class="sec-div" style="margin-bottom:10px;padding-top:0;border-top:none;font-size:10px;letter-spacing:.09em">Additional Reports</div>
+      <div class="report-grid">
+        <div class="report-card" id="rc-yer"><div class="report-card-hdr" onclick="toggleReport('yer')"><div class="rc-dot"></div><div><div class="rc-title">Program Overview</div><div class="rc-sub">Annual, monthly, or date range program report</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body">
+          <div class="sec-div">Snapshot Period</div>
+          <div style="display:flex;gap:6px;margin-bottom:14px">
+            <label id="po-lbl-year" style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;cursor:pointer;padding:6px 10px;border:1.5px solid var(--blue);border-radius:7px;flex:1;justify-content:center;transition:border-color .15s;user-select:none">
+              <input type="radio" name="po-mode" value="year" checked onchange="switchPoMode('year')" style="accent-color:var(--blue)"> Year
+            </label>
+            <label id="po-lbl-month" style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;cursor:pointer;padding:6px 10px;border:1.5px solid var(--border);border-radius:7px;flex:1;justify-content:center;transition:border-color .15s;user-select:none">
+              <input type="radio" name="po-mode" value="month" onchange="switchPoMode('month')" style="accent-color:var(--blue)"> Month
+            </label>
+            <label id="po-lbl-range" style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;cursor:pointer;padding:6px 10px;border:1.5px solid var(--border);border-radius:7px;flex:1;justify-content:center;transition:border-color .15s;user-select:none">
+              <input type="radio" name="po-mode" value="range" onchange="switchPoMode('range')" style="accent-color:var(--blue)"> Date Range
+            </label>
+          </div>
+          <div id="po-sec-year">
+            <div class="form-grp"><label class="form-lbl">Report Year</label><input type="text" id="po-year" placeholder="e.g. 2026" maxlength="4" style="width:120px"><div class="form-hint">Reads from snapshots/YYYY/YYYY-MM/</div></div>
+          </div>
+          <div id="po-sec-month" style="display:none">
+            <div style="display:grid;grid-template-columns:90px 1fr;gap:8px;align-items:end">
+              <div class="form-grp" style="margin-bottom:0"><label class="form-lbl">Year</label><input type="text" id="po-month-year" placeholder="2026" maxlength="4" style="width:100%" oninput="populatePoMonthDropdown()"></div>
+              <div class="form-grp" style="margin-bottom:0"><label class="form-lbl">Month</label><select id="po-month-sel"><option value="">Enter year &#8594;</option></select></div>
+            </div>
+            <div class="form-hint" style="margin-top:4px">Reads from snapshots/YYYY/YYYY-MM/</div>
+          </div>
+          <div id="po-sec-range" style="display:none">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div class="form-grp" style="margin-bottom:0"><label class="form-lbl">From Date</label><input type="date" id="po-from-date"></div>
+              <div class="form-grp" style="margin-bottom:0"><label class="form-lbl">To Date</label><input type="date" id="po-to-date"></div>
+            </div>
+            <div class="form-hint" style="margin-top:4px">Daily snapshots &#8212; last 12 months</div>
+          </div>
+          <div class="sec-div" style="margin-top:12px">Options</div>
+          <div class="form-grp"><label class="form-lbl">Producer Name <span style="color:#DC2626;font-weight:600;font-size:10px">*&nbsp;required</span></label><input type="text" id="po-producer" placeholder="e.g. Jane Smith"></div>
+        </div></div>
+        <div class="report-card" id="rc-tyc"><div class="report-card-hdr" onclick="toggleReport('tyc')"><div class="rc-dot"></div><div><div class="rc-title">Thank You Card</div><div class="rc-sub">Personalised client postcard PDF</div></div><span class="rc-type type-pdf">PDF</span></div><div class="report-card-body"><div class="sec-div">Options</div><div class="form-grp"><label class="form-lbl">Contact Name</label><input type="text" id="tyc-contact" placeholder="e.g. Jane Smith"></div><div class="form-grp" style="margin-top:8px"><label class="form-lbl">Producer Name</label><input type="text" id="tyc-producer" placeholder="e.g. Philip Irving"></div></div></div>
+      </div>
     <div class="action-bar" style="flex-shrink:0"><button class="btn btn-secondary" onclick="goTo(1)">&#8592; Back</button><button class="btn btn-primary" id="gen-btn" onclick="generate()" disabled>&#11015; Generate Reports</button></div>
   </div>
   <div id="step-3" class="step-panel" style="display:none;flex:1;min-height:0">
@@ -3372,6 +3413,7 @@ async function populatePoMonthDropdown(){
   if(!months.length){monthEl.innerHTML='<option value="">No snapshots for '+year+'</option>';return;}
   monthEl.innerHTML=months.slice().reverse().map(m=>`<option value="${m}">${m}</option>`).join('');
 }
+function switchTrendMode(mode){
   const ms=document.getElementById('trend-month-section');
   const rs=document.getElementById('trend-range-section');
   const ml=document.getElementById('trend-mode-month');
