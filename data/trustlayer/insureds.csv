@@ -1348,12 +1348,12 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a07295ef523b35823696861,SERC,,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07295ef523b35823696866,UNUM LIFE INSURANCE COMPANY OF AMERICA,,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07295ef523b3582369686b,"ADKORE MEGAFORCE / MEGAFORCE, LLC",,COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a07295ef523b35823696870,"NORTHSTAR WEALTH / POLARIS, LLC",,COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a07295ef523b35823696870,"NORTHSTAR WEALTH / POLARIS, LLC",SHARON.WEDEKIND.VAAAOH@statefarm.com,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07295ef523b35823696875,FLYNN RESTAURANT GROUP (HUT AMERICAN GROUP LLC),,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07295ef523b3582369687a,FAIRWAY INDEPENDENT MORTGAGE FKA ORIGIN BANK,Julie.Kinjerski@usi.com,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07295ef523b3582369687f,"HOEFER WELKER, LLC",,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07295ff523b35823696884,"APERTURE CREDENTIALING, LLC",rveccia@arcxs.com,COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a07295ff523b35823696889,ANN D. ROBERTSON,,COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a07295ff523b35823696889,ANN D. ROBERTSON,service@amfambusinessinsurance.com,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07295ff523b3582369688e,"HORIZON PSI FKA HORIZON SYSTEMS, INC",info@srains.com,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07295ff523b35823696893,"DESIGN & DETAIL / MEL B, LLC",,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a07295ff523b35823696898,"SRS COMMERCIAL AVL, LLC FKA STARK RAVING SOLUTIONS , LLC",info@srains.com,COMPLIANT,,,true,false,2026-05-26
@@ -1675,17 +1675,17 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a072977f523b35823696ecb,"LONG'S SHOTOKAN KARATE ACADEMY & MARTIAL ARTS, LLC / MARK A. LONG",,NON_COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a072977f523b35823696ed0,ARTHUR J. GALLAGHER RISK MANAGEMENT,,NON_COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a072977f523b35823696ed5,"ROTO-ROOTER SERVICES COMNPANY, INC.",,NON_COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a072977f523b35823696eda,"GEOTECHNOLOGY, LLC",,NON_COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a072977f523b35823696edf,GREAT RIVERS ASSOCIATES,,NON_COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a072977f523b35823696ee4,GREAT RIVERS ASSOCIATES (EXPANSION),,NON_COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a072977f523b35823696ee9,DIANA M. DANG,,NON_COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a072977f523b35823696eee,DAVID P. HOFER CHIROPRACTIC,,NON_COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a072977f523b35823696ef3,"VAKOK ASIAN MARKET, LLC (EXPANSION)",,NON_COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a072978f523b35823696ef8,EDWARD JONES,,NON_COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a072978f523b35823696efd,LISA CORYELL,,NON_COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a072978f523b35823696f02,MYLA RUFFIN,,NON_COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a072978f523b35823696f07,WRIGHT/LAIRD CASTING / HEATHER LAIRD,,NON_COMPLIANT,,,true,false,2026-05-26
-"Block Real Estate Services, LLC",6a072978f523b35823696f0c,ANTHONY FALCON,,NON_COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a072977f523b35823696eda,"GEOTECHNOLOGY, LLC",,PENDING,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a072977f523b35823696edf,GREAT RIVERS ASSOCIATES,,PENDING,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a072977f523b35823696ee4,GREAT RIVERS ASSOCIATES (EXPANSION),,PENDING,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a072977f523b35823696ee9,DIANA M. DANG,,PENDING,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a072977f523b35823696eee,DAVID P. HOFER CHIROPRACTIC,,PENDING,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a072977f523b35823696ef3,"VAKOK ASIAN MARKET, LLC (EXPANSION)",,PENDING,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a072978f523b35823696ef8,EDWARD JONES,,PENDING,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a072978f523b35823696efd,LISA CORYELL,,PENDING,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a072978f523b35823696f02,MYLA RUFFIN,,PENDING,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a072978f523b35823696f07,WRIGHT/LAIRD CASTING / HEATHER LAIRD,,PENDING,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a072978f523b35823696f0c,ANTHONY FALCON,,PENDING,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a072978f523b35823696f11,ANGEL ROMERO,,PENDING,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a072978f523b35823696f16,VICTOR CABELLERO,,PENDING,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a072978f523b35823696f1b,"SEEN PRODUCTIONS, LLC",,PENDING,,,true,false,2026-05-26
@@ -1796,6 +1796,17 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a1065014a2eb9d3229f95d4,Marietta Memorial Hospital; Marietta Health Care Physicians Inc; MHC Physicians Inc; Selby General Hospital,,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a1065014a2eb9d3229f95d9,"About Floors N' More, Inc.",,COMPLIANT,,,true,false,2026-05-26
 "Block Real Estate Services, LLC",6a1065014a2eb9d3229f95de,Eemployers Solutions Inc.,,COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a15c66af33f35790881befe,CCF Holdings LLC TMX Finance LLC & Its Subsidiaries,,COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a15c66af33f35790881bf03,Millstreet Station LLC,,COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a15c66af33f35790881bf08,Take 5 Properties SPV LLC,,COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a15c66af33f35790881bf0d,FOCUS FINANCIAL PARTNERS LLC,,COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a15c66af33f35790881bf12,"CareOne Management, LLC",,COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a15c66af33f35790881bf17,"Zimmer Biomet Holdings, Inc.",,COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a15c66af33f35790881bf1c,Dr. Kelly Thomas,,COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a15c66af33f35790881bf21,GOODWILL OF WESTERN MISSOURI & EASTERN KANSAS,,COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a15c66af33f35790881bf26,CVS HEALTH CORPORATION,,COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a15c66af33f35790881bf2b,"Principal Financial Group, Inc.",,COMPLIANT,,,true,false,2026-05-26
+"Block Real Estate Services, LLC",6a15c66bf33f35790881bf30,"UA-WAV, LLC",,COMPLIANT,,,true,false,2026-05-26
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",jakins@a-p.com,PENDING,,,true,false,2026-05-26
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,pherrin@brasfieldgorrie.com,NON_COMPLIANT,,,true,false,2026-05-26
 QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",porterd@claycorp.com,NON_COMPLIANT,,,true,false,2026-05-26
