@@ -192,6 +192,15 @@
             "_type": "standard"
           },
           {
+            "key": "propertyLocation",
+            "label": "Property Location",
+            "required": true,
+            "type": "dropdown",
+            "_type": "custom",
+            "_hidden": false,
+            "optsKey": "propertyLocation_opts"
+          },
+          {
             "key": "effective_group",
             "label": "Effective Group",
             "required": false,
@@ -350,15 +359,6 @@
             "type": "text",
             "_type": "custom",
             "_hidden": true
-          },
-          {
-            "key": "propertyLocation",
-            "label": "Property Location",
-            "required": true,
-            "type": "dropdown",
-            "_type": "custom",
-            "_hidden": false,
-            "optsKey": "propertyLocation_opts"
           }
         ],
         "tg_opts": {
