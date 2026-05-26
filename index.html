@@ -184,10 +184,10 @@
     .main{background:transparent}
     /* bg overrides removed v0.93 — using var(--bg) */
     /* Breadcrumb bar */
-    .breadcrumb-bar{display:none!important}
-    .bc-section{color:var(--muted)}
+    .breadcrumb-bar{display:flex;align-items:center;gap:8px;padding:12px 24px 0;font-size:12px;flex-shrink:0}
+    .bc-section{color:#5A6B7B;font-weight:500}
     .bc-sep{color:var(--border);font-size:11px}
-    .bc-page{color:var(--navy)}
+    .bc-page{color:#263746;font-weight:700;font-size:14px}
     /* Sidebar accordion: parent section items */
     .sb-section{display:flex;align-items:center;gap:9px;width:100%;padding:10px 12px;font-size:13px;font-weight:700;color:rgba(255,255,255,.55);background:none;border:none;border-radius:7px;cursor:pointer;font-family:inherit;text-align:left;transition:background .15s,color .15s;margin:1px 0;letter-spacing:.01em}
     .sb-section:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.85)}
@@ -329,7 +329,7 @@
      MICRO-ANIMATIONS — v0.20
   ═══════════════════════════════════════════════ */
   @keyframes fadeSlideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-  .content-wrap>*,.main>*{animation:fadeSlideIn 0.28s cubic-bezier(0.16,1,0.3,1) both}
+  /* animation removed — was causing opacity:0 flash on tab switch */
   .overlay.open .modal{animation:fadeSlideIn 0.22s cubic-bezier(0.16,1,0.3,1) both}
   .cp-list-item{transition:background 0.12s,border-color 0.12s}
   .cfg-table tr{transition:background 0.1s}
@@ -381,19 +381,7 @@
     </div>
   </div>
 </div>
-<header class="header" role="banner" aria-label="CertSecure Hub application header">
-  <div class="header-title"><div class="header-title-main" id="hdr-title">CertSecure</div><div class="header-title-sub" id="hdr-sub"></div></div>
-  <div class="header-right" style="gap:10px;margin-left:auto">
-    <div class="notif-wrap" id="header-notif-wrap" style="position:relative">
-      <button class="btn-ghost" id="notif-btn" onclick="toggleNotifDrawer()" aria-label="Notifications" aria-haspopup="true" aria-expanded="false" style="position:relative;font-size:16px">&#128276;<span id="notif-badge" style="display:none;position:absolute;top:4px;right:4px;background:var(--red);color:white;border-radius:50%;width:14px;height:14px;font-size:9px;font-weight:700;line-height:14px;text-align:center"></span></button>
-      <div class="notif-drawer" id="notif-drawer" style="display:none;position:absolute;right:0;top:calc(100% + 6px);width:300px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-lg);z-index:300;overflow:hidden">
-        <div style="padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">Recent Activity<button onclick="clearNotifs()" style="font-size:10px;color:var(--muted);background:none;border:none;cursor:pointer;font-family:inherit">Clear</button></div>
-        <div id="notif-list" style="max-height:280px;overflow-y:auto;padding:6px 0"><div style="padding:14px;font-size:12px;color:var(--muted);text-align:center">No recent activity</div></div>
-      </div>
-    </div>
-    <div id="welcome-wrap" style="display:none"></div>
-  </div>
-</header>
+
 <!-- SETTINGS MODAL -->
 <div class="overlay" id="settings-overlay">
   <div class="modal" style="max-width:640px;max-height:90vh;overflow-y:auto">
@@ -549,6 +537,14 @@
   </div>
 </div>
 
+<!-- Fixed bell button — top right corner -->
+<div id="fixed-bell-wrap" style="display:none;position:fixed;top:10px;right:14px;z-index:200">
+  <button id="notif-btn" onclick="toggleNotifDrawer()" aria-label="Notifications" style="background:rgba(24,37,45,0.85);border:1px solid rgba(0,174,239,0.25);color:rgba(255,255,255,.8);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);position:relative;transition:background .15s">&#128276;<span id="notif-badge" style="display:none;position:absolute;top:6px;right:6px;background:#AC1534;color:white;border-radius:50%;width:8px;height:8px"></span></button>
+  <div id="notif-drawer" style="display:none;position:absolute;right:0;top:calc(100% + 6px);width:300px;background:#fff;border:1px solid #D1DCE8;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.14);z-index:300;overflow:hidden">
+    <div style="padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5A6B7B;border-bottom:1px solid #EEF2F7;display:flex;justify-content:space-between;align-items:center">Recent Activity<button onclick="clearNotifs()" style="font-size:10px;color:#5A6B7B;background:none;border:none;cursor:pointer;font-family:inherit">Clear</button></div>
+    <div id="notif-list" style="max-height:280px;overflow-y:auto;padding:6px 0"><div style="padding:14px;font-size:12px;color:#5A6B7B;text-align:center">No recent activity</div></div>
+  </div>
+</div>
 <div id="main-app" class="app-shell" style="display:none">
   <!-- ═══ SIDEBAR ═══ -->
   <nav class="sidebar" id="app-sidebar" aria-label="Main navigation">
@@ -637,8 +633,6 @@
   <!-- ═══ CONTENT ═══ -->
   <div class="content-wrap">
     <div class="breadcrumb-bar" id="breadcrumb-bar">
-      <span class="bc-section" id="bc-section">Report Generator</span>
-      <span class="bc-sep">&#8250;</span>
       <span class="bc-page" id="bc-page">Generate Reports</span>
     </div>
 <main class="main" id="main-content" role="main" aria-label="Main content">
@@ -2551,7 +2545,7 @@ function renderSidebarActivity(notifs) {
   list.innerHTML = notifs.slice(0,4).map(n => `<div style="padding:4px 8px;font-size:11px;color:rgba(255,255,255,${n.type==='error'?'.75':n.type==='success'?'.85':'.6'});white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(n.msg)}</div>`).join('');
 }
 function clearNotifs() { _notifs = []; _unread = 0; updateNotifBadge(); renderNotifList(); }
-document.addEventListener('click', e => { if (!e.target.closest('.notif-wrap') && !e.target.closest('#header-notif-wrap')) { const d = document.getElementById('notif-drawer'); if (d) d.style.display = 'none'; } });
+document.addEventListener('click', e => { if (!e.target.closest('#fixed-bell-wrap')) { const d = document.getElementById('notif-drawer'); if (d) d.style.display = 'none'; } });
 function openHubWide() {
   document.getElementById('hubwide-overlay').classList.add('open');
   const yr = document.getElementById('hw-year'); if (yr && !yr.value) yr.value = String(new Date().getFullYear());
