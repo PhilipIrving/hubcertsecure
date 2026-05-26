@@ -2688,6 +2688,90 @@ function resetProgress(){
   _progStep=0;
   [0,1,2].forEach(i=>{const el=document.getElementById('ps-'+i);if(el){el.className='prog-step pending';el.querySelector('.prog-dot').textContent=String(i+1);}});
 }
+
+// ── SNAPSHOT REPORT BUILDERS ──────────────────────────────────
+async function fetchSnapCSV(path){
+  const s=getSettings();
+  const url=`https://raw.githubusercontent.com/${s.owner}/${s.repo}/${s.branch}/${path}`;
+  const r=await fetch(url,{headers:{'Authorization':'token '+s.pat,'Cache-Control':'no-cache'}});
+  if(!r.ok) throw new Error('Snapshot not found: '+path);
+  return parseCSV(await r.text());
+}
+
+async function buildSnapshotMonthHTML(client, period, producer){
+  // period = "2026-05"
+  const [yr] = period.split('-');
+  const s = getSettings();
+  let ins=[],crit=[],cov=[];
+  try{ ins  = await fetchSnapCSV(`snapshots/${yr}/${period}/insureds.csv`); }catch(e){ins=[];}
+  try{ crit = await fetchSnapCSV(`snapshots/${yr}/${period}/criteria.csv`); }catch(e){crit=[];}
+  try{ cov  = await fetchSnapCSV(`snapshots/${yr}/${period}/coverages.csv`); }catch(e){cov=[];}
+  if(!ins.length) throw new Error(`No snapshot data found for ${period}. Run the snapshot script first.`);
+  // Filter to this client
+  const key = client.key;
+  const cIns  = ins.filter(r=>r.client_key===key||r.Client===client.name);
+  const cCrit = crit.filter(r=>r.client_key===key||r.Client===client.name);
+  const cCov  = cov.filter(r=>r.client_key===key||r.Client===client.name);
+  const useIns  = cIns.length  ? cIns  : ins;
+  const useCrit = cCrit.length ? cCrit : crit;
+  const useCov  = cCov.length  ? cCov  : cov;
+  return buildComplianceSummaryHTML(useIns, useCov, useCrit, {reportDate: period, snapshotLabel: `Snapshot: ${period}`, producer});
+}
+
+async function buildSnapshotRangeHTML(client, fromDate, toDate, producer){
+  const fYr = fromDate.slice(0,4), tYr = toDate.slice(0,4);
+  let insFrom=[],insTo=[],critFrom=[],critTo=[];
+  try{ insFrom  = await fetchSnapCSV(`snapshots/daily/${fYr}/${fromDate}/insureds.csv`); }catch(e){
+    try{ insFrom = await fetchSnapCSV(`snapshots/${fYr}/${fromDate.slice(0,7)}/insureds.csv`); }catch(e2){insFrom=[];}
+  }
+  try{ insTo    = await fetchSnapCSV(`snapshots/daily/${tYr}/${toDate}/insureds.csv`); }catch(e){
+    try{ insTo   = await fetchSnapCSV(`snapshots/${tYr}/${toDate.slice(0,7)}/insureds.csv`); }catch(e2){insTo=[];}
+  }
+  try{ critFrom = await fetchSnapCSV(`snapshots/daily/${fYr}/${fromDate}/criteria.csv`); }catch(e){critFrom=[];}
+  try{ critTo   = await fetchSnapCSV(`snapshots/daily/${tYr}/${toDate}/criteria.csv`); }catch(e){critTo=[];}
+  if(!insTo.length) throw new Error(`No snapshot found for ${toDate}. Run the snapshot script first.`);
+  const key = client.key;
+  const fIns  = (insFrom.filter(r=>r.client_key===key).length  ? insFrom.filter(r=>r.client_key===key)  : insFrom);
+  const tIns  = (insTo.filter(r=>r.client_key===key).length    ? insTo.filter(r=>r.client_key===key)    : insTo);
+  const fCrit = (critFrom.filter(r=>r.client_key===key).length ? critFrom.filter(r=>r.client_key===key) : critFrom);
+  const tCrit = (critTo.filter(r=>r.client_key===key).length   ? critTo.filter(r=>r.client_key===key)   : critTo);
+  // Calculate deltas
+  const fComp = fIns.filter(r=>(r.compliance_status||r.status||'').toLowerCase()==='compliant').length;
+  const tComp = tIns.filter(r=>(r.compliance_status||r.status||'').toLowerCase()==='compliant').length;
+  const fPct  = fIns.length ? Math.round(fComp/fIns.length*100) : 0;
+  const tPct  = tIns.length ? Math.round(tComp/tIns.length*100) : 0;
+  const delta = tPct - fPct;
+  const deltaStr = (delta>=0?'+':'')+delta+'%';
+  const deltaColor = delta>=0?'#16a34a':'#dc2626';
+  const stamp = new Date().toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric'});
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${client.name} — Program Overview ${fromDate} → ${toDate}</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:#F4F7FB;padding:24px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:18px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.hdr{background:linear-gradient(135deg,#18252D,#2B3F52);padding:24px 28px;border-radius:12px;color:#fff;margin-bottom:18px}
+.kpi-row{display:flex;gap:14px;margin-top:16px}
+.kpi{flex:1;background:rgba(255,255,255,.1);border-radius:8px;padding:14px 16px;text-align:center}
+.kpi-val{font-size:28px;font-weight:800;line-height:1}.kpi-lbl{font-size:10px;font-weight:600;opacity:.7;margin-top:4px;text-transform:uppercase;letter-spacing:.06em}
+table{width:100%;border-collapse:collapse;font-size:12px}th{background:#F4F7FB;padding:8px 10px;text-align:left;font-weight:700;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#5A6B7B}
+td{padding:8px 10px;border-bottom:1px solid #EEF2F7}
+@media print{body{background:#fff}@page{size:letter portrait;margin:10mm}}</style></head><body>
+<div class="hdr"><div style="font-size:11px;opacity:.5;margin-bottom:6px">HUB CertSecure${producer?' · '+producer:''}</div>
+<div style="font-size:20px;font-weight:800">${client.name}</div>
+<div style="font-size:12px;opacity:.6;margin-top:3px">Program Overview · Date Range Comparison · ${fromDate} → ${toDate}</div>
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">${fPct}%</div><div class="kpi-lbl">Compliant ${fromDate}</div></div>
+  <div class="kpi"><div class="kpi-val">${tPct}%</div><div class="kpi-lbl">Compliant ${toDate}</div></div>
+  <div class="kpi"><div class="kpi-val" style="color:${deltaColor}">${deltaStr}</div><div class="kpi-lbl">Change</div></div>
+  <div class="kpi"><div class="kpi-val">${tIns.length}</div><div class="kpi-lbl">Total Insureds</div></div>
+</div></div>
+<div class="card"><div style="font-size:13px;font-weight:700;margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em;color:#263746">Compliance Status — ${toDate} (Latest)</div>
+<table><tr><th>Status</th><th>Count</th><th>%</th></tr>
+${['compliant','non_compliant','pending'].map(s=>{const n=tIns.filter(r=>(r.compliance_status||r.status||'').toLowerCase()===s).length;const pct=tIns.length?Math.round(n/tIns.length*100):0;const col=s==='compliant'?'#16a34a':s==='non_compliant'?'#dc2626':'#d97706';return `<tr><td style="font-weight:600;color:${col}">${s.replace('_',' ').replace(/\b\w/g,x=>x.toUpperCase())}</td><td>${n}</td><td>${pct}%</td></tr>`;}).join('')}
+</table></div>
+<div style="text-align:center;font-size:10px;color:#9CA3AF;margin-top:12px">🔒 Confidential · HUB CertSecure · Generated ${stamp}</div>
+</body></html>`;
+}
+
 async function generate(){
   csDebug.log("REPORT","generate","Report generation started",{reports:[..._selectedReports],client:selectedClient?.name});
   if(typeof ExcelJS==='undefined'){alert('ExcelJS library failed to load. Please refresh the page.');return;}
@@ -2742,7 +2826,33 @@ async function generate(){
     if(E.ed){setProgress('Building Engagement Detail\u2026','Generating Excel workbook',1);const wb=await buildEngagementDetailXL(insureds,notifications,{engWindow,reportDate});downloads.push({label:'Engagement Detail',type:'excel',blob:await xlBlob(wb),filename:`${selectedClient.name} - Engagement Detail - ${new Date().toISOString().split('T')[0]}.xlsx`});}
     if(E.cs){setProgress('Building Compliance Summary\u2026','Generating PDF',1);downloads.push({label:'Compliance Summary',type:'pdf',html:buildComplianceSummaryHTML(insureds,coverages,criteria,{reportDate}),filename:`${selectedClient.name} - Compliance Summary - ${new Date().toISOString().split('T')[0]}.pdf`});}
     if(E.es){setProgress('Building Engagement Summary\u2026','Generating PDF',1);downloads.push({label:'Engagement Summary',type:'pdf',html:buildEngagementSummaryHTML(notifications,{reportDate,engWindow:esWindow}),filename:`${selectedClient.name} - Engagement Summary - ${new Date().toISOString().split('T')[0]}.pdf`});}
-    if(E.yer){const _poProducer=document.getElementById('po-producer')?.value?.trim()||'';if(!_poProducer){toast('Producer name is required for Program Overview \u2014 please enter it in the options.','error');}else{setProgress('Building Program Overview\u2026','Fetching snapshot data',1);const yerYear=document.getElementById('po-year')?.value?.trim()||String(new Date().getFullYear());downloads.push({label:`Program Overview ${yerYear}`,type:'pdf',html:await buildProgramOverviewHTML(yerYear,_poProducer),filename:`${selectedClient.name} - Program Overview ${yerYear} - ${new Date().toISOString().split('T')[0]}.pdf`});}}
+    if(E.yer){
+      const _poProducer=document.getElementById('po-producer')?.value?.trim()||'';
+      if(!_poProducer){toast('Producer name is required — please enter it in the options.','error');}
+      else {
+        const poMode=document.querySelector('input[name="po-mode"]:checked')?.value||'year';
+        setProgress('Building Program Overview…','Fetching snapshot data',1);
+        if(poMode==='year'){
+          const yerYear=document.getElementById('po-year')?.value?.trim()||String(new Date().getFullYear());
+          downloads.push({label:`Program Overview ${yerYear}`,type:'pdf',html:await buildProgramOverviewHTML(yerYear,_poProducer),filename:`${selectedClient.name} - Program Overview ${yerYear} - ${new Date().toISOString().split('T')[0]}.pdf`});
+        } else if(poMode==='month'){
+          const poMonthYear=document.getElementById('po-month-year')?.value?.trim()||String(new Date().getFullYear());
+          const poMonth=document.getElementById('po-month-sel')?.value;
+          if(!poMonth){toast('Please select a month.','error');}
+          else {
+            downloads.push({label:`Program Overview ${poMonth}`,type:'pdf',html:await buildSnapshotMonthHTML(selectedClient,poMonth,_poProducer),filename:`${selectedClient.name} - Program Overview ${poMonth} - ${new Date().toISOString().split('T')[0]}.pdf`});
+          }
+        } else {
+          const poFrom=document.getElementById('po-from-date')?.value;
+          const poTo=document.getElementById('po-to-date')?.value;
+          if(!poFrom||!poTo){toast('Please select both From and To dates.','error');}
+          else if(poFrom>poTo){toast('From date must be before To date.','error');}
+          else {
+            downloads.push({label:`Program Overview ${poFrom} → ${poTo}`,type:'pdf',html:await buildSnapshotRangeHTML(selectedClient,poFrom,poTo,_poProducer),filename:`${selectedClient.name} - Program Overview ${poFrom} to ${poTo}.pdf`});
+          }
+        }
+      }
+    }
     
     if(E.tyc){const tycContact=document.getElementById('tyc-contact')?.value?.trim()||'Valued Partner';const tycProducer=document.getElementById('tyc-producer')?.value?.trim()||'';setProgress('Building Thank You Card\u2026','Calculating compliance stats',1);const meta=CLIENT_META_MAP[selectedClient.key]||{};downloads.push({label:'Thank You Card',type:'pdf',html:buildThankYouCardHTML(insureds,meta,tycContact,tycProducer),filename:`${selectedClient.name} - Thank You Card - ${new Date().toISOString().split('T')[0]}.pdf`});}
     setProgress('Finalizing\u2026','Preparing your downloads',2);
