@@ -4673,12 +4673,14 @@ let _tgLogoData = null;
 let _tgCustomFields = [];
 
 const TG_STANDARD_FIELDS = [
-  { key:'entity_name', label:'Entity Name',      required:true,  type:'text',     section:'entity' },
-  { key:'legal_name',  label:'Legal Name',        required:true,  type:'text',     section:'entity' },
-  { key:'dba_name',    label:'DBA Name',          required:false, type:'text',     section:'entity' },
-  { key:'entity_id',   label:'Entity ID',         required:false, type:'text',     section:'entity' },
-  { key:'entity_type', label:'Entity Type',       required:false, type:'dropdown', section:'entity', optsKey:'entity_types' },
-  { key:'notes',       label:'Additional Notes',  required:false, type:'textarea', section:'notes' },
+  { key:'entity_name',    label:'Entity Name',      required:true,  type:'text',     section:'entity' },
+  { key:'legal_name',     label:'Legal Name',        required:true,  type:'text',     section:'entity' },
+  { key:'dba_name',       label:'DBA Name',          required:false, type:'text',     section:'entity' },
+  { key:'entity_address', label:'Entity Address',    required:false, type:'text',     section:'entity' },
+  { key:'entity_email',   label:'Entity Email',      required:false, type:'text',     section:'entity' },
+  { key:'entity_id',      label:'Entity ID',         required:false, type:'text',     section:'entity' },
+  { key:'entity_type',    label:'Entity Type',       required:false, type:'dropdown', section:'entity', optsKey:'entity_types' },
+  { key:'notes',          label:'Additional Notes',  required:false, type:'textarea', section:'notes' },
 ];
 
 const TG_US_STATES = ['-- Select --','AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
@@ -4691,6 +4693,30 @@ let _tgOpts = {
   property_locations: ['-- Select --','Blanket','Office','Retail'],
   states: [...TG_US_STATES],
 };
+
+// Ensures saved rows always contain all current standard fields.
+// Called when loading a client that already has a tg_setup — new standard
+// fields (e.g. Entity Address / Entity Email) are inserted at their canonical
+// position so existing clients get them automatically on next open.
+function tgMergeStandardFields(savedRows) {
+  const savedKeys = savedRows.map(r => r.key);
+  const missing = TG_STANDARD_FIELDS.filter(f => !savedKeys.includes(f.key));
+  if (!missing.length) return savedRows;
+
+  missing.forEach(f => {
+    const canonIdx = TG_STANDARD_FIELDS.findIndex(sf => sf.key === f.key);
+    // Insert after the nearest preceding standard field that exists in savedRows
+    let insertAt = 0;
+    for (let i = canonIdx - 1; i >= 0; i--) {
+      const prevKey = TG_STANDARD_FIELDS[i].key;
+      const idx = savedRows.findIndex(r => r.key === prevKey);
+      if (idx !== -1) { insertAt = idx + 1; break; }
+    }
+    savedRows.splice(insertAt, 0, { ...f, _hidden: false, _type: 'standard' });
+  });
+
+  return savedRows;
+}
 
 function tgInit() {
   tgRenderGrid();
@@ -4753,7 +4779,9 @@ async function tgSelectClient(key) {
 
   // Restore saved rows or init from standard fields
   if (meta.tg_setup?.tg_rows?.length) {
-    _tgFormRows = JSON.parse(JSON.stringify(meta.tg_setup.tg_rows));
+    // Merge ensures any newly added standard fields (e.g. Entity Address, Entity Email)
+    // are inserted into existing saved setups at their correct position
+    _tgFormRows = tgMergeStandardFields(JSON.parse(JSON.stringify(meta.tg_setup.tg_rows)));
     const badge = document.getElementById('tg-saved-badge');
     if (badge) badge.style.display = '';
   } else {
