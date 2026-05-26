@@ -137,12 +137,12 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.22
+       SIDEBAR LAYOUT  v0.23
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:#18252D;background-image:radial-gradient(circle,rgba(0,174,239,0.11) 1px,transparent 1px);background-size:14px 14px;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
     .sidebar-logo{padding:16px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(0,174,239,0.2)}
-    .sidebar-logo img{height:26px;width:auto;object-fit:contain;flex-shrink:0}
+    .sidebar-logo img{height:auto;width:auto;object-fit:contain;flex-shrink:0}
     .sidebar-logo-text{font-size:14px;font-weight:800;letter-spacing:.04em;color:white}.sidebar-logo-text span{color:#00AEEF}
     .sidebar-nav{flex:1;padding:10px 8px;overflow-y:auto}
     .sb-group{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:14px 10px 4px}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.22 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.23 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.22 — using var(--bg) */
+    /* bg overrides removed v0.23 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;padding:10px 24px 0;flex-shrink:0}
     .bc-section{display:none}
@@ -216,7 +216,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.22</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.23</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -544,15 +544,15 @@
           </div>
           <div id="po-sec-month" style="display:none">
             <div style="display:grid;grid-template-columns:90px 1fr;gap:8px;align-items:end">
-              <div class="form-grp" style="margin-bottom:0"><label class="form-lbl">Year</label><input type="text" id="po-month-year" placeholder="2026" maxlength="4" style="width:100%" oninput="populatePoMonthDropdown()"></div>
-              <div class="form-grp" style="margin-bottom:0"><label class="form-lbl">Month</label><select id="po-month-sel"><option value="">Enter year &#8594;</option></select></div>
+              <div class="form-grp" style="margin-bottom:0"><label class="form-lbl">Year</label><input type="text" id="po-month-year" placeholder="YYYY" maxlength="4" style="width:100%" oninput="populatePoMonthDropdown()"></div>
+              <div class="form-grp" style="margin-bottom:0"><label class="form-lbl">Month</label><select id="po-month-sel"><option value="">Select month</option></select></div>
             </div>
             <div class="form-hint" style="margin-top:4px">Reads from snapshots/YYYY/YYYY-MM/</div>
           </div>
           <div id="po-sec-range" style="display:none">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-              <div class="form-grp" style="margin-bottom:0"><label class="form-lbl">From Date</label><input type="date" id="po-from-date"></div>
-              <div class="form-grp" style="margin-bottom:0"><label class="form-lbl">To Date</label><input type="date" id="po-to-date"></div>
+              <div class="form-grp" style="margin-bottom:0"><label class="form-lbl">From Date</label><input type="date" id="po-from-date" style="width:100%"></div>
+              <div class="form-grp" style="margin-bottom:0"><label class="form-lbl">To Date</label><input type="date" id="po-to-date" style="width:100%"></div>
             </div>
             <div class="form-hint" style="margin-top:4px">Daily snapshots &#8212; last 12 months</div>
           </div>
@@ -936,13 +936,18 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.22</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.23</div>
 
 <script>
 
 
 
 // Program Overview mode switcher
+
+function toggleSidebar(){
+  const sb=document.getElementById('app-sidebar');
+  if(sb) sb.classList.toggle('collapsed');
+}
 function switchPoMode(mode){
   const secs={year:'po-sec-year',month:'po-sec-month',range:'po-sec-range'};
   Object.entries(secs).forEach(([m,id])=>{
@@ -952,7 +957,15 @@ function switchPoMode(mode){
     const lbl=document.getElementById('po-lbl-'+m);
     if(lbl) lbl.style.borderColor=m===mode?'var(--blue)':'var(--border)';
   });
-  if(mode==='month') populatePoMonthDropdown();
+  if(mode==='month'){
+    const yEl=document.getElementById('po-month-year');
+    if(yEl&&!yEl.value) yEl.value=String(new Date().getFullYear());
+    populatePoMonthDropdown();
+  }
+  if(mode==='year'){
+    const yEl=document.getElementById('po-year');
+    if(yEl&&!yEl.value) yEl.value=String(new Date().getFullYear());
+  }
 }
 async function populatePoMonthDropdown(){
   const yearEl=document.getElementById('po-month-year');
@@ -991,7 +1004,7 @@ function setHeaderTitle(title, sub) {
   if (s) s.textContent = sub || '';
 }
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.22
+// DEBUG MODULE — HUB CertSecure v0.23
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -3447,7 +3460,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.22
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.23
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -4810,7 +4823,7 @@ async function wsImportClients() {
 
 <script>
 // ══════════════════════════════════════════════════════════════
-//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.22
+//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.23
 // ══════════════════════════════════════════════════════════════
 
 let _tgClient = null;
