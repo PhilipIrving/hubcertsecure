@@ -333,6 +333,7 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",69fded1662446148bd848dff,Geotechnology LLC,ahaegele@teamues.com,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded1662446148bd848e02,"Pizza Hut / GMRG ACQ 1, LLC #0359",grandmere@propertyworks.com,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded1662446148bd848e08,GNC (Store #581-02),matthew-zamba@gnc-hq.com,,true,false,,2026-05-29
+"Block Real Estate Services, LLC",69fded1662446148bd848e08,GNC (Store #581-02),certificates@wtwco.com,,false,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded1662446148bd848e0b,"GoPuff Lease / GoBrands, Inc.",rent@gopuff.com,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded1662446148bd848e0e,"Golden Distributing Company, Inc.",goldendistributingco@yahoo.com,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded1662446148bd848e0e,"Golden Distributing Company, Inc.",ldewitt@crownmedrealty.com,,false,false,,2026-05-29
@@ -665,6 +666,7 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",69fded1f62446148bd8490e7,Reeves-Wiedeman Co,ap@rwco.com,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded1f62446148bd8490ea,"Regal Staffing, LLC",federico@regalstaffingkc.com,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded1f62446148bd8490ea,"Regal Staffing, LLC",certs@walnutrisk.com,Kevin Prochaska,false,false,,2026-05-29
+"Block Real Estate Services, LLC",69fded1f62446148bd8490ea,"Regal Staffing, LLC",awenzl@holmesmurphy.com,Andrea Wenzl,false,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded1f62446148bd8490ed,Releve Performing Arts / Ashley Collier,RelevePACinfo@gmail.com,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f0,"Remax Real Estate / Harry C. Meierarend, III",chetm@remax.net,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,miriam.flores@rentacenter.com,,true,false,,2026-05-29
@@ -849,7 +851,6 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",69fded2462446148bd849297,Vortex Industries LLC,generalap@vortexdoors.com,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded2462446148bd84929a,"VRC Companies, LLC (fka T2 Holdings, LLC/Redishred Kansas, Inc. dba Proshred Security)",bvickers@vitalshred.com,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded2462446148bd84929d,"Mike's Liquor / Waldo Spirits, Inc.",mikesliquorskc@gmail.com,,true,false,,2026-05-29
-"Block Real Estate Services, LLC",69fded2462446148bd8492a0,"Waldo Thai Place, LLC (Vacated but still leasing)",svimagingandinterior@gmail.com,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded2462446148bd8492a3,Warners Stellian Co Inc,cgullickson@warnersstellian.com,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded2462446148bd8492a6,Wayfair LLC,leaseadministration@wayfair.com,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",69fded2462446148bd8492a9,"Advena Living /Cornerstone Group Holdings, Inc. (sublease of Midlands Independent Review Board, LLC / WCG IRB, Inc.)",wcgap@wcgclinical.com,,true,false,,2026-05-29
@@ -948,6 +949,9 @@ client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_re
 "Block Real Estate Services, LLC",6a18853c9ef1cffe57c768cc,Nails 4 U,noemail@internalemail.com,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",6a1885479ef1cffe57c76a9d,Community Bank of Raymore,noemail@internalemail.com,,true,false,,2026-05-29
 "Block Real Estate Services, LLC",6a188717b517ae25a883e8df,"Lot 7, Village West",noemail@internalemail.com,,true,false,,2026-05-29
+"Block Real Estate Services, LLC",6a199d6fabae685b1c514ece,CB Smoothie Supps LLC,ls@thesmoothieshop.com,,true,false,,2026-05-29
+"Block Real Estate Services, LLC",6a19b8b18805769e5038a2ed,Savor Strategy,dt.lo@jadeandemberkc.com,,true,false,,2026-05-29
+"Block Real Estate Services, LLC",6a19b8b18805769e5038a2ed,Savor Strategy,victor.kim.nt2i@statefarm.com,,false,false,,2026-05-29
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",dreams@a-p.com,Darian Reams,false,false,,2026-05-29
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",certificates@wtwco.com,,false,false,,2026-05-29
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",jakins@a-p.com,Julia Akins,false,false,,2026-05-29

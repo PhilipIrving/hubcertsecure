@@ -610,7 +610,6 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2462446148bd849297,Vortex Industries LLC,generalap@vortexdoors.com,NON_COMPLIANT,,,true,false,2026-05-29
 "Block Real Estate Services, LLC",69fded2462446148bd84929a,"VRC Companies, LLC (fka T2 Holdings, LLC/Redishred Kansas, Inc. dba Proshred Security)",bvickers@vitalshred.com,NON_COMPLIANT,,,true,false,2026-05-29
 "Block Real Estate Services, LLC",69fded2462446148bd84929d,"Mike's Liquor / Waldo Spirits, Inc.",mikesliquorskc@gmail.com,NON_COMPLIANT,,,true,false,2026-05-29
-"Block Real Estate Services, LLC",69fded2462446148bd8492a0,"Waldo Thai Place, LLC (Vacated but still leasing)",svimagingandinterior@gmail.com,NON_COMPLIANT,,,true,false,2026-05-29
 "Block Real Estate Services, LLC",69fded2462446148bd8492a3,Warners Stellian Co Inc,cgullickson@warnersstellian.com,NON_COMPLIANT,,,true,false,2026-05-29
 "Block Real Estate Services, LLC",69fded2462446148bd8492a6,Wayfair LLC,leaseadministration@wayfair.com,NON_COMPLIANT,,,true,false,2026-05-29
 "Block Real Estate Services, LLC",69fded2462446148bd8492a9,"Advena Living /Cornerstone Group Holdings, Inc. (sublease of Midlands Independent Review Board, LLC / WCG IRB, Inc.)",wcgap@wcgclinical.com,NON_COMPLIANT,,,true,false,2026-05-29
@@ -699,7 +698,9 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a18853c9ef1cffe57c768cc,Nails 4 U,noemail@internalemail.com,PENDING,,,true,false,2026-05-29
 "Block Real Estate Services, LLC",6a1885479ef1cffe57c76a9d,Community Bank of Raymore,noemail@internalemail.com,PENDING,,,true,false,2026-05-29
 "Block Real Estate Services, LLC",6a188717b517ae25a883e8df,"Lot 7, Village West",noemail@internalemail.com,PENDING,,,true,false,2026-05-29
-QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",scadaret@a-p.com,PENDING,,,true,false,2026-05-29
+"Block Real Estate Services, LLC",6a199d6fabae685b1c514ece,CB Smoothie Supps LLC,ls@thesmoothieshop.com,PENDING,,,true,false,2026-05-29
+"Block Real Estate Services, LLC",6a19b8b18805769e5038a2ed,Savor Strategy,dt.lo@jadeandemberkc.com,PENDING,,,true,false,2026-05-29
+QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",scadaret@a-p.com,NON_COMPLIANT,,,true,false,2026-05-29
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,pherrin@brasfieldgorrie.com,NON_COMPLIANT,,,true,false,2026-05-29
 QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",porterd@claycorp.com,NON_COMPLIANT,,,true,false,2026-05-29
 QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,msanchez@evans-gc.com,NON_COMPLIANT,,,true,false,2026-05-29
