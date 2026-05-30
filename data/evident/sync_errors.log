@@ -1,44 +1,31 @@
 [
   {
     "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "58a78ced-f2c5-48b6-844d-75e95cb4d4b4",
-    "error": "HTTP 500 on /insurance/insureds/58a78ced-f2c5-48b6-844d-75e95cb4d4b4/status: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+    "stage": "coverage_data",
+    "insured": "19ba4543-44f1-485a-8646-5c6167b488df",
+    "error": "HTTP 500 on /insurance/insureds/19ba4543-44f1-485a-8646-5c6167b488df/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "coverage_data",
-    "insured": "8512a860-6d60-4101-b6a9-2c97e4c583f6",
-    "error": "HTTP 500 on /insurance/insureds/8512a860-6d60-4101-b6a9-2c97e4c583f6/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+    "insured": "3d1e6326-ee8e-4a9a-bc2f-b51a5d7a4cbb",
+    "error": "HTTP 500 on /insurance/insureds/3d1e6326-ee8e-4a9a-bc2f-b51a5d7a4cbb/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "coverage_data",
-    "insured": "b3df181a-62c9-4b9d-8452-2f7671296d35",
-    "error": "HTTP 500 on /insurance/insureds/b3df181a-62c9-4b9d-8452-2f7671296d35/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+    "insured": "5513e0f5-a907-45e8-8ada-47052a0a2264",
+    "error": "HTTP 500 on /insurance/insureds/5513e0f5-a907-45e8-8ada-47052a0a2264/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
   },
   {
     "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "e46ef916-d6a1-4672-9f6e-abbe937ebb5d",
-    "error": "HTTP 500 on /insurance/insureds/e46ef916-d6a1-4672-9f6e-abbe937ebb5d/status: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+    "stage": "coverage_data",
+    "insured": "c56f9eef-c7b0-4c9d-926b-91c99e39dde3",
+    "error": "HTTP 500 on /insurance/insureds/c56f9eef-c7b0-4c9d-926b-91c99e39dde3/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
   },
   {
     "client": "ESS Companies",
-    "stage": "coverage_data",
-    "insured": "01ece647-20ce-43b3-8ad6-1612adcede69",
-    "error": "HTTP 500 on /insurance/insureds/01ece647-20ce-43b3-8ad6-1612adcede69/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "criteria",
-    "insured": "840dcdf3-d779-475b-a1c5-3914d5b1446f",
-    "error": "HTTP 500 on /insurance/insureds/840dcdf3-d779-475b-a1c5-3914d5b1446f/status: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
-  },
-  {
-    "client": "The Abbey Management Company",
-    "stage": "coverage_data",
-    "insured": "7cb1a1c1-3465-4892-adef-c427f6adad0e",
-    "error": "HTTP 500 on /insurance/insureds/7cb1a1c1-3465-4892-adef-c427f6adad0e/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+    "stage": "insureds",
+    "error": "HTTP 500 on /insurance/insureds: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
   }
 ]
