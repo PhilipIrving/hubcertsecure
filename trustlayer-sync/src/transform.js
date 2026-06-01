@@ -2,7 +2,7 @@
 // TrustLayer → Evident-compatible CSV Transform
 //
 // Reads (from /data/):
-//   vendors.csv           — vendor master with status + email
+//   vendors.csv           — vendor master (columns: client, id, name, primary_email, status)
 //   request_records.csv   — compliance status + cert expiration
 //   coverage_subjects.csv — per-subject coverage status + dates
 //   requirements.csv      — per-attribute requirements + actual values
@@ -122,23 +122,33 @@ function earliestDate(dates) {
 function main() {
   console.log("\n🔄 TrustLayer transform starting...");
 
-  const vendors       = readCsv("vendors.csv");
-  const requestRecs   = readCsv("request_records.csv");
-  const covSubjects   = readCsv("coverage_subjects.csv");
-  const requirements  = readCsv("requirements.csv");
+  const vendors      = readCsv("vendors.csv");
+  const requestRecs  = readCsv("request_records.csv");
+  const covSubjects  = readCsv("coverage_subjects.csv");
+  const requirements = readCsv("requirements.csv");
 
   console.log(`  vendors:           ${vendors.length} rows`);
   console.log(`  request_records:   ${requestRecs.length} rows`);
   console.log(`  coverage_subjects: ${covSubjects.length} rows`);
   console.log(`  requirements:      ${requirements.length} rows`);
 
-  // vendorMap: vendor_id → {client, name, email, active}
+  // ── Column name normaliser ─────────────────────────────────
+  // sync.js outputs: id, name, primary_email
+  // support both old column names (vendor_id, vendor_name, email)
+  // and new ones so the transform works regardless of which
+  // version of sync.js produced the file.
+  function vid(v)   { return v.id           || v.vendor_id    || ""; }
+  function vname(v) { return v.name         || v.vendor_name  || ""; }
+  function vemail(v){ return v.primary_email || v.email       || ""; }
+  function vclient(v){ return v.client || ""; }
+
+  // vendorMap: vendor_id → { client, name, email, active }
   const vendorMap = {};
   for (const v of vendors) {
-    vendorMap[v.vendor_id] = {
-      client: v.client,
-      name:   v.vendor_name,
-      email:  v.email || "",
+    vendorMap[vid(v)] = {
+      client: vclient(v),
+      name:   vname(v),
+      email:  vemail(v),
       active: (v.status || "").toLowerCase() === "active",
     };
   }
@@ -146,36 +156,31 @@ function main() {
   // requestsByVendor: vendor_id → [request rows]
   const requestsByVendor = {};
   for (const r of requestRecs) {
-    if (!requestsByVendor[r.vendor_id]) requestsByVendor[r.vendor_id] = [];
-    requestsByVendor[r.vendor_id].push(r);
+    const key = r.vendor_id || "";
+    if (!requestsByVendor[key]) requestsByVendor[key] = [];
+    requestsByVendor[key].push(r);
   }
 
-  // subjectsByRequest: request_id → [subject rows]
-  const subjectsByRequest = {};
-  for (const s of covSubjects) {
-    if (!subjectsByRequest[s.request_id]) subjectsByRequest[s.request_id] = [];
-    subjectsByRequest[s.request_id].push(s);
-  }
-
-  // Non-compliance reasons per vendor — format: "SUBJECT: attribute | SUBJECT: attribute"
-  // space-pipe-space delimiter matches the Evident report script parser
+  // Non-compliance reasons per vendor
+  // format: "SUBJECT: attribute | SUBJECT: attribute"
+  // space-pipe-space matches .split(" | ") in report scripts
   const reasonsByVendor = {};
   for (const r of requirements) {
     if (normStatus(r.status) !== "NON_COMPLIANT") continue;
-    const vid   = r.vendor_id;
-    const subj  = (r.subject_label  || "").toUpperCase();
-    const attr  = r.attribute_label || "";
+    const key  = r.vendor_id || "";
+    const subj = (r.subject_label  || "").toUpperCase();
+    const attr = r.attribute_label || "";
     if (subj && attr) {
-      if (!reasonsByVendor[vid]) reasonsByVendor[vid] = new Set();
-      reasonsByVendor[vid].add(`${subj}: ${attr}`);
+      if (!reasonsByVendor[key]) reasonsByVendor[key] = new Set();
+      reasonsByVendor[key].add(`${subj}: ${attr}`);
     }
   }
 
   // ── insureds.csv ───────────────────────────────────────────
   const insuredRows = [];
   for (const v of vendors) {
-    const vid      = v.vendor_id;
-    const requests = requestsByVendor[vid] || [];
+    const id       = vid(v);
+    const requests = requestsByVendor[id] || [];
 
     const compStatus = requests.length
       ? worstStatus(requests.map(r => r.compliance_status))
@@ -186,16 +191,16 @@ function main() {
     );
 
     insuredRows.push({
-      client:               v.client,
-      insured_id:           vid,
-      insured_name:         v.vendor_name,
-      primary_contact_email: v.email || "",
-      compliance_status:    compStatus,
-      verification_status:  "",
-      next_expiration:      nextExp,
-      active:               (v.status || "").toLowerCase() === "active",
-      paused:               false,
-      sync_date:            TODAY,
+      client:                vclient(v),
+      insured_id:            id,
+      insured_name:          vname(v),
+      primary_contact_email: vemail(v),
+      compliance_status:     compStatus,
+      verification_status:   "",
+      next_expiration:       nextExp,
+      active:                (v.status || "").toLowerCase() === "active",
+      paused:                false,
+      sync_date:             TODAY,
     });
   }
 
@@ -204,9 +209,9 @@ function main() {
   for (const s of covSubjects) {
     const vinfo = vendorMap[s.vendor_id] || {};
     coverageRows.push({
-      client:                v_client(s, vinfo),
-      insured_id:            s.vendor_id,
-      insured_name:          s.vendor_name,
+      client:                s.client || vinfo.client || "",
+      insured_id:            s.vendor_id || "",
+      insured_name:          s.vendor_name || vinfo.name || "",
       primary_contact_email: vinfo.email || "",
       coverage_type:         s.subject_label  || "",
       coverage_id:           s.subject_code   || "",
@@ -225,27 +230,26 @@ function main() {
   // ── criteria.csv ──────────────────────────────────────────
   const criteriaRows = [];
   for (const v of vendors) {
-    const vid      = v.vendor_id;
-    const requests = requestsByVendor[vid] || [];
+    const id       = vid(v);
+    const requests = requestsByVendor[id] || [];
 
     const overallCompliance = requests.length
       ? worstStatus(requests.map(r => r.compliance_status))
       : "PENDING";
 
-    // space-pipe-space delimiter — matches .split(" | ") in report scripts
-    const reasons = reasonsByVendor[vid]
-      ? Array.from(reasonsByVendor[vid]).join(" | ")
+    const reasons = reasonsByVendor[id]
+      ? Array.from(reasonsByVendor[id]).join(" | ")
       : "";
 
     criteriaRows.push({
-      client:               v.client,
-      insured_id:           vid,
-      insured_name:         v.vendor_name,
-      primary_contact_email: v.email || "",
-      overall_compliance:   overallCompliance,
-      verification_status:  "",
+      client:                vclient(v),
+      insured_id:            id,
+      insured_name:          vname(v),
+      primary_contact_email: vemail(v),
+      overall_compliance:    overallCompliance,
+      verification_status:   "",
       non_compliance_reasons: reasons,
-      sync_date:            TODAY,
+      sync_date:             TODAY,
     });
   }
 
@@ -257,11 +261,6 @@ function main() {
   console.log(`✅ coverages.csv — ${coverageRows.length} rows`);
   console.log(`✅ criteria.csv  — ${criteriaRows.length} rows`);
   console.log("\n✅ Transform complete.\n");
-}
-
-// Helper: prefer client from coverage subject row, fall back to vendorMap
-function v_client(s, vinfo) {
-  return s.client || vinfo.client || "";
 }
 
 main();
