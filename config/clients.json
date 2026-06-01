@@ -78,9 +78,9 @@
       "active": true,
       "tg_templates": [
         {
-          "name": "EMMES - NY New Third-Party Request",
-          "saved_at": "2026-06-01T19:25:02.432Z",
-          "tg_title": "EMMES - NY New Third-Party Request",
+          "name": "EMMES - CA New Third-Party Request",
+          "saved_at": "2026-06-01T19:28:02.384Z",
+          "tg_title": "EMMES - CA New Third-Party Request",
           "tg_subtitle": "Complete all required fields (*) and return to your HUB account team",
           "tg_accent": "#F03048",
           "tg_header": "#F03048",
@@ -405,12 +405,58 @@
             {
               "key": "propertyLocation",
               "label": "Property Location",
-              "required": true,
+              "required": false,
               "type": "dropdown",
+              "_type": "custom",
+              "_hidden": true,
+              "_section": "additional_info",
+              "optsKey": "propertyLocation_opts"
+            },
+            {
+              "key": "custom_1780341944631",
+              "label": "Pollution",
+              "required": false,
+              "type": "checkbox",
+              "_type": "custom",
+              "_hidden": false,
+              "_section": "additional_info"
+            },
+            {
+              "key": "custom_1780341945564",
+              "label": "Professional",
+              "required": false,
+              "type": "checkbox",
+              "_type": "custom",
+              "_hidden": false,
+              "_section": "additional_info"
+            },
+            {
+              "key": "custom_1780341946241",
+              "label": "Property",
+              "required": false,
+              "type": "checkbox",
               "_type": "custom",
               "_hidden": false,
               "_section": "additional_info",
-              "optsKey": "propertyLocation_opts"
+              "optsKey": "custom_1780341946241_opts"
+            },
+            {
+              "key": "custom_1780341943159",
+              "label": "Tenant Umbrella Limit",
+              "required": true,
+              "type": "text",
+              "_type": "custom",
+              "_hidden": false,
+              "_section": "additional_info"
+            },
+            {
+              "key": "custom_1780341943911",
+              "label": "Vendor General Liability Limit",
+              "required": true,
+              "type": "text",
+              "_type": "custom",
+              "_hidden": false,
+              "_section": "additional_info"
             }
           ],
           "tg_sections": [
@@ -498,9 +544,8 @@
               "WY"
             ],
             "entityType_opts": [
-              "NY Office",
-              "NY Retail",
-              "NY Vendor"
+              "CV Tenant",
+              "CV Vendor"
             ],
             "propertyLocation_opts": [
               "NR 219 Office",
@@ -516,6 +561,10 @@
               "NR 307",
               "NR Blanket Vendor",
               "RBT Office"
+            ],
+            "custom_1780341946241_opts": [
+              "Option 1",
+              "Option 2"
             ]
           }
         }
