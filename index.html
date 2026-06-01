@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.35
+       SIDEBAR LAYOUT  v0.36
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:#18252D;background-image:radial-gradient(circle,rgba(0,174,239,0.11) 1px,transparent 1px);background-size:14px 14px;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.35 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.36 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.35 — using var(--bg) */
+    /* bg overrides removed v0.36 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;padding:10px 24px 0;flex-shrink:0}
     .bc-section{display:none}
@@ -224,7 +224,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.35</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.36</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -929,7 +929,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.35</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.36</div>
 
 <script>
 
@@ -1033,7 +1033,7 @@ function setHeaderTitle(title, sub) {
   if (s) s.textContent = sub || '';
 }
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.35
+// DEBUG MODULE — HUB CertSecure v0.36
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -3502,7 +3502,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.35
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.36
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -4865,7 +4865,7 @@ async function wsImportClients() {
 
 <script>
 // ══════════════════════════════════════════════════════════════
-//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.35
+//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.36
 // ══════════════════════════════════════════════════════════════
 
 let _tgClient = null;
@@ -4975,6 +4975,8 @@ async function tgSelectClient(key) {
   // Restore saved rows or init from standard fields
   if (meta.tg_setup?.tg_rows?.length) {
     _tgFormRows = JSON.parse(JSON.stringify(meta.tg_setup.tg_rows));
+    _tgSections = meta.tg_setup?.tg_sections ? JSON.parse(JSON.stringify(meta.tg_setup.tg_sections)) : [];
+    tgInitSections();
     const badge = document.getElementById('tg-saved-badge');
     if (badge) badge.style.display = '';
   } else {
@@ -5134,6 +5136,8 @@ async function tgLoadCustomFields(key, meta) {
   const existingKeys = new Set(_tgFormRows.map(r => r.key));
   _tgCustomFields.forEach(f => {
     if (!existingKeys.has(f.key)) {
+      const defSec = _tgSections.find(s => s.id === 'additional_info') ? 'additional_info'
+        : (_tgSections[0] ? _tgSections[0].id : null);
       _tgFormRows.push({
         key: f.key,
         label: f.label,
@@ -5141,6 +5145,7 @@ async function tgLoadCustomFields(key, meta) {
         type: 'text',
         _type: 'custom',
         _hidden: false,
+        _section: defSec,
       });
       existingKeys.add(f.key);
     }
@@ -5253,26 +5258,109 @@ function tgAutoDetectColors() {
 // ── Generate PDF ──────────────────────────────────────────────
 // ── Field Builder ──────────────────────────────────────────────────────
 let _tgFormRows = [];
+let _tgSections = [];
 
 function tgInitRows() {
-  // Build initial rows from standard fields
-  _tgFormRows = TG_STANDARD_FIELDS.map(f => ({...f, _hidden: false, _type: 'standard'}));
+  // Build initial rows from standard fields, assign entity_info section
+  _tgFormRows = TG_STANDARD_FIELDS.map(f => ({...f, _hidden: false, _type: 'standard', _section: 'entity_info'}));
+  _tgSections = [
+    { id: 'entity_info',    title: 'Entity Information',    collapsed: false },
+    { id: 'additional_info',title: 'Additional Information', collapsed: false },
+  ];
+}
+
+
+// ── Section helpers ───────────────────────────────────────────
+function tgInitSections(rows) {
+  // Called after rows are loaded — apply section defaults
+  rows = rows || _tgFormRows;
+  // If no section data on any row, apply backward-compat split
+  const hasSectionData = rows.some(r => r._section);
+  if (!hasSectionData && rows.length) {
+    rows.forEach(r => {
+      r._section = (r._type === 'custom') ? 'additional_info' : 'entity_info';
+    });
+    // Ensure default sections exist
+    if (!_tgSections.length) {
+      _tgSections = [
+        { id: 'entity_info',    title: 'Entity Information',    collapsed: false },
+        { id: 'additional_info',title: 'Additional Information', collapsed: false },
+      ];
+    }
+  }
+}
+
+function tgAddSection() {
+  const title = prompt('Section name:');
+  if (!title || !title.trim()) return;
+  const id = 'sec_' + Date.now();
+  _tgSections.push({ id, title: title.trim(), collapsed: false });
+  tgRenderBuilder();
+}
+
+function tgDeleteSection(id) {
+  if (!confirm('Delete this section? Fields inside will become unsectioned.')) return;
+  _tgSections = _tgSections.filter(s => s.id !== id);
+  _tgFormRows.forEach(r => { if (r._section === id) r._section = null; });
+  tgRenderBuilder();
+}
+
+function tgToggleSection(id) {
+  const s = _tgSections.find(s => s.id === id);
+  if (s) { s.collapsed = !s.collapsed; tgRenderBuilder(); }
+}
+
+function tgRenameSectionPrompt(id) {
+  const s = _tgSections.find(s => s.id === id);
+  if (!s) return;
+  const t = prompt('Rename section:', s.title);
+  if (t && t.trim()) { s.title = t.trim(); tgRenderBuilder(); }
+}
+
+function tgRowSetSection(i, sectionId) {
+  if (_tgFormRows[i]) {
+    _tgFormRows[i]._section = sectionId === '' ? null : sectionId;
+    tgRenderBuilder();
+  }
+}
+
+function tgAddFieldToSection(sectionId) {
+  _tgFormRows.push({
+    key: 'custom_' + Date.now(),
+    label: 'New Field',
+    required: false,
+    type: 'text',
+    _type: 'custom',
+    _hidden: false,
+    _section: sectionId === '' ? null : sectionId,
+  });
+  tgRenderBuilder();
 }
 
 function tgRenderBuilder() {
   const wrap = document.getElementById('tg-builder-rows');
   if (!wrap) return;
-  const typeOpts = ['text','dropdown','checkbox','textarea'].map(t =>
-    `<option value="${t}">${t}</option>`).join('');
-  wrap.innerHTML = _tgFormRows.map((row, i) => {
-    const bg = row._hidden ? '#F8FAFC' : (row._type === 'custom' ? 'rgba(62,189,62,0.05)' : '#fff');
+
+  // Build section options for "Move to" dropdowns
+  const sectionOpts = '<option value="">— None —</option>' +
+    _tgSections.map(s => `<option value="${esc(s.id)}">${esc(s.title)}</option>`).join('');
+
+  function renderRow(row, i) {
+    const bg     = row._hidden ? '#F8FAFC' : (row._type === 'custom' ? 'rgba(62,189,62,0.05)' : '#fff');
     const border = row._hidden ? '#E8ECF5' : (row._type === 'custom' ? 'rgba(62,189,62,0.2)' : 'rgba(6,120,213,0.18)');
     const srcPill = row._type === 'custom'
       ? `<span style="font-size:9px;font-weight:700;padding:1px 7px;border-radius:8px;background:rgba(62,189,62,0.12);color:#2E8B2E;flex-shrink:0">CUSTOM</span>`
       : '';
-    // Build type selector with current value selected
     const typeSelect = ['text','dropdown','checkbox','textarea'].map(t =>
       `<option value="${t}"${row.type===t?' selected':''}>${t}</option>`).join('');
+    const moveSel = _tgSections.length
+      ? `<select onchange="tgRowSetSection(${i},this.value)"
+           style="font-size:9px;padding:2px 4px;border:1px solid #D1DCE8;border-radius:4px;color:#5A6B7B;background:#fff;max-width:100px;flex-shrink:0"
+           title="Move to section">
+           ${_tgSections.map(s => `<option value="${esc(s.id)}"${row._section===s.id?' selected':''}>${esc(s.title)}</option>`).join('')}
+           <option value=""${!row._section?' selected':''}>— None —</option>
+         </select>`
+      : '';
     return `<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:7px;background:${bg};border:1.5px solid ${border};margin-bottom:5px;opacity:${row._hidden?'0.5':'1'}">
       <div style="display:flex;flex-direction:column;gap:1px;cursor:pointer;flex-shrink:0">
         <button onclick="tgMoveRow(${i},-1)" style="background:none;border:none;cursor:pointer;color:#8A99AA;font-size:10px;line-height:1;padding:1px 3px">&#9650;</button>
@@ -5295,20 +5383,74 @@ function tgRenderBuilder() {
           style="accent-color:#0678D5;cursor:pointer"> Req
       </label>
       ${srcPill}
+      ${moveSel}
       <button onclick="tgRowDelete(${i})"
         style="background:none;border:none;cursor:pointer;color:#B0B8C8;font-size:17px;line-height:1;padding:0 2px;flex-shrink:0" title="Remove">&times;</button>
     </div>`;
-  }).join('') +
-  `<button onclick="tgAddField()"
-    style="width:100%;margin-top:6px;padding:8px;border:1.5px dashed #D1DCE8;border-radius:7px;
-    background:none;cursor:pointer;font-size:12px;color:#5A6B7B;font-family:inherit;transition:border-color .15s"
-    onmouseover="this.style.borderColor='#0678D5'" onmouseout="this.style.borderColor='#D1DCE8'">+ Add Field</button>`;
-  // Re-render dropdown editors whenever builder updates
+  }
+
+  function addFieldBtn(sectionId) {
+    const arg = sectionId ? `'${sectionId}'` : "''";
+    return `<button onclick="tgAddFieldToSection(${arg})"
+      style="width:100%;margin-top:4px;margin-bottom:8px;padding:7px;border:1.5px dashed #D1DCE8;border-radius:7px;
+      background:none;cursor:pointer;font-size:12px;color:#5A6B7B;font-family:inherit;transition:border-color .15s"
+      onmouseover="this.style.borderColor='#0678D5'" onmouseout="this.style.borderColor='#D1DCE8'">+ Add Field</button>`;
+  }
+
+  let html = '';
+
+  // Render unsectioned rows first
+  const unsectioned = _tgFormRows.map((r,i) => ({r,i})).filter(({r}) => !r._section);
+  if (unsectioned.length) {
+    html += `<div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#8A99AA;margin-bottom:6px;margin-top:2px">Unsectioned</div>`;
+    unsectioned.forEach(({r,i}) => { html += renderRow(r, i); });
+    html += addFieldBtn('');
+  }
+
+  // Render each section
+  _tgSections.forEach(sec => {
+    const secRows = _tgFormRows.map((r,i) => ({r,i})).filter(({r}) => r._section === sec.id);
+    html += `<div style="border:1.5px solid #D1DCE8;border-radius:8px;margin-bottom:10px;overflow:hidden">
+      <div style="display:flex;align-items:center;background:#F4F7FA;padding:8px 12px;gap:8px;cursor:pointer" onclick="tgToggleSection('${esc(sec.id)}')">
+        <span style="font-size:11px;color:#8A99AA;flex-shrink:0">${sec.collapsed ? '&#9654;' : '&#9660;'}</span>
+        <span style="flex:1;font-size:12px;font-weight:700;color:#1E3A5F" 
+          onclick="event.stopPropagation();tgRenameSectionPrompt('${esc(sec.id)}')"
+          title="Click to rename">${esc(sec.title)}</span>
+        <span style="font-size:10px;color:#9CA3AF;margin-right:4px">${secRows.length} field${secRows.length===1?'':'s'}</span>
+        <button onclick="event.stopPropagation();tgDeleteSection('${esc(sec.id)}')"
+          style="background:none;border:none;cursor:pointer;color:#9CA3AF;font-size:15px;line-height:1;padding:0 2px" title="Delete section">&times;</button>
+      </div>`;
+    if (!sec.collapsed) {
+      html += `<div style="padding:8px 10px">`;
+      if (secRows.length) {
+        secRows.forEach(({r,i}) => { html += renderRow(r, i); });
+      } else {
+        html += `<div style="font-size:11px;color:#9CA3AF;text-align:center;padding:10px 0">No fields yet — add one below</div>`;
+      }
+      html += addFieldBtn(sec.id);
+      html += `</div>`;
+    }
+    html += `</div>`;
+  });
+
+  // Add Section button
+  html += `<button onclick="tgAddSection()"
+    style="width:100%;padding:8px;border:1.5px dashed #BFDBFE;border-radius:7px;
+    background:none;cursor:pointer;font-size:12px;color:#3B82F6;font-family:inherit;transition:border-color .15s;margin-top:4px"
+    onmouseover="this.style.borderColor='#3B82F6'" onmouseout="this.style.borderColor='#BFDBFE'">&#43; Add Section</button>`;
+
+  wrap.innerHTML = html;
   tgRenderDropdownEditors();
 }
 
 function tgMoveRow(i, dir) {
-  const j = i + dir;
+  const sec = _tgFormRows[i]?._section || null;
+  // Find next row in the same section in the given direction
+  let j = i + dir;
+  while (j >= 0 && j < _tgFormRows.length) {
+    if ((_tgFormRows[j]?._section || null) === sec) break;
+    j += dir;
+  }
   if (j < 0 || j >= _tgFormRows.length) return;
   [_tgFormRows[i], _tgFormRows[j]] = [_tgFormRows[j], _tgFormRows[i]];
   tgRenderBuilder();
@@ -5337,6 +5479,9 @@ function tgRowDelete(i) {
   tgRenderBuilder();
 }
 function tgAddField() {
+  // Default to additional_info section if it exists
+  const defSec = _tgSections.find(s => s.id === 'additional_info') ? 'additional_info'
+    : (_tgSections[0] ? _tgSections[0].id : null);
   _tgFormRows.push({
     key: 'custom_' + Date.now(),
     label: 'New Field',
@@ -5344,6 +5489,7 @@ function tgAddField() {
     type: 'text',
     _type: 'custom',
     _hidden: false,
+    _section: defSec,
   });
   tgRenderBuilder();
 }
@@ -5387,6 +5533,8 @@ async function tgLoadTemplate(key, idx) {
   }
   if (fakeSetup.tg_rows && fakeSetup.tg_rows.length) {
     _tgFormRows = JSON.parse(JSON.stringify(fakeSetup.tg_rows));
+    _tgSections = fakeSetup.tg_sections ? JSON.parse(JSON.stringify(fakeSetup.tg_sections)) : [];
+    tgInitSections(); // apply backward-compat if no section data
     tgRenderBuilder();
   }
   // Set the template name input to this template's name
@@ -5439,6 +5587,7 @@ async function tgSaveSetup() {
       tg_header:   document.getElementById('tg-header-hex')?.value || '',
       tg_logo:     _tgLogoData || null,
       tg_rows:     _tgFormRows.length ? _tgFormRows : null,
+      tg_sections: _tgSections.length ? _tgSections : null,
     };
     const meta = CLIENT_META_MAP[key] || {};
     const existing = tgGetTemplates(key);
@@ -5908,7 +6057,7 @@ function ceAutoDetectColors() {
 }
 </script>
 <style>
-/* v0.35 final CSS */
+/* v0.36 final CSS */
 .sidebar-brand{flex:1!important;min-width:0;overflow:hidden}
 .sidebar-brand-cert{font-size:18px!important;font-weight:900!important;letter-spacing:.03em!important;color:#fff!important;line-height:1.1;white-space:nowrap}
 .sidebar-brand-cert span{color:#00AEEF!important}
@@ -5935,7 +6084,7 @@ function ceAutoDetectColors() {
 <!-- ═══ DEBUG PANEL ═══ -->
 <div id="cs-debug-panel" style="display:none;position:fixed;bottom:12px;right:12px;background:#1a1a2e;color:#e0e0e0;font-family:monospace;font-size:11px;padding:10px 12px;border-radius:8px;z-index:99999;min-width:280px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid #333;max-height:380px;overflow:hidden;display:flex;flex-direction:column">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-    <span style="font-weight:700;color:#00AEEF;font-size:12px">&#128295; Debug v0.35</span>
+    <span style="font-weight:700;color:#00AEEF;font-size:12px">&#128295; Debug v0.36</span>
     <div style="display:flex;gap:6px">
       <button onclick="csDebugClearLog()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Clear</button>
       <button onclick="csDebugToggle()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Hide</button>
