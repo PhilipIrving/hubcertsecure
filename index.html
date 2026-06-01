@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.46
+       SIDEBAR LAYOUT  v0.47
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:#18252D;background-image:radial-gradient(circle,rgba(0,174,239,0.11) 1px,transparent 1px);background-size:14px 14px;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.46 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.47 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.46 — using var(--bg) */
+    /* bg overrides removed v0.47 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;padding:10px 24px 0;flex-shrink:0}
     .bc-section{display:none}
@@ -231,7 +231,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.46</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.47</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -812,13 +812,15 @@
 
     <!-- STEP 2: Configure -->
     <div id="tg-step-2" style="display:none">
-      <div class="client-banner" id="tg-client-banner">
-        <div style="display:flex;align-items:center;gap:8px"><div><div class="banner-name" id="tg-banner-name"></div><div class="banner-struct" id="tg-banner-struct"></div></div><span id="tg-saved-badge" style="display:none;font-size:9px;font-weight:700;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);padding:2px 8px;border-radius:10px">&#10003; Saved</span></div>
-        <span class="banner-change" onclick="tgGoStep(1)">&#8592; Change Client</span>
+      <div class="client-banner" id="tg-client-banner" style="flex-direction:column;gap:0;padding:0">
+        <div style="display:flex;align-items:center;gap:8px;padding:12px 18px;width:100%;box-sizing:border-box">
+          <div style="flex:1"><div class="banner-name" id="tg-banner-name"></div><div class="banner-struct" id="tg-banner-struct"></div></div>
+          <span id="tg-saved-badge" style="display:none;font-size:9px;font-weight:700;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);padding:2px 8px;border-radius:10px">&#10003; Saved</span>
+          <span class="banner-change" onclick="tgGoStep(1)">&#8592; Change Client</span>
+        </div>
+        <div id="tg-tab-bar" style="display:flex;align-items:center;gap:6px;padding:0 14px 10px;flex-wrap:wrap"></div>
       </div>
 
-      <!-- Template Tab Bar -->
-      <div class="tg-tab-bar" id="tg-tab-bar"></div>
 
       <!-- Branding -->
       <div class="card" style="margin-bottom:14px">
@@ -940,7 +942,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.46</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.47</div>
 
 <script>
 
@@ -1044,7 +1046,7 @@ function setHeaderTitle(title, sub) {
   if (s) s.textContent = sub || '';
 }
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.46
+// DEBUG MODULE — HUB CertSecure v0.47
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -3513,7 +3515,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.46
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.47
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -4879,7 +4881,7 @@ async function wsImportClients() {
 
 <script>
 // ══════════════════════════════════════════════════════════════
-//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.46
+//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.47
 // ══════════════════════════════════════════════════════════════
 
 let _tgClient = null;
@@ -5639,33 +5641,33 @@ async function tgDeleteTemplate(key, idx) {
 
 function tgRenderTemplateTabs() {
   const bar = document.getElementById('tg-tab-bar');
-  if (!bar || !_tgClient) return;
+  if (!bar) return;
+  if (!_tgClient) { bar.innerHTML = ''; return; }
   const templates = tgGetTemplates(_tgClient.key);
-  const safeKey = _tgClient.key.replace(/'/g,"\\'").replace(/&/g,'\\x26');
 
   let html = '';
   templates.forEach((t, i) => {
     const isActive = i === _tgActiveTemplateIdx;
     const tabStyle = isActive
-      ? 'display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border:1.5px solid #0678D5;border-radius:6px;font-size:12px;font-weight:700;color:#0678D5;background:#fff;cursor:pointer;box-shadow:0 1px 4px rgba(6,120,213,.12);white-space:nowrap;max-width:200px;overflow:hidden;text-overflow:ellipsis'
-      : 'display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border:1.5px solid transparent;border-radius:6px;font-size:12px;font-weight:600;color:#5A6B7B;background:transparent;cursor:pointer;white-space:nowrap;max-width:200px;overflow:hidden;text-overflow:ellipsis';
+      ? 'display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:5px;font-size:11px;font-weight:700;color:#1E3A5F;background:#fff;cursor:pointer;white-space:nowrap;border:none;max-width:180px;overflow:hidden;text-overflow:ellipsis'
+      : 'display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:5px;font-size:11px;font-weight:500;color:rgba(255,255,255,.75);background:rgba(255,255,255,.12);cursor:pointer;white-space:nowrap;border:none;max-width:180px;overflow:hidden;text-overflow:ellipsis';
     html += '<button onclick="tgSelectTab(' + i + ')" title="' + esc(t.name || 'Untitled') + '" style="' + tabStyle + '">'
       + esc(t.name || 'Untitled')
       + (isActive
-          ? '<span onclick="event.stopPropagation();tgDeleteTabConfirm(' + i + ')" '
-            + 'style="margin-left:4px;color:#9CA3AF;font-size:14px;line-height:1;cursor:pointer" title="Delete">&times;</span>'
+          ? ' <span onclick="event.stopPropagation();tgDeleteTabConfirm(' + i + ')" '
+            + 'style="margin-left:2px;color:#9CA3AF;font-size:13px;cursor:pointer">&times;</span>'
           : '')
       + '</button>';
   });
-  // "+" tab for new template
+  // + New Template button
   const isNew = _tgActiveTemplateIdx === null;
   const noTemplates = templates.length === 0;
-  // Always use tg-tab-new style for the + button; highlight it when it's the active state
-  const plusLabel = noTemplates ? '&#43; New Template' : '&#43;';
   const plusStyle = isNew
-    ? 'padding:6px 14px;border:1.5px solid #0678D5;border-radius:6px;font-size:12px;font-weight:700;color:#0678D5;background:#fff;cursor:pointer;box-shadow:0 1px 4px rgba(6,120,213,.12)'
-    : 'padding:6px 12px;border:1.5px dashed #B3D1F0;border-radius:6px;font-size:13px;font-weight:700;color:#3B82F6;background:transparent;cursor:pointer';
-  html += '<button onclick="tgNewTemplate()" title="New template" style="' + plusStyle + '">' + plusLabel + '</button>';
+    ? 'display:inline-flex;align-items:center;padding:5px 12px;border-radius:5px;font-size:11px;font-weight:700;color:#1E3A5F;background:#fff;cursor:pointer;border:none'
+    : 'display:inline-flex;align-items:center;padding:5px 12px;border-radius:5px;font-size:11px;font-weight:500;color:rgba(255,255,255,.75);background:rgba(255,255,255,.12);cursor:pointer;border:none';
+  html += '<button onclick="tgNewTemplate()" title="New template" style="' + plusStyle + '">'
+    + (noTemplates ? '+ New Template' : '+')
+    + '</button>';
 
   bar.innerHTML = html;
 
@@ -6256,7 +6258,7 @@ function ceAutoDetectColors() {
 }
 </script>
 <style>
-/* v0.46 final CSS */
+/* v0.47 final CSS */
 .sidebar-brand{flex:1!important;min-width:0;overflow:hidden}
 .sidebar-brand-cert{font-size:18px!important;font-weight:900!important;letter-spacing:.03em!important;color:#fff!important;line-height:1.1;white-space:nowrap}
 .sidebar-brand-cert span{color:#00AEEF!important}
@@ -6283,7 +6285,7 @@ function ceAutoDetectColors() {
 <!-- ═══ DEBUG PANEL ═══ -->
 <div id="cs-debug-panel" style="display:none;position:fixed;bottom:12px;right:12px;background:#1a1a2e;color:#e0e0e0;font-family:monospace;font-size:11px;padding:10px 12px;border-radius:8px;z-index:99999;min-width:280px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid #333;max-height:380px;overflow:hidden;display:flex;flex-direction:column">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-    <span style="font-weight:700;color:#00AEEF;font-size:12px">&#128295; Debug v0.46</span>
+    <span style="font-weight:700;color:#00AEEF;font-size:12px">&#128295; Debug v0.47</span>
     <div style="display:flex;gap:6px">
       <button onclick="csDebugClearLog()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Clear</button>
       <button onclick="csDebugToggle()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Hide</button>
