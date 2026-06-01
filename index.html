@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.36
+       SIDEBAR LAYOUT  v0.37
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:#18252D;background-image:radial-gradient(circle,rgba(0,174,239,0.11) 1px,transparent 1px);background-size:14px 14px;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.36 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.37 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.36 — using var(--bg) */
+    /* bg overrides removed v0.37 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;padding:10px 24px 0;flex-shrink:0}
     .bc-section{display:none}
@@ -224,7 +224,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.36</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.37</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -929,7 +929,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.36</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.37</div>
 
 <script>
 
@@ -1033,7 +1033,7 @@ function setHeaderTitle(title, sub) {
   if (s) s.textContent = sub || '';
 }
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.36
+// DEBUG MODULE — HUB CertSecure v0.37
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -3502,7 +3502,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.36
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.37
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -4865,21 +4865,40 @@ async function wsImportClients() {
 
 <script>
 // ══════════════════════════════════════════════════════════════
-//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.36
+//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.37
 // ══════════════════════════════════════════════════════════════
 
 let _tgClient = null;
 let _tgLogoData = null;
 let _tgCustomFields = [];
 
-const TG_STANDARD_FIELDS = [
-  { key:'entity_name', label:'Entity Name',      required:true,  type:'text',     section:'entity' },
-  { key:'legal_name',  label:'Legal Name',        required:true,  type:'text',     section:'entity' },
-  { key:'dba_name',    label:'DBA Name',          required:false, type:'text',     section:'entity' },
-  { key:'entity_id',   label:'Entity ID',         required:false, type:'text',     section:'entity' },
-  { key:'entity_type', label:'Entity Type',       required:false, type:'dropdown', section:'entity', optsKey:'entity_types' },
-  { key:'notes',       label:'Additional Notes',  required:false, type:'textarea', section:'notes' },
+const // ── Evident standard fields (Entity Information) ──────────────
+TG_STANDARD_FIELDS_EVIDENT = [
+  { key:'entity_display_name',   label:'Entity Display Name',           required:true,  type:'text' },
+  { key:'entity_legal_name',     label:'Entity Legal Name',             required:false, type:'text' },
+  { key:'entity_dba_name',       label:'Entity DBA Name(s)',            required:false, type:'text' },
+  { key:'primary_contact_email', label:'Primary Contact Email',         required:true,  type:'text' },
+  { key:'primary_contact_name',  label:'Primary Contact Name',          required:false, type:'text' },
+  { key:'primary_contact_phone', label:'Primary Contact Phone Number',  required:false, type:'text' },
+  { key:'country',               label:'Country',                       required:false, type:'text' },
+  { key:'street_address',        label:'Street Address',                required:false, type:'text' },
+  { key:'apt_suite_unit',        label:'Apt, Suite or Unit',            required:false, type:'text' },
+  { key:'city',                  label:'City',                          required:false, type:'text' },
+  { key:'state',                 label:'State',                         required:false, type:'text' },
+  { key:'zip_code',              label:'Zip Code',                      required:false, type:'text' },
 ];
+
+// ── TrustLayer standard fields (Entity Information) ────────────
+TG_STANDARD_FIELDS_TRUSTLAYER = [
+  { key:'party_name',    label:'Party Name',    required:true,  type:'text' },
+  { key:'party_type',    label:'Party Type',    required:false, type:'text' },
+  { key:'full_address',  label:'Full Address',  required:false, type:'text' },
+  { key:'email_address', label:'Email Address', required:true,  type:'text' },
+  { key:'contact_name',  label:'Contact Name',  required:false, type:'text' },
+];
+
+// Legacy alias — keep for any residual references
+TG_STANDARD_FIELDS = TG_STANDARD_FIELDS_EVIDENT;
 
 const TG_US_STATES = ['-- Select --','AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
 
@@ -4980,7 +4999,7 @@ async function tgSelectClient(key) {
     const badge = document.getElementById('tg-saved-badge');
     if (badge) badge.style.display = '';
   } else {
-    tgInitRows();
+    tgInitRows(key);
   }
 
   tgGoStep(2);
@@ -5132,10 +5151,15 @@ async function tgLoadCustomFields(key, meta) {
 
   if (loadEl) loadEl.style.display = 'none';
 
-  // Dedup against standard fields already in _tgFormRows, then append custom ones
+  // Dedup against standard fields — also exclude keys from both platform lists
+  const stdEvidentKeys = new Set(TG_STANDARD_FIELDS_EVIDENT.map(f => f.key));
+  const stdTLKeys = new Set(TG_STANDARD_FIELDS_TRUSTLAYER.map(f => f.key));
+  const allStdKeys = new Set([...stdEvidentKeys, ...stdTLKeys]);
   const existingKeys = new Set(_tgFormRows.map(r => r.key));
+  // Merge: skip anything already in rows OR in standard lists
+  const skipKeys = new Set([...existingKeys, ...allStdKeys]);
   _tgCustomFields.forEach(f => {
-    if (!existingKeys.has(f.key)) {
+    if (!skipKeys.has(f.key)) {
       const defSec = _tgSections.find(s => s.id === 'additional_info') ? 'additional_info'
         : (_tgSections[0] ? _tgSections[0].id : null);
       _tgFormRows.push({
@@ -5150,6 +5174,13 @@ async function tgLoadCustomFields(key, meta) {
       existingKeys.add(f.key);
     }
   });
+  // Ensure additional_info section exists if custom fields were added
+  if (_tgFormRows.some(r => r._section === 'additional_info') && !_tgSections.find(s => s.id === 'additional_info')) {
+    const notesIdx = _tgSections.findIndex(s => s.id === 'notes');
+    const insert = { id: 'additional_info', title: 'Additional Information', collapsed: false };
+    if (notesIdx >= 0) _tgSections.splice(notesIdx, 0, insert);
+    else _tgSections.push(insert);
+  }
   tgRenderBuilder();
 }
 
@@ -5260,12 +5291,20 @@ function tgAutoDetectColors() {
 let _tgFormRows = [];
 let _tgSections = [];
 
-function tgInitRows() {
-  // Build initial rows from standard fields, assign entity_info section
-  _tgFormRows = TG_STANDARD_FIELDS.map(f => ({...f, _hidden: false, _type: 'standard', _section: 'entity_info'}));
+function tgInitRows(clientKey) {
+  const isTL = clientKey ? isTLClient(clientKey) : false;
+  const stdFields = isTL ? TG_STANDARD_FIELDS_TRUSTLAYER : TG_STANDARD_FIELDS_EVIDENT;
+  _tgFormRows = stdFields.map(f => ({...f, _hidden: false, _type: 'standard', _section: 'entity_info'}));
+  // Always add Additional Notes to Notes section
+  _tgFormRows.push({
+    key: 'additional_notes', label: 'Additional Notes',
+    required: false, type: 'textarea',
+    _type: 'standard', _hidden: false, _section: 'notes'
+  });
   _tgSections = [
     { id: 'entity_info',    title: 'Entity Information',    collapsed: false },
     { id: 'additional_info',title: 'Additional Information', collapsed: false },
+    { id: 'notes',          title: 'Notes',                  collapsed: false },
   ];
 }
 
@@ -5278,13 +5317,15 @@ function tgInitSections(rows) {
   const hasSectionData = rows.some(r => r._section);
   if (!hasSectionData && rows.length) {
     rows.forEach(r => {
-      r._section = (r._type === 'custom') ? 'additional_info' : 'entity_info';
+      if (r.key === 'additional_notes') r._section = 'notes';
+      else r._section = (r._type === 'custom') ? 'additional_info' : 'entity_info';
     });
     // Ensure default sections exist
     if (!_tgSections.length) {
       _tgSections = [
         { id: 'entity_info',    title: 'Entity Information',    collapsed: false },
         { id: 'additional_info',title: 'Additional Information', collapsed: false },
+        { id: 'notes',          title: 'Notes',                  collapsed: false },
       ];
     }
   }
@@ -6057,7 +6098,7 @@ function ceAutoDetectColors() {
 }
 </script>
 <style>
-/* v0.36 final CSS */
+/* v0.37 final CSS */
 .sidebar-brand{flex:1!important;min-width:0;overflow:hidden}
 .sidebar-brand-cert{font-size:18px!important;font-weight:900!important;letter-spacing:.03em!important;color:#fff!important;line-height:1.1;white-space:nowrap}
 .sidebar-brand-cert span{color:#00AEEF!important}
@@ -6084,7 +6125,7 @@ function ceAutoDetectColors() {
 <!-- ═══ DEBUG PANEL ═══ -->
 <div id="cs-debug-panel" style="display:none;position:fixed;bottom:12px;right:12px;background:#1a1a2e;color:#e0e0e0;font-family:monospace;font-size:11px;padding:10px 12px;border-radius:8px;z-index:99999;min-width:280px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid #333;max-height:380px;overflow:hidden;display:flex;flex-direction:column">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-    <span style="font-weight:700;color:#00AEEF;font-size:12px">&#128295; Debug v0.36</span>
+    <span style="font-weight:700;color:#00AEEF;font-size:12px">&#128295; Debug v0.37</span>
     <div style="display:flex;gap:6px">
       <button onclick="csDebugClearLog()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Clear</button>
       <button onclick="csDebugToggle()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Hide</button>
