@@ -81,11 +81,10 @@ jobs:
             echo "  moved from data/: $f"
           done
 
-          # Also capture CSVs from evident-sync/data/ (written by sync-engagement.js / sync-custom-properties.js)
+          # Also capture CSVs from evident-sync/data/
           if [ -d "evident-sync/data" ]; then
             find evident-sync/data -maxdepth 1 -name "*.csv" | while IFS= read -r f; do
               fname=$(basename "$f")
-              # Only copy if it has actual data (more than just a header row)
               lines=$(wc -l < "$f")
               if [ "$lines" -gt 1 ]; then
                 cp "$f" "data/evident/$fname"
@@ -96,15 +95,15 @@ jobs:
             done
           fi
 
-          # List final state
           echo "Final data/evident/ contents:"
           ls -lh data/evident/*.csv 2>/dev/null | awk '{print "  " $5, $9}'
 
-      - name: Take monthly snapshot
+      - name: Take daily snapshot (Evident)
         run: |
-          MONTH=$(date -u +'%Y-%m')
-          YEAR="${MONTH:0:4}"
-          DEST="snapshots/$YEAR/$MONTH"
+          # Daily snapshot: snapshots/YYYY/YYYY-MM-DD/
+          DATE=$(date -u +'%Y-%m-%d')
+          YEAR="${DATE:0:4}"
+          DEST="snapshots/$YEAR/$DATE"
           mkdir -p "$DEST"
           COPIED=0
           for f in data/evident/*.csv; do
@@ -113,7 +112,7 @@ jobs:
               COPIED=$((COPIED + 1))
             fi
           done
-          echo "Snapshot updated: $DEST ($COPIED files)"
+          echo "Evident daily snapshot: $DEST ($COPIED files)"
 
       - name: Commit Evident data and snapshots
         run: |
@@ -121,9 +120,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/evident/ snapshots/
           git diff --cached --quiet || git commit -m "sync: update Evident CSVs [$(date -u '+%Y-%m-%d %H:%M UTC')]"
-          # Rebase with -X ours: if TrustLayer sync committed first, our fresh data wins
           git pull --rebase -X ours
-          # Safety net: force-resolve any remaining conflicts and continue
           if git rebase --show-current-patch >/dev/null 2>&1; then
             git diff --name-only --diff-filter=U | xargs -r git checkout --ours --
             git diff --name-only --diff-filter=U | xargs -r git add
@@ -176,26 +173,41 @@ jobs:
           echo "Final data/trustlayer/ contents:"
           ls -lh data/trustlayer/*.csv 2>/dev/null | awk '{print "  " $5, $9}'
 
-      - name: Merge TL data into snapshot
+      - name: Take daily snapshot (TrustLayer — ALL CSVs)
         run: |
-          MONTH=$(date -u +'%Y-%m')
-          YEAR="${MONTH:0:4}"
-          DEST="snapshots/$YEAR/$MONTH"
+          # Daily snapshot: snapshots/YYYY/YYYY-MM-DD/
+          # Every TrustLayer CSV goes in — raw data AND transform output
+          DATE=$(date -u +'%Y-%m-%d')
+          YEAR="${DATE:0:4}"
+          DEST="snapshots/$YEAR/$DATE"
           mkdir -p "$DEST"
-          # Overwrite TL rows in the Evident snapshot files (replace, don't append)
+
+          # Snapshot every CSV from data/trustlayer/ (all raw files)
+          TL_COPIED=0
+          for f in data/trustlayer/*.csv; do
+            if [ -f "$f" ]; then
+              fname=$(basename "$f")
+              cp "$f" "$DEST/tl_${fname}"
+              TL_COPIED=$((TL_COPIED + 1))
+              echo "  snapshotted: tl_${fname}"
+            fi
+          done
+          echo "TrustLayer daily snapshot: $DEST ($TL_COPIED files)"
+
+          # Also merge the 3 transform-output files (insureds/coverages/criteria)
+          # into the combined snapshot alongside Evident data
           for f in data/trustlayer/insureds.csv data/trustlayer/coverages.csv data/trustlayer/criteria.csv; do
             fname=$(basename "$f")
             lines=$(wc -l < "$f" 2>/dev/null || echo 0)
             if [ "$lines" -gt 1 ]; then
               if [ -f "$DEST/$fname" ]; then
-                # Remove any previously merged TL rows (lines not matching Evident client names)
-                # Simplest safe approach: rebuild from Evident base + fresh TL rows
+                # Rebuild: Evident base + fresh TL rows
                 ev_file="data/evident/$fname"
                 if [ -f "$ev_file" ]; then
                   cp "$ev_file" "$DEST/$fname"
                 fi
                 tail -n +2 "$f" >> "$DEST/$fname"
-                echo "  merged TL rows into snapshots/$fname"
+                echo "  merged TL rows into $fname"
               else
                 cp "$f" "$DEST/$fname"
                 echo "  created $DEST/$fname (TL only)"
@@ -204,7 +216,6 @@ jobs:
               echo "  skipped $fname (empty)"
             fi
           done
-          echo "TL snapshot merged into: $DEST"
 
       - name: Commit TrustLayer data and snapshots
         run: |
@@ -212,9 +223,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/trustlayer/ snapshots/
           git diff --cached --quiet || git commit -m "sync: update TrustLayer CSVs [$(date -u '+%Y-%m-%d %H:%M UTC')]"
-          # Rebase with -X ours: if Evident sync committed first, our fresh data wins
           git pull --rebase -X ours
-          # Safety net: force-resolve any remaining conflicts and continue
           if git rebase --show-current-patch >/dev/null 2>&1; then
             git diff --name-only --diff-filter=U | xargs -r git checkout --ours --
             git diff --name-only --diff-filter=U | xargs -r git add
