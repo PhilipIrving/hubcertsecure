@@ -79,7 +79,7 @@
       "tg_templates": [
         {
           "name": "EMMES - NY New Third-Party Request",
-          "saved_at": "2026-06-01T16:28:40.779Z",
+          "saved_at": "2026-06-01T16:48:54.129Z",
           "tg_title": "EMMES - NY New Third-Party Request",
           "tg_subtitle": "Complete all required fields (*) and return to your HUB account team",
           "tg_accent": "#F03048",
@@ -405,29 +405,29 @@
             {
               "key": "propertyLocation",
               "label": "Property Location",
-              "required": false,
+              "required": true,
               "type": "dropdown",
               "_type": "custom",
-              "_hidden": true,
+              "_hidden": false,
               "_section": "additional_info",
               "optsKey": "propertyLocation_opts"
             },
             {
               "key": "custom_1780331432322",
               "label": "General Liability Limit",
-              "required": true,
+              "required": false,
               "type": "text",
               "_type": "custom",
-              "_hidden": false,
+              "_hidden": true,
               "_section": "additional_info"
             },
             {
               "key": "custom_1780331433169",
               "label": "Umbrella Limit",
-              "required": true,
+              "required": false,
               "type": "text",
               "_type": "custom",
-              "_hidden": false,
+              "_hidden": true,
               "_section": "additional_info"
             },
             {
@@ -436,7 +436,7 @@
               "required": false,
               "type": "checkbox",
               "_type": "custom",
-              "_hidden": false,
+              "_hidden": true,
               "_section": "additional_info"
             },
             {
@@ -445,7 +445,7 @@
               "required": false,
               "type": "checkbox",
               "_type": "custom",
-              "_hidden": false,
+              "_hidden": true,
               "_section": "additional_info"
             },
             {
@@ -454,7 +454,7 @@
               "required": false,
               "type": "checkbox",
               "_type": "custom",
-              "_hidden": false,
+              "_hidden": true,
               "_section": "additional_info"
             }
           ],
