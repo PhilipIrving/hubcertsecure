@@ -1,35 +1,31 @@
 // ============================================================
 // evident-sync/src/sync.js
-// Evident → CSV Sync — COMPLETE coverage of every GET endpoint
+// Evident → CSV Sync — complete GET coverage, speed-optimised
 //
 // Endpoints called:
 //   GET /insurance/insureds                        — paginated insured list
-//   GET /insurance/insureds/export                 — bulk CSV export (custom props)
-//   GET /insurance/insureds/{id}                   — individual insured detail
-//   GET /insurance/insureds/{id}/status            — NC reasons + decline reasons
+//   GET /insurance/insureds/export                 — bulk CSV (custom props)
+//   GET /insurance/insureds/{id}/status            — NC + decline reasons (NC only)
 //   GET /insurance/insureds/{id}/data              — coverage data per insured
 //   GET /insurance/actions                         — outreach/action log
 //   GET /insurance/config/insureds/fields          — custom field definitions
 //   GET /insurance/summaries/insureds              — per-client compliance KPIs
+//   GET /insurance/notifications                   — engagement/email events
 //   GET /models/enums                              — platform enum definitions
 //   GET /models/credentials                        — credential type list
-//   GET /models/credentials/{id}                   — credential type detail
+//   GET /models/credentials/{id}                   — credential detail (once per ID)
 //   GET /models/forms/categories                   — form category definitions
-//   GET /insurance/notifications                   — engagement/email events
 //
-// Output CSVs written to data/evident/:
-//   insureds.csv              — one row per insured
-//   coverages.csv             — one row per coverage line
-//   custom_fields.csv         — coverage-level JSON policy data
-//   custom_properties.csv     — entity-level custom properties (export + per-insured)
-//   criteria.csv              — non-compliance reasons per insured
-//   engagement.csv            — email notification events
-//   summaries.csv             — per-client KPI counts
-//   actions.csv               — outreach/action log events
-//   enums.csv                 — platform enum definitions
-//   credentials.csv           — credential type definitions + details
-//   form_categories.csv       — form category definitions
-//   field_definitions.csv     — custom insured field definitions
+// NOTE: GET /insurance/insureds/{id} is intentionally omitted.
+// The list endpoint + /export CSV already return all available
+// insured fields. The per-insured detail call adds nothing new
+// and would add ~13,000 extra API calls, causing a 10+ min sync.
+//
+// Output CSVs → data/evident/:
+//   insureds.csv, coverages.csv, custom_fields.csv,
+//   custom_properties.csv, criteria.csv, engagement.csv,
+//   summaries.csv, actions.csv, credentials.csv,
+//   enums.csv, form_categories.csv, field_definitions.csv
 // ============================================================
 
 "use strict";
@@ -67,8 +63,8 @@ const BASE_URL      = "https://verify.api.evidentid.com/api/v1";
 const DATA_DIR      = path.join(__dirname, "..", "..", "data", "evident");
 const SNAPSHOT_BASE = path.join(__dirname, "..", "..", "snapshots");
 
-const CLIENT_THREADS = 8;
-const CONCURRENCY    = 20;
+const CLIENT_THREADS = 8;   // clients in parallel
+const CONCURRENCY    = 20;  // per-insured requests per client
 
 // ------------------------------------------------------------
 // TIMESTAMPS — Central Time
@@ -89,7 +85,7 @@ function getSyncDate() {
 }
 
 // ------------------------------------------------------------
-// HTTP HELPERS — JSON and plain text
+// HTTP HELPERS
 // ------------------------------------------------------------
 function apiGet(rpCommonName, apiKey, endpoint, params = {}) {
   return new Promise((resolve, reject) => {
@@ -124,7 +120,7 @@ function apiGet(rpCommonName, apiKey, endpoint, params = {}) {
   });
 }
 
-// Plain text GET (for /export CSV endpoint)
+// Plain text GET for the /export CSV endpoint
 function apiGetText(rpCommonName, apiKey, endpoint) {
   return new Promise((resolve, reject) => {
     const credentials = Buffer.from(`${rpCommonName}:${apiKey}`).toString("base64");
@@ -155,51 +151,51 @@ function apiGetText(rpCommonName, apiKey, endpoint) {
 // PAGINATION
 // ------------------------------------------------------------
 async function fetchAllInsureds(rpCommonName, apiKey) {
-  const insureds = [];
+  const all = [];
   const limit = 100;
   let skip = 0;
   while (true) {
     const res = await apiGet(rpCommonName, apiKey, "/insurance/insureds", { limit, skip });
     if (!res) break;
     const records = res.records || [];
-    insureds.push(...records);
+    all.push(...records);
     const total = res.navigation?.total ?? records.length;
-    if (insureds.length >= total || records.length === 0) break;
+    if (all.length >= total || records.length === 0) break;
     skip += limit;
   }
-  return insureds;
+  return all;
 }
 
 async function fetchAllActions(rpCommonName, apiKey) {
-  const actions = [];
+  const all = [];
   const limit = 100;
   let skip = 0;
   while (true) {
     const res = await apiGet(rpCommonName, apiKey, "/insurance/actions", { sort: "Id", limit, skip });
     if (!res) break;
     const records = res.records || (Array.isArray(res) ? res : []);
-    actions.push(...records);
+    all.push(...records);
     const total = res.navigation?.total ?? records.length;
-    if (actions.length >= total || records.length === 0) break;
+    if (all.length >= total || records.length === 0) break;
     skip += limit;
   }
-  return actions;
+  return all;
 }
 
 async function fetchAllCredentials(rpCommonName, apiKey) {
-  const creds = [];
+  const all = [];
   const limit = 100;
   let skip = 0;
   while (true) {
     const res = await apiGet(rpCommonName, apiKey, "/models/credentials", { limit, skip });
     if (!res) break;
     const records = res.records || (Array.isArray(res) ? res : []);
-    creds.push(...records);
+    all.push(...records);
     const total = res.navigation?.total ?? records.length;
-    if (creds.length >= total || records.length === 0) break;
+    if (all.length >= total || records.length === 0) break;
     skip += limit;
   }
-  return creds;
+  return all;
 }
 
 // ------------------------------------------------------------
@@ -229,7 +225,6 @@ function parseCsvText(text) {
   return rows;
 }
 
-// Standard columns in the /export CSV — everything else is a custom property
 const STANDARD_EXPORT_FIELDS = new Set([
   "Display Name","Legal Name","DBA Name(s)","Primary Contact Email",
   "Primary Contact Name","Primary Contact Phone","Compliance Status",
@@ -266,20 +261,108 @@ function toCsv(rows) {
 }
 
 // ------------------------------------------------------------
+// GLOBAL REFERENCE DATA — fetched once, shared across clients
+// enums, form categories, credentials (with detail)
+// ------------------------------------------------------------
+async function fetchGlobalData(firstClient) {
+  const { rpCommonName, apiKey } = firstClient;
+  const syncTimestamp = getSyncTimestamp();
+  const syncDate      = getSyncDate();
+  const enumRows      = [];
+  const formCatRows   = [];
+  const credentialRows = [];
+
+  // GET /models/enums
+  try {
+    const enums = await apiGet(rpCommonName, apiKey, "/models/enums");
+    if (enums && typeof enums === "object") {
+      for (const [enumName, values] of Object.entries(enums)) {
+        const vals = Array.isArray(values) ? values : [values];
+        for (const v of vals) {
+          enumRows.push({
+            enum_name:      enumName,
+            value:          typeof v === "object" ? JSON.stringify(v) : String(v),
+            sync_date:      syncDate,
+            sync_timestamp: syncTimestamp,
+          });
+        }
+      }
+    }
+    console.log(`  Enums: ${enumRows.length} values`);
+  } catch (err) {
+    console.warn(`  ⚠️  Enums: ${err.message}`);
+  }
+
+  // GET /models/forms/categories
+  try {
+    const cats = await apiGet(rpCommonName, apiKey, "/models/forms/categories");
+    const catList = Array.isArray(cats) ? cats : (cats?.records || cats?.categories || []);
+    for (const c of catList) {
+      formCatRows.push({
+        id:             c.id   || "",
+        name:           c.name || c.displayName || "",
+        description:    c.description || "",
+        form_count:     c.formCount ?? "",
+        sync_date:      syncDate,
+        sync_timestamp: syncTimestamp,
+      });
+    }
+    console.log(`  Form categories: ${formCatRows.length}`);
+  } catch (err) {
+    console.warn(`  ⚠️  Form categories: ${err.message}`);
+  }
+
+  // GET /models/credentials (list) then GET /models/credentials/{id} (detail)
+  // Done ONCE globally — credentials are platform-wide reference data,
+  // not per-client. Fetching per-client would multiply calls by 17.
+  try {
+    const creds = await fetchAllCredentials(rpCommonName, apiKey);
+    // Fetch detail for each credential in parallel (concurrency 20)
+    await pooled(creds, 20, async (c) => {
+      const cid = c.id || "";
+      let detail = c; // fall back to list data if detail call fails
+      try {
+        const d = await apiGet(rpCommonName, apiKey, `/models/credentials/${cid}`);
+        if (d) detail = d;
+      } catch (_) { /* detail is optional enrichment */ }
+
+      credentialRows.push({
+        id:                cid,
+        display_name:      detail.displayName  || c.displayName  || c.name || "",
+        requirement:       detail.requirement  || c.requirement  || "",
+        cred_name:         detail.name         || c.name         || "",
+        country:           detail.country      || c.country      || "",
+        state:             detail.state        || c.state        || "",
+        county_or_region:  detail.countyOrRegion || "",
+        city:              detail.city         || c.city         || "",
+        issuing_authority: detail.issuingAuthority || "",
+        sync_date:         syncDate,
+        sync_timestamp:    syncTimestamp,
+      });
+    });
+    console.log(`  Credentials: ${credentialRows.length}`);
+  } catch (err) {
+    console.warn(`  ⚠️  Credentials: ${err.message}`);
+  }
+
+  return { enumRows, formCatRows, credentialRows };
+}
+
+// ------------------------------------------------------------
 // PROCESS ONE CLIENT
 // ------------------------------------------------------------
 async function processClient(client) {
   const { name, rpCommonName, apiKey } = client;
 
-  const insuredRows      = [];
-  const coverageRows     = [];
-  const customFieldRows  = [];
-  const customPropRows   = [];
-  const criteriaRows     = [];
-  const engagementRows   = [];
-  const actionRows       = [];
-  const credentialRows   = [];
-  const errorLog         = [];
+  const insuredRows     = [];
+  const coverageRows    = [];
+  const customFieldRows = [];
+  const customPropRows  = [];
+  const criteriaRows    = [];
+  const engagementRows  = [];
+  const actionRows      = [];
+  const fieldDefRows    = [];
+  const errorLog        = [];
 
   const syncTimestamp = getSyncTimestamp();
   const syncDate      = getSyncDate();
@@ -295,6 +378,16 @@ async function processClient(client) {
       fieldDefsList = defs;
       for (const f of defs) {
         if (f.id) fieldDefs[f.id] = { id: f.id, name: f.name || f.id, key: f.key || f.id };
+        fieldDefRows.push({
+          client:         name,
+          field_id:       f.id   || "",
+          field_name:     f.name || "",
+          field_key:      f.key  || "",
+          field_type:     f.type || "",
+          required:       f.required ?? "",
+          sync_date:      syncDate,
+          sync_timestamp: syncTimestamp,
+        });
       }
     }
     console.log(`   Field defs: ${fieldDefsList.length}`);
@@ -303,8 +396,9 @@ async function processClient(client) {
   }
 
   // ── B. Bulk export — GET /insurance/insureds/export ──────────────
-  // Used to capture custom properties that are only in the export CSV
-  let exportCustomProps = {}; // insuredName (lowercased) → [{fieldName, fieldValue}]
+  // One call captures ALL custom property values for ALL insureds.
+  // This is the primary source for custom props — fast and complete.
+  let exportCustomProps = {}; // insuredName.toLowerCase() → [{fieldName, fieldValue}]
   try {
     const csvText = await apiGetText(rpCommonName, apiKey, "/insurance/insureds/export");
     if (csvText?.trim()) {
@@ -337,17 +431,17 @@ async function processClient(client) {
     for (const a of actions) {
       actionRows.push({
         client:         name,
-        action_id:      a.id || "",
-        action_type:    a.type || a.actionType || "",
-        insured_id:     a.insuredId || a.insured_id || "",
-        insured_name:   a.insuredName || a.displayName || "",
-        status:         a.status || "",
-        created_at:     a.createdAt || a.created_at || "",
-        updated_at:     a.updatedAt || a.updated_at || "",
-        scheduled_at:   a.scheduledAt || "",
-        completed_at:   a.completedAt || "",
-        notes:          a.notes || a.description || "",
-        triggered_by:   a.triggeredBy || a.createdBy || "",
+        action_id:      a.id           || "",
+        action_type:    a.type         || a.actionType || "",
+        insured_id:     a.insuredId    || a.insured_id || "",
+        insured_name:   a.insuredName  || a.displayName || "",
+        status:         a.status       || "",
+        created_at:     a.createdAt    || a.created_at  || "",
+        updated_at:     a.updatedAt    || a.updated_at  || "",
+        scheduled_at:   a.scheduledAt  || "",
+        completed_at:   a.completedAt  || "",
+        notes:          a.notes        || a.description || "",
+        triggered_by:   a.triggeredBy  || a.createdBy   || "",
         sync_date:      syncDate,
         sync_timestamp: syncTimestamp,
       });
@@ -357,39 +451,7 @@ async function processClient(client) {
     errorLog.push({ client: name, stage: "actions", error: err.message });
   }
 
-  // ── D. Credentials — GET /models/credentials + /{id} ─────────────
-  try {
-    const creds = await fetchAllCredentials(rpCommonName, apiKey);
-    for (const c of creds) {
-      const cid = c.id || "";
-      // GET /models/credentials/{id} for full detail
-      let detail = {};
-      try {
-        const d = await apiGet(rpCommonName, apiKey, `/models/credentials/${cid}`);
-        if (d) detail = d;
-      } catch (_) { /* detail is optional */ }
-
-      credentialRows.push({
-        client:            name,
-        id:                cid,
-        display_name:      detail.displayName || c.displayName || c.name || "",
-        requirement:       detail.requirement || c.requirement || "",
-        cred_name:         detail.name        || c.name        || "",
-        country:           detail.country     || c.country     || "",
-        state:             detail.state       || c.state       || "",
-        county_or_region:  detail.countyOrRegion || "",
-        city:              detail.city        || c.city        || "",
-        issuing_authority: detail.issuingAuthority || "",
-        sync_date:         syncDate,
-        sync_timestamp:    syncTimestamp,
-      });
-    }
-    console.log(`   Credentials: ${credentialRows.length}`);
-  } catch (err) {
-    errorLog.push({ client: name, stage: "credentials", error: err.message });
-  }
-
-  // ── E. Insureds — GET /insurance/insureds (paginated) ────────────
+  // ── D. Insureds — GET /insurance/insureds (paginated list) ───────
   let insureds = [];
   try {
     insureds = await fetchAllInsureds(rpCommonName, apiKey);
@@ -397,10 +459,10 @@ async function processClient(client) {
   } catch (err) {
     errorLog.push({ client: name, stage: "insureds", error: err.message });
     return { insuredRows, coverageRows, customFieldRows, customPropRows,
-             criteriaRows, engagementRows, actionRows, credentialRows, errorLog };
+             criteriaRows, engagementRows, actionRows, fieldDefRows, errorLog };
   }
 
-  // ── F. Summary — GET /insurance/summaries/insureds ───────────────
+  // ── E. Summary — GET /insurance/summaries/insureds ───────────────
   let summary = { compliant: 0, nonCompliant: 0, pending: 0, total: insureds.length };
   try {
     const s = await apiGet(rpCommonName, apiKey, "/insurance/summaries/insureds");
@@ -410,7 +472,6 @@ async function processClient(client) {
       summary.pending      = s.pendingCount      ?? s.pending      ?? s.statistics?.pendingCount      ?? 0;
     }
   } catch (_) {
-    // Fall back to counting from insured records
     for (const ins of insureds) {
       const st = (ins.complianceStatus || ins.status || "").toUpperCase();
       if      (st === "COMPLIANT") summary.compliant++;
@@ -419,18 +480,18 @@ async function processClient(client) {
     }
   }
 
-  // ── G. Engagement — GET /insurance/notifications ─────────────────
+  // ── F. Engagement — GET /insurance/notifications ─────────────────
   try {
     const res = await apiGet(rpCommonName, apiKey, "/insurance/notifications");
     const events = Array.isArray(res) ? res : (res?.records || []);
     for (const ev of events) {
       engagementRows.push({
         Client:         name,
-        Email:          ev.email          || ev.recipientEmail || "",
-        Type:           ev.type           || ev.eventType      || "",
-        Date:           ev.sentAt         || ev.createdAt      || ev.timestamp || "",
-        Subject:        ev.subject        || ev.emailSubject   || "",
-        insured_id:     ev.insuredId      || ev.insured_id     || "",
+        Email:          ev.email       || ev.recipientEmail || "",
+        Type:           ev.type        || ev.eventType      || "",
+        Date:           ev.sentAt      || ev.createdAt      || ev.timestamp || "",
+        Subject:        ev.subject     || ev.emailSubject   || "",
+        insured_id:     ev.insuredId   || ev.insured_id     || "",
         sync_date:      syncDate,
         sync_timestamp: syncTimestamp,
       });
@@ -440,7 +501,9 @@ async function processClient(client) {
     errorLog.push({ client: name, stage: "engagement", error: err.message });
   }
 
-  // ── H. Per-insured: detail, coverage data, custom props, criteria ─
+  // ── G. Per-insured: build rows + coverage data + criteria ─────────
+  // API calls per insured: /data (always) + /status (NC only)
+  // No /insureds/{id} call — list already has everything we need.
   await pooled(insureds, CONCURRENCY, async (insured) => {
     const insuredId          = insured.id || "";
     const insuredName        = insured.displayName || insured.name || insured.companyName || "";
@@ -472,20 +535,10 @@ async function processClient(client) {
       sync_timestamp:        syncTimestamp,
     });
 
-    // ── GET /insurance/insureds/{id} — full detail ────────────────
-    // Captures any fields not returned in the list endpoint
-    let insuredDetail = {};
-    try {
-      const d = await apiGet(rpCommonName, apiKey, `/insurance/insureds/${insuredId}`);
-      if (d) insuredDetail = d;
-    } catch (_) { /* optional enrichment */ }
-
-    // ── Entity-level Custom Properties ────────────────────────────
-    // Source 1: embedded in list/detail response
+    // Custom properties from the list response (properties / customProperties / insuredFields)
     let propList = [];
-    const detailSource = insuredDetail || insured;
-    if      (Array.isArray(detailSource.properties)       && detailSource.properties.length)       propList = detailSource.properties;
-    else if (Array.isArray(detailSource.customProperties) && detailSource.customProperties.length) propList = detailSource.customProperties;
+    if      (Array.isArray(insured.properties)       && insured.properties.length)       propList = insured.properties;
+    else if (Array.isArray(insured.customProperties) && insured.customProperties.length) propList = insured.customProperties;
 
     for (const prop of propList) {
       const fieldId    = prop.field?.id   || prop.fieldId   || prop.id   || "";
@@ -502,14 +555,14 @@ async function processClient(client) {
         field_id:       fieldId,
         field_name:     fieldName,
         field_value:    fieldValue,
-        source:         "api",
+        source:         "api_list",
         sync_date:      syncDate,
         sync_timestamp: syncTimestamp,
       });
     }
 
-    // Source 2: positional insuredFields array
-    const insuredFieldsArr = Array.isArray(detailSource.insuredFields) ? detailSource.insuredFields : [];
+    // Positional insuredFields array
+    const insuredFieldsArr = Array.isArray(insured.insuredFields) ? insured.insuredFields : [];
     insuredFieldsArr.forEach((fieldVal, i) => {
       if (fieldVal === null || fieldVal === undefined) return;
       const fieldDef   = fieldDefsList[i] || {};
@@ -530,15 +583,14 @@ async function processClient(client) {
       });
     });
 
-    // Source 3: export CSV custom columns (matched by insured name)
+    // Export CSV custom columns — de-duplicate against what list already provided
     const exportKey = insuredName.toLowerCase();
     if (exportCustomProps[exportKey]) {
+      const existingNames = new Set(customPropRows
+        .filter(r => r.insured_id === insuredId)
+        .map(r => r.field_name));
       for (const { fieldName, fieldValue } of exportCustomProps[exportKey].props) {
-        // Only add if not already captured from the API to avoid duplicates
-        const alreadyHave = customPropRows.some(
-          r => r.insured_id === insuredId && r.field_name === fieldName
-        );
-        if (!alreadyHave) {
+        if (!existingNames.has(fieldName)) {
           customPropRows.push({
             client:         name,
             insured_id:     insuredId,
@@ -562,17 +614,16 @@ async function processClient(client) {
           if (!covData) continue;
           const policy  = covData.policy  || {};
           const details = covData.details || {};
-
           coverageRows.push({
             client:                name,
             insured_id:            insuredId,
             primary_contact_email: contactEmail,
             insured_name:          insuredName,
             coverage_type:         covType,
-            coverage_id:           covData.coverageId   || "",
-            policy_number:         policy.policyNumber  || "",
-            insurer:               policy.carrier?.name || "",
-            effective_date:        policy.effectiveDate || "",
+            coverage_id:           covData.coverageId    || "",
+            policy_number:         policy.policyNumber   || "",
+            insurer:               policy.carrier?.name  || "",
+            effective_date:        policy.effectiveDate  || "",
             expiration_date:       policy.expirationDate || "",
             per_occurrence:        details.eachOccurrenceLimit || details.perOccurrenceLimit || "",
             aggregate:             details.generalAggregateLimit || details.aggregateLimit   || "",
@@ -581,7 +632,6 @@ async function processClient(client) {
             sync_date:             syncDate,
             sync_timestamp:        syncTimestamp,
           });
-
           customFieldRows.push({
             client:         name,
             insured_id:     insuredId,
@@ -599,6 +649,8 @@ async function processClient(client) {
     }
 
     // ── GET /insurance/insureds/{id}/status — NC reasons ──────────
+    // Skip COMPLIANT / PENDING / NEW — they have no NC reasons.
+    // Saves ~33% of all /status calls.
     const skipStatus = ["COMPLIANT", "PENDING", "NEW"].includes(
       (complianceStatus || "").toUpperCase()
     );
@@ -606,23 +658,20 @@ async function processClient(client) {
       const statusRes = skipStatus
         ? null
         : await apiGet(rpCommonName, apiKey, `/insurance/insureds/${insuredId}/status`);
-
       if (!statusRes) return;
 
       const ncObj = statusRes?.nonComplianceReasons || {};
       const reasonParts = [];
       for (const [covType, reasons] of Object.entries(ncObj)) {
-        if (Array.isArray(reasons) && reasons.length > 0) {
+        if (Array.isArray(reasons) && reasons.length > 0)
           reasonParts.push(`${covType}: ${reasons.join("; ")}`);
-        }
       }
 
       const declineObj = statusRes?.declineReasons || {};
       const declineParts = [];
       for (const [covType, declines] of Object.entries(declineObj)) {
-        if (Array.isArray(declines) && declines.length > 0) {
+        if (Array.isArray(declines) && declines.length > 0)
           declineParts.push(`${covType}: ${declines.join("; ")}`);
-        }
       }
 
       criteriaRows.push({
@@ -649,66 +698,13 @@ async function processClient(client) {
 
   return {
     insuredRows, coverageRows, customFieldRows, customPropRows,
-    criteriaRows, engagementRows, actionRows, credentialRows,
+    criteriaRows, engagementRows, actionRows, fieldDefRows,
     summary, errorLog,
   };
 }
 
 // ------------------------------------------------------------
-// GLOBAL (once per run) — enums, form categories
-// ------------------------------------------------------------
-async function fetchGlobalData(firstClient) {
-  const { rpCommonName, apiKey } = firstClient;
-  const syncTimestamp = getSyncTimestamp();
-  const syncDate      = getSyncDate();
-  const enumRows      = [];
-  const formCatRows   = [];
-
-  // GET /models/enums
-  try {
-    const enums = await apiGet(rpCommonName, apiKey, "/models/enums");
-    if (enums && typeof enums === "object") {
-      for (const [enumName, values] of Object.entries(enums)) {
-        const vals = Array.isArray(values) ? values : [values];
-        for (const v of vals) {
-          enumRows.push({
-            enum_name:      enumName,
-            value:          typeof v === "object" ? JSON.stringify(v) : String(v),
-            sync_date:      syncDate,
-            sync_timestamp: syncTimestamp,
-          });
-        }
-      }
-    }
-    console.log(`\n   Enums: ${enumRows.length} values across ${Object.keys(enums || {}).length} types`);
-  } catch (err) {
-    console.warn(`   ⚠️  Enums: ${err.message}`);
-  }
-
-  // GET /models/forms/categories
-  try {
-    const cats = await apiGet(rpCommonName, apiKey, "/models/forms/categories");
-    const catList = Array.isArray(cats) ? cats : (cats?.records || cats?.categories || []);
-    for (const c of catList) {
-      formCatRows.push({
-        id:             c.id   || "",
-        name:           c.name || c.displayName || "",
-        description:    c.description || "",
-        form_count:     c.formCount ?? "",
-        sync_date:      syncDate,
-        sync_timestamp: syncTimestamp,
-      });
-    }
-    console.log(`   Form categories: ${formCatRows.length}`);
-  } catch (err) {
-    console.warn(`   ⚠️  Form categories: ${err.message}`);
-  }
-
-  return { enumRows, formCatRows };
-}
-
-// ------------------------------------------------------------
-// SNAPSHOT HELPER — writes to BOTH monthly and daily paths
+// SNAPSHOT HELPER — monthly + daily, every run
 // ------------------------------------------------------------
 function writeSnapshots(allInsureds, allCriteria, allEngagement) {
   const now   = new Date();
@@ -718,28 +714,24 @@ function writeSnapshots(allInsureds, allCriteria, allEngagement) {
   const month = `${yyyy}-${mm}`;
   const day   = `${yyyy}-${mm}-${dd}`;
 
-  const filesToSnap = [
+  const files = [
     { name: "insureds.csv",   rows: allInsureds },
     { name: "criteria.csv",   rows: allCriteria },
     { name: "engagement.csv", rows: allEngagement },
   ];
 
-  // Monthly — snapshots/YYYY/YYYY-MM/
-  // (overwritten every run — always the freshest data for that month)
+  // Monthly — snapshots/YYYY/YYYY-MM/ (overwritten each run = always freshest)
   const monthlyDir = path.join(SNAPSHOT_BASE, yyyy, month);
   fs.mkdirSync(monthlyDir, { recursive: true });
-  for (const { name, rows } of filesToSnap) {
+  for (const { name, rows } of files)
     fs.writeFileSync(path.join(monthlyDir, name), toCsv(rows), "utf8");
-  }
   console.log(`\n📅 Monthly snapshot → snapshots/${yyyy}/${month}/`);
 
-  // Daily — snapshots/daily/YYYY/YYYY-MM-DD/
-  // (used by Date Range mode in Producer Overview)
+  // Daily — snapshots/daily/YYYY/YYYY-MM-DD/ (Date Range mode)
   const dailyDir = path.join(SNAPSHOT_BASE, "daily", yyyy, day);
   fs.mkdirSync(dailyDir, { recursive: true });
-  for (const { name, rows } of filesToSnap) {
+  for (const { name, rows } of files)
     fs.writeFileSync(path.join(dailyDir, name), toCsv(rows), "utf8");
-  }
   console.log(`📅 Daily snapshot   → snapshots/daily/${yyyy}/${day}/`);
 }
 
@@ -756,45 +748,25 @@ async function main() {
 
   console.log(`\n🚀 Processing ${activeClients.length} clients (${CLIENT_THREADS} at a time)\n`);
 
-  // Fetch global reference data once using the first available client
-  const { enumRows, formCatRows } = await fetchGlobalData(activeClients[0]);
+  // Global reference data — fetched ONCE using the first client's credentials
+  console.log("Fetching global reference data (enums, credentials, form categories)...");
+  const { enumRows, formCatRows, credentialRows } = await fetchGlobalData(activeClients[0]);
 
+  // All clients in parallel
   const results = await pooled(activeClients, CLIENT_THREADS, processClient);
 
-  const allInsureds    = results.flatMap(r => r?.insuredRows     || []);
-  const allCoverages   = results.flatMap(r => r?.coverageRows    || []);
-  const allCustFields  = results.flatMap(r => r?.customFieldRows || []);
-  const allCustProps   = results.flatMap(r => r?.customPropRows  || []);
-  const allCriteria    = results.flatMap(r => r?.criteriaRows    || []);
-  const allEngagement  = results.flatMap(r => r?.engagementRows  || []);
-  const allActions     = results.flatMap(r => r?.actionRows      || []);
-  const allCredentials = results.flatMap(r => r?.credentialRows  || []);
-  const allErrors      = results.flatMap(r => r?.errorLog        || []);
+  const allInsureds   = results.flatMap(r => r?.insuredRows     || []);
+  const allCoverages  = results.flatMap(r => r?.coverageRows    || []);
+  const allCustFields = results.flatMap(r => r?.customFieldRows || []);
+  const allCustProps  = results.flatMap(r => r?.customPropRows  || []);
+  const allCriteria   = results.flatMap(r => r?.criteriaRows    || []);
+  const allEngagement = results.flatMap(r => r?.engagementRows  || []);
+  const allActions    = results.flatMap(r => r?.actionRows      || []);
+  const allFieldDefs  = results.flatMap(r => r?.fieldDefRows    || []);
+  const allErrors     = results.flatMap(r => r?.errorLog        || []);
 
-  // Aggregate field definitions across all clients
-  const allFieldDefs = [];
   const syncTs   = getSyncTimestamp();
   const syncDate = getSyncDate();
-
-  for (const client of activeClients) {
-    try {
-      const defs = await apiGet(client.rpCommonName, client.apiKey, "/insurance/config/insureds/fields");
-      if (Array.isArray(defs)) {
-        for (const f of defs) {
-          allFieldDefs.push({
-            client:         client.name,
-            field_id:       f.id   || "",
-            field_name:     f.name || "",
-            field_key:      f.key  || "",
-            field_type:     f.type || "",
-            required:       f.required ?? "",
-            sync_date:      syncDate,
-            sync_timestamp: syncTs,
-          });
-        }
-      }
-    } catch (_) { /* already logged per-client */ }
-  }
 
   const summaryRows = activeClients.map((c, i) => {
     const s = results[i]?.summary || {};
@@ -811,23 +783,21 @@ async function main() {
 
   console.log("\n");
   const fileChanges = [
-    { file: "insureds.csv",           changed: smartWrite(path.join(DATA_DIR, "insureds.csv"),           allInsureds,    "insureds.csv") },
-    { file: "coverages.csv",          changed: smartWrite(path.join(DATA_DIR, "coverages.csv"),          allCoverages,   "coverages.csv") },
-    { file: "custom_fields.csv",      changed: smartWrite(path.join(DATA_DIR, "custom_fields.csv"),      allCustFields,  "custom_fields.csv") },
-    { file: "custom_properties.csv",  changed: smartWrite(path.join(DATA_DIR, "custom_properties.csv"),  allCustProps,   "custom_properties.csv") },
-    { file: "criteria.csv",           changed: smartWrite(path.join(DATA_DIR, "criteria.csv"),           allCriteria,    "criteria.csv") },
-    { file: "engagement.csv",         changed: smartWrite(path.join(DATA_DIR, "engagement.csv"),         allEngagement,  "engagement.csv") },
-    { file: "summaries.csv",          changed: smartWrite(path.join(DATA_DIR, "summaries.csv"),          summaryRows,    "summaries.csv") },
-    { file: "actions.csv",            changed: smartWrite(path.join(DATA_DIR, "actions.csv"),            allActions,     "actions.csv") },
-    { file: "credentials.csv",        changed: smartWrite(path.join(DATA_DIR, "credentials.csv"),        allCredentials, "credentials.csv") },
-    { file: "enums.csv",              changed: smartWrite(path.join(DATA_DIR, "enums.csv"),              enumRows,       "enums.csv") },
-    { file: "form_categories.csv",    changed: smartWrite(path.join(DATA_DIR, "form_categories.csv"),    formCatRows,    "form_categories.csv") },
-    { file: "field_definitions.csv",  changed: smartWrite(path.join(DATA_DIR, "field_definitions.csv"), allFieldDefs,   "field_definitions.csv") },
+    { file: "insureds.csv",          changed: smartWrite(path.join(DATA_DIR, "insureds.csv"),          allInsureds,    "insureds.csv") },
+    { file: "coverages.csv",         changed: smartWrite(path.join(DATA_DIR, "coverages.csv"),         allCoverages,   "coverages.csv") },
+    { file: "custom_fields.csv",     changed: smartWrite(path.join(DATA_DIR, "custom_fields.csv"),     allCustFields,  "custom_fields.csv") },
+    { file: "custom_properties.csv", changed: smartWrite(path.join(DATA_DIR, "custom_properties.csv"), allCustProps,   "custom_properties.csv") },
+    { file: "criteria.csv",          changed: smartWrite(path.join(DATA_DIR, "criteria.csv"),          allCriteria,    "criteria.csv") },
+    { file: "engagement.csv",        changed: smartWrite(path.join(DATA_DIR, "engagement.csv"),        allEngagement,  "engagement.csv") },
+    { file: "summaries.csv",         changed: smartWrite(path.join(DATA_DIR, "summaries.csv"),         summaryRows,    "summaries.csv") },
+    { file: "actions.csv",           changed: smartWrite(path.join(DATA_DIR, "actions.csv"),           allActions,     "actions.csv") },
+    { file: "credentials.csv",       changed: smartWrite(path.join(DATA_DIR, "credentials.csv"),       credentialRows, "credentials.csv") },
+    { file: "enums.csv",             changed: smartWrite(path.join(DATA_DIR, "enums.csv"),             enumRows,       "enums.csv") },
+    { file: "form_categories.csv",   changed: smartWrite(path.join(DATA_DIR, "form_categories.csv"),   formCatRows,    "form_categories.csv") },
+    { file: "field_definitions.csv", changed: smartWrite(path.join(DATA_DIR, "field_definitions.csv"), allFieldDefs,   "field_definitions.csv") },
   ];
 
   writeSyncMetadata(DATA_DIR, fileChanges, syncTs);
-
-  // Write snapshots every run (monthly overwrites, daily is per-day)
   writeSnapshots(allInsureds, allCriteria, allEngagement);
 
   console.log(`\n🕐 Sync completed: ${syncTs} CT`);
