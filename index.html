@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.37
+       SIDEBAR LAYOUT  v0.38
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:#18252D;background-image:radial-gradient(circle,rgba(0,174,239,0.11) 1px,transparent 1px);background-size:14px 14px;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.37 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.38 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.37 — using var(--bg) */
+    /* bg overrides removed v0.38 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;padding:10px 24px 0;flex-shrink:0}
     .bc-section{display:none}
@@ -224,7 +224,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.37</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.38</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -929,7 +929,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.37</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.38</div>
 
 <script>
 
@@ -1033,7 +1033,7 @@ function setHeaderTitle(title, sub) {
   if (s) s.textContent = sub || '';
 }
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.37
+// DEBUG MODULE — HUB CertSecure v0.38
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -3502,7 +3502,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.37
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.38
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -4868,7 +4868,7 @@ async function wsImportClients() {
 
 <script>
 // ══════════════════════════════════════════════════════════════
-//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.37
+//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.38
 // ══════════════════════════════════════════════════════════════
 
 let _tgClient = null;
@@ -5708,23 +5708,26 @@ function tgBuildFormHTML(title,subtitle,accent,header){
   var btnBg=_lum(safeAccent)>0.55?_darken(safeAccent,0.45):safeAccent;
   var btnText=_lum(btnBg)>0.4?'#1E2E3D':'white';
 
-  const sections=[
-    {id:'entity', title:'ENTITY INFORMATION', keys:['entity_name','legal_name','dba_name','entity_id','entity_type']},
-    {id:'contact',title:'CONTACT INFORMATION',keys:['contact_name','phone','email']},
-    {id:'address',title:'ADDRESS',           keys:['street','suite','city','state','zip']},
-    {id:'project',title:'PROJECT INFORMATION',keys:['project_name','project_number','contract_number','subcontract_number','job_description','insurance_type']},
-    {id:'property',title:'PROPERTY & LOCATION',keys:['property_location','property_manager','tenant_type','rsf']},
-    {id:'coverage',title:'ADDITIONAL COVERAGES',keys:[]},
-    {id:'custom', title:'ADDITIONAL INFORMATION',keys:[]},
-    {id:'notes',  title:'NOTES',             keys:['notes']},
-  ];
-  const sectionRows={};sections.forEach(s=>{sectionRows[s.id]=[];});
-  _tgFormRows.filter(r=>!r._hidden).forEach(r=>{
-    if(r._type==='coverage'){sectionRows['coverage'].push(r);return;}
-    if(r._type==='custom'){sectionRows['custom'].push(r);return;}
-    const m=sections.find(s=>s.keys.includes(r.key));
-    if(m)sectionRows[m.id].push(r);else sectionRows['custom'].push(r);
+  // Build sections from _tgSections, respecting user-defined order
+  const sections = _tgSections.length
+    ? _tgSections.map(s => ({ id: s.id, title: s.title.toUpperCase() }))
+    : [{ id: 'entity_info', title: 'ENTITY INFORMATION' },
+       { id: 'additional_info', title: 'ADDITIONAL INFORMATION' },
+       { id: 'notes', title: 'NOTES' }];
+  const sectionRows = {};
+  sections.forEach(s => { sectionRows[s.id] = []; });
+  // Catch-all for unsectioned rows
+  sectionRows['_unsectioned'] = [];
+  _tgFormRows.filter(r => !r._hidden).forEach(r => {
+    const sid = r._section || '_unsectioned';
+    if (sectionRows[sid]) sectionRows[sid].push(r);
+    else sectionRows['_unsectioned'].push(r);
   });
+  // If any unsectioned rows exist, append them to the last section
+  if (sectionRows['_unsectioned'].length) {
+    const lastSec = sections[sections.length - 1];
+    if (lastSec) sectionRows[lastSec.id].push(...sectionRows['_unsectioned']);
+  }
 
   function rf(f,colClass){
     colClass=colClass||'field';
@@ -5753,24 +5756,11 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     var rows=sectionRows[sec.id]||[];if(!rows.length)return'';
     var cbs=rows.filter(function(r){return r.type==='checkbox';});
     var others=rows.filter(function(r){return r.type!=='checkbox';});
-    var body='';
-    if(sec.id==='address'){
-      var byKey={};others.forEach(function(r){byKey[r.key]=r;});
-      var extra=others.filter(function(r){return ['street','city','state','zip','suite'].indexOf(r.key)<0;});
-      var out='';
-      if(byKey.street)out+=rf(byKey.street,'field span3');
-      if(byKey.city)  out+=rf(byKey.city,  'field');
-      if(byKey.state) out+=rf(byKey.state, 'field');
-      if(byKey.zip)   out+=rf(byKey.zip,   'field zip');
-      if(byKey.suite) out+=rf(byKey.suite, 'field suite');
-      extra.forEach(function(r){out+=rf(r,'field');});
-      body='<div class=__Q__grid3__Q__>'+out+'</div>';
-    } else {
-      body='<div class=__Q__grid3__Q__>'+others.map(function(r){
-        var wide=r.type==='textarea'||r.key==='notes'||r.key==='job_description';
-        return rf(r,wide?'field span3':'field');
-      }).join('')+'</div>';
-    }
+    // Render fields in the exact order they appear in _tgFormRows for this section
+    var body='<div class=__Q__grid3__Q__>'+others.map(function(r){
+      var wide=r.type==='textarea';
+      return rf(r,wide?'field span3':'field');
+    }).join('')+'</div>';
     if(cbs.length)body+='<div class=__Q__covgrid__Q__>'+cbs.map(function(r){return rf(r);}).join('')+'</div>';
     return '<div class=__Q__sec__Q__><div class=__Q__sec-hdr__Q__><div class=__Q__sec-bar__Q__></div><div class=__Q__sec-lbl__Q__>'+sec.title+'</div></div>'+body+'</div>';
   }
@@ -6101,7 +6091,7 @@ function ceAutoDetectColors() {
 }
 </script>
 <style>
-/* v0.37 final CSS */
+/* v0.38 final CSS */
 .sidebar-brand{flex:1!important;min-width:0;overflow:hidden}
 .sidebar-brand-cert{font-size:18px!important;font-weight:900!important;letter-spacing:.03em!important;color:#fff!important;line-height:1.1;white-space:nowrap}
 .sidebar-brand-cert span{color:#00AEEF!important}
@@ -6128,7 +6118,7 @@ function ceAutoDetectColors() {
 <!-- ═══ DEBUG PANEL ═══ -->
 <div id="cs-debug-panel" style="display:none;position:fixed;bottom:12px;right:12px;background:#1a1a2e;color:#e0e0e0;font-family:monospace;font-size:11px;padding:10px 12px;border-radius:8px;z-index:99999;min-width:280px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid #333;max-height:380px;overflow:hidden;display:flex;flex-direction:column">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-    <span style="font-weight:700;color:#00AEEF;font-size:12px">&#128295; Debug v0.37</span>
+    <span style="font-weight:700;color:#00AEEF;font-size:12px">&#128295; Debug v0.38</span>
     <div style="display:flex;gap:6px">
       <button onclick="csDebugClearLog()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Clear</button>
       <button onclick="csDebugToggle()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Hide</button>
