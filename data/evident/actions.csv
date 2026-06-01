@@ -1,0 +1,4 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Scandroli Construction,02e5efbb-0e7e-4bf3-8a6d-f6aad99a21c2,,,,,2026-06-01T15:53:03,,,,,,06/01/2026,06/01/2026 12:06:53
+The Abbey Management Company,5d3397d2-5573-4171-a365-0abf5e553732,,e7e5ad60-e0b9-4092-b36e-a8fcc6b59431,,,2026-05-29T13:09:50,,,,,,06/01/2026,06/01/2026 12:09:30
+The Abbey Management Company,769fa350-637b-499d-b5cd-593af12dec25,,ee84ea39-77a0-4c53-add9-c9b918f0c2b5,,,2026-05-29T12:51:47,,,,,,06/01/2026,06/01/2026 12:09:30
