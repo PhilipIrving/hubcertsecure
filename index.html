@@ -3700,11 +3700,14 @@ function switchMondayTab(tab) {
   ['setup','configure','activity','clients'].forEach(t => {
     const el  = document.getElementById('mtab-' + t);
     const btn = document.getElementById('mtab-btn-' + t);
-    if (el)  el.style.display  = t===tab ? '' : 'none';
+    if (el) {
+      el.style.display = t === tab ? '' : 'none';
+      el.classList.toggle('tab-hidden', t !== tab);
+    }
     if (btn) btn.classList.toggle('active', t===tab);
   });
   if (tab === 'configure') wsCfgInit();
-    if (tab === 'clients') cpInit();
+  if (tab === 'clients') cpInit();
 }
 
 // ══════════════════════════════════════════════════════════════
