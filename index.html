@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.43
+       SIDEBAR LAYOUT  v0.44
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:#18252D;background-image:radial-gradient(circle,rgba(0,174,239,0.11) 1px,transparent 1px);background-size:14px 14px;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.43 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.44 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.43 — using var(--bg) */
+    /* bg overrides removed v0.44 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;padding:10px 24px 0;flex-shrink:0}
     .bc-section{display:none}
@@ -196,6 +196,13 @@
     .sb-notif-wrap{position:relative;width:100%}
     .notif-drawer-sb{position:absolute;bottom:100%;left:0;right:0;width:280px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:0 -4px 24px rgba(0,0,0,.2);z-index:200;overflow:hidden;display:none}
 /* page-banner removed */.login-brand-panel{width:320px;flex-shrink:0;background:#18252D;background-image:radial-gradient(circle,rgba(0,174,239,0.13) 1px,transparent 1px);background-size:14px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 32px;text-align:center}.login-brand-name{font-size:28px;font-weight:800;letter-spacing:.06em;color:#fff;line-height:1;margin-bottom:6px}.login-brand-name span{color:#0678D5}.login-brand-sub{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:28px}.login-brand-divider{width:40px;height:2px;background:#0678D5;border-radius:1px;margin:0 auto 20px}.login-brand-tagline{font-size:12px;color:rgba(255,255,255,.4);line-height:1.7;max-width:200px}@media(max-width:700px){.login-brand-panel{display:none}.login-wrap{max-width:420px;border-radius:14px}}/* client-banner in layout_fix_css *//* dup *//* dup *//* dup *//* dup */.card-title{font-size:13px;font-weight:700;color:#263746;margin-bottom:16px;letter-spacing:.05em;text-transform:uppercase}.form-grp{margin-bottom:14px}.form-lbl{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px}.spinner{width:44px;height:44px;border:3px solid #EEF2F7;border-top-color:#0678D5;border-radius:50%;animation:spin 0.75s linear infinite;margin:0 auto 16px}.tg-field-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border:1.5px solid #D1DCE8;border-radius:7px;cursor:pointer;transition:all .15s;background:#fff;font-size:12.5px;font-weight:500;color:#263746;user-select:none}.tg-field-row:hover{border-color:#0678D5;background:#EBF4FF}.tg-field-row.on{border-color:#0678D5;background:#EBF4FF;font-weight:600}.tg-field-row input[type=checkbox]{accent-color:#0678D5;width:14px;height:14px;flex-shrink:0}.tg-source-badge{font-size:8.5px;font-weight:800;padding:1px 7px;border-radius:10px;margin-left:auto;flex-shrink:0}.tg-source-badge.ev{background:#EBF4FF;color:#0678D5}.tg-source-badge.tl{background:#FFF3E0;color:#D4570A}#tab-template,#tab-reports,#tab-monday{display:block;width:100%;min-width:0;box-sizing:border-box}.tab-hidden{display:none!important}
+    .tg-tab-bar{display:flex;align-items:flex-end;gap:3px;padding:0 0 0 0;margin-bottom:14px;border-bottom:2px solid #D1DCE8;flex-wrap:wrap}
+    .tg-tab{padding:7px 14px;border:1.5px solid #D1DCE8;border-bottom:none;border-radius:7px 7px 0 0;font-size:12px;font-weight:600;color:#5A6B7B;background:#F4F7FA;cursor:pointer;transition:all .15s;white-space:nowrap;max-width:200px;overflow:hidden;text-overflow:ellipsis;user-select:none}
+    .tg-tab:hover{background:#EBF4FF;color:#0678D5;border-color:#B3D1F0}
+    .tg-tab.active{background:#fff;color:#0678D5;border-color:#0678D5;border-bottom:2px solid #fff;margin-bottom:-2px;font-weight:700}
+    .tg-tab-new{padding:7px 12px;border:1.5px dashed #B3D1F0;border-bottom:none;border-radius:7px 7px 0 0;font-size:14px;font-weight:700;color:#3B82F6;background:none;cursor:pointer;transition:all .15s}
+    .tg-tab-new:hover{background:#EFF6FF;border-color:#3B82F6}
+
     .tg-template-card{display:flex;align-items:center;gap:6px;background:#F0F7FF;border:1.5px solid #BFDBFE;border-radius:6px;padding:6px 8px;cursor:pointer;transition:all 0.12s;margin-top:5px;font-size:11px}
     .tg-template-card:hover{background:#DBEAFE;border-color:#3B82F6}
     .tg-template-card-name{flex:1;font-weight:600;color:#1E3A5F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -224,7 +231,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.43</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.44</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -810,6 +817,9 @@
         <span class="banner-change" onclick="tgGoStep(1)">&#8592; Change Client</span>
       </div>
 
+      <!-- Template Tab Bar -->
+      <div class="tg-tab-bar" id="tg-tab-bar"></div>
+
       <!-- Branding -->
       <div class="card" style="margin-bottom:14px">
         <div class="card-title" style="margin-bottom:16px">&#127912; Branding</div>
@@ -877,19 +887,10 @@
         <div style="font-size:13px" id="tg-loading-msg">Loading custom fields…</div>
       </div>
 
-      <!-- Saved Templates Picker -->
-      <div class="card" style="margin-bottom:14px">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-          <div class="card-title" style="margin-bottom:0">&#128196; Saved Templates</div>
-          <div id="tg-mode-badge" style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px;background:#DCFCE7;color:#166534">&#43; New</div>
-        </div>
-        <div id="tg-template-picker"><div style="font-size:11px;color:var(--muted);font-style:italic">No saved templates yet.</div></div>
-      </div>
-
       <div class="action-bar" style="margin-top:10px">
         <button class="btn btn-secondary" onclick="tgGoStep(1)">&#8592; Back</button>
-        <button class="btn btn-secondary" onclick="tgNewTemplate()" title="Clear form and start a new template">&#43; New Template</button>
-        <input type="text" id="tg-tmpl-name" placeholder="Template name…" style="font-size:12px;padding:5px 8px;border:1.5px solid #D1DCE8;border-radius:6px;width:160px;color:var(--text)"><button class="btn btn-secondary" id="tg-save-btn" onclick="tgSaveSetup()" title="Save this template">&#128190; Save Template</button>
+        <input type="text" id="tg-tmpl-name" placeholder="Template name…" style="font-size:12px;padding:5px 8px;border:1.5px solid #D1DCE8;border-radius:6px;width:160px;color:var(--text)">
+        <button class="btn btn-secondary" id="tg-save-btn" onclick="tgSaveSetup()" title="Save this template">&#128190; Save Template</button>
         <button class="btn btn-primary" id="tg-gen-btn" onclick="tgGenerate()">&#11015; Download Form</button>
       </div>
     </div>
@@ -939,7 +940,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.43</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.44</div>
 
 <script>
 
@@ -1043,7 +1044,7 @@ function setHeaderTitle(title, sub) {
   if (s) s.textContent = sub || '';
 }
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.43
+// DEBUG MODULE — HUB CertSecure v0.44
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -3512,7 +3513,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.43
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.44
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -4878,7 +4879,7 @@ async function wsImportClients() {
 
 <script>
 // ══════════════════════════════════════════════════════════════
-//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.43
+//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.44
 // ══════════════════════════════════════════════════════════════
 
 let _tgClient = null;
@@ -5006,7 +5007,7 @@ async function tgSelectClient(key) {
 
   tgGoStep(2);
   tgRenderBuilder();
-  tgRenderTemplatePicker();
+  tgRenderTemplateTabs();
   // Update entity/party labels based on platform
   (function(){
     var isTL = typeof isTLClient === 'function' ? isTLClient(key) : false;
@@ -5586,7 +5587,7 @@ async function tgLoadTemplate(key, idx) {
   _tgActiveTemplateIdx = idx;
   const nameInput = document.getElementById('tg-tmpl-name');
   if (nameInput) nameInput.value = tmpl.name || '';
-  tgRenderTemplatePicker();
+  tgRenderTemplateTabs();
   toast('Loaded: ' + (tmpl.name || 'template'), 'success');
 }
 
@@ -5616,7 +5617,7 @@ async function tgDeleteTemplate(key, idx) {
       else if (_tgActiveTemplateIdx > idx) _tgActiveTemplateIdx--;
     }
     tgRenderGrid();
-    tgRenderTemplatePicker();
+    tgRenderTemplateTabs();
     toast('Template deleted', 'success');
   } catch(e) {
     toast('Delete failed: ' + e.message, 'error');
@@ -5624,7 +5625,62 @@ async function tgDeleteTemplate(key, idx) {
 }
 
 
-function tgRenderTemplatePicker() {
+
+function tgRenderTemplateTabs() {
+  const bar = document.getElementById('tg-tab-bar');
+  if (!bar || !_tgClient) return;
+  const templates = tgGetTemplates(_tgClient.key);
+  const safeKey = _tgClient.key.replace(/'/g,"\\'").replace(/&/g,'\\x26');
+
+  let html = '';
+  templates.forEach((t, i) => {
+    const isActive = i === _tgActiveTemplateIdx;
+    html += '<div class="tg-tab' + (isActive ? ' active' : '') + '" '
+      + 'onclick="tgSelectTab(' + i + ')" '
+      + 'title="' + esc(t.name || 'Untitled') + '">'
+      + esc(t.name || 'Untitled')
+      + (isActive
+          ? ' <button onclick="event.stopPropagation();tgDeleteTabConfirm(' + i + ')" '
+            + 'style="background:none;border:none;cursor:pointer;color:#9CA3AF;font-size:12px;'
+            + 'padding:0 0 0 4px;line-height:1;vertical-align:middle" title="Delete template">&times;</button>'
+          : '')
+      + '</div>';
+  });
+  // "+" tab for new template
+  const isNew = _tgActiveTemplateIdx === null;
+  html += '<div class="tg-tab' + (isNew ? ' active' : ' tg-tab-new') + '" '
+    + 'onclick="tgNewTemplate()" title="New template">&#43;</div>';
+
+  bar.innerHTML = html;
+
+  // Also update name input to reflect active template
+  const nameInput = document.getElementById('tg-tmpl-name');
+  if (nameInput) {
+    if (_tgActiveTemplateIdx !== null && templates[_tgActiveTemplateIdx]) {
+      nameInput.value = templates[_tgActiveTemplateIdx].name || '';
+    } else if (isNew && _tgClient) {
+      // Only pre-fill if input is empty
+      if (!nameInput.value.trim()) {
+        nameInput.value = _tgClient.name + ' - New Third-Party Request';
+      }
+    }
+  }
+}
+
+function tgSelectTab(idx) {
+  if (!_tgClient) return;
+  tgLoadTemplate(_tgClient.key, idx);
+}
+
+function tgDeleteTabConfirm(idx) {
+  const templates = tgGetTemplates(_tgClient.key);
+  const t = templates[idx];
+  if (!t) return;
+  if (!confirm('Delete template "' + (t.name || 'Untitled') + '"?')) return;
+  tgDeleteTemplate(_tgClient.key, idx);
+}
+
+function tgRenderTemplateTabs() {
   const wrap = document.getElementById('tg-template-picker');
   if (!wrap || !_tgClient) return;
   const templates = tgGetTemplates(_tgClient.key);
@@ -5685,7 +5741,7 @@ function tgNewTemplate() {
   if (lp) lp.src = '';
   if (lpw) lpw.style.display = 'none';
   if (adb) adb.style.display = 'none';
-  tgRenderTemplatePicker();
+  tgRenderTemplateTabs();
   toast('Ready for new template', 'success');
 }
 
@@ -5733,7 +5789,7 @@ async function tgSaveSetup() {
     await saveClientsToConfig(updated);
     _allClientsData = updated;
     tgRenderGrid(); // refresh template count badge on client card
-    tgRenderTemplatePicker(); // refresh saved templates panel
+    tgRenderTemplateTabs(); // refresh saved templates panel
     const badge = document.getElementById('tg-saved-badge');
     if (badge) badge.style.display = '';
     toast('✓ Saved template "' + tmplName + '" for ' + _tgClient.name, 'success');
@@ -6184,7 +6240,7 @@ function ceAutoDetectColors() {
 }
 </script>
 <style>
-/* v0.43 final CSS */
+/* v0.44 final CSS */
 .sidebar-brand{flex:1!important;min-width:0;overflow:hidden}
 .sidebar-brand-cert{font-size:18px!important;font-weight:900!important;letter-spacing:.03em!important;color:#fff!important;line-height:1.1;white-space:nowrap}
 .sidebar-brand-cert span{color:#00AEEF!important}
@@ -6211,7 +6267,7 @@ function ceAutoDetectColors() {
 <!-- ═══ DEBUG PANEL ═══ -->
 <div id="cs-debug-panel" style="display:none;position:fixed;bottom:12px;right:12px;background:#1a1a2e;color:#e0e0e0;font-family:monospace;font-size:11px;padding:10px 12px;border-radius:8px;z-index:99999;min-width:280px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid #333;max-height:380px;overflow:hidden;display:flex;flex-direction:column">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-    <span style="font-weight:700;color:#00AEEF;font-size:12px">&#128295; Debug v0.43</span>
+    <span style="font-weight:700;color:#00AEEF;font-size:12px">&#128295; Debug v0.44</span>
     <div style="display:flex;gap:6px">
       <button onclick="csDebugClearLog()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Clear</button>
       <button onclick="csDebugToggle()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Hide</button>
