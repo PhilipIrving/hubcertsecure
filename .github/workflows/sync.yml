@@ -98,21 +98,39 @@ jobs:
           echo "Final data/evident/ contents:"
           ls -lh data/evident/*.csv 2>/dev/null | awk '{print "  " $5, $9}'
 
-      - name: Take daily snapshot (Evident)
+      - name: Snapshot Evident data — monthly + daily
         run: |
-          # Daily snapshot: snapshots/YYYY/YYYY-MM-DD/
           DATE=$(date -u +'%Y-%m-%d')
+          MONTH="${DATE:0:7}"
           YEAR="${DATE:0:4}"
-          DEST="snapshots/$YEAR/$DATE"
-          mkdir -p "$DEST"
-          COPIED=0
+
+          # ── 1. Monthly snapshot ──────────────────────────────────
+          # Used by: Year mode, Month mode, Year End Review, Producer Overview
+          # Path: snapshots/YYYY/YYYY-MM/
+          MONTHLY="snapshots/$YEAR/$MONTH"
+          mkdir -p "$MONTHLY"
+          M_COUNT=0
           for f in data/evident/*.csv; do
             if [ -f "$f" ]; then
-              cp "$f" "$DEST/"
-              COPIED=$((COPIED + 1))
+              cp "$f" "$MONTHLY/"
+              M_COUNT=$((M_COUNT + 1))
             fi
           done
-          echo "Evident daily snapshot: $DEST ($COPIED files)"
+          echo "Evident monthly snapshot: $MONTHLY ($M_COUNT files)"
+
+          # ── 2. Daily snapshot ────────────────────────────────────
+          # Used by: Date Range mode in Producer Overview
+          # Path: snapshots/daily/YYYY/YYYY-MM-DD/
+          DAILY="snapshots/daily/$YEAR/$DATE"
+          mkdir -p "$DAILY"
+          D_COUNT=0
+          for f in data/evident/*.csv; do
+            if [ -f "$f" ]; then
+              cp "$f" "$DAILY/"
+              D_COUNT=$((D_COUNT + 1))
+            fi
+          done
+          echo "Evident daily snapshot:   $DAILY ($D_COUNT files)"
 
       - name: Commit Evident data and snapshots
         run: |
@@ -173,49 +191,83 @@ jobs:
           echo "Final data/trustlayer/ contents:"
           ls -lh data/trustlayer/*.csv 2>/dev/null | awk '{print "  " $5, $9}'
 
-      - name: Take daily snapshot (TrustLayer — ALL CSVs)
+      - name: Snapshot TrustLayer data — monthly + daily
         run: |
-          # Daily snapshot: snapshots/YYYY/YYYY-MM-DD/
-          # Every TrustLayer CSV goes in — raw data AND transform output
           DATE=$(date -u +'%Y-%m-%d')
+          MONTH="${DATE:0:7}"
           YEAR="${DATE:0:4}"
-          DEST="snapshots/$YEAR/$DATE"
-          mkdir -p "$DEST"
 
-          # Snapshot every CSV from data/trustlayer/ (all raw files)
-          TL_COPIED=0
+          # ── 1. Monthly snapshot ──────────────────────────────────
+          # Merge the 3 transform-output files into the combined
+          # Evident+TL snapshot so the app reports can read them.
+          # Also copies ALL raw TL CSVs with a tl_ prefix.
+          # Path: snapshots/YYYY/YYYY-MM/
+          MONTHLY="snapshots/$YEAR/$MONTH"
+          mkdir -p "$MONTHLY"
+
+          # Raw TL CSVs — prefix tl_ so they don't overwrite Evident files
+          TL_M_COUNT=0
           for f in data/trustlayer/*.csv; do
             if [ -f "$f" ]; then
               fname=$(basename "$f")
-              cp "$f" "$DEST/tl_${fname}"
-              TL_COPIED=$((TL_COPIED + 1))
-              echo "  snapshotted: tl_${fname}"
+              cp "$f" "$MONTHLY/tl_${fname}"
+              TL_M_COUNT=$((TL_M_COUNT + 1))
+              echo "  monthly tl_${fname}"
             fi
           done
-          echo "TrustLayer daily snapshot: $DEST ($TL_COPIED files)"
 
-          # Also merge the 3 transform-output files (insureds/coverages/criteria)
-          # into the combined snapshot alongside Evident data
+          # Merge insureds / coverages / criteria into the combined snapshot
           for f in data/trustlayer/insureds.csv data/trustlayer/coverages.csv data/trustlayer/criteria.csv; do
             fname=$(basename "$f")
             lines=$(wc -l < "$f" 2>/dev/null || echo 0)
             if [ "$lines" -gt 1 ]; then
-              if [ -f "$DEST/$fname" ]; then
-                # Rebuild: Evident base + fresh TL rows
+              if [ -f "$MONTHLY/$fname" ]; then
                 ev_file="data/evident/$fname"
                 if [ -f "$ev_file" ]; then
-                  cp "$ev_file" "$DEST/$fname"
+                  cp "$ev_file" "$MONTHLY/$fname"
                 fi
-                tail -n +2 "$f" >> "$DEST/$fname"
-                echo "  merged TL rows into $fname"
+                tail -n +2 "$f" >> "$MONTHLY/$fname"
+                echo "  merged TL rows into $MONTHLY/$fname"
               else
-                cp "$f" "$DEST/$fname"
-                echo "  created $DEST/$fname (TL only)"
+                cp "$f" "$MONTHLY/$fname"
+                echo "  created $MONTHLY/$fname (TL only)"
               fi
-            else
-              echo "  skipped $fname (empty)"
             fi
           done
+          echo "TrustLayer monthly snapshot: $MONTHLY ($TL_M_COUNT raw files + 3 merged)"
+
+          # ── 2. Daily snapshot ────────────────────────────────────
+          # Path: snapshots/daily/YYYY/YYYY-MM-DD/
+          DAILY="snapshots/daily/$YEAR/$DATE"
+          mkdir -p "$DAILY"
+
+          # Raw TL CSVs
+          TL_D_COUNT=0
+          for f in data/trustlayer/*.csv; do
+            if [ -f "$f" ]; then
+              fname=$(basename "$f")
+              cp "$f" "$DAILY/tl_${fname}"
+              TL_D_COUNT=$((TL_D_COUNT + 1))
+            fi
+          done
+
+          # Merge insureds / coverages / criteria for date range lookups
+          for f in data/trustlayer/insureds.csv data/trustlayer/coverages.csv data/trustlayer/criteria.csv; do
+            fname=$(basename "$f")
+            lines=$(wc -l < "$f" 2>/dev/null || echo 0)
+            if [ "$lines" -gt 1 ]; then
+              if [ -f "$DAILY/$fname" ]; then
+                ev_file="data/evident/$fname"
+                if [ -f "$ev_file" ]; then
+                  cp "$ev_file" "$DAILY/$fname"
+                fi
+                tail -n +2 "$f" >> "$DAILY/$fname"
+              else
+                cp "$f" "$DAILY/$fname"
+              fi
+            fi
+          done
+          echo "TrustLayer daily snapshot:   $DAILY ($TL_D_COUNT raw files + 3 merged)"
 
       - name: Commit TrustLayer data and snapshots
         run: |
