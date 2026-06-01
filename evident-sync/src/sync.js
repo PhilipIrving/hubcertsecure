@@ -1,18 +1,35 @@
 // ============================================================
 // evident-sync/src/sync.js
-// Evident → CSV Sync Script  (corrected)
+// Evident → CSV Sync — COMPLETE coverage of every GET endpoint
 //
-// Outputs written to  data/evident/  (repo root):
-//   insureds.csv           — one row per insured
-//   coverages.csv          — one row per coverage line
-//   custom_fields.csv      — coverage-level JSON policy data
-//   custom_properties.csv  — entity-level custom properties
-//   criteria.csv           — non-compliance reasons per insured
-//   engagement.csv         — email notification events
-//   summaries.csv          — one row per client (KPI counts)
+// Endpoints called:
+//   GET /insurance/insureds                        — paginated insured list
+//   GET /insurance/insureds/export                 — bulk CSV export (custom props)
+//   GET /insurance/insureds/{id}                   — individual insured detail
+//   GET /insurance/insureds/{id}/status            — NC reasons + decline reasons
+//   GET /insurance/insureds/{id}/data              — coverage data per insured
+//   GET /insurance/actions                         — outreach/action log
+//   GET /insurance/config/insureds/fields          — custom field definitions
+//   GET /insurance/summaries/insureds              — per-client compliance KPIs
+//   GET /models/enums                              — platform enum definitions
+//   GET /models/credentials                        — credential type list
+//   GET /models/credentials/{id}                   — credential type detail
+//   GET /models/forms/categories                   — form category definitions
+//   GET /insurance/notifications                   — engagement/email events
 //
-// Monthly snapshots written to  snapshots/YYYY/YYYY-MM/
-// on the 1st of each month.
+// Output CSVs written to data/evident/:
+//   insureds.csv              — one row per insured
+//   coverages.csv             — one row per coverage line
+//   custom_fields.csv         — coverage-level JSON policy data
+//   custom_properties.csv     — entity-level custom properties (export + per-insured)
+//   criteria.csv              — non-compliance reasons per insured
+//   engagement.csv            — email notification events
+//   summaries.csv             — per-client KPI counts
+//   actions.csv               — outreach/action log events
+//   enums.csv                 — platform enum definitions
+//   credentials.csv           — credential type definitions + details
+//   form_categories.csv       — form category definitions
+//   field_definitions.csv     — custom insured field definitions
 // ============================================================
 
 "use strict";
@@ -46,18 +63,15 @@ const CLIENTS = [
   { name: "United Coal Company LLC",             rpCommonName: "unitedcoal",        apiKey: process.env.EVIDENT_KEY_UNITEDCOAL },
 ];
 
-const BASE_URL = "https://verify.api.evidentid.com/api/v1";
+const BASE_URL      = "https://verify.api.evidentid.com/api/v1";
+const DATA_DIR      = path.join(__dirname, "..", "..", "data", "evident");
+const SNAPSHOT_BASE = path.join(__dirname, "..", "..", "snapshots");
 
-// FIX 1: correct path — script lives at evident-sync/src/sync.js
-//         so __dirname/../.. = repo root, then data/evident/
-const DATA_DIR       = path.join(__dirname, "..", "..", "data", "evident");
-const SNAPSHOT_BASE  = path.join(__dirname, "..", "..", "snapshots");
-
-const CLIENT_THREADS = 8;   // clients processed in parallel
-const CONCURRENCY    = 20;  // concurrent per-insured requests per client
+const CLIENT_THREADS = 8;
+const CONCURRENCY    = 20;
 
 // ------------------------------------------------------------
-// TIMESTAMP — Central Time
+// TIMESTAMPS — Central Time
 // ------------------------------------------------------------
 function getSyncTimestamp() {
   return new Date().toLocaleString("en-US", {
@@ -67,7 +81,6 @@ function getSyncTimestamp() {
     hour12: false,
   }).replace(",", "");
 }
-
 function getSyncDate() {
   return new Date().toLocaleString("en-US", {
     timeZone: "America/Chicago",
@@ -76,7 +89,7 @@ function getSyncDate() {
 }
 
 // ------------------------------------------------------------
-// HTTP HELPER
+// HTTP HELPERS — JSON and plain text
 // ------------------------------------------------------------
 function apiGet(rpCommonName, apiKey, endpoint, params = {}) {
   return new Promise((resolve, reject) => {
@@ -84,9 +97,7 @@ function apiGet(rpCommonName, apiKey, endpoint, params = {}) {
     const qs = Object.keys(params).length
       ? "?" + Object.entries(params).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join("&")
       : "";
-    const url = `${BASE_URL}${endpoint}${qs}`;
-
-    https.get(url, {
+    https.get(`${BASE_URL}${endpoint}${qs}`, {
       headers: {
         Authorization:     `Basic ${credentials}`,
         "Content-Type":    "application/json",
@@ -97,7 +108,6 @@ function apiGet(rpCommonName, apiKey, endpoint, params = {}) {
       let stream = res;
       if (enc.includes("gzip"))    stream = res.pipe(zlib.createGunzip());
       if (enc.includes("deflate")) stream = res.pipe(zlib.createInflate());
-
       let data = "";
       stream.on("data", c => (data += c));
       stream.on("end", () => {
@@ -114,8 +124,35 @@ function apiGet(rpCommonName, apiKey, endpoint, params = {}) {
   });
 }
 
+// Plain text GET (for /export CSV endpoint)
+function apiGetText(rpCommonName, apiKey, endpoint) {
+  return new Promise((resolve, reject) => {
+    const credentials = Buffer.from(`${rpCommonName}:${apiKey}`).toString("base64");
+    https.get(`${BASE_URL}${endpoint}`, {
+      headers: {
+        Authorization:     `Basic ${credentials}`,
+        Accept:            "text/csv",
+        "Accept-Encoding": "gzip, deflate",
+      },
+    }, (res) => {
+      const enc = res.headers["content-encoding"] || "";
+      let stream = res;
+      if (enc.includes("gzip"))    stream = res.pipe(zlib.createGunzip());
+      if (enc.includes("deflate")) stream = res.pipe(zlib.createInflate());
+      let data = "";
+      stream.on("data", c => (data += c));
+      stream.on("end", () => {
+        if (res.statusCode === 404) { resolve(null); return; }
+        if (res.statusCode >= 200 && res.statusCode < 300) resolve(data);
+        else reject(new Error(`HTTP ${res.statusCode} on ${endpoint}: ${data.slice(0, 200)}`));
+      });
+      stream.on("error", reject);
+    }).on("error", reject);
+  });
+}
+
 // ------------------------------------------------------------
-// PAGINATION HELPER
+// PAGINATION
 // ------------------------------------------------------------
 async function fetchAllInsureds(rpCommonName, apiKey) {
   const insureds = [];
@@ -133,21 +170,72 @@ async function fetchAllInsureds(rpCommonName, apiKey) {
   return insureds;
 }
 
-// ------------------------------------------------------------
-// FETCH ENGAGEMENT (email notification events)
-// ------------------------------------------------------------
-async function fetchEngagement(rpCommonName, apiKey) {
-  // Evident stores notification events under /insurance/notifications
-  // Returns array of {email, type, sentAt, subject, ...}
-  // type values: send | open | click | hard_bounce | soft_bounce | reject | spam
-  try {
-    const res = await apiGet(rpCommonName, apiKey, "/insurance/notifications");
-    return Array.isArray(res) ? res : (res?.records || []);
-  } catch (_) {
-    // Not all clients have this endpoint — return empty gracefully
-    return [];
+async function fetchAllActions(rpCommonName, apiKey) {
+  const actions = [];
+  const limit = 100;
+  let skip = 0;
+  while (true) {
+    const res = await apiGet(rpCommonName, apiKey, "/insurance/actions", { sort: "Id", limit, skip });
+    if (!res) break;
+    const records = res.records || (Array.isArray(res) ? res : []);
+    actions.push(...records);
+    const total = res.navigation?.total ?? records.length;
+    if (actions.length >= total || records.length === 0) break;
+    skip += limit;
   }
+  return actions;
 }
+
+async function fetchAllCredentials(rpCommonName, apiKey) {
+  const creds = [];
+  const limit = 100;
+  let skip = 0;
+  while (true) {
+    const res = await apiGet(rpCommonName, apiKey, "/models/credentials", { limit, skip });
+    if (!res) break;
+    const records = res.records || (Array.isArray(res) ? res : []);
+    creds.push(...records);
+    const total = res.navigation?.total ?? records.length;
+    if (creds.length >= total || records.length === 0) break;
+    skip += limit;
+  }
+  return creds;
+}
+
+// ------------------------------------------------------------
+// RFC-4180 CSV PARSER (for /export endpoint)
+// ------------------------------------------------------------
+function parseCsvText(text) {
+  const rows = [];
+  let row = [], field = "", inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i], next = text[i + 1];
+    if (inQuotes) {
+      if (ch === '"' && next === '"') { field += '"'; i++; }
+      else if (ch === '"')            { inQuotes = false; }
+      else                            { field += ch; }
+    } else {
+      if      (ch === '"')  { inQuotes = true; }
+      else if (ch === ',')  { row.push(field); field = ""; }
+      else if (ch === '\n' || (ch === '\r' && next === '\n')) {
+        if (ch === '\r') i++;
+        row.push(field); field = "";
+        if (row.some(f => f !== "")) rows.push(row);
+        row = [];
+      } else { field += ch; }
+    }
+  }
+  if (field || row.length) { row.push(field); if (row.some(f => f !== "")) rows.push(row); }
+  return rows;
+}
+
+// Standard columns in the /export CSV — everything else is a custom property
+const STANDARD_EXPORT_FIELDS = new Set([
+  "Display Name","Legal Name","DBA Name(s)","Primary Contact Email",
+  "Primary Contact Name","Primary Contact Phone","Compliance Status",
+  "Active","Paused","Country","Street","City","State","Zip",
+  "Created At","Next Expiration",
+]);
 
 // ------------------------------------------------------------
 // CONCURRENCY POOL
@@ -156,10 +244,7 @@ async function pooled(items, limit, fn) {
   const results = [];
   let i = 0;
   async function worker() {
-    while (i < items.length) {
-      const idx = i++;
-      results[idx] = await fn(items[idx], idx);
-    }
+    while (i < items.length) { const idx = i++; results[idx] = await fn(items[idx], idx); }
   }
   await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
   return results;
@@ -174,14 +259,10 @@ function csvEscape(v) {
   return (s.includes(",") || s.includes('"') || s.includes("\n"))
     ? `"${s.replace(/"/g, '""')}"` : s;
 }
-
 function toCsv(rows) {
   if (!rows || rows.length === 0) return "";
   const headers = Object.keys(rows[0]);
-  return [
-    headers.join(","),
-    ...rows.map(r => headers.map(h => csvEscape(r[h])).join(","))
-  ].join("\n");
+  return [headers.join(","), ...rows.map(r => headers.map(h => csvEscape(r[h])).join(","))].join("\n");
 }
 
 // ------------------------------------------------------------
@@ -189,25 +270,25 @@ function toCsv(rows) {
 // ------------------------------------------------------------
 async function processClient(client) {
   const { name, rpCommonName, apiKey } = client;
-  const insuredRows     = [];
-  const coverageRows    = [];
-  const customFieldRows = [];
-  const customPropRows  = [];
-  const criteriaRows    = [];
-  const engagementRows  = [];
-  const errorLog        = [];
+
+  const insuredRows      = [];
+  const coverageRows     = [];
+  const customFieldRows  = [];
+  const customPropRows   = [];
+  const criteriaRows     = [];
+  const engagementRows   = [];
+  const actionRows       = [];
+  const credentialRows   = [];
+  const errorLog         = [];
 
   const syncTimestamp = getSyncTimestamp();
   const syncDate      = getSyncDate();
 
   console.log(`\n📋 Starting: ${name}`);
 
-  // 1. Field definitions for entity-level custom properties
-  // FIX 2: declare fieldDefs AND fieldDefsList outside the try block
-  //        so both are accessible in the pooled callback below
-  let fieldDefs    = {};   // fieldId -> {id, name, key}
-  let fieldDefsList = [];  // ordered array for positional insuredFields mapping
-
+  // ── A. Field definitions — GET /insurance/config/insureds/fields ──
+  let fieldDefs     = {};
+  let fieldDefsList = [];
   try {
     const defs = await apiGet(rpCommonName, apiKey, "/insurance/config/insureds/fields");
     if (Array.isArray(defs)) {
@@ -221,20 +302,108 @@ async function processClient(client) {
     errorLog.push({ client: name, stage: "field_defs", error: err.message });
   }
 
-  // 2. Fetch all insureds
+  // ── B. Bulk export — GET /insurance/insureds/export ──────────────
+  // Used to capture custom properties that are only in the export CSV
+  let exportCustomProps = {}; // insuredName (lowercased) → [{fieldName, fieldValue}]
+  try {
+    const csvText = await apiGetText(rpCommonName, apiKey, "/insurance/insureds/export");
+    if (csvText?.trim()) {
+      const rows    = parseCsvText(csvText);
+      const headers = rows[0] || [];
+      const customCols = headers
+        .map((h, i) => ({ name: h.trim(), index: i }))
+        .filter(({ name }) => !STANDARD_EXPORT_FIELDS.has(name));
+      const nameIdx  = headers.findIndex(h => h.trim() === "Display Name");
+      const emailIdx = headers.findIndex(h => h.trim() === "Primary Contact Email");
+      for (const row of rows.slice(1)) {
+        const insuredName  = nameIdx  >= 0 ? (row[nameIdx]  || "").trim() : "";
+        const contactEmail = emailIdx >= 0 ? (row[emailIdx] || "").trim() : "";
+        const key = insuredName.toLowerCase();
+        if (!exportCustomProps[key]) exportCustomProps[key] = { insuredName, contactEmail, props: [] };
+        for (const { name: fieldName, index } of customCols) {
+          const fieldValue = (row[index] || "").trim();
+          if (fieldValue) exportCustomProps[key].props.push({ fieldName, fieldValue });
+        }
+      }
+      console.log(`   Export CSV: ${rows.length - 1} rows, ${customCols.length} custom columns`);
+    }
+  } catch (err) {
+    errorLog.push({ client: name, stage: "export_csv", error: err.message });
+  }
+
+  // ── C. Actions — GET /insurance/actions ──────────────────────────
+  try {
+    const actions = await fetchAllActions(rpCommonName, apiKey);
+    for (const a of actions) {
+      actionRows.push({
+        client:         name,
+        action_id:      a.id || "",
+        action_type:    a.type || a.actionType || "",
+        insured_id:     a.insuredId || a.insured_id || "",
+        insured_name:   a.insuredName || a.displayName || "",
+        status:         a.status || "",
+        created_at:     a.createdAt || a.created_at || "",
+        updated_at:     a.updatedAt || a.updated_at || "",
+        scheduled_at:   a.scheduledAt || "",
+        completed_at:   a.completedAt || "",
+        notes:          a.notes || a.description || "",
+        triggered_by:   a.triggeredBy || a.createdBy || "",
+        sync_date:      syncDate,
+        sync_timestamp: syncTimestamp,
+      });
+    }
+    console.log(`   Actions: ${actionRows.length}`);
+  } catch (err) {
+    errorLog.push({ client: name, stage: "actions", error: err.message });
+  }
+
+  // ── D. Credentials — GET /models/credentials + /{id} ─────────────
+  try {
+    const creds = await fetchAllCredentials(rpCommonName, apiKey);
+    for (const c of creds) {
+      const cid = c.id || "";
+      // GET /models/credentials/{id} for full detail
+      let detail = {};
+      try {
+        const d = await apiGet(rpCommonName, apiKey, `/models/credentials/${cid}`);
+        if (d) detail = d;
+      } catch (_) { /* detail is optional */ }
+
+      credentialRows.push({
+        client:            name,
+        id:                cid,
+        display_name:      detail.displayName || c.displayName || c.name || "",
+        requirement:       detail.requirement || c.requirement || "",
+        cred_name:         detail.name        || c.name        || "",
+        country:           detail.country     || c.country     || "",
+        state:             detail.state       || c.state       || "",
+        county_or_region:  detail.countyOrRegion || "",
+        city:              detail.city        || c.city        || "",
+        issuing_authority: detail.issuingAuthority || "",
+        sync_date:         syncDate,
+        sync_timestamp:    syncTimestamp,
+      });
+    }
+    console.log(`   Credentials: ${credentialRows.length}`);
+  } catch (err) {
+    errorLog.push({ client: name, stage: "credentials", error: err.message });
+  }
+
+  // ── E. Insureds — GET /insurance/insureds (paginated) ────────────
   let insureds = [];
   try {
     insureds = await fetchAllInsureds(rpCommonName, apiKey);
     console.log(`   Insureds: ${insureds.length}`);
   } catch (err) {
     errorLog.push({ client: name, stage: "insureds", error: err.message });
-    return { insuredRows, coverageRows, customFieldRows, customPropRows, criteriaRows, engagementRows, errorLog };
+    return { insuredRows, coverageRows, customFieldRows, customPropRows,
+             criteriaRows, engagementRows, actionRows, credentialRows, errorLog };
   }
 
-  // 3. Program summary
+  // ── F. Summary — GET /insurance/summaries/insureds ───────────────
   let summary = { compliant: 0, nonCompliant: 0, pending: 0, total: insureds.length };
   try {
-    const s = await apiGet(rpCommonName, apiKey, "/insurance/summary");
+    const s = await apiGet(rpCommonName, apiKey, "/insurance/summaries/insureds");
     if (s) {
       summary.compliant    = s.compliantCount    ?? s.compliant    ?? s.statistics?.compliantCount    ?? 0;
       summary.nonCompliant = s.nonCompliantCount ?? s.nonCompliant ?? s.statistics?.nonCompliantCount ?? 0;
@@ -250,18 +419,19 @@ async function processClient(client) {
     }
   }
 
-  // 4. Fetch engagement events for this client
+  // ── G. Engagement — GET /insurance/notifications ─────────────────
   try {
-    const events = await fetchEngagement(rpCommonName, apiKey);
+    const res = await apiGet(rpCommonName, apiKey, "/insurance/notifications");
+    const events = Array.isArray(res) ? res : (res?.records || []);
     for (const ev of events) {
       engagementRows.push({
-        Client:   name,
-        Email:    ev.email       || ev.recipientEmail || "",
-        Type:     ev.type        || ev.eventType      || "",
-        Date:     ev.sentAt      || ev.createdAt      || ev.timestamp || "",
-        Subject:  ev.subject     || ev.emailSubject   || "",
-        insured_id: ev.insuredId || ev.insured_id     || "",
-        sync_date: syncDate,
+        Client:         name,
+        Email:          ev.email          || ev.recipientEmail || "",
+        Type:           ev.type           || ev.eventType      || "",
+        Date:           ev.sentAt         || ev.createdAt      || ev.timestamp || "",
+        Subject:        ev.subject        || ev.emailSubject   || "",
+        insured_id:     ev.insuredId      || ev.insured_id     || "",
+        sync_date:      syncDate,
         sync_timestamp: syncTimestamp,
       });
     }
@@ -270,7 +440,7 @@ async function processClient(client) {
     errorLog.push({ client: name, stage: "engagement", error: err.message });
   }
 
-  // 5. Per-insured: coverages, custom fields, custom properties, criteria
+  // ── H. Per-insured: detail, coverage data, custom props, criteria ─
   await pooled(insureds, CONCURRENCY, async (insured) => {
     const insuredId          = insured.id || "";
     const insuredName        = insured.displayName || insured.name || insured.companyName || "";
@@ -282,9 +452,6 @@ async function processClient(client) {
     const active             = insured.active !== false;
     const paused             = insured.paused === true;
     const address            = insured.address || {};
-    const country            = address.country || insured.country || "";
-    const city               = address.city    || insured.city    || "";
-    const state              = address.state   || insured.state   || "";
 
     insuredRows.push({
       client:                name,
@@ -298,32 +465,33 @@ async function processClient(client) {
       next_expiration:       nextExpiration,
       active,
       paused,
-      country,
-      city,
-      state,
+      country:               address.country || insured.country || "",
+      city:                  address.city    || insured.city    || "",
+      state:                 address.state   || insured.state   || "",
       sync_date:             syncDate,
       sync_timestamp:        syncTimestamp,
     });
 
-    // ── Entity-level Custom Properties ──────────────────────────────
+    // ── GET /insurance/insureds/{id} — full detail ────────────────
+    // Captures any fields not returned in the list endpoint
+    let insuredDetail = {};
+    try {
+      const d = await apiGet(rpCommonName, apiKey, `/insurance/insureds/${insuredId}`);
+      if (d) insuredDetail = d;
+    } catch (_) { /* optional enrichment */ }
+
+    // ── Entity-level Custom Properties ────────────────────────────
+    // Source 1: embedded in list/detail response
     let propList = [];
-    if (Array.isArray(insured.properties) && insured.properties.length > 0) {
-      propList = insured.properties;
-    } else if (Array.isArray(insured.customProperties) && insured.customProperties.length > 0) {
-      propList = insured.customProperties;
-    } else {
-      try {
-        const rpRes = await apiGet(rpCommonName, apiKey, `/insurance/insureds/${insuredId}`);
-        propList = rpRes?.properties || rpRes?.customProperties || rpRes?.fields || [];
-      } catch (_) { /* endpoint may not exist for all clients */ }
-    }
+    const detailSource = insuredDetail || insured;
+    if      (Array.isArray(detailSource.properties)       && detailSource.properties.length)       propList = detailSource.properties;
+    else if (Array.isArray(detailSource.customProperties) && detailSource.customProperties.length) propList = detailSource.customProperties;
 
     for (const prop of propList) {
-      const fieldId   = prop.field?.id   || prop.fieldId   || prop.id   || "";
-      // FIX 3: fieldDefs[fieldId] is an object — extract .name, not the whole object
-      const fieldName = prop.field?.name || prop.fieldName || prop.name ||
-                        fieldDefs[fieldId]?.name || fieldId || "";
-      const rawValue  = prop.value !== undefined ? prop.value : prop.fieldValue;
+      const fieldId    = prop.field?.id   || prop.fieldId   || prop.id   || "";
+      const fieldName  = prop.field?.name || prop.fieldName || prop.name ||
+                         fieldDefs[fieldId]?.name || fieldId || "";
+      const rawValue   = prop.value !== undefined ? prop.value : prop.fieldValue;
       const fieldValue = rawValue === null || rawValue === undefined ? "" :
                          typeof rawValue === "object" ? JSON.stringify(rawValue) : String(rawValue);
       if (!fieldName) continue;
@@ -334,16 +502,16 @@ async function processClient(client) {
         field_id:       fieldId,
         field_name:     fieldName,
         field_value:    fieldValue,
+        source:         "api",
         sync_date:      syncDate,
         sync_timestamp: syncTimestamp,
       });
     }
 
-    // ── Positional insuredFields (fallback for clients that use index-based fields)
-    const insuredFieldsArr = Array.isArray(insured.insuredFields) ? insured.insuredFields : [];
+    // Source 2: positional insuredFields array
+    const insuredFieldsArr = Array.isArray(detailSource.insuredFields) ? detailSource.insuredFields : [];
     insuredFieldsArr.forEach((fieldVal, i) => {
       if (fieldVal === null || fieldVal === undefined) return;
-      // FIX 4: fieldDefsList is now in scope (declared outside try block above)
       const fieldDef   = fieldDefsList[i] || {};
       const fieldName  = fieldDef.name || fieldDef.key || `field_${i}`;
       const fieldKey   = fieldDef.key  || fieldDef.id  || `field_${i}`;
@@ -356,12 +524,37 @@ async function processClient(client) {
         field_id:       fieldKey,
         field_name:     fieldName,
         field_value:    fieldValue,
+        source:         "insured_fields",
         sync_date:      syncDate,
         sync_timestamp: syncTimestamp,
       });
     });
 
-    // ── Coverage data from /data endpoint ────────────────────────────
+    // Source 3: export CSV custom columns (matched by insured name)
+    const exportKey = insuredName.toLowerCase();
+    if (exportCustomProps[exportKey]) {
+      for (const { fieldName, fieldValue } of exportCustomProps[exportKey].props) {
+        // Only add if not already captured from the API to avoid duplicates
+        const alreadyHave = customPropRows.some(
+          r => r.insured_id === insuredId && r.field_name === fieldName
+        );
+        if (!alreadyHave) {
+          customPropRows.push({
+            client:         name,
+            insured_id:     insuredId,
+            insured_name:   insuredName,
+            field_id:       "",
+            field_name:     fieldName,
+            field_value:    fieldValue,
+            source:         "export_csv",
+            sync_date:      syncDate,
+            sync_timestamp: syncTimestamp,
+          });
+        }
+      }
+    }
+
+    // ── GET /insurance/insureds/{id}/data — coverage data ─────────
     try {
       const dataRes = await apiGet(rpCommonName, apiKey, `/insurance/insureds/${insuredId}/data`);
       if (dataRes && typeof dataRes === "object" && !Array.isArray(dataRes)) {
@@ -376,10 +569,10 @@ async function processClient(client) {
             primary_contact_email: contactEmail,
             insured_name:          insuredName,
             coverage_type:         covType,
-            coverage_id:           covData.coverageId  || "",
+            coverage_id:           covData.coverageId   || "",
             policy_number:         policy.policyNumber  || "",
             insurer:               policy.carrier?.name || "",
-            effective_date:        policy.effectiveDate  || "",
+            effective_date:        policy.effectiveDate || "",
             expiration_date:       policy.expirationDate || "",
             per_occurrence:        details.eachOccurrenceLimit || details.perOccurrenceLimit || "",
             aggregate:             details.generalAggregateLimit || details.aggregateLimit   || "",
@@ -405,9 +598,7 @@ async function processClient(client) {
       errorLog.push({ client: name, stage: "coverage_data", insured: insuredId, error: err.message });
     }
 
-    // ── Criteria (non-compliance reasons) ────────────────────────────
-    // Skip the /status call for COMPLIANT / PENDING / NEW — they have no NC reasons.
-    // This saves ~33% of all API calls.
+    // ── GET /insurance/insureds/{id}/status — NC reasons ──────────
     const skipStatus = ["COMPLIANT", "PENDING", "NEW"].includes(
       (complianceStatus || "").toUpperCase()
     );
@@ -416,7 +607,6 @@ async function processClient(client) {
         ? null
         : await apiGet(rpCommonName, apiKey, `/insurance/insureds/${insuredId}/status`);
 
-      // Only non-compliant insureds get a criteria row
       if (!statusRes) return;
 
       const ncObj = statusRes?.nonComplianceReasons || {};
@@ -426,7 +616,6 @@ async function processClient(client) {
           reasonParts.push(`${covType}: ${reasons.join("; ")}`);
         }
       }
-      const reasons = reasonParts.join(" | ");
 
       const declineObj = statusRes?.declineReasons || {};
       const declineParts = [];
@@ -435,7 +624,6 @@ async function processClient(client) {
           declineParts.push(`${covType}: ${declines.join("; ")}`);
         }
       }
-      const declines = declineParts.join(" | ");
 
       criteriaRows.push({
         client:                 name,
@@ -447,8 +635,8 @@ async function processClient(client) {
         group_id:               "",
         group_name:             "",
         group_compliance:       "",
-        non_compliance_reasons: reasons,
-        decline_reasons:        declines,
+        non_compliance_reasons: reasonParts.join(" | "),
+        decline_reasons:        declineParts.join(" | "),
         sync_date:              syncDate,
         sync_timestamp:         syncTimestamp,
       });
@@ -457,45 +645,108 @@ async function processClient(client) {
     }
   });
 
-  console.log(`   ✅ ${name} — ${insuredRows.length} insureds, ${coverageRows.length} coverages, ${customPropRows.length} custom props, ${engagementRows.length} engagement`);
+  console.log(`   ✅ ${name} — ${insuredRows.length} insureds, ${coverageRows.length} coverages, ${customPropRows.length} custom props, ${criteriaRows.length} criteria, ${actionRows.length} actions`);
 
-  return { insuredRows, coverageRows, customFieldRows, customPropRows, criteriaRows, engagementRows, summary, errorLog };
+  return {
+    insuredRows, coverageRows, customFieldRows, customPropRows,
+    criteriaRows, engagementRows, actionRows, credentialRows,
+    summary, errorLog,
+  };
 }
 
 // ------------------------------------------------------------
-// SNAPSHOT HELPER — runs on the 1st of each month
+// GLOBAL (once per run) — enums, form categories
 // ------------------------------------------------------------
-function writeSnapshot(allInsureds, allCriteria, allEngagement, syncTs) {
-  const now = new Date();
-  if (now.getDate() !== 1) return; // only on the 1st
+async function fetchGlobalData(firstClient) {
+  const { rpCommonName, apiKey } = firstClient;
+  const syncTimestamp = getSyncTimestamp();
+  const syncDate      = getSyncDate();
+  const enumRows      = [];
+  const formCatRows   = [];
 
-  const yyyy  = now.getFullYear().toString();
-  const mm    = String(now.getMonth() + 1).padStart(2, "0");
-  const snapDir = path.join(SNAPSHOT_BASE, yyyy, `${yyyy}-${mm}`);
-  fs.mkdirSync(snapDir, { recursive: true });
-
-  // Write snapshot copies of the three files the app reads for Year End / Producer Overview
-  const snapFiles = [
-    { name: "insureds.csv",    rows: allInsureds },
-    { name: "criteria.csv",    rows: allCriteria },
-    { name: "engagement.csv",  rows: allEngagement },
-  ];
-  for (const { name, rows } of snapFiles) {
-    const dest = path.join(snapDir, name);
-    if (!fs.existsSync(dest)) {
-      // Only write if snapshot for this month doesn't already exist
-      fs.writeFileSync(dest, toCsv(rows) + "\n", "utf8");
-      console.log(`   📸 Snapshot: ${dest}`);
+  // GET /models/enums
+  try {
+    const enums = await apiGet(rpCommonName, apiKey, "/models/enums");
+    if (enums && typeof enums === "object") {
+      for (const [enumName, values] of Object.entries(enums)) {
+        const vals = Array.isArray(values) ? values : [values];
+        for (const v of vals) {
+          enumRows.push({
+            enum_name:      enumName,
+            value:          typeof v === "object" ? JSON.stringify(v) : String(v),
+            sync_date:      syncDate,
+            sync_timestamp: syncTimestamp,
+          });
+        }
+      }
     }
+    console.log(`\n   Enums: ${enumRows.length} values across ${Object.keys(enums || {}).length} types`);
+  } catch (err) {
+    console.warn(`   ⚠️  Enums: ${err.message}`);
   }
-  console.log(`\n📅 Monthly snapshot written → snapshots/${yyyy}/${yyyy}-${mm}/`);
+
+  // GET /models/forms/categories
+  try {
+    const cats = await apiGet(rpCommonName, apiKey, "/models/forms/categories");
+    const catList = Array.isArray(cats) ? cats : (cats?.records || cats?.categories || []);
+    for (const c of catList) {
+      formCatRows.push({
+        id:             c.id   || "",
+        name:           c.name || c.displayName || "",
+        description:    c.description || "",
+        form_count:     c.formCount ?? "",
+        sync_date:      syncDate,
+        sync_timestamp: syncTimestamp,
+      });
+    }
+    console.log(`   Form categories: ${formCatRows.length}`);
+  } catch (err) {
+    console.warn(`   ⚠️  Form categories: ${err.message}`);
+  }
+
+  return { enumRows, formCatRows };
+}
+
+// ------------------------------------------------------------
+// SNAPSHOT HELPER — writes to BOTH monthly and daily paths
+// ------------------------------------------------------------
+function writeSnapshots(allInsureds, allCriteria, allEngagement) {
+  const now   = new Date();
+  const yyyy  = now.getUTCFullYear().toString();
+  const mm    = String(now.getUTCMonth() + 1).padStart(2, "0");
+  const dd    = String(now.getUTCDate()).padStart(2, "0");
+  const month = `${yyyy}-${mm}`;
+  const day   = `${yyyy}-${mm}-${dd}`;
+
+  const filesToSnap = [
+    { name: "insureds.csv",   rows: allInsureds },
+    { name: "criteria.csv",   rows: allCriteria },
+    { name: "engagement.csv", rows: allEngagement },
+  ];
+
+  // Monthly — snapshots/YYYY/YYYY-MM/
+  // (overwritten every run — always the freshest data for that month)
+  const monthlyDir = path.join(SNAPSHOT_BASE, yyyy, month);
+  fs.mkdirSync(monthlyDir, { recursive: true });
+  for (const { name, rows } of filesToSnap) {
+    fs.writeFileSync(path.join(monthlyDir, name), toCsv(rows), "utf8");
+  }
+  console.log(`\n📅 Monthly snapshot → snapshots/${yyyy}/${month}/`);
+
+  // Daily — snapshots/daily/YYYY/YYYY-MM-DD/
+  // (used by Date Range mode in Producer Overview)
+  const dailyDir = path.join(SNAPSHOT_BASE, "daily", yyyy, day);
+  fs.mkdirSync(dailyDir, { recursive: true });
+  for (const { name, rows } of filesToSnap) {
+    fs.writeFileSync(path.join(dailyDir, name), toCsv(rows), "utf8");
+  }
+  console.log(`📅 Daily snapshot   → snapshots/daily/${yyyy}/${day}/`);
 }
 
 // ------------------------------------------------------------
 // MAIN
 // ------------------------------------------------------------
 async function main() {
-  // FIX 5: ensure data/evident/ directory exists (not just data/)
   fs.mkdirSync(DATA_DIR, { recursive: true });
 
   const activeClients = CLIENTS.filter(c => {
@@ -505,6 +756,9 @@ async function main() {
 
   console.log(`\n🚀 Processing ${activeClients.length} clients (${CLIENT_THREADS} at a time)\n`);
 
+  // Fetch global reference data once using the first available client
+  const { enumRows, formCatRows } = await fetchGlobalData(activeClients[0]);
+
   const results = await pooled(activeClients, CLIENT_THREADS, processClient);
 
   const allInsureds    = results.flatMap(r => r?.insuredRows     || []);
@@ -513,39 +767,68 @@ async function main() {
   const allCustProps   = results.flatMap(r => r?.customPropRows  || []);
   const allCriteria    = results.flatMap(r => r?.criteriaRows    || []);
   const allEngagement  = results.flatMap(r => r?.engagementRows  || []);
+  const allActions     = results.flatMap(r => r?.actionRows      || []);
+  const allCredentials = results.flatMap(r => r?.credentialRows  || []);
   const allErrors      = results.flatMap(r => r?.errorLog        || []);
 
+  // Aggregate field definitions across all clients
+  const allFieldDefs = [];
   const syncTs   = getSyncTimestamp();
   const syncDate = getSyncDate();
+
+  for (const client of activeClients) {
+    try {
+      const defs = await apiGet(client.rpCommonName, client.apiKey, "/insurance/config/insureds/fields");
+      if (Array.isArray(defs)) {
+        for (const f of defs) {
+          allFieldDefs.push({
+            client:         client.name,
+            field_id:       f.id   || "",
+            field_name:     f.name || "",
+            field_key:      f.key  || "",
+            field_type:     f.type || "",
+            required:       f.required ?? "",
+            sync_date:      syncDate,
+            sync_timestamp: syncTs,
+          });
+        }
+      }
+    } catch (_) { /* already logged per-client */ }
+  }
 
   const summaryRows = activeClients.map((c, i) => {
     const s = results[i]?.summary || {};
     return {
       client:         c.name,
-      total_insureds: s.total       || 0,
-      compliant:      s.compliant   || 0,
+      total_insureds: s.total        || 0,
+      compliant:      s.compliant    || 0,
       non_compliant:  s.nonCompliant || 0,
-      pending:        s.pending     || 0,
+      pending:        s.pending      || 0,
       sync_date:      syncDate,
       sync_timestamp: syncTs,
     };
   });
 
-  console.log("");
+  console.log("\n");
   const fileChanges = [
-    { file: "insureds.csv",          changed: smartWrite(path.join(DATA_DIR, "insureds.csv"),          allInsureds,    "insureds.csv") },
-    { file: "coverages.csv",         changed: smartWrite(path.join(DATA_DIR, "coverages.csv"),         allCoverages,   "coverages.csv") },
-    { file: "custom_fields.csv",     changed: smartWrite(path.join(DATA_DIR, "custom_fields.csv"),     allCustFields,  "custom_fields.csv") },
-    { file: "custom_properties.csv", changed: smartWrite(path.join(DATA_DIR, "custom_properties.csv"), allCustProps,   "custom_properties.csv") },
-    { file: "criteria.csv",          changed: smartWrite(path.join(DATA_DIR, "criteria.csv"),          allCriteria,    "criteria.csv") },
-    { file: "engagement.csv",        changed: smartWrite(path.join(DATA_DIR, "engagement.csv"),        allEngagement,  "engagement.csv") },
-    { file: "summaries.csv",         changed: smartWrite(path.join(DATA_DIR, "summaries.csv"),         summaryRows,    "summaries.csv") },
+    { file: "insureds.csv",           changed: smartWrite(path.join(DATA_DIR, "insureds.csv"),           allInsureds,    "insureds.csv") },
+    { file: "coverages.csv",          changed: smartWrite(path.join(DATA_DIR, "coverages.csv"),          allCoverages,   "coverages.csv") },
+    { file: "custom_fields.csv",      changed: smartWrite(path.join(DATA_DIR, "custom_fields.csv"),      allCustFields,  "custom_fields.csv") },
+    { file: "custom_properties.csv",  changed: smartWrite(path.join(DATA_DIR, "custom_properties.csv"),  allCustProps,   "custom_properties.csv") },
+    { file: "criteria.csv",           changed: smartWrite(path.join(DATA_DIR, "criteria.csv"),           allCriteria,    "criteria.csv") },
+    { file: "engagement.csv",         changed: smartWrite(path.join(DATA_DIR, "engagement.csv"),         allEngagement,  "engagement.csv") },
+    { file: "summaries.csv",          changed: smartWrite(path.join(DATA_DIR, "summaries.csv"),          summaryRows,    "summaries.csv") },
+    { file: "actions.csv",            changed: smartWrite(path.join(DATA_DIR, "actions.csv"),            allActions,     "actions.csv") },
+    { file: "credentials.csv",        changed: smartWrite(path.join(DATA_DIR, "credentials.csv"),        allCredentials, "credentials.csv") },
+    { file: "enums.csv",              changed: smartWrite(path.join(DATA_DIR, "enums.csv"),              enumRows,       "enums.csv") },
+    { file: "form_categories.csv",    changed: smartWrite(path.join(DATA_DIR, "form_categories.csv"),    formCatRows,    "form_categories.csv") },
+    { file: "field_definitions.csv",  changed: smartWrite(path.join(DATA_DIR, "field_definitions.csv"), allFieldDefs,   "field_definitions.csv") },
   ];
 
   writeSyncMetadata(DATA_DIR, fileChanges, syncTs);
 
-  // Monthly snapshot
-  writeSnapshot(allInsureds, allCriteria, allEngagement, syncTs);
+  // Write snapshots every run (monthly overwrites, daily is per-day)
+  writeSnapshots(allInsureds, allCriteria, allEngagement);
 
   console.log(`\n🕐 Sync completed: ${syncTs} CT`);
 
