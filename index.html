@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.33
+       SIDEBAR LAYOUT  v0.33d
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:#18252D;background-image:radial-gradient(circle,rgba(0,174,239,0.11) 1px,transparent 1px);background-size:14px 14px;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.33 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.33d — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.33 — using var(--bg) */
+    /* bg overrides removed v0.33d — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;padding:10px 24px 0;flex-shrink:0}
     .bc-section{display:none}
@@ -216,7 +216,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.33</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.33d</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -921,7 +921,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.33</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.33d</div>
 
 <script>
 
@@ -1025,7 +1025,7 @@ function setHeaderTitle(title, sub) {
   if (s) s.textContent = sub || '';
 }
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.33
+// DEBUG MODULE — HUB CertSecure v0.33d
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -2706,6 +2706,108 @@ ${topNCAll.length ? `
   <div>HUB CertSecure \u00b7 ${year}</div>
 </div>
 
+
+<!-- ═══ DEBUG PANEL (remove before production) ═══ -->
+<div id="cs-debug-panel" style="position:fixed;bottom:12px;right:12px;background:#1a1a2e;color:#e0e0e0;font-family:monospace;font-size:11px;padding:10px 12px;border-radius:8px;z-index:99999;min-width:280px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid #333;max-height:420px;overflow:hidden;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <span style="font-weight:700;color:#00AEEF;font-size:12px">🛠 CertSecure Debug</span>
+    <div style="display:flex;gap:6px">
+      <button onclick="csDebugClearLog()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Clear</button>
+      <button onclick="document.getElementById('cs-debug-panel').style.display='none'" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Hide</button>
+    </div>
+  </div>
+  <div id="cs-debug-tabs" style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #333"></div>
+  <div style="font-size:10px;color:#888;margin-bottom:4px">Event log (newest first):</div>
+  <div id="cs-debug-log" style="overflow-y:auto;flex:1;font-size:10px;line-height:1.6"></div>
+</div>
+<script>
+(function() {
+  var MAX_LOG = 30;
+  var _log = [];
+
+  function csDebugRefreshTabs() {
+    var panel = document.getElementById('cs-debug-tabs');
+    if (!panel) return;
+    var tabs = ['reports','monday','template'];
+    panel.innerHTML = tabs.map(function(t) {
+      var el = document.getElementById('tab-' + t);
+      if (!el) return '<div style="color:#888">tab-' + t + ': not found</div>';
+      var style = el.style.display;
+      var hidden = el.classList.contains('tab-hidden');
+      var computed = window.getComputedStyle(el).display;
+      var isVisible = computed !== 'none';
+      var color = isVisible ? '#ff4444' : '#44ff88';
+      var label = isVisible ? '👁 VISIBLE' : '🙈 hidden';
+      return '<div style="color:' + color + ';margin-bottom:2px">' +
+        'tab-' + t + ': <b>' + label + '</b>' +
+        ' <span style="color:#888">[style=' + (style||'""') + ' cls=' + (hidden?'tab-hidden':'') + ' computed=' + computed + ']</span>' +
+        '</div>';
+    }).join('');
+  }
+
+  window.csDebugLog = function(msg, color) {
+    var time = new Date().toLocaleTimeString('en-US', {hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    _log.unshift('<div style="color:' + (color||'#ccc') + '">' + time + ' ' + msg + '</div>');
+    if (_log.length > MAX_LOG) _log.pop();
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = _log.join('');
+    csDebugRefreshTabs();
+  };
+
+  window.csDebugClearLog = function() {
+    _log = [];
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = '';
+  };
+
+  // Patch switchTab to log every call
+  var _origSwitchTab = window.switchTab;
+  window.switchTab = function(tab) {
+    csDebugLog('switchTab(<b style="color:#FFD700">' + tab + '</b>) called', '#FFD700');
+    _origSwitchTab.apply(this, arguments);
+    setTimeout(csDebugRefreshTabs, 10);
+    // Check if tab-monday is visible when it shouldn't be
+    setTimeout(function() {
+      var mon = document.getElementById('tab-monday');
+      if (mon && window.getComputedStyle(mon).display !== 'none' && tab !== 'monday') {
+        csDebugLog('⚠️ tab-monday VISIBLE after switchTab(' + tab + ')!', '#ff4444');
+      }
+    }, 50);
+  };
+
+  // MutationObserver on tab-monday - catch ANYTHING that changes it
+  document.addEventListener('DOMContentLoaded', function() {
+    csDebugRefreshTabs();
+    var mon = document.getElementById('tab-monday');
+    if (mon && window.MutationObserver) {
+      var obs = new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+          if (m.type === 'attributes') {
+            var el = m.target;
+            var computed = window.getComputedStyle(el).display;
+            var attr = m.attributeName;
+            csDebugLog('🔍 tab-monday <b>' + attr + '</b> changed → computed=' + computed + 
+              ' style="' + el.style.display + '" cls=' + el.className, 
+              computed !== 'none' ? '#ff4444' : '#aaa');
+          }
+        });
+      });
+      obs.observe(mon, { attributes: true, attributeFilter: ['style','class'] });
+      csDebugLog('👀 MutationObserver watching tab-monday', '#00AEEF');
+    }
+    // Also patch sidebarNav
+    var _origNav = window.sidebarNav;
+    window.sidebarNav = function(dest) {
+      csDebugLog('sidebarNav(<b style="color:#adf">' + dest + '</b>)', '#adf');
+      _origNav.apply(this, arguments);
+    };
+  });
+
+  // Refresh tab display every 2s as a sanity check
+  setInterval(csDebugRefreshTabs, 2000);
+})();
+</script>
+
 </body></html>`;
 }
 </script>
@@ -2808,6 +2910,108 @@ td{padding:8px 10px;border-bottom:1px solid #EEF2F7}
 ${['compliant','non_compliant','pending'].map(s=>{const n=tIns.filter(r=>(r.compliance_status||r.status||'').toLowerCase()===s).length;const pct=tIns.length?Math.round(n/tIns.length*100):0;const col=s==='compliant'?'#16a34a':s==='non_compliant'?'#dc2626':'#d97706';return `<tr><td style="font-weight:600;color:${col}">${s.replace('_',' ').replace(/\b\w/g,x=>x.toUpperCase())}</td><td>${n}</td><td>${pct}%</td></tr>`;}).join('')}
 </table></div>
 <div style="text-align:center;font-size:10px;color:#9CA3AF;margin-top:12px">🔒 Confidential · HUB CertSecure · Generated ${stamp}</div>
+
+<!-- ═══ DEBUG PANEL (remove before production) ═══ -->
+<div id="cs-debug-panel" style="position:fixed;bottom:12px;right:12px;background:#1a1a2e;color:#e0e0e0;font-family:monospace;font-size:11px;padding:10px 12px;border-radius:8px;z-index:99999;min-width:280px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid #333;max-height:420px;overflow:hidden;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <span style="font-weight:700;color:#00AEEF;font-size:12px">🛠 CertSecure Debug</span>
+    <div style="display:flex;gap:6px">
+      <button onclick="csDebugClearLog()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Clear</button>
+      <button onclick="document.getElementById('cs-debug-panel').style.display='none'" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Hide</button>
+    </div>
+  </div>
+  <div id="cs-debug-tabs" style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #333"></div>
+  <div style="font-size:10px;color:#888;margin-bottom:4px">Event log (newest first):</div>
+  <div id="cs-debug-log" style="overflow-y:auto;flex:1;font-size:10px;line-height:1.6"></div>
+</div>
+<script>
+(function() {
+  var MAX_LOG = 30;
+  var _log = [];
+
+  function csDebugRefreshTabs() {
+    var panel = document.getElementById('cs-debug-tabs');
+    if (!panel) return;
+    var tabs = ['reports','monday','template'];
+    panel.innerHTML = tabs.map(function(t) {
+      var el = document.getElementById('tab-' + t);
+      if (!el) return '<div style="color:#888">tab-' + t + ': not found</div>';
+      var style = el.style.display;
+      var hidden = el.classList.contains('tab-hidden');
+      var computed = window.getComputedStyle(el).display;
+      var isVisible = computed !== 'none';
+      var color = isVisible ? '#ff4444' : '#44ff88';
+      var label = isVisible ? '👁 VISIBLE' : '🙈 hidden';
+      return '<div style="color:' + color + ';margin-bottom:2px">' +
+        'tab-' + t + ': <b>' + label + '</b>' +
+        ' <span style="color:#888">[style=' + (style||'""') + ' cls=' + (hidden?'tab-hidden':'') + ' computed=' + computed + ']</span>' +
+        '</div>';
+    }).join('');
+  }
+
+  window.csDebugLog = function(msg, color) {
+    var time = new Date().toLocaleTimeString('en-US', {hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    _log.unshift('<div style="color:' + (color||'#ccc') + '">' + time + ' ' + msg + '</div>');
+    if (_log.length > MAX_LOG) _log.pop();
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = _log.join('');
+    csDebugRefreshTabs();
+  };
+
+  window.csDebugClearLog = function() {
+    _log = [];
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = '';
+  };
+
+  // Patch switchTab to log every call
+  var _origSwitchTab = window.switchTab;
+  window.switchTab = function(tab) {
+    csDebugLog('switchTab(<b style="color:#FFD700">' + tab + '</b>) called', '#FFD700');
+    _origSwitchTab.apply(this, arguments);
+    setTimeout(csDebugRefreshTabs, 10);
+    // Check if tab-monday is visible when it shouldn't be
+    setTimeout(function() {
+      var mon = document.getElementById('tab-monday');
+      if (mon && window.getComputedStyle(mon).display !== 'none' && tab !== 'monday') {
+        csDebugLog('⚠️ tab-monday VISIBLE after switchTab(' + tab + ')!', '#ff4444');
+      }
+    }, 50);
+  };
+
+  // MutationObserver on tab-monday - catch ANYTHING that changes it
+  document.addEventListener('DOMContentLoaded', function() {
+    csDebugRefreshTabs();
+    var mon = document.getElementById('tab-monday');
+    if (mon && window.MutationObserver) {
+      var obs = new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+          if (m.type === 'attributes') {
+            var el = m.target;
+            var computed = window.getComputedStyle(el).display;
+            var attr = m.attributeName;
+            csDebugLog('🔍 tab-monday <b>' + attr + '</b> changed → computed=' + computed + 
+              ' style="' + el.style.display + '" cls=' + el.className, 
+              computed !== 'none' ? '#ff4444' : '#aaa');
+          }
+        });
+      });
+      obs.observe(mon, { attributes: true, attributeFilter: ['style','class'] });
+      csDebugLog('👀 MutationObserver watching tab-monday', '#00AEEF');
+    }
+    // Also patch sidebarNav
+    var _origNav = window.sidebarNav;
+    window.sidebarNav = function(dest) {
+      csDebugLog('sidebarNav(<b style="color:#adf">' + dest + '</b>)', '#adf');
+      _origNav.apply(this, arguments);
+    };
+  });
+
+  // Refresh tab display every 2s as a sanity check
+  setInterval(csDebugRefreshTabs, 2000);
+})();
+</script>
+
 </body></html>`;
 }
 
@@ -3261,7 +3465,109 @@ ${chk('cs-ncreasons')&&topNC.length?`<div>${secHdr('Top Non-Compliance Reasons')
 ${chk('cs-criteriadist')&&topCrit.length?`<div>${secHdr('Insured Criteria Breakdown')}<div class="bcard">${topCrit.map(([t,n])=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA;font-size:9px"><div style="width:130px;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(t)}</div>${progBar(n,topCrit[0]?.[1]||1,'#3872B8')}<div style="width:22px;text-align:right;font-weight:700;color:#3872B8">${n}</div></div>`).join('')}</div></div>`:'<div></div>'}
 </div>
 ${chk('cs-coveragedist')&&topCov.length?`${secHdr('Coverage Type Distribution')}<div class="bcard"><div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px">${topCov.map(([t,n])=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA;font-size:9px"><div style="width:130px;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(t)}</div>${progBar(n,topCov[0]?.[1]||1,'#6BA3DE')}<div style="width:22px;text-align:right;font-weight:700;color:#3872B8">${n}</div></div>`).join('')}</div></div>`:''}
-<div class="footer"><div>&#x1F512; Confidential \u2014 HUB HUB CertSecure \u00b7 ${esc(selectedClient.name)} \u00b7 Compliance Summary</div><div>${stamp}</div></div></body></html>`;
+<div class="footer"><div>&#x1F512; Confidential \u2014 HUB HUB CertSecure \u00b7 ${esc(selectedClient.name)} \u00b7 Compliance Summary</div><div>${stamp}</div></div>
+<!-- ═══ DEBUG PANEL (remove before production) ═══ -->
+<div id="cs-debug-panel" style="position:fixed;bottom:12px;right:12px;background:#1a1a2e;color:#e0e0e0;font-family:monospace;font-size:11px;padding:10px 12px;border-radius:8px;z-index:99999;min-width:280px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid #333;max-height:420px;overflow:hidden;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <span style="font-weight:700;color:#00AEEF;font-size:12px">🛠 CertSecure Debug</span>
+    <div style="display:flex;gap:6px">
+      <button onclick="csDebugClearLog()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Clear</button>
+      <button onclick="document.getElementById('cs-debug-panel').style.display='none'" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Hide</button>
+    </div>
+  </div>
+  <div id="cs-debug-tabs" style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #333"></div>
+  <div style="font-size:10px;color:#888;margin-bottom:4px">Event log (newest first):</div>
+  <div id="cs-debug-log" style="overflow-y:auto;flex:1;font-size:10px;line-height:1.6"></div>
+</div>
+<script>
+(function() {
+  var MAX_LOG = 30;
+  var _log = [];
+
+  function csDebugRefreshTabs() {
+    var panel = document.getElementById('cs-debug-tabs');
+    if (!panel) return;
+    var tabs = ['reports','monday','template'];
+    panel.innerHTML = tabs.map(function(t) {
+      var el = document.getElementById('tab-' + t);
+      if (!el) return '<div style="color:#888">tab-' + t + ': not found</div>';
+      var style = el.style.display;
+      var hidden = el.classList.contains('tab-hidden');
+      var computed = window.getComputedStyle(el).display;
+      var isVisible = computed !== 'none';
+      var color = isVisible ? '#ff4444' : '#44ff88';
+      var label = isVisible ? '👁 VISIBLE' : '🙈 hidden';
+      return '<div style="color:' + color + ';margin-bottom:2px">' +
+        'tab-' + t + ': <b>' + label + '</b>' +
+        ' <span style="color:#888">[style=' + (style||'""') + ' cls=' + (hidden?'tab-hidden':'') + ' computed=' + computed + ']</span>' +
+        '</div>';
+    }).join('');
+  }
+
+  window.csDebugLog = function(msg, color) {
+    var time = new Date().toLocaleTimeString('en-US', {hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    _log.unshift('<div style="color:' + (color||'#ccc') + '">' + time + ' ' + msg + '</div>');
+    if (_log.length > MAX_LOG) _log.pop();
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = _log.join('');
+    csDebugRefreshTabs();
+  };
+
+  window.csDebugClearLog = function() {
+    _log = [];
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = '';
+  };
+
+  // Patch switchTab to log every call
+  var _origSwitchTab = window.switchTab;
+  window.switchTab = function(tab) {
+    csDebugLog('switchTab(<b style="color:#FFD700">' + tab + '</b>) called', '#FFD700');
+    _origSwitchTab.apply(this, arguments);
+    setTimeout(csDebugRefreshTabs, 10);
+    // Check if tab-monday is visible when it shouldn't be
+    setTimeout(function() {
+      var mon = document.getElementById('tab-monday');
+      if (mon && window.getComputedStyle(mon).display !== 'none' && tab !== 'monday') {
+        csDebugLog('⚠️ tab-monday VISIBLE after switchTab(' + tab + ')!', '#ff4444');
+      }
+    }, 50);
+  };
+
+  // MutationObserver on tab-monday - catch ANYTHING that changes it
+  document.addEventListener('DOMContentLoaded', function() {
+    csDebugRefreshTabs();
+    var mon = document.getElementById('tab-monday');
+    if (mon && window.MutationObserver) {
+      var obs = new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+          if (m.type === 'attributes') {
+            var el = m.target;
+            var computed = window.getComputedStyle(el).display;
+            var attr = m.attributeName;
+            csDebugLog('🔍 tab-monday <b>' + attr + '</b> changed → computed=' + computed + 
+              ' style="' + el.style.display + '" cls=' + el.className, 
+              computed !== 'none' ? '#ff4444' : '#aaa');
+          }
+        });
+      });
+      obs.observe(mon, { attributes: true, attributeFilter: ['style','class'] });
+      csDebugLog('👀 MutationObserver watching tab-monday', '#00AEEF');
+    }
+    // Also patch sidebarNav
+    var _origNav = window.sidebarNav;
+    window.sidebarNav = function(dest) {
+      csDebugLog('sidebarNav(<b style="color:#adf">' + dest + '</b>)', '#adf');
+      _origNav.apply(this, arguments);
+    };
+  });
+
+  // Refresh tab display every 2s as a sanity check
+  setInterval(csDebugRefreshTabs, 2000);
+})();
+</script>
+
+</body></html>`;
 }
 </script>
 <script>
@@ -3316,7 +3622,109 @@ ${chk('es-nceng')&&ncActive.length?`${secHdr('NC Insured Engagement Rate')}<div 
 ${chk('es-issues')&&issueTypes.length?`${secHdr('Delivery Issue Breakdown')}<div class="bcard"><div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px">${issueTypes.map(([t,n])=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA;font-size:9px"><div style="width:100px;color:#5A6B7B;text-transform:capitalize">${t.replace(/_/g,' ')}</div>${progBar(n,issueTypes[0]?.[1]||1,'#DC2626')}<div style="width:22px;text-align:right;font-weight:700;color:#DC2626">${n}</div></div>`).join('')}</div></div>`:''}
 ${chk('es-60day')&&recentSentSet.size>0?`${secHdr(`Activity Window \u2014 Last ${engWindow} Days`)}<div class="bcard"><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">${[['Emails Sent',recentSentSet.size,'#3872B8','#EBF2FB'],['Opened',recentOpenSet.size,openColor,openRate>=50?'#E6F5EF':'#FFF8E6'],['Clicked',new Set(recentClick.map(normEm).filter(Boolean)).size,'#1E2E3D','#EEF1F8'],['Issues',new Set(issues.filter(n=>new Date(n[C.sent_at])>=cutoff).map(normEm).filter(Boolean)).size,'#DC2626','#FDF0EE']].map(([l,n,c,bg])=>`<div style="background:${bg};border-radius:8px;padding:10px 12px"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${c};margin-bottom:4px">${l}</div><div style="font-size:22px;font-weight:800;color:${c}">${n}</div></div>`).join('')}</div></div>`:''}
 ${chk('es-topsubjects')&&topSubjects.length?`${secHdr('Top Email Subjects by Open Rate')}<div class="bcard"><div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px">${topSubjects.map(s=>{const rc=s.rate>=50?'#16A34A':s.rate>=25?'#D97706':'#DC2626';return`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F7FA;font-size:9px"><div style="flex:1;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(s.subject.length>60?s.subject.slice(0,60)+'\u2026':s.subject)}</div><div style="font-weight:700;color:${rc};white-space:nowrap">${s.rate}%</div></div>`;}).join('')}</div></div>`:''}
-<div class="footer"><div>&#x1F512; Confidential \u2014 HUB HUB CertSecure \u00b7 ${esc(selectedClient.name)} \u00b7 Engagement Summary</div><div>${stamp}</div></div></body></html>`;
+<div class="footer"><div>&#x1F512; Confidential \u2014 HUB HUB CertSecure \u00b7 ${esc(selectedClient.name)} \u00b7 Engagement Summary</div><div>${stamp}</div></div>
+<!-- ═══ DEBUG PANEL (remove before production) ═══ -->
+<div id="cs-debug-panel" style="position:fixed;bottom:12px;right:12px;background:#1a1a2e;color:#e0e0e0;font-family:monospace;font-size:11px;padding:10px 12px;border-radius:8px;z-index:99999;min-width:280px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid #333;max-height:420px;overflow:hidden;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <span style="font-weight:700;color:#00AEEF;font-size:12px">🛠 CertSecure Debug</span>
+    <div style="display:flex;gap:6px">
+      <button onclick="csDebugClearLog()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Clear</button>
+      <button onclick="document.getElementById('cs-debug-panel').style.display='none'" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Hide</button>
+    </div>
+  </div>
+  <div id="cs-debug-tabs" style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #333"></div>
+  <div style="font-size:10px;color:#888;margin-bottom:4px">Event log (newest first):</div>
+  <div id="cs-debug-log" style="overflow-y:auto;flex:1;font-size:10px;line-height:1.6"></div>
+</div>
+<script>
+(function() {
+  var MAX_LOG = 30;
+  var _log = [];
+
+  function csDebugRefreshTabs() {
+    var panel = document.getElementById('cs-debug-tabs');
+    if (!panel) return;
+    var tabs = ['reports','monday','template'];
+    panel.innerHTML = tabs.map(function(t) {
+      var el = document.getElementById('tab-' + t);
+      if (!el) return '<div style="color:#888">tab-' + t + ': not found</div>';
+      var style = el.style.display;
+      var hidden = el.classList.contains('tab-hidden');
+      var computed = window.getComputedStyle(el).display;
+      var isVisible = computed !== 'none';
+      var color = isVisible ? '#ff4444' : '#44ff88';
+      var label = isVisible ? '👁 VISIBLE' : '🙈 hidden';
+      return '<div style="color:' + color + ';margin-bottom:2px">' +
+        'tab-' + t + ': <b>' + label + '</b>' +
+        ' <span style="color:#888">[style=' + (style||'""') + ' cls=' + (hidden?'tab-hidden':'') + ' computed=' + computed + ']</span>' +
+        '</div>';
+    }).join('');
+  }
+
+  window.csDebugLog = function(msg, color) {
+    var time = new Date().toLocaleTimeString('en-US', {hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    _log.unshift('<div style="color:' + (color||'#ccc') + '">' + time + ' ' + msg + '</div>');
+    if (_log.length > MAX_LOG) _log.pop();
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = _log.join('');
+    csDebugRefreshTabs();
+  };
+
+  window.csDebugClearLog = function() {
+    _log = [];
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = '';
+  };
+
+  // Patch switchTab to log every call
+  var _origSwitchTab = window.switchTab;
+  window.switchTab = function(tab) {
+    csDebugLog('switchTab(<b style="color:#FFD700">' + tab + '</b>) called', '#FFD700');
+    _origSwitchTab.apply(this, arguments);
+    setTimeout(csDebugRefreshTabs, 10);
+    // Check if tab-monday is visible when it shouldn't be
+    setTimeout(function() {
+      var mon = document.getElementById('tab-monday');
+      if (mon && window.getComputedStyle(mon).display !== 'none' && tab !== 'monday') {
+        csDebugLog('⚠️ tab-monday VISIBLE after switchTab(' + tab + ')!', '#ff4444');
+      }
+    }, 50);
+  };
+
+  // MutationObserver on tab-monday - catch ANYTHING that changes it
+  document.addEventListener('DOMContentLoaded', function() {
+    csDebugRefreshTabs();
+    var mon = document.getElementById('tab-monday');
+    if (mon && window.MutationObserver) {
+      var obs = new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+          if (m.type === 'attributes') {
+            var el = m.target;
+            var computed = window.getComputedStyle(el).display;
+            var attr = m.attributeName;
+            csDebugLog('🔍 tab-monday <b>' + attr + '</b> changed → computed=' + computed + 
+              ' style="' + el.style.display + '" cls=' + el.className, 
+              computed !== 'none' ? '#ff4444' : '#aaa');
+          }
+        });
+      });
+      obs.observe(mon, { attributes: true, attributeFilter: ['style','class'] });
+      csDebugLog('👀 MutationObserver watching tab-monday', '#00AEEF');
+    }
+    // Also patch sidebarNav
+    var _origNav = window.sidebarNav;
+    window.sidebarNav = function(dest) {
+      csDebugLog('sidebarNav(<b style="color:#adf">' + dest + '</b>)', '#adf');
+      _origNav.apply(this, arguments);
+    };
+  });
+
+  // Refresh tab display every 2s as a sanity check
+  setInterval(csDebugRefreshTabs, 2000);
+})();
+</script>
+
+</body></html>`;
 }
 async function listSnapshotMonths(year){
   const s=getSettings(),url=`https://api.github.com/repos/${s.owner}/${s.repo}/contents/snapshots/${year}?ref=${s.branch}`,headers={'Accept':'application/vnd.github.v3+json'};
@@ -3454,6 +3862,108 @@ async function buildProgramOverviewHTML(year, producer) {
   </div>
 </div>
 <div class="footer"><div>\uD83D\uDD12 Confidential \u2014 HUB CertSecure \u00b7 ${esc(selectedClient.name)} \u00b7 Program Overview ${year}</div><div>${stamp}</div></div>
+
+<!-- ═══ DEBUG PANEL (remove before production) ═══ -->
+<div id="cs-debug-panel" style="position:fixed;bottom:12px;right:12px;background:#1a1a2e;color:#e0e0e0;font-family:monospace;font-size:11px;padding:10px 12px;border-radius:8px;z-index:99999;min-width:280px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid #333;max-height:420px;overflow:hidden;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <span style="font-weight:700;color:#00AEEF;font-size:12px">🛠 CertSecure Debug</span>
+    <div style="display:flex;gap:6px">
+      <button onclick="csDebugClearLog()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Clear</button>
+      <button onclick="document.getElementById('cs-debug-panel').style.display='none'" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Hide</button>
+    </div>
+  </div>
+  <div id="cs-debug-tabs" style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #333"></div>
+  <div style="font-size:10px;color:#888;margin-bottom:4px">Event log (newest first):</div>
+  <div id="cs-debug-log" style="overflow-y:auto;flex:1;font-size:10px;line-height:1.6"></div>
+</div>
+<script>
+(function() {
+  var MAX_LOG = 30;
+  var _log = [];
+
+  function csDebugRefreshTabs() {
+    var panel = document.getElementById('cs-debug-tabs');
+    if (!panel) return;
+    var tabs = ['reports','monday','template'];
+    panel.innerHTML = tabs.map(function(t) {
+      var el = document.getElementById('tab-' + t);
+      if (!el) return '<div style="color:#888">tab-' + t + ': not found</div>';
+      var style = el.style.display;
+      var hidden = el.classList.contains('tab-hidden');
+      var computed = window.getComputedStyle(el).display;
+      var isVisible = computed !== 'none';
+      var color = isVisible ? '#ff4444' : '#44ff88';
+      var label = isVisible ? '👁 VISIBLE' : '🙈 hidden';
+      return '<div style="color:' + color + ';margin-bottom:2px">' +
+        'tab-' + t + ': <b>' + label + '</b>' +
+        ' <span style="color:#888">[style=' + (style||'""') + ' cls=' + (hidden?'tab-hidden':'') + ' computed=' + computed + ']</span>' +
+        '</div>';
+    }).join('');
+  }
+
+  window.csDebugLog = function(msg, color) {
+    var time = new Date().toLocaleTimeString('en-US', {hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    _log.unshift('<div style="color:' + (color||'#ccc') + '">' + time + ' ' + msg + '</div>');
+    if (_log.length > MAX_LOG) _log.pop();
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = _log.join('');
+    csDebugRefreshTabs();
+  };
+
+  window.csDebugClearLog = function() {
+    _log = [];
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = '';
+  };
+
+  // Patch switchTab to log every call
+  var _origSwitchTab = window.switchTab;
+  window.switchTab = function(tab) {
+    csDebugLog('switchTab(<b style="color:#FFD700">' + tab + '</b>) called', '#FFD700');
+    _origSwitchTab.apply(this, arguments);
+    setTimeout(csDebugRefreshTabs, 10);
+    // Check if tab-monday is visible when it shouldn't be
+    setTimeout(function() {
+      var mon = document.getElementById('tab-monday');
+      if (mon && window.getComputedStyle(mon).display !== 'none' && tab !== 'monday') {
+        csDebugLog('⚠️ tab-monday VISIBLE after switchTab(' + tab + ')!', '#ff4444');
+      }
+    }, 50);
+  };
+
+  // MutationObserver on tab-monday - catch ANYTHING that changes it
+  document.addEventListener('DOMContentLoaded', function() {
+    csDebugRefreshTabs();
+    var mon = document.getElementById('tab-monday');
+    if (mon && window.MutationObserver) {
+      var obs = new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+          if (m.type === 'attributes') {
+            var el = m.target;
+            var computed = window.getComputedStyle(el).display;
+            var attr = m.attributeName;
+            csDebugLog('🔍 tab-monday <b>' + attr + '</b> changed → computed=' + computed + 
+              ' style="' + el.style.display + '" cls=' + el.className, 
+              computed !== 'none' ? '#ff4444' : '#aaa');
+          }
+        });
+      });
+      obs.observe(mon, { attributes: true, attributeFilter: ['style','class'] });
+      csDebugLog('👀 MutationObserver watching tab-monday', '#00AEEF');
+    }
+    // Also patch sidebarNav
+    var _origNav = window.sidebarNav;
+    window.sidebarNav = function(dest) {
+      csDebugLog('sidebarNav(<b style="color:#adf">' + dest + '</b>)', '#adf');
+      _origNav.apply(this, arguments);
+    };
+  });
+
+  // Refresh tab display every 2s as a sanity check
+  setInterval(csDebugRefreshTabs, 2000);
+})();
+</script>
+
 </body></html>`;
 }
 
@@ -3467,7 +3977,109 @@ function buildThankYouCardHTML(insureds,meta,contactName,producer){
   const msg=rate>=80?'Thank you for your commitment to a fully compliant insurance program \u2014 your diligence protects everyone involved.':rate>=60?'Thank you for your continued partnership. Together we\u2019re making meaningful progress toward a fully compliant program.':'Thank you for your trust. Our team is working alongside you to move toward a fully compliant program \u2014 we appreciate your partnership.';
   return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(selectedClient.name)} \u2014 Thank You Card</title><style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',Arial,sans-serif;background:#F4F7FB;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.card{background:white;border-radius:16px;width:700px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.15)}.card-top{background:linear-gradient(135deg,#1E2E3D 0%,#2B3A52 60%,#3872B8 100%);padding:28px 32px 22px;color:white}.card-body{padding:28px 32px 24px}.stat-row{display:flex;gap:14px;margin-top:18px}.stat{background:#F8FAFC;border:1px solid rgba(6,120,213,0.12);border-radius:10px;padding:12px 16px;flex:1;text-align:center}@media print{body{min-height:unset;background:white}@page{size:letter landscape;margin:8mm}}</style></head><body>
 <div class="card"><div class="card-top"><div style="display:flex;justify-content:space-between;align-items:center">${logoTag}<div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.6)">Client Recognition ${year}</div></div><div style="margin-top:18px"><div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:5px">For the team at</div><div style="font-size:26px;font-weight:900;color:white;line-height:1.1">${esc(selectedClient.name)}</div>${contactName?`<div style="font-size:14px;color:rgba(255,255,255,0.75);margin-top:5px">Attention: ${esc(contactName)}</div>`:''}</div></div>
-<div class="card-body"><div style="font-size:24px;font-weight:800;color:#1E2E3D;line-height:1.2;margin-bottom:12px">Thank you for being a valued HUB CertSecure partner.</div><div style="font-size:13px;color:#5A6B7B;line-height:1.6;margin-bottom:18px">${msg}</div><div class="stat-row"><div class="stat"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px">Active Entities</div><div style="font-size:30px;font-weight:900;color:#1E2E3D">${total}</div></div><div class="stat"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#15803D;margin-bottom:5px">Compliant</div><div style="font-size:30px;font-weight:900;color:#16A34A">${comp}</div></div><div class="stat"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${rateColor};margin-bottom:5px">Compliance Rate</div><div style="font-size:30px;font-weight:900;color:${rateColor}">${rate}%</div></div>${goLive?`<div class="stat"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px">Program Since</div><div style="font-size:16px;font-weight:800;color:#1E2E3D;margin-top:7px">${goLive}</div></div>`:''}</div><div style="margin-top:22px;padding-top:16px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;align-items:center"><div style="font-size:12px;font-weight:700;color:#1E2E3D">Serviced by HUB CertSecure</div><div style="font-size:12px;font-weight:700;color:#1E2E3D">${producer?esc(producer):''}</div></div></div></div></body></html>`;
+<div class="card-body"><div style="font-size:24px;font-weight:800;color:#1E2E3D;line-height:1.2;margin-bottom:12px">Thank you for being a valued HUB CertSecure partner.</div><div style="font-size:13px;color:#5A6B7B;line-height:1.6;margin-bottom:18px">${msg}</div><div class="stat-row"><div class="stat"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px">Active Entities</div><div style="font-size:30px;font-weight:900;color:#1E2E3D">${total}</div></div><div class="stat"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#15803D;margin-bottom:5px">Compliant</div><div style="font-size:30px;font-weight:900;color:#16A34A">${comp}</div></div><div class="stat"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${rateColor};margin-bottom:5px">Compliance Rate</div><div style="font-size:30px;font-weight:900;color:${rateColor}">${rate}%</div></div>${goLive?`<div class="stat"><div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B;margin-bottom:5px">Program Since</div><div style="font-size:16px;font-weight:800;color:#1E2E3D;margin-top:7px">${goLive}</div></div>`:''}</div><div style="margin-top:22px;padding-top:16px;border-top:1px solid #E8ECF5;display:flex;justify-content:space-between;align-items:center"><div style="font-size:12px;font-weight:700;color:#1E2E3D">Serviced by HUB CertSecure</div><div style="font-size:12px;font-weight:700;color:#1E2E3D">${producer?esc(producer):''}</div></div></div></div>
+<!-- ═══ DEBUG PANEL (remove before production) ═══ -->
+<div id="cs-debug-panel" style="position:fixed;bottom:12px;right:12px;background:#1a1a2e;color:#e0e0e0;font-family:monospace;font-size:11px;padding:10px 12px;border-radius:8px;z-index:99999;min-width:280px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid #333;max-height:420px;overflow:hidden;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <span style="font-weight:700;color:#00AEEF;font-size:12px">🛠 CertSecure Debug</span>
+    <div style="display:flex;gap:6px">
+      <button onclick="csDebugClearLog()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Clear</button>
+      <button onclick="document.getElementById('cs-debug-panel').style.display='none'" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Hide</button>
+    </div>
+  </div>
+  <div id="cs-debug-tabs" style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #333"></div>
+  <div style="font-size:10px;color:#888;margin-bottom:4px">Event log (newest first):</div>
+  <div id="cs-debug-log" style="overflow-y:auto;flex:1;font-size:10px;line-height:1.6"></div>
+</div>
+<script>
+(function() {
+  var MAX_LOG = 30;
+  var _log = [];
+
+  function csDebugRefreshTabs() {
+    var panel = document.getElementById('cs-debug-tabs');
+    if (!panel) return;
+    var tabs = ['reports','monday','template'];
+    panel.innerHTML = tabs.map(function(t) {
+      var el = document.getElementById('tab-' + t);
+      if (!el) return '<div style="color:#888">tab-' + t + ': not found</div>';
+      var style = el.style.display;
+      var hidden = el.classList.contains('tab-hidden');
+      var computed = window.getComputedStyle(el).display;
+      var isVisible = computed !== 'none';
+      var color = isVisible ? '#ff4444' : '#44ff88';
+      var label = isVisible ? '👁 VISIBLE' : '🙈 hidden';
+      return '<div style="color:' + color + ';margin-bottom:2px">' +
+        'tab-' + t + ': <b>' + label + '</b>' +
+        ' <span style="color:#888">[style=' + (style||'""') + ' cls=' + (hidden?'tab-hidden':'') + ' computed=' + computed + ']</span>' +
+        '</div>';
+    }).join('');
+  }
+
+  window.csDebugLog = function(msg, color) {
+    var time = new Date().toLocaleTimeString('en-US', {hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    _log.unshift('<div style="color:' + (color||'#ccc') + '">' + time + ' ' + msg + '</div>');
+    if (_log.length > MAX_LOG) _log.pop();
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = _log.join('');
+    csDebugRefreshTabs();
+  };
+
+  window.csDebugClearLog = function() {
+    _log = [];
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = '';
+  };
+
+  // Patch switchTab to log every call
+  var _origSwitchTab = window.switchTab;
+  window.switchTab = function(tab) {
+    csDebugLog('switchTab(<b style="color:#FFD700">' + tab + '</b>) called', '#FFD700');
+    _origSwitchTab.apply(this, arguments);
+    setTimeout(csDebugRefreshTabs, 10);
+    // Check if tab-monday is visible when it shouldn't be
+    setTimeout(function() {
+      var mon = document.getElementById('tab-monday');
+      if (mon && window.getComputedStyle(mon).display !== 'none' && tab !== 'monday') {
+        csDebugLog('⚠️ tab-monday VISIBLE after switchTab(' + tab + ')!', '#ff4444');
+      }
+    }, 50);
+  };
+
+  // MutationObserver on tab-monday - catch ANYTHING that changes it
+  document.addEventListener('DOMContentLoaded', function() {
+    csDebugRefreshTabs();
+    var mon = document.getElementById('tab-monday');
+    if (mon && window.MutationObserver) {
+      var obs = new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+          if (m.type === 'attributes') {
+            var el = m.target;
+            var computed = window.getComputedStyle(el).display;
+            var attr = m.attributeName;
+            csDebugLog('🔍 tab-monday <b>' + attr + '</b> changed → computed=' + computed + 
+              ' style="' + el.style.display + '" cls=' + el.className, 
+              computed !== 'none' ? '#ff4444' : '#aaa');
+          }
+        });
+      });
+      obs.observe(mon, { attributes: true, attributeFilter: ['style','class'] });
+      csDebugLog('👀 MutationObserver watching tab-monday', '#00AEEF');
+    }
+    // Also patch sidebarNav
+    var _origNav = window.sidebarNav;
+    window.sidebarNav = function(dest) {
+      csDebugLog('sidebarNav(<b style="color:#adf">' + dest + '</b>)', '#adf');
+      _origNav.apply(this, arguments);
+    };
+  });
+
+  // Refresh tab display every 2s as a sanity check
+  setInterval(csDebugRefreshTabs, 2000);
+})();
+</script>
+
+</body></html>`;
 }
 </script>
 <script>
@@ -3486,7 +4098,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.33
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.33d
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -4849,7 +5461,7 @@ async function wsImportClients() {
 
 <script>
 // ══════════════════════════════════════════════════════════════
-//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.33
+//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.33d
 // ══════════════════════════════════════════════════════════════
 
 let _tgClient = null;
@@ -5736,7 +6348,109 @@ function tgBuildFormHTML(title,subtitle,accent,header){
     '</div>',
     '</div>',
     '</div>',
-    '</body></html>'
+    '
+<!-- ═══ DEBUG PANEL (remove before production) ═══ -->
+<div id="cs-debug-panel" style="position:fixed;bottom:12px;right:12px;background:#1a1a2e;color:#e0e0e0;font-family:monospace;font-size:11px;padding:10px 12px;border-radius:8px;z-index:99999;min-width:280px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid #333;max-height:420px;overflow:hidden;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <span style="font-weight:700;color:#00AEEF;font-size:12px">🛠 CertSecure Debug</span>
+    <div style="display:flex;gap:6px">
+      <button onclick="csDebugClearLog()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Clear</button>
+      <button onclick="document.getElementById('cs-debug-panel').style.display='none'" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Hide</button>
+    </div>
+  </div>
+  <div id="cs-debug-tabs" style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #333"></div>
+  <div style="font-size:10px;color:#888;margin-bottom:4px">Event log (newest first):</div>
+  <div id="cs-debug-log" style="overflow-y:auto;flex:1;font-size:10px;line-height:1.6"></div>
+</div>
+<script>
+(function() {
+  var MAX_LOG = 30;
+  var _log = [];
+
+  function csDebugRefreshTabs() {
+    var panel = document.getElementById('cs-debug-tabs');
+    if (!panel) return;
+    var tabs = ['reports','monday','template'];
+    panel.innerHTML = tabs.map(function(t) {
+      var el = document.getElementById('tab-' + t);
+      if (!el) return '<div style="color:#888">tab-' + t + ': not found</div>';
+      var style = el.style.display;
+      var hidden = el.classList.contains('tab-hidden');
+      var computed = window.getComputedStyle(el).display;
+      var isVisible = computed !== 'none';
+      var color = isVisible ? '#ff4444' : '#44ff88';
+      var label = isVisible ? '👁 VISIBLE' : '🙈 hidden';
+      return '<div style="color:' + color + ';margin-bottom:2px">' +
+        'tab-' + t + ': <b>' + label + '</b>' +
+        ' <span style="color:#888">[style=' + (style||'""') + ' cls=' + (hidden?'tab-hidden':'') + ' computed=' + computed + ']</span>' +
+        '</div>';
+    }).join('');
+  }
+
+  window.csDebugLog = function(msg, color) {
+    var time = new Date().toLocaleTimeString('en-US', {hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    _log.unshift('<div style="color:' + (color||'#ccc') + '">' + time + ' ' + msg + '</div>');
+    if (_log.length > MAX_LOG) _log.pop();
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = _log.join('');
+    csDebugRefreshTabs();
+  };
+
+  window.csDebugClearLog = function() {
+    _log = [];
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = '';
+  };
+
+  // Patch switchTab to log every call
+  var _origSwitchTab = window.switchTab;
+  window.switchTab = function(tab) {
+    csDebugLog('switchTab(<b style="color:#FFD700">' + tab + '</b>) called', '#FFD700');
+    _origSwitchTab.apply(this, arguments);
+    setTimeout(csDebugRefreshTabs, 10);
+    // Check if tab-monday is visible when it shouldn't be
+    setTimeout(function() {
+      var mon = document.getElementById('tab-monday');
+      if (mon && window.getComputedStyle(mon).display !== 'none' && tab !== 'monday') {
+        csDebugLog('⚠️ tab-monday VISIBLE after switchTab(' + tab + ')!', '#ff4444');
+      }
+    }, 50);
+  };
+
+  // MutationObserver on tab-monday - catch ANYTHING that changes it
+  document.addEventListener('DOMContentLoaded', function() {
+    csDebugRefreshTabs();
+    var mon = document.getElementById('tab-monday');
+    if (mon && window.MutationObserver) {
+      var obs = new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+          if (m.type === 'attributes') {
+            var el = m.target;
+            var computed = window.getComputedStyle(el).display;
+            var attr = m.attributeName;
+            csDebugLog('🔍 tab-monday <b>' + attr + '</b> changed → computed=' + computed + 
+              ' style="' + el.style.display + '" cls=' + el.className, 
+              computed !== 'none' ? '#ff4444' : '#aaa');
+          }
+        });
+      });
+      obs.observe(mon, { attributes: true, attributeFilter: ['style','class'] });
+      csDebugLog('👀 MutationObserver watching tab-monday', '#00AEEF');
+    }
+    // Also patch sidebarNav
+    var _origNav = window.sidebarNav;
+    window.sidebarNav = function(dest) {
+      csDebugLog('sidebarNav(<b style="color:#adf">' + dest + '</b>)', '#adf');
+      _origNav.apply(this, arguments);
+    };
+  });
+
+  // Refresh tab display every 2s as a sanity check
+  setInterval(csDebugRefreshTabs, 2000);
+})();
+</script>
+
+</body></html>'
   ].join('');
 
   return raw.replace(/__Q__/g,'"');
@@ -5782,7 +6496,7 @@ function ceAutoDetectColors() {
 }
 </script>
 <style>
-/* v0.33 final CSS */
+/* v0.33d final CSS */
 .sidebar-brand{flex:1!important;min-width:0;overflow:hidden}
 .sidebar-brand-cert{font-size:18px!important;font-weight:900!important;letter-spacing:.03em!important;color:#fff!important;line-height:1.1;white-space:nowrap}
 .sidebar-brand-cert span{color:#00AEEF!important}
@@ -5805,5 +6519,107 @@ function ceAutoDetectColors() {
 .breadcrumb-bar{display:block!important;padding:14px 28px 8px!important;border-bottom:2px solid rgba(6,120,213,.1)!important;flex-shrink:0!important;min-height:46px!important;background:#fff!important}
 #bc-page{display:block!important;font-size:17px!important;font-weight:700!important;color:#1E2E3D!important}
 </style>
+
+<!-- ═══ DEBUG PANEL (remove before production) ═══ -->
+<div id="cs-debug-panel" style="position:fixed;bottom:12px;right:12px;background:#1a1a2e;color:#e0e0e0;font-family:monospace;font-size:11px;padding:10px 12px;border-radius:8px;z-index:99999;min-width:280px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid #333;max-height:420px;overflow:hidden;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <span style="font-weight:700;color:#00AEEF;font-size:12px">🛠 CertSecure Debug</span>
+    <div style="display:flex;gap:6px">
+      <button onclick="csDebugClearLog()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Clear</button>
+      <button onclick="document.getElementById('cs-debug-panel').style.display='none'" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Hide</button>
+    </div>
+  </div>
+  <div id="cs-debug-tabs" style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #333"></div>
+  <div style="font-size:10px;color:#888;margin-bottom:4px">Event log (newest first):</div>
+  <div id="cs-debug-log" style="overflow-y:auto;flex:1;font-size:10px;line-height:1.6"></div>
+</div>
+<script>
+(function() {
+  var MAX_LOG = 30;
+  var _log = [];
+
+  function csDebugRefreshTabs() {
+    var panel = document.getElementById('cs-debug-tabs');
+    if (!panel) return;
+    var tabs = ['reports','monday','template'];
+    panel.innerHTML = tabs.map(function(t) {
+      var el = document.getElementById('tab-' + t);
+      if (!el) return '<div style="color:#888">tab-' + t + ': not found</div>';
+      var style = el.style.display;
+      var hidden = el.classList.contains('tab-hidden');
+      var computed = window.getComputedStyle(el).display;
+      var isVisible = computed !== 'none';
+      var color = isVisible ? '#ff4444' : '#44ff88';
+      var label = isVisible ? '👁 VISIBLE' : '🙈 hidden';
+      return '<div style="color:' + color + ';margin-bottom:2px">' +
+        'tab-' + t + ': <b>' + label + '</b>' +
+        ' <span style="color:#888">[style=' + (style||'""') + ' cls=' + (hidden?'tab-hidden':'') + ' computed=' + computed + ']</span>' +
+        '</div>';
+    }).join('');
+  }
+
+  window.csDebugLog = function(msg, color) {
+    var time = new Date().toLocaleTimeString('en-US', {hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    _log.unshift('<div style="color:' + (color||'#ccc') + '">' + time + ' ' + msg + '</div>');
+    if (_log.length > MAX_LOG) _log.pop();
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = _log.join('');
+    csDebugRefreshTabs();
+  };
+
+  window.csDebugClearLog = function() {
+    _log = [];
+    var logEl = document.getElementById('cs-debug-log');
+    if (logEl) logEl.innerHTML = '';
+  };
+
+  // Patch switchTab to log every call
+  var _origSwitchTab = window.switchTab;
+  window.switchTab = function(tab) {
+    csDebugLog('switchTab(<b style="color:#FFD700">' + tab + '</b>) called', '#FFD700');
+    _origSwitchTab.apply(this, arguments);
+    setTimeout(csDebugRefreshTabs, 10);
+    // Check if tab-monday is visible when it shouldn't be
+    setTimeout(function() {
+      var mon = document.getElementById('tab-monday');
+      if (mon && window.getComputedStyle(mon).display !== 'none' && tab !== 'monday') {
+        csDebugLog('⚠️ tab-monday VISIBLE after switchTab(' + tab + ')!', '#ff4444');
+      }
+    }, 50);
+  };
+
+  // MutationObserver on tab-monday - catch ANYTHING that changes it
+  document.addEventListener('DOMContentLoaded', function() {
+    csDebugRefreshTabs();
+    var mon = document.getElementById('tab-monday');
+    if (mon && window.MutationObserver) {
+      var obs = new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+          if (m.type === 'attributes') {
+            var el = m.target;
+            var computed = window.getComputedStyle(el).display;
+            var attr = m.attributeName;
+            csDebugLog('🔍 tab-monday <b>' + attr + '</b> changed → computed=' + computed + 
+              ' style="' + el.style.display + '" cls=' + el.className, 
+              computed !== 'none' ? '#ff4444' : '#aaa');
+          }
+        });
+      });
+      obs.observe(mon, { attributes: true, attributeFilter: ['style','class'] });
+      csDebugLog('👀 MutationObserver watching tab-monday', '#00AEEF');
+    }
+    // Also patch sidebarNav
+    var _origNav = window.sidebarNav;
+    window.sidebarNav = function(dest) {
+      csDebugLog('sidebarNav(<b style="color:#adf">' + dest + '</b>)', '#adf');
+      _origNav.apply(this, arguments);
+    };
+  });
+
+  // Refresh tab display every 2s as a sanity check
+  setInterval(csDebugRefreshTabs, 2000);
+})();
+</script>
+
 </body>
 </html>
