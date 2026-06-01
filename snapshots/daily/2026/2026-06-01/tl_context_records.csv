@@ -42,7 +42,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdefb802bb2c42a879f4b6,"bf3945 - Riverside Business Center 4 {Block Income Fund III, LP}",Project,active,,,,,,2026-05-08,2026-05-28,2026-06-01
 "Block Real Estate Services, LLC",69fdefbc0e86e2f8723d93ac,"bf3946 - Riverside Business Center 5 {Block Income Fund III, LP}",Project,active,,,,,,2026-05-08,2026-05-28,2026-06-01
 "Block Real Estate Services, LLC",69fdefc138cbea6b3a68d4da,"bf3947 - Riverside Business Center 6 {Block Income Fund III, LP}",Project,active,,,,,,2026-05-08,2026-05-28,2026-06-01
-"Block Real Estate Services, LLC",69fdefc60bb484cab513a701,"bf4306 - Prime Source Associates, LLC",Project,active,,,,,,2026-05-08,2026-05-28,2026-06-01
+"Block Real Estate Services, LLC",69fdefc60bb484cab513a701,"bf4306 - Prime Source Associates, LLC",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-01
 "Block Real Estate Services, LLC",69fdefe60bb484cab513acd9,"bkp362 - Nieman Business Park Building C {BK Properties, LLC}",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-01
 "Block Real Estate Services, LLC",69fdefeafa0b60fcd50d7a68,"bkp363 - Nieman Business Park Building D {BK Properties,LLC}",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-01
 "Block Real Estate Services, LLC",69fdeff702bb2c42a87a062f,"ccc268 - CityPlace Corporate Centre I {Cityplace Corporate Centre I Investors, LLC}",Project,active,,,,,,2026-05-08,2026-05-31,2026-06-01
@@ -70,7 +70,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf0533b208288e0a7d827,"kci281 - Platte Valley Industrial Center 1 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-05-31,2026-06-01
 "Block Real Estate Services, LLC",69fdf05638cbea6b3a68f4ea,"kci282 - Platte Valley Industrial Center 2 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-05-31,2026-06-01
 "Block Real Estate Services, LLC",69fdf0590bb484cab513c4cc,"kci283 - Platte Valley Industrial Center 3 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-01
-"Block Real Estate Services, LLC",69fdf05e0e86e2f8723db3e7,"kci284 - Platte Valley Industrial Center 4 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-05-28,2026-06-01
+"Block Real Estate Services, LLC",69fdf05e0e86e2f8723db3e7,"kci284 - Platte Valley Industrial Center 4 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-01
 "Block Real Estate Services, LLC",69fdf061bf1df2fe969263d0,"kci286 - Platte Valley Industrial Center 6 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-05-31,2026-06-01
 "Block Real Estate Services, LLC",69fdf064e45e7dcf5c4375c2,"kci287 - Platte Valley Industrial Center 7 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-05-28,2026-06-01
 "Block Real Estate Services, LLC",69fdf067fa0b60fcd50d99bf,"kci288 - Platte Valley Industrial Center 8 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-05-31,2026-06-01
@@ -92,7 +92,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf0a60bb484cab513d2da,"mil708 - Mill Street Station {Mill Street Station, LLC}",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-01
 "Block Real Estate Services, LLC",69fdf0aa38cbea6b3a691e24,"mel786 - Village West Park/I-70 Speedway {Melville, LLC}",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-01
 "Block Real Estate Services, LLC",69fdf0ad0bb484cab513d40c,"ncd054 - North Cass Shopping Center {North Cass Development, LLC}",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-01
-"Block Real Estate Services, LLC",69fdf0b038cbea6b3a691f37,"nor453 - Northridge - Clarinda {Northridge-Clarinda, LLC}",Project,active,,,,,,2026-05-08,2026-05-28,2026-06-01
+"Block Real Estate Services, LLC",69fdf0b038cbea6b3a691f37,"nor453 - Northridge - Clarinda {Northridge-Clarinda, LLC}",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-01
 "Block Real Estate Services, LLC",69fdf0b50bb484cab513d68a,"nor454 - Northridge - Enterprise, LLC",Project,active,,,,,,2026-05-08,2026-05-28,2026-06-01
 "Block Real Estate Services, LLC",69fdf0b9bf1df2fe9692782f,"pas771 - Paseo Industrial - 1307 Vernon {Paseo Industrial, LLC}",Project,active,,,,,,2026-05-08,2026-05-28,2026-06-01
 "Block Real Estate Services, LLC",69fdf0bc3b208288e0a7f1c2,"pas772 - Paseo Industrial - 1600 Vernon {Paseo Industrial, LLC}",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-01
@@ -165,7 +165,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf1fad3bfa5e4945e603a,"tic752 - Plaza Corporate Centre {Prom Motor Hotel, Inc.}",Project,active,,,,,,2026-05-08,2026-05-31,2026-06-01
 "Block Real Estate Services, LLC",69fdf1fc3b208288e0a86ed1,"tic827 - Westchester Square Shopping Centre {Westchester 87 Investors, LLC}",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-01
 "Block Real Estate Services, LLC",69fdf1ffd3bfa5e4945e61a5,"tic828 - Pine Ridge Building 28 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-05-27,2026-06-01
-"Block Real Estate Services, LLC",69fdf2023b208288e0a871b2,"tic846 - Pine Ridge Building 26 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-05-27,2026-06-01
+"Block Real Estate Services, LLC",69fdf2023b208288e0a871b2,"tic846 - Pine Ridge Building 26 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-01
 "Block Real Estate Services, LLC",69fdf20a02bb2c42a87a98b0,"tic847 - Pine Ridge Building 27 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-05-31,2026-06-01
 "Block Real Estate Services, LLC",69fdf20e8e25e7a0d918b96c,"tic851 - Pine Ridge Building 31 {PERG Corbion, LLC}",Project,active,,,,,,2026-05-08,2026-05-27,2026-06-01
 "Block Real Estate Services, LLC",69fdf211bf1df2fe9692fce4,"tic873 - Northgate Plaza {Northgate Associates, LLC}",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-01
@@ -183,6 +183,11 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",6a186a07df4174601583f130,"prm793 - Prom Motor Hotel, Inc. - 12065 Metcalf",Project,active,,,,,,2026-05-28,2026-06-01,2026-06-01
 "Block Real Estate Services, LLC",6a186a846b3214c65fe80b42,"prm791 - Prom Motor Hotel, Inc. - 210 N 7 Highway",Project,active,,,,,,2026-05-28,2026-06-01,2026-06-01
 "Block Real Estate Services, LLC",6a18705a9ef1cffe57c1dcd0,"prg840 - Pine Ridge Building 9 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-28,2026-06-01,2026-06-01
+"Block Real Estate Services, LLC",6a1dcc9da0ed8c51ab1b2a64,"3rd046 - Lee's Summit Mike Enterprise {Lee's Summit Mike Enterprise, LLC} (fka Lee's Summit Max)",Project,active,,,,,,2026-06-01,2026-06-01,2026-06-01
+"Block Real Estate Services, LLC",6a1dce5d2575f4fed44439f8,"len462 - Lenexa Logistics Centre South Building 6 {Lenexa Logistics South 6, LLC}",Project,active,,,,,,2026-06-01,2026-06-01,2026-06-01
+"Block Real Estate Services, LLC",6a1dd8c35e529bb0fc8c5087,tic447 - Lenexa Logistics Centre East Building 2,Project,active,,,,,,2026-06-01,2026-06-01,2026-06-01
+"Block Real Estate Services, LLC",6a1ddfb923b401dcff7b5911,"3rd307 - Parkway 134, LLC",Project,active,,,,,,2026-06-01,2026-06-01,2026-06-01
+"Block Real Estate Services, LLC",6a1de36e23b401dcff7c77d4,3rd323 - Rule Realty Corporation - 3323 Roanoake Road,Project,active,,,,,,2026-06-01,2026-06-01,2026-06-01
 QTS Data Centers,69f10c28beb6279e947be4da,"RIC2DC6 - QTS Richmond II DC6, LLC",Project,active,Hitt,,,,,2026-04-28,2026-06-01,2026-06-01
 QTS Data Centers,69f10c28beb6279e947be4db,"RIC3DC2 - QTS Richmond III DC2, LLC",Project,active,,,,,,2026-04-28,2026-06-01,2026-06-01
 QTS Data Centers,69f10c28beb6279e947be4dc,"RIC3DC3 - QTS Richmond III DC3, LLC",Project,active,,,,,,2026-04-28,2026-06-01,2026-06-01
