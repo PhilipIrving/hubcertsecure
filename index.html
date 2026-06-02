@@ -7031,14 +7031,14 @@ function tlsShowSection(name) {
   // Panel header
   const titles = {
     overview:['Overview','DEMO workspace at a glance'],
-    'primary-objects':['Entity Types',`${TLS.data.primaryObjects.length} types · GET /primary-objects`],
-    'primary-records':['Vendors / Entities',`${TLS.data.primaryRecords.length} records · GET /primary-records`],
+    'primary-objects':['Party Types',`${TLS.data.primaryObjects.length} types · GET /primary-objects`],
+    'primary-records':['Parties',`${TLS.data.primaryRecords.length} records · GET /primary-records`],
     'context-objects':['Project Types',`${TLS.data.contextObjects.length} types · GET /context-objects`],
     'context-records':['Projects',`${TLS.data.contextRecords.length} records · GET /context-records`],
     'request-records':['Compliance Requests',`${TLS.data.requestRecords.length} records · GET /request-records`],
     views:['Views',`${TLS.data.views.length} views · GET /views`],
     'ref-data':['Reference Data','Tag defs · Document types · Custom fields · v1 endpoints'],
-    'create-vendor':['Add Vendor','POST /primary-records'],
+    'create-vendor':['Add Party','POST /primary-records'],
     'create-project':['Add Project','POST /context-records'],
     'compliance-tools':['Compliance Tools','Assign profiles · generate certs · create requests'],
     'full-api':['Full API Explorer','Every v2 endpoint — raw request & response'],
@@ -7082,12 +7082,12 @@ function tlsRenderOverview(view) {
   const d=TLS.data, nc=d.requestRecords.filter(r=>r.complianceStatus==='non_compliant'), comp=d.requestRecords.filter(r=>r.complianceStatus==='compliant'), tot=d.requestRecords.length, pct=tot?Math.round(comp.length/tot*100):0;
   tlsBody(`
     <div class="tls-kpi-grid">
-      <div class="tls-kpi tls-kpi-blue" onclick="tlsShowSection('primary-records')" style="cursor:pointer"><div class="tls-kpi-val">${d.primaryRecords.length}</div><div class="tls-kpi-lbl">Vendors</div></div>
+      <div class="tls-kpi tls-kpi-blue" onclick="tlsShowSection('primary-records')" style="cursor:pointer"><div class="tls-kpi-val">${d.primaryRecords.length}</div><div class="tls-kpi-lbl">Parties</div></div>
       <div class="tls-kpi tls-kpi-teal" onclick="tlsShowSection('context-records')" style="cursor:pointer"><div class="tls-kpi-val">${d.contextRecords.length}</div><div class="tls-kpi-lbl">Projects</div></div>
       <div class="tls-kpi tls-kpi-green"><div class="tls-kpi-val" style="color:#3EBD3E">${comp.length}</div><div class="tls-kpi-lbl" style="color:#3EBD3E">${pct}% compliant</div></div>
       <div class="tls-kpi ${nc.length>0?'tls-kpi-red':'tls-kpi-green'}"><div class="tls-kpi-val" style="color:${nc.length>0?'#AC1534':'#3EBD3E'}">${nc.length}</div><div class="tls-kpi-lbl" style="color:${nc.length>0?'#AC1534':'#3EBD3E'}">Non-Compliant</div></div>
     </div>
-    <div class="tls-sec-hdr">Entity Types <span class="tls-cnt">${d.primaryObjects.length}</span></div>
+    <div class="tls-sec-hdr">Party Types <span class="tls-cnt">${d.primaryObjects.length}</span></div>
     <table class="tls-table"><thead><tr><th>Name</th><th>Plural</th><th>Slug</th><th>ID</th><th>Records</th></tr></thead><tbody>
     ${d.primaryObjects.map(o=>`<tr><td><strong>${o.name}</strong></td><td>${o.pluralName}</td><td class="mono">${o.slug||'—'}</td><td class="mono">${tlsCopy(o._id)}<small>${o._id?.slice(-8)}</small></td><td>${tlsTag('blue',d.primaryRecords.filter(r=>r.primaryObjectId===o._id).length)}</td></tr>`).join('')||'<tr><td colspan="5" class="muted">None</td></tr>'}
     </tbody></table>
@@ -7106,13 +7106,13 @@ function tlsRenderPrimaryRecords(view) {
   tlsBody(`
     <div style="display:flex;gap:8px;margin-bottom:12px">
       <input type="text" class="tls-search" placeholder="Search vendors…" oninput="tlsFilter('tls-vendor-grid','tls-vc-',this.value,TLS.data.primaryRecords)">
-      <button class="btn btn-primary" style="font-size:12px;padding:7px 14px;white-space:nowrap" onclick="tlsShowSection('create-vendor')">+ Add Vendor</button>
+      <button class="btn btn-primary" style="font-size:12px;padding:7px 14px;white-space:nowrap" onclick="tlsShowSection('create-vendor')">+ Add Party</button>
     </div>
     <div class="tls-card-grid" id="tls-vendor-grid">
     ${d.primaryRecords.map(r=>{
       const reqs=d.requestRecords.filter(rr=>rr.primaryRecordId===r._id), nc=reqs.filter(rr=>rr.complianceStatus==='non_compliant').length, comp=reqs.filter(rr=>rr.complianceStatus==='compliant').length, pObj=d.primaryObjects.find(o=>o._id===r.primaryObjectId);
       return `<div class="tls-card" id="tls-vc-${r._id}" data-name="${(r.name||'').toLowerCase()}" onclick="tlsVendorDetail('${r._id}')">
-        <div class="tls-card-row"><div class="tls-avatar">🏢</div><div><div class="tls-card-name">${r.name||'Unnamed'}</div><div class="tls-card-type">${pObj?.name||'Entity'}</div></div></div>
+        <div class="tls-card-row"><div class="tls-avatar">🏢</div><div><div class="tls-card-name">${r.name||'Unnamed'}</div><div class="tls-card-type">${pObj?.name||'Party'}</div></div></div>
         <div class="tls-tags mt6">${tlsTag(r.status==='archived'?'grey':'blue',r.status||'active')}${comp>0?tlsTag('green',comp+' ✓'):''}${nc>0?tlsTag('red',nc+' NC'):''}${reqs.length===0?tlsTag('grey','no requests'):''}</div>
         <div class="tls-card-id">${r._id}</div>
         <div class="tls-card-actions"><button class="btn btn-secondary" style="font-size:11px;padding:4px 10px" onclick="event.stopPropagation();tlsVendorDetail('${r._id}')">Details</button><button class="tls-del-btn" onclick="event.stopPropagation();tlsDelete('primary-records','${r._id}','${(r.name||'').replace(/'/g,"\\'")}')">Delete</button></div>
@@ -7132,18 +7132,18 @@ async function tlsVendorDetail(id) {
   try { attrs=(await tlsApi('GET',`/primary-records/${id}/attributes?limit=100`)).data||[]; } catch(_){}
   const reqs=TLS.data.requestRecords.filter(rr=>rr.primaryRecordId===id);
   const pObj=TLS.data.primaryObjects.find(o=>o._id===r.primaryObjectId);
-  tlsDrawer(r.name||'Vendor',[
+  tlsDrawer(r.name||'Party',[
     {label:'Info',content:`<div class="tls-kv">
       <div class="tls-kv-row"><div class="k">ID</div><div class="v mono">${tlsCopy(r._id)}${r._id}</div></div>
       <div class="tls-kv-row"><div class="k">Name</div><div class="v"><strong>${r.name||'—'}</strong></div></div>
       <div class="tls-kv-row"><div class="k">Status</div><div class="v">${tlsTag(r.status==='archived'?'grey':'blue',r.status||'active')}</div></div>
-      <div class="tls-kv-row"><div class="k">Type</div><div class="v">${pObj?.name||'—'}</div></div>
+      <div class="tls-kv-row"><div class="k">Party Type</div><div class="v">${pObj?.name||'—'</div></div>
       <div class="tls-kv-row"><div class="k">Website</div><div class="v">${r.website?`<a href="${r.website}" target="_blank" style="color:#0678D5">${r.website}</a>`:'—'}</div></div>
       <div class="tls-kv-row"><div class="k">Notes</div><div class="v">${r.additionalNotes||'—'}</div></div>
       <div class="tls-kv-row"><div class="k">Created</div><div class="v">${r.createdAt?new Date(r.createdAt).toLocaleDateString():'—'}</div></div>
     </div>
     <div class="tls-divider"></div>
-    <button class="tls-del-btn" onclick="tlsDelete('primary-records','${r._id}','${(r.name||'').replace(/'/g,"\\'")}')">🗑 Delete Vendor</button>
+    <button class="tls-del-btn" onclick="tlsDelete('primary-records','${r._id}','${(r.name||'').replace(/'/g,"\\'")}')">🗑 Delete Party</button>
     <div class="tls-hint">GET /primary-records/${r._id} · PATCH · DELETE</div>`},
     {label:`Requests (${reqs.length})`,content:`<div class="mb8"><button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsShowCreateRequest('${r._id}')">+ Create Request</button></div>
     ${reqs.map(rr=>{const p=TLS.data.contextRecords.find(c=>c._id===rr.contextRecordId);return`<div class="tls-card mb8" style="cursor:default"><div class="tls-card-row"><div class="tls-avatar" style="font-size:16px">${rr.complianceStatus==='compliant'?'✅':rr.complianceStatus==='non_compliant'?'⚠️':'🔄'}</div><div><div class="tls-card-name">${rr.name||'Request'}</div><div class="tls-card-type">${p?.name||'Global'}</div></div></div><div class="tls-tags mt4">${tlsStatusTag(rr.complianceStatus)}${rr.complianceProfile?tlsTag('blue','Profile ✓'):tlsTag('grey','No Profile')}</div><div class="tls-card-id">${rr._id}</div><div class="tls-card-actions"><button class="btn btn-secondary" style="font-size:11px;padding:3px 8px" onclick="tlsRequestDetail('${rr._id}')">Details</button></div></div>`;}).join('')||'<div class="muted">No requests for this vendor.</div>'}
@@ -7234,7 +7234,7 @@ function tlsRenderRequestRecords(view) {
     </div>
     <div class="tls-card-grid" id="tls-req-grid">
     ${d.requestRecords.map(r=>{const v=d.primaryRecords.find(p=>p._id===r.primaryRecordId),p=d.contextRecords.find(c=>c._id===r.contextRecordId);return`<div class="tls-card" id="tls-rc-${r._id}" data-name="${(r.name||v?.name||'').toLowerCase()}" onclick="tlsRequestDetail('${r._id}')">
-      <div class="tls-card-row"><div class="tls-avatar" style="font-size:18px">${r.complianceStatus==='compliant'?'✅':r.complianceStatus==='non_compliant'?'⚠️':'🔄'}</div><div><div class="tls-card-name">${r.name||v?.name||'Request'}</div><div class="tls-card-type">${v?.name||'Unknown vendor'}</div></div></div>
+      <div class="tls-card-row"><div class="tls-avatar" style="font-size:18px">${r.complianceStatus==='compliant'?'✅':r.complianceStatus==='non_compliant'?'⚠️':'🔄'}</div><div><div class="tls-card-name">${r.name||v?.name||'Request'}</div><div class="tls-card-type">${v?.name||'Unknown party'}</div></div></div>
       <div class="tls-tags mt6">${tlsStatusTag(r.complianceStatus)}${p?tlsTag('grey','📋 '+p.name):''}${r.complianceProfile?tlsTag('blue','Profile ✓'):tlsTag('grey','No Profile')}</div>
       <div class="tls-card-id">${r._id}</div>
       <div class="tls-card-actions"><button class="btn btn-secondary" style="font-size:11px;padding:4px 10px" onclick="event.stopPropagation();tlsRequestDetail('${r._id}')">Details</button><button class="tls-del-btn" onclick="event.stopPropagation();tlsDelete('request-records','${r._id}','request')">Delete</button></div>
@@ -7298,7 +7298,7 @@ async function tlsRequestDetail(id) {
 }
 
 // ── OBJECT TABLES ────────────────────────────────────────────────────
-function tlsRenderPrimaryObjects(view){const d=TLS.data;if(view==='raw'){tlsBody(tlsRaw(d.primaryObjects));return;}tlsBody(tlsObjTable(d.primaryObjects,'primary-objects','Entity Type'));}
+function tlsRenderPrimaryObjects(view){const d=TLS.data;if(view==='raw'){tlsBody(tlsRaw(d.primaryObjects));return;}tlsBody(tlsObjTable(d.primaryObjects,'primary-objects','Party Type'));}
 function tlsRenderContextObjects(view){const d=TLS.data;if(view==='raw'){tlsBody(tlsRaw(d.contextObjects));return;}tlsBody(tlsObjTable(d.contextObjects,'context-objects','Project Type'));}
 function tlsObjTable(items,ep,lbl){
   return`<div class="mb10"><button class="btn btn-primary" style="font-size:12px;padding:7px 14px" onclick="tlsCreateObject('${ep}','${lbl}')">+ Create ${lbl}</button></div>
@@ -7339,11 +7339,20 @@ function tlsRenderRefData(view) {
 // ── CREATE FORMS ─────────────────────────────────────────────────────
 function tlsRenderCreateVendor(){
   tlsBody(`<div style="max-width:460px">
-    <div class="form-grp"><label class="form-lbl">Entity Type <span style="color:#AC1534">*</span></label><select class="tls-inp" id="tls-cv-type"><option value="">Select type…</option>${TLS.data.primaryObjects.map(o=>`<option value="${o._id}">${o.name}</option>`).join('')}</select></div>
-    <div class="form-grp"><label class="form-lbl">Name <span style="color:#AC1534">*</span></label><input type="text" class="tls-inp" id="tls-cv-name" placeholder="e.g. Acme Contractors LLC"></div>
+    <div class="form-grp"><label class="form-lbl">Party Type <span style="color:#AC1534">*</span></label><select class="tls-inp" id="tls-cv-type"><option value="">Select party type…</option>${TLS.data.primaryObjects.map(o=>`<option value="${o._id}">${o.name}</option>`).join('')}</select></div>
+    <div class="form-grp"><label class="form-lbl">Party Name <span style="color:#AC1534">*</span></label><input type="text" class="tls-inp" id="tls-cv-name" placeholder="e.g. Acme Contractors LLC"></div>
+    <div class="form-grp"><label class="form-lbl">Address</label><input type="text" class="tls-inp" id="tls-cv-addr-line1" placeholder="Street address" style="margin-bottom:6px"><div style="display:grid;grid-template-columns:1fr 1fr 120px 80px;gap:6px"><input type="text" class="tls-inp" id="tls-cv-addr-city" placeholder="City"><input type="text" class="tls-inp" id="tls-cv-addr-region" placeholder="State / Region"><input type="text" class="tls-inp" id="tls-cv-addr-postal" placeholder="ZIP"><input type="text" class="tls-inp" id="tls-cv-addr-country" placeholder="Country" value="US"></div></div>
+    <div class="form-grp"><label class="form-lbl">ID Number <span style="font-weight:400;color:#888;font-size:11px">(external / ERP code)</span></label><input type="text" class="tls-inp" id="tls-cv-extcode" placeholder="e.g. ERP-1234"></div>
     <div class="form-grp"><label class="form-lbl">Website</label><input type="text" class="tls-inp" id="tls-cv-website" placeholder="https://…"></div>
-    <div class="form-grp"><label class="form-lbl">Notes</label><textarea class="tls-inp" id="tls-cv-notes" rows="3" style="resize:vertical"></textarea></div>
-    <div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-primary" onclick="tlsCreateVendor()">✅ Create Vendor</button><button class="btn btn-secondary" onclick="tlsShowSection('primary-records')">Cancel</button></div>
+    <div class="form-grp"><label class="form-lbl">Notes</label><textarea class="tls-inp" id="tls-cv-notes" rows="2" style="resize:vertical" placeholder="Internal notes about this party…"></textarea></div>
+    <div style="background:#f8f9fb;border:1px solid #D1DCE8;border-radius:6px;padding:12px;margin-top:4px">
+      <div style="font-size:12px;font-weight:600;color:#263746;margin-bottom:10px">Contact Information <span style="font-weight:400;color:#888">(optional — assign after creation or add now)</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="form-grp" style="margin:0"><label class="form-lbl">Email address <span style="color:#AC1534">*</span></label><input type="text" class="tls-inp" id="tls-cv-contact-email" placeholder="Search existing or type new email…"></div>
+        <div class="form-grp" style="margin:0"><label class="form-lbl">Contact name</label><input type="text" class="tls-inp" id="tls-cv-contact-name" placeholder="Enter contact name…"></div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-primary" onclick="tlsCreateVendor()">✅ Create Party</button><button class="btn btn-secondary" onclick="tlsShowSection('primary-records')">Cancel</button></div>
     <div class="tls-hint">POST /primary-records · Body: {primaryObjectId, name, website?, additionalNotes?}</div>
   </div>`);
 }
@@ -7374,7 +7383,7 @@ function tlsRenderComplianceTools(){
     <div class="form-grp"><label class="form-lbl">Profile ID <span style="color:#AC1534">*</span></label><input type="text" class="tls-inp" id="tls-ct-pid" placeholder="24-char ObjectId"></div>
     <button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsAssignTools()">Assign</button></div></div>
     <div class="tls-card" style="cursor:default"><div class="tls-card-row"><div class="tls-avatar" style="background:#fffbeb;font-size:18px">📋</div><div><div class="tls-card-name">Create Request</div><div class="tls-card-type">POST /primary-records/{id}/request-records</div></div></div>
-    <div class="mt10"><div class="form-grp"><label class="form-lbl">Vendor <span style="color:#AC1534">*</span></label><select class="tls-inp" id="tls-ct-vendor"><option value="">Select…</option>${vo}</select></div>
+    <div class="mt10"><div class="form-grp"><label class="form-lbl">Party <span style="color:#AC1534">*</span></label><select class="tls-inp" id="tls-ct-vendor"><option value="">Select…</option>${vo}</select></div>
     <div class="form-grp"><label class="form-lbl">Project (optional)</label><select class="tls-inp" id="tls-ct-proj"><option value="">None (global)</option>${po}</select></div>
     <div class="form-grp"><label class="form-lbl">Name</label><input type="text" class="tls-inp" id="tls-ct-rname"></div>
     <button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsCreateReqTools()">Create</button></div></div>
@@ -7388,30 +7397,30 @@ function tlsRenderFullApi() {
       {m:'GET',p:'/workspace',d:'Get workspace details'},
     ],
     'primary-objects':[
-      {m:'GET',p:'/primary-objects',d:'List all entity types'},
-      {m:'GET',p:'/primary-objects/{id}',d:'Get entity type by ID'},
-      {m:'POST',p:'/primary-objects',d:'Create entity type',body:'{"name":"Vendor","pluralName":"Vendors"}'},
-      {m:'PATCH',p:'/primary-objects/{id}',d:'Update entity type',body:'{"name":"Updated Name"}'},
-      {m:'DELETE',p:'/primary-objects/{id}',d:'Delete entity type'},
+      {m:'GET',p:'/primary-objects',d:'List all party types'},
+      {m:'GET',p:'/primary-objects/{id}',d:'Get party type by ID'},
+      {m:'POST',p:'/primary-objects',d:'Create party type',body:'{"name":"Party","pluralName":"Parties"}'},
+      {m:'PATCH',p:'/primary-objects/{id}',d:'Update party type',body:'{"name":"Updated Name"}'},
+      {m:'DELETE',p:'/primary-objects/{id}',d:'Delete party type'},
     ],
     'primary-records':[
-      {m:'GET',p:'/primary-records',d:'List all vendors/entities'},
-      {m:'GET',p:'/primary-records/{id}',d:'Get vendor by ID'},
-      {m:'POST',p:'/primary-records',d:'Create vendor',body:'{"primaryObjectId":"<id>","name":"Vendor Name"}'},
-      {m:'PATCH',p:'/primary-records/{id}',d:'Update vendor',body:'{"name":"New Name"}'},
-      {m:'DELETE',p:'/primary-records/{id}',d:'Delete vendor'},
-      {m:'GET',p:'/primary-records/{id}/contacts',d:'List vendor contacts'},
+      {m:'GET',p:'/primary-records',d:'List all parties'},
+      {m:'GET',p:'/primary-records/{id}',d:'Get party by ID'},
+      {m:'POST',p:'/primary-records',d:'Create party',body:'{"primaryObjectId":"<id>","name":"Party Name"}'},
+      {m:'PATCH',p:'/primary-records/{id}',d:'Update party',body:'{"name":"New Name"}'},
+      {m:'DELETE',p:'/primary-records/{id}',d:'Delete party'},
+      {m:'GET',p:'/primary-records/{id}/contacts',d:'List party contacts'},
       {m:'POST',p:'/primary-records/{id}/contacts',d:'Assign contact',body:'{"id":"email@example.com","primary":false}'},
       {m:'PATCH',p:'/primary-records/{id}/contacts/{contactId}',d:'Update contact',body:'{"primary":true}'},
       {m:'DELETE',p:'/primary-records/{id}/contacts/{contactId}',d:'Remove contact'},
-      {m:'GET',p:'/primary-records/{id}/tags',d:'List vendor tags'},
+      {m:'GET',p:'/primary-records/{id}/tags',d:'List party tags'},
       {m:'POST',p:'/primary-records/{id}/tags',d:'Assign tag',body:'{"id":"<tagId>","expiresAt":"2027-01-01T00:00:00Z"}'},
       {m:'DELETE',p:'/primary-records/{id}/tags/{tagId}',d:'Remove tag'},
-      {m:'GET',p:'/primary-records/{id}/attributes',d:'List vendor attributes'},
+      {m:'GET',p:'/primary-records/{id}/attributes',d:'List party attributes'},
       {m:'GET',p:'/primary-records/{id}/attributes/{attributeId}',d:'Get attribute'},
       {m:'PUT',p:'/primary-records/{id}/attributes/{attributeId}',d:'Set attribute',body:'{"value":"custom value"}'},
       {m:'DELETE',p:'/primary-records/{id}/attributes/{attributeId}',d:'Clear attribute'},
-      {m:'GET',p:'/primary-records/{id}/request-records',d:'List vendor request records'},
+      {m:'GET',p:'/primary-records/{id}/request-records',d:'List party request records'},
       {m:'POST',p:'/primary-records/{id}/request-records',d:'Create request record',body:'{"complianceTracking":true,"contextRecordId":"<optional>"}'},
     ],
     'context-objects':[
@@ -7555,9 +7564,40 @@ async function tlsDelete(ep,id,name){
 async function tlsCreateVendor(){
   const t=document.getElementById('tls-cv-type')?.value, n=document.getElementById('tls-cv-name')?.value?.trim();
   const w=document.getElementById('tls-cv-website')?.value?.trim(), nt=document.getElementById('tls-cv-notes')?.value?.trim();
-  if(!t){toast('Select entity type','error');return;}if(!n){toast('Name required','error');return;}
-  const b={primaryObjectId:t,name:n}; if(w)b.website=w; if(nt)b.additionalNotes=nt;
-  try{const res=await tlsApi('POST','/primary-records',b);toast(`"${n}" created!`,'success');TLS.data.primaryRecords.push({...b,_id:res._id||res.id,status:'active'});tlsCountsUpdate();tlsStatusBarRender();tlsShowSection('primary-records');}
+  const extCode=document.getElementById('tls-cv-extcode')?.value?.trim();
+  const addrLine1=document.getElementById('tls-cv-addr-line1')?.value?.trim();
+  const addrCity=document.getElementById('tls-cv-addr-city')?.value?.trim();
+  const addrRegion=document.getElementById('tls-cv-addr-region')?.value?.trim();
+  const addrPostal=document.getElementById('tls-cv-addr-postal')?.value?.trim();
+  const addrCountry=document.getElementById('tls-cv-addr-country')?.value?.trim();
+  const contactEmail=document.getElementById('tls-cv-contact-email')?.value?.trim();
+  if(!t){toast('Select party type','error');return;}if(!n){toast('Party name required','error');return;}
+  const b={primaryObjectId:t,name:n};
+  if(w)b.website=w;
+  if(nt)b.additionalNotes=nt;
+  if(extCode)b.externalCodes=[extCode];
+  if(addrLine1||addrCity||addrRegion||addrPostal){
+    b.address={};
+    if(addrLine1)b.address.line1=addrLine1;
+    if(addrCity)b.address.city=addrCity;
+    if(addrRegion)b.address.region=addrRegion;
+    if(addrPostal)b.address.postalCode=addrPostal;
+    if(addrCountry)b.address.country=addrCountry;
+    b.address.raw=[addrLine1,addrCity,addrRegion,addrPostal,addrCountry].filter(Boolean).join(', ');
+  }
+  try{
+    const res=await tlsApi('POST','/primary-records',b);
+    const newId=res._id||res.id;
+    toast(`"${n}" created!`,'success');
+    TLS.data.primaryRecords.push({...b,_id:newId,status:'active'});
+    if(contactEmail && newId){
+      try{
+        await tlsApi('POST',`/primary-records/${newId}/contacts`,{id:contactEmail,primary:true,defaultRequestRecipient:true});
+        toast(`Contact "${contactEmail}" assigned`,'success');
+      }catch(ce){toast('Party created but contact failed: '+(ce?.data?.message||ce),'error');}
+    }
+    tlsCountsUpdate();tlsStatusBarRender();tlsShowSection('primary-records');
+  }
   catch(e){toast(e?.data?.message||'Failed','error');}
 }
 async function tlsCreateProject(){
@@ -7729,8 +7769,8 @@ function tlsBuildShell() {
       <button class="tls-nav-btn active" id="tls-nb-overview" onclick="tlsShowSection('overview')">🏠 Overview</button>
     </div>
     <div class="tls-nav-grp"><div class="tls-nav-hdr">Data</div>
-      <button class="tls-nav-btn" id="tls-nb-primary-objects" onclick="tlsShowSection('primary-objects')">🗂️ Entity Types <span class="tls-nav-badge" id="tls-n-po">—</span></button>
-      <button class="tls-nav-btn" id="tls-nb-primary-records" onclick="tlsShowSection('primary-records')">🏢 Vendors <span class="tls-nav-badge" id="tls-n-pr">—</span></button>
+      <button class="tls-nav-btn" id="tls-nb-primary-objects" onclick="tlsShowSection('primary-objects')">🗂️ Party Types <span class="tls-nav-badge" id="tls-n-po">—</span></button>
+      <button class="tls-nav-btn" id="tls-nb-primary-records" onclick="tlsShowSection('primary-records')">🏢 Parties <span class="tls-nav-badge" id="tls-n-pr">—</span></button>
       <button class="tls-nav-btn" id="tls-nb-context-objects" onclick="tlsShowSection('context-objects')">📁 Project Types <span class="tls-nav-badge" id="tls-n-co">—</span></button>
       <button class="tls-nav-btn" id="tls-nb-context-records" onclick="tlsShowSection('context-records')">📋 Projects <span class="tls-nav-badge" id="tls-n-cr">—</span></button>
       <button class="tls-nav-btn" id="tls-nb-request-records" onclick="tlsShowSection('request-records')">✅ Requests <span class="tls-nav-badge" id="tls-n-rr">—</span></button>
@@ -7738,7 +7778,7 @@ function tlsBuildShell() {
       <button class="tls-nav-btn" id="tls-nb-ref-data" onclick="tlsShowSection('ref-data')">📚 Reference Data <span class="tls-nav-badge" style="display:inline-flex;gap:2px"><span id="tls-n-td">—</span></span></button>
     </div>
     <div class="tls-nav-grp"><div class="tls-nav-hdr">Actions</div>
-      <button class="tls-nav-btn" onclick="tlsShowSection('create-vendor')">➕ Add Vendor</button>
+      <button class="tls-nav-btn" onclick="tlsShowSection('create-vendor')">➕ Add Party</button>
       <button class="tls-nav-btn" onclick="tlsShowSection('create-project')">📌 Add Project</button>
       <button class="tls-nav-btn" onclick="tlsShowSection('compliance-tools')">🛡️ Compliance Tools</button>
     </div>
