@@ -66,7 +66,8 @@
       "go_live_date": "2025-01-01",
       "structure": "project",
       "source": "trustlayer",
-      "active": true
+      "active": true,
+      "platform": "trustlayer"
     },
     {
       "client_name": "EMMES",
@@ -1313,7 +1314,8 @@
       "go_live_date": "2025-01-01",
       "structure": "project",
       "source": "trustlayer",
-      "active": true
+      "active": true,
+      "platform": "trustlayer"
     },
     {
       "client_name": "Scandroli Construction",
@@ -1372,6 +1374,19 @@
         "_nc_count": 166,
         "_open_rate": 70
       }
+    },
+    {
+      "client_name": "DEMO Client",
+      "rp_common_name": "democlient",
+      "program_start_date": "2026-06-02",
+      "go_live_date": "2026-06-02",
+      "structure": "general",
+      "source": "trustlayer",
+      "active": true,
+      "platform": "trustlayer",
+      "producer_name": "",
+      "contact_name": "",
+      "demo": true
     }
   ]
 }
