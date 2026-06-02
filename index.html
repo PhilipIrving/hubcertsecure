@@ -7137,7 +7137,7 @@ async function tlsVendorDetail(id) {
       <div class="tls-kv-row"><div class="k">ID</div><div class="v mono">${tlsCopy(r._id)}${r._id}</div></div>
       <div class="tls-kv-row"><div class="k">Name</div><div class="v"><strong>${r.name||'—'}</strong></div></div>
       <div class="tls-kv-row"><div class="k">Status</div><div class="v">${tlsTag(r.status==='archived'?'grey':'blue',r.status||'active')}</div></div>
-      <div class="tls-kv-row"><div class="k">Party Type</div><div class="v">${pObj?.name||'—'</div></div>
+      <div class="tls-kv-row"><div class="k">Party Type</div><div class="v">${pObj?.name||'—'}</div></div>
       <div class="tls-kv-row"><div class="k">Website</div><div class="v">${r.website?`<a href="${r.website}" target="_blank" style="color:#0678D5">${r.website}</a>`:'—'}</div></div>
       <div class="tls-kv-row"><div class="k">Notes</div><div class="v">${r.additionalNotes||'—'}</div></div>
       <div class="tls-kv-row"><div class="k">Created</div><div class="v">${r.createdAt?new Date(r.createdAt).toLocaleDateString():'—'}</div></div>
