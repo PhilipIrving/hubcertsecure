@@ -256,7 +256,7 @@
     </div>
     <div style="display:flex;gap:0;border-bottom:2px solid rgba(6,120,213,0.12);margin-bottom:20px;padding:0 24px">
       <button class="stab active" id="stab-datasource" onclick="switchSettingsTab('datasource')">Data Source</button>
-      <button class="stab" id="stab-monday-cfg" onclick="switchSettingsTab('monday-cfg')">Monday</button>
+      <button class="stab" id="stab-monday-cfg" onclick="switchSettingsTab('monday-cfg')">APIs</button>
       <button class="stab" id="stab-users" onclick="switchSettingsTab('users')">Users</button>
       <button class="stab" id="stab-admin" onclick="switchSettingsTab('admin')">Admin</button>
     </div>
@@ -315,12 +315,14 @@
 
     <!-- MONDAY -->
     <div id="stab-content-monday-cfg" style="display:none">
+
+      <!-- ── Monday.com ── -->
       <div class="settings-box">
-        <span class="section-lbl">API Connection</span>
+        <span class="section-lbl">&#128203; Monday.com</span>
         <div class="form-grp">
           <label class="form-lbl">API Token</label>
           <div style="position:relative"><input type="password" id="s-monday-token" placeholder="eyJhbGciOiJIUzI1NiJ9..." style="padding-right:40px" autocomplete="off"><button type="button" onclick="toggleReveal('s-monday-token',this)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted)">&#128065;</button></div>
-          <div class="form-hint">Monday.com &#8594; Profile &#8594; Developers &#8594; My Access Tokens. Stored in your browser only.</div>
+          <div class="form-hint">Monday.com &#8594; Profile &#8594; Developers &#8594; My Access Tokens. Stored in your browser only. Key: <code>cs-monday-token</code></div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg);border-radius:8px;border:1px solid var(--border)">
           <div class="monday-status-dot" id="s-monday-dot"></div>
@@ -334,6 +336,37 @@
           <div id="s-monday-boards-list"></div>
         </div>
       </div>
+
+      <!-- ── TrustLayer — Block Real Estate ── -->
+      <div class="settings-box">
+        <span class="section-lbl">&#127963; TrustLayer — Block Real Estate Services, LLC</span>
+        <div class="form-grp">
+          <label class="form-lbl">API Token <span style="font-weight:400;color:var(--muted)">(Read-only)</span></label>
+          <div style="position:relative"><input type="password" id="s-tl-token-block" placeholder="Bearer token from TrustLayer..." style="padding-right:40px" autocomplete="off"><button type="button" onclick="toggleReveal('s-tl-token-block',this)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted)">&#128065;</button></div>
+          <div class="form-hint">Used by the Block TL Manager for live roster sync. Stored in your browser only. Key: <code>cs-tl-token-block</code></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div id="s-tl-block-dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);flex-shrink:0;transition:background .2s"></div>
+          <div style="font-size:13px;font-weight:600;color:var(--muted)" id="s-tl-block-status">Not configured</div>
+          <button class="btn btn-primary" style="margin-left:auto;padding:7px 18px;font-size:12px" onclick="apisSaveTLToken('block')">Save</button>
+        </div>
+      </div>
+
+      <!-- ── TrustLayer — Demo Client ── -->
+      <div class="settings-box">
+        <span class="section-lbl">&#127963; TrustLayer — Demo Client</span>
+        <div class="form-grp">
+          <label class="form-lbl">API Token <span style="font-weight:400;color:var(--muted)">(Read / Write)</span></label>
+          <div style="position:relative"><input type="password" id="s-tl-token-demo" placeholder="Bearer token from TrustLayer..." style="padding-right:40px" autocomplete="off"><button type="button" onclick="toggleReveal('s-tl-token-demo',this)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted)">&#128065;</button></div>
+          <div class="form-hint">For write-capability testing on Demo account. Stored in your browser only. Key: <code>cs-tl-token-demo</code></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div id="s-tl-demo-dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);flex-shrink:0;transition:background .2s"></div>
+          <div style="font-size:13px;font-weight:600;color:var(--muted)" id="s-tl-demo-status">Not configured</div>
+          <button class="btn btn-primary" style="margin-left:auto;padding:7px 18px;font-size:12px" onclick="apisSaveTLToken('demo')">Save</button>
+        </div>
+      </div>
+
     </div>
 
     <!-- USERS -->
@@ -3627,6 +3660,36 @@ function settingsMondayTabActivated() {
     document.getElementById('s-monday-connect-btn').style.background = 'var(--green)';
     settingsMondayShowBoardInfo();
   }
+  // Restore TL tokens
+  ['block','demo'].forEach(key => {
+    const stored = localStorage.getItem(`cs-tl-token-${key}`);
+    const input  = document.getElementById(`s-tl-token-${key}`);
+    const dot    = document.getElementById(`s-tl-${key}-dot`);
+    const status = document.getElementById(`s-tl-${key}-status`);
+    if (input && stored) input.value = stored;
+    if (dot && status) {
+      if (stored) { dot.style.background='var(--green)'; status.textContent='Token saved'; status.style.color='var(--green)'; }
+      else        { dot.style.background='var(--border)'; status.textContent='Not configured'; status.style.color='var(--muted)'; }
+    }
+  });
+}
+
+function apisSaveTLToken(key) {
+  const input  = document.getElementById(`s-tl-token-${key}`);
+  const dot    = document.getElementById(`s-tl-${key}-dot`);
+  const status = document.getElementById(`s-tl-${key}-status`);
+  const val    = input?.value?.trim() || '';
+  if (val) {
+    localStorage.setItem(`cs-tl-token-${key}`, val);
+    if (dot)    { dot.style.background = 'var(--green)'; }
+    if (status) { status.textContent = 'Token saved \u2713'; status.style.color = 'var(--green)'; }
+    toast(`TrustLayer ${key === 'block' ? 'Block RE' : 'Demo'} token saved`, 'success');
+  } else {
+    localStorage.removeItem(`cs-tl-token-${key}`);
+    if (dot)    { dot.style.background = 'var(--border)'; }
+    if (status) { status.textContent = 'Cleared'; status.style.color = 'var(--muted)'; }
+    toast(`TrustLayer ${key === 'block' ? 'Block RE' : 'Demo'} token cleared`, 'success');
+  }
 }
 
 async function settingsMondayConnect() {
@@ -6356,7 +6419,7 @@ function ceAutoDetectColors() {
 <script>
 // ═══════════════════════════════════════════════════════════════
 //  BLOCK TL MANAGER  —  CertSecure Hub
-//  Read-only TrustLayer roster sync + monthly xlsx diff + CSV export
+//  Token: localStorage key cs-tl-token-block (set in Settings → APIs)
 // ═══════════════════════════════════════════════════════════════
 
 const BRE_CLIENT_NAME = 'Block Real Estate Services, LLC';
@@ -6371,12 +6434,19 @@ function breExcluded(name){ const n=name.toLowerCase(); return BRE_EXCLUDE.some(
 function breStripBMS(s){ return s.replace(/\s*(bms:\s*do not inspect|do not inspect)\s*/gi,'').replace(/\s{2,}/g,' ').trim(); }
 function breExtractPropName(raw){ let n=raw.split(/\s*\{/)[0]; n=breStripBMS(n); n=n.split(/\s+BMS:/i)[0]; return n.trim(); }
 function brePropKey(code,name){ const c=breClean(code),n=breClean(name); return(c&&c.toLowerCase()!=='n/a'&&c!=='')?`${c} - ${n}`:n; }
-function breTLToken(){ const meta=(typeof CLIENT_META_MAP!=='undefined'&&CLIENT_META_MAP[BRE_CLIENT_NAME])||{}; return meta.tl_token||meta.trustlayer_token||meta.api_token||''; }
+function breTLToken(){
+  // Primary: localStorage set via Settings → APIs tab
+  const fromStorage = localStorage.getItem('cs-tl-token-block');
+  if (fromStorage) return fromStorage;
+  // Fallback: clients.json metadata tl_token field
+  const meta=(typeof CLIENT_META_MAP!=='undefined'&&CLIENT_META_MAP[BRE_CLIENT_NAME])||{};
+  return meta.tl_token||meta.trustlayer_token||meta.api_token||'';
+}
 function breMatchKey(name){ return name.toLowerCase().trim(); }
 
 async function breTLFetchAll(endpoint,params={}){
   const token=breTLToken();
-  if(!token) throw new Error('No TrustLayer API token found for Block RE in clients.json. Add a tl_token field.');
+  if(!token) throw new Error('No TrustLayer token for Block RE. Go to Settings \u2192 APIs and add it under TrustLayer \u2014 Block Real Estate.');
   const limit=100; let skip=0, results=[];
   while(true){
     const qs=new URLSearchParams({...params,limit,skip}).toString();
@@ -6436,8 +6506,7 @@ function breParsePropertyList(ws){
 
 function breParseTenants(ws){
   const rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:null});
-  const dataRows=rows.slice(2);
-  const tenants=[];
+  const dataRows=rows.slice(2),tenants=[];
   const UNIT_KW=/^(suite|suites|floor|floors|space|spaces|level|levels|unit|units|basement|outdoor|bldg|building|apt)/i;
   let currentProp=null;
   for(const row of dataRows){
@@ -6515,7 +6584,7 @@ function breSetStep(n){
   BRE_STEP_LABELS.forEach((lbl,i)=>{
     const dot=document.getElementById(`bre-dot-${i+1}`),lblEl=document.getElementById(`bre-lbl-${i+1}`);
     if(!dot)return;
-    if(i+1<n){dot.className='bre-dot done';dot.textContent='✓';}
+    if(i+1<n){dot.className='bre-dot done';dot.textContent='\u2713';}
     else if(i+1===n){dot.className='bre-dot active';dot.textContent=String(i+1);}
     else{dot.className='bre-dot pending';dot.textContent=String(i+1);}
     if(lblEl)lblEl.className='bre-step-lbl'+(i+1===n?' active':i+1<n?' done':'');
@@ -6565,25 +6634,27 @@ function breRenderCSVList(){
 
 async function breLoadRoster(){
   const btn=document.getElementById('bre-btn-refresh');
-  if(btn){btn.disabled=true;btn.textContent='Loading…';}
-  breSetStatus('Connecting to TrustLayer…','info');
+  if(btn){btn.disabled=true;btn.textContent='Loading\u2026';}
+  breSetStatus('Connecting to TrustLayer\u2026','info');
   try{
     await breFetchRoster();
     breRenderRosterTables();
-    breSetStatus(`✓ Loaded ${_breTLProjects.length} properties and ${_breTLParties.length} tenants from TrustLayer.`,'success');
-  }catch(e){breSetStatus('Error: '+e.message,'error');}
-  if(btn){btn.disabled=false;btn.textContent='↻ Refresh';}
+    breSetStatus(`\u2713 Loaded ${_breTLProjects.length} properties and ${_breTLParties.length} tenants from TrustLayer.`,'success');
+  }catch(e){
+    breSetStatus(e.message,'error');
+  }
+  if(btn){btn.disabled=false;btn.textContent='\u21bb Refresh';}
 }
 
 async function breHandleUpload(file){
   if(!file||!file.name.endsWith('.xlsx')){breSetStatus('Please upload a .xlsx file.','error');return;}
-  breSetStatus('Parsing spreadsheet…','info');
+  breSetStatus('Parsing spreadsheet\u2026','info');
   try{
     const{props,tenants}=await breParseXlsx(file);
     _breXlsxProps=props;_breXlsxTenants=tenants;
     const xpEl=document.getElementById('bre-xlsx-props');if(xpEl)xpEl.textContent=props.length;
     const xtEl=document.getElementById('bre-xlsx-tenants');if(xtEl)xtEl.textContent=tenants.length;
-    breSetStatus(`✓ Parsed ${props.length} properties and ${tenants.length} tenants from spreadsheet.`,'success');
+    breSetStatus(`\u2713 Parsed ${props.length} properties and ${tenants.length} tenants from spreadsheet.`,'success');
     const btn=document.getElementById('bre-btn-compare');if(btn){btn.disabled=false;btn.style.opacity='1';}
   }catch(e){breSetStatus('Parse error: '+e.message,'error');}
 }
@@ -6592,13 +6663,10 @@ function breCompare(){
   if(!_breXlsxProps.length){breSetStatus('Upload a spreadsheet first.','error');return;}
   breBuildDiff();
   const d=_breDiff;
-  const np=document.getElementById('bre-diff-np');if(np)np.textContent=d.newProps.length;
-  const rp=document.getElementById('bre-diff-rp');if(rp)rp.textContent=d.removedProps.length;
-  const nt=document.getElementById('bre-diff-nt');if(nt)nt.textContent=d.newTenants.length;
-  const rt=document.getElementById('bre-diff-rt');if(rt)rt.textContent=d.removedTenants.length;
+  ['np','rp','nt','rt'].forEach((k,i)=>{const el=document.getElementById(`bre-diff-${k}`);if(el)el.textContent=[d.newProps,d.removedProps,d.newTenants,d.removedTenants][i].length;});
   breRenderDiffTables();
   breGenCSVs();
-  breSetStatus(`Diff complete — ${d.newProps.length} new properties, ${d.removedProps.length} removed, ${d.newTenants.length} new tenants, ${d.removedTenants.length} removed.`,'success');
+  breSetStatus(`Diff complete \u2014 ${d.newProps.length} new properties, ${d.removedProps.length} removed, ${d.newTenants.length} new tenants, ${d.removedTenants.length} removed.`,'success');
   breSetStep(3);
 }
 
@@ -6648,39 +6716,35 @@ function breRenderPanelHTML(){
 <div style="padding:24px;max-width:1200px">
   <div style="margin-bottom:20px">
     <div style="font-size:20px;font-weight:800;color:#263746">&#127963; Block TL Manager</div>
-    <div style="font-size:13px;color:#5A6B7B;margin-top:4px">Live TrustLayer roster sync &nbsp;·&nbsp; Monthly upload comparison &nbsp;·&nbsp; CSV export</div>
+    <div style="font-size:13px;color:#5A6B7B;margin-top:4px">Live TrustLayer roster sync &nbsp;&middot;&nbsp; Monthly upload comparison &nbsp;&middot;&nbsp; CSV export</div>
   </div>
   <div style="display:flex;align-items:flex-start;margin-bottom:24px;padding:16px;background:#fff;border:1px solid #D1DCE8;border-radius:8px">${stepBar}</div>
   <div class="bre-status" id="bre-status"></div>
-
-  <!-- Step 1: Live Roster -->
   <div id="bre-panel-1">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
       <div style="font-size:15px;font-weight:700;color:#263746">Current TrustLayer Roster</div>
       <div style="display:flex;gap:8px;align-items:center">
-        <div class="bre-stat" style="min-width:100px"><div class="bre-stat-lbl">Properties</div><div class="bre-stat-val" id="bre-stat-props">—</div></div>
-        <div class="bre-stat" style="min-width:100px"><div class="bre-stat-lbl">Tenants</div><div class="bre-stat-val" id="bre-stat-tenants">—</div></div>
-        <button id="bre-btn-refresh" onclick="breLoadRoster()" style="padding:8px 16px;background:transparent;border:1px solid #D1DCE8;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit;color:#263746">↻ Refresh</button>
-        <button onclick="breSetStep(2)" style="padding:8px 20px;background:#0678D5;color:white;border:none;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">Upload Sheet →</button>
+        <div class="bre-stat" style="min-width:100px"><div class="bre-stat-lbl">Properties</div><div class="bre-stat-val" id="bre-stat-props">\u2014</div></div>
+        <div class="bre-stat" style="min-width:100px"><div class="bre-stat-lbl">Tenants</div><div class="bre-stat-val" id="bre-stat-tenants">\u2014</div></div>
+        <button id="bre-btn-refresh" onclick="breLoadRoster()" style="padding:8px 16px;background:transparent;border:1px solid #D1DCE8;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit;color:#263746">\u21bb Refresh</button>
+        <button onclick="breSetStep(2)" style="padding:8px 20px;background:#0678D5;color:white;border:none;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">Upload Sheet \u2192</button>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:14px">
       <div class="bre-card">
         <div style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#5A6B7B;margin-bottom:8px">Properties (Projects)</div>
-        <div class="bre-tbl-wrap" id="bre-tbl-tl-props"><div style="padding:20px;text-align:center;font-size:12px;color:#5A6B7B">Loading…</div></div>
+        <div class="bre-tbl-wrap" id="bre-tbl-tl-props"><div style="padding:20px;text-align:center;font-size:12px;color:#5A6B7B">Loading\u2026</div></div>
       </div>
       <div class="bre-card">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#5A6B7B;margin-bottom:8px">Tenants (Parties) — Name · Property · Address</div>
-        <div class="bre-tbl-wrap" id="bre-tbl-tl-parties"><div style="padding:20px;text-align:center;font-size:12px;color:#5A6B7B">Loading…</div></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#5A6B7B;margin-bottom:8px">Tenants (Parties) \u2014 Name \u00b7 Property \u00b7 Address</div>
+        <div class="bre-tbl-wrap" id="bre-tbl-tl-parties"><div style="padding:20px;text-align:center;font-size:12px;color:#5A6B7B">Loading\u2026</div></div>
       </div>
     </div>
   </div>
-
-  <!-- Step 2: Upload -->
   <div id="bre-panel-2" style="display:none">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
       <div style="font-size:15px;font-weight:700;color:#263746">Upload Monthly Spreadsheet</div>
-      <button onclick="breSetStep(1)" style="padding:8px 16px;background:transparent;border:1px solid #D1DCE8;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit;color:#263746">← Back</button>
+      <button onclick="breSetStep(1)" style="padding:8px 16px;background:transparent;border:1px solid #D1DCE8;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit;color:#263746">\u2190 Back</button>
     </div>
     <div class="bre-card">
       <div id="bre-drop-zone" onclick="document.getElementById('bre-file-input').click()" style="border:1.5px dashed #D1DCE8;border-radius:8px;padding:40px;text-align:center;cursor:pointer;transition:background .15s">
@@ -6690,29 +6754,27 @@ function breRenderPanelHTML(){
       </div>
       <input type="file" id="bre-file-input" accept=".xlsx" style="display:none">
       <div style="display:flex;gap:12px;margin-top:16px">
-        <div class="bre-stat"><div class="bre-stat-lbl">Properties Found</div><div class="bre-stat-val" id="bre-xlsx-props">—</div></div>
-        <div class="bre-stat"><div class="bre-stat-lbl">Tenants Found</div><div class="bre-stat-val" id="bre-xlsx-tenants">—</div></div>
+        <div class="bre-stat"><div class="bre-stat-lbl">Properties Found</div><div class="bre-stat-val" id="bre-xlsx-props">\u2014</div></div>
+        <div class="bre-stat"><div class="bre-stat-lbl">Tenants Found</div><div class="bre-stat-val" id="bre-xlsx-tenants">\u2014</div></div>
       </div>
     </div>
     <div style="display:flex;justify-content:flex-end">
-      <button id="bre-btn-compare" onclick="breCompare()" disabled style="padding:10px 24px;background:#0678D5;color:white;border:none;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;opacity:.5">Compare with TrustLayer →</button>
+      <button id="bre-btn-compare" onclick="breCompare()" disabled style="padding:10px 24px;background:#0678D5;color:white;border:none;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;opacity:.5">Compare with TrustLayer \u2192</button>
     </div>
   </div>
-
-  <!-- Step 3: Diff -->
   <div id="bre-panel-3" style="display:none">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
       <div style="font-size:15px;font-weight:700;color:#263746">Review Differences</div>
       <div style="display:flex;gap:8px">
-        <button onclick="breSetStep(2)" style="padding:8px 16px;background:transparent;border:1px solid #D1DCE8;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit;color:#263746">← Back</button>
-        <button onclick="breGoToDownload()" style="padding:8px 20px;background:#0678D5;color:white;border:none;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">Download CSVs →</button>
+        <button onclick="breSetStep(2)" style="padding:8px 16px;background:transparent;border:1px solid #D1DCE8;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit;color:#263746">\u2190 Back</button>
+        <button onclick="breGoToDownload()" style="padding:8px 20px;background:#0678D5;color:white;border:none;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">Download CSVs \u2192</button>
       </div>
     </div>
     <div style="display:flex;gap:10px;margin-bottom:16px">
-      <div class="bre-stat" style="border-color:#bbf7d0"><div class="bre-stat-lbl" style="color:#166534">New Properties</div><div class="bre-stat-val" style="color:#16A34A" id="bre-diff-np">—</div></div>
-      <div class="bre-stat" style="border-color:#fecaca"><div class="bre-stat-lbl" style="color:#AC1534">Removed Properties</div><div class="bre-stat-val" style="color:#AC1534" id="bre-diff-rp">—</div></div>
-      <div class="bre-stat" style="border-color:#bbf7d0"><div class="bre-stat-lbl" style="color:#166534">New Tenants</div><div class="bre-stat-val" style="color:#16A34A" id="bre-diff-nt">—</div></div>
-      <div class="bre-stat" style="border-color:#fecaca"><div class="bre-stat-lbl" style="color:#AC1534">Removed Tenants</div><div class="bre-stat-val" style="color:#AC1534" id="bre-diff-rt">—</div></div>
+      <div class="bre-stat" style="border-color:#bbf7d0"><div class="bre-stat-lbl" style="color:#166534">New Properties</div><div class="bre-stat-val" style="color:#16A34A" id="bre-diff-np">\u2014</div></div>
+      <div class="bre-stat" style="border-color:#fecaca"><div class="bre-stat-lbl" style="color:#AC1534">Removed Properties</div><div class="bre-stat-val" style="color:#AC1534" id="bre-diff-rp">\u2014</div></div>
+      <div class="bre-stat" style="border-color:#bbf7d0"><div class="bre-stat-lbl" style="color:#166534">New Tenants</div><div class="bre-stat-val" style="color:#16A34A" id="bre-diff-nt">\u2014</div></div>
+      <div class="bre-stat" style="border-color:#fecaca"><div class="bre-stat-lbl" style="color:#AC1534">Removed Tenants</div><div class="bre-stat-val" style="color:#AC1534" id="bre-diff-rt">\u2014</div></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
       <div class="bre-diff-card"><div class="bre-diff-hdr green">&#129001; New Properties to Add</div><div class="bre-diff-body" id="bre-tbl-newProps"></div></div>
@@ -6721,15 +6783,13 @@ function breRenderPanelHTML(){
       <div class="bre-diff-card"><div class="bre-diff-hdr red">&#128308; Tenants to Remove</div><div class="bre-diff-body" id="bre-tbl-removedTenants"></div></div>
     </div>
   </div>
-
-  <!-- Step 4: Download -->
   <div id="bre-panel-4" style="display:none">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
       <div style="font-size:15px;font-weight:700;color:#263746">Download TrustLayer CSVs</div>
-      <button onclick="breSetStep(3)" style="padding:8px 16px;background:transparent;border:1px solid #D1DCE8;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit;color:#263746">← Back to Diff</button>
+      <button onclick="breSetStep(3)" style="padding:8px 16px;background:transparent;border:1px solid #D1DCE8;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit;color:#263746">\u2190 Back to Diff</button>
     </div>
     <div class="bre-card">
-      <div style="font-size:13px;color:#5A6B7B;margin-bottom:14px;line-height:1.6">These files reflect the <strong>full current roster</strong> from the monthly spreadsheet — upload them into TrustLayer to sync.</div>
+      <div style="font-size:13px;color:#5A6B7B;margin-bottom:14px;line-height:1.6">These files reflect the <strong>full current roster</strong> from the monthly spreadsheet \u2014 upload them into TrustLayer to sync.</div>
       <div id="bre-csv-list"></div>
       <button onclick="breDownloadAll()" style="width:100%;margin-top:10px;padding:11px;background:#263746;color:white;border:none;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">&#8595; Download All 5 CSVs</button>
     </div>
