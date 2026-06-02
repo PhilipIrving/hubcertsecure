@@ -137,7 +137,7 @@
     .report-card-hdr{padding:15px 16px;}
   
     /* ═══════════════════════════════════════════════
-       SIDEBAR LAYOUT  v0.57
+       SIDEBAR LAYOUT  v0.56
     ═══════════════════════════════════════════════ */
     .app-shell{display:flex;min-height:100vh}
     .sidebar{width:230px;background:#18252D;background-image:radial-gradient(circle,rgba(0,174,239,0.11) 1px,transparent 1px);background-size:14px 14px;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:60}
@@ -171,12 +171,12 @@
     .client-card.plat-tl:hover,.client-card.plat-tl.selected{border-left-color:#EA6D0A!important}
 
     /* ═══════════════════════════════════════════════
-       v0.57 — Blue BG, Breadcrumb, Sidebar Accordion
+       v0.56 — Blue BG, Breadcrumb, Sidebar Accordion
     ═══════════════════════════════════════════════ */
     body,html{background:var(--bg)!important}
     .content-wrap{background:var(--bg)}
     .main{background:transparent}
-    /* bg overrides removed v0.57 — using var(--bg) */
+    /* bg overrides removed v0.56 — using var(--bg) */
     /* Breadcrumb bar */
     .breadcrumb-bar{display:flex;align-items:center;padding:10px 24px 0;flex-shrink:0}
     .bc-section{display:none}
@@ -225,7 +225,7 @@
       <div class="login-field"><label class="login-label">Password</label><input type="password" id="login-password" class="login-input" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Sign In</button>
       <div style="text-align:center;margin-top:14px"><a href="#" class="login-link" onclick="showView('forgot');return false">Forgot password?</a></div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.57</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;font-weight:600;color:#5A6B7B;letter-spacing:.06em;border-top:1px solid #F1F5F9;padding-top:10px">v0.56</div>
       <div class="login-footer">🔒 Confidential — HUB CertSecure. Unauthorized access is prohibited.</div>
     </div>
     <div id="view-forgot" class="login-card" style="display:none">
@@ -403,7 +403,6 @@
 </div>
 
 <!-- Fixed bell -->
-<div id="fixed-debug-btn" style="display:none;position:fixed;top:10px;right:58px;z-index:9999"><button onclick="csDebugToggle()" title="Toggle Debug Panel" style="width:36px;height:36px;border-radius:8px;background:rgba(15,23,42,.85);border:1px solid #3b82f6;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;padding:0">&#128027;</button></div>
 <div id="fixed-bell" style="display:none;position:fixed;top:10px;right:14px;z-index:9999">
   <button id="notif-btn" onclick="toggleNotifDrawer()" style="background:rgba(24,37,45,0.9);border:1px solid rgba(0,174,239,.3);color:rgba(255,255,255,.8);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:15px;position:relative;display:flex;align-items:center;justify-content:center;padding:0;line-height:1"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span id="notif-badge" style="display:none;position:absolute;top:5px;right:5px;background:#AC1534;border-radius:50%;width:8px;height:8px"></span></button>
   <div id="notif-drawer" style="display:none;position:absolute;right:0;top:calc(100% + 6px);width:300px;background:#fff;border:1px solid #D1DCE8;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.14);z-index:300;overflow:hidden">
@@ -471,6 +470,16 @@
           <span class="sb-ic">&#128203;</span> All Clients
         </button>
       </div>
+      <!-- ── Block Real Estate Manager ── -->
+      <button class="sb-section" id="sb-sec-bre" onclick="toggleSection('bre')">
+        <span class="sb-ic">&#127963;</span> Block RE Manager
+        <span class="sb-arrow">&#9654;</span>
+      </button>
+      <div class="sb-section-content" id="sb-sec-bre-content">
+        <button class="sb-item" id="snav-bre-roster" onclick="sidebarNav('bre-roster')">
+          <span class="sb-ic">&#128260;</span> Roster Sync
+        </button>
+      </div>
     </div>
     <div class="sidebar-footer">
       <!-- Recent activity log (compact) -->
@@ -489,7 +498,7 @@
         <div class="sb-profile-chevron" id="sb-profile-chevron">&#8963;</div>
         <div class="sb-user-menu" id="sb-user-menu" style="display:none" onclick="event.stopPropagation()">
           <button class="sb-menu-item" onclick="openSettings();closeUserMenu()"><span>&#9881;&#65039;</span> Settings</button>
-          <button class="sb-menu-item" id="sb-menu-debug" onclick="csDebugToggle();closeUserMenu()" style="display:none"><span>&#128027;</span> Debug Panel</button>
+          <button class="sb-menu-item" id="sb-menu-debug" onclick="csDebugToggle();closeUserMenu()" style="display:none"><span>&#128027;</span> Debug</button>
           <div class="sb-menu-divider"></div>
           <button class="sb-menu-item sb-menu-signout" onclick="doSignOut()"><span>&#128682;</span> Sign Out</button>
         </div>
@@ -794,6 +803,8 @@
       </div>
     </div>
 
+  <div id="tab-bre" style="display:none;width:100%;min-width:0;box-sizing:border-box"></div>
+
   <div id="tab-template" style="display:none">
     <!-- STEP 1: Client Selection -->
     <div id="tg-step-1">
@@ -936,7 +947,7 @@
 
 <!-- PAT handled via Supabase metadata -->
 </div>
-<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.57</div>
+<div id="version-badge" style="position:fixed;bottom:10px;right:14px;font-size:11px;font-weight:600;color:rgba(90,107,123,0.6);z-index:9998;pointer-events:none;letter-spacing:.04em">v0.56</div>
 
 <script>
 
@@ -1040,7 +1051,7 @@ function setHeaderTitle(title, sub) {
   if (s) s.textContent = sub || '';
 }
 // ══════════════════════════════════════════════════════════════
-// DEBUG MODULE — HUB CertSecure v0.57
+// DEBUG MODULE — HUB CertSecure v0.56
 // Toggle: press Ctrl+Shift+D or type csDebug.enable() in console
 // Access logs: csDebug.show() or csDebug.download()
 // ══════════════════════════════════════════════════════════════
@@ -1358,7 +1369,6 @@ async function doLogin() {
     onLoginSuccess(data.user, sharedPat);
     document.getElementById('auth-overlay').style.display = 'none';
     document.getElementById('main-app').style.display = '';document.getElementById('fixed-bell').style.display='';
-  const _fdb = document.getElementById('fixed-debug-btn'); if (_fdb) _fdb.style.display = '';
   } catch(e) {
     // Show the real error so we can diagnose it
     const msg = e?.message || String(e) || 'Unknown error';
@@ -1411,8 +1421,7 @@ async function doResetPassword() {
     showAuthMsg('reset-msg', error.message, true); btn.disabled = false; btn.textContent = 'Set New Password';
   } else {
     showAuthMsg('reset-msg', 'Password updated! Signing you in\u2026', false);
-    setTimeout(() => { document.getElementById('auth-overlay').style.display = 'none'; document.getElementById('main-app').style.display = '';document.getElementById('fixed-bell').style.display='';
-  const _fdb = document.getElementById('fixed-debug-btn'); if (_fdb) _fdb.style.display = ''; window.location.hash = ''; }, 1500);
+    setTimeout(() => { document.getElementById('auth-overlay').style.display = 'none'; document.getElementById('main-app').style.display = '';document.getElementById('fixed-bell').style.display=''; window.location.hash = ''; }, 1500);
   }
 }
 function showAuthMsg(id, msg, isErr) {
@@ -1555,7 +1564,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         onLoginSuccess(session.user);
         document.getElementById('auth-overlay').style.display = 'none';
         document.getElementById('main-app').style.display = '';document.getElementById('fixed-bell').style.display='';
-  const _fdb = document.getElementById('fixed-debug-btn'); if (_fdb) _fdb.style.display = '';
       }
     } catch(e) { /* no session */ }
   }
@@ -2139,7 +2147,7 @@ async function saveClientsToConfig(updatedClients) {
   await attemptSave(1);
 }
 function switchTab(tab) {
-  ['reports','monday','template'].forEach(t => {
+  ['reports','monday','template','bre'].forEach(t => {
     const el = document.getElementById('tab-' + t);
     if (el) {
       el.style.display = t === tab ? '' : 'none';
@@ -2169,7 +2177,7 @@ function toggleSection(sec) {
   const isTemplate = sec === 'template';
   const isClients = sec === 'clients';
   // Toggle sections
-  ['reports','monday','template','cm'].forEach(s => {
+  ['reports','monday','template','cm','bre'].forEach(s => {
     const btn = document.getElementById('sb-sec-' + s);
     const cont = document.getElementById('sb-sec-' + s + '-content');
     const opening = (s === sec);
@@ -2180,13 +2188,14 @@ function toggleSection(sec) {
   if (isReports) sidebarNav('generate');
   else if (isTemplate) sidebarNav('tg-build');
   else if (sec === 'cm') sidebarNav('cm-clients');
+  else if (sec === 'bre') sidebarNav('bre-roster');
   else sidebarNav('m-setup');
 }
 // Sidebar navigation controller
 function sidebarNav(dest) {
   csDebug.log("NAV","sidebarNav","Navigate",{dest});
   // Clear all sub-item active states
-  ['snav-generate','snav-config','snav-m-clients','snav-m-setup','snav-m-configure','snav-tg-build'].forEach(id => {
+  ['snav-generate','snav-config','snav-m-clients','snav-m-setup','snav-m-configure','snav-tg-build','snav-bre-roster'].forEach(id => {
     const el = document.getElementById(id); if (el) el.classList.remove('active');
   });
   // Activate selected item
@@ -2201,6 +2210,7 @@ function sidebarNav(dest) {
     'tg-build':    ['Template Generator','Build Template'],
     'cm-clients':  ['Client Manager','All Clients'],
     'config':      ['Report Generator','Configuration'],
+    'bre-roster':  ['Block RE Manager','Roster Sync'],
   };
   const [section, page] = bcMap[dest] || ['',''];
   const bcS = document.getElementById('bc-section'); if (bcS) bcS.textContent = section;
@@ -2213,6 +2223,7 @@ function sidebarNav(dest) {
     'm-clients':   'Client Manager',
     'tg-build':    'Build Template',
     'cm-clients':  'Client Manager',
+    'bre-roster':  'Block RE Manager',
   };
   setHeaderTitle(hTitles[dest] || 'CertSecure');
   // Route
@@ -2222,6 +2233,7 @@ function sidebarNav(dest) {
   else if (dest === 'm-configure') { switchTab('monday'); switchMondayTab('configure'); }
   else if (dest === 'tg-build')    { switchTab('template'); tgInit(); }
   else if (dest === 'cm-clients')  { switchTab('monday'); switchMondayTab('clients'); }
+  else if (dest === 'bre-roster')  { switchTab('bre'); breInit(); }
 }
 async function loadAndRenderConfig() {
   const wrap = document.getElementById('cfg-table-wrap'); const s = getSettings();
@@ -3512,7 +3524,7 @@ function toast(msg,type=''){const el=document.getElementById('toast');if(!el)ret
 </script>
 <script>
 // ════════════════════════════════════════════
-//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.57
+//  CERTSECURE HUB — MONDAY SYNC MODULE  v0.56
 // ════════════════════════════════════════════
 let _mondayToken='', _mondayWsId=null, _mondayWsName='', _mondayBoardId=null;
 let _mondayColumns={}, _mondayReportLog=[];
@@ -4878,7 +4890,7 @@ async function wsImportClients() {
 
 <script>
 // ══════════════════════════════════════════════════════════════
-//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.57
+//  TEMPLATE GENERATOR MODULE — CertSecure Tools v0.56
 // ══════════════════════════════════════════════════════════════
 
 let _tgClient = null;
@@ -6250,7 +6262,7 @@ function ceAutoDetectColors() {
 }
 </script>
 <style>
-/* v0.57 final CSS */
+/* v0.56 final CSS */
 .sidebar-brand{flex:1!important;min-width:0;overflow:hidden}
 .sidebar-brand-cert{font-size:18px!important;font-weight:900!important;letter-spacing:.03em!important;color:#fff!important;line-height:1.1;white-space:nowrap}
 .sidebar-brand-cert span{color:#00AEEF!important}
@@ -6277,7 +6289,7 @@ function ceAutoDetectColors() {
 <!-- ═══ DEBUG PANEL ═══ -->
 <div id="cs-debug-panel" style="display:none;position:fixed;bottom:12px;right:12px;background:#1a1a2e;color:#e0e0e0;font-family:monospace;font-size:11px;padding:10px 12px;border-radius:8px;z-index:99999;min-width:280px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid #333;max-height:380px;overflow:hidden;display:flex;flex-direction:column">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-    <span style="font-weight:700;color:#00AEEF;font-size:12px">&#128295; Debug v0.57</span>
+    <span style="font-weight:700;color:#00AEEF;font-size:12px">&#128295; Debug v0.56</span>
     <div style="display:flex;gap:6px">
       <button onclick="csDebugClearLog()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Clear</button>
       <button onclick="csDebugToggle()" style="background:#333;border:none;color:#aaa;font-size:10px;padding:2px 6px;border-radius:3px;cursor:pointer">Hide</button>
@@ -6317,23 +6329,10 @@ function ceAutoDetectColors() {
   window.csDebugClearLog = function() { _log=[]; var el=document.getElementById('cs-debug-log'); if(el)el.innerHTML=''; };
   window.csDebugToggle = function() {
     var panel = document.getElementById('cs-debug-panel');
-    if (!panel) {
-      // Panel not in DOM yet — build it then show
-      if (typeof csDebug !== 'undefined' && typeof csDebug.enable === 'function') {
-        csDebug.enable();
-        csDebug.show();
-      }
-      return;
-    }
-    var isHidden = panel.style.display === 'none' || panel.style.display === '';
-    // Treat empty display as hidden if panel hasn't been opened yet
-    var computed = window.getComputedStyle(panel).display;
-    if (computed === 'none' || panel.style.display === 'none') {
-      panel.style.display = 'flex';
-      csDebugLog('Debug panel opened', '#00AEEF');
-    } else {
-      panel.style.display = 'none';
-    }
+    if (!panel) return;
+    var isHidden = panel.style.display === 'none';
+    panel.style.display = isHidden ? 'flex' : 'none';
+    csDebugLog(isHidden ? 'Debug panel opened' : 'Debug panel closed', '#00AEEF');
   };
   document.addEventListener('DOMContentLoaded', function() {
     refreshTabs();
@@ -6354,5 +6353,570 @@ function ceAutoDetectColors() {
 })();
 </script>
 
-</body>
-</html>
+<script>
+// ═══════════════════════════════════════════════════════════════
+//  BLOCK REAL ESTATE MANAGER  —  CertSecure Hub
+//  Read-only TrustLayer roster sync + monthly xlsx diff + CSV export
+// ═══════════════════════════════════════════════════════════════
+
+const BRE_CLIENT_NAME = 'Block Real Estate Services, LLC';
+const BRE_TL_BASE     = 'https://api.trustlayer.io/v2';
+const BRE_EXCLUDE     = ['ag land','parking lot','vacant lot','vacant land','crown','crownmed'];
+const BRE_STEP_LABELS = ['Live Roster','Upload Sheet','Review Diff','Download CSVs'];
+
+// ── state ──────────────────────────────────────────────────────
+let _breStep        = 1;          // 1–4
+let _breTLProjects  = [];         // [{id, name}] from TrustLayer
+let _breTLParties   = [];         // [{id, name, address, projectName}]
+let _breXlsxProps   = [];         // parsed from uploaded xlsx
+let _breXlsxTenants = [];         // parsed from uploaded xlsx
+let _breDiff        = null;       // {newProps, removedProps, newTenants, removedTenants}
+let _breCSVs        = null;       // {projects, parties, pip, contacts, requests}
+
+// ── helpers ────────────────────────────────────────────────────
+function breClean(v) { if (v == null) return ''; return String(v).replace(/\s+/g,' ').trim(); }
+function breExcluded(name) { const n = name.toLowerCase(); return BRE_EXCLUDE.some(kw => n.includes(kw)); }
+function breStripBMS(s) { return s.replace(/\s*(bms:\s*do not inspect|do not inspect)\s*/gi,'').replace(/\s{2,}/g,' ').trim(); }
+function breExtractPropName(raw) {
+  let n = raw.split(/\s*\{/)[0];
+  n = breStripBMS(n);
+  n = n.split(/\s+BMS:/i)[0];
+  return n.trim();
+}
+function brePropKey(code, name) {
+  const c = breClean(code), n = breClean(name);
+  return (c && c.toLowerCase() !== 'n/a' && c !== '') ? `${c} - ${n}` : n;
+}
+function breTLToken() {
+  const meta = (typeof CLIENT_META_MAP !== 'undefined' && CLIENT_META_MAP[BRE_CLIENT_NAME]) || {};
+  return meta.tl_token || meta.trustlayer_token || meta.api_token || '';
+}
+function breMatchKey(name) { return name.toLowerCase().trim(); }
+
+// ── TL API ─────────────────────────────────────────────────────
+async function breTLFetchAll(endpoint, params = {}) {
+  const token = breTLToken();
+  if (!token) throw new Error('No TrustLayer API token found for Block RE in clients.json. Add a tl_token field.');
+  const limit = 100;
+  let skip = 0, results = [];
+  while (true) {
+    const qs = new URLSearchParams({ ...params, limit, skip }).toString();
+    const res = await fetch(`${BRE_TL_BASE}${endpoint}?${qs}`, {
+      headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' }
+    });
+    if (!res.ok) throw new Error(`TrustLayer API error ${res.status} on ${endpoint}`);
+    const data = await res.json();
+    const rows = data.data || data.results || data || [];
+    if (!Array.isArray(rows) || rows.length === 0) break;
+    results = results.concat(rows);
+    if (rows.length < limit) break;
+    skip += limit;
+  }
+  return results;
+}
+
+async function breFetchRoster() {
+  const [contextObjs, primaryRecords] = await Promise.all([
+    breTLFetchAll('/context-objects'),
+    breTLFetchAll('/primary-records'),
+  ]);
+  // Projects = context objects
+  _breTLProjects = contextObjs.map(o => ({ id: o.id, name: breClean(o.name || o.display_name || '') }))
+    .filter(p => p.name && !breExcluded(p.name));
+  // Parties = primary records; join to project via request-records is complex — use context_object_id if available
+  _breTLParties = primaryRecords.map(p => ({
+    id:          p.id,
+    name:        breClean(p.name || p.display_name || p.business_name || ''),
+    address:     breClean(p.address || (p.addresses && p.addresses[0] && p.addresses[0].full_address) || ''),
+    projectId:   p.context_object_id || p.context_object?.id || '',
+    projectName: '',
+  }));
+  // Map project names
+  const projMap = {};
+  _breTLProjects.forEach(p => { projMap[p.id] = p.name; });
+  _breTLParties.forEach(p => { if (p.projectId) p.projectName = projMap[p.projectId] || ''; });
+  _breTLParties = _breTLParties.filter(p => p.name && !breExcluded(p.name));
+}
+
+// ── xlsx parsing ───────────────────────────────────────────────
+async function breParseXlsx(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const wb = XLSX.read(e.target.result, { type: 'array' });
+        if (!wb.SheetNames.includes('Property List') || !wb.SheetNames.includes('Tenants'))
+          throw new Error('Missing required sheets: "Property List" and/or "Tenants"');
+        const props   = breParsePropertyList(wb.Sheets['Property List']);
+        const tenants = breParseTenants(wb.Sheets['Tenants']);
+        resolve({ props, tenants });
+      } catch(err) { reject(err); }
+    };
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+function breParsePropertyList(ws) {
+  const rows = XLSX.utils.sheet_to_json(ws, { header:1, defval:null });
+  let hdrIdx = -1;
+  for (let i = 0; i < rows.length; i++) {
+    if (rows[i].some(c => c && String(c).includes('PROPERTY NAME'))) { hdrIdx = i; break; }
+  }
+  if (hdrIdx < 0) throw new Error('Cannot find header row in Property List sheet');
+  const h = rows[hdrIdx].map(c => breClean(c));
+  const col = name => h.findIndex(x => x.toLowerCase().includes(name.toLowerCase()));
+  const ci = { code:1, name:col('PROPERTY NAME'), entity:col('ENTITY'), city:col('CITY'), state:col('ST'), zip:col('ZIP') };
+  const props = [];
+  for (let i = hdrIdx+1; i < rows.length; i++) {
+    const row = rows[i]; if (!row || !row.some(c=>c)) continue;
+    const rawName = breClean(row[ci.name]); if (!rawName || breExcluded(rawName)) continue;
+    const name = breExtractPropName(rawName);
+    const code = breClean(row[ci.code]);
+    props.push({ code, name, fullName: brePropKey(code, name), entity: breClean(row[ci.entity]),
+      city: breClean(row[ci.city]), state: breClean(row[ci.state]), zip: breClean(row[ci.zip]) });
+  }
+  return props;
+}
+
+function breParseTenants(ws) {
+  const rows = XLSX.utils.sheet_to_json(ws, { header:1, defval:null });
+  const dataRows = rows.slice(2);
+  const tenants = [], UNIT_KW = /^(suite|suites|floor|floors|space|spaces|level|levels|unit|units|basement|outdoor|bldg|building|apt)/i;
+  let currentProp = null;
+  for (const row of dataRows) {
+    if (!row || !row.some(c=>c)) continue;
+    const colA = breClean(row[0]), rawName = breClean(row[2]), colD = breClean(row[3]);
+    const colE = breClean(row[4]), colF = breClean(row[5]), colG = breClean(row[6]), colH = breClean(row[7]);
+    if (!rawName) continue;
+    if (colA) {
+      if (breExcluded(rawName)) { currentProp = null; }
+      else {
+        const propName = breExtractPropName(rawName);
+        currentProp = { code:colA, name:propName, fullName:brePropKey(colA,propName),
+          addrNum:colD, addrStreet:colE, city:colF, state:colG, zip:colH };
+      }
+    } else {
+      if (!currentProp) continue;
+      if (/^bms not to (visit|inspect)/i.test(rawName)) continue;
+      const tenantName = breClean(breStripBMS(rawName)); if (!tenantName) continue;
+      const address = breComputeAddress(colD, currentProp);
+      tenants.push({ tenantName, address, propertyFullName: currentProp.fullName,
+        city: currentProp.city, state: currentProp.state, zip: currentProp.zip });
+    }
+  }
+  return tenants;
+}
+
+function breComputeAddress(colD, prop) {
+  const d = breClean(colD);
+  const propStreet = [breClean(prop.addrNum), breClean(prop.addrStreet)].filter(Boolean).join(' ');
+  const cszFull = [prop.city, prop.state, prop.zip].filter(Boolean).join(', ');
+  const fullPropAddr = [propStreet, cszFull].filter(Boolean).join(', ');
+  if (!d) return fullPropAddr;
+  const UNIT_KW = /^(suite|suites|floor|floors|space|spaces|level|levels|unit|units|basement|outdoor|bldg|building|apt)/i;
+  // Full address already
+  if (/\d+.*[a-zA-Z]{3,}/.test(d) && !/^\d[\d\s,\/\-\.]*$/.test(d)) {
+    return [d, cszFull].filter(Boolean).join(', ');
+  }
+  // Unit descriptor
+  if (UNIT_KW.test(d.trim())) return [fullPropAddr, d].filter(Boolean).join(', ');
+  // Colon format: "17301: 107"
+  if (/^\d[\d\-]+\s*:/.test(d.trim())) {
+    const ci = d.indexOf(':');
+    const num = d.substring(0,ci).trim(), suite = d.substring(ci+1).trim();
+    const dirMatch = breClean(prop.addrNum).match(/[NSEW]\./);
+    const dir = dirMatch ? dirMatch[0]+' ' : '';
+    const street = `${num} ${dir}${breClean(prop.addrStreet)}`.replace(/\s{2,}/,' ').trim();
+    return [`${[street, cszFull].filter(Boolean).join(', ')}`, suite ? `, Suite ${suite}` : ''].join('');
+  }
+  // Plain numbers → street number + property street
+  if (breClean(prop.addrStreet)) return [`${d} ${breClean(prop.addrStreet)}`.trim(), cszFull].filter(Boolean).join(', ');
+  return fullPropAddr;
+}
+
+// ── diff ────────────────────────────────────────────────────────
+function breBuildDiff() {
+  const tlProjKeys = new Set(_breTLProjects.map(p => breMatchKey(p.name)));
+  const tlPartyKeys = new Set(_breTLParties.map(p => breMatchKey(`${p.name}|||${p.projectName}`)));
+  const xlPropKeys  = new Set(_breXlsxProps.map(p => breMatchKey(p.fullName)));
+  const xlPartyKeys = new Set(_breXlsxTenants.map(t => breMatchKey(`${t.tenantName}|||${t.propertyFullName}`)));
+  _breDiff = {
+    newProps:     _breXlsxProps.filter(p => !tlProjKeys.has(breMatchKey(p.fullName))),
+    removedProps: _breTLProjects.filter(p => !xlPropKeys.has(breMatchKey(p.name))),
+    newTenants:   _breXlsxTenants.filter(t => !tlPartyKeys.has(breMatchKey(`${t.tenantName}|||${t.propertyFullName}`))),
+    removedTenants: _breTLParties.filter(t => !xlPartyKeys.has(breMatchKey(`${t.name}|||${t.projectName}`))),
+  };
+}
+
+// ── CSV generation ──────────────────────────────────────────────
+function breToCSV(headers, rows) {
+  const escape = v => { const s = String(v==null?'':v); return s.includes(',')||s.includes('"')||s.includes('\n') ? `"${s.replace(/"/g,'""')}"` : s; };
+  return [headers,...rows].map(r => r.map(escape).join(',')).join('\r\n');
+}
+
+function breGenCSVs() {
+  const props   = _breXlsxProps;
+  const tenants = _breXlsxTenants;
+  const seen = new Set();
+  const partiesRows = [];
+  for (const t of tenants) {
+    if (seen.has(t.tenantName)) continue;
+    seen.add(t.tenantName);
+    partiesRows.push([t.tenantName,'Tenant','','','',t.address,'','','','','','','','']);
+  }
+  _breCSVs = {
+    projects: { name:'projects.csv', desc:'One row per tracked property', count:props.length,
+      content: breToCSV(['Project Name (*)','Description','Start Date','End Date'], props.map(p=>[p.fullName, p.entity||'','',''])) },
+    parties: { name:'parties.csv', desc:'One row per unique tenant', count:partiesRows.length,
+      content: breToCSV(['Business Name (*)','Type (*)','Contact Person Name','Contact Person Email','Contact Person Phone','Address (Street, City, State...)','Suite, Floor, Unit...','Website','Additional Notes','Tag 1','Tag 2','Tag 3','Tag 4','Tag 5'], partiesRows) },
+    pip: { name:'parties-in-projects.csv', desc:'Links each tenant to their property', count:tenants.length,
+      content: breToCSV(['Party Name','Project Name','Compliance Profile'], tenants.map(t=>[t.tenantName, t.propertyFullName,''])) },
+    contacts: { name:'additional-contacts-in-parties.csv', desc:'Additional contacts (none in source)', count:0,
+      content: breToCSV(['party_name','contact_name','contact_email','contact_phone','contact_fax'],[]) },
+    requests: { name:'request-records.csv', desc:'Insurance requests per tenant-property pair', count:tenants.length,
+      content: breToCSV(['Primary Record Name','Context Record Name','Request Record Name','Compliance Profile Name'],
+        tenants.map(t=>[t.tenantName, t.propertyFullName,'Insurance Request','Block Requirements'])) },
+  };
+}
+
+function breDownloadCSV(key) {
+  const csv = _breCSVs && _breCSVs[key]; if (!csv) return;
+  const blob = new Blob([csv.content], { type:'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob), a = document.createElement('a');
+  a.href=url; a.download=csv.name; a.click(); URL.revokeObjectURL(url);
+}
+function breDownloadAll() { if (_breCSVs) Object.keys(_breCSVs).forEach(k=>breDownloadCSV(k)); }
+
+// ── render helpers ──────────────────────────────────────────────
+function breSetStep(n) {
+  _breStep = n;
+  // Update progress bar
+  BRE_STEP_LABELS.forEach((lbl, i) => {
+    const dot = document.getElementById(`bre-dot-${i+1}`);
+    const lblEl = document.getElementById(`bre-lbl-${i+1}`);
+    if (!dot) return;
+    if (i+1 < n)      { dot.className='bre-dot done'; dot.textContent='✓'; }
+    else if (i+1===n) { dot.className='bre-dot active'; dot.textContent=String(i+1); }
+    else              { dot.className='bre-dot pending'; dot.textContent=String(i+1); }
+    if (lblEl) { lblEl.className='bre-step-lbl'+(i+1===n?' active':i+1<n?' done':''); }
+  });
+  // Show/hide step panels
+  for (let i=1;i<=4;i++) {
+    const el = document.getElementById(`bre-panel-${i}`); if (el) el.style.display = i===n?'':'none';
+  }
+}
+
+function breSetStatus(msg, type) {
+  const el = document.getElementById('bre-status'); if (!el) return;
+  el.textContent = msg;
+  el.className = `bre-status ${type}`;
+  el.style.display = msg ? 'block' : 'none';
+}
+
+function breDiffRow(label, val, color) {
+  return `<div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #EEF2F7;font-size:13px">
+    <span style="color:#5A6B7B">${label}</span>
+    <strong style="color:${color};font-size:15px">${val}</strong>
+  </div>`;
+}
+
+function breRenderDiffTables() {
+  const d = _breDiff;
+  ['newProps','removedProps','newTenants','removedTenants'].forEach(key => {
+    const el = document.getElementById(`bre-tbl-${key}`); if (!el) return;
+    const rows = d[key]; if (!rows.length) { el.innerHTML='<div style="font-size:12px;color:#5A6B7B;padding:10px 0;text-align:center">None</div>'; return; }
+    const isTenant = key.includes('enant');
+    const headers = isTenant ? ['Tenant Name','Property'] : ['Property Name'];
+    const bodyRows = rows.map(r => isTenant
+      ? `<tr><td style="padding:6px 8px;font-size:11px;border-bottom:1px solid #EEF2F7">${esc(r.name||r.tenantName||'')}</td><td style="padding:6px 8px;font-size:11px;border-bottom:1px solid #EEF2F7;color:#5A6B7B">${esc(r.projectName||r.propertyFullName||'')}</td></tr>`
+      : `<tr><td style="padding:6px 8px;font-size:11px;border-bottom:1px solid #EEF2F7">${esc(r.fullName||r.name||'')}</td></tr>`
+    ).join('');
+    el.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:11px">
+      <thead><tr>${headers.map(h=>`<th style="text-align:left;padding:6px 8px;background:#F8FAFC;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#5A6B7B">${h}</th>`).join('')}</tr></thead>
+      <tbody>${bodyRows}</tbody>
+    </table>`;
+  });
+}
+
+function breRenderCSVList() {
+  const wrap = document.getElementById('bre-csv-list'); if (!wrap || !_breCSVs) return;
+  wrap.innerHTML = Object.entries(_breCSVs).map(([k, csv]) =>
+    `<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff;border:0.5px solid #D1DCE8;border-radius:6px;margin-bottom:6px">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:#263746">${csv.name}</div>
+        <div style="font-size:11px;color:#5A6B7B">${csv.desc}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:11px;color:#5A6B7B;background:#F0F4F8;padding:2px 8px;border-radius:99px">${csv.count} rows</span>
+        <button onclick="breDownloadCSV('${k}')" style="background:transparent;border:1px solid #D1DCE8;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;color:#263746;font-family:inherit">&#8595; Download</button>
+      </div>
+    </div>`
+  ).join('');
+}
+
+// ── step actions ────────────────────────────────────────────────
+async function breLoadRoster() {
+  const btn = document.getElementById('bre-btn-refresh');
+  if (btn) { btn.disabled=true; btn.textContent='Loading…'; }
+  breSetStatus('Connecting to TrustLayer…', 'info');
+  try {
+    await breFetchRoster();
+    // Render tables
+    breRenderRosterTables();
+    breSetStatus(`✓ Loaded ${_breTLProjects.length} properties and ${_breTLParties.length} tenants from TrustLayer.`, 'success');
+  } catch(e) {
+    breSetStatus('Error: ' + e.message, 'error');
+  }
+  if (btn) { btn.disabled=false; btn.textContent='↻ Refresh'; }
+}
+
+function breRenderRosterTables() {
+  const projWrap = document.getElementById('bre-tbl-tl-props');
+  const partWrap = document.getElementById('bre-tbl-tl-parties');
+  if (projWrap) {
+    if (!_breTLProjects.length) { projWrap.innerHTML='<div style="font-size:12px;color:#5A6B7B;padding:10px;text-align:center">No properties found</div>'; }
+    else {
+      projWrap.innerHTML=`<table style="width:100%;border-collapse:collapse">
+        <thead><tr><th style="text-align:left;padding:6px 8px;background:#F8FAFC;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#5A6B7B">Property Name</th></tr></thead>
+        <tbody>${_breTLProjects.map(p=>`<tr><td style="padding:6px 8px;font-size:11px;border-bottom:1px solid #EEF2F7">${esc(p.name)}</td></tr>`).join('')}</tbody>
+      </table>`;
+    }
+  }
+  if (partWrap) {
+    if (!_breTLParties.length) { partWrap.innerHTML='<div style="font-size:12px;color:#5A6B7B;padding:10px;text-align:center">No tenants found</div>'; }
+    else {
+      partWrap.innerHTML=`<table style="width:100%;border-collapse:collapse">
+        <thead><tr>
+          <th style="text-align:left;padding:6px 8px;background:#F8FAFC;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#5A6B7B">Tenant</th>
+          <th style="text-align:left;padding:6px 8px;background:#F8FAFC;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#5A6B7B">Property</th>
+          <th style="text-align:left;padding:6px 8px;background:#F8FAFC;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#5A6B7B">Address</th>
+        </tr></thead>
+        <tbody>${_breTLParties.map(p=>`<tr>
+          <td style="padding:6px 8px;font-size:11px;border-bottom:1px solid #EEF2F7;font-weight:500">${esc(p.name)}</td>
+          <td style="padding:6px 8px;font-size:11px;border-bottom:1px solid #EEF2F7;color:#5A6B7B">${esc(p.projectName)}</td>
+          <td style="padding:6px 8px;font-size:11px;border-bottom:1px solid #EEF2F7;color:#5A6B7B">${esc(p.address)}</td>
+        </tr>`).join('')}</tbody>
+      </table>`;
+    }
+  }
+  // Update stat badges
+  const spEl = document.getElementById('bre-stat-props');   if (spEl) spEl.textContent=_breTLProjects.length;
+  const stEl = document.getElementById('bre-stat-tenants'); if (stEl) stEl.textContent=_breTLParties.length;
+}
+
+async function breHandleUpload(file) {
+  if (!file || !file.name.endsWith('.xlsx')) { breSetStatus('Please upload a .xlsx file.', 'error'); return; }
+  breSetStatus('Parsing spreadsheet…', 'info');
+  try {
+    const { props, tenants } = await breParseXlsx(file);
+    _breXlsxProps   = props;
+    _breXlsxTenants = tenants;
+    const xpEl = document.getElementById('bre-xlsx-props');   if (xpEl) xpEl.textContent=props.length;
+    const xtEl = document.getElementById('bre-xlsx-tenants'); if (xtEl) xtEl.textContent=tenants.length;
+    breSetStatus(`✓ Parsed ${props.length} properties and ${tenants.length} tenants from spreadsheet.`, 'success');
+    document.getElementById('bre-btn-compare').disabled = false;
+  } catch(e) { breSetStatus('Parse error: ' + e.message, 'error'); }
+}
+
+function breCompare() {
+  if (!_breXlsxProps.length) { breSetStatus('Upload a spreadsheet first.', 'error'); return; }
+  breBuildDiff();
+  // Summary badges
+  const d = _breDiff;
+  const np = document.getElementById('bre-diff-np'); if (np) np.textContent=d.newProps.length;
+  const rp = document.getElementById('bre-diff-rp'); if (rp) rp.textContent=d.removedProps.length;
+  const nt = document.getElementById('bre-diff-nt'); if (nt) nt.textContent=d.newTenants.length;
+  const rt = document.getElementById('bre-diff-rt'); if (rt) rt.textContent=d.removedTenants.length;
+  breRenderDiffTables();
+  breGenCSVs();
+  breSetStatus(`Diff complete — ${d.newProps.length} new properties, ${d.removedProps.length} removed, ${d.newTenants.length} new tenants, ${d.removedTenants.length} removed.`, 'success');
+  breSetStep(3);
+}
+
+// ── init ────────────────────────────────────────────────────────
+function breInit() {
+  // Build the panel HTML once then auto-load
+  const wrap = document.getElementById('tab-bre');
+  if (!wrap) return;
+  if (!wrap.dataset.built) {
+    wrap.dataset.built = '1';
+    wrap.innerHTML = breRenderPanelHTML();
+    // Wire file input
+    const fi = document.getElementById('bre-file-input');
+    if (fi) fi.addEventListener('change', e => { if (e.target.files[0]) breHandleUpload(e.target.files[0]); });
+    const dz = document.getElementById('bre-drop-zone');
+    if (dz) {
+      dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('bre-dz-over'); });
+      dz.addEventListener('dragleave', () => dz.classList.remove('bre-dz-over'));
+      dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('bre-dz-over'); if (e.dataTransfer.files[0]) breHandleUpload(e.dataTransfer.files[0]); });
+    }
+  }
+  breSetStep(1);
+  breLoadRoster();
+}
+
+function breRenderPanelHTML() {
+  const stepBar = BRE_STEP_LABELS.map((lbl, i) => `
+    <div class="bre-prog-step" style="display:flex;flex-direction:column;align-items:center;flex:1;position:relative">
+      ${i<3?`<div style="position:absolute;top:13px;left:50%;width:100%;height:2px;background:#D1DCE8;z-index:0"></div>`:''}
+      <div class="bre-dot pending" id="bre-dot-${i+1}" style="width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;z-index:1;transition:all .3s;background:#EEF2F7;color:#5A6B7B">${i+1}</div>
+      <div class="bre-step-lbl" id="bre-lbl-${i+1}" style="font-size:10px;color:#5A6B7B;margin-top:5px;text-align:center">${lbl}</div>
+    </div>`).join('');
+
+  return `
+  <style>
+    .bre-dot.active{background:#0678D5!important;color:white!important;box-shadow:0 0 0 4px rgba(6,120,213,.15)!important}
+    .bre-dot.done{background:#3EBD3E!important;color:white!important}
+    .bre-step-lbl.active{color:#0678D5!important;font-weight:700!important}
+    .bre-step-lbl.done{color:#3EBD3E!important;font-weight:600!important}
+    .bre-status{display:none;margin-top:12px;padding:10px 14px;border-radius:8px;font-size:13px}
+    .bre-status.info{background:#EBF4FF;color:#1D4ED8}
+    .bre-status.success{background:rgba(62,189,62,.1);color:#166534}
+    .bre-status.error{background:#FEF2F2;color:#AC1534}
+    .bre-card{background:#fff;border:1px solid #D1DCE8;border-radius:8px;padding:16px;margin-bottom:14px}
+    .bre-tbl-wrap{max-height:340px;overflow-y:auto;border:1px solid #EEF2F7;border-radius:6px;margin-top:8px}
+    .bre-stat{background:#F8FAFC;border:1px solid #EEF2F7;border-radius:8px;padding:12px 16px;text-align:center;flex:1}
+    .bre-stat-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5A6B7B;margin-bottom:4px}
+    .bre-stat-val{font-size:24px;font-weight:800;color:#263746}
+    .bre-dz-over{background:#EBF4FF!important;border-color:#0678D5!important}
+    .bre-diff-card{border:1px solid #D1DCE8;border-radius:8px;overflow:hidden;margin-bottom:12px}
+    .bre-diff-hdr{padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+    .bre-diff-hdr.green{background:rgba(62,189,62,.08);color:#166534;border-bottom:1px solid #bbf7d0}
+    .bre-diff-hdr.red{background:#FEF2F2;color:#AC1534;border-bottom:1px solid #fecaca}
+    .bre-diff-body{padding:0;max-height:260px;overflow-y:auto}
+  </style>
+
+  <div style="padding:24px;max-width:1200px">
+    <!-- Header -->
+    <div style="margin-bottom:20px">
+      <div style="font-size:20px;font-weight:800;color:#263746">&#127963; Block Real Estate Manager</div>
+      <div style="font-size:13px;color:#5A6B7B;margin-top:4px">Live TrustLayer roster sync &nbsp;·&nbsp; Monthly upload comparison &nbsp;·&nbsp; CSV export</div>
+    </div>
+
+    <!-- Progress bar -->
+    <div style="display:flex;align-items:flex-start;margin-bottom:24px;padding:16px;background:#fff;border:1px solid #D1DCE8;border-radius:8px">
+      ${stepBar}
+    </div>
+
+    <!-- Status bar -->
+    <div class="bre-status" id="bre-status"></div>
+
+    <!-- STEP 1: Live Roster -->
+    <div id="bre-panel-1">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <div style="font-size:15px;font-weight:700;color:#263746">Current TrustLayer Roster</div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <div class="bre-stat" style="min-width:100px"><div class="bre-stat-lbl">Properties</div><div class="bre-stat-val" id="bre-stat-props">—</div></div>
+          <div class="bre-stat" style="min-width:100px"><div class="bre-stat-lbl">Tenants</div><div class="bre-stat-val" id="bre-stat-tenants">—</div></div>
+          <button id="bre-btn-refresh" onclick="breLoadRoster()" style="padding:8px 16px;background:transparent;border:1px solid #D1DCE8;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit;color:#263746">↻ Refresh</button>
+          <button onclick="breSetStep(2)" style="padding:8px 20px;background:#0678D5;color:white;border:none;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">Upload Sheet →</button>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:14px">
+        <div class="bre-card">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#5A6B7B;margin-bottom:8px">Properties (Projects)</div>
+          <div class="bre-tbl-wrap" id="bre-tbl-tl-props"><div style="padding:20px;text-align:center;font-size:12px;color:#5A6B7B">Loading…</div></div>
+        </div>
+        <div class="bre-card">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#5A6B7B;margin-bottom:8px">Tenants (Parties) with Property &amp; Address</div>
+          <div class="bre-tbl-wrap" id="bre-tbl-tl-parties"><div style="padding:20px;text-align:center;font-size:12px;color:#5A6B7B">Loading…</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Upload -->
+    <div id="bre-panel-2" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <div style="font-size:15px;font-weight:700;color:#263746">Upload Monthly Spreadsheet</div>
+        <button onclick="breSetStep(1)" style="padding:8px 16px;background:transparent;border:1px solid #D1DCE8;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit;color:#263746">← Back</button>
+      </div>
+
+      <div class="bre-card">
+        <div id="bre-drop-zone" onclick="document.getElementById('bre-file-input').click()"
+          style="border:1.5px dashed #D1DCE8;border-radius:8px;padding:40px;text-align:center;cursor:pointer;transition:background .15s">
+          <div style="font-size:32px;color:#5A6B7B;margin-bottom:8px">☁</div>
+          <div style="font-size:14px;color:#5A6B7B"><strong style="color:#263746">Click to upload</strong> or drag and drop</div>
+          <div style="font-size:12px;color:#9AAABB;margin-top:4px">Block RE monthly .xlsx file</div>
+        </div>
+        <input type="file" id="bre-file-input" accept=".xlsx" style="display:none">
+
+        <div style="display:flex;gap:12px;margin-top:16px">
+          <div class="bre-stat"><div class="bre-stat-lbl">Properties Found</div><div class="bre-stat-val" id="bre-xlsx-props">—</div></div>
+          <div class="bre-stat"><div class="bre-stat-lbl">Tenants Found</div><div class="bre-stat-val" id="bre-xlsx-tenants">—</div></div>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:flex-end">
+        <button id="bre-btn-compare" onclick="breCompare()" disabled
+          style="padding:10px 24px;background:#0678D5;color:white;border:none;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;opacity:.5"
+          onmouseenter="if(!this.disabled)this.style.opacity='1'" onmouseleave="if(!this.disabled)this.style.opacity='1'">
+          Compare with TrustLayer →
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Diff -->
+    <div id="bre-panel-3" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <div style="font-size:15px;font-weight:700;color:#263746">Review Differences</div>
+        <div style="display:flex;gap:8px">
+          <button onclick="breSetStep(2)" style="padding:8px 16px;background:transparent;border:1px solid #D1DCE8;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit;color:#263746">← Back</button>
+          <button onclick="breGoToDownload()" style="padding:8px 20px;background:#0678D5;color:white;border:none;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">Download CSVs →</button>
+        </div>
+      </div>
+
+      <!-- Summary row -->
+      <div style="display:flex;gap:10px;margin-bottom:16px">
+        <div class="bre-stat" style="border-color:#bbf7d0"><div class="bre-stat-lbl" style="color:#166534">New Properties</div><div class="bre-stat-val" style="color:#16A34A" id="bre-diff-np">—</div></div>
+        <div class="bre-stat" style="border-color:#fecaca"><div class="bre-stat-lbl" style="color:#AC1534">Removed Properties</div><div class="bre-stat-val" style="color:#AC1534" id="bre-diff-rp">—</div></div>
+        <div class="bre-stat" style="border-color:#bbf7d0"><div class="bre-stat-lbl" style="color:#166534">New Tenants</div><div class="bre-stat-val" style="color:#16A34A" id="bre-diff-nt">—</div></div>
+        <div class="bre-stat" style="border-color:#fecaca"><div class="bre-stat-lbl" style="color:#AC1534">Removed Tenants</div><div class="bre-stat-val" style="color:#AC1534" id="bre-diff-rt">—</div></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="bre-diff-card">
+          <div class="bre-diff-hdr green">🟢 New Properties to Add <span id="bre-diff-np-c" style="font-size:12px;font-weight:500"></span></div>
+          <div class="bre-diff-body" id="bre-tbl-newProps"></div>
+        </div>
+        <div class="bre-diff-card">
+          <div class="bre-diff-hdr red">🔴 Properties to Remove <span id="bre-diff-rp-c" style="font-size:12px;font-weight:500"></span></div>
+          <div class="bre-diff-body" id="bre-tbl-removedProps"></div>
+        </div>
+        <div class="bre-diff-card">
+          <div class="bre-diff-hdr green">🟢 New Tenants to Add</div>
+          <div class="bre-diff-body" id="bre-tbl-newTenants"></div>
+        </div>
+        <div class="bre-diff-card">
+          <div class="bre-diff-hdr red">🔴 Tenants to Remove</div>
+          <div class="bre-diff-body" id="bre-tbl-removedTenants"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: Download CSVs -->
+    <div id="bre-panel-4" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <div style="font-size:15px;font-weight:700;color:#263746">Download TrustLayer CSVs</div>
+        <button onclick="breSetStep(3)" style="padding:8px 16px;background:transparent;border:1px solid #D1DCE8;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit;color:#263746">← Back to Diff</button>
+      </div>
+      <div class="bre-card">
+        <div style="font-size:13px;color:#5A6B7B;margin-bottom:14px;line-height:1.6">
+          These files are ready to upload directly into TrustLayer. They reflect the <strong>full current roster</strong> from the monthly spreadsheet — upload them in TrustLayer to sync the state.
+        </div>
+        <div id="bre-csv-list"></div>
+        <button onclick="breDownloadAll()" style="width:100%;margin-top:10px;padding:11px;background:#263746;color:white;border:none;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px">
+          &#8595; Download All 5 CSVs
+        </button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function breGoToDownload() {
+  if (!_breCSVs) breGenCSVs();
+  breRenderCSVList();
+  breSetStep(4);
+}
+</script>
+</body></html>
