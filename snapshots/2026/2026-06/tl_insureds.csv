@@ -591,7 +591,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2362446148bd849261,Unistrut Corporation,,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded2362446148bd849264,"United Access of KC, LLC",,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded2362446148bd849267,"Planet Fitness / United PF JLM, LLC",,NON_COMPLIANT,,,true,false,2026-06-02
-"Block Real Estate Services, LLC",69fded2362446148bd84926a,United Refrigeration Inc,,NON_COMPLIANT,,,true,false,2026-06-02
+"Block Real Estate Services, LLC",69fded2362446148bd84926a,United Refrigeration Inc,,COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded2362446148bd84926d,University of Kansas Hospital Authority,,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded2362446148bd849270,"KCBR DESIGN/REMODEL / Unlimited Contracting, LLC",,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded2362446148bd849273,Unopenedpackman Sportscards and Collectibles LLC,,NON_COMPLIANT,,,true,false,2026-06-02
@@ -697,7 +697,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a188717b517ae25a883e8df,"Lot 7, Village West",,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",6a199d6fabae685b1c514ece,CB Smoothie Supps LLC,,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",6a19b8b18805769e5038a2ed,Savor Strategy,,NON_COMPLIANT,,,true,false,2026-06-02
-"Block Real Estate Services, LLC",6a1dccbb23b401dcff773de7,TitleMax Title Loans / Title Max of Missouri,,NON_COMPLIANT,,,true,false,2026-06-02
+"Block Real Estate Services, LLC",6a1dccbb23b401dcff773de7,TitleMax Title Loans / Title Max of Missouri,,COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",6a1dcea405955276b691e1da,Regal Distributing Co.,,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",6a1dceb25e529bb0fc8a0f0a,"Integrated Opening Solutions, LLC",,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",6a1dd8f38805769e5068fd19,"Living Spaces Furniture, LLC",,NON_COMPLIANT,,,true,false,2026-06-02
@@ -725,8 +725,8 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a1df84165d51d7aa5739d4e,Sandra L. Outlaw,,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",6a1dfcd80a51a0db79c1dfba,JRJ Partners - Condo Owners (Clancey Design Distributor),,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",6a1dfce4a0ed8c51ab262c0b,Building 28 TIC,,NON_COMPLIANT,,,true,false,2026-06-02
-"Block Real Estate Services, LLC",6a1dff1ca79f4c38d5103b69,"Design & Detail / Mel B, LLC",,PENDING,,,true,false,2026-06-02
-"Block Real Estate Services, LLC",6a1e004c23b401dcff82ac21,BRES Management Office,,PENDING,,,true,false,2026-06-02
+"Block Real Estate Services, LLC",6a1dff1ca79f4c38d5103b69,"Design & Detail / Mel B, LLC",,NON_COMPLIANT,,,true,false,2026-06-02
+"Block Real Estate Services, LLC",6a1e004c23b401dcff82ac21,BRES Management Office,,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",6a1ee9c0aa8b4d40c45d9cb4,"Ridgeview Eye Care, LLC",,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",6a1ee9ca9e67678941bccbb6,"Olathe Health Physicians, Inc.",,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",6a1eecf750bfd60555852c16,"ERGO Midwest, Inc.",,NON_COMPLIANT,,,true,false,2026-06-02
