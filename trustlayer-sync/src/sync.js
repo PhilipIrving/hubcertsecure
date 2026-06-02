@@ -66,6 +66,7 @@ const CLIENTS = [
   { name: "Construction Management Inc.",    token: process.env.TL_TOKEN_CMI },
   { name: "QTS Data Centers",               token: process.env.TL_TOKEN_QTS },
   { name: "Excel Constructors",             token: process.env.TL_TOKEN_EXCEL_CONSTRUCTORS },
+  { name: "DEMO Client",                    token: process.env.TL_TOKEN_DEMOCLIENT },
 ];
 
 const BASE_V2  = "https://api.trustlayer.io/v2";
