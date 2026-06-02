@@ -504,6 +504,16 @@
           <span class="sb-ic">&#9998;</span> Build Template
         </button>
       </div>
+      <!-- ── TL Sandbox (Write) ── (A-Z: TL after Template, before Client Manager) -->
+      <button class="sb-section" id="sb-sec-tls" onclick="toggleSection('tls')">
+        <span class="sb-ic">&#128299;</span> TL Sandbox (Write)
+        <span class="sb-arrow">&#9654;</span>
+      </button>
+      <div class="sb-section-content" id="sb-sec-tls-content">
+        <button class="sb-item" id="snav-tls-sandbox" onclick="sidebarNav('tls-sandbox')">
+          <span class="sb-ic">&#128203;</span> API Sandbox
+        </button>
+      </div>
       <!-- ── Client Manager ── (always last) -->
       <button class="sb-section" id="sb-sec-cm" onclick="toggleSection('cm')">
         <span class="sb-ic">&#128101;</span> Client Manager
@@ -512,16 +522,6 @@
       <div class="sb-section-content" id="sb-sec-cm-content">
         <button class="sb-item" id="snav-cm-clients" onclick="sidebarNav('cm-clients')">
           <span class="sb-ic">&#128203;</span> All Clients
-        </button>
-      </div>
-      <!-- ── TL Sandbox (Write) ── -->
-      <button class="sb-section" id="sb-sec-tls" onclick="toggleSection('tls')">
-        <span class="sb-ic">&#128299;</span> TL Sandbox (Write)
-        <span class="sb-arrow">&#9654;</span>
-      </button>
-      <div class="sb-section-content" id="sb-sec-tls-content">
-        <button class="sb-item" id="snav-tls-sandbox" onclick="sidebarNav('tls-sandbox')">
-          <span class="sb-ic">&#128203;</span> API Sandbox
         </button>
       </div>
     </div>
@@ -849,7 +849,7 @@
 
   <div id="tab-bre" style="display:none;width:100%;min-width:0;box-sizing:border-box"></div>
 
-  <div id="tab-tl-sandbox" style="display:none;width:100%;min-width:0;box-sizing:border-box;flex:1;overflow:hidden;display:flex;flex-direction:column"></div>
+  <div id="tab-tl-sandbox" style="display:none;width:100%;min-width:0;box-sizing:border-box"></div>
 
   <div id="tab-template" style="display:none">
     <!-- STEP 1: Client Selection -->
@@ -6849,294 +6849,941 @@ function breRenderPanelHTML(){
 }
 </script>
 <script>
-// ════════════════════════════════════════════════════════════════
-//  TL SANDBOX (WRITE) MODULE — CertSecure Hub
-//  DEMO Client only · Token: Settings → APIs → TrustLayer Demo
-// ════════════════════════════════════════════════════════════════
-const TLS_BASE='https://api.trustlayer.io/v2';
-const TLS={token:()=>localStorage.getItem('cs-tl-token-demo')||'',data:{workspace:null,primaryObjects:[],primaryRecords:[],contextObjects:[],contextRecords:[],requestRecords:[],views:[]},logEntries:[],currentSection:'overview',currentView:'guided'};
-let _tlsLogIdCounter=0;
+// ════════════════════════════════════════════════════════════════════════
+//  TL SANDBOX (WRITE) — CertSecure Hub
+//  Full TrustLayer v2 API explorer for DEMO Client only.
+//  Token: Settings → APIs → TrustLayer Demo (cs-tl-token-demo)
+//  NO token field in this UI — token is set only in Settings.
+// ════════════════════════════════════════════════════════════════════════
 
-async function tlsApi(method,path,body=null){
-  const token=TLS.token();if(!token)throw new Error('No DEMO token. Go to Settings → APIs → TrustLayer Demo.');
-  const url=TLS_BASE+path,start=Date.now();
-  const opts={method,headers:{'Authorization':`Bearer ${token}`,'Content-Type':'application/json','Accept':'application/json'}};
-  if(body&&['POST','PATCH','PUT'].includes(method))opts.body=JSON.stringify(body);
-  const id=++_tlsLogIdCounter;
-  TLS.logEntries.unshift({id,method,path,status:'…',elapsed:0,url,ts:new Date().toLocaleTimeString()});
-  if(TLS.logEntries.length>80)TLS.logEntries.pop();tlsRenderLog();
-  try{
-    const res=await fetch(url,opts),elapsed=Date.now()-start;
-    const text=await res.text();let data=null;try{data=JSON.parse(text);}catch(_){data=text;}
-    const e=TLS.logEntries.find(e=>e.id===id);if(e){e.status=res.status;e.elapsed=elapsed;}tlsRenderLog();
-    if(!res.ok)throw{status:res.status,data};return data;
-  }catch(err){const e=TLS.logEntries.find(e=>e.id===id);if(e&&e.status==='…'){e.status='ERR';e.elapsed=Date.now()-start;}tlsRenderLog();throw err;}
+const TLS_BASE_V2 = 'https://api.trustlayer.io/v2';
+const TLS_BASE_V1 = 'https://api.trustlayer.io/v1';
+
+const TLS = {
+  token: () => localStorage.getItem('cs-tl-token-demo') || '',
+  data: {
+    workspace: null,
+    primaryObjects: [], primaryRecords: [],
+    contextObjects: [], contextRecords: [],
+    requestRecords: [], views: [],
+    tagDefs: [], docTypeDefs: [], customFieldDefs: [],
+  },
+  log: [],
+  section: 'overview',
+  view: 'guided',
+  apiTab: 'workspace',
+};
+let _tlsLogId = 0;
+
+// ── Core API ──────────────────────────────────────────────────────────
+async function tlsApi(method, path, body=null, baseUrl=TLS_BASE_V2) {
+  const token = TLS.token();
+  if (!token) throw new Error('No DEMO token. Set it in Settings → APIs → TrustLayer Demo.');
+  const url = baseUrl + path;
+  const start = Date.now();
+  const id = ++_tlsLogId;
+  TLS.log.unshift({id, method, path, status:'…', ms:0, url, ts:new Date().toLocaleTimeString()});
+  if (TLS.log.length > 100) TLS.log.pop();
+  tlsLogRender();
+  try {
+    const opts = { method, headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/json' } };
+    if (body && ['POST','PATCH','PUT'].includes(method)) opts.body = JSON.stringify(body);
+    const res = await fetch(url, opts);
+    const ms = Date.now() - start;
+    const text = await res.text();
+    let data; try { data = JSON.parse(text); } catch(_) { data = text; }
+    const e = TLS.log.find(x=>x.id===id); if (e) { e.status=res.status; e.ms=ms; }
+    tlsLogRender();
+    if (!res.ok) throw { status: res.status, data };
+    return data;
+  } catch(err) {
+    const e = TLS.log.find(x=>x.id===id); if (e && e.status==='…') { e.status='ERR'; e.ms=Date.now()-start; }
+    tlsLogRender();
+    throw err;
+  }
 }
-async function tlsApiPaged(path,limit=100){
-  const all=[];let skip=0;
-  while(true){const res=await tlsApi('GET',`${path}?limit=${limit}&skip=${skip}`);const rows=res.data||(Array.isArray(res)?res:[]);all.push(...rows);const total=res.meta?.count??rows.length;if(all.length>=total||rows.length===0)break;skip+=limit;}
+async function tlsPage(path, limit=100, baseUrl=TLS_BASE_V2) {
+  const all=[]; let skip=0;
+  while(true) {
+    const res = await tlsApi('GET', `${path}${path.includes('?')?'&':'?'}limit=${limit}&skip=${skip}`, null, baseUrl);
+    const rows = res?.data || (Array.isArray(res)?res:[]);
+    all.push(...rows);
+    if (all.length >= (res?.meta?.count ?? rows.length) || rows.length === 0) break;
+    skip += limit;
+  }
   return all;
 }
-function tlsRenderLog(){
-  const el=document.getElementById('tls-log-entries');if(!el)return;
-  const mc={GET:'#60b4fa',POST:'#6ee7b7',PATCH:'#c4b5fd',PUT:'#fcd34d',DELETE:'#fca5a5'};
-  el.innerHTML=TLS.logEntries.map(e=>{const sc=e.status==='…'?'#fcd34d':(typeof e.status==='number'&&e.status>=400)?'#fca5a5':'#6ee7b7';return`<div style="display:flex;align-items:center;gap:8px;padding:3px 14px;border-bottom:1px solid #1a1a2a;font-family:monospace;font-size:10px;cursor:pointer" onclick="(()=>{const el=document.getElementById('tls-log-url');if(el)el.textContent='${e.url.replace(/'/g,"\\'")}';})()"><span style="color:${sc};width:32px;text-align:center;font-weight:700;flex-shrink:0">${e.status}</span><span style="color:${mc[e.method]||'#94a3b8'};width:46px;font-size:9px;font-weight:700;flex-shrink:0">${e.method}</span><span style="color:#7f849c;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${e.path}</span><span style="color:#494d64;flex-shrink:0;width:52px;text-align:right">${e.elapsed}ms</span><span style="color:#494d64;flex-shrink:0;margin-left:6px">${e.ts}</span></div>`;}).join('')||'<div style="padding:10px 14px;font-family:monospace;font-size:10px;color:#494d64">Waiting for API calls…</div>';
-}
-async function tlsConnect(){
-  const ti=document.getElementById('tls-token-input');if(ti&&ti.value.trim())localStorage.setItem('cs-tl-token-demo',ti.value.trim());
-  const token=TLS.token();if(!token){tlsSetStatus('No DEMO token. Go to Settings → APIs → TrustLayer Demo.','error');return;}
-  const btn=document.getElementById('tls-connect-btn');btn.disabled=true;btn.textContent='Loading…';tlsSetStatus('Connecting to TrustLayer…','info');
-  try{
-    TLS.data.workspace=await tlsApi('GET','/workspace');tlsSetStatus('Loading all data…','info');
-    const[po,pr,co,cr,rr,vi]=await Promise.allSettled([tlsApiPaged('/primary-objects'),tlsApiPaged('/primary-records'),tlsApiPaged('/context-objects'),tlsApiPaged('/context-records'),tlsApiPaged('/request-records'),tlsApiPaged('/views')]);
-    TLS.data.primaryObjects=po.status==='fulfilled'?po.value:[];TLS.data.primaryRecords=pr.status==='fulfilled'?pr.value:[];TLS.data.contextObjects=co.status==='fulfilled'?co.value:[];TLS.data.contextRecords=cr.status==='fulfilled'?cr.value:[];TLS.data.requestRecords=rr.status==='fulfilled'?rr.value:[];TLS.data.views=vi.status==='fulfilled'?vi.value:[];
-    tlsUpdateCounts();tlsRenderStatusBar();btn.textContent='↺ Reload Data';btn.disabled=false;document.getElementById('tls-refresh-btn').disabled=false;document.getElementById('tls-view-toggle').style.display='flex';tlsShowSection('overview');toast(`Connected — ${TLS.data.primaryRecords.length} vendors, ${TLS.data.requestRecords.length} requests`,'success');
-  }catch(err){btn.disabled=false;btn.textContent='Connect & Load Data';tlsSetStatus('❌ '+(err?.data?.message||err?.message||'Connection failed'),'error');}
-}
-async function tlsRefresh(){
-  if(!TLS.token())return;const btn=document.getElementById('tls-refresh-btn');btn.disabled=true;btn.textContent='↺ Refreshing…';
-  try{const[pr,cr,rr]=await Promise.allSettled([tlsApiPaged('/primary-records'),tlsApiPaged('/context-records'),tlsApiPaged('/request-records')]);if(pr.status==='fulfilled')TLS.data.primaryRecords=pr.value;if(cr.status==='fulfilled')TLS.data.contextRecords=cr.value;if(rr.status==='fulfilled')TLS.data.requestRecords=rr.value;tlsUpdateCounts();tlsRenderStatusBar();tlsShowSection(TLS.currentSection);toast('Data refreshed','success');}catch(e){toast('Refresh failed','error');}
-  btn.disabled=false;btn.textContent='↺ Refresh';
-}
-function tlsSetStatus(msg,type){const el=document.getElementById('tls-connect-status');if(!el)return;const s={info:'background:#EBF4FF;color:#1D4ED8;border:1px solid #BFDBFE',error:'background:#FEF2F2;color:#AC1534;border:1px solid #FECACA',success:'background:rgba(62,189,62,.1);color:#166534;border:1px solid #BBF7D0'};el.style.cssText=`display:block;padding:10px 14px;border-radius:8px;font-size:12px;margin:8px 16px 0;${s[type]||s.info}`;el.textContent=msg;}
-function tlsRenderStatusBar(){const el=document.getElementById('tls-status-bar');if(!el)return;const d=TLS.data,nc=d.requestRecords.filter(r=>r.complianceStatus==='non_compliant').length,comp=d.requestRecords.filter(r=>r.complianceStatus==='compliant').length;el.innerHTML=`<span style="background:#EBF4FF;color:#0678D5;border-radius:20px;padding:2px 10px;font-size:10px;font-weight:600">📍 ${d.workspace?.name||'DEMO Client'}</span><span style="color:#D1DCE8">·</span><span>${d.primaryRecords.length} vendors</span><span style="color:#D1DCE8">·</span><span style="color:#3EBD3E">✓ ${comp} compliant</span><span style="color:#D1DCE8">·</span><span style="color:${nc>0?'#AC1534':'#3EBD3E'}">⚠ ${nc} non-compliant</span><span style="color:#D1DCE8">·</span><span style="color:#5A6B7B">${d.requestRecords.length} requests</span><span id="tls-log-url" style="margin-left:auto;font-family:monospace;font-size:10px;color:#5A6B7B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:320px"></span>`;}
-function tlsUpdateCounts(){const m={'tls-cnt-po':TLS.data.primaryObjects.length,'tls-cnt-pr':TLS.data.primaryRecords.length,'tls-cnt-co':TLS.data.contextObjects.length,'tls-cnt-cr':TLS.data.contextRecords.length,'tls-cnt-rr':TLS.data.requestRecords.length,'tls-cnt-v':TLS.data.views.length};Object.entries(m).forEach(([id,n])=>{const el=document.getElementById(id);if(el)el.textContent=n;});}
-function tlsSetBody(html){const el=document.getElementById('tls-panel-body');if(el)el.innerHTML=html;}
-function tlsSetView(v){TLS.currentView=v;document.getElementById('tls-vt-guided').classList.toggle('active',v==='guided');document.getElementById('tls-vt-raw').classList.toggle('active',v==='raw');tlsShowSection(TLS.currentSection);}
-function tlsRawView(data){const json=JSON.stringify(data,null,2).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,m=>{let c='tls-jn';if(/^"/.test(m))c=/:$/.test(m)?'tls-jk':'tls-jv';else if(/true|false/.test(m))c='tls-jb';else if(/null/.test(m))c='tls-jnl';return`<span class="${c}">${m}</span>`;});return`<div class="tls-raw"><pre>${json}</pre></div>`;}
-function tlsCopyId(id){return`<button class="tls-copy" onclick="navigator.clipboard.writeText('${id}');toast('ID copied!','success')">[copy]</button>`;}
-function tlsStatusTag(s){if(!s)return`<span class="tls-tag tls-tag-grey">pending</span>`;if(s==='compliant')return`<span class="tls-tag tls-tag-green">compliant</span>`;if(s==='non_compliant')return`<span class="tls-tag tls-tag-red">non-compliant</span>`;return`<span class="tls-tag tls-tag-blue">${s}</span>`;}
-function tlsEmptyState(t,s){return`<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:240px;gap:10px;color:#5A6B7B;text-align:center"><div style="font-size:36px;opacity:.25">📭</div><div style="font-size:14px;font-weight:600;color:#263746;opacity:.4">${t}</div><div style="font-size:12px;max-width:280px;opacity:.5;line-height:1.6">${s}</div></div>`;}
-function tlsSecHdr(t,n){return`<div style="display:flex;align-items:center;gap:10px;margin:14px 0 8px"><div style="font-size:13px;font-weight:700;color:#263746">${t}</div>${n!==undefined?`<span style="background:#F0F4F8;border:1px solid #D1DCE8;border-radius:10px;padding:1px 8px;font-size:10px;color:#5A6B7B">${n}</span>`:''}<div style="height:1px;background:#D1DCE8;flex:1"></div></div>`;}
 
-function tlsShowSection(name){
-  TLS.currentSection=name;document.querySelectorAll('.tls-nav-item').forEach(el=>el.classList.remove('active'));const ne=document.getElementById(`tls-nav-${name}`);if(ne)ne.classList.add('active');tlsCloseDrawer();
-  const titles={'overview':['Overview','DEMO workspace at a glance · GET /workspace'],'primary-objects':['Entity Types',`${TLS.data.primaryObjects.length} types · GET /primary-objects`],'primary-records':['Vendors / Entities',`${TLS.data.primaryRecords.length} records · GET /primary-records`],'context-objects':['Project Types',`${TLS.data.contextObjects.length} types · GET /context-objects`],'context-records':['Projects',`${TLS.data.contextRecords.length} records · GET /context-records`],'request-records':['Compliance Requests',`${TLS.data.requestRecords.length} records · GET /request-records`],'views':['Views',`${TLS.data.views.length} views · GET /views`],'create-vendor':['Add Vendor','POST /primary-records'],'create-project':['Add Project','POST /context-records'],'compliance-tools':['Compliance Tools','Assign profiles · generate certificates · create requests']};
-  const[t,s]=titles[name]||['TL Sandbox (Write)',''];const te=document.getElementById('tls-panel-title');if(te)te.textContent=t;const se=document.getElementById('tls-panel-sub');if(se)se.textContent=s;
-  const vbl=['overview','primary-objects','primary-records','context-objects','context-records','request-records','views'];const vt=document.getElementById('tls-view-toggle');if(vt)vt.style.display=vbl.includes(name)&&TLS.data.workspace?'flex':'none';
-  const v=TLS.currentView;
-  ({overview:()=>tlsRenderOverview(v),'primary-objects':()=>tlsRenderPrimaryObjects(v),'primary-records':()=>tlsRenderPrimaryRecords(v),'context-objects':()=>tlsRenderContextObjects(v),'context-records':()=>tlsRenderContextRecords(v),'request-records':()=>tlsRenderRequestRecords(v),views:()=>tlsRenderViews(v),'create-vendor':()=>tlsRenderCreateVendor(),'create-project':()=>tlsRenderCreateProject(),'compliance-tools':()=>tlsRenderComplianceTools()})[name]?.();
+// ── Log ──────────────────────────────────────────────────────────────
+function tlsLogRender() {
+  const el = document.getElementById('tls-log-body'); if (!el) return;
+  const mc = {GET:'#60b4fa',POST:'#6ee7b7',PATCH:'#c4b5fd',PUT:'#fcd34d',DELETE:'#fca5a5'};
+  el.innerHTML = TLS.log.map(e => {
+    const sc = e.status==='…'?'#fcd34d':(typeof e.status==='number'&&e.status>=400)?'#fca5a5':'#6ee7b7';
+    return `<div class="tls-log-row" title="${e.url}">
+      <span style="color:${sc};width:34px;text-align:center;font-weight:700">${e.status}</span>
+      <span style="color:${mc[e.method]||'#94a3b8'};width:50px;font-size:9px;font-weight:700">${e.method}</span>
+      <span style="flex:1;color:#7f849c;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${e.path}</span>
+      <span style="color:#494d64;width:48px;text-align:right;flex-shrink:0">${e.ms}ms</span>
+      <span style="color:#333;flex-shrink:0;margin-left:6px">${e.ts}</span>
+    </div>`;
+  }).join('') || '<div style="padding:8px 14px;color:#494d64;font-size:10px">No API calls yet</div>';
 }
 
-function tlsRenderOverview(view){
-  const d=TLS.data;if(view==='raw'){tlsSetBody(tlsRawView({workspace:d.workspace,summary:{vendors:d.primaryRecords.length,projects:d.contextRecords.length,requests:d.requestRecords.length}}));return;}
-  const nc=d.requestRecords.filter(r=>r.complianceStatus==='non_compliant'),comp=d.requestRecords.filter(r=>r.complianceStatus==='compliant'),total=d.requestRecords.length,pct=total?Math.round(comp.length/total*100):0;
-  tlsSetBody(`<div class="tls-kpi-grid"><div class="tls-kpi tls-kpi-blue" onclick="tlsShowSection('primary-records')" style="cursor:pointer"><div class="tls-kpi-val">${d.primaryRecords.length}</div><div class="tls-kpi-lbl">Vendors / Entities</div></div><div class="tls-kpi tls-kpi-teal" onclick="tlsShowSection('context-records')" style="cursor:pointer"><div class="tls-kpi-val">${d.contextRecords.length}</div><div class="tls-kpi-lbl">Projects</div></div><div class="tls-kpi tls-kpi-green"><div class="tls-kpi-val" style="color:#3EBD3E">${comp.length}</div><div class="tls-kpi-lbl" style="color:#3EBD3E">${pct}% compliance rate</div></div><div class="tls-kpi ${nc.length>0?'tls-kpi-red':'tls-kpi-green'}"><div class="tls-kpi-val" style="color:${nc.length>0?'#AC1534':'#3EBD3E'}">${nc.length}</div><div class="tls-kpi-lbl" style="color:${nc.length>0?'#AC1534':'#3EBD3E'}">Non-Compliant</div></div></div>
-  ${tlsSecHdr('Entity Types',d.primaryObjects.length)}<table class="tls-table"><thead><tr><th>Name</th><th>Plural</th><th>ID</th><th>Records</th></tr></thead><tbody>${d.primaryObjects.map(o=>{const c=d.primaryRecords.filter(r=>r.primaryObjectId===o._id).length;return`<tr><td><strong>${o.name}</strong></td><td>${o.pluralName}</td><td class="tls-mono">${tlsCopyId(o._id)}<span>${o._id?.slice(-8)}</span></td><td><span class="tls-tag tls-tag-blue">${c}</span></td></tr>`;}).join('')||'<tr><td colspan="4" class="tls-muted">No entity types</td></tr>'}</tbody></table>
-  ${tlsSecHdr('Project Types',d.contextObjects.length)}<table class="tls-table"><thead><tr><th>Name</th><th>Plural</th><th>ID</th><th>Projects</th></tr></thead><tbody>${d.contextObjects.map(o=>{const c=d.contextRecords.filter(r=>r.contextObjectId===o._id).length;return`<tr><td><strong>${o.name}</strong></td><td>${o.pluralName}</td><td class="tls-mono">${tlsCopyId(o._id)}<span>${o._id?.slice(-8)}</span></td><td><span class="tls-tag tls-tag-blue">${c}</span></td></tr>`;}).join('')||'<tr><td colspan="4" class="tls-muted">No project types</td></tr>'}</tbody></table>`);
+// ── Connect ──────────────────────────────────────────────────────────
+async function tlsConnect() {
+  const token = TLS.token();
+  if (!token) { tlsStatus('No DEMO token found. Go to Settings → APIs → TrustLayer Demo and paste your token there.','error'); return; }
+  const btn = document.getElementById('tls-connect-btn');
+  btn.disabled = true; btn.textContent = 'Loading…';
+  tlsStatus('Connecting…','info');
+  try {
+    TLS.data.workspace = await tlsApi('GET', '/workspace');
+    tlsStatus('Loading all DEMO Client data…','info');
+    const results = await Promise.allSettled([
+      tlsPage('/primary-objects'), tlsPage('/primary-records'),
+      tlsPage('/context-objects'), tlsPage('/context-records'),
+      tlsPage('/request-records'), tlsPage('/views'),
+      tlsPage('/tags', 100, TLS_BASE_V1),
+      tlsPage('/document-types', 100, TLS_BASE_V1),
+      tlsPage('/custom-fields', 100, TLS_BASE_V1),
+    ]);
+    const [po,pr,co,cr,rr,vi,td,dt,cf] = results;
+    TLS.data.primaryObjects  = po.status==='fulfilled'?po.value:[];
+    TLS.data.primaryRecords  = pr.status==='fulfilled'?pr.value:[];
+    TLS.data.contextObjects  = co.status==='fulfilled'?co.value:[];
+    TLS.data.contextRecords  = cr.status==='fulfilled'?cr.value:[];
+    TLS.data.requestRecords  = rr.status==='fulfilled'?rr.value:[];
+    TLS.data.views           = vi.status==='fulfilled'?vi.value:[];
+    TLS.data.tagDefs         = td.status==='fulfilled'?td.value:[];
+    TLS.data.docTypeDefs     = dt.status==='fulfilled'?dt.value:[];
+    TLS.data.customFieldDefs = cf.status==='fulfilled'?cf.value:[];
+    tlsStatusBarRender();
+    tlsCountsUpdate();
+    btn.textContent = '↺ Reload';
+    btn.disabled = false;
+    document.getElementById('tls-refresh-btn').disabled = false;
+    tlsShowSection('overview');
+    toast(`Connected — ${TLS.data.primaryRecords.length} vendors, ${TLS.data.requestRecords.length} requests`, 'success');
+  } catch(err) {
+    btn.disabled = false; btn.textContent = 'Connect & Load';
+    tlsStatus('❌ ' + (err?.data?.message || err?.message || 'Connection failed'), 'error');
+  }
 }
 
-function tlsRenderPrimaryRecords(view){
-  const d=TLS.data;if(!d.primaryRecords.length){tlsSetBody(tlsEmptyState('No vendors found','Create one using Add Vendor.'));return;}if(view==='raw'){tlsSetBody(tlsRawView(d.primaryRecords));return;}
-  tlsSetBody(`<div style="display:flex;gap:8px;margin-bottom:12px"><input type="text" class="tls-search" placeholder="Search vendors…" oninput="tlsFilter('vendor',this.value)"><button class="btn btn-primary" style="font-size:12px;padding:7px 14px;white-space:nowrap" onclick="tlsShowSection('create-vendor')">+ Add Vendor</button></div><div class="tls-card-grid" id="tls-vendor-cards">${d.primaryRecords.map(r=>{const reqs=d.requestRecords.filter(rr=>rr.primaryRecordId===r._id),nc=reqs.filter(rr=>rr.complianceStatus==='non_compliant').length,comp=reqs.filter(rr=>rr.complianceStatus==='compliant').length,pObj=d.primaryObjects.find(o=>o._id===r.primaryObjectId);return`<div class="tls-card" id="tls-vc-${r._id}" onclick="tlsSelectVendor('${r._id}')"><div class="tls-card-top"><div class="tls-avatar">🏢</div><div><div class="tls-card-name">${r.name||'Unnamed'}</div><div class="tls-card-type">${pObj?.name||'Entity'}</div></div></div><div class="tls-tags"><span class="tls-tag ${r.status==='archived'?'tls-tag-grey':'tls-tag-blue'}">${r.status||'active'}</span>${comp>0?`<span class="tls-tag tls-tag-green">${comp} ✓</span>`:''}${nc>0?`<span class="tls-tag tls-tag-red">${nc} NC</span>`:''}${reqs.length===0?'<span class="tls-tag tls-tag-grey">no requests</span>':''}</div><div class="tls-card-id">${r._id}</div><div class="tls-card-actions"><button class="btn btn-secondary" style="font-size:11px;padding:4px 10px" onclick="event.stopPropagation();tlsSelectVendor('${r._id}')">Details</button><button class="btn" style="font-size:11px;padding:4px 10px;background:#FEF2F2;color:#AC1534;border:1px solid #FECACA" onclick="event.stopPropagation();tlsDelete('primary-records','${r._id}','${(r.name||'').replace(/'/g,"\\'")}')">Delete</button></div></div>`;}).join('')}</div>`);
+async function tlsRefresh() {
+  if (!TLS.token()) return;
+  const btn = document.getElementById('tls-refresh-btn'); btn.disabled=true; btn.textContent='↺ Refreshing…';
+  try {
+    const [pr,cr,rr] = await Promise.allSettled([tlsPage('/primary-records'),tlsPage('/context-records'),tlsPage('/request-records')]);
+    if(pr.status==='fulfilled') TLS.data.primaryRecords=pr.value;
+    if(cr.status==='fulfilled') TLS.data.contextRecords=cr.value;
+    if(rr.status==='fulfilled') TLS.data.requestRecords=rr.value;
+    tlsStatusBarRender(); tlsCountsUpdate(); tlsShowSection(TLS.section);
+    toast('Data refreshed','success');
+  } catch(e) { toast('Refresh failed','error'); }
+  btn.disabled=false; btn.textContent='↺ Refresh';
 }
-async function tlsSelectVendor(id){
-  const r=TLS.data.primaryRecords.find(x=>x._id===id);if(!r)return;document.querySelectorAll('.tls-card').forEach(c=>c.classList.remove('tls-selected'));document.getElementById(`tls-vc-${id}`)?.classList.add('tls-selected');
-  let contacts=[],tags=[];try{contacts=(await tlsApi('GET',`/primary-records/${id}/contacts?limit=50`)).data||[];}catch(_){}try{tags=(await tlsApi('GET',`/primary-records/${id}/tags?limit=50`)).data||[];}catch(_){}
-  const reqs=TLS.data.requestRecords.filter(rr=>rr.primaryRecordId===id),pObj=TLS.data.primaryObjects.find(o=>o._id===r.primaryObjectId);
-  tlsOpenDrawer(r.name||'Vendor',[
-    {label:'Info',content:`<div class="tls-kv"><div class="tls-kv-row"><div class="tls-kv-key">ID</div><div class="tls-kv-val tls-mono">${tlsCopyId(r._id)} ${r._id}</div></div><div class="tls-kv-row"><div class="tls-kv-key">Name</div><div class="tls-kv-val"><strong>${r.name||'—'}</strong></div></div><div class="tls-kv-row"><div class="tls-kv-key">Status</div><div class="tls-kv-val"><span class="tls-tag ${r.status==='archived'?'tls-tag-grey':'tls-tag-blue'}">${r.status||'active'}</span></div></div><div class="tls-kv-row"><div class="tls-kv-key">Type</div><div class="tls-kv-val">${pObj?.name||'—'}</div></div><div class="tls-kv-row"><div class="tls-kv-key">Website</div><div class="tls-kv-val">${r.website?`<a href="${r.website}" target="_blank" style="color:#0678D5">${r.website}</a>`:'—'}</div></div><div class="tls-kv-row"><div class="tls-kv-key">Notes</div><div class="tls-kv-val">${r.additionalNotes||'—'}</div></div><div class="tls-kv-row"><div class="tls-kv-key">Created</div><div class="tls-kv-val">${r.createdAt?new Date(r.createdAt).toLocaleDateString():'—'}</div></div></div><div style="height:1px;background:#EEF2F7;margin:10px 0"></div><button class="btn" style="font-size:11px;padding:5px 12px;background:#FEF2F2;color:#AC1534;border:1px solid #FECACA" onclick="tlsDelete('primary-records','${r._id}','${(r.name||'').replace(/'/g,"\\'")}')">🗑 Delete</button><div class="tls-api-hint">GET /primary-records/${r._id}</div>`},
-    {label:`Requests (${reqs.length})`,content:`<div style="margin-bottom:8px"><button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsShowCreateRequest('${r._id}')">+ Create Request</button></div>${reqs.map(rr=>{const proj=TLS.data.contextRecords.find(c=>c._id===rr.contextRecordId);return`<div class="tls-card" style="margin-bottom:8px;cursor:default"><div class="tls-card-top"><div class="tls-avatar" style="font-size:16px">${rr.complianceStatus==='compliant'?'✅':rr.complianceStatus==='non_compliant'?'⚠️':'🔄'}</div><div><div class="tls-card-name">${rr.name||'Request'}</div><div class="tls-card-type">${proj?.name||'Global'}</div></div></div><div class="tls-tags">${tlsStatusTag(rr.complianceStatus)}${rr.complianceProfile?'<span class="tls-tag tls-tag-blue">Profile ✓</span>':'<span class="tls-tag tls-tag-grey">No Profile</span>'}</div><div class="tls-card-id">${rr._id}</div><div class="tls-card-actions"><button class="btn btn-secondary" style="font-size:11px;padding:4px 10px" onclick="tlsSelectRequest('${rr._id}')">Details</button></div></div>`;}).join('')||'<div class="tls-muted">No requests for this vendor.</div>'}<div class="tls-api-hint">GET /primary-records/${r._id}/request-records</div>`},
-    {label:`Contacts (${contacts.length})`,content:`<div style="margin-bottom:8px"><button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsPromptAssignContact('${r._id}')">+ Assign Contact</button></div>${contacts.map(c=>`<div class="tls-card" style="margin-bottom:8px;cursor:default"><div class="tls-card-top"><div class="tls-avatar">👤</div><div><div class="tls-card-name">${c.email||'No email'}</div><div class="tls-card-type">${c.primary?'Primary':'Secondary'}${c.defaultRequestRecipient?' · Receives requests':''}</div></div></div><div class="tls-card-actions"><button class="btn" style="font-size:11px;padding:4px 10px;background:#FEF2F2;color:#AC1534;border:1px solid #FECACA" onclick="tlsRemoveContact('${r._id}','${c.id}')">Remove</button></div></div>`).join('')||'<div class="tls-muted">No contacts assigned.</div>'}<div class="tls-api-hint">GET /primary-records/${r._id}/contacts</div>`},
-    {label:`Tags (${tags.length})`,content:`<div style="margin-bottom:8px"><button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsPromptAssignTag('${r._id}')">+ Assign Tag</button></div>${tags.map(t=>`<div class="tls-card" style="margin-bottom:8px;cursor:default"><div class="tls-card-top"><div class="tls-avatar">🏷️</div><div><div class="tls-card-name tls-mono" style="font-size:11px">${t.id}</div><div class="tls-card-type">${t.expiresAt?'Expires: '+new Date(t.expiresAt).toLocaleDateString():'No expiry'}</div></div></div><div class="tls-card-actions"><button class="btn" style="font-size:11px;padding:4px 10px;background:#FEF2F2;color:#AC1534;border:1px solid #FECACA" onclick="tlsRemoveTag('${r._id}','${t.id}')">Remove</button></div></div>`).join('')||'<div class="tls-muted">No tags assigned.</div>'}<div class="tls-api-hint">GET /primary-records/${r._id}/tags</div>`},
-    {label:'Raw JSON',content:tlsRawView(r)},
+
+// ── Status helpers ───────────────────────────────────────────────────
+function tlsStatus(msg, type) {
+  const el = document.getElementById('tls-status-msg'); if (!el) return;
+  const s = {info:'background:#EBF4FF;color:#1D4ED8;border:1px solid #BFDBFE',error:'background:#FEF2F2;color:#AC1534;border:1px solid #FECACA',success:'background:rgba(62,189,62,.1);color:#166534;border:1px solid #BBF7D0'};
+  el.style.cssText = `display:block;padding:9px 14px;border-radius:7px;font-size:12px;margin:8px 16px;${s[type]||s.info}`;
+  el.textContent = msg;
+}
+function tlsStatusBarRender() {
+  const el = document.getElementById('tls-statusbar'); if (!el) return;
+  const d=TLS.data, nc=d.requestRecords.filter(r=>r.complianceStatus==='non_compliant').length, comp=d.requestRecords.filter(r=>r.complianceStatus==='compliant').length;
+  el.innerHTML = `<span style="background:#EBF4FF;color:#0678D5;border-radius:20px;padding:2px 10px;font-size:10px;font-weight:600">📍 ${d.workspace?.name||'DEMO Client'}</span>
+  <span style="color:#D1DCE8">·</span><span>${d.primaryRecords.length} vendors</span>
+  <span style="color:#D1DCE8">·</span><span style="color:#3EBD3E">✓ ${comp}</span>
+  <span style="color:#D1DCE8">·</span><span style="color:${nc>0?'#AC1534':'#3EBD3E'}">⚠ ${nc} NC</span>
+  <span style="color:#D1DCE8">·</span><span style="color:#5A6B7B">${d.requestRecords.length} requests</span>`;
+}
+function tlsCountsUpdate() {
+  const m={'tls-n-po':TLS.data.primaryObjects.length,'tls-n-pr':TLS.data.primaryRecords.length,'tls-n-co':TLS.data.contextObjects.length,'tls-n-cr':TLS.data.contextRecords.length,'tls-n-rr':TLS.data.requestRecords.length,'tls-n-v':TLS.data.views.length,'tls-n-td':TLS.data.tagDefs.length,'tls-n-dt':TLS.data.docTypeDefs.length,'tls-n-cf':TLS.data.customFieldDefs.length};
+  Object.entries(m).forEach(([id,n])=>{const el=document.getElementById(id);if(el)el.textContent=n;});
+}
+function tlsBody(html) { const el=document.getElementById('tls-panel-body');if(el)el.innerHTML=html; }
+function tlsTag(cls,txt) { return `<span class="tls-tag tls-tag-${cls}">${txt}</span>`; }
+function tlsCopy(id) { return `<button class="tls-copy-btn" onclick="navigator.clipboard.writeText('${id}');toast('Copied!','success')">[copy]</button>`; }
+function tlsEmpty(t,s) { return `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:220px;gap:10px;text-align:center"><div style="font-size:32px;opacity:.2">📭</div><div style="font-size:13px;font-weight:600;color:#263746;opacity:.4">${t}</div><div style="font-size:11px;color:#5A6B7B;max-width:280px;opacity:.5;line-height:1.5">${s}</div></div>`; }
+function tlsRaw(data) {
+  const j=JSON.stringify(data,null,2).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,m=>{
+      let c='tls-jn';if(/^"/.test(m))c=/:$/.test(m)?'tls-jk':'tls-jv';else if(/true|false/.test(m))c='tls-jb';else if(/null/.test(m))c='tls-jnl';return `<span class="${c}">${m}</span>`;
+    });
+  return `<div class="tls-raw"><pre>${j}</pre></div>`;
+}
+function tlsStatusTag(s) {
+  if (!s) return tlsTag('grey','pending');
+  if (s==='compliant') return tlsTag('green','compliant');
+  if (s==='non_compliant') return tlsTag('red','non-compliant');
+  return tlsTag('blue',s);
+}
+
+// ── Section routing ──────────────────────────────────────────────────
+function tlsShowSection(name) {
+  TLS.section = name;
+  document.querySelectorAll('.tls-nav-btn').forEach(b=>b.classList.remove('active'));
+  const nb = document.getElementById('tls-nb-'+name); if(nb) nb.classList.add('active');
+  // Panel header
+  const titles = {
+    overview:['Overview','DEMO workspace at a glance'],
+    'primary-objects':['Entity Types',`${TLS.data.primaryObjects.length} types · GET /primary-objects`],
+    'primary-records':['Vendors / Entities',`${TLS.data.primaryRecords.length} records · GET /primary-records`],
+    'context-objects':['Project Types',`${TLS.data.contextObjects.length} types · GET /context-objects`],
+    'context-records':['Projects',`${TLS.data.contextRecords.length} records · GET /context-records`],
+    'request-records':['Compliance Requests',`${TLS.data.requestRecords.length} records · GET /request-records`],
+    views:['Views',`${TLS.data.views.length} views · GET /views`],
+    'ref-data':['Reference Data','Tag defs · Document types · Custom fields · v1 endpoints'],
+    'create-vendor':['Add Vendor','POST /primary-records'],
+    'create-project':['Add Project','POST /context-records'],
+    'compliance-tools':['Compliance Tools','Assign profiles · generate certs · create requests'],
+    'full-api':['Full API Explorer','Every v2 endpoint — raw request & response'],
+  };
+  const [t,s] = titles[name]||['TL Sandbox (Write)',''];
+  const te=document.getElementById('tls-panel-title'); if(te)te.textContent=t;
+  const se=document.getElementById('tls-panel-sub'); if(se)se.textContent=s;
+  // Show/hide guided/raw toggle
+  const viewableSections = ['overview','primary-objects','primary-records','context-objects','context-records','request-records','views','ref-data'];
+  const vt=document.getElementById('tls-view-toggle');
+  if(vt) vt.style.display = (viewableSections.includes(name)&&TLS.data.workspace)?'flex':'none';
+  // Dispatch
+  const v=TLS.view;
+  const map = {
+    overview:()=>tlsRenderOverview(v),
+    'primary-objects':()=>tlsRenderPrimaryObjects(v),
+    'primary-records':()=>tlsRenderPrimaryRecords(v),
+    'context-objects':()=>tlsRenderContextObjects(v),
+    'context-records':()=>tlsRenderContextRecords(v),
+    'request-records':()=>tlsRenderRequestRecords(v),
+    views:()=>tlsRenderViews(v),
+    'ref-data':()=>tlsRenderRefData(v),
+    'create-vendor':()=>tlsRenderCreateVendor(),
+    'create-project':()=>tlsRenderCreateProject(),
+    'compliance-tools':()=>tlsRenderComplianceTools(),
+    'full-api':()=>tlsRenderFullApi(),
+  };
+  if (map[name]) map[name]();
+}
+
+function tlsSetView(v) {
+  TLS.view=v;
+  document.getElementById('tls-vt-guided').classList.toggle('active',v==='guided');
+  document.getElementById('tls-vt-raw').classList.toggle('active',v==='raw');
+  tlsShowSection(TLS.section);
+}
+
+// ── OVERVIEW ────────────────────────────────────────────────────────
+function tlsRenderOverview(view) {
+  if (view==='raw') { tlsBody(tlsRaw({workspace:TLS.data.workspace,counts:{vendors:TLS.data.primaryRecords.length,projects:TLS.data.contextRecords.length,requests:TLS.data.requestRecords.length,views:TLS.data.views.length}})); return; }
+  const d=TLS.data, nc=d.requestRecords.filter(r=>r.complianceStatus==='non_compliant'), comp=d.requestRecords.filter(r=>r.complianceStatus==='compliant'), tot=d.requestRecords.length, pct=tot?Math.round(comp.length/tot*100):0;
+  tlsBody(`
+    <div class="tls-kpi-grid">
+      <div class="tls-kpi tls-kpi-blue" onclick="tlsShowSection('primary-records')" style="cursor:pointer"><div class="tls-kpi-val">${d.primaryRecords.length}</div><div class="tls-kpi-lbl">Vendors</div></div>
+      <div class="tls-kpi tls-kpi-teal" onclick="tlsShowSection('context-records')" style="cursor:pointer"><div class="tls-kpi-val">${d.contextRecords.length}</div><div class="tls-kpi-lbl">Projects</div></div>
+      <div class="tls-kpi tls-kpi-green"><div class="tls-kpi-val" style="color:#3EBD3E">${comp.length}</div><div class="tls-kpi-lbl" style="color:#3EBD3E">${pct}% compliant</div></div>
+      <div class="tls-kpi ${nc.length>0?'tls-kpi-red':'tls-kpi-green'}"><div class="tls-kpi-val" style="color:${nc.length>0?'#AC1534':'#3EBD3E'}">${nc.length}</div><div class="tls-kpi-lbl" style="color:${nc.length>0?'#AC1534':'#3EBD3E'}">Non-Compliant</div></div>
+    </div>
+    <div class="tls-sec-hdr">Entity Types <span class="tls-cnt">${d.primaryObjects.length}</span></div>
+    <table class="tls-table"><thead><tr><th>Name</th><th>Plural</th><th>Slug</th><th>ID</th><th>Records</th></tr></thead><tbody>
+    ${d.primaryObjects.map(o=>`<tr><td><strong>${o.name}</strong></td><td>${o.pluralName}</td><td class="mono">${o.slug||'—'}</td><td class="mono">${tlsCopy(o._id)}<small>${o._id?.slice(-8)}</small></td><td>${tlsTag('blue',d.primaryRecords.filter(r=>r.primaryObjectId===o._id).length)}</td></tr>`).join('')||'<tr><td colspan="5" class="muted">None</td></tr>'}
+    </tbody></table>
+    <div class="tls-sec-hdr">Project Types <span class="tls-cnt">${d.contextObjects.length}</span></div>
+    <table class="tls-table"><thead><tr><th>Name</th><th>Plural</th><th>Slug</th><th>ID</th><th>Projects</th></tr></thead><tbody>
+    ${d.contextObjects.map(o=>`<tr><td><strong>${o.name}</strong></td><td>${o.pluralName}</td><td class="mono">${o.slug||'—'}</td><td class="mono">${tlsCopy(o._id)}<small>${o._id?.slice(-8)}</small></td><td>${tlsTag('blue',d.contextRecords.filter(r=>r.contextObjectId===o._id).length)}</td></tr>`).join('')||'<tr><td colspan="5" class="muted">None</td></tr>'}
+    </tbody></table>
+    <div class="tls-hint">GET /workspace · GET /primary-objects · GET /context-objects</div>`);
+}
+
+// ── PRIMARY RECORDS ──────────────────────────────────────────────────
+function tlsRenderPrimaryRecords(view) {
+  const d=TLS.data;
+  if (!d.primaryRecords.length) { tlsBody(tlsEmpty('No vendors','Create one with Add Vendor.')); return; }
+  if (view==='raw') { tlsBody(tlsRaw(d.primaryRecords)); return; }
+  tlsBody(`
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      <input type="text" class="tls-search" placeholder="Search vendors…" oninput="tlsFilter('tls-vendor-grid','tls-vc-',this.value,TLS.data.primaryRecords)">
+      <button class="btn btn-primary" style="font-size:12px;padding:7px 14px;white-space:nowrap" onclick="tlsShowSection('create-vendor')">+ Add Vendor</button>
+    </div>
+    <div class="tls-card-grid" id="tls-vendor-grid">
+    ${d.primaryRecords.map(r=>{
+      const reqs=d.requestRecords.filter(rr=>rr.primaryRecordId===r._id), nc=reqs.filter(rr=>rr.complianceStatus==='non_compliant').length, comp=reqs.filter(rr=>rr.complianceStatus==='compliant').length, pObj=d.primaryObjects.find(o=>o._id===r.primaryObjectId);
+      return `<div class="tls-card" id="tls-vc-${r._id}" data-name="${(r.name||'').toLowerCase()}" onclick="tlsVendorDetail('${r._id}')">
+        <div class="tls-card-row"><div class="tls-avatar">🏢</div><div><div class="tls-card-name">${r.name||'Unnamed'}</div><div class="tls-card-type">${pObj?.name||'Entity'}</div></div></div>
+        <div class="tls-tags mt6">${tlsTag(r.status==='archived'?'grey':'blue',r.status||'active')}${comp>0?tlsTag('green',comp+' ✓'):''}${nc>0?tlsTag('red',nc+' NC'):''}${reqs.length===0?tlsTag('grey','no requests'):''}</div>
+        <div class="tls-card-id">${r._id}</div>
+        <div class="tls-card-actions"><button class="btn btn-secondary" style="font-size:11px;padding:4px 10px" onclick="event.stopPropagation();tlsVendorDetail('${r._id}')">Details</button><button class="tls-del-btn" onclick="event.stopPropagation();tlsDelete('primary-records','${r._id}','${(r.name||'').replace(/'/g,"\\'")}')">Delete</button></div>
+      </div>`;
+    }).join('')}
+    </div>
+    <div class="tls-hint">GET /primary-records · GET /primary-records/{id}/contacts · /tags · /attributes · /request-records</div>`);
+}
+
+async function tlsVendorDetail(id) {
+  const r=TLS.data.primaryRecords.find(x=>x._id===id); if(!r) return;
+  document.querySelectorAll('.tls-card').forEach(c=>c.classList.remove('tls-selected'));
+  document.getElementById('tls-vc-'+id)?.classList.add('tls-selected');
+  let contacts=[],tags=[],attrs=[];
+  try { contacts=(await tlsApi('GET',`/primary-records/${id}/contacts?limit=100`)).data||[]; } catch(_){}
+  try { tags=(await tlsApi('GET',`/primary-records/${id}/tags?limit=100`)).data||[]; } catch(_){}
+  try { attrs=(await tlsApi('GET',`/primary-records/${id}/attributes?limit=100`)).data||[]; } catch(_){}
+  const reqs=TLS.data.requestRecords.filter(rr=>rr.primaryRecordId===id);
+  const pObj=TLS.data.primaryObjects.find(o=>o._id===r.primaryObjectId);
+  tlsDrawer(r.name||'Vendor',[
+    {label:'Info',content:`<div class="tls-kv">
+      <div class="tls-kv-row"><div class="k">ID</div><div class="v mono">${tlsCopy(r._id)}${r._id}</div></div>
+      <div class="tls-kv-row"><div class="k">Name</div><div class="v"><strong>${r.name||'—'}</strong></div></div>
+      <div class="tls-kv-row"><div class="k">Status</div><div class="v">${tlsTag(r.status==='archived'?'grey':'blue',r.status||'active')}</div></div>
+      <div class="tls-kv-row"><div class="k">Type</div><div class="v">${pObj?.name||'—'}</div></div>
+      <div class="tls-kv-row"><div class="k">Website</div><div class="v">${r.website?`<a href="${r.website}" target="_blank" style="color:#0678D5">${r.website}</a>`:'—'}</div></div>
+      <div class="tls-kv-row"><div class="k">Notes</div><div class="v">${r.additionalNotes||'—'}</div></div>
+      <div class="tls-kv-row"><div class="k">Created</div><div class="v">${r.createdAt?new Date(r.createdAt).toLocaleDateString():'—'}</div></div>
+    </div>
+    <div class="tls-divider"></div>
+    <button class="tls-del-btn" onclick="tlsDelete('primary-records','${r._id}','${(r.name||'').replace(/'/g,"\\'")}')">🗑 Delete Vendor</button>
+    <div class="tls-hint">GET /primary-records/${r._id} · PATCH · DELETE</div>`},
+    {label:`Requests (${reqs.length})`,content:`<div class="mb8"><button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsShowCreateRequest('${r._id}')">+ Create Request</button></div>
+    ${reqs.map(rr=>{const p=TLS.data.contextRecords.find(c=>c._id===rr.contextRecordId);return`<div class="tls-card mb8" style="cursor:default"><div class="tls-card-row"><div class="tls-avatar" style="font-size:16px">${rr.complianceStatus==='compliant'?'✅':rr.complianceStatus==='non_compliant'?'⚠️':'🔄'}</div><div><div class="tls-card-name">${rr.name||'Request'}</div><div class="tls-card-type">${p?.name||'Global'}</div></div></div><div class="tls-tags mt4">${tlsStatusTag(rr.complianceStatus)}${rr.complianceProfile?tlsTag('blue','Profile ✓'):tlsTag('grey','No Profile')}</div><div class="tls-card-id">${rr._id}</div><div class="tls-card-actions"><button class="btn btn-secondary" style="font-size:11px;padding:3px 8px" onclick="tlsRequestDetail('${rr._id}')">Details</button></div></div>`;}).join('')||'<div class="muted">No requests for this vendor.</div>'}
+    <div class="tls-hint">GET /primary-records/${r._id}/request-records · POST to create</div>`},
+    {label:`Contacts (${contacts.length})`,content:`<div class="mb8"><button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsAddContact('${r._id}')">+ Assign Contact</button></div>
+    ${contacts.map(c=>`<div class="tls-card mb8" style="cursor:default"><div class="tls-card-row"><div class="tls-avatar">👤</div><div><div class="tls-card-name">${c.email||'No email'}</div><div class="tls-card-type">${c.primary?'Primary':'Secondary'}${c.defaultRequestRecipient?' · Receives requests':''}</div></div></div><div class="tls-card-actions"><button class="tls-del-btn" onclick="tlsRemoveContact('${r._id}','${c.id}')">Remove</button></div></div>`).join('')||'<div class="muted">No contacts.</div>'}
+    <div class="tls-hint">GET /primary-records/${r._id}/contacts · POST · DELETE /{contactId}</div>`},
+    {label:`Tags (${tags.length})`,content:`<div class="mb8"><button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsAddTag('${r._id}')">+ Assign Tag</button></div>
+    ${tags.map(t=>{const def=TLS.data.tagDefs.find(d=>d.id===t.id||d._id===t.id);return`<div class="tls-card mb8" style="cursor:default"><div class="tls-card-row"><div class="tls-avatar">🏷️</div><div><div class="tls-card-name mono" style="font-size:11px">${def?.name||t.id}</div><div class="tls-card-type">${t.expiresAt?'Expires '+new Date(t.expiresAt).toLocaleDateString():'No expiry'}</div></div></div><div class="tls-card-actions"><button class="tls-del-btn" onclick="tlsRemoveTag('${r._id}','${t.id}')">Remove</button></div></div>`;}).join('')||'<div class="muted">No tags.</div>'}
+    <div class="tls-hint">GET /primary-records/${r._id}/tags · POST · DELETE /{tagId}</div>`},
+    {label:`Attrs (${attrs.length})`,content:`${attrs.map(a=>{const def=TLS.data.customFieldDefs.find(d=>d.id===a.id||d._id===a.id);return`<div class="tls-kv-row"><div class="k" style="width:120px">${def?.name||def?.label||a.id}</div><div class="v">${a.value!==undefined?String(a.value):(a.optionIds||[]).join(', ')||'—'}</div></div>`;}).join('')||'<div class="muted">No custom attributes.</div>'}
+    <div class="tls-divider"></div>
+    <div style="font-size:11px;color:#5A6B7B;margin-bottom:6px">Update an attribute:</div>
+    <div class="form-grp mb6"><label class="form-lbl">Attribute ID</label><input type="text" class="tls-inp" id="tls-va-fid" placeholder="field ObjectId"></div>
+    <div class="form-grp mb6"><label class="form-lbl">Value</label><input type="text" class="tls-inp" id="tls-va-val"></div>
+    <button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsSetAttr('primary-records','${r._id}')">PUT Attribute</button>
+    <div class="tls-hint">GET /primary-records/${r._id}/attributes · GET/PUT/DELETE /{attributeId}</div>`},
+    {label:'Raw JSON',content:tlsRaw(r)},
   ]);
 }
 
-function tlsRenderContextRecords(view){
-  const d=TLS.data;if(!d.contextRecords.length){tlsSetBody(tlsEmptyState('No projects found','Create one using Add Project.'));return;}if(view==='raw'){tlsSetBody(tlsRawView(d.contextRecords));return;}
-  tlsSetBody(`<div style="display:flex;gap:8px;margin-bottom:12px"><input type="text" class="tls-search" placeholder="Search projects…" oninput="tlsFilter('project',this.value)"><button class="btn btn-primary" style="font-size:12px;padding:7px 14px;white-space:nowrap" onclick="tlsShowSection('create-project')">+ Add Project</button></div><div class="tls-card-grid" id="tls-project-cards">${d.contextRecords.map(r=>{const cObj=d.contextObjects.find(o=>o._id===r.contextObjectId),reqs=d.requestRecords.filter(rr=>rr.contextRecordId===r._id);return`<div class="tls-card" id="tls-cc-${r._id}" onclick="tlsSelectProject('${r._id}')"><div class="tls-card-top"><div class="tls-avatar" style="background:#e0f2fe">📋</div><div><div class="tls-card-name">${r.name||'Unnamed'}</div><div class="tls-card-type">${cObj?.name||'Project'}</div></div></div><div class="tls-tags"><span class="tls-tag ${r.status==='archived'?'tls-tag-grey':'tls-tag-blue'}">${r.status||'active'}</span>${reqs.length?`<span class="tls-tag tls-tag-grey">${reqs.length} requests</span>`:''}</div><div class="tls-card-id">${r._id}</div><div class="tls-card-actions"><button class="btn btn-secondary" style="font-size:11px;padding:4px 10px" onclick="event.stopPropagation();tlsSelectProject('${r._id}')">Details</button><button class="btn" style="font-size:11px;padding:4px 10px;background:#FEF2F2;color:#AC1534;border:1px solid #FECACA" onclick="event.stopPropagation();tlsDelete('context-records','${r._id}','${(r.name||'').replace(/'/g,"\\'")}')">Delete</button></div></div>`;}).join('')}</div>`);
+// ── CONTEXT RECORDS ──────────────────────────────────────────────────
+function tlsRenderContextRecords(view) {
+  const d=TLS.data;
+  if (!d.contextRecords.length) { tlsBody(tlsEmpty('No projects','Create one with Add Project.')); return; }
+  if (view==='raw') { tlsBody(tlsRaw(d.contextRecords)); return; }
+  tlsBody(`
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      <input type="text" class="tls-search" placeholder="Search projects…" oninput="tlsFilter('tls-project-grid','tls-cc-',this.value,TLS.data.contextRecords)">
+      <button class="btn btn-primary" style="font-size:12px;padding:7px 14px;white-space:nowrap" onclick="tlsShowSection('create-project')">+ Add Project</button>
+    </div>
+    <div class="tls-card-grid" id="tls-project-grid">
+    ${d.contextRecords.map(r=>{const cObj=d.contextObjects.find(o=>o._id===r.contextObjectId),reqs=d.requestRecords.filter(rr=>rr.contextRecordId===r._id);return`<div class="tls-card" id="tls-cc-${r._id}" data-name="${(r.name||'').toLowerCase()}" onclick="tlsProjectDetail('${r._id}')">
+      <div class="tls-card-row"><div class="tls-avatar" style="background:#e0f2fe">📋</div><div><div class="tls-card-name">${r.name||'Unnamed'}</div><div class="tls-card-type">${cObj?.name||'Project'}</div></div></div>
+      <div class="tls-tags mt6">${tlsTag(r.status==='archived'?'grey':'blue',r.status||'active')}${reqs.length?tlsTag('grey',reqs.length+' requests'):''}</div>
+      <div class="tls-card-id">${r._id}</div>
+      <div class="tls-card-actions"><button class="btn btn-secondary" style="font-size:11px;padding:4px 10px" onclick="event.stopPropagation();tlsProjectDetail('${r._id}')">Details</button><button class="tls-del-btn" onclick="event.stopPropagation();tlsDelete('context-records','${r._id}','${(r.name||'').replace(/'/g,"\\'")}')">Delete</button></div>
+    </div>`;}).join('')}
+    </div>
+    <div class="tls-hint">GET /context-records · GET /context-records/{id}/attributes · /request-records</div>`);
 }
-async function tlsSelectProject(id){
-  const r=TLS.data.contextRecords.find(x=>x._id===id);if(!r)return;document.querySelectorAll('.tls-card').forEach(c=>c.classList.remove('tls-selected'));document.getElementById(`tls-cc-${id}`)?.classList.add('tls-selected');
-  const cObj=TLS.data.contextObjects.find(o=>o._id===r.contextObjectId),reqs=TLS.data.requestRecords.filter(rr=>rr.contextRecordId===id);
-  tlsOpenDrawer(r.name||'Project',[
-    {label:'Info',content:`<div class="tls-kv"><div class="tls-kv-row"><div class="tls-kv-key">ID</div><div class="tls-kv-val tls-mono">${tlsCopyId(r._id)} ${r._id}</div></div><div class="tls-kv-row"><div class="tls-kv-key">Name</div><div class="tls-kv-val"><strong>${r.name}</strong></div></div><div class="tls-kv-row"><div class="tls-kv-key">Type</div><div class="tls-kv-val">${cObj?.name||'—'}</div></div><div class="tls-kv-row"><div class="tls-kv-key">Status</div><div class="tls-kv-val"><span class="tls-tag ${r.status==='archived'?'tls-tag-grey':'tls-tag-blue'}">${r.status||'active'}</span></div></div><div class="tls-kv-row"><div class="tls-kv-key">Description</div><div class="tls-kv-val">${r.description||'—'}</div></div><div class="tls-kv-row"><div class="tls-kv-key">Start</div><div class="tls-kv-val">${r.startDate?new Date(r.startDate).toLocaleDateString():'—'}</div></div><div class="tls-kv-row"><div class="tls-kv-key">End</div><div class="tls-kv-val">${r.endDate?new Date(r.endDate).toLocaleDateString():'—'}</div></div></div><div style="height:1px;background:#EEF2F7;margin:10px 0"></div><button class="btn" style="font-size:11px;padding:5px 12px;background:#FEF2F2;color:#AC1534;border:1px solid #FECACA" onclick="tlsDelete('context-records','${r._id}','${(r.name||'').replace(/'/g,"\\'")}')">🗑 Delete</button><div class="tls-api-hint">GET /context-records/${r._id}</div>`},
-    {label:`Requests (${reqs.length})`,content:reqs.map(rr=>{const v=TLS.data.primaryRecords.find(p=>p._id===rr.primaryRecordId);return`<div class="tls-card" style="margin-bottom:8px;cursor:default"><div class="tls-card-top"><div class="tls-avatar" style="font-size:16px">${rr.complianceStatus==='compliant'?'✅':rr.complianceStatus==='non_compliant'?'⚠️':'🔄'}</div><div><div class="tls-card-name">${rr.name||v?.name||'Request'}</div><div class="tls-card-type">${v?.name||'—'}</div></div></div><div class="tls-tags">${tlsStatusTag(rr.complianceStatus)}</div></div>`;}).join('')||'<div class="tls-muted">No requests for this project.</div>'},
-    {label:'Raw JSON',content:tlsRawView(r)},
+
+async function tlsProjectDetail(id) {
+  const r=TLS.data.contextRecords.find(x=>x._id===id); if(!r) return;
+  document.querySelectorAll('.tls-card').forEach(c=>c.classList.remove('tls-selected'));
+  document.getElementById('tls-cc-'+id)?.classList.add('tls-selected');
+  let attrs=[];
+  try { attrs=(await tlsApi('GET',`/context-records/${id}/attributes?limit=100`)).data||[]; } catch(_){}
+  const cObj=TLS.data.contextObjects.find(o=>o._id===r.contextObjectId), reqs=TLS.data.requestRecords.filter(rr=>rr.contextRecordId===id);
+  tlsDrawer(r.name||'Project',[
+    {label:'Info',content:`<div class="tls-kv">
+      <div class="tls-kv-row"><div class="k">ID</div><div class="v mono">${tlsCopy(r._id)}${r._id}</div></div>
+      <div class="tls-kv-row"><div class="k">Name</div><div class="v"><strong>${r.name}</strong></div></div>
+      <div class="tls-kv-row"><div class="k">Type</div><div class="v">${cObj?.name||'—'}</div></div>
+      <div class="tls-kv-row"><div class="k">Status</div><div class="v">${tlsTag(r.status==='archived'?'grey':'blue',r.status||'active')}</div></div>
+      <div class="tls-kv-row"><div class="k">Description</div><div class="v">${r.description||'—'}</div></div>
+      <div class="tls-kv-row"><div class="k">Start</div><div class="v">${r.startDate?new Date(r.startDate).toLocaleDateString():'—'}</div></div>
+      <div class="tls-kv-row"><div class="k">End</div><div class="v">${r.endDate?new Date(r.endDate).toLocaleDateString():'—'}</div></div>
+    </div>
+    <div class="tls-divider"></div>
+    <button class="tls-del-btn" onclick="tlsDelete('context-records','${r._id}','${(r.name||'').replace(/'/g,"\\'")}')">🗑 Delete Project</button>
+    <div class="tls-hint">GET /context-records/${r._id} · PATCH · DELETE</div>`},
+    {label:`Requests (${reqs.length})`,content:`${reqs.map(rr=>{const v=TLS.data.primaryRecords.find(p=>p._id===rr.primaryRecordId);return`<div class="tls-card mb8" style="cursor:default"><div class="tls-card-row"><div class="tls-avatar" style="font-size:16px">${rr.complianceStatus==='compliant'?'✅':rr.complianceStatus==='non_compliant'?'⚠️':'🔄'}</div><div><div class="tls-card-name">${rr.name||v?.name||'Request'}</div><div class="tls-card-type">${v?.name||'—'}</div></div></div><div class="tls-tags mt4">${tlsStatusTag(rr.complianceStatus)}</div></div>`;}).join('')||'<div class="muted">No requests for this project.</div>'}
+    <div class="tls-hint">GET /context-records/${r._id}/request-records · POST</div>`},
+    {label:`Attrs (${attrs.length})`,content:`${attrs.map(a=>{const def=TLS.data.customFieldDefs.find(d=>d.id===a.id||d._id===a.id);return`<div class="tls-kv-row"><div class="k" style="width:120px">${def?.name||def?.label||a.id}</div><div class="v">${a.value!==undefined?String(a.value):(a.optionIds||[]).join(', ')||'—'}</div></div>`;}).join('')||'<div class="muted">No custom attributes.</div>'}
+    <div class="tls-divider"></div>
+    <div style="font-size:11px;color:#5A6B7B;margin-bottom:6px">Update an attribute:</div>
+    <div class="form-grp mb6"><label class="form-lbl">Attribute ID</label><input type="text" class="tls-inp" id="tls-ca-fid" placeholder="field ObjectId"></div>
+    <div class="form-grp mb6"><label class="form-lbl">Value</label><input type="text" class="tls-inp" id="tls-ca-val"></div>
+    <button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsSetAttr('context-records','${r._id}')">PUT Attribute</button>
+    <div class="tls-hint">GET /context-records/${r._id}/attributes · GET/PUT/DELETE /{attributeId}</div>`},
+    {label:'Raw JSON',content:tlsRaw(r)},
   ]);
 }
 
-function tlsRenderRequestRecords(view){
-  const d=TLS.data;if(!d.requestRecords.length){tlsSetBody(tlsEmptyState('No compliance requests','Create a vendor first, then add a request.'));return;}if(view==='raw'){tlsSetBody(tlsRawView(d.requestRecords));return;}
-  const nc=d.requestRecords.filter(r=>r.complianceStatus==='non_compliant'),comp=d.requestRecords.filter(r=>r.complianceStatus==='compliant');
-  tlsSetBody(`<div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center"><input type="text" class="tls-search" style="max-width:220px" placeholder="Search requests…" oninput="tlsFilter('request',this.value)"><button class="btn btn-secondary" style="font-size:11px;padding:5px 10px" onclick="tlsFilterRequests('')">All (${d.requestRecords.length})</button><button class="btn" style="font-size:11px;padding:5px 10px;background:#FEF2F2;color:#AC1534;border:1px solid #FECACA" onclick="tlsFilterRequests('non_compliant')">⚠ NC (${nc.length})</button><button class="btn" style="font-size:11px;padding:5px 10px;background:rgba(62,189,62,.1);color:#166534;border:1px solid #BBF7D0" onclick="tlsFilterRequests('compliant')">✓ (${comp.length})</button></div><div class="tls-card-grid" id="tls-request-cards">${d.requestRecords.map(r=>{const vendor=d.primaryRecords.find(p=>p._id===r.primaryRecordId),project=d.contextRecords.find(c=>c._id===r.contextRecordId);return`<div class="tls-card" id="tls-rc-${r._id}" onclick="tlsSelectRequest('${r._id}')"><div class="tls-card-top"><div class="tls-avatar" style="font-size:18px">${r.complianceStatus==='compliant'?'✅':r.complianceStatus==='non_compliant'?'⚠️':'🔄'}</div><div><div class="tls-card-name">${r.name||vendor?.name||'Request'}</div><div class="tls-card-type">${vendor?.name||'Unknown vendor'}</div></div></div><div class="tls-tags">${tlsStatusTag(r.complianceStatus)}${project?`<span class="tls-tag tls-tag-grey">📋 ${project.name}</span>`:''}${r.complianceProfile?'<span class="tls-tag tls-tag-blue">Profile ✓</span>':'<span class="tls-tag tls-tag-grey">No Profile</span>'}</div><div class="tls-card-id">${r._id}</div><div class="tls-card-actions"><button class="btn btn-secondary" style="font-size:11px;padding:4px 10px" onclick="event.stopPropagation();tlsSelectRequest('${r._id}')">Details</button><button class="btn" style="font-size:11px;padding:4px 10px;background:#FEF2F2;color:#AC1534;border:1px solid #FECACA" onclick="event.stopPropagation();tlsDelete('request-records','${r._id}','request')">Delete</button></div></div>`;}).join('')}</div>`);
+// ── REQUEST RECORDS ──────────────────────────────────────────────────
+function tlsRenderRequestRecords(view) {
+  const d=TLS.data;
+  if (!d.requestRecords.length) { tlsBody(tlsEmpty('No compliance requests','Create a vendor first, then add a request.')); return; }
+  if (view==='raw') { tlsBody(tlsRaw(d.requestRecords)); return; }
+  const nc=d.requestRecords.filter(r=>r.complianceStatus==='non_compliant'), comp=d.requestRecords.filter(r=>r.complianceStatus==='compliant');
+  tlsBody(`
+    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center">
+      <input type="text" class="tls-search" style="max-width:220px" placeholder="Search…" oninput="tlsFilter('tls-req-grid','tls-rc-',this.value,TLS.data.requestRecords)">
+      <button class="btn btn-secondary" style="font-size:11px;padding:5px 10px" onclick="tlsFilterReqs('')">All (${d.requestRecords.length})</button>
+      <button class="tls-del-btn" style="background:#FEF2F2" onclick="tlsFilterReqs('non_compliant')">⚠ NC (${nc.length})</button>
+      <button class="btn" style="font-size:11px;padding:5px 10px;background:rgba(62,189,62,.1);color:#166534;border:1px solid #BBF7D0" onclick="tlsFilterReqs('compliant')">✓ (${comp.length})</button>
+    </div>
+    <div class="tls-card-grid" id="tls-req-grid">
+    ${d.requestRecords.map(r=>{const v=d.primaryRecords.find(p=>p._id===r.primaryRecordId),p=d.contextRecords.find(c=>c._id===r.contextRecordId);return`<div class="tls-card" id="tls-rc-${r._id}" data-name="${(r.name||v?.name||'').toLowerCase()}" onclick="tlsRequestDetail('${r._id}')">
+      <div class="tls-card-row"><div class="tls-avatar" style="font-size:18px">${r.complianceStatus==='compliant'?'✅':r.complianceStatus==='non_compliant'?'⚠️':'🔄'}</div><div><div class="tls-card-name">${r.name||v?.name||'Request'}</div><div class="tls-card-type">${v?.name||'Unknown vendor'}</div></div></div>
+      <div class="tls-tags mt6">${tlsStatusTag(r.complianceStatus)}${p?tlsTag('grey','📋 '+p.name):''}${r.complianceProfile?tlsTag('blue','Profile ✓'):tlsTag('grey','No Profile')}</div>
+      <div class="tls-card-id">${r._id}</div>
+      <div class="tls-card-actions"><button class="btn btn-secondary" style="font-size:11px;padding:4px 10px" onclick="event.stopPropagation();tlsRequestDetail('${r._id}')">Details</button><button class="tls-del-btn" onclick="event.stopPropagation();tlsDelete('request-records','${r._id}','request')">Delete</button></div>
+    </div>`;}).join('')}
+    </div>
+    <div class="tls-hint">GET /request-records · /attributes · /compliance-certificate · /compliance-profile · /requirements</div>`);
 }
-async function tlsSelectRequest(id){
-  let r=TLS.data.requestRecords.find(x=>x._id===id)||{_id:id};document.querySelectorAll('.tls-card').forEach(c=>c.classList.remove('tls-selected'));document.getElementById(`tls-rc-${id}`)?.classList.add('tls-selected');
-  try{r=await tlsApi('GET',`/request-records/${id}?fields=_id,primaryRecordId,contextRecordId,name,status,complianceTracking,complianceProfile,complianceStatus,createdAt`);}catch(_){}
-  const vendor=TLS.data.primaryRecords.find(p=>p._id===r.primaryRecordId),project=TLS.data.contextRecords.find(c=>c._id===r.contextRecordId);
-  tlsOpenDrawer(r.name||vendor?.name||'Request',[
-    {label:'Info',content:`<div class="tls-kv"><div class="tls-kv-row"><div class="tls-kv-key">ID</div><div class="tls-kv-val tls-mono">${tlsCopyId(r._id)} ${r._id}</div></div><div class="tls-kv-row"><div class="tls-kv-key">Vendor</div><div class="tls-kv-val"><strong>${vendor?.name||r.primaryRecordId||'—'}</strong></div></div><div class="tls-kv-row"><div class="tls-kv-key">Project</div><div class="tls-kv-val">${project?.name||(r.contextRecordId?r.contextRecordId:'Global')}</div></div><div class="tls-kv-row"><div class="tls-kv-key">Status</div><div class="tls-kv-val"><span class="tls-tag tls-tag-blue">${r.status||'—'}</span></div></div><div class="tls-kv-row"><div class="tls-kv-key">Compliance</div><div class="tls-kv-val">${tlsStatusTag(r.complianceStatus)}</div></div><div class="tls-kv-row"><div class="tls-kv-key">Profile</div><div class="tls-kv-val">${r.complianceProfile?.name||r.complianceProfile?.id||'None'}</div></div><div class="tls-kv-row"><div class="tls-kv-key">Tracking</div><div class="tls-kv-val">${r.complianceTracking?'✅':'❌'}</div></div><div class="tls-kv-row"><div class="tls-kv-key">Created</div><div class="tls-kv-val">${r.createdAt?new Date(r.createdAt).toLocaleDateString():'—'}</div></div></div><div style="height:1px;background:#EEF2F7;margin:10px 0"></div><button class="btn" style="font-size:11px;padding:5px 12px;background:#FEF2F2;color:#AC1534;border:1px solid #FECACA" onclick="tlsDelete('request-records','${r._id}','request')">🗑 Delete</button><div class="tls-api-hint">GET /request-records/${r._id}</div>`},
-    {label:'Compliance',content:`<div style="font-size:11px;font-weight:700;color:#5A6B7B;text-transform:uppercase;margin-bottom:8px">Compliance Profile</div>${r.complianceProfile?`<div class="tls-card" style="cursor:default;margin-bottom:8px"><div class="tls-card-name">${r.complianceProfile.name||'Profile assigned'}</div><div class="tls-card-id">${r.complianceProfile.id}</div><div class="tls-card-actions"><button class="btn" style="font-size:11px;padding:4px 10px;background:#FEF2F2;color:#AC1534;border:1px solid #FECACA" onclick="tlsUnassignProfile('${r._id}')">Unassign</button></div></div>`:`<div class="tls-muted" style="margin-bottom:8px">No compliance profile assigned.</div><div class="form-grp" style="margin-bottom:8px"><label class="form-lbl">Profile ID</label><input type="text" class="tls-input" id="tls-assign-pid" placeholder="24-character ObjectId"><div class="form-hint">Get from your TrustLayer platform</div></div><button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsAssignProfile('${r._id}')">Assign Profile</button>`}<div style="height:1px;background:#EEF2F7;margin:12px 0"></div><div style="font-size:11px;font-weight:700;color:#5A6B7B;text-transform:uppercase;margin-bottom:8px">Generate Certificate</div><div class="form-grp" style="margin-bottom:6px"><label class="form-lbl">Effective Date</label><input type="date" class="tls-input" id="tls-cert-eff-${r._id}" value="${new Date().toISOString().split('T')[0]}"></div><div class="form-grp" style="margin-bottom:8px"><label class="form-lbl">Expiration Date</label><input type="date" class="tls-input" id="tls-cert-exp-${r._id}"><div class="form-hint">Leave blank to use earliest document expiration</div></div><button class="btn btn-success" style="font-size:11px;padding:5px 12px" onclick="tlsCreateCert('${r._id}')">📄 Generate Certificate</button><div class="tls-api-hint">POST /request-records/${r._id}/compliance-certificate</div>`},
-    {label:'Raw JSON',content:tlsRawView(r)},
+
+async function tlsRequestDetail(id) {
+  let r=TLS.data.requestRecords.find(x=>x._id===id)||{_id:id};
+  document.querySelectorAll('.tls-card').forEach(c=>c.classList.remove('tls-selected'));
+  document.getElementById('tls-rc-'+id)?.classList.add('tls-selected');
+  try { r=await tlsApi('GET',`/request-records/${id}`); } catch(_){}
+  let attrs=[], cert=null;
+  try { attrs=(await tlsApi('GET',`/request-records/${id}/attributes?limit=100`)).data||[]; } catch(_){}
+  try { cert=await tlsApi('GET',`/request-records/${id}/compliance-certificate`); } catch(_){}
+  const v=TLS.data.primaryRecords.find(p=>p._id===r.primaryRecordId), proj=TLS.data.contextRecords.find(c=>c._id===r.contextRecordId);
+  tlsDrawer(r.name||v?.name||'Request',[
+    {label:'Info',content:`<div class="tls-kv">
+      <div class="tls-kv-row"><div class="k">ID</div><div class="v mono">${tlsCopy(r._id)}${r._id}</div></div>
+      <div class="tls-kv-row"><div class="k">Vendor</div><div class="v"><strong>${v?.name||r.primaryRecordId||'—'}</strong></div></div>
+      <div class="tls-kv-row"><div class="k">Project</div><div class="v">${proj?.name||(r.contextRecordId?r.contextRecordId:'Global')}</div></div>
+      <div class="tls-kv-row"><div class="k">Status</div><div class="v">${tlsTag('blue',r.status||'—')}</div></div>
+      <div class="tls-kv-row"><div class="k">Compliance</div><div class="v">${tlsStatusTag(r.complianceStatus)}</div></div>
+      <div class="tls-kv-row"><div class="k">Profile</div><div class="v">${r.complianceProfile?.name||r.complianceProfile?.id||'None'}</div></div>
+      <div class="tls-kv-row"><div class="k">Tracking</div><div class="v">${r.complianceTracking?'✅ Enabled':'❌ Disabled'}</div></div>
+      <div class="tls-kv-row"><div class="k">Created</div><div class="v">${r.createdAt?new Date(r.createdAt).toLocaleDateString():'—'}</div></div>
+    </div>
+    <div class="tls-divider"></div>
+    <button class="tls-del-btn" onclick="tlsDelete('request-records','${r._id}','request')">🗑 Delete Request</button>
+    <div class="tls-hint">GET /request-records/${r._id} · PATCH · DELETE</div>`},
+    {label:'Compliance',content:`
+      <div class="tls-sub-hdr">Compliance Profile</div>
+      ${r.complianceProfile?`<div class="tls-card mb8" style="cursor:default"><div class="tls-card-name">${r.complianceProfile.name||'Profile assigned'}</div><div class="tls-card-id">${r.complianceProfile.id}</div><div class="tls-card-actions"><button class="tls-del-btn" onclick="tlsUnassignProfile('${r._id}')">Unassign</button></div></div>`:
+      `<div class="muted mb8">No profile assigned.</div><div class="form-grp mb6"><label class="form-lbl">Profile ID</label><input type="text" class="tls-inp" id="tls-ap-pid" placeholder="24-char ObjectId"><div class="form-hint">Get from TrustLayer platform</div></div><button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsAssignProfile('${r._id}')">Assign Profile</button>`}
+      <div class="tls-divider"></div>
+      <div class="tls-sub-hdr">Requirements</div>
+      <div class="form-grp mb6"><label class="form-lbl">Profile ID (for requirements)</label><input type="text" class="tls-inp" id="tls-rq-pid" placeholder="24-char ObjectId"></div>
+      <button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsPostRequirements('${r._id}')">POST Requirements</button>
+      <div class="tls-divider"></div>
+      <div class="tls-sub-hdr">Compliance Certificate</div>
+      ${cert?`<div class="tls-kv">
+        <div class="tls-kv-row"><div class="k">Status</div><div class="v">${tlsTag('blue',cert.status||'—')}</div></div>
+        <div class="tls-kv-row"><div class="k">Effective</div><div class="v">${cert.effectiveDate?new Date(cert.effectiveDate).toLocaleDateString():'—'}</div></div>
+        <div class="tls-kv-row"><div class="k">Expires</div><div class="v">${cert.expirationDate?new Date(cert.expirationDate).toLocaleDateString():'—'}</div></div>
+        <div class="tls-kv-row"><div class="k">URL</div><div class="v">${cert.url?`<a href="${cert.url}" target="_blank" style="color:#0678D5">View PDF</a>`:'—'}</div></div>
+      </div>`:
+      `<div class="muted mb8">No certificate yet.</div>`}
+      <div class="form-grp mb6"><label class="form-lbl">Effective Date</label><input type="date" class="tls-inp" id="tls-cert-eff-${r._id}" value="${new Date().toISOString().split('T')[0]}"></div>
+      <div class="form-grp mb8"><label class="form-lbl">Expiration Date (optional)</label><input type="date" class="tls-inp" id="tls-cert-exp-${r._id}"><div class="form-hint">Leave blank to use earliest document expiration</div></div>
+      <button class="btn btn-success" style="font-size:11px;padding:5px 12px" onclick="tlsGenCert('${r._id}')">📄 Generate Certificate</button>
+      <div class="tls-hint">GET/POST /request-records/${r._id}/compliance-certificate</div>`},
+    {label:`Attrs (${attrs.length})`,content:`${attrs.map(a=>{const def=TLS.data.customFieldDefs.find(d=>d.id===a.id||d._id===a.id);return`<div class="tls-kv-row"><div class="k" style="width:120px">${def?.name||def?.label||a.id}</div><div class="v">${a.value!==undefined?String(a.value):(a.optionIds||[]).join(', ')||'—'}</div></div>`;}).join('')||'<div class="muted">No custom attributes.</div>'}
+    <div class="tls-divider"></div>
+    <div class="form-grp mb6"><label class="form-lbl">Attribute ID</label><input type="text" class="tls-inp" id="tls-ra-fid" placeholder="field ObjectId"></div>
+    <div class="form-grp mb6"><label class="form-lbl">Value</label><input type="text" class="tls-inp" id="tls-ra-val"></div>
+    <button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsSetAttr('request-records','${r._id}')">PUT Attribute</button>
+    <div class="tls-hint">GET /request-records/${r._id}/attributes · GET/PUT/DELETE /{attributeId}</div>`},
+    {label:'Raw JSON',content:tlsRaw(r)},
   ]);
 }
 
-function tlsRenderPrimaryObjects(v){if(v==='raw'){tlsSetBody(tlsRawView(TLS.data.primaryObjects));return;}tlsSetBody(tlsObjectTable(TLS.data.primaryObjects,'primary-objects','Entity Type'));}
-function tlsRenderContextObjects(v){if(v==='raw'){tlsSetBody(tlsRawView(TLS.data.contextObjects));return;}tlsSetBody(tlsObjectTable(TLS.data.contextObjects,'context-objects','Project Type'));}
-function tlsObjectTable(items,endpoint,lbl){
-  const rows=items.map(o=>`<tr><td><strong>${o.name}</strong></td><td>${o.pluralName}</td><td class="tls-mono">${o.slug||'—'}</td><td class="tls-mono">${tlsCopyId(o._id)}<span>${o._id?.slice(-8)}</span></td><td><button class="btn btn-secondary" style="font-size:11px;padding:3px 7px" onclick="tlsEditObject('${endpoint}','${o._id}','${(o.name||'').replace(/'/g,"\\'")}','${(o.pluralName||'').replace(/'/g,"\\'")}')">Edit</button> <button class="btn" style="font-size:11px;padding:3px 7px;background:#FEF2F2;color:#AC1534;border:1px solid #FECACA" onclick="tlsDelete('${endpoint}','${o._id}','${(o.name||'').replace(/'/g,"\\'")}')">Delete</button></td></tr>`).join('');
-  return`<div style="margin-bottom:10px"><button class="btn btn-primary" style="font-size:12px;padding:7px 14px" onclick="tlsCreateObjectModal('${endpoint}','${lbl}')">+ Create ${lbl}</button></div><table class="tls-table"><thead><tr><th>Name</th><th>Plural</th><th>Slug</th><th>ID</th><th>Actions</th></tr></thead><tbody>${rows||'<tr><td colspan="5" class="tls-muted">No items found</td></tr>'}</tbody></table><div class="tls-api-hint" style="margin-top:8px">GET /${endpoint}</div>`;
+// ── OBJECT TABLES ────────────────────────────────────────────────────
+function tlsRenderPrimaryObjects(view){const d=TLS.data;if(view==='raw'){tlsBody(tlsRaw(d.primaryObjects));return;}tlsBody(tlsObjTable(d.primaryObjects,'primary-objects','Entity Type'));}
+function tlsRenderContextObjects(view){const d=TLS.data;if(view==='raw'){tlsBody(tlsRaw(d.contextObjects));return;}tlsBody(tlsObjTable(d.contextObjects,'context-objects','Project Type'));}
+function tlsObjTable(items,ep,lbl){
+  return`<div class="mb10"><button class="btn btn-primary" style="font-size:12px;padding:7px 14px" onclick="tlsCreateObject('${ep}','${lbl}')">+ Create ${lbl}</button></div>
+  <table class="tls-table"><thead><tr><th>Name</th><th>Plural</th><th>Slug</th><th>Icon</th><th>ID</th><th>Actions</th></tr></thead><tbody>
+  ${items.map(o=>`<tr><td><strong>${o.name}</strong></td><td>${o.pluralName}</td><td class="mono">${o.slug||'—'}</td><td>${o.icon||'—'}</td><td class="mono">${tlsCopy(o._id)}<small>${o._id?.slice(-8)}</small></td><td><button class="btn btn-secondary" style="font-size:11px;padding:3px 7px" onclick="tlsEditObj('${ep}','${o._id}','${(o.name||'').replace(/'/g,"\\'")}','${(o.pluralName||'').replace(/'/g,"\\'")}')">Edit</button> <button class="tls-del-btn" onclick="tlsDelete('${ep}','${o._id}','${(o.name||'').replace(/'/g,"\\'")}')">Del</button></td></tr>`).join('')||'<tr><td colspan="6" class="muted">None found</td></tr>'}
+  </tbody></table>
+  <div class="tls-hint">GET /${ep} · GET/{id} · POST · PATCH/{id} · DELETE/{id}</div>`;
 }
-function tlsRenderViews(v){
-  if(v==='raw'){tlsSetBody(tlsRawView(TLS.data.views));return;}
-  const rows=TLS.data.views.map(v=>`<tr><td><strong>${v.name||'—'}</strong></td><td>${v.type||'—'}</td><td><span class="tls-tag ${v.visibility==='workspace'?'tls-tag-blue':'tls-tag-grey'}">${v.visibility||'private'}</span></td><td>${v.readonly?'✅':'—'}</td><td class="tls-mono">${tlsCopyId(v._id)}<span>${v._id?.slice(-8)}</span></td></tr>`).join('');
-  tlsSetBody(`<table class="tls-table"><thead><tr><th>Name</th><th>Type</th><th>Visibility</th><th>Read-only</th><th>ID</th></tr></thead><tbody>${rows||'<tr><td colspan="5" class="tls-muted">No views found</td></tr>'}</tbody></table><div class="tls-api-hint" style="margin-top:8px">GET /views</div>`);
+
+function tlsRenderViews(view){
+  const d=TLS.data; if(view==='raw'){tlsBody(tlsRaw(d.views));return;}
+  tlsBody(`<table class="tls-table"><thead><tr><th>Name</th><th>Type</th><th>Visibility</th><th>Read-only</th><th>ID</th></tr></thead><tbody>
+  ${d.views.map(v=>`<tr><td><strong>${v.name||'—'}</strong></td><td>${v.type||'—'}</td><td>${tlsTag(v.visibility==='workspace'?'blue':'grey',v.visibility||'private')}</td><td>${v.readonly?'✅':'—'}</td><td class="mono">${tlsCopy(v._id)}<small>${v._id?.slice(-8)}</small></td></tr>`).join('')||'<tr><td colspan="5" class="muted">None</td></tr>'}
+  </tbody></table>
+  <div class="tls-hint">GET /views · GET /views/{id}</div>`);
 }
-function tlsRenderCreateVendor(){const o=TLS.data.primaryObjects.map(o=>`<option value="${o._id}">${o.name}</option>`).join('');tlsSetBody(`<div style="max-width:460px"><div class="form-grp"><label class="form-lbl">Entity Type <span style="color:#AC1534">*</span></label><select class="tls-input" id="tls-cv-type"><option value="">Select type…</option>${o}</select></div><div class="form-grp"><label class="form-lbl">Name <span style="color:#AC1534">*</span></label><input type="text" class="tls-input" id="tls-cv-name" placeholder="e.g. Acme Contractors LLC"></div><div class="form-grp"><label class="form-lbl">Website</label><input type="text" class="tls-input" id="tls-cv-website" placeholder="https://example.com"></div><div class="form-grp"><label class="form-lbl">Notes</label><textarea class="tls-input" id="tls-cv-notes" rows="3" style="resize:vertical"></textarea></div><div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-primary" onclick="tlsCreateVendor()">✅ Create Vendor</button><button class="btn btn-secondary" onclick="tlsShowSection('primary-records')">Cancel</button></div><div class="tls-api-hint" style="margin-top:12px">POST /primary-records · Body: {"primaryObjectId":"…","name":"…"}</div></div>`);}
-function tlsRenderCreateProject(){const o=TLS.data.contextObjects.map(o=>`<option value="${o._id}">${o.name}</option>`).join('');tlsSetBody(`<div style="max-width:460px"><div class="form-grp"><label class="form-lbl">Project Type <span style="color:#AC1534">*</span></label><select class="tls-input" id="tls-cp-type"><option value="">Select type…</option>${o||'<option disabled>No project types found</option>'}</select></div><div class="form-grp"><label class="form-lbl">Name <span style="color:#AC1534">*</span></label><input type="text" class="tls-input" id="tls-cp-name" placeholder="e.g. Building Renovation 2026"></div><div class="form-grp"><label class="form-lbl">Description</label><textarea class="tls-input" id="tls-cp-desc" rows="3" style="resize:vertical"></textarea></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div class="form-grp"><label class="form-lbl">Start Date</label><input type="date" class="tls-input" id="tls-cp-start"></div><div class="form-grp"><label class="form-lbl">End Date</label><input type="date" class="tls-input" id="tls-cp-end"></div></div><div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-primary" onclick="tlsCreateProject()">✅ Create Project</button><button class="btn btn-secondary" onclick="tlsShowSection('context-records')">Cancel</button></div><div class="tls-api-hint" style="margin-top:12px">POST /context-records · Body: {"contextObjectId":"…","name":"…"}</div></div>`);}
+
+// ── REFERENCE DATA ───────────────────────────────────────────────────
+function tlsRenderRefData(view) {
+  const d=TLS.data;
+  if (view==='raw') { tlsBody(tlsRaw({tagDefs:d.tagDefs,docTypeDefs:d.docTypeDefs,customFieldDefs:d.customFieldDefs})); return; }
+  tlsBody(`
+    <div class="tls-sec-hdr">Tag Definitions (v1) <span class="tls-cnt">${d.tagDefs.length}</span></div>
+    <table class="tls-table"><thead><tr><th>Name</th><th>ID</th></tr></thead><tbody>
+    ${d.tagDefs.map(t=>`<tr><td><strong>${t.name||'—'}</strong></td><td class="mono">${tlsCopy(t.id||t._id||'')}<small>${(t.id||t._id||'').slice(-12)}</small></td></tr>`).join('')||'<tr><td colspan="2" class="muted">None</td></tr>'}
+    </tbody></table>
+    <div class="tls-sec-hdr mt12">Document Type Definitions (v1) <span class="tls-cnt">${d.docTypeDefs.length}</span></div>
+    <table class="tls-table"><thead><tr><th>Name/Label</th><th>ID</th></tr></thead><tbody>
+    ${d.docTypeDefs.map(t=>`<tr><td><strong>${t.name||t.label||'—'}</strong></td><td class="mono">${tlsCopy(t.id||t._id||'')}<small>${(t.id||t._id||'').slice(-12)}</small></td></tr>`).join('')||'<tr><td colspan="2" class="muted">None</td></tr>'}
+    </tbody></table>
+    <div class="tls-sec-hdr mt12">Custom Field Definitions (v1) <span class="tls-cnt">${d.customFieldDefs.length}</span></div>
+    <table class="tls-table"><thead><tr><th>Name/Label</th><th>Type</th><th>ID</th></tr></thead><tbody>
+    ${d.customFieldDefs.map(f=>`<tr><td><strong>${f.name||f.label||'—'}</strong></td><td>${f.type||'—'}</td><td class="mono">${tlsCopy(f.id||f._id||'')}<small>${(f.id||f._id||'').slice(-12)}</small></td></tr>`).join('')||'<tr><td colspan="3" class="muted">None</td></tr>'}
+    </tbody></table>
+    <div class="tls-hint">v1: GET /tags · GET /document-types · GET /custom-fields</div>`);
+}
+
+// ── CREATE FORMS ─────────────────────────────────────────────────────
+function tlsRenderCreateVendor(){
+  tlsBody(`<div style="max-width:460px">
+    <div class="form-grp"><label class="form-lbl">Entity Type <span style="color:#AC1534">*</span></label><select class="tls-inp" id="tls-cv-type"><option value="">Select type…</option>${TLS.data.primaryObjects.map(o=>`<option value="${o._id}">${o.name}</option>`).join('')}</select></div>
+    <div class="form-grp"><label class="form-lbl">Name <span style="color:#AC1534">*</span></label><input type="text" class="tls-inp" id="tls-cv-name" placeholder="e.g. Acme Contractors LLC"></div>
+    <div class="form-grp"><label class="form-lbl">Website</label><input type="text" class="tls-inp" id="tls-cv-website" placeholder="https://…"></div>
+    <div class="form-grp"><label class="form-lbl">Notes</label><textarea class="tls-inp" id="tls-cv-notes" rows="3" style="resize:vertical"></textarea></div>
+    <div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-primary" onclick="tlsCreateVendor()">✅ Create Vendor</button><button class="btn btn-secondary" onclick="tlsShowSection('primary-records')">Cancel</button></div>
+    <div class="tls-hint">POST /primary-records · Body: {primaryObjectId, name, website?, additionalNotes?}</div>
+  </div>`);
+}
+function tlsRenderCreateProject(){
+  tlsBody(`<div style="max-width:460px">
+    <div class="form-grp"><label class="form-lbl">Project Type <span style="color:#AC1534">*</span></label><select class="tls-inp" id="tls-cp-type"><option value="">Select type…</option>${TLS.data.contextObjects.map(o=>`<option value="${o._id}">${o.name}</option>`).join('')||'<option disabled>No project types — create one first</option>'}</select></div>
+    <div class="form-grp"><label class="form-lbl">Name <span style="color:#AC1534">*</span></label><input type="text" class="tls-inp" id="tls-cp-name" placeholder="e.g. Building Renovation 2026"></div>
+    <div class="form-grp"><label class="form-lbl">Description</label><textarea class="tls-inp" id="tls-cp-desc" rows="3" style="resize:vertical"></textarea></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="form-grp"><label class="form-lbl">Start Date</label><input type="date" class="tls-inp" id="tls-cp-start"></div>
+      <div class="form-grp"><label class="form-lbl">End Date</label><input type="date" class="tls-inp" id="tls-cp-end"></div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-primary" onclick="tlsCreateProject()">✅ Create Project</button><button class="btn btn-secondary" onclick="tlsShowSection('context-records')">Cancel</button></div>
+    <div class="tls-hint">POST /context-records · Body: {contextObjectId, name, startDate?, endDate?}</div>
+  </div>`);
+}
 function tlsRenderComplianceTools(){
   const ro=TLS.data.requestRecords.map(r=>{const v=TLS.data.primaryRecords.find(p=>p._id===r.primaryRecordId);return`<option value="${r._id}">${v?.name||'?'} — ${r.name||r._id.slice(-8)} (${r.complianceStatus||'pending'})</option>`;}).join('');
   const vo=TLS.data.primaryRecords.map(r=>`<option value="${r._id}">${r.name}</option>`).join('');
   const po=TLS.data.contextRecords.map(r=>`<option value="${r._id}">${r.name}</option>`).join('');
-  tlsSetBody(`<div class="tls-card-grid">
-    <div class="tls-card" style="cursor:default"><div class="tls-card-top"><div class="tls-avatar" style="background:#f0fdf4;font-size:18px">📄</div><div><div class="tls-card-name">Generate Certificate</div><div class="tls-card-type">POST /request-records/{id}/compliance-certificate</div></div></div><div style="margin-top:10px"><div class="form-grp"><label class="form-lbl">Request Record</label><select class="tls-input" id="tls-ct-req"><option value="">Select request…</option>${ro}</select></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div class="form-grp"><label class="form-lbl">Effective Date</label><input type="date" class="tls-input" id="tls-ct-eff" value="${new Date().toISOString().split('T')[0]}"></div><div class="form-grp"><label class="form-lbl">Expiration Date</label><input type="date" class="tls-input" id="tls-ct-exp"></div></div><button class="btn btn-success" style="font-size:11px;padding:5px 12px" onclick="tlsCertFromTools()">Generate</button></div></div>
-    <div class="tls-card" style="cursor:default"><div class="tls-card-top"><div class="tls-avatar" style="background:#faf5ff;font-size:18px">🛡️</div><div><div class="tls-card-name">Assign Compliance Profile</div><div class="tls-card-type">POST /request-records/{id}/compliance-profile</div></div></div><div style="margin-top:10px"><div class="form-grp"><label class="form-lbl">Request Record</label><select class="tls-input" id="tls-ct-prof-req"><option value="">Select request…</option>${TLS.data.requestRecords.filter(r=>!r.complianceProfile).map(r=>{const v=TLS.data.primaryRecords.find(p=>p._id===r.primaryRecordId);return`<option value="${r._id}">${v?.name||'?'} — ${r.name||r._id.slice(-8)}</option>`;}).join('')}</select></div><div class="form-grp"><label class="form-lbl">Profile ID <span style="color:#AC1534">*</span></label><input type="text" class="tls-input" id="tls-ct-prof-id" placeholder="24-char ObjectId"><div class="form-hint">Get from your TrustLayer compliance profile settings</div></div><button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsAssignFromTools()">Assign</button></div></div>
-    <div class="tls-card" style="cursor:default"><div class="tls-card-top"><div class="tls-avatar" style="background:#fffbeb;font-size:18px">📋</div><div><div class="tls-card-name">Create Compliance Request</div><div class="tls-card-type">POST /primary-records/{id}/request-records</div></div></div><div style="margin-top:10px"><div class="form-grp"><label class="form-lbl">Vendor <span style="color:#AC1534">*</span></label><select class="tls-input" id="tls-ct-vendor"><option value="">Select vendor…</option>${vo}</select></div><div class="form-grp"><label class="form-lbl">Project (optional)</label><select class="tls-input" id="tls-ct-proj"><option value="">None (global)</option>${po}</select></div><div class="form-grp"><label class="form-lbl">Name</label><input type="text" class="tls-input" id="tls-ct-rr-name" placeholder="e.g. GL Insurance Request"></div><button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsCreateRequestFromTools()">Create Request</button></div></div>
-  </div><div class="tls-api-hint" style="margin-top:6px">All actions make real API calls to your DEMO Client workspace only.</div>`);
+  tlsBody(`<div class="tls-card-grid">
+    <div class="tls-card" style="cursor:default"><div class="tls-card-row"><div class="tls-avatar" style="background:#f0fdf4;font-size:18px">📄</div><div><div class="tls-card-name">Generate Certificate</div><div class="tls-card-type">POST /request-records/{id}/compliance-certificate</div></div></div>
+    <div class="mt10"><div class="form-grp"><label class="form-lbl">Request</label><select class="tls-inp" id="tls-ct-req"><option value="">Select…</option>${ro}</select></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div class="form-grp"><label class="form-lbl">Effective</label><input type="date" class="tls-inp" id="tls-ct-eff" value="${new Date().toISOString().split('T')[0]}"></div><div class="form-grp"><label class="form-lbl">Expiration</label><input type="date" class="tls-inp" id="tls-ct-exp"></div></div>
+    <button class="btn btn-success" style="font-size:11px;padding:5px 12px" onclick="tlsCertTools()">Generate</button></div></div>
+    <div class="tls-card" style="cursor:default"><div class="tls-card-row"><div class="tls-avatar" style="background:#faf5ff;font-size:18px">🛡️</div><div><div class="tls-card-name">Assign Profile</div><div class="tls-card-type">POST /request-records/{id}/compliance-profile</div></div></div>
+    <div class="mt10"><div class="form-grp"><label class="form-lbl">Request</label><select class="tls-inp" id="tls-ct-prof-req"><option value="">Select…</option>${TLS.data.requestRecords.filter(r=>!r.complianceProfile).map(r=>{const v=TLS.data.primaryRecords.find(p=>p._id===r.primaryRecordId);return`<option value="${r._id}">${v?.name||'?'} — ${r.name||r._id.slice(-8)}</option>`;}).join('')}</select></div>
+    <div class="form-grp"><label class="form-lbl">Profile ID <span style="color:#AC1534">*</span></label><input type="text" class="tls-inp" id="tls-ct-pid" placeholder="24-char ObjectId"></div>
+    <button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsAssignTools()">Assign</button></div></div>
+    <div class="tls-card" style="cursor:default"><div class="tls-card-row"><div class="tls-avatar" style="background:#fffbeb;font-size:18px">📋</div><div><div class="tls-card-name">Create Request</div><div class="tls-card-type">POST /primary-records/{id}/request-records</div></div></div>
+    <div class="mt10"><div class="form-grp"><label class="form-lbl">Vendor <span style="color:#AC1534">*</span></label><select class="tls-inp" id="tls-ct-vendor"><option value="">Select…</option>${vo}</select></div>
+    <div class="form-grp"><label class="form-lbl">Project (optional)</label><select class="tls-inp" id="tls-ct-proj"><option value="">None (global)</option>${po}</select></div>
+    <div class="form-grp"><label class="form-lbl">Name</label><input type="text" class="tls-inp" id="tls-ct-rname"></div>
+    <button class="btn btn-primary" style="font-size:11px;padding:5px 12px" onclick="tlsCreateReqTools()">Create</button></div></div>
+  </div><div class="tls-hint mt8">All actions target your DEMO Client workspace only.</div>`);
 }
 
-async function tlsDelete(e,id,n){if(!confirm(`Delete "${n}"? Cannot be undone.`))return;try{await tlsApi('DELETE',`/${e}/${id}`);toast(`"${n}" deleted`,'success');tlsCloseDrawer();if(e==='primary-records')TLS.data.primaryRecords=TLS.data.primaryRecords.filter(r=>r._id!==id);if(e==='context-records')TLS.data.contextRecords=TLS.data.contextRecords.filter(r=>r._id!==id);if(e==='request-records')TLS.data.requestRecords=TLS.data.requestRecords.filter(r=>r._id!==id);if(e==='primary-objects')TLS.data.primaryObjects=TLS.data.primaryObjects.filter(r=>r._id!==id);if(e==='context-objects')TLS.data.contextObjects=TLS.data.contextObjects.filter(r=>r._id!==id);tlsUpdateCounts();tlsRenderStatusBar();tlsShowSection(TLS.currentSection);}catch(err){toast(err?.data?.message||'Delete failed','error');}}
-async function tlsCreateVendor(){const poId=document.getElementById('tls-cv-type')?.value,name=document.getElementById('tls-cv-name')?.value?.trim(),website=document.getElementById('tls-cv-website')?.value?.trim(),notes=document.getElementById('tls-cv-notes')?.value?.trim();if(!poId){toast('Select an entity type','error');return;}if(!name){toast('Name is required','error');return;}const body={primaryObjectId:poId,name};if(website)body.website=website;if(notes)body.additionalNotes=notes;try{const res=await tlsApi('POST','/primary-records',body);toast(`Vendor "${name}" created!`,'success');TLS.data.primaryRecords.push({...body,_id:res._id,status:'active'});tlsUpdateCounts();tlsRenderStatusBar();tlsShowSection('primary-records');}catch(e){toast(e?.data?.message||'Create failed','error');}}
-async function tlsCreateProject(){const coId=document.getElementById('tls-cp-type')?.value,name=document.getElementById('tls-cp-name')?.value?.trim(),desc=document.getElementById('tls-cp-desc')?.value?.trim(),start=document.getElementById('tls-cp-start')?.value,end=document.getElementById('tls-cp-end')?.value;if(!coId){toast('Select a project type','error');return;}if(!name){toast('Name is required','error');return;}const body={contextObjectId:coId,name};if(desc)body.description=desc;if(start)body.startDate=start;if(end)body.endDate=end;try{const res=await tlsApi('POST','/context-records',body);toast(`Project "${name}" created!`,'success');TLS.data.contextRecords.push({...body,_id:res._id,status:'active'});tlsUpdateCounts();tlsRenderStatusBar();tlsShowSection('context-records');}catch(e){toast(e?.data?.message||'Create failed','error');}}
-async function tlsAssignProfile(reqId){const p=document.getElementById('tls-assign-pid')?.value?.trim();if(!p){toast('Enter a profile ID','error');return;}try{await tlsApi('POST',`/request-records/${reqId}/compliance-profile`,{complianceProfileId:p});toast('Profile assigned!','success');await tlsRefresh();}catch(e){toast(e?.data?.message||'Failed','error');}}
-async function tlsUnassignProfile(reqId){if(!confirm('Remove the compliance profile?'))return;try{await tlsApi('DELETE',`/request-records/${reqId}/compliance-profile`);toast('Profile removed','success');await tlsRefresh();}catch(e){toast(e?.data?.message||'Failed','error');}}
-async function tlsCreateCert(reqId){const eff=document.getElementById(`tls-cert-eff-${reqId}`)?.value,exp=document.getElementById(`tls-cert-exp-${reqId}`)?.value;const body={};if(eff)body.effectiveDate=eff+'T00:00:00Z';if(exp)body.expirationDate=exp+'T00:00:00Z';try{const res=await tlsApi('POST',`/request-records/${reqId}/compliance-certificate`,body);toast('Certificate generated! ID: '+res._id,'success');}catch(e){toast(e?.data?.message||'Failed','error');}}
-async function tlsCertFromTools(){const reqId=document.getElementById('tls-ct-req')?.value;if(!reqId){toast('Select a request','error');return;}const eff=document.getElementById('tls-ct-eff')?.value,exp=document.getElementById('tls-ct-exp')?.value;const body={};if(eff)body.effectiveDate=eff+'T00:00:00Z';if(exp)body.expirationDate=exp+'T00:00:00Z';try{const res=await tlsApi('POST',`/request-records/${reqId}/compliance-certificate`,body);toast('Certificate generated! ID: '+res._id,'success');}catch(e){toast(e?.data?.message||'Failed','error');}}
-async function tlsAssignFromTools(){const reqId=document.getElementById('tls-ct-prof-req')?.value,p=document.getElementById('tls-ct-prof-id')?.value?.trim();if(!reqId){toast('Select a request','error');return;}if(!p){toast('Enter a profile ID','error');return;}try{await tlsApi('POST',`/request-records/${reqId}/compliance-profile`,{complianceProfileId:p});toast('Profile assigned!','success');await tlsRefresh();}catch(e){toast(e?.data?.message||'Failed','error');}}
-async function tlsCreateRequestFromTools(){const vendorId=document.getElementById('tls-ct-vendor')?.value,projectId=document.getElementById('tls-ct-proj')?.value,name=document.getElementById('tls-ct-rr-name')?.value?.trim();if(!vendorId){toast('Select a vendor','error');return;}const body={complianceTracking:true};if(name)body.name=name;if(projectId)body.contextRecordId=projectId;try{const res=await tlsApi('POST',`/primary-records/${vendorId}/request-records`,body);toast('Compliance request created!','success');TLS.data.requestRecords.push({_id:res._id,primaryRecordId:vendorId,contextRecordId:projectId||null,name,status:'active',complianceTracking:true});tlsUpdateCounts();tlsRenderStatusBar();}catch(e){toast(e?.data?.message||'Failed','error');}}
-async function tlsRemoveContact(vendorId,contactId){if(!confirm('Remove this contact?'))return;try{await tlsApi('DELETE',`/primary-records/${vendorId}/contacts/${contactId}`);toast('Contact removed','success');tlsSelectVendor(vendorId);}catch(e){toast(e?.data?.message||'Failed','error');}}
-async function tlsRemoveTag(vendorId,tagId){if(!confirm('Remove this tag?'))return;try{await tlsApi('DELETE',`/primary-records/${vendorId}/tags/${tagId}`);toast('Tag removed','success');tlsSelectVendor(vendorId);}catch(e){toast(e?.data?.message||'Failed','error');}}
-async function tlsEditObject(endpoint,id,name,plural){const n=prompt(`New name for "${name}":`,name);if(!n||n===name)return;const p=prompt('Plural name:',plural)||plural;try{await tlsApi('PATCH',`/${endpoint}/${id}`,{name:n,pluralName:p});toast('Updated!','success');const arr=endpoint==='primary-objects'?TLS.data.primaryObjects:TLS.data.contextObjects;const o=arr.find(x=>x._id===id);if(o){o.name=n;o.pluralName=p;}tlsShowSection(TLS.currentSection);}catch(e){toast(e?.data?.message||'Update failed','error');}}
-async function tlsCreateObjectModal(endpoint,label){const name=prompt(`Name for new ${label} (singular):`);if(!name)return;const plural=prompt('Plural name:',name+'s')||name+'s';try{const res=await tlsApi('POST',`/${endpoint}`,{name,pluralName:plural});toast(`"${name}" created!`,'success');const obj={_id:res._id,name,pluralName:plural};if(endpoint==='primary-objects')TLS.data.primaryObjects.push(obj);else TLS.data.contextObjects.push(obj);tlsUpdateCounts();tlsShowSection(TLS.currentSection);}catch(e){toast(e?.data?.message||'Create failed','error');}}
-function tlsPromptAssignContact(vendorId){const email=prompt('Contact email address:');if(!email)return;tlsApi('POST',`/primary-records/${vendorId}/contacts`,{id:email,primary:false}).then(()=>{toast('Contact assigned','success');tlsSelectVendor(vendorId);}).catch(e=>toast(e?.data?.message||'Failed','error'));}
-function tlsPromptAssignTag(vendorId){const id=prompt('Tag ID (ObjectId):');if(!id)return;tlsApi('POST',`/primary-records/${vendorId}/tags`,{id}).then(()=>{toast('Tag assigned','success');tlsSelectVendor(vendorId);}).catch(e=>toast(e?.data?.message||'Failed','error'));}
-function tlsShowCreateRequest(vendorId){tlsShowSection('compliance-tools');setTimeout(()=>{const s=document.getElementById('tls-ct-vendor');if(s)s.value=vendorId;},100);}
-function tlsFilter(type,val){const fl=val.toLowerCase();const m={vendor:TLS.data.primaryRecords,project:TLS.data.contextRecords,request:TLS.data.requestRecords},p={vendor:'tls-vc-',project:'tls-cc-',request:'tls-rc-'};(m[type]||[]).forEach(r=>{const el=document.getElementById((p[type]||'')+r._id);if(el)el.style.display=(!fl||(r.name||'').toLowerCase().includes(fl)||(r.complianceStatus||'').includes(fl))?'':'none';});}
-function tlsFilterRequests(status){TLS.data.requestRecords.forEach(r=>{const el=document.getElementById(`tls-rc-${r._id}`);if(el)el.style.display=(!status||r.complianceStatus===status)?'':'none';});}
+// ── FULL API EXPLORER ────────────────────────────────────────────────
+function tlsRenderFullApi() {
+  const endpoints = {
+    workspace:[
+      {m:'GET',p:'/workspace',d:'Get workspace details'},
+    ],
+    'primary-objects':[
+      {m:'GET',p:'/primary-objects',d:'List all entity types'},
+      {m:'GET',p:'/primary-objects/{id}',d:'Get entity type by ID'},
+      {m:'POST',p:'/primary-objects',d:'Create entity type',body:'{"name":"Vendor","pluralName":"Vendors"}'},
+      {m:'PATCH',p:'/primary-objects/{id}',d:'Update entity type',body:'{"name":"Updated Name"}'},
+      {m:'DELETE',p:'/primary-objects/{id}',d:'Delete entity type'},
+    ],
+    'primary-records':[
+      {m:'GET',p:'/primary-records',d:'List all vendors/entities'},
+      {m:'GET',p:'/primary-records/{id}',d:'Get vendor by ID'},
+      {m:'POST',p:'/primary-records',d:'Create vendor',body:'{"primaryObjectId":"<id>","name":"Vendor Name"}'},
+      {m:'PATCH',p:'/primary-records/{id}',d:'Update vendor',body:'{"name":"New Name"}'},
+      {m:'DELETE',p:'/primary-records/{id}',d:'Delete vendor'},
+      {m:'GET',p:'/primary-records/{id}/contacts',d:'List vendor contacts'},
+      {m:'POST',p:'/primary-records/{id}/contacts',d:'Assign contact',body:'{"id":"email@example.com","primary":false}'},
+      {m:'PATCH',p:'/primary-records/{id}/contacts/{contactId}',d:'Update contact',body:'{"primary":true}'},
+      {m:'DELETE',p:'/primary-records/{id}/contacts/{contactId}',d:'Remove contact'},
+      {m:'GET',p:'/primary-records/{id}/tags',d:'List vendor tags'},
+      {m:'POST',p:'/primary-records/{id}/tags',d:'Assign tag',body:'{"id":"<tagId>","expiresAt":"2027-01-01T00:00:00Z"}'},
+      {m:'DELETE',p:'/primary-records/{id}/tags/{tagId}',d:'Remove tag'},
+      {m:'GET',p:'/primary-records/{id}/attributes',d:'List vendor attributes'},
+      {m:'GET',p:'/primary-records/{id}/attributes/{attributeId}',d:'Get attribute'},
+      {m:'PUT',p:'/primary-records/{id}/attributes/{attributeId}',d:'Set attribute',body:'{"value":"custom value"}'},
+      {m:'DELETE',p:'/primary-records/{id}/attributes/{attributeId}',d:'Clear attribute'},
+      {m:'GET',p:'/primary-records/{id}/request-records',d:'List vendor request records'},
+      {m:'POST',p:'/primary-records/{id}/request-records',d:'Create request record',body:'{"complianceTracking":true,"contextRecordId":"<optional>"}'},
+    ],
+    'context-objects':[
+      {m:'GET',p:'/context-objects',d:'List all project types'},
+      {m:'GET',p:'/context-objects/{id}',d:'Get project type by ID'},
+      {m:'POST',p:'/context-objects',d:'Create project type',body:'{"name":"Project","pluralName":"Projects"}'},
+      {m:'PATCH',p:'/context-objects/{id}',d:'Update project type',body:'{"name":"Updated Name"}'},
+      {m:'DELETE',p:'/context-objects/{id}',d:'Delete project type'},
+    ],
+    'context-records':[
+      {m:'GET',p:'/context-records',d:'List all projects'},
+      {m:'GET',p:'/context-records/{id}',d:'Get project by ID'},
+      {m:'POST',p:'/context-records',d:'Create project',body:'{"contextObjectId":"<id>","name":"Project Name"}'},
+      {m:'PATCH',p:'/context-records/{id}',d:'Update project',body:'{"name":"New Name"}'},
+      {m:'DELETE',p:'/context-records/{id}',d:'Delete project'},
+      {m:'GET',p:'/context-records/{id}/attributes',d:'List project attributes'},
+      {m:'GET',p:'/context-records/{id}/attributes/{attributeId}',d:'Get attribute'},
+      {m:'PUT',p:'/context-records/{id}/attributes/{attributeId}',d:'Set attribute',body:'{"value":"custom value"}'},
+      {m:'DELETE',p:'/context-records/{id}/attributes/{attributeId}',d:'Clear attribute'},
+      {m:'GET',p:'/context-records/{id}/request-records',d:'List request records for project'},
+      {m:'POST',p:'/context-records/{id}/request-records',d:'Create request record for project',body:'{"primaryRecordId":"<vendorId>","complianceTracking":true}'},
+    ],
+    'request-records':[
+      {m:'GET',p:'/request-records',d:'List all request records'},
+      {m:'GET',p:'/request-records/{id}',d:'Get request record by ID'},
+      {m:'PATCH',p:'/request-records/{id}',d:'Update request record',body:'{"complianceTracking":true}'},
+      {m:'DELETE',p:'/request-records/{id}',d:'Delete request record'},
+      {m:'GET',p:'/request-records/{id}/attributes',d:'List request attributes'},
+      {m:'GET',p:'/request-records/{id}/attributes/{attributeId}',d:'Get attribute'},
+      {m:'PUT',p:'/request-records/{id}/attributes/{attributeId}',d:'Set attribute',body:'{"value":"custom value"}'},
+      {m:'DELETE',p:'/request-records/{id}/attributes/{attributeId}',d:'Clear attribute'},
+      {m:'POST',p:'/request-records/{id}/compliance-profile',d:'Assign compliance profile',body:'{"complianceProfileId":"<id>"}'},
+      {m:'DELETE',p:'/request-records/{id}/compliance-profile',d:'Unassign compliance profile'},
+      {m:'GET',p:'/request-records/{id}/compliance-certificate',d:'Get compliance certificate'},
+      {m:'POST',p:'/request-records/{id}/compliance-certificate',d:'Generate certificate',body:'{"effectiveDate":"2026-01-01T00:00:00Z"}'},
+      {m:'POST',p:'/request-records/{id}/requirements',d:'Set requirements',body:'{"complianceProfileId":"<id>"}'},
+    ],
+    views:[
+      {m:'GET',p:'/views',d:'List all views'},
+      {m:'GET',p:'/views/{id}',d:'Get view by ID'},
+    ],
+    documents:[
+      {m:'GET',p:'/documents/{id}/amendments',d:'List amendments for a document'},
+    ],
+    policies:[
+      {m:'GET',p:'/policies/{number}',d:'Get policy by number'},
+      {m:'GET',p:'/policies/{number}/documents',d:'List policy documents'},
+      {m:'GET',p:'/policies/{number}/amendments',d:'List policy amendments'},
+      {m:'POST',p:'/policies/{number}/cancellations',d:'Log cancellation',body:'{"effectiveDate":"2026-01-01T00:00:00Z","notes":"Reason"}'},
+      {m:'DELETE',p:'/policies/{number}/cancellations/{id}',d:'Remove cancellation'},
+      {m:'POST',p:'/policies/{number}/cancellations/{id}/log',d:'Log cancellation event',body:'{"notes":"Log entry"}'},
+      {m:'POST',p:'/policies/{number}/reinstatements',d:'Log reinstatement',body:'{"effectiveDate":"2026-01-01T00:00:00Z"}'},
+      {m:'DELETE',p:'/policies/{number}/reinstatements/{id}',d:'Remove reinstatement'},
+      {m:'POST',p:'/policies/{number}/reinstatements/{id}/log',d:'Log reinstatement event',body:'{"notes":"Log entry"}'},
+    ],
+  };
 
-function tlsOpenDrawer(title,tabs){const drawer=document.getElementById('tls-drawer');if(!drawer)return;drawer.classList.remove('tls-drawer-collapsed');document.getElementById('tls-drawer-title').textContent=title;document.getElementById('tls-drawer-tabs').innerHTML=tabs.map((t,i)=>`<div class="tls-dtab ${i===0?'active':''}" onclick="tlsSwitchDrawerTab(${i})">${t.label}</div>`).join('');window._tlsDrawerTabs=tabs;document.getElementById('tls-drawer-body').innerHTML=tabs[0].content;}
-function tlsSwitchDrawerTab(idx){document.querySelectorAll('.tls-dtab').forEach((t,i)=>t.classList.toggle('active',i===idx));document.getElementById('tls-drawer-body').innerHTML=window._tlsDrawerTabs[idx].content;}
-function tlsCloseDrawer(){const d=document.getElementById('tls-drawer');if(d)d.classList.add('tls-drawer-collapsed');document.querySelectorAll('.tls-card').forEach(c=>c.classList.remove('tls-selected'));}
-
-function tlsSandboxInit(){
-  const wrap=document.getElementById('tab-tl-sandbox');if(!wrap)return;
-  if(!wrap.dataset.built){
-    wrap.dataset.built='1';
-    wrap.innerHTML=`
-    <style>
-    #tab-tl-sandbox{display:flex;flex-direction:column;height:calc(100vh - 96px);overflow:hidden}
-    .tls-shell{display:flex;flex:1;overflow:hidden;min-height:0}
-    .tls-leftnav{width:196px;flex-shrink:0;background:#fff;border-right:1px solid #D1DCE8;display:flex;flex-direction:column;overflow-y:auto}
-    .tls-nav-group{padding:4px 0;border-bottom:1px solid #EEF2F7}
-    .tls-nav-heading{padding:6px 12px 3px;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B}
-    .tls-nav-item{display:flex;align-items:center;gap:8px;width:100%;padding:7px 12px;font-size:12px;font-weight:600;color:#5A6B7B;background:none;border:none;border-left:3px solid transparent;cursor:pointer;font-family:inherit;text-align:left;transition:.12s}
-    .tls-nav-item:hover{background:#EBF4FF;color:#0678D5}
-    .tls-nav-item.active{background:#EBF4FF;color:#0678D5;border-left-color:#0678D5}
-    .tls-nav-badge{margin-left:auto;background:#EBF4FF;color:#0678D5;border-radius:10px;padding:1px 6px;font-size:9px;font-weight:600}
-    .tls-center{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
-    .tls-connect-top{padding:10px 16px;background:#fff;border-bottom:1px solid #D1DCE8;flex-shrink:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .tls-token-wrap{display:flex;align-items:center;gap:6px;background:#F0F4F8;border:1px solid #D1DCE8;border-radius:6px;padding:5px 10px;flex:1;max-width:340px}
-    .tls-token-wrap label{font-size:10px;color:#5A6B7B;white-space:nowrap;font-weight:600}
-    .tls-token-wrap input{background:transparent;border:none;outline:none;font-family:monospace;font-size:11px;color:#263746;flex:1;min-width:0}
-    .tls-panel-header{padding:11px 16px 9px;border-bottom:1px solid #D1DCE8;background:#fff;display:flex;align-items:center;gap:10px;flex-shrink:0}
-    .tls-panel-title{font-size:14px;font-weight:700;color:#263746;flex:1}
-    .tls-panel-sub{font-size:11px;color:#5A6B7B;margin-top:1px}
-    .tls-view-toggle{display:flex;gap:2px;background:#F0F4F8;border:1px solid #D1DCE8;border-radius:5px;padding:2px}
-    .tls-vt-btn{padding:4px 10px;border-radius:4px;font-size:10px;font-weight:600;cursor:pointer;border:none;background:transparent;color:#5A6B7B;transition:.12s;font-family:inherit}
-    .tls-vt-btn.active{background:#0678D5;color:#fff}
-    .tls-vt-btn:hover:not(.active){background:#D1DCE8;color:#263746}
-    .tls-status-bar{background:#fff;border-bottom:1px solid #D1DCE8;padding:5px 16px;display:flex;align-items:center;gap:8px;font-size:11px;color:#5A6B7B;flex-shrink:0;min-height:28px}
-    .tls-panel-body{flex:1;overflow-y:auto;padding:14px 16px}
-    .tls-api-log{flex-shrink:0;background:#0f0f1a;border-top:1px solid #1e1e2e;height:108px;overflow-y:auto;display:flex;flex-direction:column}
-    .tls-log-header{padding:4px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #1e1e2e;flex-shrink:0;position:sticky;top:0;background:#0f0f1a;z-index:5}
-    .tls-log-title{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555}
-    .tls-drawer{width:336px;flex-shrink:0;background:#fff;border-left:1px solid #D1DCE8;display:flex;flex-direction:column;overflow:hidden;transition:width .2s}
-    .tls-drawer-collapsed{width:0;border-left:none;overflow:hidden}
-    .tls-drawer-header{padding:10px 12px 8px;border-bottom:1px solid #D1DCE8;display:flex;align-items:center;gap:8px;flex-shrink:0}
-    .tls-drawer-title{font-size:13px;font-weight:600;color:#263746;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-    .tls-drawer-close{background:none;border:none;cursor:pointer;color:#5A6B7B;font-size:15px;padding:2px 5px;border-radius:4px}
-    .tls-drawer-close:hover{background:#F0F4F8}
-    .tls-drawer-tabs{display:flex;border-bottom:1px solid #D1DCE8;background:#FAFBFC;flex-shrink:0;overflow-x:auto}
-    .tls-dtab{padding:7px 10px;font-size:11px;font-weight:600;cursor:pointer;color:#5A6B7B;border-bottom:2px solid transparent;transition:.12s;margin-bottom:-1px;white-space:nowrap}
-    .tls-dtab:hover{color:#0678D5}.tls-dtab.active{color:#0678D5;border-bottom-color:#0678D5}
-    .tls-drawer-body{flex:1;overflow-y:auto;padding:10px 12px}
-    .tls-card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(252px,1fr));gap:10px}
-    .tls-card{background:#fff;border:1px solid #D1DCE8;border-radius:8px;padding:11px;cursor:pointer;transition:.15s}
-    .tls-card:hover{border-color:#0678D5;box-shadow:0 2px 8px rgba(0,0,0,.07)}
-    .tls-card.tls-selected{border-color:#0678D5;box-shadow:0 0 0 2px #c9e0f7}
-    .tls-card-top{display:flex;align-items:flex-start;gap:8px;margin-bottom:7px}
-    .tls-avatar{width:32px;height:32px;border-radius:7px;background:#EBF4FF;color:#0678D5;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-    .tls-card-name{font-size:12px;font-weight:600;color:#263746;line-height:1.3;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-    .tls-card-type{font-size:10px;color:#5A6B7B;margin-top:2px}
-    .tls-card-id{font-family:monospace;font-size:9px;color:#9AAABB;margin-top:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-    .tls-card-actions{display:flex;gap:5px;margin-top:8px;padding-top:8px;border-top:1px solid #EEF2F7}
-    .tls-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
-    .tls-tag{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:500}
-    .tls-tag-blue{background:#EBF4FF;color:#0678D5}.tls-tag-green{background:rgba(62,189,62,.1);color:#166534}
-    .tls-tag-red{background:#FEF2F2;color:#AC1534}.tls-tag-grey{background:#F0F4F8;color:#5A6B7B}
-    .tls-kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
-    .tls-kpi{border-radius:8px;padding:11px 13px}
-    .tls-kpi-blue{background:#EBF4FF}.tls-kpi-teal{background:#e0f2fe}.tls-kpi-green{background:rgba(62,189,62,.1)}.tls-kpi-red{background:#FEF2F2}
-    .tls-kpi-val{font-size:24px;font-weight:800;color:#263746;line-height:1}
-    .tls-kpi-lbl{font-size:10px;font-weight:600;color:#5A6B7B;margin-top:3px}
-    .tls-table{width:100%;border-collapse:collapse;font-size:12px}
-    .tls-table th{padding:7px 10px;text-align:left;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5A6B7B;border-bottom:2px solid #D1DCE8;background:#FAFBFC}
-    .tls-table td{padding:7px 10px;border-bottom:1px solid #EEF2F7;vertical-align:middle}
-    .tls-table tr:hover td{background:#EBF4FF}
-    .tls-mono{font-family:monospace;font-size:10px;color:#5A6B7B}
-    .tls-muted{font-size:12px;color:#5A6B7B;padding:8px 0;font-style:italic}
-    .tls-kv{display:flex;flex-direction:column;gap:5px}
-    .tls-kv-row{display:flex;gap:8px;font-size:12px}
-    .tls-kv-key{width:72px;flex-shrink:0;font-weight:600;color:#5A6B7B;font-size:11px}
-    .tls-kv-val{flex:1;word-break:break-all;color:#263746}
-    .tls-search{padding:7px 10px;border:1.5px solid #D1DCE8;border-radius:8px;font-size:12px;font-family:inherit;outline:none;background:#fff;flex:1;max-width:260px;color:#263746}
-    .tls-search:focus{border-color:#0678D5}
-    .tls-input{width:100%;padding:7px 10px;border:1.5px solid #D1DCE8;border-radius:6px;font-family:inherit;font-size:12px;outline:none;background:#FAFBFD;color:#1E2E3D;transition:.15s}
-    .tls-input:focus{border-color:#0678D5;box-shadow:0 0 0 3px rgba(6,120,213,.1);background:#fff}
-    .tls-raw{background:#1e1e2e;border-radius:8px;padding:10px;font-family:monospace;font-size:10px;line-height:1.6;overflow:auto;color:#cdd6f4;max-height:380px}
-    .tls-jk{color:#89dceb}.tls-jv{color:#a6e3a1}.tls-jn{color:#fab387}.tls-jb{color:#cba6f7}.tls-jnl{color:#f38ba8}
-    .tls-copy{background:none;border:none;cursor:pointer;color:#9AAABB;font-size:10px;padding:1px 3px;border-radius:3px;font-family:monospace}
-    .tls-copy:hover{background:#D1DCE8;color:#263746}
-    .tls-api-hint{font-family:monospace;font-size:10px;color:#9AAABB;margin-top:8px}
-    </style>
-    <div class="tls-connect-top">
-      <div class="tls-token-wrap"><label>DEMO Token</label><input type="password" id="tls-token-input" placeholder="Auto-loads from Settings → APIs…" value="${TLS.token()}"></div>
-      <button class="btn btn-primary" id="tls-connect-btn" onclick="tlsConnect()" style="font-size:12px;padding:7px 14px;white-space:nowrap">Connect &amp; Load Data</button>
-      <button class="btn btn-secondary" id="tls-refresh-btn" onclick="tlsRefresh()" style="font-size:12px;padding:7px 12px" disabled>↺ Refresh</button>
-      <span style="font-size:11px;color:#5A6B7B">Token auto-loads from <strong>Settings → APIs</strong></span>
+  const tabNames = Object.keys(endpoints);
+  const activeTab = TLS.apiTab || 'workspace';
+  const tabHtml = tabNames.map(t=>`<div class="tls-api-tab ${t===activeTab?'active':''}" onclick="tlsApiTab('${t}')">${t}</div>`).join('');
+  const eps = endpoints[activeTab]||[];
+  const mc = {GET:'#60b4fa',POST:'#6ee7b7',PATCH:'#c4b5fd',PUT:'#fcd34d',DELETE:'#fca5a5'};
+  const rows = eps.map((e,i)=>`<div class="tls-api-row" id="tls-api-ep-${i}">
+    <div class="tls-api-row-hdr" onclick="tlsApiToggle(${i})">
+      <span style="color:${mc[e.m]||'#94a3b8'};width:54px;font-size:10px;font-weight:800;flex-shrink:0">${e.m}</span>
+      <span class="tls-api-path">${e.p}</span>
+      <span style="color:#5A6B7B;font-size:11px;flex:1;padding-left:12px">${e.d}</span>
+      <span style="color:#9AAABB;font-size:12px;flex-shrink:0">▾</span>
     </div>
-    <div id="tls-connect-status" style="display:none"></div>
-    <div class="tls-status-bar" id="tls-status-bar"><span style="opacity:.5;font-size:11px">Not connected — paste your DEMO Client token above and click Connect &amp; Load Data</span></div>
-    <div class="tls-shell">
-      <div class="tls-leftnav">
-        <div class="tls-nav-group"><div class="tls-nav-heading">Workspace</div><button class="tls-nav-item active" id="tls-nav-overview" onclick="tlsShowSection('overview')"><span>🏠</span> Overview</button></div>
-        <div class="tls-nav-group"><div class="tls-nav-heading">Data</div>
-          <button class="tls-nav-item" id="tls-nav-primary-objects" onclick="tlsShowSection('primary-objects')"><span>🗂️</span> Entity Types <span class="tls-nav-badge" id="tls-cnt-po">—</span></button>
-          <button class="tls-nav-item" id="tls-nav-primary-records" onclick="tlsShowSection('primary-records')"><span>🏢</span> Vendors <span class="tls-nav-badge" id="tls-cnt-pr">—</span></button>
-          <button class="tls-nav-item" id="tls-nav-context-objects" onclick="tlsShowSection('context-objects')"><span>📁</span> Project Types <span class="tls-nav-badge" id="tls-cnt-co">—</span></button>
-          <button class="tls-nav-item" id="tls-nav-context-records" onclick="tlsShowSection('context-records')"><span>📋</span> Projects <span class="tls-nav-badge" id="tls-cnt-cr">—</span></button>
-          <button class="tls-nav-item" id="tls-nav-request-records" onclick="tlsShowSection('request-records')"><span>✅</span> Requests <span class="tls-nav-badge" id="tls-cnt-rr">—</span></button>
-          <button class="tls-nav-item" id="tls-nav-views" onclick="tlsShowSection('views')"><span>👁️</span> Views <span class="tls-nav-badge" id="tls-cnt-v">—</span></button>
-        </div>
-        <div class="tls-nav-group"><div class="tls-nav-heading">Actions</div>
-          <button class="tls-nav-item" onclick="tlsShowSection('create-vendor')"><span>➕</span> Add Vendor</button>
-          <button class="tls-nav-item" onclick="tlsShowSection('create-project')"><span>📌</span> Add Project</button>
-          <button class="tls-nav-item" onclick="tlsShowSection('compliance-tools')"><span>🛡️</span> Compliance Tools</button>
-        </div>
+    <div class="tls-api-row-body" id="tls-api-body-${i}" style="display:none">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:8px;margin-bottom:8px">
+        <input type="text" class="tls-inp" id="tls-api-url-${i}" value="${TLS_BASE_V2 + e.p}" style="font-family:monospace;font-size:11px">
+        <button class="btn btn-primary" style="font-size:11px;padding:6px 14px;white-space:nowrap" onclick="tlsApiCall(${i},'${e.m}')">▶ Send</button>
       </div>
-      <div class="tls-center">
-        <div class="tls-panel-header"><div><div class="tls-panel-title" id="tls-panel-title">Welcome to TL Sandbox (Write)</div><div class="tls-panel-sub" id="tls-panel-sub">Connect to load DEMO Client data before making any changes</div></div><div class="tls-view-toggle" id="tls-view-toggle" style="display:none"><button class="tls-vt-btn active" id="tls-vt-guided" onclick="tlsSetView('guided')">🧭 Guided</button><button class="tls-vt-btn" id="tls-vt-raw" onclick="tlsSetView('raw')">⚙️ Raw JSON</button></div></div>
-        <div class="tls-panel-body" id="tls-panel-body"><div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:240px;gap:12px;color:#5A6B7B;text-align:center"><div style="font-size:36px;opacity:.25">🔌</div><div style="font-size:14px;font-weight:600;color:#263746;opacity:.4">Not Connected</div><div style="font-size:12px;max-width:340px;opacity:.5;line-height:1.6">Paste your DEMO Client Bearer token above and click Connect &amp; Load Data. All existing data loads first so you see exactly what's there before making any changes.</div></div></div>
-        <div class="tls-api-log"><div class="tls-log-header"><span class="tls-log-title">API Log — every call logged live</span><span id="tls-log-url" style="font-family:monospace;font-size:9px;color:#555;flex:1;padding:0 10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span><button onclick="TLS.logEntries=[];tlsRenderLog()" style="background:transparent;border:none;color:#555;font-size:10px;cursor:pointer;font-family:inherit">Clear</button></div><div id="tls-log-entries"><div style="padding:8px 14px;font-family:monospace;font-size:10px;color:#494d64">Waiting for API calls…</div></div></div>
-      </div>
-      <div class="tls-drawer tls-drawer-collapsed" id="tls-drawer"><div class="tls-drawer-header"><div class="tls-drawer-title" id="tls-drawer-title">Details</div><button class="tls-drawer-close" onclick="tlsCloseDrawer()">✕</button></div><div class="tls-drawer-tabs" id="tls-drawer-tabs"></div><div class="tls-drawer-body" id="tls-drawer-body"></div></div>
-    </div>`;
-  }
-  if(TLS.token()&&!TLS.data.workspace){tlsConnect();}else if(TLS.data.workspace){tlsShowSection(TLS.currentSection);tlsRenderStatusBar();tlsRenderLog();}
-}
-document.addEventListener('input',e=>{if(e.target.id==='tls-token-input')localStorage.setItem('cs-tl-token-demo',e.target.value.trim());});
-</script>
+      ${e.body?`<div style="margin-bottom:8px"><label class="form-lbl">Request Body (JSON)</label><textarea class="tls-inp" id="tls-api-body-json-${i}" rows="4" style="font-family:monospace;font-size:11px;resize:vertical">${e.body}</textarea></div>`:''}
+      <div id="tls-api-res-${i}" class="tls-api-res" style="display:none"></div>
+    </div>
+  </div>`).join('');
 
+  tlsBody(`
+    <div style="display:flex;gap:0;flex-wrap:wrap;margin-bottom:14px;border-bottom:2px solid #D1DCE8;padding-bottom:0">${tabHtml}</div>
+    <div style="font-size:11px;color:#5A6B7B;margin-bottom:12px">Click any endpoint to expand. Edit the URL to replace path params. All calls use your DEMO Client token from Settings → APIs.</div>
+    <div id="tls-api-list">${rows}</div>
+    <div class="tls-hint mt8">v2 Base: ${TLS_BASE_V2} · Token: auto-loaded from Settings → APIs → TrustLayer Demo</div>`);
+}
+
+function tlsApiTab(name) {
+  TLS.apiTab = name;
+  tlsRenderFullApi();
+}
+function tlsApiToggle(i) {
+  const body = document.getElementById(`tls-api-body-${i}`);
+  if (body) body.style.display = body.style.display === 'none' ? '' : 'none';
+}
+async function tlsApiCall(i, method) {
+  const urlEl = document.getElementById(`tls-api-url-${i}`);
+  const bodyEl = document.getElementById(`tls-api-body-json-${i}`);
+  const resEl  = document.getElementById(`tls-api-res-${i}`);
+  if (!urlEl || !resEl) return;
+  const url = urlEl.value.trim();
+  const token = TLS.token();
+  if (!token) { resEl.style.display=''; resEl.innerHTML='<span style="color:#AC1534">No token — set in Settings → APIs → TrustLayer Demo</span>'; return; }
+  resEl.style.display=''; resEl.innerHTML='<span style="color:#fcd34d">Sending…</span>';
+  try {
+    let body = null;
+    if (bodyEl && bodyEl.value.trim()) {
+      try { body = JSON.parse(bodyEl.value); } catch(e) { resEl.innerHTML=`<span style="color:#AC1534">Invalid JSON: ${e.message}</span>`; return; }
+    }
+    const opts = { method, headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/json' } };
+    if (body && ['POST','PATCH','PUT'].includes(method)) opts.body = JSON.stringify(body);
+    const start = Date.now();
+    const res = await fetch(url, opts);
+    const ms = Date.now() - start;
+    const text = await res.text();
+    let data; try { data = JSON.parse(text); } catch(_) { data = text; }
+    const mc = {GET:'#60b4fa',POST:'#6ee7b7',PATCH:'#c4b5fd',PUT:'#fcd34d',DELETE:'#fca5a5'};
+    const sc = res.ok ? '#6ee7b7' : '#fca5a5';
+    // Log it
+    const path = url.replace(TLS_BASE_V2,'').replace(TLS_BASE_V1,'');
+    const lid = ++_tlsLogId;
+    TLS.log.unshift({id:lid,method,path,status:res.status,ms,url,ts:new Date().toLocaleTimeString()});
+    if(TLS.log.length>100)TLS.log.pop(); tlsLogRender();
+    resEl.innerHTML = `<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="color:${sc};font-weight:700">${res.status} ${res.statusText}</span><span style="color:#5A6B7B;font-size:11px">${ms}ms</span></div>${tlsRaw(data)}`;
+  } catch(err) {
+    resEl.innerHTML = `<span style="color:#AC1534">Error: ${err.message}</span>`;
+  }
+}
+
+// ── Write actions ─────────────────────────────────────────────────────
+async function tlsDelete(ep,id,name){
+  if(!confirm(`Delete "${name}"? Cannot be undone.`))return;
+  try{await tlsApi('DELETE',`/${ep}/${id}`);toast(`"${name}" deleted`,'success');tlsDrawerClose();
+    if(ep==='primary-records')TLS.data.primaryRecords=TLS.data.primaryRecords.filter(r=>r._id!==id);
+    if(ep==='context-records')TLS.data.contextRecords=TLS.data.contextRecords.filter(r=>r._id!==id);
+    if(ep==='request-records')TLS.data.requestRecords=TLS.data.requestRecords.filter(r=>r._id!==id);
+    if(ep==='primary-objects')TLS.data.primaryObjects=TLS.data.primaryObjects.filter(r=>r._id!==id);
+    if(ep==='context-objects')TLS.data.contextObjects=TLS.data.contextObjects.filter(r=>r._id!==id);
+    tlsCountsUpdate(); tlsStatusBarRender(); tlsShowSection(TLS.section);
+  }catch(e){toast(e?.data?.message||'Delete failed','error');}
+}
+async function tlsCreateVendor(){
+  const t=document.getElementById('tls-cv-type')?.value, n=document.getElementById('tls-cv-name')?.value?.trim();
+  const w=document.getElementById('tls-cv-website')?.value?.trim(), nt=document.getElementById('tls-cv-notes')?.value?.trim();
+  if(!t){toast('Select entity type','error');return;}if(!n){toast('Name required','error');return;}
+  const b={primaryObjectId:t,name:n}; if(w)b.website=w; if(nt)b.additionalNotes=nt;
+  try{const res=await tlsApi('POST','/primary-records',b);toast(`"${n}" created!`,'success');TLS.data.primaryRecords.push({...b,_id:res._id||res.id,status:'active'});tlsCountsUpdate();tlsStatusBarRender();tlsShowSection('primary-records');}
+  catch(e){toast(e?.data?.message||'Failed','error');}
+}
+async function tlsCreateProject(){
+  const t=document.getElementById('tls-cp-type')?.value, n=document.getElementById('tls-cp-name')?.value?.trim();
+  const d=document.getElementById('tls-cp-desc')?.value?.trim(), s=document.getElementById('tls-cp-start')?.value, en=document.getElementById('tls-cp-end')?.value;
+  if(!t){toast('Select project type','error');return;}if(!n){toast('Name required','error');return;}
+  const b={contextObjectId:t,name:n}; if(d)b.description=d; if(s)b.startDate=s; if(en)b.endDate=en;
+  try{const res=await tlsApi('POST','/context-records',b);toast(`"${n}" created!`,'success');TLS.data.contextRecords.push({...b,_id:res._id||res.id,status:'active'});tlsCountsUpdate();tlsStatusBarRender();tlsShowSection('context-records');}
+  catch(e){toast(e?.data?.message||'Failed','error');}
+}
+async function tlsAssignProfile(reqId){const p=document.getElementById('tls-ap-pid')?.value?.trim();if(!p){toast('Enter profile ID','error');return;}try{await tlsApi('POST',`/request-records/${reqId}/compliance-profile`,{complianceProfileId:p});toast('Profile assigned!','success');await tlsRefresh();}catch(e){toast(e?.data?.message||'Failed','error');}}
+async function tlsUnassignProfile(reqId){if(!confirm('Remove the compliance profile?'))return;try{await tlsApi('DELETE',`/request-records/${reqId}/compliance-profile`);toast('Profile removed','success');await tlsRefresh();}catch(e){toast(e?.data?.message||'Failed','error');}}
+async function tlsPostRequirements(reqId){const p=document.getElementById('tls-rq-pid')?.value?.trim();if(!p){toast('Enter profile ID','error');return;}try{await tlsApi('POST',`/request-records/${reqId}/requirements`,{complianceProfileId:p});toast('Requirements posted!','success');}catch(e){toast(e?.data?.message||'Failed','error');}}
+async function tlsGenCert(reqId){const eff=document.getElementById(`tls-cert-eff-${reqId}`)?.value,exp=document.getElementById(`tls-cert-exp-${reqId}`)?.value;const b={};if(eff)b.effectiveDate=eff+'T00:00:00Z';if(exp)b.expirationDate=exp+'T00:00:00Z';try{const r=await tlsApi('POST',`/request-records/${reqId}/compliance-certificate`,b);toast('Certificate generated! ID: '+r._id,'success');}catch(e){toast(e?.data?.message||'Failed','error');}}
+async function tlsCertTools(){const id=document.getElementById('tls-ct-req')?.value;if(!id){toast('Select request','error');return;}const eff=document.getElementById('tls-ct-eff')?.value,exp=document.getElementById('tls-ct-exp')?.value;const b={};if(eff)b.effectiveDate=eff+'T00:00:00Z';if(exp)b.expirationDate=exp+'T00:00:00Z';try{const r=await tlsApi('POST',`/request-records/${id}/compliance-certificate`,b);toast('Certificate generated! ID: '+r._id,'success');}catch(e){toast(e?.data?.message||'Failed','error');}}
+async function tlsAssignTools(){const id=document.getElementById('tls-ct-prof-req')?.value,p=document.getElementById('tls-ct-pid')?.value?.trim();if(!id){toast('Select request','error');return;}if(!p){toast('Enter profile ID','error');return;}try{await tlsApi('POST',`/request-records/${id}/compliance-profile`,{complianceProfileId:p});toast('Profile assigned!','success');await tlsRefresh();}catch(e){toast(e?.data?.message||'Failed','error');}}
+async function tlsCreateReqTools(){const vid=document.getElementById('tls-ct-vendor')?.value,pid=document.getElementById('tls-ct-proj')?.value,name=document.getElementById('tls-ct-rname')?.value?.trim();if(!vid){toast('Select vendor','error');return;}const b={complianceTracking:true};if(name)b.name=name;if(pid)b.contextRecordId=pid;try{const res=await tlsApi('POST',`/primary-records/${vid}/request-records`,b);toast('Request created!','success');TLS.data.requestRecords.push({_id:res._id||res.id,primaryRecordId:vid,contextRecordId:pid||null,name,status:'active',complianceTracking:true});tlsCountsUpdate();tlsStatusBarRender();}catch(e){toast(e?.data?.message||'Failed','error');}}
+async function tlsRemoveContact(vid,cid){if(!confirm('Remove contact?'))return;try{await tlsApi('DELETE',`/primary-records/${vid}/contacts/${cid}`);toast('Removed','success');tlsVendorDetail(vid);}catch(e){toast(e?.data?.message||'Failed','error');}}
+async function tlsRemoveTag(vid,tid){if(!confirm('Remove tag?'))return;try{await tlsApi('DELETE',`/primary-records/${vid}/tags/${tid}`);toast('Removed','success');tlsVendorDetail(vid);}catch(e){toast(e?.data?.message||'Failed','error');}}
+async function tlsAddContact(vid){const e=prompt('Contact email address:');if(!e)return;try{await tlsApi('POST',`/primary-records/${vid}/contacts`,{id:e,primary:false});toast('Contact assigned','success');tlsVendorDetail(vid);}catch(e){toast(e?.data?.message||'Failed','error');}}
+async function tlsAddTag(vid){const t=prompt('Tag ID (from Reference Data tab):');if(!t)return;const exp=prompt('Expiry date? (YYYY-MM-DD, or leave blank)');const b={id:t};if(exp)b.expiresAt=exp+'T00:00:00Z';try{await tlsApi('POST',`/primary-records/${vid}/tags`,b);toast('Tag assigned','success');tlsVendorDetail(vid);}catch(e){toast(e?.data?.message||'Failed','error');}}
+async function tlsSetAttr(ep,id){
+  const fidSuffix = ep==='primary-records'?'tls-va-fid':ep==='context-records'?'tls-ca-fid':'tls-ra-fid';
+  const valSuffix = ep==='primary-records'?'tls-va-val':ep==='context-records'?'tls-ca-val':'tls-ra-val';
+  const fid=document.getElementById(fidSuffix)?.value?.trim(), val=document.getElementById(valSuffix)?.value?.trim();
+  if(!fid){toast('Enter attribute ID','error');return;}
+  try{await tlsApi('PUT',`/${ep}/${id}/attributes/${fid}`,{value:val});toast('Attribute updated!','success');}
+  catch(e){toast(e?.data?.message||'Failed','error');}
+}
+async function tlsCreateObject(ep,label){const n=prompt(`Name for new ${label} (singular):`);if(!n)return;const p=prompt('Plural name:',n+'s')||n+'s';try{const res=await tlsApi('POST',`/${ep}`,{name:n,pluralName:p});toast(`"${n}" created!`,'success');const obj={_id:res._id||res.id,name:n,pluralName:p};if(ep==='primary-objects')TLS.data.primaryObjects.push(obj);else TLS.data.contextObjects.push(obj);tlsCountsUpdate();tlsShowSection(TLS.section);}catch(e){toast(e?.data?.message||'Failed','error');}}
+async function tlsEditObj(ep,id,name,plural){const n=prompt(`New name for "${name}":`,name);if(!n||n===name)return;const p=prompt('Plural name:',plural)||plural;try{await tlsApi('PATCH',`/${ep}/${id}`,{name:n,pluralName:p});toast('Updated!','success');const arr=ep==='primary-objects'?TLS.data.primaryObjects:TLS.data.contextObjects;const o=arr.find(x=>x._id===id);if(o){o.name=n;o.pluralName=p;}tlsShowSection(TLS.section);}catch(e){toast(e?.data?.message||'Failed','error');}}
+function tlsShowCreateRequest(vid){tlsShowSection('compliance-tools');setTimeout(()=>{const s=document.getElementById('tls-ct-vendor');if(s)s.value=vid;},80);}
+
+// ── Filter / search ──────────────────────────────────────────────────
+function tlsFilter(gridId, prefix, val, items) {
+  const fl = val.toLowerCase();
+  items.forEach(r => { const el=document.getElementById(prefix+r._id); if(el) el.style.display=(!fl||(r.name||'').toLowerCase().includes(fl)||(r.complianceStatus||'').includes(fl))?'':'none'; });
+}
+function tlsFilterReqs(status){TLS.data.requestRecords.forEach(r=>{const el=document.getElementById('tls-rc-'+r._id);if(el)el.style.display=(!status||r.complianceStatus===status)?'':'none';});}
+
+// ── Drawer ───────────────────────────────────────────────────────────
+function tlsDrawer(title, tabs) {
+  const d=document.getElementById('tls-drawer'); if(!d)return;
+  d.classList.remove('tls-drawer-hidden');
+  document.getElementById('tls-drawer-title').textContent=title;
+  document.getElementById('tls-drawer-tabs').innerHTML=tabs.map((t,i)=>`<div class="tls-dtab ${i===0?'active':''}" onclick="tlsDrawerTab(${i})">${t.label}</div>`).join('');
+  window._tlsTabs=tabs;
+  document.getElementById('tls-drawer-body').innerHTML=tabs[0].content;
+}
+function tlsDrawerTab(i){document.querySelectorAll('.tls-dtab').forEach((t,j)=>t.classList.toggle('active',j===i));document.getElementById('tls-drawer-body').innerHTML=window._tlsTabs[i].content;}
+function tlsDrawerClose(){const d=document.getElementById('tls-drawer');if(d)d.classList.add('tls-drawer-hidden');document.querySelectorAll('.tls-card').forEach(c=>c.classList.remove('tls-selected'));}
+
+// ── Init ──────────────────────────────────────────────────────────────
+function tlsSandboxInit() {
+  const wrap=document.getElementById('tab-tl-sandbox'); if(!wrap)return;
+  if (wrap.dataset.built) {
+    if (TLS.data.workspace) { tlsShowSection(TLS.section); tlsStatusBarRender(); tlsLogRender(); }
+    else if (TLS.token()) tlsConnect();
+    return;
+  }
+  wrap.dataset.built='1';
+  wrap.style.cssText='display:flex;flex-direction:column;height:calc(100vh - 96px);overflow:hidden';
+  wrap.innerHTML = tlsBuildShell();
+  if (TLS.token()) tlsConnect();
+}
+
+function tlsBuildShell() {
+  return `
+<style>
+.tls-shell{display:flex;flex:1;overflow:hidden;min-height:0}
+.tls-leftnav{width:192px;flex-shrink:0;background:#fff;border-right:1px solid #D1DCE8;display:flex;flex-direction:column;overflow-y:auto}
+.tls-nav-grp{padding:4px 0;border-bottom:1px solid #EEF2F7}
+.tls-nav-hdr{padding:5px 12px 3px;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7B}
+.tls-nav-btn{display:flex;align-items:center;gap:7px;width:100%;padding:6px 12px;font-size:12px;font-weight:600;color:#5A6B7B;background:none;border:none;border-left:3px solid transparent;cursor:pointer;font-family:inherit;text-align:left;transition:.12s}
+.tls-nav-btn:hover{background:#EBF4FF;color:#0678D5}
+.tls-nav-btn.active{background:#EBF4FF;color:#0678D5;border-left-color:#0678D5}
+.tls-nav-badge{margin-left:auto;background:#EBF4FF;color:#0678D5;border-radius:10px;padding:1px 6px;font-size:9px;font-weight:600}
+.tls-center{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.tls-top-bar{padding:9px 16px;background:#fff;border-bottom:1px solid #D1DCE8;flex-shrink:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tls-token-note{font-size:11px;color:#5A6B7B;padding:4px 10px;background:#F0F4F8;border:1px solid #D1DCE8;border-radius:5px;white-space:nowrap}
+.tls-panel-hdr{padding:10px 16px 8px;border-bottom:1px solid #D1DCE8;background:#fff;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.tls-panel-title{font-size:14px;font-weight:700;color:#263746;flex:1}
+.tls-panel-sub{font-size:11px;color:#5A6B7B;margin-top:1px}
+.tls-view-toggle{display:flex;gap:2px;background:#F0F4F8;border:1px solid #D1DCE8;border-radius:5px;padding:2px}
+.tls-vt{padding:4px 10px;border-radius:4px;font-size:10px;font-weight:600;cursor:pointer;border:none;background:transparent;color:#5A6B7B;font-family:inherit;transition:.12s}
+.tls-vt.active{background:#0678D5;color:#fff}
+.tls-vt:hover:not(.active){background:#D1DCE8;color:#263746}
+.tls-statusbar{background:#fff;border-bottom:1px solid #D1DCE8;padding:5px 16px;display:flex;align-items:center;gap:8px;font-size:11px;color:#5A6B7B;flex-shrink:0;min-height:28px}
+.tls-panel-body{flex:1;overflow-y:auto;padding:14px 16px}
+.tls-log-wrap{flex-shrink:0;background:#0d0d1a;border-top:1px solid #1e1e2e;height:106px;overflow-y:auto;display:flex;flex-direction:column}
+.tls-log-hdr{padding:3px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #1a1a2e;flex-shrink:0;background:#0d0d1a;position:sticky;top:0;z-index:5}
+.tls-log-row{display:flex;align-items:center;gap:8px;padding:2px 14px;border-bottom:1px solid #13131f;font-family:monospace;font-size:10px}
+.tls-drawer{width:340px;flex-shrink:0;background:#fff;border-left:1px solid #D1DCE8;display:flex;flex-direction:column;overflow:hidden;transition:width .2s}
+.tls-drawer-hidden{width:0;border-left:none}
+.tls-drawer-hdr{padding:9px 12px 7px;border-bottom:1px solid #D1DCE8;display:flex;align-items:center;gap:8px;flex-shrink:0}
+.tls-drawer-title{font-size:13px;font-weight:600;color:#263746;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tls-drawer-close{background:none;border:none;cursor:pointer;color:#5A6B7B;font-size:15px;padding:2px 5px;border-radius:4px}
+.tls-drawer-close:hover{background:#F0F4F8}
+.tls-drawer-tabs{display:flex;border-bottom:1px solid #D1DCE8;background:#FAFBFC;flex-shrink:0;overflow-x:auto}
+.tls-dtab{padding:6px 10px;font-size:11px;font-weight:600;cursor:pointer;color:#5A6B7B;border-bottom:2px solid transparent;transition:.12s;margin-bottom:-1px;white-space:nowrap}
+.tls-dtab:hover{color:#0678D5}.tls-dtab.active{color:#0678D5;border-bottom-color:#0678D5}
+.tls-drawer-body{flex:1;overflow-y:auto;padding:10px 12px}
+.tls-card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:10px}
+.tls-card{background:#fff;border:1px solid #D1DCE8;border-radius:8px;padding:11px;cursor:pointer;transition:.15s}
+.tls-card:hover{border-color:#0678D5;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.tls-card.tls-selected{border-color:#0678D5;box-shadow:0 0 0 2px #c9e0f7}
+.tls-card-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px}
+.tls-avatar{width:32px;height:32px;border-radius:7px;background:#EBF4FF;color:#0678D5;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.tls-card-name{font-size:12px;font-weight:600;color:#263746;line-height:1.3;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.tls-card-type{font-size:10px;color:#5A6B7B;margin-top:2px}
+.tls-card-id{font-family:monospace;font-size:9px;color:#9AAABB;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tls-card-actions{display:flex;gap:5px;margin-top:7px;padding-top:7px;border-top:1px solid #EEF2F7}
+.tls-tags{display:flex;flex-wrap:wrap;gap:4px}
+.mt4{margin-top:4px}.mt6{margin-top:6px}.mt8{margin-top:8px}.mt10{margin-top:10px}.mt12{margin-top:12px}.mb6{margin-bottom:6px}.mb8{margin-bottom:8px}.mb10{margin-bottom:10px}
+.tls-tag{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:500}
+.tls-tag-blue{background:#EBF4FF;color:#0678D5}.tls-tag-green{background:rgba(62,189,62,.1);color:#166534}
+.tls-tag-red{background:#FEF2F2;color:#AC1534}.tls-tag-grey{background:#F0F4F8;color:#5A6B7B}
+.tls-kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.tls-kpi{border-radius:8px;padding:10px 12px}
+.tls-kpi-blue{background:#EBF4FF}.tls-kpi-teal{background:#e0f2fe}.tls-kpi-green{background:rgba(62,189,62,.1)}.tls-kpi-red{background:#FEF2F2}
+.tls-kpi-val{font-size:22px;font-weight:800;color:#263746;line-height:1}
+.tls-kpi-lbl{font-size:10px;font-weight:600;color:#5A6B7B;margin-top:2px}
+.tls-table{width:100%;border-collapse:collapse;font-size:12px}
+.tls-table th{padding:6px 10px;text-align:left;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5A6B7B;border-bottom:2px solid #D1DCE8;background:#FAFBFC}
+.tls-table td{padding:7px 10px;border-bottom:1px solid #EEF2F7;vertical-align:middle}
+.tls-table tr:hover td{background:#EBF4FF}
+.mono{font-family:monospace;font-size:10px;color:#5A6B7B}
+.muted{font-size:12px;color:#5A6B7B;padding:6px 0;font-style:italic}
+.tls-kv{display:flex;flex-direction:column;gap:5px}
+.tls-kv-row{display:flex;gap:8px;font-size:12px}
+.tls-kv-row .k{width:72px;flex-shrink:0;font-weight:600;color:#5A6B7B;font-size:11px}
+.tls-kv-row .v{flex:1;word-break:break-all;color:#263746}
+.tls-search{padding:7px 10px;border:1.5px solid #D1DCE8;border-radius:8px;font-size:12px;font-family:inherit;outline:none;background:#fff;flex:1;max-width:260px}
+.tls-search:focus{border-color:#0678D5}
+.tls-inp{width:100%;padding:6px 10px;border:1.5px solid #D1DCE8;border-radius:6px;font-family:inherit;font-size:12px;outline:none;background:#FAFBFD;color:#1E2E3D;transition:.15s;box-sizing:border-box}
+.tls-inp:focus{border-color:#0678D5;box-shadow:0 0 0 3px rgba(6,120,213,.1);background:#fff}
+.tls-raw{background:#1e1e2e;border-radius:8px;padding:10px;font-family:monospace;font-size:10px;line-height:1.6;overflow:auto;color:#cdd6f4;max-height:380px}
+.tls-jk{color:#89dceb}.tls-jv{color:#a6e3a1}.tls-jn{color:#fab387}.tls-jb{color:#cba6f7}.tls-jnl{color:#f38ba8}
+.tls-copy-btn{background:none;border:none;cursor:pointer;color:#9AAABB;font-size:10px;padding:1px 3px;border-radius:3px;font-family:monospace}
+.tls-copy-btn:hover{background:#D1DCE8;color:#263746}
+.tls-del-btn{font-size:11px;padding:4px 10px;border:1px solid #FECACA;border-radius:5px;background:#FEF2F2;cursor:pointer;color:#AC1534;font-family:inherit}
+.tls-del-btn:hover{opacity:.85}
+.tls-hint{font-family:monospace;font-size:10px;color:#9AAABB;margin-top:10px}
+.tls-divider{height:1px;background:#EEF2F7;margin:10px 0}
+.tls-sec-hdr{display:flex;align-items:center;gap:10px;margin:14px 0 8px;font-size:13px;font-weight:700;color:#263746}
+.tls-cnt{background:#F0F4F8;border:1px solid #D1DCE8;border-radius:10px;padding:1px 8px;font-size:10px;color:#5A6B7B;font-weight:400}
+.tls-sub-hdr{font-size:11px;font-weight:700;color:#5A6B7B;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.tls-api-tab{padding:6px 12px;font-size:11px;font-weight:600;cursor:pointer;color:#5A6B7B;border-bottom:2px solid transparent;transition:.12s;white-space:nowrap}
+.tls-api-tab:hover{color:#0678D5}.tls-api-tab.active{color:#0678D5;border-bottom-color:#0678D5}
+.tls-api-row{border:1px solid #D1DCE8;border-radius:7px;margin-bottom:8px;overflow:hidden}
+.tls-api-row-hdr{display:flex;align-items:center;gap:6px;padding:10px 12px;cursor:pointer;background:#FAFBFC;transition:.12s}
+.tls-api-row-hdr:hover{background:#EBF4FF}
+.tls-api-path{font-family:monospace;font-size:11px;color:#263746;font-weight:600}
+.tls-api-row-body{padding:12px;background:#fff;border-top:1px solid #EEF2F7}
+.tls-api-res{background:#1e1e2e;border-radius:6px;padding:10px;font-family:monospace;font-size:10px;line-height:1.5;color:#cdd6f4;max-height:300px;overflow:auto;margin-top:8px}
+</style>
+
+<div class="tls-top-bar">
+  <button class="btn btn-primary" id="tls-connect-btn" onclick="tlsConnect()" style="font-size:12px;padding:7px 16px;white-space:nowrap">Connect &amp; Load Data</button>
+  <button class="btn btn-secondary" id="tls-refresh-btn" onclick="tlsRefresh()" style="font-size:12px;padding:7px 12px" disabled>↺ Refresh</button>
+  <div class="tls-token-note">🔑 Token: Settings → APIs → TrustLayer Demo</div>
+</div>
+<div id="tls-status-msg" style="display:none"></div>
+<div class="tls-statusbar" id="tls-statusbar"><span style="opacity:.45;font-size:11px">Not connected — click Connect &amp; Load Data above</span></div>
+
+<div class="tls-shell">
+  <div class="tls-leftnav">
+    <div class="tls-nav-grp"><div class="tls-nav-hdr">Workspace</div>
+      <button class="tls-nav-btn active" id="tls-nb-overview" onclick="tlsShowSection('overview')">🏠 Overview</button>
+    </div>
+    <div class="tls-nav-grp"><div class="tls-nav-hdr">Data</div>
+      <button class="tls-nav-btn" id="tls-nb-primary-objects" onclick="tlsShowSection('primary-objects')">🗂️ Entity Types <span class="tls-nav-badge" id="tls-n-po">—</span></button>
+      <button class="tls-nav-btn" id="tls-nb-primary-records" onclick="tlsShowSection('primary-records')">🏢 Vendors <span class="tls-nav-badge" id="tls-n-pr">—</span></button>
+      <button class="tls-nav-btn" id="tls-nb-context-objects" onclick="tlsShowSection('context-objects')">📁 Project Types <span class="tls-nav-badge" id="tls-n-co">—</span></button>
+      <button class="tls-nav-btn" id="tls-nb-context-records" onclick="tlsShowSection('context-records')">📋 Projects <span class="tls-nav-badge" id="tls-n-cr">—</span></button>
+      <button class="tls-nav-btn" id="tls-nb-request-records" onclick="tlsShowSection('request-records')">✅ Requests <span class="tls-nav-badge" id="tls-n-rr">—</span></button>
+      <button class="tls-nav-btn" id="tls-nb-views" onclick="tlsShowSection('views')">👁️ Views <span class="tls-nav-badge" id="tls-n-v">—</span></button>
+      <button class="tls-nav-btn" id="tls-nb-ref-data" onclick="tlsShowSection('ref-data')">📚 Reference Data <span class="tls-nav-badge" style="display:inline-flex;gap:2px"><span id="tls-n-td">—</span></span></button>
+    </div>
+    <div class="tls-nav-grp"><div class="tls-nav-hdr">Actions</div>
+      <button class="tls-nav-btn" onclick="tlsShowSection('create-vendor')">➕ Add Vendor</button>
+      <button class="tls-nav-btn" onclick="tlsShowSection('create-project')">📌 Add Project</button>
+      <button class="tls-nav-btn" onclick="tlsShowSection('compliance-tools')">🛡️ Compliance Tools</button>
+    </div>
+    <div class="tls-nav-grp"><div class="tls-nav-hdr">Full API</div>
+      <button class="tls-nav-btn" id="tls-nb-full-api" onclick="tlsShowSection('full-api')">⚡ Full API Explorer</button>
+    </div>
+  </div>
+
+  <div class="tls-center">
+    <div class="tls-panel-hdr">
+      <div>
+        <div class="tls-panel-title" id="tls-panel-title">Welcome to TL Sandbox (Write)</div>
+        <div class="tls-panel-sub" id="tls-panel-sub">Connect to load DEMO Client data before making any changes</div>
+      </div>
+      <div class="tls-view-toggle" id="tls-view-toggle" style="display:none">
+        <button class="tls-vt active" id="tls-vt-guided" onclick="tlsSetView('guided')">🧭 Guided</button>
+        <button class="tls-vt" id="tls-vt-raw" onclick="tlsSetView('raw')">⚙️ Raw JSON</button>
+      </div>
+    </div>
+    <div class="tls-panel-body" id="tls-panel-body">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:240px;gap:12px;text-align:center">
+        <div style="font-size:36px;opacity:.2">🔌</div>
+        <div style="font-size:14px;font-weight:600;color:#263746;opacity:.4">Not Connected</div>
+        <div style="font-size:12px;max-width:340px;opacity:.45;line-height:1.6">Click Connect &amp; Load Data above. All existing data loads first so you see exactly what's in your DEMO Client workspace before making any changes.</div>
+      </div>
+    </div>
+    <div class="tls-log-wrap">
+      <div class="tls-log-hdr">
+        <span style="font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555">API Log</span>
+        <span style="flex:1"></span>
+        <button onclick="TLS.log=[];tlsLogRender()" style="background:transparent;border:none;color:#555;font-size:10px;cursor:pointer;font-family:inherit">Clear</button>
+      </div>
+      <div id="tls-log-body"><div style="padding:8px 14px;font-family:monospace;font-size:10px;color:#494d64">No API calls yet</div></div>
+    </div>
+  </div>
+
+  <div class="tls-drawer tls-drawer-hidden" id="tls-drawer">
+    <div class="tls-drawer-hdr">
+      <div class="tls-drawer-title" id="tls-drawer-title">Details</div>
+      <button class="tls-drawer-close" onclick="tlsDrawerClose()">✕</button>
+    </div>
+    <div class="tls-drawer-tabs" id="tls-drawer-tabs"></div>
+    <div class="tls-drawer-body" id="tls-drawer-body"></div>
+  </div>
+</div>`;
+}
+</script>
 </body></html>
