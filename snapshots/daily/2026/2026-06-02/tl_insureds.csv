@@ -216,7 +216,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1462446148bd848dab,First Church of Christ Scientist,,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded1462446148bd848dae,First Citizens Bank & Trust Company,,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded1462446148bd848db1,First Key Homes,,NON_COMPLIANT,,,true,false,2026-06-02
-"Block Real Estate Services, LLC",69fded1562446148bd848db4,First Watch,,NON_COMPLIANT,,,true,false,2026-06-02
+"Block Real Estate Services, LLC",69fded1562446148bd848db4,First Watch,,COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded1562446148bd848db7,Fisher & Phillips LLP,,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded1562446148bd848dba,"Helen Jon / Five Clothes, LLC",,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded1562446148bd848dbd,"FleetPride, Inc",,NON_COMPLIANT,,,true,false,2026-06-02
@@ -476,7 +476,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1f62446148bd8490ed,Releve Performing Arts / Ashley Collier,,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f0,"Remax Real Estate / Harry C. Meierarend, III",,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,NON_COMPLIANT,,,true,false,2026-06-02
-"Block Real Estate Services, LLC",69fded1f62446148bd8490f6,"Ambius / Rentokil North America, Inc. (fka JC Ehrlich Company)",,NON_COMPLIANT,,,true,false,2026-06-02
+"Block Real Estate Services, LLC",69fded1f62446148bd8490f6,"Ambius / Rentokil North America, Inc. (fka JC Ehrlich Company)",,COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f9,Repairs Unlimited LLC,,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded1f62446148bd8490fc,Reserve Applied Management of Kansas City LLC,,NON_COMPLIANT,,,true,false,2026-06-02
 "Block Real Estate Services, LLC",69fded1f62446148bd8490ff,"Revolutionary Business Concepts, Inc",,NON_COMPLIANT,,,true,false,2026-06-02
@@ -748,7 +748,7 @@ DEMO Client,6a0785aff523b358236b2d64,"Supplier, LLC",,NON_COMPLIANT,,,true,false
 DEMO Client,6a0785aff523b358236b2d67,Freight Corp.,,NON_COMPLIANT,,,true,false,2026-06-02
 DEMO Client,6a0785aff523b358236b2d6a,Speciality Services Inc.,,NON_COMPLIANT,,,true,false,2026-06-02
 DEMO Client,6a0785aff523b358236b2d6d,"Concrete & Foundation, LLC",,NON_COMPLIANT,,,true,false,2026-06-02
-DEMO Client,6a0785aff523b358236b2d70,Speciality Contractor Inc.,,NON_COMPLIANT,,,true,false,2026-06-02
+DEMO Client,6a0785aff523b358236b2d70,Speciality Contractor Inc.,,NON_COMPLIANT,,2027-01-01,true,false,2026-06-02
 DEMO Client,6a0785aff523b358236b2d73,Electric Corp.,,NON_COMPLIANT,,,true,false,2026-06-02
 DEMO Client,6a0785aff523b358236b2d76,Retail Inc.,,NON_COMPLIANT,,,true,false,2026-06-02
 DEMO Client,6a0785aff523b358236b2d79,Special Advisory Group,,NON_COMPLIANT,,,true,false,2026-06-02
