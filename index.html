@@ -153,9 +153,7 @@
     .sb-item .sb-ic{font-size:14px;width:18px;text-align:center;flex-shrink:0}
     .sb-sub{padding-left:16px}.sb-sub .sb-item{font-size:12px;font-weight:500;padding:7px 12px}
     .sidebar-footer{padding:8px;border-top:1px solid rgba(0,174,239,0.18)}
-    .sb-user{display:none}
-    .sb-user-name{font-size:12px;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:3px}
-    .sb-user-role{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:10px;display:inline-block}
+
     .content-wrap{flex:1;min-width:0;display:flex;flex-direction:column;overflow-x:hidden}
     /* Thin top bar replaces the full header */
     .header{height:52px!important;padding:0 20px!important;background:var(--navy)!important;border-bottom:none!important;justify-content:space-between!important}
@@ -531,7 +529,7 @@
         <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:4px 10px 4px">Recent Activity</div>
         <div id="sb-activity-list" style="max-height:100px;overflow-y:auto;padding:0 8px"></div>
       </div>
-      <div id="sb-user" style="display:none!important"><div id="sb-user-name"></div><div id="sb-user-role"></div></div>
+
       <!-- User profile selector -->
       <div class="sb-profile" id="sb-profile" onclick="toggleUserMenu()">
         <div class="sb-avatar" id="sb-avatar">PI</div>
@@ -1362,18 +1360,7 @@ function applyUserDisplay(displayName, role) {
   if (addClientBtn) addClientBtn.style.display = canAdminClients() ? '' : 'none';
   const settingsBtns = document.querySelectorAll('[onclick="openSettings()"]');
   settingsBtns.forEach(b => { b.style.opacity = canSeeSettings() ? '1' : '0.4'; });
-  // Populate sidebar user info
-  const sbUser = document.getElementById('sb-user');
-  const sbName = document.getElementById('sb-user-name');
-  const sbRole = document.getElementById('sb-user-role');
-  if (sbUser) sbUser.style.display = 'block';
-  if (sbName) sbName.textContent = displayName || '';
-  if (sbRole) {
-    const sbRd = ROLE_DISPLAY[role] || ROLE_DISPLAY['account_executive'] || ROLE_DISPLAY['account_administrator'];
-    sbRole.textContent = sbRd.label;
-    sbRole.style.background = sbRd.bg;
-    sbRole.style.color = sbRd.color;
-  }
+  // sb-user is legacy — display handled by sb-profile below
   // Populate header user info
   // Sidebar profile
   const _pn = document.getElementById('sb-profile-name');
