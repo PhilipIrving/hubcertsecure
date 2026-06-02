@@ -7320,44 +7320,48 @@ function tlsRenderRefData(view) {
     <table class="tls-table"><thead><tr><th>Name/Label</th><th>ID</th></tr></thead><tbody>
     ${d.docTypeDefs.map(t=>`<tr><td><strong>${t.name||t.label||'—'}</strong></td><td class="mono">${tlsCopy(t.id||t._id||'')}<small>${(t.id||t._id||'').slice(-12)}</small></td></tr>`).join('')||'<tr><td colspan="2" class="muted">None</td></tr>'}
     </tbody></table>
-    <div class="tls-sec-hdr mt12">Custom Field Definitions (v1) <span class="tls-cnt">${d.customFieldDefs.length}</span></div>
-    <table class="tls-table"><thead><tr><th>Name/Label</th><th>Type</th><th>ID</th></tr></thead><tbody>
-    ${d.customFieldDefs.map(f=>`<tr><td><strong>${f.name||f.label||'—'}</strong></td><td>${f.type||'—'}</td><td class="mono">${tlsCopy(f.id||f._id||'')}<small>${(f.id||f._id||'').slice(-12)}</small></td></tr>`).join('')||'<tr><td colspan="3" class="muted">None</td></tr>'}
+    <div class="tls-sec-hdr mt12">Attributes (v1) <span class="tls-cnt">${d.customFieldDefs.length}</span></div>
+    <table class="tls-table"><thead><tr><th>Name</th><th>Scope</th><th>Field Type</th><th>ID</th></tr></thead><tbody>
+    ${d.customFieldDefs.map(f=>`<tr><td><strong>${f.name||'—'}</strong></td><td>${(f.associatedEntities||[]).map(e=>tlsTag(e==='party'?'blue':e==='project'?'teal':'green',e)).join(' ')}</td><td>${f.fieldType||f.type||'—'}</td><td class="mono">${tlsCopy(f.id||f._id||'')}<small>${(f.id||f._id||'').slice(-12)}</small></td></tr>`).join('')||'<tr><td colspan="4" class="muted">None</td></tr>'}
     </tbody></table>
     <div class="tls-hint">v1: GET /tags · GET /document-types · GET /custom-fields</div>`);
 }
 
 // ── CREATE FORMS ─────────────────────────────────────────────────────
 function tlsRenderCreateVendor(){
+  const partyAttrs = (TLS.data.customFieldDefs||[]).filter(f=>(f.associatedEntities||[]).includes('party'));
+  const attrFields = partyAttrs.map(f=>`
+    <div class="form-grp"><label class="form-lbl">${f.name}</label><input type="text" class="tls-inp tls-cv-attr" data-attr-id="${f.id||f._id}" placeholder="Enter ${f.name}…"></div>`).join('');
   tlsBody(`<div style="max-width:460px">
-    <div class="form-grp"><label class="form-lbl">Party Type <span style="color:#AC1534">*</span></label><select class="tls-inp" id="tls-cv-type"><option value="">Select party type…</option>${TLS.data.primaryObjects.map(o=>`<option value="${o._id}">${o.name}</option>`).join('')}</select></div>
-    <div class="form-grp"><label class="form-lbl">Party Name <span style="color:#AC1534">*</span></label><input type="text" class="tls-inp" id="tls-cv-name" placeholder="e.g. Acme Contractors LLC"></div>
-    <div class="form-grp"><label class="form-lbl">Address</label><input type="text" class="tls-inp" id="tls-cv-addr-line1" placeholder="Street address" style="margin-bottom:6px"><div style="display:grid;grid-template-columns:1fr 1fr 120px 80px;gap:6px"><input type="text" class="tls-inp" id="tls-cv-addr-city" placeholder="City"><input type="text" class="tls-inp" id="tls-cv-addr-region" placeholder="State / Region"><input type="text" class="tls-inp" id="tls-cv-addr-postal" placeholder="ZIP"><input type="text" class="tls-inp" id="tls-cv-addr-country" placeholder="Country" value="US"></div></div>
-    <div class="form-grp"><label class="form-lbl">ID Number <span style="font-weight:400;color:#888;font-size:11px">(external / ERP code)</span></label><input type="text" class="tls-inp" id="tls-cv-extcode" placeholder="e.g. ERP-1234"></div>
-    <div class="form-grp"><label class="form-lbl">Website</label><input type="text" class="tls-inp" id="tls-cv-website" placeholder="https://…"></div>
-    <div class="form-grp"><label class="form-lbl">Notes</label><textarea class="tls-inp" id="tls-cv-notes" rows="2" style="resize:vertical" placeholder="Internal notes about this party…"></textarea></div>
+    <div class="form-grp"><label class="form-lbl">Party name <span style="color:#AC1534">*</span></label><input type="text" class="tls-inp" id="tls-cv-name" placeholder="Name"></div>
+    <div class="form-grp"><label class="form-lbl">Party type <span style="color:#AC1534">*</span></label><select class="tls-inp" id="tls-cv-type"><option value="">Please select</option>${TLS.data.primaryObjects.map(o=>`<option value="${o._id}">${o.name}</option>`).join('')}</select></div>
+    <div class="form-grp"><label class="form-lbl">Address</label><input type="text" class="tls-inp" id="tls-cv-addr-line1" placeholder="Enter address" style="margin-bottom:6px"><div style="display:grid;grid-template-columns:1fr 1fr 120px 80px;gap:6px"><input type="text" class="tls-inp" id="tls-cv-addr-city" placeholder="City"><input type="text" class="tls-inp" id="tls-cv-addr-region" placeholder="State / Region"><input type="text" class="tls-inp" id="tls-cv-addr-postal" placeholder="ZIP"><input type="text" class="tls-inp" id="tls-cv-addr-country" placeholder="Country" value="US"></div></div>
+    ${attrFields}
     <div style="background:#f8f9fb;border:1px solid #D1DCE8;border-radius:6px;padding:12px;margin-top:4px">
-      <div style="font-size:12px;font-weight:600;color:#263746;margin-bottom:10px">Contact Information <span style="font-weight:400;color:#888">(optional — assign after creation or add now)</span></div>
+      <div style="font-size:12px;font-weight:600;color:#263746;margin-bottom:10px">Contact Information</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <div class="form-grp" style="margin:0"><label class="form-lbl">Email address <span style="color:#AC1534">*</span></label><input type="text" class="tls-inp" id="tls-cv-contact-email" placeholder="Search existing or type new email…"></div>
+        <div class="form-grp" style="margin:0"><label class="form-lbl">Email address <span style="color:#AC1534">*</span></label><input type="text" class="tls-inp" id="tls-cv-contact-email" placeholder="Search an existing contact email or type a new…"></div>
         <div class="form-grp" style="margin:0"><label class="form-lbl">Contact name</label><input type="text" class="tls-inp" id="tls-cv-contact-name" placeholder="Enter contact name…"></div>
       </div>
     </div>
-    <div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-primary" onclick="tlsCreateVendor()">✅ Create Party</button><button class="btn btn-secondary" onclick="tlsShowSection('primary-records')">Cancel</button></div>
-    <div class="tls-hint">POST /primary-records · Body: {primaryObjectId, name, website?, additionalNotes?}</div>
+    <div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-primary" onclick="tlsCreateVendor()">Save</button><button class="btn btn-secondary" onclick="tlsShowSection('primary-records')">Cancel</button></div>
+    <div class="tls-hint">POST /primary-records → PUT /primary-records/{id}/attributes/{attributeId} per attribute</div>
   </div>`);
 }
 function tlsRenderCreateProject(){
+  const projAttrs = (TLS.data.customFieldDefs||[]).filter(f=>(f.associatedEntities||[]).includes('project'));
+  const attrFields = projAttrs.map(f=>`
+    <div class="form-grp"><label class="form-lbl">${f.name}</label><input type="text" class="tls-inp tls-cp-attr" data-attr-id="${f.id||f._id}" placeholder="Enter ${f.name}\u2026"></div>`).join('');
   tlsBody(`<div style="max-width:460px">
-    <div class="form-grp"><label class="form-lbl">Project Type <span style="color:#AC1534">*</span></label><select class="tls-inp" id="tls-cp-type"><option value="">Select type…</option>${TLS.data.contextObjects.map(o=>`<option value="${o._id}">${o.name}</option>`).join('')||'<option disabled>No project types — create one first</option>'}</select></div>
-    <div class="form-grp"><label class="form-lbl">Name <span style="color:#AC1534">*</span></label><input type="text" class="tls-inp" id="tls-cp-name" placeholder="e.g. Building Renovation 2026"></div>
-    <div class="form-grp"><label class="form-lbl">Description</label><textarea class="tls-inp" id="tls-cp-desc" rows="3" style="resize:vertical"></textarea></div>
+    <div class="form-grp"><label class="form-lbl">Name <span style="color:#AC1534">*</span></label><input type="text" class="tls-inp" id="tls-cp-name" placeholder="Enter project name"></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <div class="form-grp"><label class="form-lbl">Start Date</label><input type="date" class="tls-inp" id="tls-cp-start"></div>
-      <div class="form-grp"><label class="form-lbl">End Date</label><input type="date" class="tls-inp" id="tls-cp-end"></div>
+      <div class="form-grp"><label class="form-lbl">Start date</label><input type="date" class="tls-inp" id="tls-cp-start"></div>
+      <div class="form-grp"><label class="form-lbl">End date</label><input type="date" class="tls-inp" id="tls-cp-end"></div>
     </div>
-    <div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-primary" onclick="tlsCreateProject()">✅ Create Project</button><button class="btn btn-secondary" onclick="tlsShowSection('context-records')">Cancel</button></div>
-    <div class="tls-hint">POST /context-records · Body: {contextObjectId, name, startDate?, endDate?}</div>
+    <div class="form-grp"><label class="form-lbl">Description</label><textarea class="tls-inp" id="tls-cp-desc" rows="3" style="resize:vertical" placeholder="Enter description"></textarea></div>
+    ${attrFields}
+    <div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-primary" onclick="tlsCreateProject()">Save</button><button class="btn btn-secondary" onclick="tlsShowSection('context-records')">Cancel</button></div>
+    <div class="tls-hint">POST /context-records \u2192 PUT /context-records/{id}/attributes/{attributeId} per attribute</div>
   </div>`);
 }
 function tlsRenderComplianceTools(){
@@ -7674,19 +7678,17 @@ async function tlsDelete(ep,id,name){
 }
 async function tlsCreateVendor(){
   const t=document.getElementById('tls-cv-type')?.value, n=document.getElementById('tls-cv-name')?.value?.trim();
-  const w=document.getElementById('tls-cv-website')?.value?.trim(), nt=document.getElementById('tls-cv-notes')?.value?.trim();
-  const extCode=document.getElementById('tls-cv-extcode')?.value?.trim();
   const addrLine1=document.getElementById('tls-cv-addr-line1')?.value?.trim();
   const addrCity=document.getElementById('tls-cv-addr-city')?.value?.trim();
   const addrRegion=document.getElementById('tls-cv-addr-region')?.value?.trim();
   const addrPostal=document.getElementById('tls-cv-addr-postal')?.value?.trim();
   const addrCountry=document.getElementById('tls-cv-addr-country')?.value?.trim();
   const contactEmail=document.getElementById('tls-cv-contact-email')?.value?.trim();
-  if(!t){toast('Select party type','error');return;}if(!n){toast('Party name required','error');return;}
+  const contactName=document.getElementById('tls-cv-contact-name')?.value?.trim();
+  if(!n){toast('Party name is required','error');return;}
+  if(!t){toast('Party type is required','error');return;}
+  if(!contactEmail){toast('Email address is required','error');return;}
   const b={primaryObjectId:t,name:n};
-  if(w)b.website=w;
-  if(nt)b.additionalNotes=nt;
-  if(extCode)b.externalCodes=[extCode];
   if(addrLine1||addrCity||addrRegion||addrPostal){
     b.address={};
     if(addrLine1)b.address.line1=addrLine1;
@@ -7699,24 +7701,44 @@ async function tlsCreateVendor(){
   try{
     const res=await tlsApi('POST','/primary-records',b);
     const newId=res._id||res.id;
-    toast(`"${n}" created!`,'success');
-    TLS.data.primaryRecords.push({...b,_id:newId,status:'active'});
+    // Post dynamic party attributes
+    const attrEls=document.querySelectorAll('.tls-cv-attr');
+    for(const el of attrEls){const v=el.value?.trim(),aid=el.dataset.attrId;if(v&&aid){try{await tlsApi('PUT',`/primary-records/${newId}/attributes/${aid}`,{value:v});}catch(ae){toast(`Attribute "${el.closest('.form-grp')?.querySelector('label')?.textContent?.trim()||aid}" failed: `+(ae?.data?.message||ae),'error');}}}
+    // Assign contact
     if(contactEmail && newId){
       try{
-        await tlsApi('POST',`/primary-records/${newId}/contacts`,{id:contactEmail,primary:true,defaultRequestRecipient:true});
-        toast(`Contact "${contactEmail}" assigned`,'success');
+        const cb={id:contactEmail,primary:true,defaultRequestRecipient:true};
+        if(contactName)cb.name=contactName;
+        await tlsApi('POST',`/primary-records/${newId}/contacts`,cb);
       }catch(ce){toast('Party created but contact failed: '+(ce?.data?.message||ce),'error');}
     }
+    toast(`"${n}" created!`,'success');
+    TLS.data.primaryRecords.push({...b,_id:newId,status:'active'});
     tlsCountsUpdate();tlsStatusBarRender();tlsShowSection('primary-records');
   }
   catch(e){toast(e?.data?.message||'Failed','error');}
 }
 async function tlsCreateProject(){
-  const t=document.getElementById('tls-cp-type')?.value, n=document.getElementById('tls-cp-name')?.value?.trim();
-  const d=document.getElementById('tls-cp-desc')?.value?.trim(), s=document.getElementById('tls-cp-start')?.value, en=document.getElementById('tls-cp-end')?.value;
-  if(!t){toast('Select project type','error');return;}if(!n){toast('Name required','error');return;}
-  const b={contextObjectId:t,name:n}; if(d)b.description=d; if(s)b.startDate=s; if(en)b.endDate=en;
-  try{const res=await tlsApi('POST','/context-records',b);toast(`"${n}" created!`,'success');TLS.data.contextRecords.push({...b,_id:res._id||res.id,status:'active'});tlsCountsUpdate();tlsStatusBarRender();tlsShowSection('context-records');}
+  const n=document.getElementById('tls-cp-name')?.value?.trim();
+  const d=document.getElementById('tls-cp-desc')?.value?.trim();
+  const s=document.getElementById('tls-cp-start')?.value, en=document.getElementById('tls-cp-end')?.value;
+  if(!n){toast('Name is required','error');return;}
+  // Use first context object if only one exists, otherwise require selection
+  const contextObjects=TLS.data.contextObjects;
+  if(!contextObjects.length){toast('No project types found — create one first','error');return;}
+  const t=contextObjects[0]._id; // default to first type; multi-type workspaces can extend this
+  const b={contextObjectId:t,name:n};
+  if(d)b.description=d; if(s)b.startDate=s; if(en)b.endDate=en;
+  try{
+    const res=await tlsApi('POST','/context-records',b);
+    const newId=res._id||res.id;
+    // Post dynamic project attributes
+    const attrEls=document.querySelectorAll('.tls-cp-attr');
+    for(const el of attrEls){const v=el.value?.trim(),aid=el.dataset.attrId;if(v&&aid){try{await tlsApi('PUT',`/context-records/${newId}/attributes/${aid}`,{value:v});}catch(ae){toast(`Attribute failed: `+(ae?.data?.message||ae),'error');}}}
+    toast(`"${n}" created!`,'success');
+    TLS.data.contextRecords.push({...b,_id:newId,status:'active'});
+    tlsCountsUpdate();tlsStatusBarRender();tlsShowSection('context-records');
+  }
   catch(e){toast(e?.data?.message||'Failed','error');}
 }
 async function tlsAssignProfile(reqId){const p=document.getElementById('tls-ap-pid')?.value?.trim();if(!p){toast('Enter profile ID','error');return;}try{await tlsApi('POST',`/request-records/${reqId}/compliance-profile`,{complianceProfileId:p});toast('Profile assigned!','success');await tlsRefresh();}catch(e){toast(e?.data?.message||'Failed','error');}}
