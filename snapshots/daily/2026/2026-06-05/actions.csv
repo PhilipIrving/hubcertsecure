@@ -1,0 +1,14 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Canadian Pacific Kansas City,1e8fe76d-30b9-4318-b780-c14a800928c9,,db80be8e-7d1c-4720-8716-a8f7e4e0e885,,,2026-06-05T01:24:12,,,,,,06/04/2026,06/04/2026 22:59:02
+Canadian Pacific Kansas City,d845aeea-6a06-4fe1-83d0-d58478ec3c9a,,80ca41c1-4e9e-42be-84ac-40cfdab67032,,,2026-06-05T00:42:06,,,,,,06/04/2026,06/04/2026 22:59:02
+EMMES,34f48f01-63a0-4f91-b239-f9dfb7581a8c,,5d5d5e1c-4d38-4f46-8b14-00d8315b1700,,,2026-06-05T00:03:56,,,,,,06/04/2026,06/04/2026 22:59:02
+EMMES,4d1d35c3-d046-4cd5-bf79-eb258f97edc8,,,,,2026-06-05T00:03:56,,,,,,06/04/2026,06/04/2026 22:59:02
+EMMES,bf916065-d083-41a8-8d3c-3f2db4e2b9fe,,,,,2026-06-04T23:27:09,,,,,,06/04/2026,06/04/2026 22:59:02
+Scandroli Construction,065aea1f-8b67-41d3-b3e8-8fa3da90d982,,bf929cfc-7237-4292-8e4a-325fe386edab,,,2026-06-05T02:56:53,,,,,,06/04/2026,06/04/2026 22:59:20
+Scandroli Construction,1acef219-6065-42b0-916c-c72104cb9c23,,bf929cfc-7237-4292-8e4a-325fe386edab,,,2026-06-05T02:56:53,,,,,,06/04/2026,06/04/2026 22:59:20
+Scandroli Construction,52f2ae56-6d59-45a3-9305-5b3e63ab677b,,bf929cfc-7237-4292-8e4a-325fe386edab,,,2026-06-05T02:56:53,,,,,,06/04/2026,06/04/2026 22:59:20
+Scandroli Construction,75527b07-033e-45d3-99fc-f46739f1d298,,d703dcac-f66c-46ed-859b-c3cefb02e38c,,,2026-06-05T01:00:38,,,,,,06/04/2026,06/04/2026 22:59:20
+Scandroli Construction,900e6bdb-3712-4fe6-8542-95d4d4773c8d,,bf929cfc-7237-4292-8e4a-325fe386edab,,,2026-06-05T02:56:53,,,,,,06/04/2026,06/04/2026 22:59:20
+Scandroli Construction,b68fef1c-1365-4dbb-aaf0-8e046e3cca7f,,bf929cfc-7237-4292-8e4a-325fe386edab,,,2026-06-05T02:56:53,,,,,,06/04/2026,06/04/2026 22:59:20
+Scandroli Construction,ba3eaa20-3b76-4c70-9c29-109928819c40,,d703dcac-f66c-46ed-859b-c3cefb02e38c,,,2026-06-05T01:00:38,,,,,,06/04/2026,06/04/2026 22:59:20
+The Abbey Management Company,e5af7822-19ac-4fb6-90cf-3724a5efe7fd,,,,,2026-06-04T19:59:30,,,,,,06/04/2026,06/04/2026 22:59:22
