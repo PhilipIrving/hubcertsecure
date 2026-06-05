@@ -612,7 +612,7 @@ client,id,name,type,type_id,status,primary_email,primary_contact_name,all_emails
 "Block Real Estate Services, LLC",69fded2462446148bd8492a6,Wayfair LLC,Party,69bc0d686bc195aa02a7e372,active,,,,,,,10804 Strang Line Road,Lenexa,Kansas,United States,66215,,,,,,2026-05-08,2026-05-28,2026-06-05
 "Block Real Estate Services, LLC",69fded2462446148bd8492a9,"Advena Living /Cornerstone Group Holdings, Inc. (sublease of Midlands Independent Review Board, LLC / WCG IRB, Inc.)",Party,69bc0d686bc195aa02a7e372,active,,,,,,,5000 Centregreen Way,Cary,North Carolina,United States,27513,,,,,,2026-05-08,2026-05-28,2026-06-05
 "Block Real Estate Services, LLC",69fded2462446148bd8492ac,WellSky Corporation,Party,69bc0d686bc195aa02a7e372,active,,,,,,,11300 Switzer Road,Overland Park,Kansas,United States,66212,,,,,,2026-05-08,2026-06-01,2026-06-05
-"Block Real Estate Services, LLC",69fded2462446148bd8492af,"Satellite Engineering / WESCO Distribution, Inc.",Party,69bc0d686bc195aa02a7e372,active,,,,,,,167 North Green Street,Chicago,Illinois,United States,60607,,,,,,2026-05-08,2026-06-03,2026-06-05
+"Block Real Estate Services, LLC",69fded2462446148bd8492af,"Satellite Engineering / WESCO Distribution, Inc.",Party,69bc0d686bc195aa02a7e372,active,,,,,,,167 North Green Street,Chicago,Illinois,United States,60607,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fded2462446148bd8492b2,West Shore Home LLC,Party,69bc0d686bc195aa02a7e372,active,,,,,,,3 Crossgate Drive,Mechanicsburg,Pennsylvania,United States,17050,,,,,,2026-05-08,2026-06-02,2026-06-05
 "Block Real Estate Services, LLC",69fded2462446148bd8492b5,Westlake Hardware 54,Party,69bc0d686bc195aa02a7e372,active,,,,,,,,,,,,,,,,,2026-05-08,2026-05-28,2026-06-05
 "Block Real Estate Services, LLC",69fded2462446148bd8492bb,Woodbridge Corporation,Party,69bc0d686bc195aa02a7e372,active,,,,,,,555 Northwest Platte Valley Drive,Riverside,Missouri,United States,64150,,,,,,2026-05-08,2026-06-02,2026-06-05
@@ -687,7 +687,7 @@ client,id,name,type,type_id,status,primary_email,primary_contact_name,all_emails
 "Block Real Estate Services, LLC",6a18721753ab917b1e649498,"Critical Facilities Technology, LLC",Party,69bc0d686bc195aa02a7e372,active,,,,,,,,,,,,,,,,,2026-05-28,2026-06-03,2026-06-05
 "Block Real Estate Services, LLC",6a187263e701796d85de7c91,"LVT Trucking, Inc.",Party,69bc0d686bc195aa02a7e372,active,,,,,,,,,,,,,,,,,2026-05-28,2026-06-03,2026-06-05
 "Block Real Estate Services, LLC",6a18740bdf41746015864e9a,"Morton Fence, LLC",Party,69bc0d686bc195aa02a7e372,active,,,,,,,,,,,,,,,,,2026-05-28,2026-06-03,2026-06-05
-"Block Real Estate Services, LLC",6a187768b517ae25a8805ad8,"KC Roofscapes, LLC",Party,69bc0d686bc195aa02a7e372,active,,,,,,,,,,,,,,,,,2026-05-28,2026-06-03,2026-06-05
+"Block Real Estate Services, LLC",6a187768b517ae25a8805ad8,"KC Roofscapes, LLC",Party,69bc0d686bc195aa02a7e372,active,,,,,,,,,,,,,,,,,2026-05-28,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",6a187790d2723fbba9a43f46,"Integrated Health Systems, LLC",Party,69bc0d686bc195aa02a7e372,active,,,,,,,,,,,,,,,,,2026-05-28,2026-06-03,2026-06-05
 "Block Real Estate Services, LLC",6a187b32d2723fbba9a51c41,"Re-View Windows, Inc. (fka Architectural Specialties, Inc. )",Party,69bc0d686bc195aa02a7e372,active,,,,,,,,,,,,,,,,,2026-05-28,2026-06-03,2026-06-05
 "Block Real Estate Services, LLC",6a187b72462ef1e78ea98fda,"Heper USA, Inc.",Party,69bc0d686bc195aa02a7e372,active,,,,,,,,,,,,,,,,,2026-05-28,2026-06-03,2026-06-05
@@ -739,7 +739,7 @@ QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",Party,69f0f3
 QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",Party,69f0f3c3beb6279e947be0bd,active,,,,,,,,,,,,,,,,69f0b71d7b24cf3460d0c07b; 69f0b71d7b24cf3460d0c079,2026-04-28,2026-06-05,2026-06-05
 QTS Data Centers,69f0f3c5beb6279e947be0f3,"Holder Construction Group, LLC",Party,69f0f3c3beb6279e947be0bd,active,,,,,,,,,,,,,,,,,2026-04-28,2026-05-26,2026-06-05
 QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",Party,69f0f3c3beb6279e947be0bd,active,,,,,,,,,,,,,,,,69f0b71d7b24cf3460d0c07b; 69f0b71d7b24cf3460d0c079,2026-04-28,2026-06-05,2026-06-05
-QTS Data Centers,69f0f3c5beb6279e947be0fd,M. A. Mortenson Company,Party,69f0f3c3beb6279e947be0bd,active,,,,,,,,,,,,,,,,69f0b71d7b24cf3460d0c07b; 69f0b71d7b24cf3460d0c079,2026-04-28,2026-06-05,2026-06-05
+QTS Data Centers,69f0f3c5beb6279e947be0fd,M. A. Mortenson Company,Party,69f0f3c3beb6279e947be0bd,active,,,,,,,,,,,,,,,,69f0b71d7b24cf3460d0c079,2026-04-28,2026-06-05,2026-06-05
 QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,Party,69f0f3c3beb6279e947be0bd,active,,,,,,,,,,,,,,,,69f0b71d7b24cf3460d0c07b; 69f0b71d7b24cf3460d0c079,2026-04-28,2026-06-05,2026-06-05
 QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",Party,69f0f3c3beb6279e947be0bd,active,,,,,,,,,,,,,,,,69f0b71d7b24cf3460d0c07b; 69f0b71d7b24cf3460d0c079,2026-04-28,2026-06-05,2026-06-05
 QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",Party,69f0f3c3beb6279e947be0bd,active,,,,,,,,,,,,,,,,69f0b71d7b24cf3460d0c07b; 69f0b71d7b24cf3460d0c079,2026-04-28,2026-06-05,2026-06-05
@@ -747,7 +747,7 @@ QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,Pa
 DEMO Client,6a0785aff523b358236b2d64,"Supplier, LLC",Party,69fa47d8ad94f1fe3056a6c0,active,,,,,,,Logistics Drive,Joliet,Illinois,United States,60421,,,,,,2026-05-15,2026-05-18,2026-06-05
 DEMO Client,6a0785aff523b358236b2d67,Freight Corp.,Party,69fa47d8ad94f1fe3056a6c0,active,,,,,,,9100 Southwest Highway,Worth,Illinois,United States,60482,,,,,,2026-05-15,2026-06-02,2026-06-05
 DEMO Client,6a0785aff523b358236b2d6a,Speciality Services Inc.,Party,69fa47d8ad94f1fe3056a6c0,active,,,,,,,200 South Wacker Drive,Chicago,Illinois,United States,60606,,,,,,2026-05-15,2026-05-18,2026-06-05
-DEMO Client,6a0785aff523b358236b2d6d,"Concrete & Foundation, LLC",Party,69fa47d8ad94f1fe3056a6be,active,,,,,,,,Bedford Park,Illinois,United States,60638,,,,,,2026-05-15,2026-05-18,2026-06-05
+DEMO Client,6a0785aff523b358236b2d6d,"Concrete & Foundation, LLC",Party,69fa47d8ad94f1fe3056a6be,active,,,,,,,,Bedford Park,Illinois,United States,60638,,,,,,2026-05-15,2026-06-05,2026-06-05
 DEMO Client,6a0785aff523b358236b2d70,Speciality Contractor Inc.,Party,69fa47d8ad94f1fe3056a6be,active,,,,,,,7700 63rd Street,Summit,Illinois,United States,60501,,,,,,2026-05-15,2026-06-02,2026-06-05
 DEMO Client,6a0785aff523b358236b2d73,Electric Corp.,Party,69fa47d8ad94f1fe3056a6be,active,,,,,,,2290 North Harlem Avenue,Elmwood Park,Illinois,United States,60707,,,,,,2026-05-15,2026-06-02,2026-06-05
 DEMO Client,6a0785aff523b358236b2d76,Retail Inc.,Party,69fa47d8ad94f1fe3056a6c2,active,,,,,,,,Chicago,Illinois,United States,60601,,,,,,2026-05-15,2026-05-18,2026-06-05
