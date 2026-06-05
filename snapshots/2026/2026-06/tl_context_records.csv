@@ -23,7 +23,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdef5c3b208288e0a7a5df,"3rd543 - Downey Family Holdings, LLC",Project,active,,,,,,2026-05-08,2026-05-31,2026-06-05
 "Block Real Estate Services, LLC",69fdef653b208288e0a7a89f,"3rd654 - Devonshire Village Shops {Devonshire Shops, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fdef6abf1df2fe969214c6,"3rd657 - Sni-A-Bar Plaza {KCG Investment Properties, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
-"Block Real Estate Services, LLC",69fdef6fe45e7dcf5c433fc2,"3rd667 - Oak Park KS, LLC",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-05
+"Block Real Estate Services, LLC",69fdef6fe45e7dcf5c433fc2,"3rd667 - Oak Park KS, LLC",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fdef7403a2257cd27da147,"3rd698 - 40 Hi Center {Midwest Ketter Investments, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fdef780bb484cab5138997,"3rd743 - ECW, LLC (Skechers Building)",Project,active,,,,,,2026-05-08,2026-05-27,2026-06-05
 "Block Real Estate Services, LLC",69fdef7d0e86e2f8723d7c04,"3rd754 - 9500 E. 63rd Street {PCJW, LLC}",Project,active,,,,,,2026-05-08,2026-05-31,2026-06-05
@@ -63,7 +63,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf03902bb2c42a87a13b8,"hig143 - High Tech Associates (Pine Ridge Building 20) {High Tech Associates, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fdf03c3b208288e0a7d188,"int072 - Interstate Building II, LLC",Project,active,,,,,,2026-05-08,2026-05-28,2026-06-05
 "Block Real Estate Services, LLC",69fdf03f03a2257cd27de04f,"kc2700 - Switzer I {Barry 1, LLC}",Project,active,,,,,,2026-05-08,2026-05-28,2026-06-05
-"Block Real Estate Services, LLC",69fdf04202bb2c42a87a15aa,"kc2701 - Switzer II {Barry 2, LLC}",Project,active,,,,,,2026-05-08,2026-05-28,2026-06-05
+"Block Real Estate Services, LLC",69fdf04202bb2c42a87a15aa,"kc2701 - Switzer II {Barry 2, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fdf0473b208288e0a7d535,"kc2702 - Switzer III {Barry 3, LLC}",Project,active,,,,,,2026-05-08,2026-05-31,2026-06-05
 "Block Real Estate Services, LLC",69fdf04d03a2257cd27de3b8,"kc2703 - Brookhollow I {Flint 1, LLC}",Project,active,,,,,,2026-05-08,2026-05-31,2026-06-05
 "Block Real Estate Services, LLC",69fdf05002bb2c42a87a1859,"kc2704 - Westbrook IV {Brian 4, LLC}",Project,active,,,,,,2026-05-08,2026-06-02,2026-06-05
@@ -100,11 +100,11 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf0c43b208288e0a7f2ab,"pas774 - Paseo Industrial - 1201 Saline {Paseo Industrial, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fdf0c802bb2c42a87a35a2,"pla047 - 4700 Summer Investors, LLC / Planet Fitness",Project,active,,,,,,2026-05-08,2026-05-28,2026-06-05
 "Block Real Estate Services, LLC",69fdf0cbe45e7dcf5c438bc3,"pma106 - 5055 Antioch {Pine Meadows Associates, LLC}",Project,active,,,,,,2026-05-08,2026-05-28,2026-06-05
-"Block Real Estate Services, LLC",69fdf0cf3b208288e0a7f650,"prg801 - Pine Ridge Building A {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-02,2026-06-05
+"Block Real Estate Services, LLC",69fdf0cf3b208288e0a7f650,"prg801 - Pine Ridge Building A {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fdf0d2e45e7dcf5c438d24,"prg802 - Pine Ridge Building B {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fdf0d602bb2c42a87a37d2,"prg803 - Pine Ridge Building C {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fdf0d9e45e7dcf5c438e0a,"prg804 - Pine Ridge Building D {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
-"Block Real Estate Services, LLC",69fdf0dc02bb2c42a87a39b3,"prg805 - Pine Ridge Building E-1 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-02,2026-06-05
+"Block Real Estate Services, LLC",69fdf0dc02bb2c42a87a39b3,"prg805 - Pine Ridge Building E-1 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fdf0e0e45e7dcf5c43916b,"prg806 - Pine Ridge Building E-2 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fdf0e502bb2c42a87a3d50,"prg807 - Pine Ridge Building F {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fdf0e8e45e7dcf5c43943f,"prg808 - Pine Ridge Building G {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-05-31,2026-06-05
@@ -168,7 +168,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf2023b208288e0a871b2,"tic846 - Pine Ridge Building 26 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-01,2026-06-05
 "Block Real Estate Services, LLC",69fdf20a02bb2c42a87a98b0,"tic847 - Pine Ridge Building 27 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fdf20e8e25e7a0d918b96c,"tic851 - Pine Ridge Building 31 {PERG Corbion, LLC}",Project,active,,,,,,2026-05-08,2026-06-02,2026-06-05
-"Block Real Estate Services, LLC",69fdf211bf1df2fe9692fce4,"tic873 - Northgate Plaza {Northgate Associates, LLC}",Project,active,,,,,,2026-05-08,2026-06-02,2026-06-05
+"Block Real Estate Services, LLC",69fdf211bf1df2fe9692fce4,"tic873 - Northgate Plaza {Northgate Associates, LLC}",Project,active,,,,,,2026-05-08,2026-06-05,2026-06-05
 "Block Real Estate Services, LLC",69fdf21419e1eeeaeb9ad90b,"tic880 - 8040 Bond {8040 Bond Investors, LLC}",Project,active,,,,,,2026-05-08,2026-05-27,2026-06-05
 "Block Real Estate Services, LLC",69fdf21802bb2c42a87aa766,"tic921 - Millennium Business Park {Millennium Lenexa, LLC}",Project,active,,,,,,2026-05-08,2026-05-31,2026-06-05
 "Block Real Estate Services, LLC",69fdf21b8e25e7a0d918bf24,tic949 - Staples Building {Orchard Cambridge Investors LLC} (fka Corporate Express [BIF III - CEB Executive Park]),Project,active,,,,,,2026-05-08,2026-06-02,2026-06-05
