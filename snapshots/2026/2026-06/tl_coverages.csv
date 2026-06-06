@@ -339,9 +339,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-06
 "Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-06
 "Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-06
-"Block Real Estate Services, LLC",69fded1662446148bd848e02,"Pizza Hut / GMRG ACQ 1, LLC #0359",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-06
-"Block Real Estate Services, LLC",69fded1662446148bd848e02,"Pizza Hut / GMRG ACQ 1, LLC #0359",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-06
-"Block Real Estate Services, LLC",69fded1662446148bd848e02,"Pizza Hut / GMRG ACQ 1, LLC #0359",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-06
+"Block Real Estate Services, LLC",69fded1662446148bd848e02,"Pizza Hut / GMRG ACQ 1, LLC #0359",,Commercial General Liability,commercialGeneralLiability,,,2026-01-28,2027-01-28,,,,,2026-06-06
+"Block Real Estate Services, LLC",69fded1662446148bd848e02,"Pizza Hut / GMRG ACQ 1, LLC #0359",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-28,2027-01-28,,,,,2026-06-06
+"Block Real Estate Services, LLC",69fded1662446148bd848e02,"Pizza Hut / GMRG ACQ 1, LLC #0359",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-28,2027-01-28,,,,,2026-06-06
 "Block Real Estate Services, LLC",69fded1662446148bd848e02,"Pizza Hut / GMRG ACQ 1, LLC #0359",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-06
 "Block Real Estate Services, LLC",69fded1762446148bd848e8f,"Tea Garden / Iris Restaurant, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-06
 "Block Real Estate Services, LLC",69fded1762446148bd848e8f,"Tea Garden / Iris Restaurant, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-06
