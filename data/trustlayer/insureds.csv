@@ -1,6 +1,6 @@
 client,insured_id,insured_name,primary_contact_email,compliance_status,verification_status,next_expiration,active,paused,sync_date
 "Block Real Estate Services, LLC",69fded0c62446148bd848af9,"1&1 Internet / IONOS, Inc.",,NON_COMPLIANT,,,true,false,2026-06-08
-"Block Real Estate Services, LLC",69fded0c62446148bd848afc,1248 Holdings LLC,,NON_COMPLIANT,,,true,false,2026-06-08
+"Block Real Estate Services, LLC",69fded0c62446148bd848afc,1248 Holdings LLC,,COMPLIANT,,,true,false,2026-06-08
 "Block Real Estate Services, LLC",69fded0c62446148bd848aff,"1-800-Pack Rat, LLC",,NON_COMPLIANT,,,true,false,2026-06-08
 "Block Real Estate Services, LLC",69fded0c62446148bd848b02,24 Hour Check Cashing,,NON_COMPLIANT,,,true,false,2026-06-08
 "Block Real Estate Services, LLC",69fded0c62446148bd848b05,"Big Biscuit / 27 Biscuits, LLC",,NON_COMPLIANT,,,true,false,2026-06-08
@@ -609,7 +609,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2462446148bd84929a,"VRC Companies, LLC (fka T2 Holdings, LLC/Redishred Kansas, Inc. dba Proshred Security)",,NON_COMPLIANT,,,true,false,2026-06-08
 "Block Real Estate Services, LLC",69fded2462446148bd84929d,"Mike's Liquor / Waldo Spirits, Inc.",,NON_COMPLIANT,,,true,false,2026-06-08
 "Block Real Estate Services, LLC",69fded2462446148bd8492a3,Warners Stellian Co Inc,,NON_COMPLIANT,,,true,false,2026-06-08
-"Block Real Estate Services, LLC",69fded2462446148bd8492a6,Wayfair LLC,,NON_COMPLIANT,,,true,false,2026-06-08
+"Block Real Estate Services, LLC",69fded2462446148bd8492a6,Wayfair LLC,,COMPLIANT,,,true,false,2026-06-08
 "Block Real Estate Services, LLC",69fded2462446148bd8492a9,"Advena Living /Cornerstone Group Holdings, Inc. (sublease of Midlands Independent Review Board, LLC / WCG IRB, Inc.)",,NON_COMPLIANT,,,true,false,2026-06-08
 "Block Real Estate Services, LLC",69fded2462446148bd8492ac,WellSky Corporation,,NON_COMPLIANT,,,true,false,2026-06-08
 "Block Real Estate Services, LLC",69fded2462446148bd8492af,"Satellite Engineering / WESCO Distribution, Inc.",,NON_COMPLIANT,,,true,false,2026-06-08
@@ -753,4 +753,5 @@ DEMO Client,6a0785aff523b358236b2d73,Electric Corp.,,NON_COMPLIANT,,,true,false,
 DEMO Client,6a0785aff523b358236b2d76,Retail Inc.,,NON_COMPLIANT,,,true,false,2026-06-08
 DEMO Client,6a0785aff523b358236b2d79,Special Advisory Group,,NON_COMPLIANT,,,true,false,2026-06-08
 DEMO Client,6a0785aff523b358236b2d7c,"Kitchen & Bar, LLC",,NON_COMPLIANT,,,true,false,2026-06-08
-DEMO Client,6a0f2e6390f0e4aa51d32037,DEMO Sub,,NON_COMPLIANT,,,true,false,2026-06-08
+DEMO Client,6a0f2e6390f0e4aa51d32037,DEMO Sub,,NON_COMPLIANT,,2027-06-08,true,false,2026-06-08
+DEMO Client,6a26f24ffa2454b6c0c24c3e,Test,,PENDING,,,true,false,2026-06-08
