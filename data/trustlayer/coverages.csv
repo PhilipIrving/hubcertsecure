@@ -506,7 +506,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-03-20,2027-03-20,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-10
-"Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-10
+"Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-03-20,2027-03-20,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded1662446148bd848e29,Internal Revenue Service / Government Services Administration (GSA),,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded1662446148bd848e29,Internal Revenue Service / Government Services Administration (GSA),,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded1662446148bd848e29,Internal Revenue Service / Government Services Administration (GSA),,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-10
@@ -1586,7 +1586,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-06-10
-"Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-10
+"Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-01-01,2027-01-01,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded0f62446148bd848bcb,"Banner Logistics, Inc",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded0f62446148bd848bcb,"Banner Logistics, Inc",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded0f62446148bd848bcb,"Banner Logistics, Inc",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-10
@@ -2143,10 +2143,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1362446148bd848d15,Green Leaf Dispensary / DineShkumar P. Patel & Jingeshkumar D. Patel,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded1362446148bd848d15,Green Leaf Dispensary / DineShkumar P. Patel & Jingeshkumar D. Patel,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded1362446148bd848d15,Green Leaf Dispensary / DineShkumar P. Patel & Jingeshkumar D. Patel,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-10
-"Block Real Estate Services, LLC",69fded2362446148bd84923d,"Liquor Houzz / Trivedi and Riaz, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-10
-"Block Real Estate Services, LLC",69fded2362446148bd84923d,"Liquor Houzz / Trivedi and Riaz, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-10
+"Block Real Estate Services, LLC",69fded2362446148bd84923d,"Liquor Houzz / Trivedi and Riaz, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-04-01,2027-04-01,,,,,2026-06-10
+"Block Real Estate Services, LLC",69fded2362446148bd84923d,"Liquor Houzz / Trivedi and Riaz, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-01,2027-04-01,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded2362446148bd84923d,"Liquor Houzz / Trivedi and Riaz, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-10
-"Block Real Estate Services, LLC",69fded2362446148bd84923d,"Liquor Houzz / Trivedi and Riaz, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-10
+"Block Real Estate Services, LLC",69fded2362446148bd84923d,"Liquor Houzz / Trivedi and Riaz, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-04-01,2027-04-01,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded1b62446148bd848fbb,"Midwest Vacuums / Cast, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded1b62446148bd848fbb,"Midwest Vacuums / Cast, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded1b62446148bd848fbb,"Midwest Vacuums / Cast, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-10
@@ -2199,10 +2199,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1d62446148bd849060,Parris Communications,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded1d62446148bd849060,Parris Communications,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded1d62446148bd849060,Parris Communications,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-07-01,2026-07-01,,,,,2026-06-10
-"Block Real Estate Services, LLC",69fded1d62446148bd849066,Paycom Payroll LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-10
-"Block Real Estate Services, LLC",69fded1d62446148bd849066,Paycom Payroll LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-10
-"Block Real Estate Services, LLC",69fded1d62446148bd849066,Paycom Payroll LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-10
-"Block Real Estate Services, LLC",69fded1d62446148bd849066,Paycom Payroll LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-10
+"Block Real Estate Services, LLC",69fded1d62446148bd849066,Paycom Payroll LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-04-15,2027-04-15,,,,,2026-06-10
+"Block Real Estate Services, LLC",69fded1d62446148bd849066,Paycom Payroll LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-15,2027-04-15,,,,,2026-06-10
+"Block Real Estate Services, LLC",69fded1d62446148bd849066,Paycom Payroll LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-04-15,2027-04-15,,,,,2026-06-10
+"Block Real Estate Services, LLC",69fded1d62446148bd849066,Paycom Payroll LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-04-15,2027-04-15,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded0f62446148bd848bfb,"Block Real Estate Services, LLC / Block Partners, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded0f62446148bd848bfb,"Block Real Estate Services, LLC / Block Partners, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded0f62446148bd848bfb,"Block Real Estate Services, LLC / Block Partners, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-10
@@ -2318,7 +2318,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2262446148bd849213,The Sunderland Foundation,,Commercial General Liability,commercialGeneralLiability,,,2026-05-21,2027-05-21,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded2262446148bd849213,The Sunderland Foundation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded2262446148bd849213,The Sunderland Foundation,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-21,2027-05-21,,,,,2026-06-10
-"Block Real Estate Services, LLC",69fded2262446148bd849213,The Sunderland Foundation,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-10
+"Block Real Estate Services, LLC",69fded2262446148bd849213,The Sunderland Foundation,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-05-21,2027-05-21,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded0e62446148bd848b98,Aspen Properties Group,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded0e62446148bd848b98,Aspen Properties Group,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-10
 "Block Real Estate Services, LLC",69fded0e62446148bd848b98,Aspen Properties Group,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-03-07,2027-03-07,,,,,2026-06-10
