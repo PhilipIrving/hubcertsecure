@@ -1924,7 +1924,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1a62446148bd848f43,Magnum Systems Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-11
 "Block Real Estate Services, LLC",69fded1a62446148bd848f43,Magnum Systems Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-11
 "Block Real Estate Services, LLC",69fded1062446148bd848c43,Carrier Corporation,,Commercial General Liability,commercialGeneralLiability,,,2026-04-01,2027-04-01,,,,,2026-06-11
-"Block Real Estate Services, LLC",69fded1062446148bd848c43,Carrier Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-11
+"Block Real Estate Services, LLC",69fded1062446148bd848c43,Carrier Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-01,2027-04-01,,,,,2026-06-11
 "Block Real Estate Services, LLC",69fded1062446148bd848c43,Carrier Corporation,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-04-01,2027-04-01,,,,,2026-06-11
 "Block Real Estate Services, LLC",69fded1062446148bd848c43,Carrier Corporation,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-04-01,2027-04-01,,,,,2026-06-11
 "Block Real Estate Services, LLC",69fded1162446148bd848c8b,CNR Construction KC LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-03-09,2027-03-09,,,,,2026-06-11
@@ -2135,7 +2135,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0f62446148bd848bd4,Costa Vida Fresh Mexican Grill / BB Magical Fruit,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-11
 "Block Real Estate Services, LLC",69fded0f62446148bd848bd4,Costa Vida Fresh Mexican Grill / BB Magical Fruit,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-11
 "Block Real Estate Services, LLC",69fded0f62446148bd848bd4,Costa Vida Fresh Mexican Grill / BB Magical Fruit,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-11
-"Block Real Estate Services, LLC",69fded1262446148bd848cfa,B-Envied Salon / David M & Lisa Walla,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-11
+"Block Real Estate Services, LLC",69fded1262446148bd848cfa,B-Envied Salon / David M & Lisa Walla,,Commercial General Liability,commercialGeneralLiability,,,2026-01-20,2027-01-20,,,,,2026-06-11
 "Block Real Estate Services, LLC",69fded1262446148bd848cfa,B-Envied Salon / David M & Lisa Walla,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-11
 "Block Real Estate Services, LLC",69fded1262446148bd848cfa,B-Envied Salon / David M & Lisa Walla,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-11
 "Block Real Estate Services, LLC",69fded1262446148bd848cfa,B-Envied Salon / David M & Lisa Walla,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-11
@@ -3289,12 +3289,12 @@ QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Lt
 QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-11
 QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Professional Liability,professional,,,,,,,,,2026-06-11
 QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-11
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-11
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Automobile Liability,automobileLiability,,,,,,,,,2026-06-11
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-11
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-11
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Professional Liability,professional,,,,,,,,,2026-06-11
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-11
+QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Commercial General Liability,commercialGeneralLiability,,,2026-06-01,2027-06-01,,,,,2026-06-11
+QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Automobile Liability,automobileLiability,,,2026-06-01,2027-06-01,,,,,2026-06-11
+QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-01,2027-06-01,,,,,2026-06-11
+QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-06-11
+QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Professional Liability,professional,,,2026-06-01,2027-06-01,,,,,2026-06-11
+QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-01,2027-06-01,,,,,2026-06-11
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-06-11
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-06-11
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-06-11

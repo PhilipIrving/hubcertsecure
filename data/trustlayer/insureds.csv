@@ -98,7 +98,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1062446148bd848c3a,BWI Companies Inc,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1062446148bd848c3d,"Corbion / Caravan Ingredients, Inc.",,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,NON_COMPLIANT,,,true,false,2026-06-11
-"Block Real Estate Services, LLC",69fded1062446148bd848c43,Carrier Corporation,,NON_COMPLIANT,,,true,false,2026-06-11
+"Block Real Estate Services, LLC",69fded1062446148bd848c43,Carrier Corporation,,COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1062446148bd848c46,CarStar Riverside (fka Autobody on the Run),,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1062446148bd848c49,Cass County Public Library,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1062446148bd848c4f,CBD American Shaman LLC,,NON_COMPLIANT,,,true,false,2026-06-11
@@ -126,7 +126,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1162446148bd848c97,"Commercial Industrial Supply, LLC",,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1162446148bd848c9a,Companion Protect Agency,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1162446148bd848c9d,Concrete Strategies LLC,,NON_COMPLIANT,,,true,false,2026-06-11
-"Block Real Estate Services, LLC",69fded1162446148bd848ca0,"CKF / Consolidated Supply, Inc.",,NON_COMPLIANT,,,true,false,2026-06-11
+"Block Real Estate Services, LLC",69fded1162446148bd848ca0,"CKF / Consolidated Supply, Inc.",,COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1162446148bd848ca3,Converge LLC,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1162446148bd848ca6,Convergint Technologies LLC,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1162446148bd848ca9,Core Adventures LLC,,NON_COMPLIANT,,,true,false,2026-06-11
@@ -250,7 +250,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1662446148bd848e1d,Great Rivers Associates,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1662446148bd848e20,"The Shredder + MedShred / Green Resource Management, Inc.",,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1662446148bd848e23,"Action Stainless & Alloys / ACT Acquisition, Inc. (sublease from Hello Fresh / Grocery Delivery Logistics, Inc.)",,NON_COMPLIANT,,,true,false,2026-06-11
-"Block Real Estate Services, LLC",69fded1662446148bd848e26,"Gexpro Services / Rexel USA, Inc. (fka GS Operating, LLC )",,NON_COMPLIANT,,,true,false,2026-06-11
+"Block Real Estate Services, LLC",69fded1662446148bd848e26,"Gexpro Services / Rexel USA, Inc. (fka GS Operating, LLC )",,COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1662446148bd848e29,Internal Revenue Service / Government Services Administration (GSA),,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1662446148bd848e2c,Guardian Water & Air Systems LLC,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1662446148bd848e2f,"VIALS / Gunn & Richards, Inc.",,NON_COMPLIANT,,,true,false,2026-06-11
