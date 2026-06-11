@@ -15,7 +15,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0c62446148bd848b23,"ADI (Ademco Distribution, Inc.) / Honeywell International, Inc.",,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded0c62446148bd848b26,"Advanced Auto / Advanced Stores Co., Inc.",,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded0c62446148bd848b29,Advanced Pharmaceuticals LLC,,NON_COMPLIANT,,,true,false,2026-06-11
-"Block Real Estate Services, LLC",69fded0c62446148bd848b2c,Advanced Turf Solutions Inc,,NON_COMPLIANT,,,true,false,2026-06-11
+"Block Real Estate Services, LLC",69fded0c62446148bd848b2c,Advanced Turf Solutions Inc,,COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded0c62446148bd848b2f,"Daymon / Advantage Sales & Marketing, LLC",,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded0c62446148bd848b32,Advocate Construction Inc,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded0d62446148bd848b35,"Aircraft Electrical / AEE-EMF, Inc.",,NON_COMPLIANT,,,true,false,2026-06-11
@@ -48,7 +48,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0e62446148bd848b89,Archway Technology LLC,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded0e62446148bd848b8c,ARJ Infusion Services,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded0e62446148bd848b8f,Arrowhead Forensics,,NON_COMPLIANT,,,true,false,2026-06-11
-"Block Real Estate Services, LLC",69fded0e62446148bd848b92,Arthur J Gallagher Risk Management Services Inc,,NON_COMPLIANT,,,true,false,2026-06-11
+"Block Real Estate Services, LLC",69fded0e62446148bd848b92,Arthur J Gallagher Risk Management Services Inc,,COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded0e62446148bd848b95,Ashley Nelson Studios,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded0e62446148bd848b98,Aspen Properties Group,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,NON_COMPLIANT,,,true,false,2026-06-11
@@ -184,7 +184,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1362446148bd848d48,Edward Jones,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1362446148bd848d4b,Edward D Jones & Co LP,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1362446148bd848d4e,Einstein Bros Bagels #3961,,NON_COMPLIANT,,,true,false,2026-06-11
-"Block Real Estate Services, LLC",69fded1362446148bd848d51,Electrical Investments Inc,,NON_COMPLIANT,,,true,false,2026-06-11
+"Block Real Estate Services, LLC",69fded1362446148bd848d51,Electrical Investments Inc,,COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1362446148bd848d54,Electronics for Imaging / EFI Ink Jet Solutions,,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1362446148bd848d57,"NTR Metals / Elemental Direct USA, LLC",,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1362446148bd848d5a,Elliott Electric Supply Inc,,NON_COMPLIANT,,,true,false,2026-06-11
@@ -357,7 +357,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1a62446148bd848f76,"Clear Choice Dental Implant Center / MB Properties, LLC",,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1a62446148bd848f79,MC Flooring LLC,,COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1a62446148bd848f7c,McClure Engineering Company,,NON_COMPLIANT,,,true,false,2026-06-11
-"Block Real Estate Services, LLC",69fded1a62446148bd848f82,McQuaid Brothers Remodeling,,NON_COMPLIANT,,,true,false,2026-06-11
+"Block Real Estate Services, LLC",69fded1a62446148bd848f82,McQuaid Brothers Remodeling,,COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1a62446148bd848f85,"McShane & Brady, LLC",,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1b62446148bd848f88,"Mechanical Sales Midwest, Inc",,NON_COMPLIANT,,,true,false,2026-06-11
 "Block Real Estate Services, LLC",69fded1b62446148bd848f8b,"Med Resources, Inc.",,NON_COMPLIANT,,,true,false,2026-06-11
