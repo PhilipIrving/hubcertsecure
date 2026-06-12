@@ -184,7 +184,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1362446148bd848d48,Edward Jones,,NON_COMPLIANT,,,true,false,2026-06-12
 "Block Real Estate Services, LLC",69fded1362446148bd848d4b,Edward D Jones & Co LP,,NON_COMPLIANT,,,true,false,2026-06-12
 "Block Real Estate Services, LLC",69fded1362446148bd848d4e,Einstein Bros Bagels #3961,,NON_COMPLIANT,,,true,false,2026-06-12
-"Block Real Estate Services, LLC",69fded1362446148bd848d51,Electrical Investments Inc,,COMPLIANT,,,true,false,2026-06-12
+"Block Real Estate Services, LLC",69fded1362446148bd848d51,Electrical Investments Inc,,NON_COMPLIANT,,,true,false,2026-06-12
 "Block Real Estate Services, LLC",69fded1362446148bd848d54,Electronics for Imaging / EFI Ink Jet Solutions,,NON_COMPLIANT,,,true,false,2026-06-12
 "Block Real Estate Services, LLC",69fded1362446148bd848d57,"NTR Metals / Elemental Direct USA, LLC",,NON_COMPLIANT,,,true,false,2026-06-12
 "Block Real Estate Services, LLC",69fded1362446148bd848d5a,Elliott Electric Supply Inc,,NON_COMPLIANT,,,true,false,2026-06-12
@@ -442,7 +442,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1d62446148bd84907b,Petfolk Real Estate Holdings LLC,,NON_COMPLIANT,,,true,false,2026-06-12
 "Block Real Estate Services, LLC",69fded1d62446148bd84907e,"PetSense, LLC",,NON_COMPLIANT,,,true,false,2026-06-12
 "Block Real Estate Services, LLC",69fded1d62446148bd849081,"ICON / PRA Health Sciences / Pharmaceutical Research Associates, Inc.",,NON_COMPLIANT,,,true,false,2026-06-12
-"Block Real Estate Services, LLC",69fded1d62446148bd849084,Pharmacy Corp of America,,NON_COMPLIANT,,,true,false,2026-06-12
+"Block Real Estate Services, LLC",69fded1d62446148bd849084,Pharmacy Corp of America,,PENDING,,,true,false,2026-06-12
 "Block Real Estate Services, LLC",69fded1e62446148bd84908a,Phoenix Fastpitch LLC,,NON_COMPLIANT,,,true,false,2026-06-12
 "Block Real Estate Services, LLC",69fded1e62446148bd84908d,"Servpro / Piat, Inc.",,NON_COMPLIANT,,,true,false,2026-06-12
 "Block Real Estate Services, LLC",69fded1e62446148bd849090,"Pinnacle Construction Group, LLC",,NON_COMPLIANT,,,true,false,2026-06-12
