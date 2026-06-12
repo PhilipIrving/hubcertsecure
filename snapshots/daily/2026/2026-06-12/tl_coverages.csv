@@ -1211,9 +1211,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1462446148bd848db1,First Key Homes,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1462446148bd848db1,First Key Homes,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1462446148bd848db1,First Key Homes,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-12
-"Block Real Estate Services, LLC",69fded1962446148bd848efb,Knappco LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-12
-"Block Real Estate Services, LLC",69fded1962446148bd848efb,Knappco LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-12
-"Block Real Estate Services, LLC",69fded1962446148bd848efb,Knappco LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-12
+"Block Real Estate Services, LLC",69fded1962446148bd848efb,Knappco LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-06-12
+"Block Real Estate Services, LLC",69fded1962446148bd848efb,Knappco LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-06-12
+"Block Real Estate Services, LLC",69fded1962446148bd848efb,Knappco LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1962446148bd848efb,Knappco LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1a62446148bd848f37,"Mobile Air And Power / Resolute Industrial, LLC (sublease from Loomis Armored Services)",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1a62446148bd848f37,"Mobile Air And Power / Resolute Industrial, LLC (sublease from Loomis Armored Services)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-12
@@ -2143,7 +2143,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1362446148bd848d15,Green Leaf Dispensary / DineShkumar P. Patel & Jingeshkumar D. Patel,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1362446148bd848d15,Green Leaf Dispensary / DineShkumar P. Patel & Jingeshkumar D. Patel,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1362446148bd848d15,Green Leaf Dispensary / DineShkumar P. Patel & Jingeshkumar D. Patel,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-12
-"Block Real Estate Services, LLC",69fded1b62446148bd848fbb,"Midwest Vacuums / Cast, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-12
+"Block Real Estate Services, LLC",69fded1b62446148bd848fbb,"Midwest Vacuums / Cast, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2025-07-17,2026-07-17,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1b62446148bd848fbb,"Midwest Vacuums / Cast, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1b62446148bd848fbb,"Midwest Vacuums / Cast, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1b62446148bd848fbb,"Midwest Vacuums / Cast, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-12
@@ -2587,9 +2587,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1162446148bd848cb2,Corporate Flooring Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1162446148bd848cb2,Corporate Flooring Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1162446148bd848cb2,Corporate Flooring Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-12
-"Block Real Estate Services, LLC",69fded1262446148bd848cdc,"DL Smith Electrical Construction, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-12
-"Block Real Estate Services, LLC",69fded1262446148bd848cdc,"DL Smith Electrical Construction, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-12
-"Block Real Estate Services, LLC",69fded1262446148bd848cdc,"DL Smith Electrical Construction, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-12
+"Block Real Estate Services, LLC",69fded1262446148bd848cdc,"DL Smith Electrical Construction, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-06-01,2027-06-01,,,,,2026-06-12
+"Block Real Estate Services, LLC",69fded1262446148bd848cdc,"DL Smith Electrical Construction, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-01,2027-06-01,,,,,2026-06-12
+"Block Real Estate Services, LLC",69fded1262446148bd848cdc,"DL Smith Electrical Construction, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1262446148bd848cdc,"DL Smith Electrical Construction, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1362446148bd848d51,Electrical Investments Inc,,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1362446148bd848d51,Electrical Investments Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-06-12
@@ -2731,9 +2731,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1162446148bd848c9d,Concrete Strategies LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-06-30,2026-06-30,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1162446148bd848c9d,Concrete Strategies LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-06-30,2026-06-30,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded1162446148bd848c9d,Concrete Strategies LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-12
-"Block Real Estate Services, LLC",69fded2062446148bd849138,Scheels All Sports Inc,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-12
-"Block Real Estate Services, LLC",69fded2062446148bd849138,Scheels All Sports Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-12
-"Block Real Estate Services, LLC",69fded2062446148bd849138,Scheels All Sports Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-12
+"Block Real Estate Services, LLC",69fded2062446148bd849138,Scheels All Sports Inc,,Commercial General Liability,commercialGeneralLiability,,,2025-07-01,2026-07-01,,,,,2026-06-12
+"Block Real Estate Services, LLC",69fded2062446148bd849138,Scheels All Sports Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-07-01,2026-07-01,,,,,2026-06-12
+"Block Real Estate Services, LLC",69fded2062446148bd849138,Scheels All Sports Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-07-01,2026-07-01,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded2062446148bd849138,Scheels All Sports Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded2362446148bd84925e,"Triton Stone Group/Triton Stone of Kansas City / Unique Stone Concepts, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-04-01,2027-04-01,,,,,2026-06-12
 "Block Real Estate Services, LLC",69fded2362446148bd84925e,"Triton Stone Group/Triton Stone of Kansas City / Unique Stone Concepts, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-01,2027-04-01,,,,,2026-06-12
