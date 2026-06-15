@@ -1,7 +1,7 @@
 client,insured_id,insured_name,primary_contact_email,compliance_status,verification_status,next_expiration,active,paused,sync_date
 "Block Real Estate Services, LLC",69fded0c62446148bd848af9,"1&1 Internet / IONOS, Inc.",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded0c62446148bd848afc,1248 Holdings LLC,,COMPLIANT,,,true,false,2026-06-15
-"Block Real Estate Services, LLC",69fded0c62446148bd848aff,"1-800-Pack Rat, LLC",,NON_COMPLIANT,,,true,false,2026-06-15
+"Block Real Estate Services, LLC",69fded0c62446148bd848aff,"1-800-Pack Rat, LLC",,COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded0c62446148bd848b02,24 Hour Check Cashing,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded0c62446148bd848b05,"Big Biscuit / 27 Biscuits, LLC",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded0c62446148bd848b08,"Ray's Donuts & Deli / 6tinos, LLC",,NON_COMPLIANT,,,true,false,2026-06-15
@@ -106,7 +106,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1062446148bd848c55,Central Power Systems & Services LLC,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1062446148bd848c58,"The Retirement Planning Group / Cetera Financial Group, Inc.",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1062446148bd848c5b,"Challenger Sports, Inc.",,NON_COMPLIANT,,,true,false,2026-06-15
-"Block Real Estate Services, LLC",69fded1062446148bd848c5e,Champion Supply Company LLC,,NON_COMPLIANT,,,true,false,2026-06-15
+"Block Real Estate Services, LLC",69fded1062446148bd848c5e,Champion Supply Company LLC,,COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1062446148bd848c61,Charles D Jones Company,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1062446148bd848c67,Check Into Cash,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1062446148bd848c6a,Cherish The Furs LLC,,NON_COMPLIANT,,,true,false,2026-06-15
@@ -115,7 +115,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1162446148bd848c73,Triple Black Tattoo / Chris Keegan,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1162446148bd848c76,"Chrysalis Center, LLC",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1162446148bd848c79,CigaWatt LLC,,NON_COMPLIANT,,,true,false,2026-06-15
-"Block Real Estate Services, LLC",69fded1162446148bd848c7f,CJ Industries LLC,,NON_COMPLIANT,,,true,false,2026-06-15
+"Block Real Estate Services, LLC",69fded1162446148bd848c7f,CJ Industries LLC,,COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1162446148bd848c82,Clarivate Analytics LLC,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1162446148bd848c85,ClassOneModelWorks.com LLC,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1162446148bd848c88,Clopay Building Products,,NON_COMPLIANT,,,true,false,2026-06-15
@@ -184,7 +184,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1362446148bd848d48,Edward Jones,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1362446148bd848d4b,Edward D Jones & Co LP,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1362446148bd848d4e,Einstein Bros Bagels #3961,,NON_COMPLIANT,,,true,false,2026-06-15
-"Block Real Estate Services, LLC",69fded1362446148bd848d51,Electrical Investments Inc,,NON_COMPLIANT,,,true,false,2026-06-15
+"Block Real Estate Services, LLC",69fded1362446148bd848d51,Electrical Investments Inc,,COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1362446148bd848d54,Electronics for Imaging / EFI Ink Jet Solutions,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1362446148bd848d57,"NTR Metals / Elemental Direct USA, LLC",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1362446148bd848d5a,Elliott Electric Supply Inc,,NON_COMPLIANT,,,true,false,2026-06-15
@@ -266,7 +266,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1762446148bd848e50,"Hyper Energy /HEB KS, LLC",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1762446148bd848e53,Henderson Engineers Inc,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1762446148bd848e56,Hennessy Enterprises LLC,,NON_COMPLIANT,,,true,false,2026-06-15
-"Block Real Estate Services, LLC",69fded1762446148bd848e59,Hensley Electric Inc,,NON_COMPLIANT,,,true,false,2026-06-15
+"Block Real Estate Services, LLC",69fded1762446148bd848e59,Hensley Electric Inc,,COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1762446148bd848e5c,"Heritage First, Inc.",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1762446148bd848e5f,"Hibbett Sports / Hibbett Retail, Inc.",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1762446148bd848e62,Hoambrecker Enterprises LLC,,NON_COMPLIANT,,,true,false,2026-06-15
@@ -350,7 +350,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1a62446148bd848f5e,"Mariner Wealth Advisors / Mariner Holdings, LLC",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1a62446148bd848f61,"Blue Endo / Market-tiers, Inc.",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1a62446148bd848f64,Martinrea Riverside LLC,,NON_COMPLIANT,,,true,false,2026-06-15
-"Block Real Estate Services, LLC",69fded1a62446148bd848f67,Massage Envy,,NON_COMPLIANT,,,true,false,2026-06-15
+"Block Real Estate Services, LLC",69fded1a62446148bd848f67,Massage Envy,,COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1a62446148bd848f6d,Mattress Firm Inc,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1a62446148bd848f70,"Mavs Volleyball / MAVS, LLC",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1a62446148bd848f73,MAWD Pathology Group P.A.,,NON_COMPLIANT,,,true,false,2026-06-15
@@ -434,7 +434,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1d62446148bd849063,"The Laundry Hut, LLC / Parvin Laundry, LLC",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1d62446148bd849066,Paycom Payroll LLC,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1d62446148bd849069,PCG Wealth Management LLC,,NON_COMPLIANT,,,true,false,2026-06-15
-"Block Real Estate Services, LLC",69fded1d62446148bd84906c,Pennsylvania Tool Sales and Service Inc,,NON_COMPLIANT,,,true,false,2026-06-15
+"Block Real Estate Services, LLC",69fded1d62446148bd84906c,Pennsylvania Tool Sales and Service Inc,,COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1d62446148bd84906f,Penske Truck Leasing Co LP,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1d62446148bd849072,People First Network of Kansas LLC,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1d62446148bd849075,"Pine Ridge Management Office & BMS / PERG Buildings, LLC",,NON_COMPLIANT,,,true,false,2026-06-15
@@ -489,7 +489,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1f62446148bd849114,"Royal Gyros (Royal Donuts, LLC) / Ahed Kalifa",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1f62446148bd849117,Royal Seamless Gutter Inc,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1f62446148bd84911a,RSM US LLP,,NON_COMPLIANT,,,true,false,2026-06-15
-"Block Real Estate Services, LLC",69fded1f62446148bd849120,Ryan Poage & Company,,NON_COMPLIANT,,,true,false,2026-06-15
+"Block Real Estate Services, LLC",69fded1f62446148bd849120,Ryan Poage & Company,,NON_COMPLIANT,,,false,false,2026-06-15
 "Block Real Estate Services, LLC",69fded1f62446148bd849123,Safari Mart,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded2062446148bd849129,"Sally Beauty Co., Inc. / Sally Beauty 1717",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded2062446148bd84912c,Salon Ji,,NON_COMPLIANT,,,true,false,2026-06-15
@@ -538,7 +538,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2162446148bd8491b9,Stifel Nicolaus & Company Inc,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded2162446148bd8491bc,Stratus Surfaces LLC,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded2162446148bd8491bf,Studio Local LLC,,NON_COMPLIANT,,,true,false,2026-06-15
-"Block Real Estate Services, LLC",69fded2162446148bd8491c2,"Style Crest, Inc. (fka Durham Supply, Inc.)",,NON_COMPLIANT,,,true,false,2026-06-15
+"Block Real Estate Services, LLC",69fded2162446148bd8491c2,"Style Crest, Inc. (fka Durham Supply, Inc.)",,COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded2162446148bd8491c5,Subway #41462,,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded2162446148bd8491c8,"Subway Real Estate, LLC",,NON_COMPLIANT,,,true,false,2026-06-15
 "Block Real Estate Services, LLC",69fded2162446148bd8491cb,Summit Heating & Cooling LLC,,NON_COMPLIANT,,,true,false,2026-06-15
