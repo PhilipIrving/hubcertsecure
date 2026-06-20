@@ -1,21 +1,4 @@
 Event ID,Date,Email,Type,Subject,Client
-69bf1659d055217c964008e0,3/21/2026 21:57:07,asinfo@bxsi.com,deferral,"Reminder: Non-Compliant Insurance Verification Request for LANIER & ASSOCIATES CONSULTING ENGINEERS, INC.",Canadian Pacific Kansas City
-69bf15dcd055217c964008d5,3/21/2026 21:59:19,asinfo@bxsi.com,deferral,"Reminder: Non-Compliant Insurance Verification Request for LANIER & ASSOCIATES CONSULTING ENGINEERS, INC.",Canadian Pacific Kansas City
-69bf192787fe2c4ada7d9cd5,3/21/2026 22:11:39,andrew@acfitllc.com,open,Reminder: Non-Compliant Insurance Verification for AC Fit LLC,The Abbey Management Company
-69bf2803d055217c96400a8f,3/21/2026 23:11:53,srosas@ablawyers.com,open,Non-Compliant Insurance Verification Request - Aldrich & Bonnefin at Centerview,EMMES
-69bf39f3d055217c96400be7,3/22/2026 0:35:58,asinfo@bxsi.com,deferral,"Reminder: Non-Compliant Insurance Verification Request for LANIER & ASSOCIATES CONSULTING ENGINEERS, INC.",Canadian Pacific Kansas City
-69bf42ddd055217c96400c68,3/22/2026 1:12:35,superqlashbeauty1@gmail.com,open,Non-Compliant Insurance Verification for Super-Q Lash Beauty LLC,The Abbey Management Company
-69bf4397d055217c96400c6e,3/22/2026 1:12:42,superqlashbeauty1@gmail.com,open,Non-Compliant Insurance Verification for Super-Q Lash Beauty LLC,The Abbey Management Company
-69bf4f95d055217c96400d02,3/22/2026 2:06:09,jtejeda@futuroinfantil.org,open,"Reminder: Non-Compliant Insurance Verification for Futuro Infantil Hispano, F.F.A.,",The Abbey Management Company
-69bf577cd055217c96400ed5,3/22/2026 2:28:45,chuckta2@gmail.com,open,"Reminder: Non-Compliant Insurance Verification for C. Ong, A. Yu, J. Hung, and J. Roseli",The Abbey Management Company
-69bf57bd87fe2c4ada7da2de,3/22/2026 2:41:49,office@swzservicesinc.com,send,Non-Compliant Insurance Verification for S W Z SERVICES INC,"Paragon Geophysical Services, Inc."
-69bf5c2a87fe2c4ada7da54b,3/22/2026 2:45:08,martinya@chartermfg.com,send,Reminder: Non-Compliant Insurance Verification Request for CHARTER MANUFACTURING COMPANY INC,Canadian Pacific Kansas City
-69bf5c2ad055217c964011a9,3/22/2026 2:45:08,hughesk@chartermfg.com,send,Reminder: Non-Compliant Insurance Verification Request for CHARTER MANUFACTURING COMPANY INC,Canadian Pacific Kansas City
-69bf57dcd055217c96400f4f,3/22/2026 2:45:29,hughesk@chartermfg.com,soft_bounce,Reminder: Non-Compliant Insurance Verification Request for CHARTER MANUFACTURING COMPANY INC,Canadian Pacific Kansas City
-69bf58e6d055217c96401097,3/22/2026 2:50:04,paused@internalemail.com,reject,Reminder: Non-Compliant Insurance Verification Request for CRAFTSMAN COLLISION,Canadian Pacific Kansas City
-69bf58dcd055217c96401072,3/22/2026 2:50:05,paused@internalemail.com,rejected,,Canadian Pacific Kansas City
-69bf5ff687fe2c4ada7da59f,3/22/2026 3:10:43,asinfo@bxsi.com,deferral,"Reminder: Non-Compliant Insurance Verification Request for LANIER & ASSOCIATES CONSULTING ENGINEERS, INC.",Canadian Pacific Kansas City
-69bf633f87fe2c4ada7da5e9,3/22/2026 3:27:06,chuckta2@gmail.com,open,"Non-Compliant Insurance Verification for C. Ong, A. Yu, J. Hung, and J. Roseli",The Abbey Management Company
 69bf7947d055217c9640138d,3/22/2026 4:59:17,nfair@spectrumagency.com,open,Reminder: Non-Compliant Insurance Verification Request for - N-TRAK Group LLC for Project ﻿25177﻿: ﻿IWBC Beyer Stadium Improvements,Scandroli Construction
 69bf829d87fe2c4ada7da787,3/22/2026 5:45:11,asinfo@bxsi.com,deferral,"Reminder: Non-Compliant Insurance Verification Request for LANIER & ASSOCIATES CONSULTING ENGINEERS, INC.",Canadian Pacific Kansas City
 69bf92bbd055217c96401469,3/22/2026 6:49:29,michael@nfiptn.com,open,"Reminder: Non-Compliant Insurance Verification for Nutricion Fundamental, Inc.",The Abbey Management Company
@@ -50,23 +33,6 @@ Event ID,Date,Email,Type,Subject,Client
 69c07e56d055217c964027f3,3/22/2026 23:33:04,ar@nre.com,open,Reminder: Expiring Insurance Verification Request for NRE,Canadian Pacific Kansas City
 69c07f0987fe2c4ada7dbbcc,3/22/2026 23:35:26,heidi@alliedpotato.com,open,Reminder: Non-Compliant Insurance Verification for Allied Potato Inc. and J. Davenport,The Abbey Management Company
 69c08032d055217c96402811,3/22/2026 23:47:22,asinfo@bxsi.com,deferral,"Reminder: Non-Compliant Insurance Verification Request for LANIER & ASSOCIATES CONSULTING ENGINEERS, INC.",Canadian Pacific Kansas City
-69bf1659d055217c964008e0,3/21/2026 21:57:07,asinfo@bxsi.com,deferral,"Reminder: Non-Compliant Insurance Verification Request for LANIER & ASSOCIATES CONSULTING ENGINEERS, INC.",Canadian Pacific Kansas City
-69bf15dcd055217c964008d5,3/21/2026 21:59:19,asinfo@bxsi.com,deferral,"Reminder: Non-Compliant Insurance Verification Request for LANIER & ASSOCIATES CONSULTING ENGINEERS, INC.",Canadian Pacific Kansas City
-69bf192787fe2c4ada7d9cd5,3/21/2026 22:11:39,andrew@acfitllc.com,open,Reminder: Non-Compliant Insurance Verification for AC Fit LLC,The Abbey Management Company
-69bf2803d055217c96400a8f,3/21/2026 23:11:53,srosas@ablawyers.com,open,Non-Compliant Insurance Verification Request - Aldrich & Bonnefin at Centerview,EMMES
-69bf39f3d055217c96400be7,3/22/2026 0:35:58,asinfo@bxsi.com,deferral,"Reminder: Non-Compliant Insurance Verification Request for LANIER & ASSOCIATES CONSULTING ENGINEERS, INC.",Canadian Pacific Kansas City
-69bf42ddd055217c96400c68,3/22/2026 1:12:35,superqlashbeauty1@gmail.com,open,Non-Compliant Insurance Verification for Super-Q Lash Beauty LLC,The Abbey Management Company
-69bf4397d055217c96400c6e,3/22/2026 1:12:42,superqlashbeauty1@gmail.com,open,Non-Compliant Insurance Verification for Super-Q Lash Beauty LLC,The Abbey Management Company
-69bf4f95d055217c96400d02,3/22/2026 2:06:09,jtejeda@futuroinfantil.org,open,"Reminder: Non-Compliant Insurance Verification for Futuro Infantil Hispano, F.F.A.,",The Abbey Management Company
-69bf577cd055217c96400ed5,3/22/2026 2:28:45,chuckta2@gmail.com,open,"Reminder: Non-Compliant Insurance Verification for C. Ong, A. Yu, J. Hung, and J. Roseli",The Abbey Management Company
-69bf57bd87fe2c4ada7da2de,3/22/2026 2:41:49,office@swzservicesinc.com,send,Non-Compliant Insurance Verification for S W Z SERVICES INC,"Paragon Geophysical Services, Inc."
-69bf5c2a87fe2c4ada7da54b,3/22/2026 2:45:08,martinya@chartermfg.com,send,Reminder: Non-Compliant Insurance Verification Request for CHARTER MANUFACTURING COMPANY INC,Canadian Pacific Kansas City
-69bf5c2ad055217c964011a9,3/22/2026 2:45:08,hughesk@chartermfg.com,send,Reminder: Non-Compliant Insurance Verification Request for CHARTER MANUFACTURING COMPANY INC,Canadian Pacific Kansas City
-69bf57dcd055217c96400f4f,3/22/2026 2:45:29,hughesk@chartermfg.com,soft_bounce,Reminder: Non-Compliant Insurance Verification Request for CHARTER MANUFACTURING COMPANY INC,Canadian Pacific Kansas City
-69bf58e6d055217c96401097,3/22/2026 2:50:04,paused@internalemail.com,reject,Reminder: Non-Compliant Insurance Verification Request for CRAFTSMAN COLLISION,Canadian Pacific Kansas City
-69bf58dcd055217c96401072,3/22/2026 2:50:05,paused@internalemail.com,rejected,,Canadian Pacific Kansas City
-69bf5ff687fe2c4ada7da59f,3/22/2026 3:10:43,asinfo@bxsi.com,deferral,"Reminder: Non-Compliant Insurance Verification Request for LANIER & ASSOCIATES CONSULTING ENGINEERS, INC.",Canadian Pacific Kansas City
-69bf633f87fe2c4ada7da5e9,3/22/2026 3:27:06,chuckta2@gmail.com,open,"Non-Compliant Insurance Verification for C. Ong, A. Yu, J. Hung, and J. Roseli",The Abbey Management Company
 69bf7947d055217c9640138d,3/22/2026 4:59:17,nfair@spectrumagency.com,open,Reminder: Non-Compliant Insurance Verification Request for - N-TRAK Group LLC for Project ﻿25177﻿: ﻿IWBC Beyer Stadium Improvements,Scandroli Construction
 69bf829d87fe2c4ada7da787,3/22/2026 5:45:11,asinfo@bxsi.com,deferral,"Reminder: Non-Compliant Insurance Verification Request for LANIER & ASSOCIATES CONSULTING ENGINEERS, INC.",Canadian Pacific Kansas City
 69bf92bbd055217c96401469,3/22/2026 6:49:29,michael@nfiptn.com,open,"Reminder: Non-Compliant Insurance Verification for Nutricion Fundamental, Inc.",The Abbey Management Company
