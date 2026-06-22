@@ -51,7 +51,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0e62446148bd848b92,Arthur J Gallagher Risk Management Services Inc,,COMPLIANT,,,true,false,2026-06-22
 "Block Real Estate Services, LLC",69fded0e62446148bd848b95,Ashley Nelson Studios,,NON_COMPLIANT,,,true,false,2026-06-22
 "Block Real Estate Services, LLC",69fded0e62446148bd848b98,Aspen Properties Group,,NON_COMPLIANT,,,true,false,2026-06-22
-"Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,NON_COMPLIANT,,,true,false,2026-06-22
+"Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,COMPLIANT,,,true,false,2026-06-22
 "Block Real Estate Services, LLC",69fded0e62446148bd848ba1,Asurion LLC,,NON_COMPLIANT,,,true,false,2026-06-22
 "Block Real Estate Services, LLC",69fded0e62446148bd848ba4,Asurion UBIF,,NON_COMPLIANT,,,true,false,2026-06-22
 "Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,NON_COMPLIANT,,,true,false,2026-06-22
@@ -551,7 +551,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2262446148bd8491e0,TeamSmile Inc,,NON_COMPLIANT,,,true,false,2026-06-22
 "Block Real Estate Services, LLC",69fded2262446148bd8491e3,Tech Electronics of Kansas,,NON_COMPLIANT,,,true,false,2026-06-22
 "Block Real Estate Services, LLC",69fded2262446148bd8491e6,Telamon Technologies Corporation,,NON_COMPLIANT,,,true,false,2026-06-22
-"Block Real Estate Services, LLC",69fded2262446148bd8491e9,Temp-Con,,NON_COMPLIANT,,,true,false,2026-06-22
+"Block Real Estate Services, LLC",69fded2262446148bd8491e9,Temp-Con,,COMPLIANT,,,true,false,2026-06-22
 "Block Real Estate Services, LLC",69fded2262446148bd8491ec,Tesla Inc,,NON_COMPLIANT,,,true,false,2026-06-22
 "Block Real Estate Services, LLC",69fded2262446148bd8491ef,Test & Measurement Inc,,NON_COMPLIANT,,,true,false,2026-06-22
 "Block Real Estate Services, LLC",69fded2262446148bd8491f2,"NetSmart Technologies, Inc (sublease from TEVA Pharmaceutical USA, Inc.)",,NON_COMPLIANT,,,true,false,2026-06-22
