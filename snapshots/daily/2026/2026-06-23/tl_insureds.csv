@@ -61,7 +61,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0e62446148bd848bb3,Axiom Strategies LLC,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0e62446148bd848bb6,AXIS Capital / AXIS Reinsurance Company,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0e62446148bd848bb9,"Pet Supplies Plus / B&B Pet Products, LLC",,NON_COMPLIANT,,,true,false,2026-06-23
-"Block Real Estate Services, LLC",69fded0e62446148bd848bbc,Bachelor Controls Inc,,NON_COMPLIANT,,,true,false,2026-06-23
+"Block Real Estate Services, LLC",69fded0e62446148bd848bbc,Bachelor Controls Inc,,COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0e62446148bd848bbf,Baking With A Bass / Kayla Bass,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0e62446148bd848bc2,Bank of America,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0e62446148bd848bc5,Bankers Life and Casualty Company,,NON_COMPLIANT,,,true,false,2026-06-23
@@ -80,7 +80,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0f62446148bd848bfb,"Block Real Estate Services, LLC / Block Partners, LLC",,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0f62446148bd848c01,BluSky Restoration Contractors LLC,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0f62446148bd848c04,"BluSky Salon Suites, Inc.",,NON_COMPLIANT,,,true,false,2026-06-23
-"Block Real Estate Services, LLC",69fded0f62446148bd848c07,"BMO Harris Commercial Banking / BMO Harris Bank, NA",,NON_COMPLIANT,,,true,false,2026-06-23
+"Block Real Estate Services, LLC",69fded0f62446148bd848c07,"BMO Harris Commercial Banking / BMO Harris Bank, NA",,COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0f62446148bd848c0a,"AKKA Karate USA / BMS Fitnes Solutions, Inc. (AKKA Olathe Martial Arts)",,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0f62446148bd848c0d,Bode Cellmark Forensics Inc,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0f62446148bd848c10,"Sono Bello / Body Contour Centers, LLC",,NON_COMPLIANT,,,true,false,2026-06-23
@@ -140,7 +140,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1262446148bd848cc1,"Covisian CTX, LLC (fka RGMI Consultant / Centrinex, LLC)",,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848cc4,"Ameriprise Financial Services, LLC / Respective Wealth / Schenck, Thompson & Associates, LLC (fka Creative Collaboration)",,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848cc7,Creative Consumer Concepts Inc,,NON_COMPLIANT,,,true,false,2026-06-23
-"Block Real Estate Services, LLC",69fded1262446148bd848cca,"Crescent Electric Supply Company, Inc.",,NON_COMPLIANT,,,true,false,2026-06-23
+"Block Real Estate Services, LLC",69fded1262446148bd848cca,"Crescent Electric Supply Company, Inc.",,COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848ccd,Crescent Springs Healing Center,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848cd0,Crossroads Courier Inc,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848cd3,Crown MedRealty Partners LLC,,NON_COMPLIANT,,,true,false,2026-06-23
@@ -152,7 +152,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1262446148bd848ce5,"Thermal Mechanics, Inc. (TMI)",,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848ce8,Dairy Farmers Of America,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848ceb,Dairy Farmers of America Inc,,NON_COMPLIANT,,,true,false,2026-06-23
-"Block Real Estate Services, LLC",69fded1262446148bd848cee,"Dark Horse Coffee / Dark Horse Collective, LLC",,NON_COMPLIANT,,,true,false,2026-06-23
+"Block Real Estate Services, LLC",69fded1262446148bd848cee,"Dark Horse Coffee / Dark Horse Collective, LLC",,COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848cf1,"Retail Data Systems of KC (RDS) / Data Systems, Inc.",,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848cf4,Data Systems International/ Nextworld / Cloud Inventory,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848cf7,DataLocker Inc,,COMPLIANT,,,true,false,2026-06-23
@@ -485,7 +485,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1f62446148bd849108,"Rosen's, Inc.",,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1f62446148bd84910b,Roto-Rooter Services Company Inc,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1f62446148bd84910e,Rottler Pest & Lawn Solutions / Rottler Pest Control Company,,NON_COMPLIANT,,,true,false,2026-06-23
-"Block Real Estate Services, LLC",69fded1f62446148bd849111,"Taco Bell / Royal City Bell, LLC",,NON_COMPLIANT,,,true,false,2026-06-23
+"Block Real Estate Services, LLC",69fded1f62446148bd849111,"Taco Bell / Royal City Bell, LLC",,COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1f62446148bd849114,"Royal Gyros (Royal Donuts, LLC) / Ahed Kalifa",,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1f62446148bd849117,Royal Seamless Gutter Inc,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1f62446148bd84911a,RSM US LLP,,NON_COMPLIANT,,,true,false,2026-06-23
@@ -520,7 +520,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2162446148bd84917d,Soar Nutrition,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded2162446148bd849180,Sobriety First,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded2162446148bd849183,"Soleran, Inc. (sublease from Sunflower Health Plan / Centene Management Company, LLC)",,NON_COMPLIANT,,,true,false,2026-06-23
-"Block Real Estate Services, LLC",69fded2162446148bd849189,South Western Communications Inc,,NON_COMPLIANT,,,true,false,2026-06-23
+"Block Real Estate Services, LLC",69fded2162446148bd849189,South Western Communications Inc,,COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded2162446148bd84918c,Southwest Solutions Group Inc,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded2162446148bd849192,Sport Clips,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded2162446148bd849195,Sports Rehab & Physical Therapy Inc,,NON_COMPLIANT,,,true,false,2026-06-23
