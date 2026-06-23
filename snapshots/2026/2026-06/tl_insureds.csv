@@ -7,7 +7,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0c62446148bd848b08,"Ray's Donuts & Deli / 6tinos, LLC",,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0c62446148bd848b0b,717 Office Group LLC,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0c62446148bd848b0e,A.N.D. Design Studio LLC,,NON_COMPLIANT,,,true,false,2026-06-23
-"Block Real Estate Services, LLC",69fded0c62446148bd848b14,Academy Bank,,NON_COMPLIANT,,,true,false,2026-06-23
+"Block Real Estate Services, LLC",69fded0c62446148bd848b14,Academy Bank,,COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0c62446148bd848b17,"Pertronix (Aeromotive) / Accelerate Auto Works Intermediate, LLC",,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0c62446148bd848b1a,Actuarial Resources Corporation (ARC),,COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded0c62446148bd848b1d,"Adams Cable Equipment, Inc.",,NON_COMPLIANT,,,true,false,2026-06-23
@@ -128,7 +128,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1162446148bd848c9d,Concrete Strategies LLC,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1162446148bd848ca0,"CKF / Consolidated Supply, Inc.",,COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1162446148bd848ca3,Converge LLC,,NON_COMPLIANT,,,true,false,2026-06-23
-"Block Real Estate Services, LLC",69fded1162446148bd848ca6,Convergint Technologies LLC,,NON_COMPLIANT,,,true,false,2026-06-23
+"Block Real Estate Services, LLC",69fded1162446148bd848ca6,Convergint Technologies LLC,,COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1162446148bd848ca9,Core Adventures LLC,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1162446148bd848cac,CORE Cashless LLC,,NON_COMPLIANT,,,true,false,2026-06-23
 "Block Real Estate Services, LLC",69fded1162446148bd848caf,Cornerstones Barbershop LLC,,NON_COMPLIANT,,,true,false,2026-06-23

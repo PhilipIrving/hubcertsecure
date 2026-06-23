@@ -41,7 +41,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0f62446148bd848be3,"Best Wash Laundromats / Best Wash Holdings, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848cee,"Dark Horse Coffee / Dark Horse Collective, LLC",,Commercial General Liability,commercialGeneralLiability,,,2025-12-10,2026-12-10,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848cee,"Dark Horse Coffee / Dark Horse Collective, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-12-10,2026-12-10,,,,,2026-06-23
-"Block Real Estate Services, LLC",69fded1262446148bd848cee,"Dark Horse Coffee / Dark Horse Collective, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-23
+"Block Real Estate Services, LLC",69fded1262446148bd848cee,"Dark Horse Coffee / Dark Horse Collective, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-12-10,2026-12-10,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848cee,"Dark Horse Coffee / Dark Horse Collective, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded2562446148bd8492d0,"The Zen Den Massage / Calm Seas, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded2562446148bd8492d0,"The Zen Den Massage / Calm Seas, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-23
@@ -963,8 +963,8 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2062446148bd849153,Anthony's Plumbing,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded2062446148bd849153,Anthony's Plumbing,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded2062446148bd849153,Anthony's Plumbing,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-23
-"Block Real Estate Services, LLC",69fded0e62446148bd848bad,Recognition Plus Audio Video Graphics,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-23
-"Block Real Estate Services, LLC",69fded0e62446148bd848bad,Recognition Plus Audio Video Graphics,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-23
+"Block Real Estate Services, LLC",69fded0e62446148bd848bad,Recognition Plus Audio Video Graphics,,Commercial General Liability,commercialGeneralLiability,,,2026-02-01,2027-02-01,,,,,2026-06-23
+"Block Real Estate Services, LLC",69fded0e62446148bd848bad,Recognition Plus Audio Video Graphics,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-02-01,2027-02-01,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded0e62446148bd848bad,Recognition Plus Audio Video Graphics,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded0e62446148bd848bad,Recognition Plus Audio Video Graphics,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1b62446148bd848fb8,MIdwest Model Railroad LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-23
@@ -974,7 +974,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-03-20,2027-03-20,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-19,2027-03-20,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-23
-"Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-03-20,2027-03-20,,,,,2026-06-23
+"Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-03-30,2027-03-30,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1662446148bd848e29,Internal Revenue Service / Government Services Administration (GSA),,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1662446148bd848e29,Internal Revenue Service / Government Services Administration (GSA),,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1662446148bd848e29,Internal Revenue Service / Government Services Administration (GSA),,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-23
@@ -1160,7 +1160,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1562446148bd848dc6,Foxx Equipment Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-12-31,2026-12-31,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1562446148bd848dc6,Foxx Equipment Company,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-12-31,2026-12-31,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1c62446148bd849000,New Lawn LLC,,Commercial General Liability,commercialGeneralLiability,,,2025-08-28,2026-08-28,,,,,2026-06-23
-"Block Real Estate Services, LLC",69fded1c62446148bd849000,New Lawn LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-23
+"Block Real Estate Services, LLC",69fded1c62446148bd849000,New Lawn LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-22,2026-09-06,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1c62446148bd849000,New Lawn LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-02-03,2027-02-03,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1c62446148bd849000,New Lawn LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-09-28,2026-08-28,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1b62446148bd848faf,"Midwest Administrative Services, LLC (fka Fail-Safe Product Protection, Inc.) (Vacating 6/30/26)",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-23
@@ -2258,7 +2258,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1262446148bd848cf1,"Retail Data Systems of KC (RDS) / Data Systems, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-06-15,2027-06-15,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848cf1,"Retail Data Systems of KC (RDS) / Data Systems, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-15,2027-06-15,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1262446148bd848cf1,"Retail Data Systems of KC (RDS) / Data Systems, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-15,2027-06-15,,,,,2026-06-23
-"Block Real Estate Services, LLC",69fded1262446148bd848cf1,"Retail Data Systems of KC (RDS) / Data Systems, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-23
+"Block Real Estate Services, LLC",69fded1262446148bd848cf1,"Retail Data Systems of KC (RDS) / Data Systems, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-15,2027-06-15,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1d62446148bd849057,"W + D North America, Inc. / Paper Converting Machine Corporation/BW Converting",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1d62446148bd849057,"W + D North America, Inc. / Paper Converting Machine Corporation/BW Converting",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-23
 "Block Real Estate Services, LLC",69fded1d62446148bd849057,"W + D North America, Inc. / Paper Converting Machine Corporation/BW Converting",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-23
