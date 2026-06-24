@@ -1,38 +1,8 @@
 [
   {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "8cff6c86-9d84-4007-8608-06b273225128",
-    "error": "HTTP 500 on /insurance/insureds/8cff6c86-9d84-4007-8608-06b273225128/status: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "d158599b-a82d-4dac-ada6-a2b1d410f81e",
-    "error": "HTTP 500 on /insurance/insureds/d158599b-a82d-4dac-ada6-a2b1d410f81e/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
-  },
-  {
-    "client": "EMMES",
-    "stage": "criteria",
-    "insured": "ef7d5b93-f5ad-467e-8244-91d3397f2832",
-    "error": "HTTP 500 on /insurance/insureds/ef7d5b93-f5ad-467e-8244-91d3397f2832/status: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "criteria",
-    "insured": "5ed92553-95ba-49cc-b475-b173de237bc4",
-    "error": "HTTP 500 on /insurance/insureds/5ed92553-95ba-49cc-b475-b173de237bc4/status: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
-  },
-  {
     "client": "ESS Companies",
     "stage": "coverage_data",
-    "insured": "cbc729f5-851a-4074-a0eb-64e81cc0af5c",
-    "error": "HTTP 500 on /insurance/insureds/cbc729f5-851a-4074-a0eb-64e81cc0af5c/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "coverage_data",
-    "insured": "698f6d8d-9807-4e5e-8978-54629de16803",
-    "error": "HTTP 500 on /insurance/insureds/698f6d8d-9807-4e5e-8978-54629de16803/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+    "insured": "217e5fa8-bb8e-4552-b739-b4a31c355eda",
+    "error": "HTTP 500 on /insurance/insureds/217e5fa8-bb8e-4552-b739-b4a31c355eda/data: {\"message\":\"Unexpected error: please contact system administrator.\",\"error\":\"Unknown\"}"
   }
 ]
