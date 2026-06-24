@@ -323,9 +323,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1362446148bd848d4b,Edward D Jones & Co LP,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-24
 "Block Real Estate Services, LLC",69fded1362446148bd848d4b,Edward D Jones & Co LP,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-24
 "Block Real Estate Services, LLC",69fded1362446148bd848d4b,Edward D Jones & Co LP,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-24
-"Block Real Estate Services, LLC",69fded1b62446148bd848f97,"Melcher Investment Company, LP",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-24
+"Block Real Estate Services, LLC",69fded1b62446148bd848f97,"Melcher Investment Company, LP",,Commercial General Liability,commercialGeneralLiability,,,2026-01-15,2027-01-15,,,,,2026-06-24
 "Block Real Estate Services, LLC",69fded1b62446148bd848f97,"Melcher Investment Company, LP",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-24
-"Block Real Estate Services, LLC",69fded1b62446148bd848f97,"Melcher Investment Company, LP",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-24
+"Block Real Estate Services, LLC",69fded1b62446148bd848f97,"Melcher Investment Company, LP",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-02-01,2027-02-01,,,,,2026-06-24
 "Block Real Estate Services, LLC",69fded1b62446148bd848f97,"Melcher Investment Company, LP",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-24
 "Block Real Estate Services, LLC",69fded1562446148bd848df0,Gateway Spine & Joint LLC,,Commercial General Liability,commercialGeneralLiability,,,2025-07-27,2026-07-27,,,,,2026-06-24
 "Block Real Estate Services, LLC",69fded1562446148bd848df0,Gateway Spine & Joint LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-24
