@@ -1,0 +1,4 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Bauer Foundation Corp.,9e0f2183-1e17-40d5-a959-6d4d0816691a,,e9170409-57f9-4c35-9896-3ad8c7fc13a6,,,2026-06-24T22:05:25,,,,,,06/24/2026,06/24/2026 22:47:58
+Scandroli Construction,33a3a182-67fb-4a9e-9a45-b2ce2a956d58,,,,,2026-06-25T01:39:20,,,,,,06/24/2026,06/24/2026 22:48:11
+Scandroli Construction,6eae20c1-88d3-4d22-a30b-b07cb3cf0c25,,afbb9360-d3ec-407d-a2a1-e936887f137b,,,2026-06-25T01:39:20,,,,,,06/24/2026,06/24/2026 22:48:11
