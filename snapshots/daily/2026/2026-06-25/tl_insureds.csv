@@ -17,7 +17,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0c62446148bd848b29,Advanced Pharmaceuticals LLC,,NON_COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded0c62446148bd848b2c,Advanced Turf Solutions Inc,,COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded0c62446148bd848b2f,"Daymon / Advantage Sales & Marketing, LLC",,NON_COMPLIANT,,,true,false,2026-06-25
-"Block Real Estate Services, LLC",69fded0c62446148bd848b32,Advocate Construction Inc,,NON_COMPLIANT,,,true,false,2026-06-25
+"Block Real Estate Services, LLC",69fded0c62446148bd848b32,Advocate Construction Inc,,COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded0d62446148bd848b35,"Aircraft Electrical / AEE-EMF, Inc.",,NON_COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded0d62446148bd848b3b,Agape Montessori School/Pulliam Properties LLC,,NON_COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded0d62446148bd848b3e,AgForce Transport Services / Consolidated Grain and Barge Co.,,NON_COMPLIANT,,,true,false,2026-06-25
@@ -432,7 +432,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1d62446148bd84905d,Nitto Denko Automotive / Parkers America,,NON_COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded1d62446148bd849060,Parris Communications,,NON_COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded1d62446148bd849063,"The Laundry Hut, LLC / Parvin Laundry, LLC",,NON_COMPLIANT,,,true,false,2026-06-25
-"Block Real Estate Services, LLC",69fded1d62446148bd849066,Paycom Payroll LLC,,NON_COMPLIANT,,,true,false,2026-06-25
+"Block Real Estate Services, LLC",69fded1d62446148bd849066,Paycom Payroll LLC,,COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded1d62446148bd849069,PCG Wealth Management LLC,,NON_COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded1d62446148bd84906c,Pennsylvania Tool Sales and Service Inc,,COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded1d62446148bd84906f,Penske Truck Leasing Co LP,,NON_COMPLIANT,,,true,false,2026-06-25
@@ -548,7 +548,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2262446148bd8491d7,"SPI Coatings / Superior Products International II, Inc.",,NON_COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded2262446148bd8491da,Southwestern Bell Telephone Company - IT Room,,NON_COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded2262446148bd8491dd,Tallgrass Energy / Tallgrass MLP,,NON_COMPLIANT,,,true,false,2026-06-25
-"Block Real Estate Services, LLC",69fded2262446148bd8491e0,TeamSmile Inc,,NON_COMPLIANT,,,true,false,2026-06-25
+"Block Real Estate Services, LLC",69fded2262446148bd8491e0,TeamSmile Inc,,COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded2262446148bd8491e3,Tech Electronics of Kansas,,NON_COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded2262446148bd8491e6,Telamon Technologies Corporation,,NON_COMPLIANT,,,true,false,2026-06-25
 "Block Real Estate Services, LLC",69fded2262446148bd8491e9,Temp-Con,,COMPLIANT,,,true,false,2026-06-25
