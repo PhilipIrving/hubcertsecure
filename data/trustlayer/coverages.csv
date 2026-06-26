@@ -959,9 +959,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1c62446148bd848feb,Neenan Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-26
 "Block Real Estate Services, LLC",69fded1c62446148bd848feb,Neenan Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-26
 "Block Real Estate Services, LLC",69fded1c62446148bd848feb,Neenan Company,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-26
-"Block Real Estate Services, LLC",69fded2062446148bd849153,Anthony's Plumbing,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-26
-"Block Real Estate Services, LLC",69fded2062446148bd849153,Anthony's Plumbing,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-26
-"Block Real Estate Services, LLC",69fded2062446148bd849153,Anthony's Plumbing,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-26
+"Block Real Estate Services, LLC",69fded2062446148bd849153,Anthony's Plumbing,,Commercial General Liability,commercialGeneralLiability,,,2025-12-31,2026-12-31,,,,,2026-06-26
+"Block Real Estate Services, LLC",69fded2062446148bd849153,Anthony's Plumbing,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-12-31,2026-12-31,,,,,2026-06-26
+"Block Real Estate Services, LLC",69fded2062446148bd849153,Anthony's Plumbing,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-12-31,2026-12-31,,,,,2026-06-26
 "Block Real Estate Services, LLC",69fded2062446148bd849153,Anthony's Plumbing,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-26
 "Block Real Estate Services, LLC",69fded0e62446148bd848bad,Recognition Plus Audio Video Graphics,,Commercial General Liability,commercialGeneralLiability,,,2026-02-01,2027-02-01,,,,,2026-06-26
 "Block Real Estate Services, LLC",69fded0e62446148bd848bad,Recognition Plus Audio Video Graphics,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-02-01,2027-02-01,,,,,2026-06-26
@@ -2755,9 +2755,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2462446148bd8492b2,West Shore Home LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-26
 "Block Real Estate Services, LLC",69fded2462446148bd8492b2,West Shore Home LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-26
 "Block Real Estate Services, LLC",69fded2462446148bd8492b2,West Shore Home LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-26
-"Block Real Estate Services, LLC",69fded1862446148bd848eb3,Johnson Granite Supply Inc,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-26
-"Block Real Estate Services, LLC",69fded1862446148bd848eb3,Johnson Granite Supply Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-26
-"Block Real Estate Services, LLC",69fded1862446148bd848eb3,Johnson Granite Supply Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-06-26
+"Block Real Estate Services, LLC",69fded1862446148bd848eb3,Johnson Granite Supply Inc,,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-06-26
+"Block Real Estate Services, LLC",69fded1862446148bd848eb3,Johnson Granite Supply Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-06-26
+"Block Real Estate Services, LLC",69fded1862446148bd848eb3,Johnson Granite Supply Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-06-26
 "Block Real Estate Services, LLC",69fded1862446148bd848eb3,Johnson Granite Supply Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-06-26
 "Block Real Estate Services, LLC",69fded2162446148bd849198,"Sports Rehab and Physical Therapy Associates, Inc. (sublease from Kansas City Bone & Joint)",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-06-26
 "Block Real Estate Services, LLC",69fded2162446148bd849198,"Sports Rehab and Physical Therapy Associates, Inc. (sublease from Kansas City Bone & Joint)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-06-26
