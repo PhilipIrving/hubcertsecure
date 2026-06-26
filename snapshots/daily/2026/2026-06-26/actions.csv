@@ -1,12 +1,6 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,e6b56912-cb8b-49be-a6ef-e21096ecc900,,,,,2026-06-26T03:07:10,,,,,,06/26/2026,06/26/2026 05:58:11
-Bauer Foundation Corp.,f3bb596b-115c-4cd2-9d78-08bc29c273cf,,244172c0-7202-41e2-9e9e-d52073dd05c7,,,2026-06-26T03:07:10,,,,,,06/26/2026,06/26/2026 05:58:11
-Scandroli Construction,bf8be7f7-2521-40df-a8fa-ffefb048c197,,,,,2026-06-26T04:53:21,,,,,,06/26/2026,06/26/2026 05:58:24
-Scandroli Construction,c7b68e9a-f58b-47bc-abcd-0e8ff600a582,,541c9810-8cc8-44a8-81f7-dd671e81785f,,,2026-06-26T04:53:21,,,,,,06/26/2026,06/26/2026 05:58:24
-The Abbey Management Company,0a24b3b6-33c9-4ad7-90a1-8f2c4ab1e8f8,,,,,2026-06-26T09:08:02,,,,,,06/26/2026,06/26/2026 05:58:25
-The Abbey Management Company,35cb521e-8011-4a50-b31e-ed846871d07e,,,,,2026-06-26T09:08:02,,,,,,06/26/2026,06/26/2026 05:58:25
-The Abbey Management Company,40e95df1-b1c5-4592-b79f-fd5cc0e5321c,,1781ab83-aacf-479c-8279-25a8c1bdd5bf,,,2026-06-26T09:20:19,,,,,,06/26/2026,06/26/2026 05:58:25
-The Abbey Management Company,7ce52fa3-b1ad-4c40-b3ac-e512e3142738,,,,,2026-06-26T09:20:19,,,,,,06/26/2026,06/26/2026 05:58:25
-The Abbey Management Company,8a119c3d-5bb1-4a5c-b3a9-92d4e595c709,,1781ab83-aacf-479c-8279-25a8c1bdd5bf,,,2026-06-26T09:20:19,,,,,,06/26/2026,06/26/2026 05:58:25
-The Abbey Management Company,9c9ce552-fee7-4c60-9f29-fbec43cd7d0e,,,,,2026-06-26T09:20:19,,,,,,06/26/2026,06/26/2026 05:58:25
-The Abbey Management Company,aa46e133-dd47-4fd3-83a9-1cbfda8b067e,,2916174d-cc27-4973-9e25-4fca78ec5b85,,,2026-06-26T09:08:02,,,,,,06/26/2026,06/26/2026 05:58:25
+Canadian Pacific Kansas City,415d01d0-251c-40d6-aff2-e9cf66776008,,6ece9b20-84b3-48e2-8707-7c46696df119,,,2026-06-26T15:22:34,,,,,,06/26/2026,06/26/2026 12:53:04
+Canadian Pacific Kansas City,85f21f67-2d4f-43bf-9e43-9434b180d1f8,,,,,2026-06-26T16:03:31,,,,,,06/26/2026,06/26/2026 12:53:04
+Canadian Pacific Kansas City,87f382c7-c136-4f44-997d-8fe5f6709b3b,,,,,2026-06-26T16:03:31,,,,,,06/26/2026,06/26/2026 12:53:04
+Canadian Pacific Kansas City,b0cd88a5-a4a6-49ec-9238-e13d838455a8,,,,,2026-06-26T14:48:16,,,,,,06/26/2026,06/26/2026 12:53:04
+Canadian Pacific Kansas City,b6967afd-8df4-4ad0-b253-5c941de54a77,,,,,2026-06-26T17:01:03,,,,,,06/26/2026,06/26/2026 12:53:04
