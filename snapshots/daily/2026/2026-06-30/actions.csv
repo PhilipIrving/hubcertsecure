@@ -1,0 +1,5 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Mizuho Bank,11dbfb4e-30f1-4b30-826f-255b50fee8e4,,,,,2026-06-29T19:33:38,,,,,,06/29/2026,06/29/2026 16:31:13
+Mizuho Bank,2cb7766d-abc9-49e9-a583-480e06a21afe,,e30f03bd-c221-43a1-af0b-5416c92aebc0,,,2026-06-29T17:20:42,,,,,,06/29/2026,06/29/2026 16:31:13
+Mizuho Bank,708986f8-f9fb-4d7b-82c7-056f33942697,,,,,2026-06-29T17:20:42,,,,,,06/29/2026,06/29/2026 16:31:13
+Mizuho Bank,ecad88a8-4ddd-42cf-a754-43c8642d6932,,,,,2026-06-29T17:20:42,,,,,,06/29/2026,06/29/2026 16:31:13
