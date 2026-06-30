@@ -150,7 +150,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1262446148bd848cdf,"D.A. Davidson, Inc. / DA Davidson & Co.",,NON_COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1262446148bd848ce2,"Roadhouse Restaurant / Dactyl, LLC",,NON_COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1262446148bd848ce5,"Thermal Mechanics, Inc. (TMI)",,NON_COMPLIANT,,,true,false,2026-06-30
-"Block Real Estate Services, LLC",69fded1262446148bd848ce8,Dairy Farmers Of America,,NON_COMPLIANT,,,true,false,2026-06-30
+"Block Real Estate Services, LLC",69fded1262446148bd848ce8,Dairy Farmers Of America,,COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1262446148bd848ceb,Dairy Farmers of America Inc,,NON_COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1262446148bd848cee,"Dark Horse Coffee / Dark Horse Collective, LLC",,COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1262446148bd848cf1,"Retail Data Systems of KC (RDS) / Data Systems, Inc.",,NON_COMPLIANT,,,true,false,2026-06-30
@@ -189,7 +189,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1362446148bd848d57,"NTR Metals / Elemental Direct USA, LLC",,NON_COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1362446148bd848d5a,Elliott Electric Supply Inc,,NON_COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1362446148bd848d5d,Elysian Salon and Spa LLC,,COMPLIANT,,,true,false,2026-06-30
-"Block Real Estate Services, LLC",69fded1362446148bd848d60,Emerson Ecologics LLC,,NON_COMPLIANT,,,true,false,2026-06-30
+"Block Real Estate Services, LLC",69fded1362446148bd848d60,Emerson Ecologics LLC,,COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1362446148bd848d63,Employers Mutual Casualty Company (EMC Insurance),,NON_COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1462446148bd848d66,"EnerSys Delaware, Inc",,NON_COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1462446148bd848d69,"Engaged Athletics Training Center / Engaged Holdings, LLC",,NON_COMPLIANT,,,true,false,2026-06-30
@@ -426,7 +426,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1d62446148bd84904b,Pacific Dental Services Inc,,NON_COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1d62446148bd84904e,Pack3000 LLC,,COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1d62446148bd849051,"Hydro Ponics / River Market Hydro / Palm Green, LLC",,NON_COMPLIANT,,,true,false,2026-06-30
-"Block Real Estate Services, LLC",69fded1d62446148bd849054,Papa Murphy's / Papa's Partners,,NON_COMPLIANT,,,true,false,2026-06-30
+"Block Real Estate Services, LLC",69fded1d62446148bd849054,Papa Murphy's / Papa's Partners,,COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1d62446148bd849057,"W + D North America, Inc. / Paper Converting Machine Corporation/BW Converting",,NON_COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1d62446148bd84905a,Park Hill Alano Club,,NON_COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1d62446148bd84905d,Nitto Denko Automotive / Parkers America,,NON_COMPLIANT,,,true,false,2026-06-30
@@ -455,7 +455,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1e62446148bd8490a8,Power Sales & Advertising Inc,,NON_COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1e62446148bd8490ab,Prairie Engineers PC,,COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1e62446148bd8490ae,Prestige Land Title LLC,,NON_COMPLIANT,,,true,false,2026-06-30
-"Block Real Estate Services, LLC",69fded1e62446148bd8490b1,"Prime Source Building Products, Inc.",,NON_COMPLIANT,,,true,false,2026-06-30
+"Block Real Estate Services, LLC",69fded1e62446148bd8490b1,"Prime Source Building Products, Inc.",,COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1e62446148bd8490b4,Principal Life Insurance Company,,NON_COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1e62446148bd8490b7,Pro Concrete Design Inc,,NON_COMPLIANT,,,true,false,2026-06-30
 "Block Real Estate Services, LLC",69fded1e62446148bd8490ba,Professional Toxicology Services Inc,,NON_COMPLIANT,,,true,false,2026-06-30

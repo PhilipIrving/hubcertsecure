@@ -42,7 +42,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdefb802bb2c42a879f4b6,"bf3945 - Riverside Business Center 4 {Block Income Fund III, LP}",Project,active,,,,,,2026-05-08,2026-06-18,2026-06-30
 "Block Real Estate Services, LLC",69fdefbc0e86e2f8723d93ac,"bf3946 - Riverside Business Center 5 {Block Income Fund III, LP}",Project,active,,,,,,2026-05-08,2026-06-25,2026-06-30
 "Block Real Estate Services, LLC",69fdefc138cbea6b3a68d4da,"bf3947 - Riverside Business Center 6 {Block Income Fund III, LP}",Project,active,,,,,,2026-05-08,2026-06-18,2026-06-30
-"Block Real Estate Services, LLC",69fdefc60bb484cab513a701,"bf4306 - Prime Source Associates, LLC",Project,active,,,,,,2026-05-08,2026-06-18,2026-06-30
+"Block Real Estate Services, LLC",69fdefc60bb484cab513a701,"bf4306 - Prime Source Associates, LLC",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
 "Block Real Estate Services, LLC",69fdefe60bb484cab513acd9,"bkp362 - Nieman Business Park Building C {BK Properties, LLC}",Project,active,,,,,,2026-05-08,2026-06-21,2026-06-30
 "Block Real Estate Services, LLC",69fdefeafa0b60fcd50d7a68,"bkp363 - Nieman Business Park Building D {BK Properties,LLC}",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
 "Block Real Estate Services, LLC",69fdeff702bb2c42a87a062f,"ccc268 - CityPlace Corporate Centre I {Cityplace Corporate Centre I Investors, LLC}",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
@@ -79,7 +79,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf07103a2257cd27deaeb,"kci291 - Platte Valley Industrial Center 11 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-06-30
 "Block Real Estate Services, LLC",69fdf07502bb2c42a87a2174,"kci862 - Riverside Distribution Center 2 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-06-21,2026-06-30
 "Block Real Estate Services, LLC",69fdf07f0e86e2f8723dbc32,"kci863 - Riverside Distribution Center 3 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-06-30
-"Block Real Estate Services, LLC",69fdf08238cbea6b3a6909f0,"kci864 - Riverside Distribution Center 4 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-06-29,2026-06-30
+"Block Real Estate Services, LLC",69fdf08238cbea6b3a6909f0,"kci864 - Riverside Distribution Center 4 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
 "Block Real Estate Services, LLC",69fdf0850bb484cab513cb76,"kci865 - Riverside Distribution Center 5 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
 "Block Real Estate Services, LLC",69fdf0870e86e2f8723dbdc2,"kci891 - Riverside Industrial Center 1 {Riverside Industrial Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
 "Block Real Estate Services, LLC",69fdf08a38cbea6b3a6914e6,"kci892 - Riverside Industrial Center 2 {Riverside Industrial Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-06-22,2026-06-30
@@ -110,9 +110,9 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf0e8e45e7dcf5c43943f,"prg808 - Pine Ridge Building G {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-25,2026-06-30
 "Block Real Estate Services, LLC",69fdf0eb0bb484cab513e3dd,"prg811 - Pine Ridge Building K {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-21,2026-06-30
 "Block Real Estate Services, LLC",69fdf0ef38cbea6b3a692ebb,"prg812 - Pine Ridge Building L {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
-"Block Real Estate Services, LLC",69fdf0f202bb2c42a87a3f39,"prg815 - One Pine Ridge Plaza {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-22,2026-06-30
+"Block Real Estate Services, LLC",69fdf0f202bb2c42a87a3f39,"prg815 - One Pine Ridge Plaza {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
 "Block Real Estate Services, LLC",69fdf0f63b208288e0a8013d,"prg835 - Pine Ridge Building 5 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
-"Block Real Estate Services, LLC",69fdf0fc7f8ab8a84b286ed0,"prg837 - Pine Ridge Building 11 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-22,2026-06-30
+"Block Real Estate Services, LLC",69fdf0fc7f8ab8a84b286ed0,"prg837 - Pine Ridge Building 11 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
 "Block Real Estate Services, LLC",69fdf10038cbea6b3a6932b8,"prg838 - Pine Ridge Building 12 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
 "Block Real Estate Services, LLC",69fdf103e45e7dcf5c439919,"prg839 - Pine Ridge Building 18 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-23,2026-06-30
 "Block Real Estate Services, LLC",69fdf10643ffeed6de3b1f8e,"prg841 - Pine Ridge Building 19 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
@@ -156,7 +156,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf1b6d3bfa5e4945e38f8,"tic714 - Quivira Randol Building 2 {Quivira 91 Associates, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-06-30
 "Block Real Estate Services, LLC",69fdf1bad3bfa5e4945e3941,"tic723 - 3737 Investors, LLC",Project,active,,,,,,2026-05-08,2026-06-22,2026-06-30
 "Block Real Estate Services, LLC",69fdf1e402bb2c42a87a8a64,"tic765 - College Crossing C {College Crossing CD, LLC}",Project,active,,,,,,2026-05-08,2026-06-21,2026-06-30
-"Block Real Estate Services, LLC",69fdf1e83b208288e0a85c52,"tic777 - Lenexa Logistics Centre East Building 3 {Lenexa Logistics East 3, LLC}",Project,active,,,,,,2026-05-08,2026-06-29,2026-06-30
+"Block Real Estate Services, LLC",69fdf1e83b208288e0a85c52,"tic777 - Lenexa Logistics Centre East Building 3 {Lenexa Logistics East 3, LLC}",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
 "Block Real Estate Services, LLC",69fdf1eb02bb2c42a87a8cf8,"tic782 - Executive Park Distribution Center #3 {Cal Vent Group, LTD}",Project,active,,,,,,2026-05-08,2026-06-18,2026-06-30
 "Block Real Estate Services, LLC",69fdf1ee3b208288e0a8697e,"tic783 - Lamar Distribution Center #1 {Cal Vent Group, LTD}",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
 "Block Real Estate Services, LLC",69fdf1f18e25e7a0d918af0d,"tic784 - Macon-Bedford Distribution Center #1 {Cal Vent Group, LTD}",Project,active,,,,,,2026-05-08,2026-06-30,2026-06-30
