@@ -1,19 +1,5 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,70dce6fd-22dd-4aed-9203-19db5c6e7a00,,244172c0-7202-41e2-9e9e-d52073dd05c7,,,2026-06-30T07:35:57,,,,,,06/30/2026,06/30/2026 09:27:02
-Canadian Pacific Kansas City,7256232d-dd20-470d-b2b9-598d2c2b8a84,,,,,2026-06-30T07:04:10,,,,,,06/30/2026,06/30/2026 09:27:02
-Canadian Pacific Kansas City,bc43e81f-445b-4b84-b6cc-5064da8816d1,,f33ff614-8624-470b-9913-8e60f52fea68,,,2026-06-30T06:48:08,,,,,,06/30/2026,06/30/2026 09:27:02
-Canadian Pacific Kansas City,bdc9d6e6-8659-4e13-b5bf-35e33583c45e,,7d5a12de-6822-4236-84d2-135264d9c98c,,,2026-06-30T06:16:33,,,,,,06/30/2026,06/30/2026 09:27:02
-Canadian Pacific Kansas City,f6710921-4129-485a-bc8d-b8be604dab16,,d961a856-5bb4-4e6f-bf25-7c5ba6d1372f,,,2026-06-30T06:45:16,,,,,,06/30/2026,06/30/2026 09:27:02
-Gart Properties,8344d2f9-b463-4337-bab2-27fd993861f9,,,,,2026-06-30T05:59:15,,,,,,06/30/2026,06/30/2026 09:27:02
-Mizuho Bank,11dbfb4e-30f1-4b30-826f-255b50fee8e4,,,,,2026-06-29T19:33:38,,,,,,06/30/2026,06/30/2026 09:27:07
-Mizuho Bank,2cb7766d-abc9-49e9-a583-480e06a21afe,,e30f03bd-c221-43a1-af0b-5416c92aebc0,,,2026-06-29T17:20:42,,,,,,06/30/2026,06/30/2026 09:27:07
-Mizuho Bank,708986f8-f9fb-4d7b-82c7-056f33942697,,,,,2026-06-29T17:20:42,,,,,,06/30/2026,06/30/2026 09:27:07
-Mizuho Bank,ecad88a8-4ddd-42cf-a754-43c8642d6932,,,,,2026-06-29T17:20:42,,,,,,06/30/2026,06/30/2026 09:27:07
-Scandroli Construction,716135ae-c8ee-46bf-929d-678b2d771cbd,,,,,2026-06-30T07:52:30,,,,,,06/30/2026,06/30/2026 09:27:15
-Scandroli Construction,a3ebc50d-e679-491e-8619-37a8de8a1be1,,23aaf06c-1a73-486b-96a5-016fe57ad6df,,,2026-06-30T07:52:30,,,,,,06/30/2026,06/30/2026 09:27:15
-The Abbey Management Company,43828edf-153e-4c82-bbec-e937bb9637c2,,,,,2026-06-30T05:36:54,,,,,,06/30/2026,06/30/2026 09:27:16
-The Abbey Management Company,4e873d7a-4c88-4007-b2db-c3939d95de22,,,,,2026-06-30T12:21:45,,,,,,06/30/2026,06/30/2026 09:27:16
-The Abbey Management Company,662f32c3-3998-400a-824e-5816b803f796,,,,,2026-06-30T12:17:46,,,,,,06/30/2026,06/30/2026 09:27:16
-The Abbey Management Company,a74de320-8387-4e27-9bcf-188bccee5e8e,,ad891703-1e77-4b11-8bfa-b150a2bced18,,,2026-06-30T13:24:18,,,,,,06/30/2026,06/30/2026 09:27:16
-The Abbey Management Company,b50a1c00-e147-46da-b153-6337c1fcfbe7,,,,,2026-06-30T13:24:18,,,,,,06/30/2026,06/30/2026 09:27:16
-The Abbey Management Company,d6144c73-522f-47b6-84c5-493d57ce7c2c,,,,,2026-06-30T12:21:45,,,,,,06/30/2026,06/30/2026 09:27:16
+Bauer Foundation Corp.,70dce6fd-22dd-4aed-9203-19db5c6e7a00,,244172c0-7202-41e2-9e9e-d52073dd05c7,,,2026-06-30T07:35:57,,,,,,06/30/2026,06/30/2026 13:02:18
+The Abbey Management Company,4e873d7a-4c88-4007-b2db-c3939d95de22,,,,,2026-06-30T12:21:45,,,,,,06/30/2026,06/30/2026 13:02:35
+The Abbey Management Company,b50a1c00-e147-46da-b153-6337c1fcfbe7,,,,,2026-06-30T13:24:18,,,,,,06/30/2026,06/30/2026 13:02:35
+The Abbey Management Company,d6144c73-522f-47b6-84c5-493d57ce7c2c,,,,,2026-06-30T12:21:45,,,,,,06/30/2026,06/30/2026 13:02:35
