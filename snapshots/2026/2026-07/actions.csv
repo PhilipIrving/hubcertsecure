@@ -1,9 +1,4 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,19536c89-0852-4ce3-b2a4-d7d6650dcca6,,8e9411a5-c020-4e14-a3a3-663e0cd16481,,,2026-07-01T17:47:26,,,,,,07/01/2026,07/01/2026 13:02:14
-Canadian Pacific Kansas City,a447e466-8cb2-47b2-8517-3263e03c8826,,477efef3-bfa5-403e-abd1-a1222af485cf,,,2026-07-01T15:27:54,,,,,,07/01/2026,07/01/2026 13:02:14
-Canadian Pacific Kansas City,d877de8f-877f-425c-bfcd-9e08c4e2ce52,,,,,2026-07-01T14:55:07,,,,,,07/01/2026,07/01/2026 13:02:14
-EMMES,705067af-845c-4f8b-a02b-31016ed0518d,,13993ef2-bd15-47d1-a72d-0bada654c25f,,,2026-07-01T14:11:53,,,,,,07/01/2026,07/01/2026 13:02:14
-EMMES,795b890d-9b9f-4c3f-8c40-9fd909459fa7,,,,,2026-07-01T14:11:53,,,,,,07/01/2026,07/01/2026 13:02:14
-EMMES,f6137469-be8f-41a3-9975-fe2f6dfe384a,,13993ef2-bd15-47d1-a72d-0bada654c25f,,,2026-07-01T14:11:53,,,,,,07/01/2026,07/01/2026 13:02:14
-Scandroli Construction,1ad7fada-9cd6-44d1-81c5-a1af9307aeea,,4cc67e9b-c647-4f96-bf19-428a88192a6b,,,2026-07-01T15:25:45,,,,,,07/01/2026,07/01/2026 13:02:27
-Scandroli Construction,b45df514-a4ba-4b6f-86a2-e7700ec2839b,,,,,2026-07-01T14:55:35,,,,,,07/01/2026,07/01/2026 13:02:27
+EMMES,795b890d-9b9f-4c3f-8c40-9fd909459fa7,,,,,2026-07-01T14:11:53,,,,,,07/01/2026,07/01/2026 16:43:24
+Scandroli Construction,1bac2c9b-8e5d-411d-8802-f69a1f3d6ce4,,96753c73-5cb7-4d11-af0e-e3327ed99077,,,2026-07-01T21:19:18,,,,,,07/01/2026,07/01/2026 16:43:37
+Scandroli Construction,a00ff171-d3b2-4474-aa22-ce3e7a8462de,,96753c73-5cb7-4d11-af0e-e3327ed99077,,,2026-07-01T21:19:18,,,,,,07/01/2026,07/01/2026 16:43:37
