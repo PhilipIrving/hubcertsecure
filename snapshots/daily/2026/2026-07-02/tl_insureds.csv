@@ -34,7 +34,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0d62446148bd848b5f,"Ameriprise Financial / Ameriprise Holdings, Inc.",,NON_COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",69fded0d62446148bd848b62,"AMSCO Supply / Flegler Investment Co., Inc.",,COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",69fded0d62446148bd848b65,Amsted Rail Company Inc,,NON_COMPLIANT,,,true,false,2026-07-02
-"Block Real Estate Services, LLC",69fded0d62446148bd848b68,AN Cubed Marketing LLC,,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",69fded0d62446148bd848b68,AN Cubed Marketing LLC,,NON_COMPLIANT,,,false,false,2026-07-02
 "Block Real Estate Services, LLC",69fded0d62446148bd848b6b,Anixter Inc,,NON_COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",69fded0d62446148bd848b6e,Puppy Love Grooming / Anntippia Young,,NON_COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",69fded0d62446148bd848b71,Anthony's Barber Shop / Anthony Vasquez,,NON_COMPLIANT,,,true,false,2026-07-02
@@ -242,7 +242,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1662446148bd848e02,"Pizza Hut / GMRG ACQ 1, LLC #0359",,COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",69fded1662446148bd848e08,GNC (Store #581-02),,NON_COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",69fded1662446148bd848e0b,"GoPuff Lease / GoBrands, Inc.",,NON_COMPLIANT,,,true,false,2026-07-02
-"Block Real Estate Services, LLC",69fded1662446148bd848e0e,"Golden Distributing Company, Inc.",,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",69fded1662446148bd848e0e,"Golden Distributing Company, Inc.",,NON_COMPLIANT,,,false,false,2026-07-02
 "Block Real Estate Services, LLC",69fded1662446148bd848e11,Google Fiber Inc,,NON_COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",69fded1662446148bd848e14,Grain Valley Chop Shop,,NON_COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",69fded1662446148bd848e17,Sni Valley Academy / Dr. Warren L. Moss - Grain Valley School District,,NON_COMPLIANT,,,true,false,2026-07-02
@@ -681,9 +681,9 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a18663117ab90e8a02f12a9,Midwest Heart & Vascular and KCHRI (Kansas City Heart Rhythm Institute),,NON_COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",6a18663d462ef1e78ea4b046,HCA-OPRMC,,NON_COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",6a186650b517ae25a87c5643,Kansas City Vascular & General Surgery Group / HCA Midwest Health,,NON_COMPLIANT,,,true,false,2026-07-02
-"Block Real Estate Services, LLC",6a1869cab517ae25a87d2e2e,"Metro Elevator Kansas City, Inc. (License Agreement)",,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a1869cab517ae25a87d2e2e,"Metro Elevator Kansas City, Inc.",,NON_COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",6a186a17e701796d85dca48c,85 Degrees Bakery / DA FA Inc 85C,,NON_COMPLIANT,,,true,false,2026-07-02
-"Block Real Estate Services, LLC",6a186a26b517ae25a87d3e04,Old Navy,,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a186a26b517ae25a87d3e04,Old Navy,,NON_COMPLIANT,,,false,false,2026-07-02
 "Block Real Estate Services, LLC",6a18721753ab917b1e649498,"Critical Facilities Technology, LLC",,NON_COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",6a187263e701796d85de7c91,"LVT Trucking, Inc.",,NON_COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",6a18740bdf41746015864e9a,"Morton Fence, LLC",,NON_COMPLIANT,,,true,false,2026-07-02
@@ -728,8 +728,24 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a1dff1ca79f4c38d5103b69,"Design & Detail / Mel B, LLC",,NON_COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",6a1e004c23b401dcff82ac21,BRES Management Office,,NON_COMPLIANT,,,true,false,2026-07-02
 "Block Real Estate Services, LLC",6a1ee9c0aa8b4d40c45d9cb4,"Ridgeview Eye Care, LLC",,NON_COMPLIANT,,,true,false,2026-07-02
-"Block Real Estate Services, LLC",6a1ee9ca9e67678941bccbb6,"Olathe Health Physicians, Inc.",,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a1ee9ca9e67678941bccbb6,"Olathe Health Physicians, Inc.",,NON_COMPLIANT,,,false,false,2026-07-02
 "Block Real Estate Services, LLC",6a1eecf750bfd60555852c16,"ERGO Midwest, Inc.",,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fa881712769bd59511,Abdalla Osman,,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fa881712769bd59518,"Better Way Dogs, LLC",,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fa881712769bd5951f,"Betur, LLC",,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fa881712769bd59526,"Catholic Charities of Northeast Kansas, Inc.",,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fa881712769bd5952d,Chazmine English,,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fa881712769bd59534,"Divino Brands, LLC",,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fa881712769bd5953b,Evalinesthetics,,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fa881712769bd59542,"GuideTech, LLC",,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fa881712769bd59549,"Isaiah Ink, LLC",,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fb881712769bd59550,"Jade & Ember Munchery / Savor Strategy Group, LLC",,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fb881712769bd59557,Jonathan Walker,,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fb881712769bd59566,"Parkway Animal Hospital / Village Vet, LLC",,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fb881712769bd5956d,"R Hays, LLC",,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fb881712769bd59574,Residential - renter occupied: George & Kelsey K.,,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fb881712769bd5957b,Shelby Lawson & Co.,,NON_COMPLIANT,,,true,false,2026-07-02
+"Block Real Estate Services, LLC",6a46a9fb881712769bd59582,Veterans Ascent Corp,,NON_COMPLIANT,,,true,false,2026-07-02
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,NON_COMPLIANT,,,true,false,2026-07-02
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,NON_COMPLIANT,,,true,false,2026-07-02
 QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,NON_COMPLIANT,,,true,false,2026-07-02
