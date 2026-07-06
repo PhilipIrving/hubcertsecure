@@ -104,7 +104,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1062446148bd848c4f,CBD American Shaman LLC,,NON_COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1062446148bd848c52,"Sunflower Health Plan / Centene Management Company, LLC",,NON_COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1062446148bd848c55,Central Power Systems & Services LLC,,NON_COMPLIANT,,,true,false,2026-07-06
-"Block Real Estate Services, LLC",69fded1062446148bd848c58,"The Retirement Planning Group / Cetera Financial Group, Inc.",,NON_COMPLIANT,,,true,false,2026-07-06
+"Block Real Estate Services, LLC",69fded1062446148bd848c58,"The Retirement Planning Group / Cetera Financial Group, Inc.",,COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1062446148bd848c5b,"Challenger Sports, Inc.",,NON_COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1062446148bd848c5e,Champion Supply Company LLC,,COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1062446148bd848c61,Charles D Jones Company,,NON_COMPLIANT,,,true,false,2026-07-06
@@ -276,7 +276,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1762446148bd848e6e,Hot Dog Design LLC,,NON_COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1762446148bd848e71,Hughes Machinery Company,,NON_COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1762446148bd848e74,Husqvarna Construction Products North America Inc,,NON_COMPLIANT,,,true,false,2026-07-06
-"Block Real Estate Services, LLC",69fded1762446148bd848e77,Hyalogic LLC,,NON_COMPLIANT,,,true,false,2026-07-06
+"Block Real Estate Services, LLC",69fded1762446148bd848e77,Hyalogic LLC,,COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1762446148bd848e7a,Hydro Extrusion USA LLC,,NON_COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1762446148bd848e7d,Hy-Vee Inc,,NON_COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1762446148bd848e80,"SOFIE / IBA Molecular North America, Inc.",,NON_COMPLIANT,,,true,false,2026-07-06
@@ -348,7 +348,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1a62446148bd848f58,Marcon Marketing Concepts Inc,,NON_COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1a62446148bd848f5b,"Marel, USA",,NON_COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1a62446148bd848f5e,"Mariner Wealth Advisors / Mariner Holdings, LLC",,NON_COMPLIANT,,,true,false,2026-07-06
-"Block Real Estate Services, LLC",69fded1a62446148bd848f61,"Blue Endo / Market-tiers, Inc.",,NON_COMPLIANT,,,true,false,2026-07-06
+"Block Real Estate Services, LLC",69fded1a62446148bd848f61,"Blue Endo / Market-tiers, Inc.",,COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1a62446148bd848f64,Martinrea Riverside LLC,,NON_COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1a62446148bd848f67,Massage Envy,,COMPLIANT,,,true,false,2026-07-06
 "Block Real Estate Services, LLC",69fded1a62446148bd848f6d,Mattress Firm Inc,,NON_COMPLIANT,,,true,false,2026-07-06

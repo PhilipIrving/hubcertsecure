@@ -823,10 +823,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0d62446148bd848b3b,Agape Montessori School/Pulliam Properties LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-21,2027-06-21,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded0d62446148bd848b3b,Agape Montessori School/Pulliam Properties LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded0d62446148bd848b3b,Agape Montessori School/Pulliam Properties LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-21,2027-06-21,,,,,2026-07-06
-"Block Real Estate Services, LLC",69fded0d62446148bd848b4d,Allstate Insurance,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-06
+"Block Real Estate Services, LLC",69fded0d62446148bd848b4d,Allstate Insurance,,Commercial General Liability,commercialGeneralLiability,,,2026-04-09,2027-04-09,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded0d62446148bd848b4d,Allstate Insurance,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded0d62446148bd848b4d,Allstate Insurance,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-06
-"Block Real Estate Services, LLC",69fded0d62446148bd848b4d,Allstate Insurance,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-06
+"Block Real Estate Services, LLC",69fded0d62446148bd848b4d,Allstate Insurance,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-04-09,2027-04-09,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded0f62446148bd848c0a,"AKKA Karate USA / BMS Fitnes Solutions, Inc. (AKKA Olathe Martial Arts)",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded0f62446148bd848c0a,"AKKA Karate USA / BMS Fitnes Solutions, Inc. (AKKA Olathe Martial Arts)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded0f62446148bd848c0a,"AKKA Karate USA / BMS Fitnes Solutions, Inc. (AKKA Olathe Martial Arts)",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-06
@@ -1339,10 +1339,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0f62446148bd848bdd,"Pepper Jax Grill / Belton North Cass, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded0f62446148bd848bdd,"Pepper Jax Grill / Belton North Cass, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded0f62446148bd848bdd,"Pepper Jax Grill / Belton North Cass, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-06
-"Block Real Estate Services, LLC",69fded1062446148bd848c49,Cass County Public Library,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-06
+"Block Real Estate Services, LLC",69fded1062446148bd848c49,Cass County Public Library,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1062446148bd848c49,Cass County Public Library,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-06
-"Block Real Estate Services, LLC",69fded1062446148bd848c49,Cass County Public Library,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-06
-"Block Real Estate Services, LLC",69fded1062446148bd848c49,Cass County Public Library,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-06
+"Block Real Estate Services, LLC",69fded1062446148bd848c49,Cass County Public Library,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-01,2027-07-01,,,,,2026-07-06
+"Block Real Estate Services, LLC",69fded1062446148bd848c49,Cass County Public Library,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-07-01,2027-07-01,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1662446148bd848e0b,"GoPuff Lease / GoBrands, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1662446148bd848e0b,"GoPuff Lease / GoBrands, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1662446148bd848e0b,"GoPuff Lease / GoBrands, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-06
@@ -1426,7 +1426,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1062446148bd848c58,"The Retirement Planning Group / Cetera Financial Group, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-01-31,2027-01-31,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1062446148bd848c58,"The Retirement Planning Group / Cetera Financial Group, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-31,2027-01-31,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1062446148bd848c58,"The Retirement Planning Group / Cetera Financial Group, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-31,2027-01-31,,,,,2026-07-06
-"Block Real Estate Services, LLC",69fded1062446148bd848c58,"The Retirement Planning Group / Cetera Financial Group, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-06
+"Block Real Estate Services, LLC",69fded1062446148bd848c58,"The Retirement Planning Group / Cetera Financial Group, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-01-31,2027-01-31,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1162446148bd848c9a,Companion Protect Agency,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1162446148bd848c9a,Companion Protect Agency,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1162446148bd848c9a,Companion Protect Agency,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-06
@@ -2218,7 +2218,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2362446148bd849276,Unum Life Insurance Company of America & Colonial Life Insurance,,Commercial General Liability,commercialGeneralLiability,,,2025-06-30,2027-06-30,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded2362446148bd849276,Unum Life Insurance Company of America & Colonial Life Insurance,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-06-30,2027-06-30,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded2362446148bd849276,Unum Life Insurance Company of America & Colonial Life Insurance,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-06-30,2027-06-30,,,,,2026-07-06
-"Block Real Estate Services, LLC",69fded2362446148bd849276,Unum Life Insurance Company of America & Colonial Life Insurance,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-06
+"Block Real Estate Services, LLC",69fded2362446148bd849276,Unum Life Insurance Company of America & Colonial Life Insurance,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-06-30,2027-06-30,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1162446148bd848cb5,Cort Furniture Rental / Cort Business Services Corporation,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1162446148bd848cb5,Cort Furniture Rental / Cort Business Services Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1162446148bd848cb5,Cort Furniture Rental / Cort Business Services Corporation,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-06
@@ -2722,7 +2722,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a184fbc8bbe0a0890eb6a1d,"Home Depot U.S.A., Inc. (fka Interline Brands, Inc.)",,Commercial General Liability,commercialGeneralLiability,,,2025-03-01,2028-03-01,,,,,2026-07-06
 "Block Real Estate Services, LLC",6a184fbc8bbe0a0890eb6a1d,"Home Depot U.S.A., Inc. (fka Interline Brands, Inc.)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-07-06
 "Block Real Estate Services, LLC",6a184fbc8bbe0a0890eb6a1d,"Home Depot U.S.A., Inc. (fka Interline Brands, Inc.)",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-03-01,2027-03-01,,,,,2026-07-06
-"Block Real Estate Services, LLC",6a184fbc8bbe0a0890eb6a1d,"Home Depot U.S.A., Inc. (fka Interline Brands, Inc.)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-06
+"Block Real Estate Services, LLC",6a184fbc8bbe0a0890eb6a1d,"Home Depot U.S.A., Inc. (fka Interline Brands, Inc.)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-03-01,2027-03-01,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1762446148bd848e53,Henderson Engineers Inc,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1762446148bd848e53,Henderson Engineers Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-06
 "Block Real Estate Services, LLC",69fded1762446148bd848e53,Henderson Engineers Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-06
