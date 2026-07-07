@@ -95,7 +95,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1062446148bd848c2e,BUNZL,,NON_COMPLIANT,,,true,false,2026-07-07
 "Block Real Estate Services, LLC",69fded1062446148bd848c31,Burlis Lawson Group Inc,,NON_COMPLIANT,,,true,false,2026-07-07
 "Block Real Estate Services, LLC",69fded1062446148bd848c37,Butler Suppy Inc,,NON_COMPLIANT,,,true,false,2026-07-07
-"Block Real Estate Services, LLC",69fded1062446148bd848c3a,BWI Companies Inc,,NON_COMPLIANT,,,true,false,2026-07-07
+"Block Real Estate Services, LLC",69fded1062446148bd848c3a,BWI Companies Inc,,COMPLIANT,,,true,false,2026-07-07
 "Block Real Estate Services, LLC",69fded1062446148bd848c3d,"Corbion / Caravan Ingredients, Inc.",,NON_COMPLIANT,,,true,false,2026-07-07
 "Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,NON_COMPLIANT,,,true,false,2026-07-07
 "Block Real Estate Services, LLC",69fded1062446148bd848c43,Carrier Corporation,,COMPLIANT,,,true,false,2026-07-07
@@ -510,7 +510,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2062446148bd84915f,"Shoe Sensation, Inc.",,NON_COMPLIANT,,,true,false,2026-07-07
 "Block Real Estate Services, LLC",69fded2062446148bd849162,"Show Me State Vital Care / Show Me State Infusion Pharmacy, LLC",,NON_COMPLIANT,,,true,false,2026-07-07
 "Block Real Estate Services, LLC",69fded2062446148bd849165,Side Pockets Inc,,NON_COMPLIANT,,,true,false,2026-07-07
-"Block Real Estate Services, LLC",69fded2062446148bd849168,Siemens Corporation,,NON_COMPLIANT,,,true,false,2026-07-07
+"Block Real Estate Services, LLC",69fded2062446148bd849168,Siemens Corporation,,COMPLIANT,,,true,false,2026-07-07
 "Block Real Estate Services, LLC",69fded2062446148bd84916b,Siemens Energy Inc,,NON_COMPLIANT,,,true,false,2026-07-07
 "Block Real Estate Services, LLC",69fded2062446148bd84916e,SJK Global LLC,,NON_COMPLIANT,,,true,false,2026-07-07
 "Block Real Estate Services, LLC",69fded2062446148bd849171,Skechers Outlet,,NON_COMPLIANT,,,true,false,2026-07-07
