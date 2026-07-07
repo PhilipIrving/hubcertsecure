@@ -1,8 +1,19 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,1f00c948-f4ed-414d-9bd2-96a0178612d4,,,,,2026-07-07T05:42:26,,,,,,07/07/2026,07/07/2026 02:46:04
-Canadian Pacific Kansas City,6f718e01-d1ac-44fe-bf87-62ed962ec142,,,,,2026-07-07T05:42:26,,,,,,07/07/2026,07/07/2026 02:46:04
-Canadian Pacific Kansas City,79ac03df-f00f-412d-bd70-54e3e83b02d8,,e70cf5e9-5194-4921-9b34-0538986cbcc6,,,2026-07-07T05:13:02,,,,,,07/07/2026,07/07/2026 02:46:04
-The Abbey Management Company,3c7ebf4d-8577-402e-a681-194cfe2f162a,,,,,2026-07-04T15:09:06,,,,,,07/07/2026,07/07/2026 02:46:18
-The Abbey Management Company,d7aef16c-6639-4ad8-8c8b-38cb44ce60f8,,,,,2026-07-07T05:11:24,,,,,,07/07/2026,07/07/2026 02:46:18
-United Coal Company LLC,0151bed6-38e1-46c9-a718-a3036f7d1a87,,19fc379a-559c-48bb-8318-5994ab219a43,,,2026-07-07T05:12:00,,,,,,07/07/2026,07/07/2026 02:46:21
-United Coal Company LLC,52ca6c71-59d9-45b2-bb23-abd58344005f,,,,,2026-07-07T05:12:00,,,,,,07/07/2026,07/07/2026 02:46:21
+Canadian Pacific Kansas City,01cb13b9-6299-4600-a3c0-42d2ed757d12,,ed5fbdd2-7ae0-4a57-b8df-42ff00766965,,,2026-07-07T11:03:43,,,,,,07/07/2026,07/07/2026 06:14:29
+Canadian Pacific Kansas City,1f00c948-f4ed-414d-9bd2-96a0178612d4,,,,,2026-07-07T05:42:26,,,,,,07/07/2026,07/07/2026 06:14:29
+Canadian Pacific Kansas City,4a0e038f-e35d-43a6-bd06-de2b5da3ce40,,,,,2026-07-07T11:03:43,,,,,,07/07/2026,07/07/2026 06:14:29
+Canadian Pacific Kansas City,5b9fe03a-ed9a-49c5-8c9b-91cd04fd2b42,,,,,2026-07-07T08:11:35,,,,,,07/07/2026,07/07/2026 06:14:29
+Canadian Pacific Kansas City,656ea9c2-64aa-4d25-bbee-8d429b8fd535,,,,,2026-07-07T11:03:43,,,,,,07/07/2026,07/07/2026 06:14:29
+Canadian Pacific Kansas City,6f718e01-d1ac-44fe-bf87-62ed962ec142,,,,,2026-07-07T05:42:26,,,,,,07/07/2026,07/07/2026 06:14:29
+Canadian Pacific Kansas City,79ac03df-f00f-412d-bd70-54e3e83b02d8,,e70cf5e9-5194-4921-9b34-0538986cbcc6,,,2026-07-07T05:13:02,,,,,,07/07/2026,07/07/2026 06:14:29
+Canadian Pacific Kansas City,80d9354d-fc39-4f5b-ba07-538ff31ae906,,f6eea15e-038a-40b8-a1bb-779edbb232f6,,,2026-07-07T08:45:56,,,,,,07/07/2026,07/07/2026 06:14:29
+Scandroli Construction,14d16d3c-ba81-45b9-a9d1-1fc43b69bb89,,666ed670-e8e4-48fc-9827-22d9f488a066,,,2026-07-07T08:28:18,,,,,,07/07/2026,07/07/2026 06:14:42
+Scandroli Construction,308c07f0-2800-4eea-be70-c80dd70cb46e,,666ed670-e8e4-48fc-9827-22d9f488a066,,,2026-07-07T08:28:18,,,,,,07/07/2026,07/07/2026 06:14:42
+Scandroli Construction,3e965345-ea0c-45ee-a544-8b9ac93f17f1,,666ed670-e8e4-48fc-9827-22d9f488a066,,,2026-07-07T08:28:18,,,,,,07/07/2026,07/07/2026 06:14:42
+Scandroli Construction,594b0863-2735-441a-8f35-f720486b3620,,666ed670-e8e4-48fc-9827-22d9f488a066,,,2026-07-07T08:28:18,,,,,,07/07/2026,07/07/2026 06:14:42
+Scandroli Construction,7a700a25-2d52-4f25-83ef-185c4185af27,,657d6fb9-c66b-4441-870d-c8d25c3e3cba,,,2026-07-07T08:31:42,,,,,,07/07/2026,07/07/2026 06:14:42
+Scandroli Construction,9a7e088a-80b1-4f58-bba4-476a91cf16f1,,,,,2026-07-07T08:28:18,,,,,,07/07/2026,07/07/2026 06:14:42
+The Abbey Management Company,3c7ebf4d-8577-402e-a681-194cfe2f162a,,,,,2026-07-04T15:09:06,,,,,,07/07/2026,07/07/2026 06:14:44
+The Abbey Management Company,d7aef16c-6639-4ad8-8c8b-38cb44ce60f8,,,,,2026-07-07T05:11:24,,,,,,07/07/2026,07/07/2026 06:14:44
+United Coal Company LLC,0151bed6-38e1-46c9-a718-a3036f7d1a87,,19fc379a-559c-48bb-8318-5994ab219a43,,,2026-07-07T05:12:00,,,,,,07/07/2026,07/07/2026 06:14:45
+United Coal Company LLC,52ca6c71-59d9-45b2-bb23-abd58344005f,,,,,2026-07-07T05:12:00,,,,,,07/07/2026,07/07/2026 06:14:45
