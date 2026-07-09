@@ -44,7 +44,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0e62446148bd848b7d,"APLOS, Inc.",,NON_COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded0e62446148bd848b80,"Applebee's Bar & Grill / Apple Central, LLC",,NON_COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded0e62446148bd848b83,Applied Industrial Technologies Inc,,NON_COMPLIANT,,,true,false,2026-07-09
-"Block Real Estate Services, LLC",69fded0e62446148bd848b86,ARC Physical Therapy Plus,,NON_COMPLIANT,,,true,false,2026-07-09
+"Block Real Estate Services, LLC",69fded0e62446148bd848b86,ARC Physical Therapy Plus,,COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded0e62446148bd848b89,Archway Technology LLC,,NON_COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded0e62446148bd848b8c,ARJ Infusion Services,,NON_COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded0e62446148bd848b8f,Arrowhead Forensics,,NON_COMPLIANT,,,true,false,2026-07-09
@@ -143,7 +143,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1262446148bd848cca,"Crescent Electric Supply Company, Inc.",,COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded1262446148bd848ccd,Crescent Springs Healing Center,,NON_COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded1262446148bd848cd0,Crossroads Courier Inc,,NON_COMPLIANT,,,true,false,2026-07-09
-"Block Real Estate Services, LLC",69fded1262446148bd848cd3,Crown MedRealty Partners LLC,,NON_COMPLIANT,,,true,false,2026-07-09
+"Block Real Estate Services, LLC",69fded1262446148bd848cd3,Crown MedRealty Partners LLC,,COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,NON_COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded1262446148bd848cd9,KK Express Employment / Curtis Holding Company,,NON_COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded1262446148bd848cdc,"DL Smith Electrical Construction, Inc.",,COMPLIANT,,,true,false,2026-07-09
@@ -573,7 +573,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2262446148bd849225,"T-Mobile USA, Inc. (fka Sprint CMC / Sprint United Management Company)",,NON_COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded2362446148bd849228,Tool Source Warehouse Inc,,NON_COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded2362446148bd84922e,Torgeson Electric Company,,NON_COMPLIANT,,,true,false,2026-07-09
-"Block Real Estate Services, LLC",69fded2362446148bd849231,"Johnson County Davita / Total Renal Care, Inc.",,NON_COMPLIANT,,,true,false,2026-07-09
+"Block Real Estate Services, LLC",69fded2362446148bd849231,"Johnson County Davita / Total Renal Care, Inc.",,COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded2362446148bd849234,"DaVita Dialysis / Total Renal Care, Inc.",,NON_COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded2362446148bd849237,Transtar Industries LLC,,NON_COMPLIANT,,,true,false,2026-07-09
 "Block Real Estate Services, LLC",69fded2362446148bd84923a,Trinity Property Management LLC,,NON_COMPLIANT,,,true,false,2026-07-09
@@ -748,7 +748,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59582,Veterans Ascent Corp,,NON_COMPLIANT,,,true,false,2026-07-09
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,NON_COMPLIANT,,,true,false,2026-07-09
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,NON_COMPLIANT,,,true,false,2026-07-09
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,NON_COMPLIANT,,,true,false,2026-07-09
+QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,COMPLIANT,,,true,false,2026-07-09
 QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,NON_COMPLIANT,,,true,false,2026-07-09
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,NON_COMPLIANT,,,true,false,2026-07-09
 QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,NON_COMPLIANT,,,true,false,2026-07-09
