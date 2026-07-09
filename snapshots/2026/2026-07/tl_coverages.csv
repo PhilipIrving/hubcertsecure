@@ -1335,9 +1335,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0e62446148bd848b86,ARC Physical Therapy Plus,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-09-30,2026-09-30,,,,,2026-07-09
 "Block Real Estate Services, LLC",69fded0e62446148bd848b86,ARC Physical Therapy Plus,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-03-15,2027-03-15,,,,,2026-07-09
 "Block Real Estate Services, LLC",69fded0e62446148bd848b86,ARC Physical Therapy Plus,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-09-30,2027-03-15,,,,,2026-07-09
-"Block Real Estate Services, LLC",69fded0f62446148bd848bdd,"Pepper Jax Grill / Belton North Cass, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-09
-"Block Real Estate Services, LLC",69fded0f62446148bd848bdd,"Pepper Jax Grill / Belton North Cass, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-09
-"Block Real Estate Services, LLC",69fded0f62446148bd848bdd,"Pepper Jax Grill / Belton North Cass, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-09
+"Block Real Estate Services, LLC",69fded0f62446148bd848bdd,"Pepper Jax Grill / Belton North Cass, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-06-30,2027-06-30,,,,,2026-07-09
+"Block Real Estate Services, LLC",69fded0f62446148bd848bdd,"Pepper Jax Grill / Belton North Cass, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-30,2027-06-30,,,,,2026-07-09
+"Block Real Estate Services, LLC",69fded0f62446148bd848bdd,"Pepper Jax Grill / Belton North Cass, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-30,2027-06-30,,,,,2026-07-09
 "Block Real Estate Services, LLC",69fded0f62446148bd848bdd,"Pepper Jax Grill / Belton North Cass, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-09
 "Block Real Estate Services, LLC",69fded1062446148bd848c49,Cass County Public Library,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-07-09
 "Block Real Estate Services, LLC",69fded1062446148bd848c49,Cass County Public Library,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-09
@@ -2175,7 +2175,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1762446148bd848e6e,Hot Dog Design LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-09
 "Block Real Estate Services, LLC",69fded1762446148bd848e6e,Hot Dog Design LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-02-08,2027-02-08,,,,,2026-07-09
 "Block Real Estate Services, LLC",69fded1762446148bd848e6e,Hot Dog Design LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-09
-"Block Real Estate Services, LLC",69fded1962446148bd848ef8,Salon Expose / Kim Medina,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-09
+"Block Real Estate Services, LLC",69fded1962446148bd848ef8,Salon Expose / Kim Medina,,Commercial General Liability,commercialGeneralLiability,,,2025-10-28,2026-10-28,,,,,2026-07-09
 "Block Real Estate Services, LLC",69fded1962446148bd848ef8,Salon Expose / Kim Medina,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-09
 "Block Real Estate Services, LLC",69fded1962446148bd848ef8,Salon Expose / Kim Medina,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-09
 "Block Real Estate Services, LLC",69fded1962446148bd848ef8,Salon Expose / Kim Medina,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-09
