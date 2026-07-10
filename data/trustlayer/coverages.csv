@@ -943,7 +943,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0d62446148bd848b44,All Access Garage Doors,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-05,2027-04-05,,,,,2026-07-10
 "Block Real Estate Services, LLC",69fded0d62446148bd848b44,All Access Garage Doors,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-12-05,2026-12-05,,,,,2026-07-10
 "Block Real Estate Services, LLC",69fded0d62446148bd848b44,All Access Garage Doors,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-10
-"Block Real Estate Services, LLC",69fded1462446148bd848d9f,"Popculture Gourmet Popcorn / FILGR, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-10
+"Block Real Estate Services, LLC",69fded1462446148bd848d9f,"Popculture Gourmet Popcorn / FILGR, LLC",,Commercial General Liability,commercialGeneralLiability,,,2025-09-19,2026-09-19,,,,,2026-07-10
 "Block Real Estate Services, LLC",69fded1462446148bd848d9f,"Popculture Gourmet Popcorn / FILGR, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-10
 "Block Real Estate Services, LLC",69fded1462446148bd848d9f,"Popculture Gourmet Popcorn / FILGR, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-10
 "Block Real Estate Services, LLC",69fded1462446148bd848d9f,"Popculture Gourmet Popcorn / FILGR, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-10
@@ -3139,9 +3139,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1f62446148bd8490fc,Reserve Applied Management of Kansas City LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-10
 "Block Real Estate Services, LLC",69fded1f62446148bd8490fc,Reserve Applied Management of Kansas City LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-10
 "Block Real Estate Services, LLC",69fded1f62446148bd8490fc,Reserve Applied Management of Kansas City LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-10
-"Block Real Estate Services, LLC",69fded2462446148bd849297,Vortex Industries LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-10
-"Block Real Estate Services, LLC",69fded2462446148bd849297,Vortex Industries LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-10
-"Block Real Estate Services, LLC",69fded2462446148bd849297,Vortex Industries LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-10
+"Block Real Estate Services, LLC",69fded2462446148bd849297,Vortex Industries LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-07-10
+"Block Real Estate Services, LLC",69fded2462446148bd849297,Vortex Industries LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-07-01,2027-07-01,,,,,2026-07-10
+"Block Real Estate Services, LLC",69fded2462446148bd849297,Vortex Industries LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-01,2027-07-01,,,,,2026-07-10
 "Block Real Estate Services, LLC",69fded2462446148bd849297,Vortex Industries LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-10
 "Block Real Estate Services, LLC",69fded0e62446148bd848b7d,"APLOS, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2025-07-17,2026-07-17,,,,,2026-07-10
 "Block Real Estate Services, LLC",69fded0e62446148bd848b7d,"APLOS, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-10
