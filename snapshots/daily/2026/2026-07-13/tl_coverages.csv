@@ -827,7 +827,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2162446148bd849180,Sobriety First,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-13,2027-01-13,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded2162446148bd849180,Sobriety First,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded2162446148bd849180,Sobriety First,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,Commercial General Liability,commercialGeneralLiability,,,2025-07-29,2026-07-29,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-13
@@ -2222,7 +2222,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1162446148bd848cbe,"Costco-Innovel Properties, LLC (fka Sears Logistics Service, Inc.)",,Commercial General Liability,commercialGeneralLiability,,,2025-09-05,2026-09-05,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1162446148bd848cbe,"Costco-Innovel Properties, LLC (fka Sears Logistics Service, Inc.)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-09-05,2026-09-05,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1162446148bd848cbe,"Costco-Innovel Properties, LLC (fka Sears Logistics Service, Inc.)",,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-09-05,2026-09-05,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded1162446148bd848cbe,"Costco-Innovel Properties, LLC (fka Sears Logistics Service, Inc.)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded1162446148bd848cbe,"Costco-Innovel Properties, LLC (fka Sears Logistics Service, Inc.)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-09-05,2026-09-05,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1c62446148bd849006,New York Air Brake Co,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1c62446148bd849006,New York Air Brake Co,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1c62446148bd849006,New York Air Brake Co,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-13
@@ -2411,10 +2411,6 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1b62446148bd848f88,"Mechanical Sales Midwest, Inc",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1b62446148bd848f88,"Mechanical Sales Midwest, Inc",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1b62446148bd848f88,"Mechanical Sales Midwest, Inc",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1462446148bd848d84,"Emerson / Experitec, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1462446148bd848d84,"Emerson / Experitec, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1462446148bd848d84,"Emerson / Experitec, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-13
@@ -2771,9 +2767,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2262446148bd8491fe,The American National Red Cross,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded2262446148bd8491fe,The American National Red Cross,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded2262446148bd8491fe,The American National Red Cross,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded1762446148bd848e71,Hughes Machinery Company,,Commercial General Liability,commercialGeneralLiability,,,2026-06-01,2027-06-01,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded1762446148bd848e71,Hughes Machinery Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-01,2027-06-01,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded1762446148bd848e71,Hughes Machinery Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded1762446148bd848e71,Hughes Machinery Company,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded1762446148bd848e71,Hughes Machinery Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded1762446148bd848e71,Hughes Machinery Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1762446148bd848e71,Hughes Machinery Company,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1d62446148bd849078,"PERG Buildings, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded1d62446148bd849078,"PERG Buildings, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-13
@@ -3352,17 +3348,23 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a1eecf750bfd60555852c16,"ERGO Midwest, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",6a1eecf750bfd60555852c16,"ERGO Midwest, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Automobile Liability,automobileLiability,,,2026-01-01,2027-01-01,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-01-01,2027-01-01,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded2362446148bd849276,Unum Life Insurance Company of America & Colonial Life Insurance,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-13
 "Block Real Estate Services, LLC",69fded0f62446148bd848c19,"Kitchen and Bath by Briggs / Briggs, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded2462446148bd8492c1,World Acceptance Corporation / World Finance,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded2262446148bd84920d,Argosy Casino & Hotel / The Missouri Gaming Company,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded2062446148bd849168,Siemens Corporation,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded0e62446148bd848b86,ARC Physical Therapy Plus,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-13
-"Block Real Estate Services, LLC",69fded1062446148bd848c28,Builder Direct LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded2462446148bd8492c1,World Acceptance Corporation / World Finance,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded2262446148bd84920d,Argosy Casino & Hotel / The Missouri Gaming Company,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded2062446148bd849168,Siemens Corporation,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded0e62446148bd848b86,ARC Physical Therapy Plus,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded1062446148bd848c28,Builder Direct LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded1362446148bd848d27,Dollar Tree #4044,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded1462446148bd848d99,FedEx/Kinko's,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-13
+"Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-13
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-07-13
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-07-13
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-07-13
