@@ -9,7 +9,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdef1402bb2c42a879cc2a,"3rd203 - D&H Properties - Santa Fe Drive {D&H Properties, LLC}",Project,active,,,,,,2026-05-08,2026-07-12,2026-07-14
 "Block Real Estate Services, LLC",69fdef1a3b208288e0a799c2,"3rd237 - Interstate Business Park Building 4 {2025 Wilshire Werbo, LLC}",Project,active,,,,,,2026-05-08,2026-07-02,2026-07-14
 "Block Real Estate Services, LLC",69fdef2438cbea6b3a68ae39,"3rd250 - 4500 W 107, LLC - (TEVA Pharmacy - tev250 for CAM)",Project,active,,,,,,2026-05-08,2026-06-18,2026-07-14
-"Block Real Estate Services, LLC",69fdef283b208288e0a79ba9,"3rd299 - Delaire KC, LLC - Westport Building - 301 Westport Road (Retail, 1st Floor)",Project,active,,,,,,2026-05-08,2026-06-30,2026-07-14
+"Block Real Estate Services, LLC",69fdef283b208288e0a79ba9,"3rd299 - Delaire KC, LLC - Westport Building - 301 Westport Road (Retail, 1st Floor)",Project,active,,,,,,2026-05-08,2026-07-14,2026-07-14
 "Block Real Estate Services, LLC",69fdef2cbf1df2fe96920b3f,"3rd312 - Westport Land & Management I, LLC",Project,active,,,,,,2026-05-08,2026-07-14,2026-07-14
 "Block Real Estate Services, LLC",69fdef31e45e7dcf5c4328bd,3rd347 - 919 E. 29th Street {Taikan Development Corporation},Project,active,,,,,,2026-05-08,2026-07-14,2026-07-14
 "Block Real Estate Services, LLC",69fdef3603a2257cd27d8a19,3rd348 - 5051 West 134th Street {Taikan Development Corporation},Project,active,,,,,,2026-05-08,2026-07-12,2026-07-14
@@ -46,7 +46,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdefe60bb484cab513acd9,"bkp362 - Nieman Business Park Building C {BK Properties, LLC}",Project,active,,,,,,2026-05-08,2026-07-12,2026-07-14
 "Block Real Estate Services, LLC",69fdefeafa0b60fcd50d7a68,"bkp363 - Nieman Business Park Building D {BK Properties,LLC}",Project,active,,,,,,2026-05-08,2026-07-14,2026-07-14
 "Block Real Estate Services, LLC",69fdeff702bb2c42a87a062f,"ccc268 - CityPlace Corporate Centre I {Cityplace Corporate Centre I Investors, LLC}",Project,active,,,,,,2026-05-08,2026-07-14,2026-07-14
-"Block Real Estate Services, LLC",69fdf0023b208288e0a7c731,"cck640 - College Crossing K {College K, LLC }",Project,active,,,,,,2026-05-08,2026-07-12,2026-07-14
+"Block Real Estate Services, LLC",69fdf0023b208288e0a7c731,"cck640 - College Crossing K {College K, LLC }",Project,active,,,,,,2026-05-08,2026-07-14,2026-07-14
 "Block Real Estate Services, LLC",69fdf00503a2257cd27dd397,"cm1756 - Corporate Medical Plaza I {CMP Building I, LLC}",Project,active,,,,,,2026-05-08,2026-07-14,2026-07-14
 "Block Real Estate Services, LLC",69fdf00902bb2c42a87a0a88,"cm2757 - Corporate Medical Plaza II {CMP Building II, LLC}",Project,active,,,,,,2026-05-08,2026-07-14,2026-07-14
 "Block Real Estate Services, LLC",69fdf00d0e86e2f8723da443,"cm3758 - Corporate Medical Plaza III {CMP Building III, LLC}",Project,active,,,,,,2026-05-08,2026-07-14,2026-07-14
@@ -79,7 +79,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf07103a2257cd27deaeb,"kci291 - Platte Valley Industrial Center 11 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-07-14,2026-07-14
 "Block Real Estate Services, LLC",69fdf07502bb2c42a87a2174,"kci862 - Riverside Distribution Center 2 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-07-12,2026-07-14
 "Block Real Estate Services, LLC",69fdf07f0e86e2f8723dbc32,"kci863 - Riverside Distribution Center 3 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-07-14
-"Block Real Estate Services, LLC",69fdf08238cbea6b3a6909f0,"kci864 - Riverside Distribution Center 4 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-07-06,2026-07-14
+"Block Real Estate Services, LLC",69fdf08238cbea6b3a6909f0,"kci864 - Riverside Distribution Center 4 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-07-14,2026-07-14
 "Block Real Estate Services, LLC",69fdf0850bb484cab513cb76,"kci865 - Riverside Distribution Center 5 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-07-12,2026-07-14
 "Block Real Estate Services, LLC",69fdf0870e86e2f8723dbdc2,"kci891 - Riverside Industrial Center 1 {Riverside Industrial Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-07-14,2026-07-14
 "Block Real Estate Services, LLC",69fdf08a38cbea6b3a6914e6,"kci892 - Riverside Industrial Center 2 {Riverside Industrial Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-07-12,2026-07-14
@@ -196,9 +196,9 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",6a1dfca5a0ed8c51ab26246c,"con828 - Pine Ridge Building 28 {Building 28 of Pine Ridge West Condominium Association, Inc.}",Project,active,,,,,,2026-06-01,2026-07-14,2026-07-14
 "Block Real Estate Services, LLC",6a1ee9a423b401dcff8fb689,"rvw871 - Ridgeview Associates, LLC",Project,active,,,,,,2026-06-02,2026-07-14,2026-07-14
 "Block Real Estate Services, LLC",6a1eecc680c8f1ceee9d6510,3rd621 - Rule Realty Corporation - 3621 Noland Court,Project,active,,,,,,2026-06-02,2026-07-14,2026-07-14
-QTS Data Centers,69f10c28beb6279e947be4c9,"DFW1DC4 - QTS Irving DC4, LLC",Project,active,Structure Tone,2025-12-31,2026-01-08,,,2026-04-28,2026-06-26,2026-07-14
+QTS Data Centers,69f10c28beb6279e947be4c9,"DFW1DC4 - QTS Irving DC4, LLC",Project,active,Structure Tone,2025-12-31,2026-01-08,,,2026-04-28,2026-07-14,2026-07-14
 QTS Data Centers,69f10c28beb6279e947be4ca,"DFW1DC5 - QTS Irving DC5, LLC",Project,active,Rogers O'Brien,2025-08-23,2025-10-08,,,2026-04-28,2026-07-14,2026-07-14
-QTS Data Centers,69f10c28beb6279e947be4cb,"DFW1DC6 - QTS Irving DC6, LLC",Project,active,Rogers O'Brien,2026-02-01,2026-04-01,,,2026-04-28,2026-06-26,2026-07-14
+QTS Data Centers,69f10c28beb6279e947be4cb,"DFW1DC6 - QTS Irving DC6, LLC",Project,active,Rogers O'Brien,2026-02-01,2026-04-01,,,2026-04-28,2026-07-14,2026-07-14
 QTS Data Centers,69f10c28beb6279e947be4cc,"DFW2DC3 - QTS Dallas I DC3, LLC",Project,active,Rogers O'Brien,2026-12-01,2027-09-01,,,2026-04-28,2026-07-14,2026-07-14
 QTS Data Centers,69f10c28beb6279e947be4cd,"FTW1DC2 - QTS Fort Worth I DC2, LLC",Project,active,Adolfson & Peterson,2025-11-18,2026-05-01,,,2026-04-28,2026-07-14,2026-07-14
 QTS Data Centers,69f10c28beb6279e947be4ce,"MAN1DC6 - QTS Manassas I DC6, LLC",Project,active,White-Turner,2026-03-01,2026-06-01,,,2026-04-28,2026-07-14,2026-07-14
@@ -212,8 +212,8 @@ QTS Data Centers,69f10c28beb6279e947be4d7,"CHI1DC1 - QTS Chicago I DC1, LLC",Pro
 QTS Data Centers,69f10c28beb6279e947be4d8,"MAN1DC4 - QTS Manassas I DC4, LLC",Project,active,Hitt,,,,,2026-04-28,2026-07-14,2026-07-14
 QTS Data Centers,69f10c28beb6279e947be4d9,"ATL2DC5 - QTS Fayetteville II DC5, LLC",Project,active,Hitt,2025-12-01,2027-07-07,,,2026-04-28,2026-07-14,2026-07-14
 QTS Data Centers,69f10c28beb6279e947be4da,"RIC2DC6 - QTS Richmond II DC6, LLC",Project,active,Hitt,,,,,2026-04-28,2026-07-14,2026-07-14
-QTS Data Centers,69f10c28beb6279e947be4db,"RIC3DC2 - QTS Richmond III DC2, LLC",Project,active,,,,,,2026-04-28,2026-07-14,2026-07-14
-QTS Data Centers,69f10c28beb6279e947be4dc,"RIC3DC3 - QTS Richmond III DC3, LLC",Project,active,,,,,,2026-04-28,2026-07-14,2026-07-14
+QTS Data Centers,69f10c28beb6279e947be4db,"RIC3DC2 - QTS Richmond III DC2, LLC",Project,active,Hitt,,,,,2026-04-28,2026-07-14,2026-07-14
+QTS Data Centers,69f10c28beb6279e947be4dc,"RIC3DC3 - QTS Richmond III DC3, LLC",Project,active,Hitt,,,,,2026-04-28,2026-07-14,2026-07-14
 QTS Data Centers,69f10c28beb6279e947be4df,"DEN1DC1 - QTS Aurora, LLC",Project,active,Holder,2024-06-01,2026-04-01,,,2026-04-28,2026-07-14,2026-07-14
 QTS Data Centers,69f10c28beb6279e947be4e0,"NAL1DC1 - QTS New Albany I DC1, LLC",Project,active,White-Turner,2025-07-30,2026-01-21,,,2026-04-28,2026-07-14,2026-07-14
 QTS Data Centers,69f10c28beb6279e947be4e1,"PHX2DC4 - QTS Phoenix II DC4, LLC",Project,active,Clayco,2025-09-18,2025-10-15,,,2026-04-28,2026-07-14,2026-07-14
@@ -237,10 +237,10 @@ QTS Data Centers,69f10c28beb6279e947be4f3,"PHX3DC14 - QTS Glendale I DC14, LLC",
 QTS Data Centers,69f10c28beb6279e947be4f4,"CDR1DC1 - QTS Cedar Rapids I DC1, LLC",Project,active,Layton,2025-10-20,2026-10-01,,,2026-04-28,2026-07-14,2026-07-14
 QTS Data Centers,69f10c28beb6279e947be4f5,"CDR1DC2 - QTS Cedar Rapids I DC2, LLC",Project,active,Layton,2025-11-18,2026-10-30,,,2026-04-28,2026-07-14,2026-07-14
 QTS Data Centers,69f10c28beb6279e947be4f6,"CDR1DC3 - QTS Cedar Rapids I DC3, LLC",Project,active,Layton,2025-09-15,2026-05-01,,,2026-04-28,2026-07-14,2026-07-14
-QTS Data Centers,69fc9b6f2c4b2730d63db1d4,"RIC2DC5 - QTS Richmond II DC5, LLC",Project,active,Hitt,2025-10-23,2025-11-13,,,2026-05-07,2026-05-28,2026-07-14
-QTS Data Centers,69fc9b6f2c4b2730d63db1d5,"DFW2DC1 - QTS Dallas I DC1, LLC",Project,active,Suffolk,2026-09-01,2026-12-01,,,2026-05-07,2026-05-28,2026-07-14
-QTS Data Centers,6a05d6c2b65dbfe9915cfa12,"RIC3DC4 - QTS Richmond III DC4, LLC",Project,active,,,,,,2026-05-14,2026-07-14,2026-07-14
-QTS Data Centers,6a05d756fe7b4a8a035e5c21,"RIC3DC1 - QTS Richmond III DC1, LLC",Project,active,,2025-09-12,2025-10-24,,,2026-05-14,2026-05-15,2026-07-14
+QTS Data Centers,69fc9b6f2c4b2730d63db1d4,"RIC2DC5 - QTS Richmond II DC5, LLC",Project,active,Hitt,2025-10-23,2025-11-13,,,2026-05-07,2026-07-14,2026-07-14
+QTS Data Centers,69fc9b6f2c4b2730d63db1d5,"DFW2DC1 - QTS Dallas I DC1, LLC",Project,active,Suffolk,2026-09-01,2026-12-01,,,2026-05-07,2026-07-14,2026-07-14
+QTS Data Centers,6a05d6c2b65dbfe9915cfa12,"RIC3DC4 - QTS Richmond III DC4, LLC",Project,active,Hitt,,,,,2026-05-14,2026-07-14,2026-07-14
+QTS Data Centers,6a05d756fe7b4a8a035e5c21,"RIC3DC1 - QTS Richmond III DC1, LLC",Project,active,,2025-09-12,2025-10-24,,,2026-05-14,2026-07-14,2026-07-14
 QTS Data Centers,6a05d77b8b5928c024a9c975,"RIC3DC5 - QTS Richmond III DC5, LLC",Project,active,,,,,,2026-05-14,2026-07-14,2026-07-14
 QTS Data Centers,6a071a1ab333109abbeb3dab,"RIC1DC6 - QTS Richmond I DC6, LLC",Project,active,Hitt,2025-07-15,2025-09-04,,,2026-05-15,2026-07-14,2026-07-14
 QTS Data Centers,6a071a68b7c7740fe9c2f2e2,"RIC2DC3 - QTS Richmond II DC3, LLC",Project,active,Hitt,2025-07-28,2025-08-28,,,2026-05-15,2026-07-14,2026-07-14
