@@ -636,8 +636,8 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-14
 "Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-14
 "Block Real Estate Services, LLC",69fded1162446148bd848cb8,CorVel Healthcare Corporation,,Commercial General Liability,commercialGeneralLiability,,,2026-04-30,2027-04-30,,,,,2026-07-14
-"Block Real Estate Services, LLC",69fded1162446148bd848cb8,CorVel Healthcare Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-14
-"Block Real Estate Services, LLC",69fded1162446148bd848cb8,CorVel Healthcare Corporation,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-14
+"Block Real Estate Services, LLC",69fded1162446148bd848cb8,CorVel Healthcare Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-30,2027-04-30,,,,,2026-07-14
+"Block Real Estate Services, LLC",69fded1162446148bd848cb8,CorVel Healthcare Corporation,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-04-30,2027-04-30,,,,,2026-07-14
 "Block Real Estate Services, LLC",69fded1162446148bd848cb8,CorVel Healthcare Corporation,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-14
 "Block Real Estate Services, LLC",69fded1262446148bd848cf4,Data Systems International/ Nextworld / Cloud Inventory,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-14
 "Block Real Estate Services, LLC",69fded1262446148bd848cf4,Data Systems International/ Nextworld / Cloud Inventory,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-14
@@ -3359,13 +3359,14 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0e62446148bd848b86,ARC Physical Therapy Plus,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-14
 "Block Real Estate Services, LLC",69fded1062446148bd848c28,Builder Direct LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-14
 "Block Real Estate Services, LLC",69fded1362446148bd848d27,Dollar Tree #4044,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-14
-"Block Real Estate Services, LLC",69fded1462446148bd848d99,FedEx/Kinko's,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-14
+"Block Real Estate Services, LLC",69fded1462446148bd848d99,FedEx/Kinko's,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-14
 "Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-14
 "Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-14
 "Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-14
 "Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-14
 "Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-14
 "Block Real Estate Services, LLC",69fded1162446148bd848cbe,"Costco-Innovel Properties, LLC (fka Sears Logistics Service, Inc.)",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-14
+"Block Real Estate Services, LLC",69fded2462446148bd8492af,"Satellite Engineering / WESCO Distribution, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-14
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-07-14
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-07-14
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-07-14

@@ -207,7 +207,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1462446148bd848d90,"Farm & Home Builders, Inc",,NON_COMPLIANT,,,true,false,2026-07-14
 "Block Real Estate Services, LLC",69fded1462446148bd848d93,Fastenal Company,,NON_COMPLIANT,,,true,false,2026-07-14
 "Block Real Estate Services, LLC",69fded1462446148bd848d96,FastSigns,,NON_COMPLIANT,,,true,false,2026-07-14
-"Block Real Estate Services, LLC",69fded1462446148bd848d99,FedEx/Kinko's,,NON_COMPLIANT,,,true,false,2026-07-14
+"Block Real Estate Services, LLC",69fded1462446148bd848d99,FedEx/Kinko's,,COMPLIANT,,,true,false,2026-07-14
 "Block Real Estate Services, LLC",69fded1462446148bd848d9c,"Daley & Fey, LLP",,NON_COMPLIANT,,,true,false,2026-07-14
 "Block Real Estate Services, LLC",69fded1462446148bd848d9f,"Popculture Gourmet Popcorn / FILGR, LLC",,NON_COMPLIANT,,,true,false,2026-07-14
 "Block Real Estate Services, LLC",69fded1462446148bd848da2,"Fine Line Graphics, Inc.",,NON_COMPLIANT,,,true,false,2026-07-14
@@ -523,7 +523,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2162446148bd849189,South Western Communications Inc,,COMPLIANT,,,true,false,2026-07-14
 "Block Real Estate Services, LLC",69fded2162446148bd84918c,Southwest Solutions Group Inc,,NON_COMPLIANT,,,true,false,2026-07-14
 "Block Real Estate Services, LLC",69fded2162446148bd849192,Sport Clips,,NON_COMPLIANT,,,true,false,2026-07-14
-"Block Real Estate Services, LLC",69fded2162446148bd849195,Sports Rehab & Physical Therapy Inc,,NON_COMPLIANT,,,true,false,2026-07-14
+"Block Real Estate Services, LLC",69fded2162446148bd849195,Sports Rehab & Physical Therapy Inc,,COMPLIANT,,,true,false,2026-07-14
 "Block Real Estate Services, LLC",69fded2162446148bd849198,"Sports Rehab and Physical Therapy Associates, Inc. (sublease from Kansas City Bone & Joint)",,NON_COMPLIANT,,,true,false,2026-07-14
 "Block Real Estate Services, LLC",69fded2162446148bd84919b,"SRS Commercial AVL, LLC (fka Stark Raving Solutions, LLC)",,NON_COMPLIANT,,,true,false,2026-07-14
 "Block Real Estate Services, LLC",69fded2162446148bd84919e,"Midwest Roofing / SRS Distribution, Inc.",,NON_COMPLIANT,,,true,false,2026-07-14
@@ -748,7 +748,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59582,Veterans Ascent Corp,,NON_COMPLIANT,,,true,false,2026-07-14
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,NON_COMPLIANT,,,true,false,2026-07-14
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,NON_COMPLIANT,,,true,false,2026-07-14
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,NON_COMPLIANT,,,true,false,2026-07-14
+QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,COMPLIANT,,,true,false,2026-07-14
 QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,NON_COMPLIANT,,,true,false,2026-07-14
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,NON_COMPLIANT,,,true,false,2026-07-14
 QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,NON_COMPLIANT,,,true,false,2026-07-14
