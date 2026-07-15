@@ -826,7 +826,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2162446148bd849180,Sobriety First,,Commercial General Liability,commercialGeneralLiability,,,2026-01-13,2027-01-13,,,,,2026-07-15
 "Block Real Estate Services, LLC",69fded2162446148bd849180,Sobriety First,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-13,2027-01-13,,,,,2026-07-15
 "Block Real Estate Services, LLC",69fded2162446148bd849180,Sobriety First,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-15
-"Block Real Estate Services, LLC",69fded2162446148bd849180,Sobriety First,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-15
+"Block Real Estate Services, LLC",69fded2162446148bd849180,Sobriety First,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-01-13,2027-01-13,,,,,2026-07-15
 "Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,Commercial General Liability,commercialGeneralLiability,,,2025-07-29,2026-07-29,,,,,2026-07-15
 "Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-15
 "Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-15
@@ -887,7 +887,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a174c521814afc0f550857c,"Money N Minutes / Z & H Holding, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-15
 "Block Real Estate Services, LLC",6a174c521814afc0f550857c,"Money N Minutes / Z & H Holding, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-15
 "Block Real Estate Services, LLC",6a174c521814afc0f550857c,"Money N Minutes / Z & H Holding, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-15
-"Block Real Estate Services, LLC",6a174c5f68ca7e99894e866e,"Party Time Liquor / LEXMI, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-15
+"Block Real Estate Services, LLC",6a174c5f68ca7e99894e866e,"Party Time Liquor / LEXMI, LLC",,Commercial General Liability,commercialGeneralLiability,,,2025-09-04,2026-09-04,,,,,2026-07-15
 "Block Real Estate Services, LLC",6a174c5f68ca7e99894e866e,"Party Time Liquor / LEXMI, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-15
 "Block Real Estate Services, LLC",6a174c5f68ca7e99894e866e,"Party Time Liquor / LEXMI, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-15
 "Block Real Estate Services, LLC",6a174c5f68ca7e99894e866e,"Party Time Liquor / LEXMI, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-15
@@ -955,9 +955,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0d62446148bd848b44,All Access Garage Doors,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-05,2027-04-05,,,,,2026-07-15
 "Block Real Estate Services, LLC",69fded0d62446148bd848b44,All Access Garage Doors,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-12-05,2026-12-05,,,,,2026-07-15
 "Block Real Estate Services, LLC",69fded0d62446148bd848b44,All Access Garage Doors,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-12-05,2026-12-05,,,,,2026-07-15
-"Block Real Estate Services, LLC",69fded2062446148bd84914d,"SERC Physical Therapy / SERC Rehabilitation Partners, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-07-15
-"Block Real Estate Services, LLC",69fded2062446148bd84914d,"SERC Physical Therapy / SERC Rehabilitation Partners, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-07-01,2027-07-01,,,,,2026-07-15
-"Block Real Estate Services, LLC",69fded2062446148bd84914d,"SERC Physical Therapy / SERC Rehabilitation Partners, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-01,2027-07-01,,,,,2026-07-15
+"Block Real Estate Services, LLC",69fded2062446148bd84914d,"SERC Physical Therapy / SERC Rehabilitation Partners, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-15
+"Block Real Estate Services, LLC",69fded2062446148bd84914d,"SERC Physical Therapy / SERC Rehabilitation Partners, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-15
+"Block Real Estate Services, LLC",69fded2062446148bd84914d,"SERC Physical Therapy / SERC Rehabilitation Partners, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-15
 "Block Real Estate Services, LLC",69fded2062446148bd84914d,"SERC Physical Therapy / SERC Rehabilitation Partners, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-15
 "Block Real Estate Services, LLC",6a1e004c23b401dcff82ac21,BRES Management Office,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-15
 "Block Real Estate Services, LLC",6a1e004c23b401dcff82ac21,BRES Management Office,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-15
@@ -3247,7 +3247,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a1dd8fdfec65127865d9614,"Jaeckle Wholesale, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-15
 "Block Real Estate Services, LLC",6a1dd8fdfec65127865d9614,"Jaeckle Wholesale, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-15
 "Block Real Estate Services, LLC",6a1dd8fdfec65127865d9614,"Jaeckle Wholesale, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-15
-"Block Real Estate Services, LLC",6a1de0142575f4fed4484ab8,"Gentry Dental / James D Gentry, Dmd",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-15
+"Block Real Estate Services, LLC",6a1de0142575f4fed4484ab8,"Gentry Dental / James D Gentry, Dmd",,Commercial General Liability,commercialGeneralLiability,,,2024-08-29,2026-08-29,,,,,2026-07-15
 "Block Real Estate Services, LLC",6a1de0142575f4fed4484ab8,"Gentry Dental / James D Gentry, Dmd",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-15
 "Block Real Estate Services, LLC",6a1de0142575f4fed4484ab8,"Gentry Dental / James D Gentry, Dmd",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-15
 "Block Real Estate Services, LLC",6a1de0142575f4fed4484ab8,"Gentry Dental / James D Gentry, Dmd",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-15
