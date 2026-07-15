@@ -1,6 +1,4 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,478504d4-d625-4636-9be6-4af781187006,,,,,2026-07-14T08:15:06,,,,,,07/15/2026,07/15/2026 08:52:21
-Canadian Pacific Kansas City,55e94a19-5018-45cb-9ee5-aefb2022487e,,,,,2026-07-14T23:18:28,,,,,,07/15/2026,07/15/2026 08:52:21
-Canadian Pacific Kansas City,f740964e-fce0-4202-9900-830ec9d45767,,2575f762-2863-4832-838e-9ee66f9a919c,,,2026-07-15T03:10:45,,,,,,07/15/2026,07/15/2026 08:52:21
-EMMES,73a1620e-d3b2-411c-a167-8847c73953ac,,e6ceed5f-7eb2-4220-ad21-51e92a28eb77,,,2026-07-15T12:09:11,,,,,,07/15/2026,07/15/2026 08:52:21
-EMMES,9ab662a4-3847-4a5c-a22a-71eff2fed7ea,,,,,2026-07-15T12:09:11,,,,,,07/15/2026,07/15/2026 08:52:21
+Bauer Foundation Corp.,478504d4-d625-4636-9be6-4af781187006,,,,,2026-07-14T08:15:06,,,,,,07/15/2026,07/15/2026 12:26:14
+Canadian Pacific Kansas City,4acf5951-e75d-4792-b9d4-b9fb0f4fa487,,a63c93b9-c2ca-4325-9b1d-e2ba2690251f,,,2026-07-15T15:09:34,,,,,,07/15/2026,07/15/2026 12:26:14
+Scandroli Construction,a5ae2fef-4f54-44ce-b9ae-8b1693407ccd,,131bd498-2127-4c13-97c0-47d72280133e,,,2026-07-15T15:48:07,,,,,,07/15/2026,07/15/2026 12:26:29
