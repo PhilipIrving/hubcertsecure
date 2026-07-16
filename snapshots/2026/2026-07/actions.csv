@@ -1,4 +1,9 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,478504d4-d625-4636-9be6-4af781187006,,,,,2026-07-14T08:15:06,,,,,,07/16/2026,07/16/2026 01:26:19
-Bauer Foundation Corp.,87e4b6f0-65ff-4bfa-995c-36cafe3fb5ea,,e75da15f-fad6-4ee5-ab92-b196fcb77426,,,2026-07-16T06:25:35,,,,,,07/16/2026,07/16/2026 01:26:19
-The Abbey Management Company,5d351db5-5c7e-4b14-88b5-dc06234587cc,,9a01e623-5df0-4173-880d-0a1d827f6e49,,,2026-07-16T02:00:16,,,,,,07/16/2026,07/16/2026 01:26:34
+Bauer Foundation Corp.,478504d4-d625-4636-9be6-4af781187006,,,,,2026-07-14T08:15:06,,,,,,07/16/2026,07/16/2026 05:16:18
+Bauer Foundation Corp.,87e4b6f0-65ff-4bfa-995c-36cafe3fb5ea,,e75da15f-fad6-4ee5-ab92-b196fcb77426,,,2026-07-16T06:25:35,,,,,,07/16/2026,07/16/2026 05:16:18
+Scandroli Construction,1a2970ae-46a3-4e65-9308-1e88bf36a33a,,4dde5cd6-fa94-4f90-bfb8-71cdcc8278e2,,,2026-07-16T10:13:19,,,,,,07/16/2026,07/16/2026 05:16:35
+Scandroli Construction,864782e0-ebde-4cac-b4bf-13a1c8a5cae3,,d8270f48-3467-4d28-8f78-0f933a5a3889,,,2026-07-16T09:26:00,,,,,,07/16/2026,07/16/2026 05:16:35
+Scandroli Construction,893b5765-608e-4612-b3d1-ad29f0db9b5c,,4dde5cd6-fa94-4f90-bfb8-71cdcc8278e2,,,2026-07-16T10:13:19,,,,,,07/16/2026,07/16/2026 05:16:35
+Scandroli Construction,f3d60805-aae2-4f02-a2ed-25c975cadeda,,d8270f48-3467-4d28-8f78-0f933a5a3889,,,2026-07-16T09:26:00,,,,,,07/16/2026,07/16/2026 05:16:35
+The Abbey Management Company,5d351db5-5c7e-4b14-88b5-dc06234587cc,,9a01e623-5df0-4173-880d-0a1d827f6e49,,,2026-07-16T02:00:16,,,,,,07/16/2026,07/16/2026 05:16:37
+Trinity Chemical Industries LLC,b0a97b4d-f9f6-4213-b5da-21902b154256,,e6ea51fc-df8a-4fbf-b638-1798c527b06d,,,2026-07-16T08:56:42,,,,,,07/16/2026,07/16/2026 05:16:38
