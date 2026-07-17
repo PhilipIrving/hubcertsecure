@@ -575,7 +575,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1662446148bd848e32,H & R Block Enterprises LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1662446148bd848e32,H & R Block Enterprises LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1662446148bd848e32,H & R Block Enterprises LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-05-01,2027-05-01,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded2162446148bd8491ad,Starbucks #2436,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded2162446148bd8491ad,Starbucks #2436,,Commercial General Liability,commercialGeneralLiability,,,2025-10-01,2026-10-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2162446148bd8491ad,Starbucks #2436,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2162446148bd8491ad,Starbucks #2436,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2162446148bd8491ad,Starbucks #2436,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
@@ -738,7 +738,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-03-01,2027-03-01,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-03-01,2027-03-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1262446148bd848ceb,Dairy Farmers of America Inc,,Commercial General Liability,commercialGeneralLiability,,,2025-10-01,2026-10-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1262446148bd848ceb,Dairy Farmers of America Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-10-01,2026-10-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1262446148bd848ceb,Dairy Farmers of America Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-10-01,2026-10-01,,,,,2026-07-17
@@ -748,8 +748,8 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0c62446148bd848b26,"Advanced Auto / Advanced Stores Co., Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded0c62446148bd848b26,"Advanced Auto / Advanced Stores Co., Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-01,2027-06-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded0e62446148bd848b83,Applied Industrial Technologies Inc,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded0e62446148bd848b83,Applied Industrial Technologies Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded0e62446148bd848b83,Applied Industrial Technologies Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded0e62446148bd848b83,Applied Industrial Technologies Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-01,2027-06-01,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded0e62446148bd848b83,Applied Industrial Technologies Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded0e62446148bd848b83,Applied Industrial Technologies Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1562446148bd848dc0,Force America Inc,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1562446148bd848dc0,Force America Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
@@ -1023,10 +1023,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0e62446148bd848bad,Recognition Plus Audio Video Graphics,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-02-01,2027-02-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded0e62446148bd848bad,Recognition Plus Audio Video Graphics,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded0e62446148bd848bad,Recognition Plus Audio Video Graphics,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-02-01,2027-02-01,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1b62446148bd848fb8,MIdwest Model Railroad LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1b62446148bd848fb8,MIdwest Model Railroad LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-01-27,2027-01-27,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1b62446148bd848fb8,MIdwest Model Railroad LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1b62446148bd848fb8,MIdwest Model Railroad LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1b62446148bd848fb8,MIdwest Model Railroad LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1b62446148bd848fb8,MIdwest Model Railroad LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-01-27,2027-01-27,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-03-20,2027-03-20,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-19,2027-03-20,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
@@ -1127,9 +1127,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2162446148bd8491c2,"Style Crest, Inc. (fka Durham Supply, Inc.)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-10-01,2026-10-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2162446148bd8491c2,"Style Crest, Inc. (fka Durham Supply, Inc.)",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-02-01,2028-02-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2162446148bd8491c2,"Style Crest, Inc. (fka Durham Supply, Inc.)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-10-01,2026-10-01,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1862446148bd848ed4,WinAir,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1862446148bd848ed4,WinAir,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1862446148bd848ed4,WinAir,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1862446148bd848ed4,WinAir,,Commercial General Liability,commercialGeneralLiability,,,2025-10-01,2026-10-01,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1862446148bd848ed4,WinAir,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-10-01,2026-10-01,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1862446148bd848ed4,WinAir,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-10-01,2026-10-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1862446148bd848ed4,WinAir,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1962446148bd848ee9,"KC Classic Auto, LLC",,Commercial General Liability,commercialGeneralLiability,,,2025-12-09,2026-12-09,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1962446148bd848ee9,"KC Classic Auto, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-12-09,2026-12-09,,,,,2026-07-17
@@ -1814,7 +1814,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1062446148bd848c1f,The Professional Group / Bryan Torez,,Commercial General Liability,commercialGeneralLiability,,,2025-11-01,2026-11-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1062446148bd848c1f,The Professional Group / Bryan Torez,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1062446148bd848c1f,The Professional Group / Bryan Torez,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1062446148bd848c1f,The Professional Group / Bryan Torez,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1062446148bd848c1f,The Professional Group / Bryan Torez,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-11-01,2026-11-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2362446148bd849279,"Vakok Asian Market, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2362446148bd849279,"Vakok Asian Market, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2362446148bd849279,"Vakok Asian Market, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
@@ -2734,7 +2734,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1e62446148bd8490ab,Prairie Engineers PC,,Commercial General Liability,commercialGeneralLiability,,,2025-07-15,2027-07-15,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1e62446148bd8490ab,Prairie Engineers PC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-07-15,2027-07-15,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1e62446148bd8490ab,Prairie Engineers PC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-07-15,2027-07-15,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1e62446148bd8490ab,Prairie Engineers PC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1e62446148bd8490ab,Prairie Engineers PC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-07-15,2027-07-15,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1b62446148bd848fc1,"Ingersol Rand / Milton Roy, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1b62446148bd848fc1,"Ingersol Rand / Milton Roy, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1b62446148bd848fc1,"Ingersol Rand / Milton Roy, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-03-01,2027-03-01,,,,,2026-07-17
@@ -2915,10 +2915,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1a62446148bd848f64,Martinrea Riverside LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1a62446148bd848f64,Martinrea Riverside LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1a62446148bd848f64,Martinrea Riverside LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1b62446148bd848fac,"Midland Steel Erection, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1b62446148bd848fac,"Midland Steel Erection, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1b62446148bd848fac,"Midland Steel Erection, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1b62446148bd848fac,"Midland Steel Erection, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1b62446148bd848fac,"Midland Steel Erection, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-04-01,2027-04-01,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1b62446148bd848fac,"Midland Steel Erection, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-01,2027-04-01,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1b62446148bd848fac,"Midland Steel Erection, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1b62446148bd848fac,"Midland Steel Erection, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-01-01,2027-01-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",6a1866145a886bcac13a5c35,Bariatric & Metabolic Classroom / HCA-MMC-Menorah Medical Center,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",6a1866145a886bcac13a5c35,Bariatric & Metabolic Classroom / HCA-MMC-Menorah Medical Center,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",6a1866145a886bcac13a5c35,Bariatric & Metabolic Classroom / HCA-MMC-Menorah Medical Center,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
@@ -3018,7 +3018,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-03-01,2027-03-01,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-03-01,2027-03-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1e62446148bd84908d,"Servpro / Piat, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2025-09-08,2026-09-08,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1e62446148bd84908d,"Servpro / Piat, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-09-08,2026-09-08,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1e62446148bd84908d,"Servpro / Piat, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-24,2027-01-24,,,,,2026-07-17
@@ -3026,7 +3026,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-03-01,2027-03-01,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-03-01,2027-03-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1e62446148bd8490b1,"Prime Source Building Products, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-06-30,2027-06-30,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1e62446148bd8490b1,"Prime Source Building Products, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-30,2027-06-30,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1e62446148bd8490b1,"Prime Source Building Products, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-30,2027-06-30,,,,,2026-07-17
@@ -3082,7 +3082,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a187b72462ef1e78ea98fda,"Heper USA, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-07-14,2027-07-14,,,,,2026-07-17
 "Block Real Estate Services, LLC",6a187b72462ef1e78ea98fda,"Heper USA, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-07-14,2027-07-14,,,,,2026-07-17
 "Block Real Estate Services, LLC",6a187b72462ef1e78ea98fda,"Heper USA, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-14,2027-07-14,,,,,2026-07-17
-"Block Real Estate Services, LLC",6a187b72462ef1e78ea98fda,"Heper USA, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",6a187b72462ef1e78ea98fda,"Heper USA, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-07-14,2027-07-14,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2062446148bd849135,Savanah Hunt,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2062446148bd849135,Savanah Hunt,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2062446148bd849135,Savanah Hunt,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
@@ -3175,10 +3175,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1062446148bd848c3a,BWI Companies Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-11-01,2026-11-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1062446148bd848c3a,BWI Companies Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-11-01,2026-11-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1062446148bd848c3a,BWI Companies Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-11-01,2026-11-01,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1662446148bd848e35,H M Cragg Co,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1662446148bd848e35,H M Cragg Co,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1662446148bd848e35,H M Cragg Co,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1662446148bd848e35,H M Cragg Co,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1662446148bd848e35,H M Cragg Co,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1662446148bd848e35,H M Cragg Co,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-07-01,2027-07-01,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1662446148bd848e35,H M Cragg Co,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-01,2027-07-01,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1662446148bd848e35,H M Cragg Co,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-07-01,2027-07-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded0e62446148bd848bb0,AVI-SPL LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-04-17,2027-04-17,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded0e62446148bd848bb0,AVI-SPL LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-17,2027-04-17,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded0e62446148bd848bb0,AVI-SPL LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-04-17,2027-04-17,,,,,2026-07-17
@@ -3361,6 +3361,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1f62446148bd8490d8,R & R Communications Inc,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1362446148bd848d27,Dollar Tree #4044,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1462446148bd848d99,FedEx/Kinko's,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded2162446148bd8491ad,Starbucks #2436,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
@@ -3376,6 +3377,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2162446148bd8491b3,Starbucks Corporation,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2162446148bd8491b3,Starbucks Corporation,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2162446148bd8491b3,Starbucks Corporation,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1f62446148bd849108,"Rosen's, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-17
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-07-17
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-07-17
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-07-17
