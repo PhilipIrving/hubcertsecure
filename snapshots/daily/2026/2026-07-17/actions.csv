@@ -1,0 +1,12 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+A G Equipment Company,5a63b35a-5266-49cb-9c36-232cef63ef96,,76a08dcd-6dd3-4f8c-8cd1-08a7b54ac34f,,,2026-07-17T01:39:59,,,,,,07/16/2026,07/16/2026 21:51:47
+Bauer Foundation Corp.,ce67ab9b-a728-447e-8c5c-cf4748edd7b2,,e40a968c-8130-470a-b496-3a0216d5b70a,,,2026-07-17T01:46:41,,,,,,07/16/2026,07/16/2026 21:51:47
+Kolb Grading,590d9aa8-70aa-4b43-8217-a07cfc6b0a1d,,,,,2026-07-16T19:14:17,,,,,,07/16/2026,07/16/2026 21:51:50
+Kolb Grading,8ec7c1c1-6303-4fb6-91af-f9956bdab3cc,,,,,2026-07-16T19:14:17,,,,,,07/16/2026,07/16/2026 21:51:50
+Kolb Grading,b0d46a89-f21e-4b69-95d1-51768f403023,,,,,2026-07-16T19:14:17,,,,,,07/16/2026,07/16/2026 21:51:50
+Scandroli Construction,78d559be-d1f6-456e-922e-0f24f25e4bb8,,,,,2026-07-16T20:39:21,,,,,,07/16/2026,07/16/2026 21:52:00
+The Abbey Management Company,6490f0d1-a614-4efe-b303-43858b8cdf16,,,,,2026-07-17T00:19:01,,,,,,07/16/2026,07/16/2026 21:52:02
+The Abbey Management Company,6c738706-197f-411f-93bd-982394613287,,,,,2026-07-17T01:46:01,,,,,,07/16/2026,07/16/2026 21:52:02
+The Abbey Management Company,71f95311-63fd-43ca-921a-d79b38436eee,,,,,2026-07-17T01:08:59,,,,,,07/16/2026,07/16/2026 21:52:02
+The Abbey Management Company,c825dd91-e5ab-4347-af70-f8a95ae7467e,,,,,2026-07-17T02:00:31,,,,,,07/16/2026,07/16/2026 21:52:02
+Trinity Chemical Industries LLC,20cfc314-8bc6-4675-9f93-9bb4e279507d,,35330e61-80a4-4b43-a218-d01bbb8f7ed1,,,2026-07-17T01:47:56,,,,,,07/16/2026,07/16/2026 21:52:02
