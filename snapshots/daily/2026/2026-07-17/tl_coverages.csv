@@ -855,7 +855,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1f62446148bd849123,Safari Mart,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1f62446148bd849123,Safari Mart,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1f62446148bd849123,Safari Mart,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1b62446148bd848fd6,Moncayo Legal LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1b62446148bd848fd6,Moncayo Legal LLC,,Commercial General Liability,commercialGeneralLiability,,,2025-10-28,2026-10-28,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1b62446148bd848fd6,Moncayo Legal LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1b62446148bd848fd6,Moncayo Legal LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1b62446148bd848fd6,Moncayo Legal LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
@@ -1627,8 +1627,8 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2262446148bd84920d,Argosy Casino & Hotel / The Missouri Gaming Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-01,2027-04-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2262446148bd84920d,Argosy Casino & Hotel / The Missouri Gaming Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-04-01,2027-04-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded2262446148bd84920d,Argosy Casino & Hotel / The Missouri Gaming Company,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-04-01,2027-04-01,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1e62446148bd84909f,Polaris Pharmacy Services of Missouri,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-17
-"Block Real Estate Services, LLC",69fded1e62446148bd84909f,Polaris Pharmacy Services of Missouri,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1e62446148bd84909f,Polaris Pharmacy Services of Missouri,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-07-17
+"Block Real Estate Services, LLC",69fded1e62446148bd84909f,Polaris Pharmacy Services of Missouri,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-07-01,2027-07-01,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1e62446148bd84909f,Polaris Pharmacy Services of Missouri,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1e62446148bd84909f,Polaris Pharmacy Services of Missouri,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-17
 "Block Real Estate Services, LLC",69fded1062446148bd848c25,"Buckeye Cleaning Center KC / Buckeye International, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-07-17
