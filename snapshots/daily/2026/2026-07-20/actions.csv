@@ -1,4 +1,2 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,906e76aa-c62d-4486-bb3d-8b8b80c1d78c,,,,,2026-07-20T18:01:45,,,,,,07/20/2026,07/20/2026 13:12:46
-Trinity Chemical Industries LLC,20cfc314-8bc6-4675-9f93-9bb4e279507d,,35330e61-80a4-4b43-a218-d01bbb8f7ed1,,,2026-07-17T01:47:56,,,,,,07/20/2026,07/20/2026 13:13:01
-Trinity Chemical Industries LLC,e9f8bceb-c5ad-49e7-bcf3-ee818a1a1481,,,,,2026-07-20T02:30:11,,,,,,07/20/2026,07/20/2026 13:13:01
+Canadian Pacific Kansas City,906e76aa-c62d-4486-bb3d-8b8b80c1d78c,,,,,2026-07-20T18:01:45,,,,,,07/20/2026,07/20/2026 16:20:09
