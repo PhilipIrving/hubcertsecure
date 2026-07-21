@@ -1,2 +1,7 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,906e76aa-c62d-4486-bb3d-8b8b80c1d78c,,,,,2026-07-20T18:01:45,,,,,,07/20/2026,07/20/2026 16:20:09
+Canadian Pacific Kansas City,906e76aa-c62d-4486-bb3d-8b8b80c1d78c,,,,,2026-07-20T18:01:45,,,,,,07/21/2026,07/21/2026 05:33:56
+Canadian Pacific Kansas City,d0603fd8-0411-4ecc-9c11-fd023de6958b,,,,,2026-07-21T07:07:28,,,,,,07/21/2026,07/21/2026 05:33:56
+EMMES,2509b38a-b5e2-4e00-8089-793b4cb134a7,,816bacc3-71d2-4787-bd15-09d7cf4ee8d8,,,2026-07-21T07:51:14,,,,,,07/21/2026,07/21/2026 05:33:56
+The Abbey Management Company,2679e7a8-eb69-4d8b-b83a-cbbb9b16fc9a,,3fd17886-46ea-4efe-bff5-76fd61e0a805,,,2026-07-21T07:23:57,,,,,,07/21/2026,07/21/2026 05:34:12
+The Abbey Management Company,b3fe39fa-29fc-4fdf-88d7-0ea427f0f03a,,,,,2026-07-21T07:23:57,,,,,,07/21/2026,07/21/2026 05:34:12
+The Abbey Management Company,e8f85f72-c3f7-4a05-adbd-cb1c97f04143,,e5e5a076-6156-4ea8-9f9c-463ad9f55e2d,,,2026-07-21T09:02:03,,,,,,07/21/2026,07/21/2026 05:34:12
