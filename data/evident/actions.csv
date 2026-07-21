@@ -1,7 +1,15 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,906e76aa-c62d-4486-bb3d-8b8b80c1d78c,,,,,2026-07-20T18:01:45,,,,,,07/21/2026,07/21/2026 05:33:56
-Canadian Pacific Kansas City,d0603fd8-0411-4ecc-9c11-fd023de6958b,,,,,2026-07-21T07:07:28,,,,,,07/21/2026,07/21/2026 05:33:56
-EMMES,2509b38a-b5e2-4e00-8089-793b4cb134a7,,816bacc3-71d2-4787-bd15-09d7cf4ee8d8,,,2026-07-21T07:51:14,,,,,,07/21/2026,07/21/2026 05:33:56
-The Abbey Management Company,2679e7a8-eb69-4d8b-b83a-cbbb9b16fc9a,,3fd17886-46ea-4efe-bff5-76fd61e0a805,,,2026-07-21T07:23:57,,,,,,07/21/2026,07/21/2026 05:34:12
-The Abbey Management Company,b3fe39fa-29fc-4fdf-88d7-0ea427f0f03a,,,,,2026-07-21T07:23:57,,,,,,07/21/2026,07/21/2026 05:34:12
-The Abbey Management Company,e8f85f72-c3f7-4a05-adbd-cb1c97f04143,,e5e5a076-6156-4ea8-9f9c-463ad9f55e2d,,,2026-07-21T09:02:03,,,,,,07/21/2026,07/21/2026 05:34:12
+Canadian Pacific Kansas City,27b4aa26-ee7e-4f99-9aad-8d432d04fed2,,,,,2026-07-21T11:38:55,,,,,,07/21/2026,07/21/2026 09:03:00
+Canadian Pacific Kansas City,4bfe77ef-4c3f-409c-b23c-d1a783daa533,,f1bb377e-49eb-4dbd-b4e2-481c1a17c279,,,2026-07-21T10:47:46,,,,,,07/21/2026,07/21/2026 09:03:00
+Canadian Pacific Kansas City,906e76aa-c62d-4486-bb3d-8b8b80c1d78c,,,,,2026-07-20T18:01:45,,,,,,07/21/2026,07/21/2026 09:03:00
+Canadian Pacific Kansas City,b85d7e2d-e26a-42c6-b6ef-ec1c46451f4c,,,,,2026-07-21T13:20:20,,,,,,07/21/2026,07/21/2026 09:03:00
+Canadian Pacific Kansas City,ba9ce680-1c2d-4268-9d71-639beeb2d7cf,,9aa7aee2-fd3e-418d-b9a1-9bd68a682546,,,2026-07-21T12:23:14,,,,,,07/21/2026,07/21/2026 09:03:00
+Canadian Pacific Kansas City,d0603fd8-0411-4ecc-9c11-fd023de6958b,,,,,2026-07-21T07:07:28,,,,,,07/21/2026,07/21/2026 09:03:00
+EMMES,2509b38a-b5e2-4e00-8089-793b4cb134a7,,816bacc3-71d2-4787-bd15-09d7cf4ee8d8,,,2026-07-21T07:51:14,,,,,,07/21/2026,07/21/2026 09:03:00
+EMMES,e3ebbdae-2529-44e0-992b-9a85203eb4fe,,e081946e-1783-463c-bca5-f22e01c08262,,,2026-07-21T11:58:20,,,,,,07/21/2026,07/21/2026 09:03:00
+EMMES,e98f594d-4524-4850-9078-4cc0775c88e5,,,,,2026-07-21T11:58:20,,,,,,07/21/2026,07/21/2026 09:03:00
+The Abbey Management Company,2679e7a8-eb69-4d8b-b83a-cbbb9b16fc9a,,3fd17886-46ea-4efe-bff5-76fd61e0a805,,,2026-07-21T07:23:57,,,,,,07/21/2026,07/21/2026 09:03:18
+The Abbey Management Company,b3fe39fa-29fc-4fdf-88d7-0ea427f0f03a,,,,,2026-07-21T07:23:57,,,,,,07/21/2026,07/21/2026 09:03:18
+The Abbey Management Company,c33632c2-d46a-4898-b605-24cb45f80a19,,6c013d86-34fa-4953-9f02-38cce177c1fd,,,2026-07-21T10:53:33,,,,,,07/21/2026,07/21/2026 09:03:18
+The Abbey Management Company,d8424ffd-e978-43fc-945d-00353217bdbb,,,,,2026-07-21T10:53:33,,,,,,07/21/2026,07/21/2026 09:03:18
+The Abbey Management Company,e8f85f72-c3f7-4a05-adbd-cb1c97f04143,,e5e5a076-6156-4ea8-9f9c-463ad9f55e2d,,,2026-07-21T09:02:03,,,,,,07/21/2026,07/21/2026 09:03:18
