@@ -1,3 +1,5 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Mizuho Bank,a24970b1-c720-40c0-a9c6-a0fb49a6e65b,,33267c35-1974-4df2-aed0-3f141936bcb1,,,2026-07-21T15:01:41,,,,,,07/21/2026,07/21/2026 12:29:32
-The Abbey Management Company,132c7a3b-0438-4e0a-b989-177e0ba027d1,,,,,2026-07-21T15:32:42,,,,,,07/21/2026,07/21/2026 12:29:40
+Mizuho Bank,a24970b1-c720-40c0-a9c6-a0fb49a6e65b,,33267c35-1974-4df2-aed0-3f141936bcb1,,,2026-07-21T15:01:41,,,,,,07/22/2026,07/22/2026 01:37:57
+Scandroli Construction,899c1b20-e70c-4027-94d3-197b8ac87382,,,,,2026-07-22T05:12:35,,,,,,07/22/2026,07/22/2026 01:38:04
+Scandroli Construction,d028d82c-016f-4057-b7f1-ef3ad3e82826,,18a1d703-1b08-4c9e-87bd-84baa7c7a3b6,,,2026-07-22T05:36:27,,,,,,07/22/2026,07/22/2026 01:38:04
+The Abbey Management Company,132c7a3b-0438-4e0a-b989-177e0ba027d1,,,,,2026-07-21T15:32:42,,,,,,07/22/2026,07/22/2026 01:38:06
