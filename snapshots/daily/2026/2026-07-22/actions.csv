@@ -1,0 +1,3 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Mizuho Bank,a24970b1-c720-40c0-a9c6-a0fb49a6e65b,,33267c35-1974-4df2-aed0-3f141936bcb1,,,2026-07-21T15:01:41,,,,,,07/21/2026,07/21/2026 12:29:32
+The Abbey Management Company,132c7a3b-0438-4e0a-b989-177e0ba027d1,,,,,2026-07-21T15:32:42,,,,,,07/21/2026,07/21/2026 12:29:40
