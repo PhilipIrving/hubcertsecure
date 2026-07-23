@@ -1,0 +1,5 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Trinity Chemical Industries LLC,11cb5880-874a-47b9-88ee-664ad1b4c6bf,,,,,2026-07-23T01:51:23,,,,,,07/22/2026,07/22/2026 22:00:12
+Trinity Chemical Industries LLC,19249653-2b8f-4eb8-b8fc-b2062007454d,,,,,2026-07-23T01:47:12,,,,,,07/22/2026,07/22/2026 22:00:12
+Trinity Chemical Industries LLC,ca37f5bb-f583-4102-849c-6e57b346fbbc,,3d1e68b0-6d0e-451b-88dd-baf52b521363,,,2026-07-23T01:51:23,,,,,,07/22/2026,07/22/2026 22:00:12
+Trinity Chemical Industries LLC,ec744a58-69fc-4a4f-92eb-0808f7497159,,,,,2026-07-23T01:47:12,,,,,,07/22/2026,07/22/2026 22:00:12
