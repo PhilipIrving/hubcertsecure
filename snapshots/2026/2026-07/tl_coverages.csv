@@ -1175,9 +1175,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0d62446148bd848b71,Anthony's Barber Shop / Anthony Vasquez,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-23
 "Block Real Estate Services, LLC",69fded0d62446148bd848b71,Anthony's Barber Shop / Anthony Vasquez,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-23
 "Block Real Estate Services, LLC",69fded0d62446148bd848b71,Anthony's Barber Shop / Anthony Vasquez,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-23
-"Block Real Estate Services, LLC",69fded1362446148bd848d24,Dollar Tree #03352,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-23
-"Block Real Estate Services, LLC",69fded1362446148bd848d24,Dollar Tree #03352,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-23
-"Block Real Estate Services, LLC",69fded1362446148bd848d24,Dollar Tree #03352,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-23
+"Block Real Estate Services, LLC",69fded1362446148bd848d24,Dollar Tree #03352,,Commercial General Liability,commercialGeneralLiability,,,2025-09-01,2026-09-01,,,,,2026-07-23
+"Block Real Estate Services, LLC",69fded1362446148bd848d24,Dollar Tree #03352,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-09-01,2026-09-01,,,,,2026-07-23
+"Block Real Estate Services, LLC",69fded1362446148bd848d24,Dollar Tree #03352,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-09-01,2026-09-01,,,,,2026-07-23
 "Block Real Estate Services, LLC",69fded1362446148bd848d24,Dollar Tree #03352,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-23
 "Block Real Estate Services, LLC",69fded1a62446148bd848f6d,Mattress Firm Inc,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-07-23
 "Block Real Estate Services, LLC",69fded1a62446148bd848f6d,Mattress Firm Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-07-01,2026-09-01,,,,,2026-07-23
@@ -3381,6 +3381,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Dr. Ryan Spurgeon Healing Neck & Joints,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-23
 "Block Real Estate Services, LLC",69fded1762446148bd848e83,"Xerox / Image Quest, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-23
 "Block Real Estate Services, LLC",69fded1162446148bd848cb8,CorVel Healthcare Corporation,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-23
+"Block Real Estate Services, LLC",69fded1362446148bd848d42,EcoShield Pest Solutions,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-23
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-07-23
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-07-23
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-07-23
