@@ -5,7 +5,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdef0303a2257cd27d83e8,3rd074 - Keystone Plaza Shopping Center {Larbre Family Trust},Project,active,,,,,,2026-05-08,2026-07-23,2026-07-23
 "Block Real Estate Services, LLC",69fdef0802bb2c42a879cab4,"3rd075 - State Line 75 {State Line 75, LLC}",Project,active,,,,,,2026-05-08,2026-07-23,2026-07-23
 "Block Real Estate Services, LLC",69fdef0c3b208288e0a796fa,"3rd093 - 85th & Wornall Retail {Tower Bridge Investements, LLC} (fka St. John Development)",Project,active,,,,,,2026-05-08,2026-07-23,2026-07-23
-"Block Real Estate Services, LLC",69fdef1003a2257cd27d8605,"3rd202 - D&H Properties - 80th Street {D&H Properties, LLC}",Project,active,,,,,,2026-05-08,2026-07-22,2026-07-23
+"Block Real Estate Services, LLC",69fdef1003a2257cd27d8605,"3rd202 - D&H Properties - 80th Street {D&H Properties, LLC}",Project,active,,,,,,2026-05-08,2026-07-23,2026-07-23
 "Block Real Estate Services, LLC",69fdef1402bb2c42a879cc2a,"3rd203 - D&H Properties - Santa Fe Drive {D&H Properties, LLC}",Project,active,,,,,,2026-05-08,2026-07-19,2026-07-23
 "Block Real Estate Services, LLC",69fdef1a3b208288e0a799c2,"3rd237 - Interstate Business Park Building 4 {2025 Wilshire Werbo, LLC}",Project,active,,,,,,2026-05-08,2026-07-02,2026-07-23
 "Block Real Estate Services, LLC",69fdef2438cbea6b3a68ae39,"3rd250 - 4500 W 107, LLC - (TEVA Pharmacy - tev250 for CAM)",Project,active,,,,,,2026-05-08,2026-06-18,2026-07-23
@@ -31,7 +31,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdef860bb484cab5138c69,"3rd867 - Four Pine Ridge Plaza {SSR Capital, LLC}",Project,active,,,,,,2026-05-08,2026-07-06,2026-07-23
 "Block Real Estate Services, LLC",69fdef8bfa0b60fcd50d6056,"3rd868 - Pine Ridge Building H {H60 Properties, LLC}",Project,active,,,,,,2026-05-08,2026-06-30,2026-07-23
 "Block Real Estate Services, LLC",69fdef8fbf1df2fe9692198a,"3rd959 - Bell 39 Properties, LLC",Project,active,,,,,,2026-05-08,2026-07-23,2026-07-23
-"Block Real Estate Services, LLC",69fdef94fa0b60fcd50d6424,"3rd989 - Hillcrest Plaza {Dunbarton SC, LLC}",Project,active,,,,,,2026-05-08,2026-07-19,2026-07-23
+"Block Real Estate Services, LLC",69fdef94fa0b60fcd50d6424,"3rd989 - Hillcrest Plaza {Dunbarton SC, LLC}",Project,active,,,,,,2026-05-08,2026-07-23,2026-07-23
 "Block Real Estate Services, LLC",69fdef98bf1df2fe96921c81,"460549 - 4600 Associates, LLC",Project,active,,,,,,2026-05-08,2026-06-18,2026-07-23
 "Block Real Estate Services, LLC",69fdef9de45e7dcf5c434532,"587118 - 5871 Investment Associates {SKFH Industrial 1 - 6001 Premier, LLC}",Project,active,,,,,,2026-05-08,2026-06-23,2026-07-23
 "Block Real Estate Services, LLC",69fdefa138cbea6b3a68cb21,"771655 - 7712 Wornall {7712 Wornall, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-07-23
@@ -147,7 +147,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf1943b208288e0a8495e,"tic662 - Pinnacle Corporate Centre III {Pinnacle Building III, LLC}",Project,active,,,,,,2026-05-08,2026-07-19,2026-07-23
 "Block Real Estate Services, LLC",69fdf19902bb2c42a87a78b8,"tic663 - Pinnacle Corporate Centre IV {BK Pinnacle IV, LLC}",Project,active,,,,,,2026-05-08,2026-07-23,2026-07-23
 "Block Real Estate Services, LLC",69fdf19c8e25e7a0d918870f,"tic665 - Pinnacle Corporate Centre V {Pinnacle V Associates, LLC}",Project,active,,,,,,2026-05-08,2026-07-23,2026-07-23
-"Block Real Estate Services, LLC",69fdf1a03b208288e0a84a8c,"tic680 - College Crossing E {College Crossing EFGH, LLC}",Project,active,,,,,,2026-05-08,2026-07-19,2026-07-23
+"Block Real Estate Services, LLC",69fdf1a03b208288e0a84a8c,"tic680 - College Crossing E {College Crossing EFGH, LLC}",Project,active,,,,,,2026-05-08,2026-07-23,2026-07-23
 "Block Real Estate Services, LLC",69fdf1a402bb2c42a87a79ca,"tic681 - College Crossing F {College Crossing EFGH, LLC}",Project,active,,,,,,2026-05-08,2026-07-23,2026-07-23
 "Block Real Estate Services, LLC",69fdf1a78e25e7a0d91889e0,"tic682 - College Crossing G {College Crossing EFGH, LLC}",Project,active,,,,,,2026-05-08,2026-07-23,2026-07-23
 "Block Real Estate Services, LLC",69fdf1aa3b208288e0a84cde,"tic683 - College Crossing H {College Crossing EFGH, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-07-23
