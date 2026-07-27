@@ -2643,9 +2643,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1562446148bd848de4,Vitev / Gabe Hunninghake,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-27
 "Block Real Estate Services, LLC",69fded1562446148bd848de4,Vitev / Gabe Hunninghake,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-27
 "Block Real Estate Services, LLC",69fded1562446148bd848de4,Vitev / Gabe Hunninghake,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-27
-"Block Real Estate Services, LLC",6a072930f523b35823695c72,Taikan Development Corporation,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-27
+"Block Real Estate Services, LLC",6a072930f523b35823695c72,Taikan Development Corporation,,Commercial General Liability,commercialGeneralLiability,,,2025-08-13,2026-08-13,,,,,2026-07-27
 "Block Real Estate Services, LLC",6a072930f523b35823695c72,Taikan Development Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-27
-"Block Real Estate Services, LLC",6a072930f523b35823695c72,Taikan Development Corporation,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-07-27
+"Block Real Estate Services, LLC",6a072930f523b35823695c72,Taikan Development Corporation,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-08-09,2026-08-09,,,,,2026-07-27
 "Block Real Estate Services, LLC",6a072930f523b35823695c72,Taikan Development Corporation,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-07-27
 "Block Real Estate Services, LLC",6a17132fefde9f2154ac6af4,The Underground Lab / Animal Kingdom Athletics,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-27
 "Block Real Estate Services, LLC",6a17132fefde9f2154ac6af4,The Underground Lab / Animal Kingdom Athletics,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-27
@@ -3384,7 +3384,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1362446148bd848d42,EcoShield Pest Solutions,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-27
 "Block Real Estate Services, LLC",69fded2162446148bd8491a7,"Staples, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-27
 "Block Real Estate Services, LLC",69fded1362446148bd848d2a,Dollar Tree #8462,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-27
-"Block Real Estate Services, LLC",69fded1362446148bd848d36,DaVita Dialysis / DVA Renal Healthcare,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-27
+"Block Real Estate Services, LLC",69fded1362446148bd848d36,DaVita Dialysis / DVA Renal Healthcare,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-27
 "Block Real Estate Services, LLC",6a171003ee5ef0b8dcf522cf,"Pop! Vintage Furniture & Accessories, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-27
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-07-27
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-07-27
