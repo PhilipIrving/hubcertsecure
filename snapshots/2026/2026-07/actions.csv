@@ -1,6 +1,7 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,0934eee7-5f48-4515-ad06-3498115d4f0a,,6a6f4f5a-36c9-4129-9875-cbc331eba648,,,2026-07-27T23:49:25,,,,,,07/27/2026,07/27/2026 21:46:49
-Bauer Foundation Corp.,3efdb015-e9aa-452c-9821-621d15a47281,,,,,2026-07-27T23:49:25,,,,,,07/27/2026,07/27/2026 21:46:49
-Bauer Foundation Corp.,a1b73c9f-c331-4177-9315-37c0dfc159ea,,dcd55169-eba9-4ab9-8ae3-1988a892e1f2,,,2026-07-27T20:44:25,,,,,,07/27/2026,07/27/2026 21:46:49
-Bauer Foundation Corp.,f940b669-da26-48c1-a184-d83c24ee7f34,,54233c0f-d217-4709-81e5-a4b0cc386349,,,2026-07-27T23:49:28,,,,,,07/27/2026,07/27/2026 21:46:49
-Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,07/27/2026,07/27/2026 21:46:49
+Bauer Foundation Corp.,0934eee7-5f48-4515-ad06-3498115d4f0a,,6a6f4f5a-36c9-4129-9875-cbc331eba648,,,2026-07-27T23:49:25,,,,,,07/28/2026,07/28/2026 05:45:39
+Bauer Foundation Corp.,3efdb015-e9aa-452c-9821-621d15a47281,,,,,2026-07-27T23:49:25,,,,,,07/28/2026,07/28/2026 05:45:39
+Bauer Foundation Corp.,a1b73c9f-c331-4177-9315-37c0dfc159ea,,dcd55169-eba9-4ab9-8ae3-1988a892e1f2,,,2026-07-27T20:44:25,,,,,,07/28/2026,07/28/2026 05:45:39
+Bauer Foundation Corp.,f940b669-da26-48c1-a184-d83c24ee7f34,,54233c0f-d217-4709-81e5-a4b0cc386349,,,2026-07-27T23:49:28,,,,,,07/28/2026,07/28/2026 05:45:39
+EMMES,1470bc94-1cf7-4d2f-959f-de7f2fdad0a4,,,,,2026-05-12T04:13:52,,,,,,07/28/2026,07/28/2026 05:45:39
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,07/28/2026,07/28/2026 05:45:39
