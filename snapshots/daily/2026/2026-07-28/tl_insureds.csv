@@ -15,7 +15,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0c62446148bd848b23,"ADI (Ademco Distribution, Inc.) / Honeywell International, Inc.",,NON_COMPLIANT,,,true,false,2026-07-28
 "Block Real Estate Services, LLC",69fded0c62446148bd848b26,"Advanced Auto / Advanced Stores Co., Inc.",,NON_COMPLIANT,,,true,false,2026-07-28
 "Block Real Estate Services, LLC",69fded0c62446148bd848b29,Advanced Pharmaceuticals LLC,,NON_COMPLIANT,,,true,false,2026-07-28
-"Block Real Estate Services, LLC",69fded0c62446148bd848b2c,Advanced Turf Solutions Inc,,NON_COMPLIANT,,,true,false,2026-07-28
+"Block Real Estate Services, LLC",69fded0c62446148bd848b2c,Advanced Turf Solutions Inc,,COMPLIANT,,,true,false,2026-07-28
 "Block Real Estate Services, LLC",69fded0c62446148bd848b2f,"Daymon / Advantage Sales & Marketing, LLC",,NON_COMPLIANT,,,true,false,2026-07-28
 "Block Real Estate Services, LLC",69fded0c62446148bd848b32,Advocate Construction Inc,,COMPLIANT,,,true,false,2026-07-28
 "Block Real Estate Services, LLC",69fded0d62446148bd848b35,"Aircraft Electrical / AEE-EMF, Inc.",,NON_COMPLIANT,,,true,false,2026-07-28
@@ -29,7 +29,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0d62446148bd848b50,Allure Hair Studio / Alisha N. Bauer,,NON_COMPLIANT,,,true,false,2026-07-28
 "Block Real Estate Services, LLC",69fded0d62446148bd848b53,"Altium Healthcare, Inc (fka Tri State Distribution)",,NON_COMPLIANT,,,true,false,2026-07-28
 "Block Real Estate Services, LLC",69fded0d62446148bd848b56,"Amazon / Amazon.com Services, LLC (MCI5)",,NON_COMPLIANT,,,true,false,2026-07-28
-"Block Real Estate Services, LLC",69fded0d62446148bd848b59,"Hamilton Plumbing / Roger The Plumber / American Residential Services, LLC (ARS)",,NON_COMPLIANT,,,true,false,2026-07-28
+"Block Real Estate Services, LLC",69fded0d62446148bd848b59,"Hamilton Plumbing / Roger The Plumber / American Residential Services, LLC (ARS)",,COMPLIANT,,,true,false,2026-07-28
 "Block Real Estate Services, LLC",69fded0d62446148bd848b5c,"Earth Brands, Inc. subtenant of  American West Worldwide Express, Inc. / Renew",,NON_COMPLIANT,,,true,false,2026-07-28
 "Block Real Estate Services, LLC",69fded0d62446148bd848b5f,"Ameriprise Financial / Ameriprise Holdings, Inc.",,NON_COMPLIANT,,,true,false,2026-07-28
 "Block Real Estate Services, LLC",69fded0d62446148bd848b62,"AMSCO Supply / Flegler Investment Co., Inc.",,COMPLIANT,,,true,false,2026-07-28
