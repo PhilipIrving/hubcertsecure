@@ -1136,8 +1136,8 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1c62446148bd848ff7,New Century Dodge Chrysler Wholesale Parts,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-07-30
 "Block Real Estate Services, LLC",69fded1c62446148bd848ff7,New Century Dodge Chrysler Wholesale Parts,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-02-01,2027-02-01,,,,,2026-07-30
 "Block Real Estate Services, LLC",69fded0d62446148bd848b62,"AMSCO Supply / Flegler Investment Co., Inc.",,Commercial General Liability,commercialGeneralLiability,,,2025-10-01,2026-11-01,,,,,2026-07-30
-"Block Real Estate Services, LLC",69fded0d62446148bd848b62,"AMSCO Supply / Flegler Investment Co., Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-07-30,2026-11-01,,,,,2026-07-30
-"Block Real Estate Services, LLC",69fded0d62446148bd848b62,"AMSCO Supply / Flegler Investment Co., Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-07-30,2026-07-30,,,,,2026-07-30
+"Block Real Estate Services, LLC",69fded0d62446148bd848b62,"AMSCO Supply / Flegler Investment Co., Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-07-30,2027-07-30,,,,,2026-07-30
+"Block Real Estate Services, LLC",69fded0d62446148bd848b62,"AMSCO Supply / Flegler Investment Co., Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-07-30,2027-07-30,,,,,2026-07-30
 "Block Real Estate Services, LLC",69fded0d62446148bd848b62,"AMSCO Supply / Flegler Investment Co., Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-07-30,2026-10-01,,,,,2026-07-30
 "Block Real Estate Services, LLC",69fded0d62446148bd848b68,AN Cubed Marketing LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-07-30
 "Block Real Estate Services, LLC",69fded0d62446148bd848b68,AN Cubed Marketing LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-07-30
@@ -3397,7 +3397,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0c62446148bd848af9,"1&1 Internet / IONOS, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-30
 "Block Real Estate Services, LLC",69fded2262446148bd8491e3,Tech Electronics of Kansas,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-30
 "Block Real Estate Services, LLC",69fded1262446148bd848cc1,"Covisian CTX, LLC (fka RGMI Consultant / Centrinex, LLC)",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-30
-"Block Real Estate Services, LLC",69fded0e62446148bd848baa,Auction Merchandise of KC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-07-30
+"Block Real Estate Services, LLC",69fded0e62446148bd848baa,Auction Merchandise of KC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-07-30
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-07-30
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-07-30
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-07-30
