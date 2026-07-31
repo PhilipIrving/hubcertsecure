@@ -1,6 +1,15 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,c7c6c591-dc1f-4210-bd50-b5a7f95f8b75,,,,,2026-07-31T03:48:40,,,,,,07/31/2026,07/31/2026 05:50:15
-EMMES,af34fff3-acca-458a-9acf-e39304c4df10,,816bacc3-71d2-4787-bd15-09d7cf4ee8d8,,,2026-07-30T17:54:51,,,,,,07/31/2026,07/31/2026 05:50:15
-Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,07/31/2026,07/31/2026 05:50:15
-"Paragon Geophysical Services, Inc.",8fe53e16-adcc-443c-a8c9-43739b16048b,,,,,2026-07-31T07:24:23,,,,,,07/31/2026,07/31/2026 05:50:29
-The Abbey Management Company,4acc020c-939b-4a86-9634-bdca46b555ab,,,,,2026-07-30T16:36:16,,,,,,07/31/2026,07/31/2026 05:50:31
+Canadian Pacific Kansas City,9ef7c376-393a-4794-85f7-d02eb81d064a,,,,,2026-07-31T13:32:55,,,,,,07/31/2026,07/31/2026 09:19:54
+Canadian Pacific Kansas City,a6d80e9f-05f0-43de-9b11-200dc330afd5,,f078fe2c-3596-49dd-b14c-53de21e9e70e,,,2026-07-31T11:16:44,,,,,,07/31/2026,07/31/2026 09:19:54
+Canadian Pacific Kansas City,c7c6c591-dc1f-4210-bd50-b5a7f95f8b75,,,,,2026-07-31T03:48:40,,,,,,07/31/2026,07/31/2026 09:19:54
+Canadian Pacific Kansas City,de322751-b041-48a7-9982-bc18db2e59c4,,,,,2026-07-31T11:36:39,,,,,,07/31/2026,07/31/2026 09:19:54
+EMMES,af34fff3-acca-458a-9acf-e39304c4df10,,816bacc3-71d2-4787-bd15-09d7cf4ee8d8,,,2026-07-30T17:54:51,,,,,,07/31/2026,07/31/2026 09:19:54
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,07/31/2026,07/31/2026 09:19:54
+"Paragon Geophysical Services, Inc.",8fe53e16-adcc-443c-a8c9-43739b16048b,,,,,2026-07-31T07:24:23,,,,,,07/31/2026,07/31/2026 09:20:07
+Scandroli Construction,19d28e35-f68f-406d-b896-dcfa33dafeb3,,e2733a31-2b54-407b-82a6-97c177695307,,,2026-07-31T13:15:27,,,,,,07/31/2026,07/31/2026 09:20:08
+Scandroli Construction,34a45716-21ca-487e-8381-48a60032ed9b,,e2733a31-2b54-407b-82a6-97c177695307,,,2026-07-31T13:15:27,,,,,,07/31/2026,07/31/2026 09:20:08
+Scandroli Construction,7af413f3-5686-4b71-8a26-78a262dcbf63,,e2733a31-2b54-407b-82a6-97c177695307,,,2026-07-31T13:15:27,,,,,,07/31/2026,07/31/2026 09:20:08
+Scandroli Construction,c083112b-560f-4385-a138-2e5e7d019459,,e2733a31-2b54-407b-82a6-97c177695307,,,2026-07-31T13:15:27,,,,,,07/31/2026,07/31/2026 09:20:08
+Scandroli Construction,fe6463f2-4ae9-4bab-811c-d2f6d14374ab,,,,,2026-07-31T13:15:27,,,,,,07/31/2026,07/31/2026 09:20:08
+The Abbey Management Company,4acc020c-939b-4a86-9634-bdca46b555ab,,,,,2026-07-30T16:36:16,,,,,,07/31/2026,07/31/2026 09:20:09
+Trinity Chemical Industries LLC,eae427fb-aa64-4728-bed9-e531fe05d227,,,,,2026-07-31T11:37:44,,,,,,07/31/2026,07/31/2026 09:20:09
