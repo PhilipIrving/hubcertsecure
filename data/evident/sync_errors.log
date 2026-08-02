@@ -1,44 +1,20 @@
 [
   {
     "client": "Canadian Pacific Kansas City",
+    "stage": "criteria",
+    "insured": "1c623939-52a5-47cf-abde-acd68ea874de",
+    "error": "HTTP 502 on /insurance/insureds/1c623939-52a5-47cf-abde-acd68ea874de/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+  },
+  {
+    "client": "ESS Companies",
     "stage": "coverage_data",
-    "insured": "a8adbe2c-72c3-4f82-a245-5ae0986237ab",
-    "error": "HTTP 502 on /insurance/insureds/a8adbe2c-72c3-4f82-a245-5ae0986237ab/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    "insured": "6d0e7da6-c926-4ea2-bf1d-34fd43e2d208",
+    "error": "HTTP 502 on /insurance/insureds/6d0e7da6-c926-4ea2-bf1d-34fd43e2d208/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
   },
   {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "a7fd3e99-fa39-4b21-b2ff-c51ca79ac47f",
-    "error": "HTTP 502 on /insurance/insureds/a7fd3e99-fa39-4b21-b2ff-c51ca79ac47f/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "a8118a8f-6316-4221-97e9-3f58ae002a03",
-    "error": "HTTP 502 on /insurance/insureds/a8118a8f-6316-4221-97e9-3f58ae002a03/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "a8a39f20-dc3e-43af-982c-fdff65a56e8f",
-    "error": "HTTP 502 on /insurance/insureds/a8a39f20-dc3e-43af-982c-fdff65a56e8f/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
+    "client": "ESS Companies",
     "stage": "coverage_data",
-    "insured": "a9df6c77-2bea-4ac1-bc2e-7fb1d0245890",
-    "error": "HTTP 502 on /insurance/insureds/a9df6c77-2bea-4ac1-bc2e-7fb1d0245890/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "a9df6c77-2bea-4ac1-bc2e-7fb1d0245890",
-    "error": "HTTP 502 on /insurance/insureds/a9df6c77-2bea-4ac1-bc2e-7fb1d0245890/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "a92cb8c4-af32-4cd9-89d3-44df4fbe24d8",
-    "error": "HTTP 504 on /insurance/insureds/a92cb8c4-af32-4cd9-89d3-44df4fbe24d8/status: <html>\r\n<head><title>504 Gateway Time-out</title></head>\r\n<body>\r\n<center><h1>504 Gateway Time-out</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    "insured": "6d79ae1c-d352-450c-acb9-7555f3584d3e",
+    "error": "HTTP 502 on /insurance/insureds/6d79ae1c-d352-450c-acb9-7555f3584d3e/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
   }
 ]
