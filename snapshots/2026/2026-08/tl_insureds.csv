@@ -169,7 +169,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1362446148bd848d18,Discover Church,,NON_COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1362446148bd848d1e,"Dollar General / Dolgencorp, Inc.",,NON_COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1362446148bd848d21,Dollar Tree,,NON_COMPLIANT,,,true,false,2026-08-03
-"Block Real Estate Services, LLC",69fded1362446148bd848d24,Dollar Tree #03352,,NON_COMPLIANT,,,true,false,2026-08-03
+"Block Real Estate Services, LLC",69fded1362446148bd848d24,Dollar Tree #03352,,COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1362446148bd848d27,Dollar Tree #4044,,COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1362446148bd848d2a,Dollar Tree #8462,,COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1362446148bd848d2d,"Perry Plaza Dental / Dr. Darren Perry, DDS",,NON_COMPLIANT,,,true,false,2026-08-03
@@ -414,7 +414,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1c62446148bd849027,OMB Bank,,NON_COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,NON_COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1c62446148bd84902d,"Ocean Prime / OPKC, LLC",,NON_COMPLIANT,,,true,false,2026-08-03
-"Block Real Estate Services, LLC",69fded1d62446148bd849030,"Walgreens / Option Care Enterprises, Inc.",,NON_COMPLIANT,,,true,false,2026-08-03
+"Block Real Estate Services, LLC",69fded1d62446148bd849030,"Walgreens / Option Care Enterprises, Inc.",,COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1d62446148bd849033,O'Reilly Automotive,,NON_COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1d62446148bd849036,Orkin LLC,,NON_COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1d62446148bd849039,Orscheln Farm & Home LLC,,COMPLIANT,,,true,false,2026-08-03
@@ -472,7 +472,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1f62446148bd8490e1,"RBC Capital Markets, LLC / Royal Bank of Canada",,NON_COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1f62446148bd8490e4,"LynTec, Inc. / RDC, Inc.",,NON_COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1f62446148bd8490e7,Reeves-Wiedeman Co,,NON_COMPLIANT,,,true,false,2026-08-03
-"Block Real Estate Services, LLC",69fded1f62446148bd8490ea,"Regal Staffing, LLC",,NON_COMPLIANT,,,true,false,2026-08-03
+"Block Real Estate Services, LLC",69fded1f62446148bd8490ea,"Regal Staffing, LLC",,COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1f62446148bd8490ed,Releve Performing Arts / Ashley Collier,,NON_COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f0,"Remax Real Estate / Harry C. Meierarend, III",,NON_COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,NON_COMPLIANT,,,true,false,2026-08-03
@@ -746,6 +746,8 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59574,Residential - renter occupied: George & Kelsey K.,,NON_COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",6a46a9fb881712769bd5957b,Shelby Lawson & Co.,,NON_COMPLIANT,,,true,false,2026-08-03
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59582,Veterans Ascent Corp,,NON_COMPLIANT,,,true,false,2026-08-03
+"Block Real Estate Services, LLC",6a70fd6dfbd38db02fd82322,"Decker Integrated Orthotics and Prosthetics, LLC",,NON_COMPLIANT,,,true,false,2026-08-03
+"Block Real Estate Services, LLC",6a7100a9132501a25c9e41ac,"The Reynolds Law Firm, LLC",,NON_COMPLIANT,,,true,false,2026-08-03
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,NON_COMPLIANT,,,true,false,2026-08-03
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,NON_COMPLIANT,,,true,false,2026-08-03
 QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,COMPLIANT,,,true,false,2026-08-03
