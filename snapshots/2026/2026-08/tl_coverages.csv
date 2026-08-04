@@ -142,7 +142,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1562446148bd848de7,"Triad Capital Advisors, Inc. / Gantry, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-04-01,2027-04-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1562446148bd848de7,"Triad Capital Advisors, Inc. / Gantry, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-01,2027-04-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1562446148bd848de7,"Triad Capital Advisors, Inc. / Gantry, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-08-23,2027-08-23,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded1562446148bd848de7,"Triad Capital Advisors, Inc. / Gantry, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-08-23,2026-08-23,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1562446148bd848de7,"Triad Capital Advisors, Inc. / Gantry, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-08-23,2027-04-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1762446148bd848e68,Hoefer Welker LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-02-12,2027-02-12,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1762446148bd848e68,Hoefer Welker LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-02-12,2027-02-12,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1762446148bd848e68,Hoefer Welker LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-02-12,2027-02-12,,,,,2026-08-04
@@ -607,6 +607,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2162446148bd8491b6,Creative Nails / Steven Lam & Bang Nguyen,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded2162446148bd8491b6,Creative Nails / Steven Lam & Bang Nguyen,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded2162446148bd8491b6,Creative Nails / Steven Lam & Bang Nguyen,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71fe9c1df1817c9d72a945,"Thrift World, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71fe9c1df1817c9d72a945,"Thrift World, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71fe9c1df1817c9d72a945,"Thrift World, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71fe9c1df1817c9d72a945,"Thrift World, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded0c62446148bd848b17,"Pertronix (Aeromotive) / Accelerate Auto Works Intermediate, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded0c62446148bd848b17,"Pertronix (Aeromotive) / Accelerate Auto Works Intermediate, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded0c62446148bd848b17,"Pertronix (Aeromotive) / Accelerate Auto Works Intermediate, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
@@ -1083,6 +1087,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1762446148bd848e56,Hennessy Enterprises LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1762446148bd848e56,Hennessy Enterprises LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1762446148bd848e56,Hennessy Enterprises LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-05-01,2027-05-01,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71f9b8bcf6cdcf331ccfcd,"Hennessy Enterprises, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71f9b8bcf6cdcf331ccfcd,"Hennessy Enterprises, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71f9b8bcf6cdcf331ccfcd,"Hennessy Enterprises, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71f9b8bcf6cdcf331ccfcd,"Hennessy Enterprises, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded0d62446148bd848b56,"Amazon / Amazon.com Services, LLC (MCI5)",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded0d62446148bd848b56,"Amazon / Amazon.com Services, LLC (MCI5)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded0d62446148bd848b56,"Amazon / Amazon.com Services, LLC (MCI5)",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
@@ -1359,14 +1367,14 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f0,"Remax Real Estate / Harry C. Meierarend, III",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f0,"Remax Real Estate / Harry C. Meierarend, III",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f0,"Remax Real Estate / Harry C. Meierarend, III",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2062446148bd84912f,Slavation Army Family Store / The Salvation Army,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2062446148bd84912f,Slavation Army Family Store / The Salvation Army,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2062446148bd84912f,Slavation Army Family Store / The Salvation Army,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2062446148bd84912f,Slavation Army Family Store / The Salvation Army,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2062446148bd84912f,Slavation Army Family Store / The Salvation Army,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2062446148bd84912f,Slavation Army Family Store / The Salvation Army,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2062446148bd84912f,Slavation Army Family Store / The Salvation Army,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2062446148bd84912f,Slavation Army Family Store / The Salvation Army,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a1885319ef1cffe57c7679c,Dutch Brothers Coffee,,Commercial General Liability,commercialGeneralLiability,,,2026-03-15,2027-10-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a1885319ef1cffe57c7679c,Dutch Brothers Coffee,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-15,2027-10-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a1885319ef1cffe57c7679c,Dutch Brothers Coffee,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-10-01,2026-10-01,,,,,2026-08-04
@@ -1528,7 +1536,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1c62446148bd84901e,Old National Bank (fka First Midwest Bank ),,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1c62446148bd84901e,Old National Bank (fka First Midwest Bank ),,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded2062446148bd84916b,Siemens Energy Inc,,Commercial General Liability,commercialGeneralLiability,,,2025-10-01,2026-10-01,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2062446148bd84916b,Siemens Energy Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd84916b,Siemens Energy Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-10-01,2026-10-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded2062446148bd84916b,Siemens Energy Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-10-01,2026-10-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded2062446148bd84916b,Siemens Energy Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-10-01,2026-10-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded2262446148bd849222,Titan Built LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-08-04
@@ -1703,10 +1711,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0f62446148bd848c04,"BluSky Salon Suites, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded0f62446148bd848c04,"BluSky Salon Suites, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded0f62446148bd848c04,"BluSky Salon Suites, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded1b62446148bd848fa0,Chabad of Leawood / Merkos Linyonci Chinuch of Kansas,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded1b62446148bd848fa0,Chabad of Leawood / Merkos Linyonci Chinuch of Kansas,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded1b62446148bd848fa0,Chabad of Leawood / Merkos Linyonci Chinuch of Kansas,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded1b62446148bd848fa0,Chabad of Leawood / Merkos Linyonci Chinuch of Kansas,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1b62446148bd848fa0,The Shul of Leawood / Merkos Linyonci Chinuch of Kansas dba Chabad of Leawood,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1b62446148bd848fa0,The Shul of Leawood / Merkos Linyonci Chinuch of Kansas dba Chabad of Leawood,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1b62446148bd848fa0,The Shul of Leawood / Merkos Linyonci Chinuch of Kansas dba Chabad of Leawood,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1b62446148bd848fa0,The Shul of Leawood / Merkos Linyonci Chinuch of Kansas dba Chabad of Leawood,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded0f62446148bd848c0d,Bode Cellmark Forensics Inc,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded0f62446148bd848c0d,Bode Cellmark Forensics Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded0f62446148bd848c0d,Bode Cellmark Forensics Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
@@ -1863,10 +1871,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1062446148bd848c2e,BUNZL,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1062446148bd848c2e,BUNZL,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1062446148bd848c2e,BUNZL,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded1062446148bd848c31,Burlis Lawson Group Inc,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded1062446148bd848c31,Burlis Lawson Group Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded1062446148bd848c31,Burlis Lawson Group Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded1062446148bd848c31,Burlis Lawson Group Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1062446148bd848c31,"Equipment Preference, Inc. (fka Burlis-Lawson Group, Inc.)",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1062446148bd848c31,"Equipment Preference, Inc. (fka Burlis-Lawson Group, Inc.)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1062446148bd848c31,"Equipment Preference, Inc. (fka Burlis-Lawson Group, Inc.)",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1062446148bd848c31,"Equipment Preference, Inc. (fka Burlis-Lawson Group, Inc.)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1262446148bd848d06,"Dental Health Essentials, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1262446148bd848d06,"Dental Health Essentials, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1262446148bd848d06,"Dental Health Essentials, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
@@ -2031,6 +2039,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a175a7bee5ef0b8dc066236,"PropertyRate, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a175a7bee5ef0b8dc066236,"PropertyRate, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a175a7bee5ef0b8dc066236,"PropertyRate, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a72067ea7b0558ab72338fb,Lure Creative,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a72067ea7b0558ab72338fb,Lure Creative,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a72067ea7b0558ab72338fb,Lure Creative,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a72067ea7b0558ab72338fb,Lure Creative,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1062446148bd848c55,Central Power Systems & Services LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1062446148bd848c55,Central Power Systems & Services LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-07-01,2027-07-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1062446148bd848c55,Central Power Systems & Services LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-01,2027-07-01,,,,,2026-08-04
@@ -2235,10 +2247,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1262446148bd848cc1,"Covisian CTX, LLC (fka RGMI Consultant / Centrinex, LLC)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-01,2027-06-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1262446148bd848cc1,"Covisian CTX, LLC (fka RGMI Consultant / Centrinex, LLC)",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1262446148bd848cc1,"Covisian CTX, LLC (fka RGMI Consultant / Centrinex, LLC)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-01,2027-06-01,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded1262446148bd848cd0,Crossroads Courier Inc,,Commercial General Liability,commercialGeneralLiability,,,2025-07-30,2027-07-30,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded1262446148bd848cd0,Crossroads Courier Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-07-30,2027-07-30,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1262446148bd848cd0,Crossroads Courier Inc,,Commercial General Liability,commercialGeneralLiability,,,2026-07-30,2027-07-30,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1262446148bd848cd0,Crossroads Courier Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-07-30,2027-07-30,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1262446148bd848cd0,Crossroads Courier Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded1262446148bd848cd0,Crossroads Courier Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-07-30,2027-01-01,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1262446148bd848cd0,Crossroads Courier Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-01-01,2027-01-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1362446148bd848d36,DaVita Dialysis / DVA Renal Healthcare,,Commercial General Liability,commercialGeneralLiability,,,2025-10-31,2026-10-31,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1362446148bd848d36,DaVita Dialysis / DVA Renal Healthcare,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1362446148bd848d36,DaVita Dialysis / DVA Renal Healthcare,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-10-01,2026-10-01,,,,,2026-08-04
@@ -2277,7 +2289,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a18740bdf41746015864e9a,"Morton Fence, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-01,2027-07-01,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-05-01,2027-05-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1662446148bd848e2c,Guardian Water & Air Systems LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1662446148bd848e2c,Guardian Water & Air Systems LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
@@ -2931,7 +2943,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a18663117ab90e8a02f12a9,Midwest Heart & Vascular and KCHRI (Kansas City Heart Rhythm Institute),,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a18663117ab90e8a02f12a9,Midwest Heart & Vascular and KCHRI (Kansas City Heart Rhythm Institute),,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a18663117ab90e8a02f12a9,Midwest Heart & Vascular and KCHRI (Kansas City Heart Rhythm Institute),,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",6a18661fa4bcce858bf426d7,Premier Gastroenterology of Kansas City (fka KC Gastroenterology & Hepatology / HCA-MMC-Menorah Medical Center),,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a18661fa4bcce858bf426d7,Premier Gastroenterology of Kansas City (fka KC Gastroenterology & Hepatology / HCA-MMC-Menorah Medical Center),,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a18661fa4bcce858bf426d7,Premier Gastroenterology of Kansas City (fka KC Gastroenterology & Hepatology / HCA-MMC-Menorah Medical Center),,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a18661fa4bcce858bf426d7,Premier Gastroenterology of Kansas City (fka KC Gastroenterology & Hepatology / HCA-MMC-Menorah Medical Center),,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a18661fa4bcce858bf426d7,Premier Gastroenterology of Kansas City (fka KC Gastroenterology & Hepatology / HCA-MMC-Menorah Medical Center),,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
@@ -2943,11 +2955,11 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a1866145a886bcac13a5c35,Bariatric & Metabolic Classroom / HCA-MMC-Menorah Medical Center,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a1866145a886bcac13a5c35,Bariatric & Metabolic Classroom / HCA-MMC-Menorah Medical Center,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a1866145a886bcac13a5c35,Bariatric & Metabolic Classroom / HCA-MMC-Menorah Medical Center,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",6a18663d462ef1e78ea4b046,HCA-OPRMC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a18663d462ef1e78ea4b046,HCA-OPRMC,,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a18663d462ef1e78ea4b046,HCA-OPRMC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a18663d462ef1e78ea4b046,HCA-OPRMC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a18663d462ef1e78ea4b046,HCA-OPRMC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",6a186650b517ae25a87c5643,Kansas City Vascular & General Surgery Group / HCA Midwest Health,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a186650b517ae25a87c5643,Kansas City Vascular & General Surgery Group / HCA Midwest Health,,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a186650b517ae25a87c5643,Kansas City Vascular & General Surgery Group / HCA Midwest Health,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a186650b517ae25a87c5643,Kansas City Vascular & General Surgery Group / HCA Midwest Health,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a186650b517ae25a87c5643,Kansas City Vascular & General Surgery Group / HCA Midwest Health,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
@@ -3351,10 +3363,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a1eecf750bfd60555852c16,"ERGO Midwest, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a1eecf750bfd60555852c16,"ERGO Midwest, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a1eecf750bfd60555852c16,"ERGO Midwest, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-01-01,2027-01-01,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd849156,"Echo Electric / Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd849156,"Echo Electric / Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd849156,"Echo Electric / Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd849156,"Echo Electric / Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-01-01,2027-01-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded2362446148bd849276,Unum Life Insurance Company of America & Colonial Life Insurance,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded0f62446148bd848c19,"Kitchen and Bath by Briggs / Briggs, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded2462446148bd8492c1,World Acceptance Corporation / World Finance,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
@@ -3370,7 +3382,8 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2162446148bd8491ad,Starbucks #2436,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded2062446148bd84912c,Salon Ji,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded2262446148bd8491ec,Tesla Inc,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2062446148bd849156,"Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71fe9c1df1817c9d72a945,"Thrift World, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd849156,"Echo Electric / Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
@@ -3390,10 +3403,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1262446148bd848cfa,B-Envied Salon / David M & Lisa Walla,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1f62446148bd849108,"Rosen's, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded0e62446148bd848bc2,Bank of America,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
-"Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Dr. Ryan Spurgeon Healing Neck & Joints,,Commercial General Liability,commercialGeneralLiability,,,2026-02-05,2027-02-05,,,,,2026-08-04
-"Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Dr. Ryan Spurgeon Healing Neck & Joints,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Dr. Ryan Spurgeon Healing Neck & Joints,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-08-20,2026-08-20,,,,,2026-08-04
-"Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Dr. Ryan Spurgeon Healing Neck & Joints,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Spurgeon Chiropractic / Dr. Ryan Spurgeon Healing Neck & Joints,,Commercial General Liability,commercialGeneralLiability,,,2026-02-05,2027-02-05,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Spurgeon Chiropractic / Dr. Ryan Spurgeon Healing Neck & Joints,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Spurgeon Chiropractic / Dr. Ryan Spurgeon Healing Neck & Joints,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-08-20,2026-08-20,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Spurgeon Chiropractic / Dr. Ryan Spurgeon Healing Neck & Joints,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1762446148bd848e83,"Xerox / Image Quest, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1162446148bd848cb8,CorVel Healthcare Corporation,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1362446148bd848d42,EcoShield Pest Solutions,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
@@ -3421,6 +3434,16 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a1de0142575f4fed4484ab8,"Gentry Dental / James D Gentry, Dmd",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a1de01f98a3fac93a1cd31d,Leawood Cosmetic and Family Dentistry,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a1ddffd98a3fac93a1cc908,"DPTRE, LLC (fka Fleming Advisors, LLC)",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71fb111df1817c9d71e47a,Wholesale Electric Supply Co.,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71fb111df1817c9d71e47a,Wholesale Electric Supply Co.,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71fb111df1817c9d71e47a,Wholesale Electric Supply Co.,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71fb111df1817c9d71e47a,Wholesale Electric Supply Co.,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71fb4d1df1817c9d71edf9,"L&C Cabinetry KCI, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71fb4d1df1817c9d71edf9,"L&C Cabinetry KCI, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71fb4d1df1817c9d71edf9,"L&C Cabinetry KCI, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a71fb4d1df1817c9d71edf9,"L&C Cabinetry KCI, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a72067ea7b0558ab72338fb,Lure Creative,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2062446148bd84916b,Siemens Energy Inc,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-08-04
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-08-04
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-08-04
