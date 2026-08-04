@@ -2277,7 +2277,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a18740bdf41746015864e9a,"Morton Fence, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-01,2027-07-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-05-01,2027-05-01,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1662446148bd848e2c,Guardian Water & Air Systems LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1662446148bd848e2c,Guardian Water & Air Systems LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
@@ -2970,7 +2970,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2262446148bd849207,"Rogers Labs (fka P&C Next) / The Compatibility Center, LLC",,Commercial General Liability,commercialGeneralLiability,,,2025-09-14,2026-09-14,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded2262446148bd849207,"Rogers Labs (fka P&C Next) / The Compatibility Center, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded2262446148bd849207,"Rogers Labs (fka P&C Next) / The Compatibility Center, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-13,2027-07-13,,,,,2026-08-04
-"Block Real Estate Services, LLC",69fded2262446148bd849207,"Rogers Labs (fka P&C Next) / The Compatibility Center, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2262446148bd849207,"Rogers Labs (fka P&C Next) / The Compatibility Center, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-07-13,2027-07-13,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1c62446148bd848ff4,Netsmart Technologies Inc,,Commercial General Liability,commercialGeneralLiability,,,2025-11-11,2026-11-11,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1c62446148bd848ff4,Netsmart Technologies Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-11-11,2026-11-11,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1c62446148bd848ff4,Netsmart Technologies Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-11-11,2026-11-11,,,,,2026-08-04
@@ -3266,7 +3266,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a1de0142575f4fed4484ab8,"Gentry Dental / James D Gentry, Dmd",,Commercial General Liability,commercialGeneralLiability,,,2024-08-29,2026-08-29,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a1de0142575f4fed4484ab8,"Gentry Dental / James D Gentry, Dmd",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a1de0142575f4fed4484ab8,"Gentry Dental / James D Gentry, Dmd",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-04
-"Block Real Estate Services, LLC",6a1de0142575f4fed4484ab8,"Gentry Dental / James D Gentry, Dmd",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a1de0142575f4fed4484ab8,"Gentry Dental / James D Gentry, Dmd",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2024-08-29,2026-08-29,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a1de01f98a3fac93a1cd31d,Leawood Cosmetic and Family Dentistry,,Commercial General Liability,commercialGeneralLiability,,,2024-12-26,2027-07-03,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a1de01f98a3fac93a1cd31d,Leawood Cosmetic and Family Dentistry,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2024-12-26,2027-07-03,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a1de01f98a3fac93a1cd31d,Leawood Cosmetic and Family Dentistry,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-03,2027-07-03,,,,,2026-08-04
@@ -3360,6 +3360,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2462446148bd8492c1,World Acceptance Corporation / World Finance,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1362446148bd848d24,Dollar Tree #03352,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded2262446148bd84920d,Argosy Casino & Hotel / The Missouri Gaming Company,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded1e62446148bd84909f,Polaris Pharmacy Services of Missouri,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded2062446148bd849168,Siemens Corporation,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded0e62446148bd848b86,ARC Physical Therapy Plus,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1062446148bd848c28,Builder Direct LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
@@ -3413,6 +3414,13 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1f62446148bd8490ea,"Regal Staffing, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",69fded1d62446148bd849030,"Walgreens / Option Care Enterprises, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 "Block Real Estate Services, LLC",6a70fd6dfbd38db02fd82322,"Decker Integrated Orthotics and Prosthetics, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2262446148bd849207,"Rogers Labs (fka P&C Next) / The Compatibility Center, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
+"Block Real Estate Services, LLC",69fded2362446148bd84922e,Torgeson Electric Company,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a1ddfeea0ed8c51ab1fa0c7,Jeff Thomson Orthodontics,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a1de0072575f4fed44847a8,Home Cleaning Center of America,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a1de0142575f4fed4484ab8,"Gentry Dental / James D Gentry, Dmd",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a1de01f98a3fac93a1cd31d,Leawood Cosmetic and Family Dentistry,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
+"Block Real Estate Services, LLC",6a1ddffd98a3fac93a1cc908,"DPTRE, LLC (fka Fleming Advisors, LLC)",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-04
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-08-04
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-08-04
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-08-04
