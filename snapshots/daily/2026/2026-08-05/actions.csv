@@ -1,4 +1,9 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,7a3a6d13-451a-4f8b-99a5-6f3c988338a9,,81768111-bb3f-419e-a3ca-f9889481f92a,,,2026-08-05T15:13:47,,,,,,08/05/2026,08/05/2026 12:49:22
-Bauer Foundation Corp.,98d87da0-5817-41be-9cea-15c0a4eb483b,,,,,2026-08-05T15:13:47,,,,,,08/05/2026,08/05/2026 12:49:22
-Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/05/2026,08/05/2026 12:49:22
+Bauer Foundation Corp.,7a3a6d13-451a-4f8b-99a5-6f3c988338a9,,81768111-bb3f-419e-a3ca-f9889481f92a,,,2026-08-05T15:13:47,,,,,,08/05/2026,08/05/2026 16:19:55
+Bauer Foundation Corp.,98d87da0-5817-41be-9cea-15c0a4eb483b,,,,,2026-08-05T15:13:47,,,,,,08/05/2026,08/05/2026 16:19:55
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/05/2026,08/05/2026 16:19:55
+Scandroli Construction,19dcee71-40f3-4520-b2cb-bc4ba478697a,,86e61384-25e3-4314-aca5-6f84c49f988e,,,2026-08-05T21:09:17,,,,,,08/05/2026,08/05/2026 16:20:08
+Scandroli Construction,65c0ebca-a28a-47ad-a4ed-a0e2e0ab720b,,86e61384-25e3-4314-aca5-6f84c49f988e,,,2026-08-05T21:09:17,,,,,,08/05/2026,08/05/2026 16:20:08
+Scandroli Construction,a0d5410f-bbcd-47fc-9cae-0f79cea83889,,86e61384-25e3-4314-aca5-6f84c49f988e,,,2026-08-05T21:09:17,,,,,,08/05/2026,08/05/2026 16:20:08
+Scandroli Construction,c3bd6c13-f592-4ca6-94b0-b9148ffb2af1,,,,,2026-08-05T21:09:17,,,,,,08/05/2026,08/05/2026 16:20:08
+Scandroli Construction,daaedc39-f580-4dc8-835f-57cab2f03fae,,86e61384-25e3-4314-aca5-6f84c49f988e,,,2026-08-05T21:09:17,,,,,,08/05/2026,08/05/2026 16:20:08
