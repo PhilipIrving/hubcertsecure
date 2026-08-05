@@ -1,8 +1,11 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,161e122e-519e-4287-940b-ed6b2493e960,,2a285d33-b217-4b86-a0c6-de2db825049c,,,2026-08-04T21:11:30,,,,,,08/04/2026,08/04/2026 16:22:04
-EMMES,0622e1ae-0f9e-45b7-97c4-fe3632102499,,,,,2026-08-04T10:09:14,,,,,,08/04/2026,08/04/2026 16:22:04
-Gart Properties,3e96bd56-d765-400b-aae3-951b0c5a44fe,,,,,2026-08-04T17:56:55,,,,,,08/04/2026,08/04/2026 16:22:04
-Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/04/2026,08/04/2026 16:22:04
-Gart Properties,7ffc1b29-b22f-406c-8a2e-83e73a0ad780,,,,,2026-08-04T17:56:55,,,,,,08/04/2026,08/04/2026 16:22:04
-The Abbey Management Company,ccdea435-992a-4b7a-bb52-e8093ebae9cf,,,,,2026-08-04T21:15:27,,,,,,08/04/2026,08/04/2026 16:22:22
-The Abbey Management Company,ff9bc92a-0b9a-4864-993c-e697f485273f,,1ad45f1c-8138-4d40-ac05-ebcf95055b61,,,2026-08-04T21:15:27,,,,,,08/04/2026,08/04/2026 16:22:22
+Canadian Pacific Kansas City,02e99267-bdd4-4834-84f4-eec381684e97,,,,,2026-08-04T21:36:33,,,,,,08/04/2026,08/04/2026 21:46:48
+Canadian Pacific Kansas City,1127d68e-7fdf-4028-9d89-f61c9811acef,,f8f798fb-1b1a-4ea8-9523-642f3c49d854,,,2026-08-04T23:28:38,,,,,,08/04/2026,08/04/2026 21:46:48
+Canadian Pacific Kansas City,511df19b-7668-4a24-a922-ef9ee7ac13a6,,,,,2026-08-04T21:36:33,,,,,,08/04/2026,08/04/2026 21:46:48
+Canadian Pacific Kansas City,a69bb098-bf5f-473b-8503-09cdca368fcd,,233ea2ca-fb61-4a98-abfe-b6f3666279c8,,,2026-08-04T21:36:33,,,,,,08/04/2026,08/04/2026 21:46:48
+Canadian Pacific Kansas City,b6fcd061-e7b4-47fa-8f86-b556b091ba4f,,,,,2026-08-04T21:36:33,,,,,,08/04/2026,08/04/2026 21:46:48
+EMMES,0622e1ae-0f9e-45b7-97c4-fe3632102499,,,,,2026-08-04T10:09:14,,,,,,08/04/2026,08/04/2026 21:46:48
+Gart Properties,3e96bd56-d765-400b-aae3-951b0c5a44fe,,,,,2026-08-04T17:56:55,,,,,,08/04/2026,08/04/2026 21:46:48
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/04/2026,08/04/2026 21:46:48
+Gart Properties,7ffc1b29-b22f-406c-8a2e-83e73a0ad780,,,,,2026-08-04T17:56:55,,,,,,08/04/2026,08/04/2026 21:46:48
+The Abbey Management Company,ccdea435-992a-4b7a-bb52-e8093ebae9cf,,,,,2026-08-04T21:15:27,,,,,,08/04/2026,08/04/2026 21:47:05
