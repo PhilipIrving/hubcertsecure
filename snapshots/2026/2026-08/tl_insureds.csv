@@ -492,7 +492,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1f62446148bd849120,Ryan Poage & Company,,NON_COMPLIANT,,,false,false,2026-08-05
 "Block Real Estate Services, LLC",69fded1f62446148bd849123,Safari Mart,,NON_COMPLIANT,,,true,false,2026-08-05
 "Block Real Estate Services, LLC",69fded2062446148bd849129,"Sally Beauty Co., Inc. / Sally Beauty 1717",,NON_COMPLIANT,,,true,false,2026-08-05
-"Block Real Estate Services, LLC",69fded2062446148bd84912c,Salon Ji,,NON_COMPLIANT,,,true,false,2026-08-05
+"Block Real Estate Services, LLC",69fded2062446148bd84912c,Salon Ji,,COMPLIANT,,,true,false,2026-08-05
 "Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,NON_COMPLIANT,,,true,false,2026-08-05
 "Block Real Estate Services, LLC",69fded2062446148bd849132,"Sanders Management, Inc",,NON_COMPLIANT,,,true,false,2026-08-05
 "Block Real Estate Services, LLC",69fded2062446148bd849135,Savanah Hunt,,NON_COMPLIANT,,,true,false,2026-08-05
@@ -677,10 +677,10 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a18630f5a886bcac1399a34,"Westside Grill and Bar / Cheers 221, LLC",,NON_COMPLIANT,,,true,false,2026-08-05
 "Block Real Estate Services, LLC",6a18646fe701796d85db75b6,To the Hoop Bar & Grill,,NON_COMPLIANT,,,false,false,2026-08-05
 "Block Real Estate Services, LLC",6a1866145a886bcac13a5c35,Bariatric & Metabolic Classroom / HCA-MMC-Menorah Medical Center,,NON_COMPLIANT,,,true,false,2026-08-05
-"Block Real Estate Services, LLC",6a18661fa4bcce858bf426d7,Premier Gastroenterology of Kansas City (fka KC Gastroenterology & Hepatology / HCA-MMC-Menorah Medical Center),,NON_COMPLIANT,,,true,false,2026-08-05
+"Block Real Estate Services, LLC",6a18661fa4bcce858bf426d7,Premier Gastroenterology of Kansas City (fka KC Gastroenterology & Hepatology / HCA-MMC-Menorah Medical Center),,COMPLIANT,,,true,false,2026-08-05
 "Block Real Estate Services, LLC",6a18663117ab90e8a02f12a9,Midwest Heart & Vascular and KCHRI (Kansas City Heart Rhythm Institute),,NON_COMPLIANT,,,true,false,2026-08-05
 "Block Real Estate Services, LLC",6a18663d462ef1e78ea4b046,HCA-OPRMC,,NON_COMPLIANT,,,true,false,2026-08-05
-"Block Real Estate Services, LLC",6a186650b517ae25a87c5643,Kansas City Vascular & General Surgery Group / HCA Midwest Health,,NON_COMPLIANT,,,true,false,2026-08-05
+"Block Real Estate Services, LLC",6a186650b517ae25a87c5643,Kansas City Vascular & General Surgery Group / HCA Midwest Health,,COMPLIANT,,,true,false,2026-08-05
 "Block Real Estate Services, LLC",6a1869cab517ae25a87d2e2e,"Metro Elevator Kansas City, Inc.",,NON_COMPLIANT,,,true,false,2026-08-05
 "Block Real Estate Services, LLC",6a186a17e701796d85dca48c,85 Degrees Bakery / DA FA Inc 85C,,NON_COMPLIANT,,,true,false,2026-08-05
 "Block Real Estate Services, LLC",6a186a26b517ae25a87d3e04,Old Navy,,NON_COMPLIANT,,,false,false,2026-08-05
