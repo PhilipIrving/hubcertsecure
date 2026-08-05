@@ -1,3 +1,4 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,4cbecf2f-3183-40bd-967a-b40311a38270,,dcac7509-870e-4d53-b8c2-e6d2b2ead805,,,2026-08-05T13:44:40,,,,,,08/05/2026,08/05/2026 09:20:21
-Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/05/2026,08/05/2026 09:20:21
+Bauer Foundation Corp.,7a3a6d13-451a-4f8b-99a5-6f3c988338a9,,81768111-bb3f-419e-a3ca-f9889481f92a,,,2026-08-05T15:13:47,,,,,,08/05/2026,08/05/2026 12:49:22
+Bauer Foundation Corp.,98d87da0-5817-41be-9cea-15c0a4eb483b,,,,,2026-08-05T15:13:47,,,,,,08/05/2026,08/05/2026 12:49:22
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/05/2026,08/05/2026 12:49:22
