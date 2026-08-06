@@ -260,8 +260,8 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1c62446148bd84901b,"Office Max, Inc #472",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1c62446148bd84901b,"Office Max, Inc #472",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-08-05,2027-08-05,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-08-05,2027-08-05,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-04-01,2027-04-01,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded0c62446148bd848b0b,717 Office Group LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded0c62446148bd848b0b,717 Office Group LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-06
@@ -647,9 +647,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1c62446148bd849009,Nextaff Group LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1c62446148bd849009,Nextaff Group LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1c62446148bd849009,Nextaff Group LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-06-06,2027-06-06,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-06,2027-06-06,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-06,2027-06-06,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1e62446148bd8490b4,Principal Life Insurance Company,,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1e62446148bd8490b4,Principal Life Insurance Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-08-06
@@ -663,9 +663,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2462446148bd8492c7,"Worldwide Express / WWEX Franchise Holdings, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-04,2027-05-04,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded2462446148bd8492c7,"Worldwide Express / WWEX Franchise Holdings, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-04,2027-05-04,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded2462446148bd8492c7,"Worldwide Express / WWEX Franchise Holdings, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-05-04,2027-05-04,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-06-06,2027-06-06,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-06,2027-06-06,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-06,2027-06-06,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1c62446148bd84902a,OneDigital Borrower LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",6a18531ae701796d85d75b3b,Voya Services Company,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",6a18531ae701796d85d75b3b,Voya Services Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-06
@@ -3714,7 +3714,7 @@ QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Automobile L
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-30,2027-06-30,,,,,2026-08-06
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-30,2027-06-30,,,,,2026-08-06
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Pollution Liability,pollution,,,2026-06-30,2027-06-30,,,,,2026-08-06
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Professional Liability,professional,,,,,,,,,2026-08-06
+QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Professional Liability,professional,,,2026-06-30,2027-06-30,,,,,2026-08-06
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-06
 QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-06
 QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,,,,,,,2026-08-06
