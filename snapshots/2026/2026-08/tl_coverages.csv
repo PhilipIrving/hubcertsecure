@@ -259,9 +259,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1c62446148bd84901b,"Office Max, Inc #472",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1c62446148bd84901b,"Office Max, Inc #472",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1c62446148bd84901b,"Office Max, Inc #472",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,Commercial General Liability,commercialGeneralLiability,,,2025-08-05,2026-08-05,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-08-05,2026-08-05,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-08-05,2026-08-05,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-04-01,2027-04-01,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded0c62446148bd848b0b,717 Office Group LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded0c62446148bd848b0b,717 Office Group LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-06
@@ -741,7 +741,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2162446148bd8491ce,"UDP (Unisource Document Products)/ Datamax / Sumner Group, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-03-01,2027-03-01,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded2462446148bd84928e,Vintegrity Kansas LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded2462446148bd84928e,Vintegrity Kansas LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded2462446148bd84928e,Vintegrity Kansas LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-08-05,2026-08-05,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded2462446148bd84928e,Vintegrity Kansas LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded2462446148bd84928e,Vintegrity Kansas LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded0c62446148bd848b26,"Advanced Auto / Advanced Stores Co., Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-06-01,2027-06-01,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded0c62446148bd848b26,"Advanced Auto / Advanced Stores Co., Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-01,2027-06-01,,,,,2026-08-06
@@ -2027,10 +2027,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1062446148bd848c52,"Sunflower Health Plan / Centene Management Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-01,2027-06-01,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1062446148bd848c52,"Sunflower Health Plan / Centene Management Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1062446148bd848c52,"Sunflower Health Plan / Centene Management Company, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-01,2027-06-01,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded2162446148bd849183,"Soleran, Inc. (sublease from Sunflower Health Plan / Centene Management Company, LLC)",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded2162446148bd849183,"Soleran, Inc. (sublease from Sunflower Health Plan / Centene Management Company, LLC)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded2162446148bd849183,"Soleran, Inc. (sublease from Sunflower Health Plan / Centene Management Company, LLC)",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-06
-"Block Real Estate Services, LLC",69fded2162446148bd849183,"Soleran, Inc. (sublease from Sunflower Health Plan / Centene Management Company, LLC)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded2162446148bd849183,"Soleran, Inc. (sublease from Sunflower Health Plan / Centene Management Company, LLC)",,Commercial General Liability,commercialGeneralLiability,,,2026-08-06,2027-08-06,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded2162446148bd849183,"Soleran, Inc. (sublease from Sunflower Health Plan / Centene Management Company, LLC)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-08-06,2027-08-06,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded2162446148bd849183,"Soleran, Inc. (sublease from Sunflower Health Plan / Centene Management Company, LLC)",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-08-06,2027-08-06,,,,,2026-08-06
+"Block Real Estate Services, LLC",69fded2162446148bd849183,"Soleran, Inc. (sublease from Sunflower Health Plan / Centene Management Company, LLC)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-08-06,2027-08-06,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1062446148bd848c52,"Sunflower Health Plan / Centene Management Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-06-01,2027-06-01,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1062446148bd848c52,"Sunflower Health Plan / Centene Management Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-01,2027-06-01,,,,,2026-08-06
 "Block Real Estate Services, LLC",69fded1062446148bd848c52,"Sunflower Health Plan / Centene Management Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-08-06
