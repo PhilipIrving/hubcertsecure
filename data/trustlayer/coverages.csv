@@ -103,7 +103,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a19b8b18805769e5038a2ed,Savor Strategy,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-07
 "Block Real Estate Services, LLC",6a19b8b18805769e5038a2ed,Savor Strategy,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-07
 "Block Real Estate Services, LLC",6a19b8b18805769e5038a2ed,Savor Strategy,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-03-31,2027-03-31,,,,,2026-08-07
-"Block Real Estate Services, LLC",6a46a9fb881712769bd59550,"Jade & Ember Munchery / Savor Strategy Group, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-07
+"Block Real Estate Services, LLC",6a46a9fb881712769bd59550,"Jade & Ember Munchery / Savor Strategy Group, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-03-31,2027-03-31,,,,,2026-08-07
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59550,"Jade & Ember Munchery / Savor Strategy Group, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-07
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59550,"Jade & Ember Munchery / Savor Strategy Group, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-07
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59550,"Jade & Ember Munchery / Savor Strategy Group, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-07
@@ -2289,7 +2289,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a18740bdf41746015864e9a,"Morton Fence, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-07
 "Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-08-07
 "Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-08-07
-"Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-07
+"Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-01,2027-07-01,,,,,2026-08-07
 "Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-05-01,2027-05-01,,,,,2026-08-07
 "Block Real Estate Services, LLC",69fded1662446148bd848e2c,Guardian Water & Air Systems LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-07
 "Block Real Estate Services, LLC",69fded1662446148bd848e2c,Guardian Water & Air Systems LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-07
