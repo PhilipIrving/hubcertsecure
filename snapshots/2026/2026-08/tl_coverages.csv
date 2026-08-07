@@ -1691,8 +1691,8 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a1858dddf417460157fddd6,"Anytime Fitness / Southside Fitness, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-07-01,2027-07-01,,,,,2026-08-07
 "Block Real Estate Services, LLC",6a1858dddf417460157fddd6,"Anytime Fitness / Southside Fitness, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-01,2027-07-01,,,,,2026-08-07
 "Block Real Estate Services, LLC",6a1858dddf417460157fddd6,"Anytime Fitness / Southside Fitness, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-07-01,2027-07-01,,,,,2026-08-07
-"Block Real Estate Services, LLC",69fded0f62446148bd848c01,BluSky Restoration Contractors LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-07
-"Block Real Estate Services, LLC",69fded0f62446148bd848c01,BluSky Restoration Contractors LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-07
+"Block Real Estate Services, LLC",69fded0f62446148bd848c01,BluSky Restoration Contractors LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-04-01,2027-04-01,,,,,2026-08-07
+"Block Real Estate Services, LLC",69fded0f62446148bd848c01,BluSky Restoration Contractors LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-01,2027-04-01,,,,,2026-08-07
 "Block Real Estate Services, LLC",69fded0f62446148bd848c01,BluSky Restoration Contractors LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-04-01,2027-04-01,,,,,2026-08-07
 "Block Real Estate Services, LLC",69fded0f62446148bd848c01,BluSky Restoration Contractors LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-07
 "Block Real Estate Services, LLC",69fded1562446148bd848dc9,Freightsnap LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-04-10,2027-04-10,,,,,2026-08-07
@@ -1919,9 +1919,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1062446148bd848c3d,"Corbion / Caravan Ingredients, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-08-07
 "Block Real Estate Services, LLC",69fded1062446148bd848c3d,"Corbion / Caravan Ingredients, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-08-07
 "Block Real Estate Services, LLC",69fded1062446148bd848c3d,"Corbion / Caravan Ingredients, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-01-01,2027-01-01,,,,,2026-08-07
-"Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-07
-"Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-07
-"Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-07
+"Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-08-07
+"Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-08-07
+"Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-08-07
 "Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-07
 "Block Real Estate Services, LLC",69fded1262446148bd848d0c,Dermatology Consultants,,Commercial General Liability,commercialGeneralLiability,,,2026-08-01,2027-08-01,,,,,2026-08-07
 "Block Real Estate Services, LLC",69fded1262446148bd848d0c,Dermatology Consultants,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-08-01,2027-08-01,,,,,2026-08-07
