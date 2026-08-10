@@ -142,7 +142,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1262446148bd848cc7,Creative Consumer Concepts Inc,,NON_COMPLIANT,,,true,false,2026-08-10
 "Block Real Estate Services, LLC",69fded1262446148bd848cca,"Crescent Electric Supply Company, Inc.",,COMPLIANT,,,true,false,2026-08-10
 "Block Real Estate Services, LLC",69fded1262446148bd848ccd,Crescent Springs Healing Center,,NON_COMPLIANT,,,true,false,2026-08-10
-"Block Real Estate Services, LLC",69fded1262446148bd848cd0,Crossroads Courier Inc,,NON_COMPLIANT,,,true,false,2026-08-10
+"Block Real Estate Services, LLC",69fded1262446148bd848cd0,Crossroads Courier Inc,,COMPLIANT,,,true,false,2026-08-10
 "Block Real Estate Services, LLC",69fded1262446148bd848cd3,Crown MedRealty Partners LLC,,COMPLIANT,,,true,false,2026-08-10
 "Block Real Estate Services, LLC",69fded1262446148bd848cd6,Cruise Marketing Inc,,NON_COMPLIANT,,,true,false,2026-08-10
 "Block Real Estate Services, LLC",69fded1262446148bd848cd9,KK Express Employment / Curtis Holding Company,,NON_COMPLIANT,,,true,false,2026-08-10
@@ -653,7 +653,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a1843168bbe0a0890e878d2,"Seen Productions, LLC",,NON_COMPLIANT,,,false,false,2026-08-10
 "Block Real Estate Services, LLC",6a1843228bbe0a0890e87ab8,Residential - renter occupied: Taylor Hill,,NON_COMPLIANT,,,false,false,2026-08-10
 "Block Real Estate Services, LLC",6a18432d8bbe0a0890e87ff9,Residential - renter occupied: John Woods,,NON_COMPLIANT,,,false,false,2026-08-10
-"Block Real Estate Services, LLC",6a184f0e5a886bcac1349c23,"Veseris / ES OPCO OSE, LLC",,NON_COMPLIANT,,,true,false,2026-08-10
+"Block Real Estate Services, LLC",6a184f0e5a886bcac1349c23,"Veseris / ES OPCO OSE, LLC",,COMPLIANT,,,true,false,2026-08-10
 "Block Real Estate Services, LLC",6a184f4af8f612ef094c4c00,PharMerica / Pharmacy Corporation of America,,NON_COMPLIANT,,,true,false,2026-08-10
 "Block Real Estate Services, LLC",6a184fbc8bbe0a0890eb6a1d,"Home Depot U.S.A., Inc. (fka Interline Brands, Inc.)",,NON_COMPLIANT,,,true,false,2026-08-10
 "Block Real Estate Services, LLC",6a18531ae701796d85d75b3b,Voya Services Company,,NON_COMPLIANT,,,false,false,2026-08-10
