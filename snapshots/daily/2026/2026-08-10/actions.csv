@@ -1,13 +1,2 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,2183d155-e1b8-48b4-a360-747a7db5148e,,70c1c8d9-3fc6-4e7f-bef1-e0daeddf4bec,,,2026-08-08T04:38:38,,,,,,08/08/2026,08/08/2026 03:51:17
-Canadian Pacific Kansas City,c20bf897-9c8c-4e1d-a91e-bd0ac2a8f99d,,135d4329-a74e-4168-9cdc-b8d3fece4174,,,2026-08-08T06:32:56,,,,,,08/08/2026,08/08/2026 03:51:17
-Canadian Pacific Kansas City,d995b884-c859-44ee-8444-7fd8133fcbb9,,,,,2026-08-08T07:46:40,,,,,,08/08/2026,08/08/2026 03:51:17
-EMMES,03ed5e30-b5c4-4060-9088-2d9fdaf9fe7a,,,,,2026-08-07T15:31:33,,,,,,08/08/2026,08/08/2026 03:51:17
-Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/08/2026,08/08/2026 03:51:17
-Gart Properties,9b53ad80-a0ac-43dc-86cd-4094196529ca,,,,,2026-08-07T16:35:55,,,,,,08/08/2026,08/08/2026 03:51:17
-Gart Properties,e62fa64b-675a-42f7-8d7a-ce9703b753b6,,,,,2026-08-07T16:35:55,,,,,,08/08/2026,08/08/2026 03:51:17
-Scandroli Construction,3cdbe3b6-e3cf-497e-ae4b-92b39ccd3ad9,,,,,2026-08-08T01:38:04,,,,,,08/08/2026,08/08/2026 03:51:30
-Scandroli Construction,75de9aad-aafb-4a85-8254-9ee59fd59237,,636ae314-329f-40d5-ab36-402242dfbddb,,,2026-08-08T01:38:04,,,,,,08/08/2026,08/08/2026 03:51:30
-Scandroli Construction,93576fdd-e721-41cb-9778-303471b66f94,,,,,2026-08-08T01:38:04,,,,,,08/08/2026,08/08/2026 03:51:30
-Scandroli Construction,fb0c97e7-5607-494c-a0a4-f2abdc787a8a,,,,,2026-08-08T01:38:04,,,,,,08/08/2026,08/08/2026 03:51:30
-The Abbey Management Company,74d3f242-78b8-4ea8-b7c8-594f5ccc8e98,,f4065f58-d81a-40b1-b61f-5a18d4795f12,,,2026-08-07T11:51:41,,,,,,08/08/2026,08/08/2026 03:51:32
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/10/2026,08/10/2026 12:04:07
