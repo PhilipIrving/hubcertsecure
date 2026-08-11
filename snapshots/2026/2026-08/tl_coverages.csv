@@ -106,7 +106,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59550,"Jade & Ember Munchery / Savor Strategy Group, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-03-31,2027-03-31,,,,,2026-08-11
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59550,"Jade & Ember Munchery / Savor Strategy Group, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-11
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59550,"Jade & Ember Munchery / Savor Strategy Group, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-11
-"Block Real Estate Services, LLC",6a46a9fb881712769bd59550,"Jade & Ember Munchery / Savor Strategy Group, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-11
+"Block Real Estate Services, LLC",6a46a9fb881712769bd59550,"Jade & Ember Munchery / Savor Strategy Group, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-03-31,2027-03-31,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded2262446148bd8491e3,Tech Electronics of Kansas,,Commercial General Liability,commercialGeneralLiability,,,2026-05-17,2027-05-17,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded2262446148bd8491e3,Tech Electronics of Kansas,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-17,2027-05-17,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded2262446148bd8491e3,Tech Electronics of Kansas,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-17,2027-05-17,,,,,2026-08-11
@@ -1930,7 +1930,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-08-11
-"Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-11
+"Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-01-01,2027-01-01,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded1b62446148bd848fa3,"Metro Spine & Rehab PA (Dr. Galate) / Precision Spine & Orthopedic Specialists, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded1b62446148bd848fa3,"Metro Spine & Rehab PA (Dr. Galate) / Precision Spine & Orthopedic Specialists, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded1b62446148bd848fa3,"Metro Spine & Rehab PA (Dr. Galate) / Precision Spine & Orthopedic Specialists, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-11
@@ -2563,8 +2563,8 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a185d8617ab90e8a02d0292,"TW Telecom of Kansas City, LLC (Roof Lease)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-11
 "Block Real Estate Services, LLC",6a185d8617ab90e8a02d0292,"TW Telecom of Kansas City, LLC (Roof Lease)",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-11
 "Block Real Estate Services, LLC",6a185d8617ab90e8a02d0292,"TW Telecom of Kansas City, LLC (Roof Lease)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-11
-"Block Real Estate Services, LLC",6a46a9fb881712769bd5956d,"R Hays, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-11
-"Block Real Estate Services, LLC",6a46a9fb881712769bd5956d,"R Hays, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-11
+"Block Real Estate Services, LLC",6a46a9fb881712769bd5956d,"R Hays, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-04-04,2027-04-04,,,,,2026-08-11
+"Block Real Estate Services, LLC",6a46a9fb881712769bd5956d,"R Hays, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-04,2027-04-04,,,,,2026-08-11
 "Block Real Estate Services, LLC",6a46a9fb881712769bd5956d,"R Hays, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-11
 "Block Real Estate Services, LLC",6a46a9fb881712769bd5956d,"R Hays, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded1462446148bd848da2,"Fine Line Graphics, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-11
@@ -3385,6 +3385,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2062446148bd84912c,Salon Ji,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded2262446148bd8491ec,Tesla Inc,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
 "Block Real Estate Services, LLC",6a71fe9c1df1817c9d72a945,"Thrift World, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
+"Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Spurgeon Chiropractic / Dr. Ryan Spurgeon Healing Neck & Joints,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded2062446148bd849156,"Echo Electric / Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded1362446148bd848d3f,Eaton Electric / Eaton Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-11
@@ -3408,8 +3409,8 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0e62446148bd848bc2,Bank of America,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
 "Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Spurgeon Chiropractic / Dr. Ryan Spurgeon Healing Neck & Joints,,Commercial General Liability,commercialGeneralLiability,,,2026-02-05,2027-02-05,,,,,2026-08-11
 "Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Spurgeon Chiropractic / Dr. Ryan Spurgeon Healing Neck & Joints,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-11
-"Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Spurgeon Chiropractic / Dr. Ryan Spurgeon Healing Neck & Joints,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-08-20,2026-08-20,,,,,2026-08-11
-"Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Spurgeon Chiropractic / Dr. Ryan Spurgeon Healing Neck & Joints,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-11
+"Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Spurgeon Chiropractic / Dr. Ryan Spurgeon Healing Neck & Joints,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-11
+"Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Spurgeon Chiropractic / Dr. Ryan Spurgeon Healing Neck & Joints,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-02-05,2027-08-20,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded1762446148bd848e83,"Xerox / Image Quest, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded1162446148bd848cb8,CorVel Healthcare Corporation,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded1262446148bd848cf4,Data Systems International/ Nextworld / Cloud Inventory,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-08-11
@@ -3426,6 +3427,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0d62446148bd848b77,"Apex Products, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded0c62446148bd848b23,"ADI (Ademco Distribution, Inc.) / Honeywell International, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded1262446148bd848d0c,Dermatology Consultants,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
+"Block Real Estate Services, LLC",69fded1062446148bd848c40,"APEX / KC Orthopedic Institute (fka Carondelet Orthopedic Surgeons, PA)",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded0c62446148bd848af9,"1&1 Internet / IONOS, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded2262446148bd8491e3,Tech Electronics of Kansas,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
 "Block Real Estate Services, LLC",69fded1262446148bd848cc1,"Covisian CTX, LLC (fka RGMI Consultant / Centrinex, LLC)",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-11
