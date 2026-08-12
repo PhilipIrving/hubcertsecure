@@ -494,7 +494,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2062446148bd849129,"Sally Beauty Co., Inc. / Sally Beauty 1717",,NON_COMPLIANT,,,true,false,2026-08-12
 "Block Real Estate Services, LLC",69fded2062446148bd84912c,Salon Ji,,COMPLIANT,,,true,false,2026-08-12
 "Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,NON_COMPLIANT,,,true,false,2026-08-12
-"Block Real Estate Services, LLC",69fded2062446148bd849132,"Sanders Management, Inc",,NON_COMPLIANT,,,true,false,2026-08-12
+"Block Real Estate Services, LLC",69fded2062446148bd849132,"Sanders Management, Inc",,COMPLIANT,,,true,false,2026-08-12
 "Block Real Estate Services, LLC",69fded2062446148bd849135,Savanah Hunt,,NON_COMPLIANT,,,true,false,2026-08-12
 "Block Real Estate Services, LLC",69fded2062446148bd849138,Scheels All Sports Inc,,COMPLIANT,,,true,false,2026-08-12
 "Block Real Estate Services, LLC",69fded2062446148bd84913b,New Image Leasing / Seal Harbor Capital,,NON_COMPLIANT,,,true,false,2026-08-12
@@ -753,6 +753,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a71fb4d1df1817c9d71edf9,"L&C Cabinetry KCI, LLC",,NON_COMPLIANT,,,true,false,2026-08-12
 "Block Real Estate Services, LLC",6a71fe9c1df1817c9d72a945,"Thrift World, Inc.",,NON_COMPLIANT,,,true,false,2026-08-12
 "Block Real Estate Services, LLC",6a72067ea7b0558ab72338fb,Lure Creative,,NON_COMPLIANT,,,true,false,2026-08-12
+"Block Real Estate Services, LLC",6a7c9366ee0b08ce4f040184,Halbrook Wood PC,,NON_COMPLIANT,,,true,false,2026-08-12
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,NON_COMPLIANT,,,true,false,2026-08-12
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,NON_COMPLIANT,,,true,false,2026-08-12
 QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,COMPLIANT,,,true,false,2026-08-12
@@ -765,5 +766,5 @@ QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,NO
 QTS Data Centers,69f0f3c5beb6279e947be0fd,M. A. Mortenson Company,,NON_COMPLIANT,,,true,false,2026-08-12
 QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,NON_COMPLIANT,,,true,false,2026-08-12
 QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,NON_COMPLIANT,,,true,false,2026-08-12
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,COMPLIANT,,,true,false,2026-08-12
+QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,NON_COMPLIANT,,,true,false,2026-08-12
 QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,NON_COMPLIANT,,,true,false,2026-08-12
