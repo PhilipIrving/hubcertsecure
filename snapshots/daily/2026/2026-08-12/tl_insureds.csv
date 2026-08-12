@@ -63,7 +63,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0e62446148bd848bb9,"Pet Supplies Plus / B&B Pet Products, LLC",,NON_COMPLIANT,,,true,false,2026-08-12
 "Block Real Estate Services, LLC",69fded0e62446148bd848bbc,Bachelor Controls Inc,,COMPLIANT,,,true,false,2026-08-12
 "Block Real Estate Services, LLC",69fded0e62446148bd848bbf,Baking With A Bass / Kayla Bass,,COMPLIANT,,,true,false,2026-08-12
-"Block Real Estate Services, LLC",69fded0e62446148bd848bc2,Bank of America,,NON_COMPLIANT,,,true,false,2026-08-12
+"Block Real Estate Services, LLC",69fded0e62446148bd848bc2,Bank of America,,COMPLIANT,,,true,false,2026-08-12
 "Block Real Estate Services, LLC",69fded0e62446148bd848bc5,Bankers Life and Casualty Company,,NON_COMPLIANT,,,true,false,2026-08-12
 "Block Real Estate Services, LLC",69fded0f62446148bd848bcb,"Banner Logistics, Inc",,NON_COMPLIANT,,,true,false,2026-08-12
 "Block Real Estate Services, LLC",69fded0f62446148bd848bce,"Saturday Morning Bazaar / Bazaar Collectibles, LLC",,NON_COMPLIANT,,,false,false,2026-08-12
@@ -754,6 +754,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a71fe9c1df1817c9d72a945,"Thrift World, Inc.",,NON_COMPLIANT,,,true,false,2026-08-12
 "Block Real Estate Services, LLC",6a72067ea7b0558ab72338fb,Lure Creative,,NON_COMPLIANT,,,true,false,2026-08-12
 "Block Real Estate Services, LLC",6a7c9366ee0b08ce4f040184,Halbrook Wood PC,,NON_COMPLIANT,,,true,false,2026-08-12
+"Block Real Estate Services, LLC",6a7ccb7c72f903848e0cb0d8,Robin's Gluten Free Bakery,,NON_COMPLIANT,,,true,false,2026-08-12
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,NON_COMPLIANT,,,true,false,2026-08-12
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,NON_COMPLIANT,,,true,false,2026-08-12
 QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,COMPLIANT,,,true,false,2026-08-12
