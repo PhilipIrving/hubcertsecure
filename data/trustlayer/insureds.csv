@@ -154,7 +154,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1262446148bd848ceb,Dairy Farmers of America Inc,,COMPLIANT,,,true,false,2026-08-13
 "Block Real Estate Services, LLC",69fded1262446148bd848cee,"Dark Horse Coffee / Dark Horse Collective, LLC",,COMPLIANT,,,true,false,2026-08-13
 "Block Real Estate Services, LLC",69fded1262446148bd848cf1,"Retail Data Systems of KC (RDS) / Data Systems, Inc.",,NON_COMPLIANT,,,true,false,2026-08-13
-"Block Real Estate Services, LLC",69fded1262446148bd848cf4,Data Systems International/ Nextworld / Cloud Inventory,,NON_COMPLIANT,,,true,false,2026-08-13
+"Block Real Estate Services, LLC",69fded1262446148bd848cf4,Data Systems International/ Nextworld / Cloud Inventory,,COMPLIANT,,,true,false,2026-08-13
 "Block Real Estate Services, LLC",69fded1262446148bd848cf7,DataLocker Inc,,COMPLIANT,,,true,false,2026-08-13
 "Block Real Estate Services, LLC",69fded1262446148bd848cfa,B-Envied Salon / David M & Lisa Walla,,COMPLIANT,,,true,false,2026-08-13
 "Block Real Estate Services, LLC",69fded1262446148bd848cfd,Residential - renter occupied: David Remick,,NON_COMPLIANT,,,false,false,2026-08-13
@@ -435,7 +435,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1d62446148bd849066,Paycom Payroll LLC,,COMPLIANT,,,true,false,2026-08-13
 "Block Real Estate Services, LLC",69fded1d62446148bd849069,PCG Wealth Management LLC,,NON_COMPLIANT,,,true,false,2026-08-13
 "Block Real Estate Services, LLC",69fded1d62446148bd84906c,Pennsylvania Tool Sales and Service Inc,,COMPLIANT,,,true,false,2026-08-13
-"Block Real Estate Services, LLC",69fded1d62446148bd84906f,Penske Truck Leasing Co LP,,NON_COMPLIANT,,,true,false,2026-08-13
+"Block Real Estate Services, LLC",69fded1d62446148bd84906f,Penske Truck Leasing Co LP,,COMPLIANT,,,true,false,2026-08-13
 "Block Real Estate Services, LLC",69fded1d62446148bd849072,People First Network of Kansas LLC,,NON_COMPLIANT,,,true,false,2026-08-13
 "Block Real Estate Services, LLC",69fded1d62446148bd849075,"Pine Ridge Management Office & BMS / PERG Buildings, LLC",,NON_COMPLIANT,,,true,false,2026-08-13
 "Block Real Estate Services, LLC",69fded1d62446148bd849078,"PERG Buildings, LLC",,NON_COMPLIANT,,,true,false,2026-08-13

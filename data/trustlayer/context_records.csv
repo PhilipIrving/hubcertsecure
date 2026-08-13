@@ -69,7 +69,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf05002bb2c42a87a1859,"kc2704 - Westbrook IV {Brian 4, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",69fdf0533b208288e0a7d827,"kci281 - Platte Valley Industrial Center 1 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",69fdf05638cbea6b3a68f4ea,"kci282 - Platte Valley Industrial Center 2 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-08-09,2026-08-13
-"Block Real Estate Services, LLC",69fdf0590bb484cab513c4cc,"kci283 - Platte Valley Industrial Center 3 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-08-10,2026-08-13
+"Block Real Estate Services, LLC",69fdf0590bb484cab513c4cc,"kci283 - Platte Valley Industrial Center 3 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",69fdf05e0e86e2f8723db3e7,"kci284 - Platte Valley Industrial Center 4 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-07-27,2026-08-13
 "Block Real Estate Services, LLC",69fdf061bf1df2fe969263d0,"kci286 - Platte Valley Industrial Center 6 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",69fdf064e45e7dcf5c4375c2,"kci287 - Platte Valley Industrial Center 7 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-08-13
@@ -129,12 +129,12 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf15538cbea6b3a695784,"sfe739 - 1610 Santa Fe, LLC",Project,active,,,,,,2026-05-08,2026-06-18,2026-08-13
 "Block Real Estate Services, LLC",69fdf1587f8ab8a84b289613,"str117 - Starbucks {Galleria 115 Investors, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",69fdf15bd3bfa5e4945e2255,"sum015 - Summit Springs Shopping Center {Summit Springs Development, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
-"Block Real Estate Services, LLC",69fdf15ebf1df2fe9692af51,"tic001 - 46 Penn Centre {46 PC Investors, LLC}",Project,active,,,,,,2026-05-08,2026-08-10,2026-08-13
+"Block Real Estate Services, LLC",69fdf15ebf1df2fe9692af51,"tic001 - 46 Penn Centre {46 PC Investors, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",69fdf161e45e7dcf5c43b3dd,"tic022 - Congleton Distribution Center 2 {SM Quivira, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",69fdf16443ffeed6de3b3cbb,"tic220 - Pinnacle Corporate Centre I {Pinnacle Corporate Centre, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",69fdf16702bb2c42a87a69a9,"tic239 - 3901 Dixon {3901 Dixon Investors, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-08-13
 "Block Real Estate Services, LLC",69fdf16bd3bfa5e4945e27f9,tic242 - Martinrea Building {HIDGS Associates LLC},Project,active,,,,,,2026-05-08,2026-08-10,2026-08-13
-"Block Real Estate Services, LLC",69fdf16fbf1df2fe9692b2ff,"tic253 - Nall Corporate Centre II {HLBT Associates, LLC}",Project,active,,,,,,2026-05-08,2026-08-11,2026-08-13
+"Block Real Estate Services, LLC",69fdf16fbf1df2fe9692b2ff,"tic253 - Nall Corporate Centre II {HLBT Associates, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",69fdf1733b208288e0a83fdc,"tic285 - Platte Valley Industrial Center 5 {WCG Riverside, LLC}",Project,active,,,,,,2026-05-08,2026-08-09,2026-08-13
 "Block Real Estate Services, LLC",69fdf176bf1df2fe9692bf76,"tic330 - Faith Technologies, Inc.",Project,active,,,,,,2026-05-08,2026-06-18,2026-08-13
 "Block Real Estate Services, LLC",69fdf179d3bfa5e4945e2ba8,"tic441 - Lenexa Logistics Centre North Building 1 {BLNW ASSOCIATES, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
@@ -146,7 +146,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf18e38cbea6b3a6967e6,"tic645 - Orscheln Farm & Home {Wellington OFH, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-08-13
 "Block Real Estate Services, LLC",69fdf1943b208288e0a8495e,"tic662 - Pinnacle Corporate Centre III {Pinnacle Building III, LLC}",Project,active,,,,,,2026-05-08,2026-08-12,2026-08-13
 "Block Real Estate Services, LLC",69fdf19902bb2c42a87a78b8,"tic663 - Pinnacle Corporate Centre IV {BK Pinnacle IV, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
-"Block Real Estate Services, LLC",69fdf19c8e25e7a0d918870f,"tic665 - Pinnacle Corporate Centre V {Pinnacle V Associates, LLC}",Project,active,,,,,,2026-05-08,2026-08-10,2026-08-13
+"Block Real Estate Services, LLC",69fdf19c8e25e7a0d918870f,"tic665 - Pinnacle Corporate Centre V {Pinnacle V Associates, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",69fdf1a03b208288e0a84a8c,"tic680 - College Crossing E {College Crossing EFGH, LLC}",Project,active,,,,,,2026-05-08,2026-08-09,2026-08-13
 "Block Real Estate Services, LLC",69fdf1a402bb2c42a87a79ca,"tic681 - College Crossing F {College Crossing EFGH, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",69fdf1a78e25e7a0d91889e0,"tic682 - College Crossing G {College Crossing EFGH, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
@@ -174,7 +174,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf21b8e25e7a0d918bf24,tic949 - Staples Building {Orchard Cambridge Investors LLC} (fka Corporate Express [BIF III - CEB Executive Park]),Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",69fdf21f19e1eeeaeb9ada59,"viv080 - Vivion Road Shopping Center {Vivion Road Development Company, LLC}",Project,active,,,,,,2026-05-08,2026-08-10,2026-08-13
 "Block Real Estate Services, LLC",69fdf22b19e1eeeaeb9add38,wjb111 - WJB Investment Co. (Parking Lot),Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
-"Block Real Estate Services, LLC",69fdf5c2e84e20262bb42482,"3bo890 - 3BS-OKS, LLC 16110 W. 135th",Project,active,,,,,,2026-05-08,2026-08-11,2026-08-13
+"Block Real Estate Services, LLC",69fdf5c2e84e20262bb42482,"3bo890 - 3BS-OKS, LLC 16110 W. 135th",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",69fdf5c2e84e20262bb42483,"3rd979 - Belton Towne Center {Belton MO Properties, LLC}",Project,active,,,,,,2026-05-08,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",6a170535da8b4807522414f6,"3rd299 - Delaire KC, LLC - Westport Building - 4006 Central (Office, 2nd floor)",Project,active,,,,,,2026-05-27,2026-08-13,2026-08-13
 "Block Real Estate Services, LLC",6a184b7d5a886bcac133ba92,"tic765 - College Crossing D {College Crossing CD, LLC}",Project,active,,,,,,2026-05-28,2026-08-13,2026-08-13
