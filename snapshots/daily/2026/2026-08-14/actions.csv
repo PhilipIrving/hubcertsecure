@@ -1,7 +1,5 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-EMMES,8cb029df-e9b0-427e-8a22-0d2d9d350800,,c97f43e9-ae47-4733-9bae-2a81863c7ee3,,,2026-08-14T11:36:54,,,,,,08/14/2026,08/14/2026 12:04:40
-Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/14/2026,08/14/2026 12:04:40
-Gart Properties,cefdb773-f06b-4c86-93eb-f2cc18b224d6,,,,,2026-08-13T17:36:33,,,,,,08/14/2026,08/14/2026 12:04:40
-Scandroli Construction,b0d3753b-ab33-4ae9-b6c1-d4dca959db87,,,,,2026-08-14T15:06:00,,,,,,08/14/2026,08/14/2026 12:04:54
-Trinity Chemical Industries LLC,3301b7db-3290-4e5e-9550-1eb43de2a3ce,,,,,2026-08-13T19:09:30,,,,,,08/14/2026,08/14/2026 12:04:57
-Trinity Chemical Industries LLC,a8f8ebeb-ae3f-4b64-b54e-db28656128d2,,3d1e68b0-6d0e-451b-88dd-baf52b521363,,,2026-08-13T19:09:30,,,,,,08/14/2026,08/14/2026 12:04:57
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/14/2026,08/14/2026 15:42:52
+Gart Properties,cefdb773-f06b-4c86-93eb-f2cc18b224d6,,,,,2026-08-13T17:36:33,,,,,,08/14/2026,08/14/2026 15:42:52
+Trinity Chemical Industries LLC,3301b7db-3290-4e5e-9550-1eb43de2a3ce,,,,,2026-08-13T19:09:30,,,,,,08/14/2026,08/14/2026 15:43:09
+Trinity Chemical Industries LLC,a8f8ebeb-ae3f-4b64-b54e-db28656128d2,,3d1e68b0-6d0e-451b-88dd-baf52b521363,,,2026-08-13T19:09:30,,,,,,08/14/2026,08/14/2026 15:43:09
