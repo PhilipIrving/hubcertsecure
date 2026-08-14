@@ -1,16 +1,10 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,d7ee6dba-5b61-441b-b244-7a0d26fb21b7,,5194e96b-c23b-4dac-8ca6-745d84600e5f,,,2026-08-14T07:49:27,,,,,,08/14/2026,08/14/2026 04:20:10
-Bauer Foundation Corp.,f6aab51b-5f92-4f48-b36e-3da0734b9810,,9550e075-321b-4793-9b92-369ce2b959c6,,,2026-08-14T08:48:16,,,,,,08/14/2026,08/14/2026 04:20:10
-Canadian Pacific Kansas City,1016a815-1779-47ab-8a8c-fd163e5a2c56,,d0616d98-b4a1-40ca-b52b-1f816f8320ba,,,2026-08-14T00:31:09,,,,,,08/14/2026,08/14/2026 04:20:10
-Canadian Pacific Kansas City,2d74b8db-c4dd-47d4-a39a-839badc0370d,,,,,2026-08-14T00:31:09,,,,,,08/14/2026,08/14/2026 04:20:10
-Canadian Pacific Kansas City,557b1af0-a4ae-4199-804c-ba758c2658b7,,,,,2026-08-14T00:31:09,,,,,,08/14/2026,08/14/2026 04:20:10
-Canadian Pacific Kansas City,e30dceb5-4262-4e2d-a5f9-f51920c2579e,,25e9f9df-c6b1-4248-9f85-d91b1eea3509,,,2026-08-13T16:26:48,,,,,,08/14/2026,08/14/2026 04:20:10
-Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/14/2026,08/14/2026 04:20:10
-Gart Properties,cefdb773-f06b-4c86-93eb-f2cc18b224d6,,,,,2026-08-13T17:36:33,,,,,,08/14/2026,08/14/2026 04:20:10
-The Abbey Management Company,2b6676ad-bac9-4516-af3c-403f723115e6,,58953a7f-6cb1-4a40-881d-32aa5c3c0bbb,,,2026-08-14T00:37:30,,,,,,08/14/2026,08/14/2026 04:20:26
-The Abbey Management Company,347f29bf-514f-4720-a5a7-32b2d0ad6db2,,,,,2026-08-13T15:31:22,,,,,,08/14/2026,08/14/2026 04:20:26
-The Abbey Management Company,90682f08-083a-400e-9af7-bf7128c2c50f,,,,,2026-08-14T00:37:30,,,,,,08/14/2026,08/14/2026 04:20:26
-The Abbey Management Company,9e192169-ea62-45c6-a9dd-4c5e59f94bc5,,58953a7f-6cb1-4a40-881d-32aa5c3c0bbb,,,2026-08-14T00:37:30,,,,,,08/14/2026,08/14/2026 04:20:26
-The Abbey Management Company,f06682cb-95b1-48e2-bc21-3b19667b4c1e,,1706f60e-7fd2-46cd-af33-dcfac051fe9c,,,2026-08-13T15:31:22,,,,,,08/14/2026,08/14/2026 04:20:26
-Trinity Chemical Industries LLC,3301b7db-3290-4e5e-9550-1eb43de2a3ce,,,,,2026-08-13T19:09:30,,,,,,08/14/2026,08/14/2026 04:20:26
-Trinity Chemical Industries LLC,a8f8ebeb-ae3f-4b64-b54e-db28656128d2,,3d1e68b0-6d0e-451b-88dd-baf52b521363,,,2026-08-13T19:09:30,,,,,,08/14/2026,08/14/2026 04:20:26
+Bauer Foundation Corp.,d7ee6dba-5b61-441b-b244-7a0d26fb21b7,,5194e96b-c23b-4dac-8ca6-745d84600e5f,,,2026-08-14T07:49:27,,,,,,08/14/2026,08/14/2026 08:19:46
+Bauer Foundation Corp.,f6aab51b-5f92-4f48-b36e-3da0734b9810,,9550e075-321b-4793-9b92-369ce2b959c6,,,2026-08-14T08:48:16,,,,,,08/14/2026,08/14/2026 08:19:46
+EMMES,8cb029df-e9b0-427e-8a22-0d2d9d350800,,c97f43e9-ae47-4733-9bae-2a81863c7ee3,,,2026-08-14T11:36:54,,,,,,08/14/2026,08/14/2026 08:19:46
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/14/2026,08/14/2026 08:19:46
+Gart Properties,cefdb773-f06b-4c86-93eb-f2cc18b224d6,,,,,2026-08-13T17:36:33,,,,,,08/14/2026,08/14/2026 08:19:46
+Scandroli Construction,02072cd5-3d8c-4573-83d2-2c74ab953fa3,,,,,2026-08-14T11:18:37,,,,,,08/14/2026,08/14/2026 08:19:58
+Scandroli Construction,efd98436-62aa-423a-97ab-2a6854af3da9,,fc170d64-0c2f-4fa1-8504-094ab158e51e,,,2026-08-14T11:18:37,,,,,,08/14/2026,08/14/2026 08:19:58
+Trinity Chemical Industries LLC,3301b7db-3290-4e5e-9550-1eb43de2a3ce,,,,,2026-08-13T19:09:30,,,,,,08/14/2026,08/14/2026 08:20:02
+Trinity Chemical Industries LLC,a8f8ebeb-ae3f-4b64-b54e-db28656128d2,,3d1e68b0-6d0e-451b-88dd-baf52b521363,,,2026-08-13T19:09:30,,,,,,08/14/2026,08/14/2026 08:20:02
