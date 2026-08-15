@@ -551,7 +551,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1a62446148bd848f49,Mainland Valuation Services,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-15
 "Block Real Estate Services, LLC",69fded1a62446148bd848f49,Mainland Valuation Services,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-16,2027-01-16,,,,,2026-08-15
 "Block Real Estate Services, LLC",69fded1a62446148bd848f49,Mainland Valuation Services,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-15
-"Block Real Estate Services, LLC",69fded2062446148bd84914a,"Senior Day KC / The Respite House, LLC",,Commercial General Liability,commercialGeneralLiability,,,2025-08-14,2026-08-14,,,,,2026-08-15
+"Block Real Estate Services, LLC",69fded2062446148bd84914a,"Senior Day KC / The Respite House, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-15
 "Block Real Estate Services, LLC",69fded2062446148bd84914a,"Senior Day KC / The Respite House, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-15
 "Block Real Estate Services, LLC",69fded2062446148bd84914a,"Senior Day KC / The Respite House, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-15
 "Block Real Estate Services, LLC",69fded2062446148bd84914a,"Senior Day KC / The Respite House, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-15
@@ -1607,10 +1607,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a1863036b3214c65fe64e2c,Mathnasium,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-15
 "Block Real Estate Services, LLC",6a1863036b3214c65fe64e2c,Mathnasium,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-15
 "Block Real Estate Services, LLC",6a1863036b3214c65fe64e2c,Mathnasium,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-15
-"Block Real Estate Services, LLC",6a18630f5a886bcac1399a34,"Westside Grill and Bar / Cheers 221, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-15
-"Block Real Estate Services, LLC",6a18630f5a886bcac1399a34,"Westside Grill and Bar / Cheers 221, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-15
-"Block Real Estate Services, LLC",6a18630f5a886bcac1399a34,"Westside Grill and Bar / Cheers 221, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-15
-"Block Real Estate Services, LLC",6a18630f5a886bcac1399a34,"Westside Grill and Bar / Cheers 221, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-15
+"Block Real Estate Services, LLC",6a18630f5a886bcac1399a34,"Westside Grill and Bar / Cheers 221, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-08-15,2027-08-15,,,,,2026-08-15
+"Block Real Estate Services, LLC",6a18630f5a886bcac1399a34,"Westside Grill and Bar / Cheers 221, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-08-15,2027-08-15,,,,,2026-08-15
+"Block Real Estate Services, LLC",6a18630f5a886bcac1399a34,"Westside Grill and Bar / Cheers 221, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-08-15,2027-08-15,,,,,2026-08-15
+"Block Real Estate Services, LLC",6a18630f5a886bcac1399a34,"Westside Grill and Bar / Cheers 221, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-08-15,2027-08-15,,,,,2026-08-15
 "Block Real Estate Services, LLC",69fded0f62446148bd848bd7,BDM Inc,,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-08-15
 "Block Real Estate Services, LLC",69fded0f62446148bd848bd7,BDM Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-08-15
 "Block Real Estate Services, LLC",69fded0f62446148bd848bd7,BDM Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-08-15
