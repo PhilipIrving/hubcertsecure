@@ -2096,7 +2096,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1862446148bd848eb0,"Johnson Controls Fire Protection, LP (fka Simplex Grinnell)",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-16
 "Block Real Estate Services, LLC",69fded1862446148bd848eb0,"Johnson Controls Fire Protection, LP (fka Simplex Grinnell)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-16
 "Block Real Estate Services, LLC",69fded1262446148bd848d03,DCB Homes LLC,,Commercial General Liability,commercialGeneralLiability,,,2025-12-12,2026-12-12,,,,,2026-08-16
-"Block Real Estate Services, LLC",69fded1262446148bd848d03,DCB Homes LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-08-15,2026-08-15,,,,,2026-08-16
+"Block Real Estate Services, LLC",69fded1262446148bd848d03,DCB Homes LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-16
 "Block Real Estate Services, LLC",69fded1262446148bd848d03,DCB Homes LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-10-14,2026-10-14,,,,,2026-08-16
 "Block Real Estate Services, LLC",69fded1262446148bd848d03,DCB Homes LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-12-12,2026-12-12,,,,,2026-08-16
 "Block Real Estate Services, LLC",69fded1462446148bd848d87,Express Hardwood Floors LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-16
@@ -3315,10 +3315,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59550,"Jade & Ember Munchery / Savor Strategy Group, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-16
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59550,"Jade & Ember Munchery / Savor Strategy Group, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-16
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59550,"Jade & Ember Munchery / Savor Strategy Group, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-03-31,2027-03-31,,,,,2026-08-16
-"Block Real Estate Services, LLC",69fded1b62446148bd848faf,"Midwest Administrative Services, LLC (fka Fail-Safe Product Protection, Inc.)",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-16
+"Block Real Estate Services, LLC",69fded1b62446148bd848faf,"Midwest Administrative Services, LLC (fka Fail-Safe Product Protection, Inc.)",,Commercial General Liability,commercialGeneralLiability,,,2026-08-16,2027-08-16,,,,,2026-08-16
 "Block Real Estate Services, LLC",69fded1b62446148bd848faf,"Midwest Administrative Services, LLC (fka Fail-Safe Product Protection, Inc.)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-16
-"Block Real Estate Services, LLC",69fded1b62446148bd848faf,"Midwest Administrative Services, LLC (fka Fail-Safe Product Protection, Inc.)",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-16
-"Block Real Estate Services, LLC",69fded1b62446148bd848faf,"Midwest Administrative Services, LLC (fka Fail-Safe Product Protection, Inc.)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-16
+"Block Real Estate Services, LLC",69fded1b62446148bd848faf,"Midwest Administrative Services, LLC (fka Fail-Safe Product Protection, Inc.)",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-08-16,2027-08-16,,,,,2026-08-16
+"Block Real Estate Services, LLC",69fded1b62446148bd848faf,"Midwest Administrative Services, LLC (fka Fail-Safe Product Protection, Inc.)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-08-16,2027-08-16,,,,,2026-08-16
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59574,Residential - renter occupied: George & Kelsey K.,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-16
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59574,Residential - renter occupied: George & Kelsey K.,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-16
 "Block Real Estate Services, LLC",6a46a9fb881712769bd59574,Residential - renter occupied: George & Kelsey K.,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-16
