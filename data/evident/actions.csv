@@ -1,13 +1,5 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,4a76ae54-ba03-4587-89a2-8b39f753ffaf,,e09b85b2-21ed-43a4-9e63-e6afdc8a5864,,,2026-08-15T14:29:57,,,,,,08/17/2026,08/17/2026 07:58:24
-Canadian Pacific Kansas City,545db3e8-283f-48fd-aa60-cc500905d88e,,8a751d08-7e33-4bd8-8384-5de5be37669b,,,2026-08-17T08:09:04,,,,,,08/17/2026,08/17/2026 07:58:24
-Canadian Pacific Kansas City,6a5f6c3b-58c5-4f90-a129-9667267163d4,,16287fcb-7eed-4541-88c7-6bb7130f3d05,,,2026-08-14T23:52:09,,,,,,08/17/2026,08/17/2026 07:58:24
-Canadian Pacific Kansas City,859b49b9-0ffe-46e1-a9bd-b8de1159bab9,,dbdfe68c-859c-42a6-94f9-1f8a0b537510,,,2026-08-15T16:04:05,,,,,,08/17/2026,08/17/2026 07:58:24
-Canadian Pacific Kansas City,bd7aa2f1-04ac-4e5f-9855-5e7e30255d84,,c97a27e0-1ef6-4b35-8ef8-2708cfe9f089,,,2026-08-17T09:04:21,,,,,,08/17/2026,08/17/2026 07:58:24
-Canadian Pacific Kansas City,ea68f6fa-8571-408c-a42b-f49c914538e8,,,,,2026-08-15T14:29:57,,,,,,08/17/2026,08/17/2026 07:58:24
-Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/17/2026,08/17/2026 07:58:24
-Gart Properties,755f3010-c624-445b-892c-0029971b15c5,,,,,2026-08-17T08:44:33,,,,,,08/17/2026,08/17/2026 07:58:24
-Gart Properties,7d5ec027-199a-4718-a41d-f669d86e7fb5,,,,,2026-08-17T08:44:33,,,,,,08/17/2026,08/17/2026 07:58:24
-Gart Properties,cefdb773-f06b-4c86-93eb-f2cc18b224d6,,,,,2026-08-13T17:36:33,,,,,,08/17/2026,08/17/2026 07:58:24
-Trinity Chemical Industries LLC,3301b7db-3290-4e5e-9550-1eb43de2a3ce,,,,,2026-08-13T19:09:30,,,,,,08/17/2026,08/17/2026 07:58:40
-Trinity Chemical Industries LLC,a8f8ebeb-ae3f-4b64-b54e-db28656128d2,,3d1e68b0-6d0e-451b-88dd-baf52b521363,,,2026-08-13T19:09:30,,,,,,08/17/2026,08/17/2026 07:58:40
+Canadian Pacific Kansas City,a737836d-724c-4c54-8150-f2fef70ac905,,,,,2026-08-17T15:21:15,,,,,,08/17/2026,08/17/2026 11:40:43
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/17/2026,08/17/2026 11:40:43
+Trinity Chemical Industries LLC,3301b7db-3290-4e5e-9550-1eb43de2a3ce,,,,,2026-08-13T19:09:30,,,,,,08/17/2026,08/17/2026 11:40:59
+Trinity Chemical Industries LLC,a8f8ebeb-ae3f-4b64-b54e-db28656128d2,,3d1e68b0-6d0e-451b-88dd-baf52b521363,,,2026-08-13T19:09:30,,,,,,08/17/2026,08/17/2026 11:40:59
