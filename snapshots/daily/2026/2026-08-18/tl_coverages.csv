@@ -399,10 +399,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1b62446148bd848f9a,"510 Counseling Group / Melissa Winston, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1b62446148bd848f9a,"510 Counseling Group / Melissa Winston, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-06,2027-06-06,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1b62446148bd848f9a,"510 Counseling Group / Melissa Winston, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-06,2027-06-09,,,,,2026-08-18
-"Block Real Estate Services, LLC",6a1750d2df078f8120119232,Dr. Julia Loecker Dentistry,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",6a1750d2df078f8120119232,Dr. Julia Loecker Dentistry,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",6a1750d2df078f8120119232,Dr. Julia Loecker Dentistry,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",6a1750d2df078f8120119232,Dr. Julia Loecker Dentistry,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-18
+"Block Real Estate Services, LLC",6a1750d2df078f8120119232,Dr. Julia Loecker Dentistry,,Commercial General Liability,commercialGeneralLiability,,,always_valid,always_valid,,,,,2026-08-18
+"Block Real Estate Services, LLC",6a1750d2df078f8120119232,Dr. Julia Loecker Dentistry,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,always_valid,always_valid,,,,,2026-08-18
+"Block Real Estate Services, LLC",6a1750d2df078f8120119232,Dr. Julia Loecker Dentistry,,Workers' Compensation and Employer's Liability,workersCompensation,,,always_valid,always_valid,,,,,2026-08-18
+"Block Real Estate Services, LLC",6a1750d2df078f8120119232,Dr. Julia Loecker Dentistry,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,always_valid,always_valid,,,,,2026-08-18
 "Block Real Estate Services, LLC",6a1750de402cef48fa2e24a7,Cheezsteak Company / Asma Shane,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",6a1750de402cef48fa2e24a7,Cheezsteak Company / Asma Shane,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",6a1750de402cef48fa2e24a7,Cheezsteak Company / Asma Shane,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-18
@@ -1583,9 +1583,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1b62446148bd848fd0,"Pride Cleaners / MJV-A, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-09-01,2026-09-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1b62446148bd848fd0,"Pride Cleaners / MJV-A, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-09-02,2026-09-02,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1b62446148bd848fd0,"Pride Cleaners / MJV-A, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-09-01,2026-09-01,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded2062446148bd849129,"Sally Beauty Co., Inc. / Sally Beauty 1717",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded2062446148bd849129,"Sally Beauty Co., Inc. / Sally Beauty 1717",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded2062446148bd849129,"Sally Beauty Co., Inc. / Sally Beauty 1717",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded2062446148bd849129,"Sally Beauty Co., Inc. / Sally Beauty 1717",,Commercial General Liability,commercialGeneralLiability,,,2025-11-16,2026-11-16,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded2062446148bd849129,"Sally Beauty Co., Inc. / Sally Beauty 1717",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-11-16,2026-11-16,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded2062446148bd849129,"Sally Beauty Co., Inc. / Sally Beauty 1717",,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-11-16,2026-11-16,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded2062446148bd849129,"Sally Beauty Co., Inc. / Sally Beauty 1717",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded2162446148bd8491b3,Starbucks Corporation,,Commercial General Liability,commercialGeneralLiability,,,2025-10-01,2026-10-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded2162446148bd8491b3,Starbucks Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
@@ -2467,9 +2467,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1562446148bd848dbd,"FleetPride, Inc",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-01,2027-04-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1562446148bd848dbd,"FleetPride, Inc",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-04-01,2027-04-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1562446148bd848dbd,"FleetPride, Inc",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-04-01,2027-04-01,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded1462446148bd848d6c,EDT Engineers / Engineering Design & Testing Corporation,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded1462446148bd848d6c,EDT Engineers / Engineering Design & Testing Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded1462446148bd848d6c,EDT Engineers / Engineering Design & Testing Corporation,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded1462446148bd848d6c,EDT Engineers / Engineering Design & Testing Corporation,,Commercial General Liability,commercialGeneralLiability,,,2025-11-01,2026-11-01,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded1462446148bd848d6c,EDT Engineers / Engineering Design & Testing Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-11-01,2026-11-01,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded1462446148bd848d6c,EDT Engineers / Engineering Design & Testing Corporation,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-11-01,2026-11-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1462446148bd848d6c,EDT Engineers / Engineering Design & Testing Corporation,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1462446148bd848d81,Excel Automation Inc.,,Commercial General Liability,commercialGeneralLiability,,,2025-11-30,2026-11-30,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1462446148bd848d81,Excel Automation Inc.,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
@@ -2593,7 +2593,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1562446148bd848db4,First Watch,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-03-01,2027-03-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1d62446148bd84907b,Petfolk Real Estate Holdings LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-02-16,2027-02-16,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1d62446148bd84907b,Petfolk Real Estate Holdings LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-02-16,2027-02-16,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded1d62446148bd84907b,Petfolk Real Estate Holdings LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded1d62446148bd84907b,Petfolk Real Estate Holdings LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1d62446148bd84907b,Petfolk Real Estate Holdings LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1562446148bd848dba,"Helen Jon / Five Clothes, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1562446148bd848dba,"Helen Jon / Five Clothes, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-08-18
@@ -2615,9 +2615,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2462446148bd8492ca,"Galvin's Wholesale / WWMAJ Systems, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded2462446148bd8492ca,"Galvin's Wholesale / WWMAJ Systems, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded2462446148bd8492ca,"Galvin's Wholesale / WWMAJ Systems, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded1562446148bd848dd2,Friends of the Johnson County Library,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded1562446148bd848dd2,Friends of the Johnson County Library,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1562446148bd848dd2,Friends of the Johnson County Library,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded1562446148bd848dd2,Friends of the Johnson County Library,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded1562446148bd848dd2,Friends of the Johnson County Library,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-16,2027-01-16,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1562446148bd848dd2,Friends of the Johnson County Library,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1962446148bd848f01,"KTI / Kruger Technologies, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2025-08-12,2027-08-12,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1962446148bd848f01,"KTI / Kruger Technologies, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-08-12,2027-08-12,,,,,2026-08-18
@@ -2639,9 +2639,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2562446148bd8492d6,Zeller & Gmelin,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded2562446148bd8492d6,Zeller & Gmelin,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded2562446148bd8492d6,Zeller & Gmelin,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded1562446148bd848dd2,Friends of the Johnson County Library,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded1562446148bd848dd2,Friends of the Johnson County Library,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1562446148bd848dd2,Friends of the Johnson County Library,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded1562446148bd848dd2,Friends of the Johnson County Library,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded1562446148bd848dd2,Friends of the Johnson County Library,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-16,2027-01-16,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1562446148bd848dd2,Friends of the Johnson County Library,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1562446148bd848dd8,"Future Foam, Inc",,Commercial General Liability,commercialGeneralLiability,,,2025-12-01,2026-12-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1562446148bd848dd8,"Future Foam, Inc",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-12-01,2026-12-01,,,,,2026-08-18
@@ -3412,6 +3412,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0e62446148bd848bbf,Baking With A Bass / Kayla Bass,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1b62446148bd848f9a,"510 Counseling Group / Melissa Winston, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1b62446148bd848fb2,Midwest Dance Center / Priscilla Lea Young,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-18
+"Block Real Estate Services, LLC",6a1750d2df078f8120119232,Dr. Julia Loecker Dentistry,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded2162446148bd8491b0,Starbucks Corporation #9654,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1962446148bd848ee9,"KC Classic Auto, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded2162446148bd8491b3,Starbucks Corporation,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-18
