@@ -167,9 +167,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1f62446148bd84911a,RSM US LLP,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1f62446148bd84911a,RSM US LLP,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1f62446148bd84911a,RSM US LLP,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded2162446148bd8491b9,Stifel Nicolaus & Company Inc,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded2162446148bd8491b9,Stifel Nicolaus & Company Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded2162446148bd8491b9,Stifel Nicolaus & Company Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded2162446148bd8491b9,Stifel Nicolaus & Company Inc,,Commercial General Liability,commercialGeneralLiability,,,2026-06-29,2027-06-29,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded2162446148bd8491b9,Stifel Nicolaus & Company Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-29,2027-06-29,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded2162446148bd8491b9,Stifel Nicolaus & Company Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-29,2027-06-29,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded2162446148bd8491b9,Stifel Nicolaus & Company Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded2362446148bd84924f,UBS Financial Services Inc,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded2362446148bd84924f,UBS Financial Services Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-07-01,2027-07-01,,,,,2026-08-18
@@ -1732,7 +1732,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1762446148bd848e86,Infinity Fasteners Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-02-01,2027-02-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1762446148bd848e86,Infinity Fasteners Inc,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-02-01,2027-02-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1a62446148bd848f4c,"Shoot 360 / Mambas Basketball Academy, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-01-29,2027-01-29,,,,,2026-08-18
-"Block Real Estate Services, LLC",69fded1a62446148bd848f4c,"Shoot 360 / Mambas Basketball Academy, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
+"Block Real Estate Services, LLC",69fded1a62446148bd848f4c,"Shoot 360 / Mambas Basketball Academy, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-08-06,2027-01-29,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1a62446148bd848f4c,"Shoot 360 / Mambas Basketball Academy, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1a62446148bd848f4c,"Shoot 360 / Mambas Basketball Academy, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-01-29,2027-01-29,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1a62446148bd848f79,MC Flooring LLC,,Commercial General Liability,commercialGeneralLiability,,,2025-09-15,2026-09-15,,,,,2026-08-18
@@ -2039,9 +2039,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1062446148bd848c52,"Sunflower Health Plan / Centene Management Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-01,2027-06-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1062446148bd848c52,"Sunflower Health Plan / Centene Management Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",69fded1062446148bd848c52,"Sunflower Health Plan / Centene Management Company, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-01,2027-06-01,,,,,2026-08-18
-"Block Real Estate Services, LLC",6a175a7bee5ef0b8dc066236,"PropertyRate, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",6a175a7bee5ef0b8dc066236,"PropertyRate, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
-"Block Real Estate Services, LLC",6a175a7bee5ef0b8dc066236,"PropertyRate, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-18
+"Block Real Estate Services, LLC",6a175a7bee5ef0b8dc066236,"PropertyRate, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-06-30,2027-06-30,,,,,2026-08-18
+"Block Real Estate Services, LLC",6a175a7bee5ef0b8dc066236,"PropertyRate, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-30,2027-06-30,,,,,2026-08-18
+"Block Real Estate Services, LLC",6a175a7bee5ef0b8dc066236,"PropertyRate, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-08-18
 "Block Real Estate Services, LLC",6a175a7bee5ef0b8dc066236,"PropertyRate, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",6a72067ea7b0558ab72338fb,Lure Creative,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-18
 "Block Real Estate Services, LLC",6a72067ea7b0558ab72338fb,Lure Creative,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-18
