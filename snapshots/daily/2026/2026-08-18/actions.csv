@@ -1,0 +1,5 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Canadian Pacific Kansas City,a737836d-724c-4c54-8150-f2fef70ac905,,,,,2026-08-17T15:21:15,,,,,,08/17/2026,08/17/2026 11:40:43
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/17/2026,08/17/2026 11:40:43
+Trinity Chemical Industries LLC,3301b7db-3290-4e5e-9550-1eb43de2a3ce,,,,,2026-08-13T19:09:30,,,,,,08/17/2026,08/17/2026 11:40:59
+Trinity Chemical Industries LLC,a8f8ebeb-ae3f-4b64-b54e-db28656128d2,,3d1e68b0-6d0e-451b-88dd-baf52b521363,,,2026-08-13T19:09:30,,,,,,08/17/2026,08/17/2026 11:40:59
