@@ -1,0 +1,4 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/18/2026,08/18/2026 20:30:26
+Mizuho Bank,cd1c0d7d-1cb8-4563-8238-29d3c3894a61,,d115ad8f-0e0f-41b2-bb57-0b241c195cf1,,,2026-08-18T06:56:20,,,,,,08/18/2026,08/18/2026 20:30:34
+Scandroli Construction,0fb519df-82b1-4a3c-bd24-66955d09a035,,c5e60392-ecd7-43a9-aa23-38de8bd2b278,,,2026-08-18T22:39:47,,,,,,08/18/2026,08/18/2026 20:30:42
