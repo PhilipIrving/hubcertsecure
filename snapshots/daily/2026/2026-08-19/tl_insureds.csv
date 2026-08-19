@@ -50,9 +50,9 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0e62446148bd848b8f,Arrowhead Forensics,,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded0e62446148bd848b92,Arthur J Gallagher Risk Management Services Inc,,COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded0e62446148bd848b95,Ashley Nelson Studios,,NON_COMPLIANT,,,true,false,2026-08-19
-"Block Real Estate Services, LLC",69fded0e62446148bd848b98,Aspen Properties Group,,NON_COMPLIANT,,,true,false,2026-08-19
+"Block Real Estate Services, LLC",69fded0e62446148bd848b98,Aspen Properties Group,,COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,COMPLIANT,,,true,false,2026-08-19
-"Block Real Estate Services, LLC",69fded0e62446148bd848ba1,Asurion LLC,,NON_COMPLIANT,,,true,false,2026-08-19
+"Block Real Estate Services, LLC",69fded0e62446148bd848ba1,Asurion LLC,,COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded0e62446148bd848ba4,Asurion UBIF,,COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded0e62446148bd848baa,Auction Merchandise of KC,,NON_COMPLIANT,,,true,false,2026-08-19
@@ -161,7 +161,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1262446148bd848d03,DCB Homes LLC,,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1262446148bd848d06,"Dental Health Essentials, LLC",,NON_COMPLIANT,,,true,false,2026-08-19
-"Block Real Estate Services, LLC",69fded1262446148bd848d09,Dentek Inc,,NON_COMPLIANT,,,true,false,2026-08-19
+"Block Real Estate Services, LLC",69fded1262446148bd848d09,Dentek Inc DBA Sokolov Dental Laboratory Inc,,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1262446148bd848d0c,Dermatology Consultants,,COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1262446148bd848d0f,"Diamond Towel and Supply Company, LLC",,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1362446148bd848d12,Diana M. Dang,,NON_COMPLIANT,,,true,false,2026-08-19
@@ -395,9 +395,9 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1c62446148bd848fee,"Creche Innovations / Neonatal Product Group, Inc.",,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1c62446148bd848ff1,Nestle Purina PetCare Co.,,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1c62446148bd848ff4,Netsmart Technologies Inc,,COMPLIANT,,,true,false,2026-08-19
-"Block Real Estate Services, LLC",69fded1c62446148bd848ff7,New Century Dodge Chrysler Wholesale Parts,,NON_COMPLIANT,,,true,false,2026-08-19
+"Block Real Estate Services, LLC",69fded1c62446148bd848ff7,New Century Dodge Chrysler Wholesale Parts,,COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1c62446148bd848ffa,New China Super Buffet,,NON_COMPLIANT,,,true,false,2026-08-19
-"Block Real Estate Services, LLC",69fded1c62446148bd848ffd,"New Cingular Wireless PCS, LLC",,NON_COMPLIANT,,,true,false,2026-08-19
+"Block Real Estate Services, LLC",69fded1c62446148bd848ffd,"New Cingular Wireless PCS, LLC",,COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1c62446148bd849000,New Lawn LLC,,COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1c62446148bd849003,New Nail & Spa,,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1c62446148bd849006,New York Air Brake Co,,NON_COMPLIANT,,,true,false,2026-08-19
@@ -475,7 +475,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1f62446148bd8490ea,"Regal Staffing, LLC",,COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1f62446148bd8490ed,Releve Performing Arts / Ashley Collier,,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f0,"Remax Real Estate / Harry C. Meierarend, III",,NON_COMPLIANT,,,true,false,2026-08-19
-"Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,NON_COMPLIANT,,,true,false,2026-08-19
+"Block Real Estate Services, LLC",69fded1f62446148bd8490f3,Rent-A-Center #1724,,COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f6,"Ambius / Rentokil North America, Inc. (fka JC Ehrlich Company)",,COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f9,Repairs Unlimited LLC,,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded1f62446148bd8490fc,Reserve Applied Management of Kansas City LLC,,NON_COMPLIANT,,,true,false,2026-08-19
