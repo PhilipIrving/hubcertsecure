@@ -7,7 +7,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0c62446148bd848b08,"Ray's Donuts & Deli / 6tinos, LLC",,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded0c62446148bd848b0b,717 Office Group LLC,,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded0c62446148bd848b0e,A.N.D. Design Studio LLC,,COMPLIANT,,,true,false,2026-08-19
-"Block Real Estate Services, LLC",69fded0c62446148bd848b14,Academy Bank,,COMPLIANT,,,true,false,2026-08-19
+"Block Real Estate Services, LLC",69fded0c62446148bd848b14,Academy Bank,,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded0c62446148bd848b17,"Pertronix (Aeromotive) / Accelerate Auto Works Intermediate, LLC",,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded0c62446148bd848b1a,Actuarial Resources Corporation (ARC),,COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",69fded0c62446148bd848b1d,"Adams Cable Equipment, Inc.",,NON_COMPLIANT,,,true,false,2026-08-19
@@ -640,7 +640,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a17132fefde9f2154ac6af4,The Underground Lab / Animal Kingdom Athletics,,NON_COMPLIANT,,,false,false,2026-08-19
 "Block Real Estate Services, LLC",6a174c521814afc0f550857c,"Money N Minutes / Z & H Holding, LLC",,NON_COMPLIANT,,,false,false,2026-08-19
 "Block Real Estate Services, LLC",6a174c5f68ca7e99894e866e,"Party Time Liquor / LEXMI, LLC",,NON_COMPLIANT,,,true,false,2026-08-19
-"Block Real Estate Services, LLC",6a1750d2df078f8120119232,Dr. Julia Loecker Dentistry,,NON_COMPLIANT,,2027-08-18,true,false,2026-08-19
+"Block Real Estate Services, LLC",6a1750d2df078f8120119232,Dr. Julia Loecker Dentistry,,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",6a1750de402cef48fa2e24a7,Cheezsteak Company / Asma Shane,,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Spurgeon Chiropractic / Dr. Ryan Spurgeon Healing Neck & Joints,,NON_COMPLIANT,,,true,false,2026-08-19
 "Block Real Estate Services, LLC",6a1757dbf2985118876d7f9a,Afrah Event Center / Astro Ventures,,NON_COMPLIANT,,,true,false,2026-08-19
