@@ -1,16 +1,5 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,ac3bd02a-d26e-4ae4-8bb6-3e1819128c1c,,09a76284-63f5-4b8f-9a39-d0e60880c037,,,2026-08-19T09:28:18,,,,,,08/19/2026,08/19/2026 08:01:56
-Bauer Foundation Corp.,d10d0e30-54c1-44c2-94c0-082b2f170bd0,,09a76284-63f5-4b8f-9a39-d0e60880c037,,,2026-08-19T09:28:18,,,,,,08/19/2026,08/19/2026 08:01:56
-Canadian Pacific Kansas City,d7bec593-6ec2-4767-a982-5fb2c82930e5,,,,,2026-08-19T11:28:18,,,,,,08/19/2026,08/19/2026 08:01:56
-Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/19/2026,08/19/2026 08:01:56
-Kolb Grading,c4d8b80d-53e3-4a25-8750-db89bff3adc8,,,,,2026-08-19T10:38:05,,,,,,08/19/2026,08/19/2026 08:01:59
-Mizuho Bank,cd1c0d7d-1cb8-4563-8238-29d3c3894a61,,d115ad8f-0e0f-41b2-bb57-0b241c195cf1,,,2026-08-18T06:56:20,,,,,,08/19/2026,08/19/2026 08:02:03
-"Musselman & Hall Contractors, LLC",14151b4d-57a0-425e-8e62-f203baf37d98,,,,,2026-08-19T12:58:53,,,,,,08/19/2026,08/19/2026 08:02:10
-"Musselman & Hall Contractors, LLC",301e4554-5005-4a63-ad97-3248bb93335a,,4e3277ae-1251-49f5-8728-de159314664a,,,2026-08-19T12:58:53,,,,,,08/19/2026,08/19/2026 08:02:10
-"Musselman & Hall Contractors, LLC",8b16967f-307e-47cd-887b-e327598c7c73,,,,,2026-08-19T12:58:53,,,,,,08/19/2026,08/19/2026 08:02:10
-Scandroli Construction,0fb519df-82b1-4a3c-bd24-66955d09a035,,c5e60392-ecd7-43a9-aa23-38de8bd2b278,,,2026-08-18T22:39:47,,,,,,08/19/2026,08/19/2026 08:02:11
-Scandroli Construction,b5d6cb5d-3a56-4aa6-90eb-58e74b47f46f,,c45370dc-9a5e-4bf7-80c5-797d9e81c5e7,,,2026-08-19T09:33:09,,,,,,08/19/2026,08/19/2026 08:02:11
-The Abbey Management Company,11fd1bd3-f5d4-4811-a1a2-b7e87de8abda,,,,,2026-08-19T10:36:52,,,,,,08/19/2026,08/19/2026 08:02:13
-The Abbey Management Company,137cb082-02e0-47a5-a7ce-342d024affa7,,,,,2026-08-19T10:36:52,,,,,,08/19/2026,08/19/2026 08:02:13
-The Abbey Management Company,98ee8b7a-a04b-459e-9fb3-9142749bc5fe,,,,,2026-08-19T10:36:52,,,,,,08/19/2026,08/19/2026 08:02:13
-The Abbey Management Company,e56d6416-6afb-47e5-b3d9-75b031e0f38b,,,,,2026-08-19T10:38:41,,,,,,08/19/2026,08/19/2026 08:02:13
+Bauer Foundation Corp.,0171e592-631f-4049-8e8b-3523b0682c17,,0590fd27-0595-48bf-bc86-4156d096f060,,,2026-08-19T15:21:23,,,,,,08/19/2026,08/19/2026 11:45:20
+Bauer Foundation Corp.,30b0bd71-8b79-4f71-aabd-431c93597083,,09a76284-63f5-4b8f-9a39-d0e60880c037,,,2026-08-19T15:59:22,,,,,,08/19/2026,08/19/2026 11:45:20
+Canadian Pacific Kansas City,700bc806-0e8b-4fc6-8aeb-2df5cabe3eea,,,,,2026-08-19T16:33:59,,,,,,08/19/2026,08/19/2026 11:45:20
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/19/2026,08/19/2026 11:45:20
