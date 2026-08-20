@@ -1,0 +1,4 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Bauer Foundation Corp.,0171e592-631f-4049-8e8b-3523b0682c17,,0590fd27-0595-48bf-bc86-4156d096f060,,,2026-08-19T15:21:23,,,,,,08/19/2026,08/19/2026 15:43:22
+Bauer Foundation Corp.,30b0bd71-8b79-4f71-aabd-431c93597083,,09a76284-63f5-4b8f-9a39-d0e60880c037,,,2026-08-19T15:59:22,,,,,,08/19/2026,08/19/2026 15:43:22
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/19/2026,08/19/2026 15:43:22
