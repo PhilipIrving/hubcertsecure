@@ -1,21 +1,4 @@
 Event ID,Date,Email,Type,Subject,Client
-6a125d12f57eff748aac522f,5/24/2026 1:57:02,ar.altronic@hoerbiger.com,open,Reminder: Non-Compliant Insurance Verification Request for ALTRONIC CONTROLS,A G Equipment Company
-6a125d1249f407e1f244486f,5/24/2026 1:57:02,ar.altronic@hoerbiger.com,open,Reminder: Non-Compliant Insurance Verification Request for ALTRONIC CONTROLS,A G Equipment Company
-6a1265147de5d74f190eefe3,5/24/2026 2:40:01,brue@mazzellacompanies.com,send,Reminder: Expiring Insurance Verification Request for MAZZELLA LIFTING TECHNOLOGIES INC.,United Coal Company LLC
-6a126585f57eff748aac52fa,5/24/2026 2:40:01,jd@pridecleanup.com,send,Reminder: Expiring Insurance Verification Request for PRIDE CLEANUP LLC,Canadian Pacific Kansas City
-6a126df1f9db19626c5dc841,5/24/2026 2:40:01,paused@internalemail.com,reject,Reminder: Non-Compliant Insurance Verification Request for Alain Faubert,Canadian Pacific Kansas City
-6a1265017de5d74f190eefd7,5/24/2026 2:40:02,paused@internalemail.com,rejected,,Canadian Pacific Kansas City
-6a1266e949f407e1f244498a,5/24/2026 2:40:13,dauterive@dauterive.com,send,"Reminder: Non-Compliant Insurance Verification for DAUTERIVE CONTRACTORS, INC","Paragon Geophysical Services, Inc."
-6a12659cf9db19626c5dc791,5/24/2026 2:40:17,jerroldunruh@aol.com,send,Reminder: Non-Compliant Insurance Verification for J UNRUH LLC,"Paragon Geophysical Services, Inc."
-6a126600f57eff748aac5313,5/24/2026 2:40:18,billingsadmin@sisystems.com,send,Reminder: Non-Compliant Insurance Verification Request for SI SYSTEMS PARTNERSHIP,Canadian Pacific Kansas City
-6a126761f57eff748aac535a,5/24/2026 2:40:18,billingsadmin@sisystems.com,send,Reminder: Non-Compliant Insurance Verification Request for SI SYSTEMS PARTNERSHIP,Canadian Pacific Kansas City
-6a12661ade74d965e8e84524,5/24/2026 2:40:20,pm@gartproperties.com,send,"Reminder: Verification of Your Expiring Insurance - Mpact Dance Academy, LLC at ﻿Saddle Rock Village﻿",Gart Properties
-6a12661a7de5d74f190ef00d,5/24/2026 2:40:20,akamacy@me.com,send,"Reminder: Verification of Your Expiring Insurance - Mpact Dance Academy, LLC at ﻿Saddle Rock Village﻿",Gart Properties
-6a12661af57eff748aac5314,5/24/2026 2:40:20,john@macysoundstudios.com,send,"Reminder: Verification of Your Expiring Insurance - Mpact Dance Academy, LLC at ﻿Saddle Rock Village﻿",Gart Properties
-6a126b1bf9db19626c5dc829,5/24/2026 2:56:40,neconstructioncerts@epicbrokers.com,open,Reminder: Non-Compliant Insurance Verification Request - Wharton Smith Construction Group Corp at New York - No Location,EMMES
-6a126a72de74d965e8e845a3,5/24/2026 2:57:16,neconstructioncerts@epicbrokers.com,open,Reminder: Non-Compliant Insurance Verification Request - Wharton Smith Construction Group Corp at New York - No Location,EMMES
-6a126dfcde74d965e8e845c1,5/24/2026 3:07:15,jd@pridecleanup.com,open,Reminder: Expiring Insurance Verification Request for PRIDE CLEANUP LLC,Canadian Pacific Kansas City
-6a126eb2f57eff748aac53b3,5/24/2026 3:09:06,jd@pridecleanup.com,open,Reminder: Expiring Insurance Verification Request for PRIDE CLEANUP LLC,Canadian Pacific Kansas City
 6a128a8149f407e1f2444a79,5/24/2026 5:10:34,neconstructioncerts@epicbrokers.com,open,Reminder: Non-Compliant Insurance Verification Request - Wharton Smith Construction Group Corp at New York - No Location,EMMES
 6a12919349f407e1f2444a94,5/24/2026 5:43:03,akamacy@me.com,open,"Reminder: Verification of Your Expiring Insurance - Mpact Dance Academy, LLC at ﻿Saddle Rock Village﻿",Gart Properties
 6a12955949f407e1f2444aaa,5/24/2026 6:03:18,sshoudy@nelsonpipingco.com,open,Reminder: Non-Compliant Insurance Verification Request for - Nelson Carlson Mechanical Contractors for Project ﻿26155﻿: ﻿South Beloit Public Library,Scandroli Construction
@@ -34,23 +17,6 @@ Event ID,Date,Email,Type,Subject,Client
 6a1335a3f57eff748aac59be,5/24/2026 17:15:14,ournewplacenyc@gmail.com,open,Reminder: Non-Compliant Insurance Verification Request - Taste Of Shanghai Restaurant INC at NR261,EMMES
 6a134ad9f57eff748aac5b4e,5/24/2026 18:48:43,jragusa@hgfin.net,open,Reminder: Non-Compliant Insurance Verification Request - Webster Lock & Hardware Co Inc at New York - No Location,EMMES
 6a135023f57eff748aac5bbd,5/24/2026 19:06:44,ajs@tdslaw.com,open,Reminder: Expiring Insurance Verification Request for Lake Line Railroad Inc.,Canadian Pacific Kansas City
-6a125d12f57eff748aac522f,5/24/2026 1:57:02,ar.altronic@hoerbiger.com,open,Reminder: Non-Compliant Insurance Verification Request for ALTRONIC CONTROLS,A G Equipment Company
-6a125d1249f407e1f244486f,5/24/2026 1:57:02,ar.altronic@hoerbiger.com,open,Reminder: Non-Compliant Insurance Verification Request for ALTRONIC CONTROLS,A G Equipment Company
-6a1265147de5d74f190eefe3,5/24/2026 2:40:01,brue@mazzellacompanies.com,send,Reminder: Expiring Insurance Verification Request for MAZZELLA LIFTING TECHNOLOGIES INC.,United Coal Company LLC
-6a126585f57eff748aac52fa,5/24/2026 2:40:01,jd@pridecleanup.com,send,Reminder: Expiring Insurance Verification Request for PRIDE CLEANUP LLC,Canadian Pacific Kansas City
-6a126df1f9db19626c5dc841,5/24/2026 2:40:01,paused@internalemail.com,reject,Reminder: Non-Compliant Insurance Verification Request for Alain Faubert,Canadian Pacific Kansas City
-6a1265017de5d74f190eefd7,5/24/2026 2:40:02,paused@internalemail.com,rejected,,Canadian Pacific Kansas City
-6a1266e949f407e1f244498a,5/24/2026 2:40:13,dauterive@dauterive.com,send,"Reminder: Non-Compliant Insurance Verification for DAUTERIVE CONTRACTORS, INC","Paragon Geophysical Services, Inc."
-6a12659cf9db19626c5dc791,5/24/2026 2:40:17,jerroldunruh@aol.com,send,Reminder: Non-Compliant Insurance Verification for J UNRUH LLC,"Paragon Geophysical Services, Inc."
-6a126600f57eff748aac5313,5/24/2026 2:40:18,billingsadmin@sisystems.com,send,Reminder: Non-Compliant Insurance Verification Request for SI SYSTEMS PARTNERSHIP,Canadian Pacific Kansas City
-6a126761f57eff748aac535a,5/24/2026 2:40:18,billingsadmin@sisystems.com,send,Reminder: Non-Compliant Insurance Verification Request for SI SYSTEMS PARTNERSHIP,Canadian Pacific Kansas City
-6a12661ade74d965e8e84524,5/24/2026 2:40:20,pm@gartproperties.com,send,"Reminder: Verification of Your Expiring Insurance - Mpact Dance Academy, LLC at ﻿Saddle Rock Village﻿",Gart Properties
-6a12661a7de5d74f190ef00d,5/24/2026 2:40:20,akamacy@me.com,send,"Reminder: Verification of Your Expiring Insurance - Mpact Dance Academy, LLC at ﻿Saddle Rock Village﻿",Gart Properties
-6a12661af57eff748aac5314,5/24/2026 2:40:20,john@macysoundstudios.com,send,"Reminder: Verification of Your Expiring Insurance - Mpact Dance Academy, LLC at ﻿Saddle Rock Village﻿",Gart Properties
-6a126b1bf9db19626c5dc829,5/24/2026 2:56:40,neconstructioncerts@epicbrokers.com,open,Reminder: Non-Compliant Insurance Verification Request - Wharton Smith Construction Group Corp at New York - No Location,EMMES
-6a126a72de74d965e8e845a3,5/24/2026 2:57:16,neconstructioncerts@epicbrokers.com,open,Reminder: Non-Compliant Insurance Verification Request - Wharton Smith Construction Group Corp at New York - No Location,EMMES
-6a126dfcde74d965e8e845c1,5/24/2026 3:07:15,jd@pridecleanup.com,open,Reminder: Expiring Insurance Verification Request for PRIDE CLEANUP LLC,Canadian Pacific Kansas City
-6a126eb2f57eff748aac53b3,5/24/2026 3:09:06,jd@pridecleanup.com,open,Reminder: Expiring Insurance Verification Request for PRIDE CLEANUP LLC,Canadian Pacific Kansas City
 6a128a8149f407e1f2444a79,5/24/2026 5:10:34,neconstructioncerts@epicbrokers.com,open,Reminder: Non-Compliant Insurance Verification Request - Wharton Smith Construction Group Corp at New York - No Location,EMMES
 6a12919349f407e1f2444a94,5/24/2026 5:43:03,akamacy@me.com,open,"Reminder: Verification of Your Expiring Insurance - Mpact Dance Academy, LLC at ﻿Saddle Rock Village﻿",Gart Properties
 6a12955949f407e1f2444aaa,5/24/2026 6:03:18,sshoudy@nelsonpipingco.com,open,Reminder: Non-Compliant Insurance Verification Request for - Nelson Carlson Mechanical Contractors for Project ﻿26155﻿: ﻿South Beloit Public Library,Scandroli Construction
