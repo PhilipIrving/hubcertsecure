@@ -1,5 +1,11 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,6022a830-531c-4f06-8690-bc295cdc8e14,,ebd51321-0836-42ac-8151-13beb38b034b,,,2026-08-22T09:55:55,,,,,,08/22/2026,08/22/2026 07:51:56
-Canadian Pacific Kansas City,79161b84-f7d9-4e93-99e6-38ed572cc442,,a92788d6-3823-48b0-bf0a-aae374438d8e,,,2026-08-22T07:49:54,,,,,,08/22/2026,08/22/2026 07:51:56
-Canadian Pacific Kansas City,a2546470-1132-4da7-bff5-bb5c7232520e,,80d5794b-a8eb-412a-9116-c1f9922dc5ff,,,2026-08-22T09:17:23,,,,,,08/22/2026,08/22/2026 07:51:56
-Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/22/2026,08/22/2026 07:51:56
+Canadian Pacific Kansas City,300d5f61-9b51-40d8-8fd6-0a7c442d8d19,,e955b9b5-635c-4afc-be19-6ec4e5127c44,,,2026-08-22T17:04:08,,,,,,08/22/2026,08/22/2026 15:35:11
+Canadian Pacific Kansas City,6022a830-531c-4f06-8690-bc295cdc8e14,,ebd51321-0836-42ac-8151-13beb38b034b,,,2026-08-22T09:55:55,,,,,,08/22/2026,08/22/2026 15:35:11
+Canadian Pacific Kansas City,6c62a930-76d9-496f-93e9-12267af41ee1,,,,,2026-08-22T17:22:00,,,,,,08/22/2026,08/22/2026 15:35:11
+Canadian Pacific Kansas City,758d3245-0398-4cf5-a52d-0db29575347b,,233ea2ca-fb61-4a98-abfe-b6f3666279c8,,,2026-08-22T17:22:00,,,,,,08/22/2026,08/22/2026 15:35:11
+Canadian Pacific Kansas City,79161b84-f7d9-4e93-99e6-38ed572cc442,,a92788d6-3823-48b0-bf0a-aae374438d8e,,,2026-08-22T07:49:54,,,,,,08/22/2026,08/22/2026 15:35:11
+Canadian Pacific Kansas City,a2546470-1132-4da7-bff5-bb5c7232520e,,80d5794b-a8eb-412a-9116-c1f9922dc5ff,,,2026-08-22T09:17:23,,,,,,08/22/2026,08/22/2026 15:35:11
+Canadian Pacific Kansas City,fc9c7217-1e5a-4192-adf5-9d40542d0ba9,,30cad14f-0b5c-4a59-bc81-414b5866c03e,,,2026-08-22T18:57:35,,,,,,08/22/2026,08/22/2026 15:35:11
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/22/2026,08/22/2026 15:35:11
+United Coal Company LLC,1f84530c-9620-4a44-839a-fbc81daae812,,5d621b03-9487-41f3-b39b-a7f7b2423faa,,,2026-08-22T19:44:49,,,,,,08/22/2026,08/22/2026 15:35:31
+United Coal Company LLC,7b4f634b-aac8-4571-9a28-71baeeb938f1,,5d621b03-9487-41f3-b39b-a7f7b2423faa,,,2026-08-22T19:44:49,,,,,,08/22/2026,08/22/2026 15:35:31
