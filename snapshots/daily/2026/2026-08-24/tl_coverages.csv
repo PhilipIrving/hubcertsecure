@@ -1682,7 +1682,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1362446148bd848d21,Dollar Tree,,Commercial General Liability,commercialGeneralLiability,,,2025-09-01,2027-09-01,,,,,2026-08-24
 "Block Real Estate Services, LLC",69fded1362446148bd848d21,Dollar Tree,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-09-01,2027-09-01,,,,,2026-08-24
 "Block Real Estate Services, LLC",69fded1362446148bd848d21,Dollar Tree,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-09-01,2027-09-01,,,,,2026-08-24
-"Block Real Estate Services, LLC",69fded1362446148bd848d21,Dollar Tree,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-09-01,2026-09-01,,,,,2026-08-24
+"Block Real Estate Services, LLC",69fded1362446148bd848d21,Dollar Tree,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-09-01,2027-09-01,,,,,2026-08-24
 "Block Real Estate Services, LLC",69fded1c62446148bd849024,Ollie's Bargain Outlet Inc,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-24
 "Block Real Estate Services, LLC",69fded1c62446148bd849024,Ollie's Bargain Outlet Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-24
 "Block Real Estate Services, LLC",69fded1c62446148bd849024,Ollie's Bargain Outlet Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-24
@@ -3492,6 +3492,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1662446148bd848e2c,Guardian Water & Air Systems LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-24
 "Block Real Estate Services, LLC",69fded2362446148bd849234,"DaVita Dialysis / Total Renal Care, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-24
 "Block Real Estate Services, LLC",69fded1e62446148bd8490a2,Polymershapes LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-24
+"Block Real Estate Services, LLC",69fded1362446148bd848d21,Dollar Tree,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-24
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-08-24
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-08-24
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-08-24
