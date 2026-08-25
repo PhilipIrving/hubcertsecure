@@ -527,7 +527,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1d62446148bd849054,Papa Murphy's / Papa's Partners,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-10-01,2026-10-01,,,,,2026-08-25
 "Block Real Estate Services, LLC",69fded1d62446148bd849054,Papa Murphy's / Papa's Partners,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-10-01,2026-10-01,,,,,2026-08-25
 "Block Real Estate Services, LLC",69fded1d62446148bd849054,Papa Murphy's / Papa's Partners,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-10-01,2026-10-01,,,,,2026-08-25
-"Block Real Estate Services, LLC",69fded1f62446148bd849114,"Royal Gyros (Royal Donuts, LLC) / Ahed Kalifa",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-25
+"Block Real Estate Services, LLC",69fded1f62446148bd849114,"Royal Gyros (Royal Donuts, LLC) / Ahed Kalifa",,Commercial General Liability,commercialGeneralLiability,,,2025-11-02,2026-11-02,,,,,2026-08-25
 "Block Real Estate Services, LLC",69fded1f62446148bd849114,"Royal Gyros (Royal Donuts, LLC) / Ahed Kalifa",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-25
 "Block Real Estate Services, LLC",69fded1f62446148bd849114,"Royal Gyros (Royal Donuts, LLC) / Ahed Kalifa",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-25
 "Block Real Estate Services, LLC",69fded1f62446148bd849114,"Royal Gyros (Royal Donuts, LLC) / Ahed Kalifa",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-25
@@ -1391,9 +1391,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1962446148bd848f01,"KTI / Kruger Technologies, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-08-12,2027-08-12,,,,,2026-08-25
 "Block Real Estate Services, LLC",69fded1962446148bd848f01,"KTI / Kruger Technologies, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-08-12,2027-08-12,,,,,2026-08-25
 "Block Real Estate Services, LLC",69fded1962446148bd848f01,"KTI / Kruger Technologies, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-08-12,2027-08-12,,,,,2026-08-25
-"Block Real Estate Services, LLC",69fded1c62446148bd848fdc,Monte Cook Games LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-25
-"Block Real Estate Services, LLC",69fded1c62446148bd848fdc,Monte Cook Games LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-25
-"Block Real Estate Services, LLC",69fded1c62446148bd848fdc,Monte Cook Games LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-25
+"Block Real Estate Services, LLC",69fded1c62446148bd848fdc,Monte Cook Games LLC,,Commercial General Liability,commercialGeneralLiability,,,2025-10-13,2026-10-13,,,,,2026-08-25
+"Block Real Estate Services, LLC",69fded1c62446148bd848fdc,Monte Cook Games LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-10-13,2026-10-13,,,,,2026-08-25
+"Block Real Estate Services, LLC",69fded1c62446148bd848fdc,Monte Cook Games LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-08-25
 "Block Real Estate Services, LLC",69fded1c62446148bd848fdc,Monte Cook Games LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-25
 "Block Real Estate Services, LLC",69fded1d62446148bd849075,"Pine Ridge Management Office & BMS / PERG Buildings, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-25
 "Block Real Estate Services, LLC",69fded1d62446148bd849075,"Pine Ridge Management Office & BMS / PERG Buildings, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-25
@@ -3446,6 +3446,8 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1d62446148bd849030,"Walgreens / Option Care Enterprises, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-25
 "Block Real Estate Services, LLC",6a70fd6dfbd38db02fd82322,"Decker Integrated Orthotics and Prosthetics, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-25
 "Block Real Estate Services, LLC",69fded2262446148bd849207,"Rogers Labs (fka P&C Next) / The Compatibility Center, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-25
+"Block Real Estate Services, LLC",6a17105b1814afc0f53b2a39,Computers To Go / Scott Petrak,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-25
+"Block Real Estate Services, LLC",69fded2462446148bd84927f,Var City Maintenance LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-25
 "Block Real Estate Services, LLC",69fded0d62446148bd848b77,"Apex Products, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-25
 "Block Real Estate Services, LLC",69fded0c62446148bd848b23,"ADI (Ademco Distribution, Inc.) / Honeywell International, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-25
 "Block Real Estate Services, LLC",69fded0c62446148bd848b29,Advanced Pharmaceuticals LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-25
