@@ -1,4 +1,7 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,407a1a0c-1dca-477d-9a4c-06cd51dbefae,,,,,2026-08-25T03:17:25,,,,,,08/24/2026,08/24/2026 23:51:36
-Canadian Pacific Kansas City,d87e5f06-76e6-4584-97ed-0e57fad3c184,,,,,2026-08-25T03:17:25,,,,,,08/24/2026,08/24/2026 23:51:36
-Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/24/2026,08/24/2026 23:51:36
+Canadian Pacific Kansas City,407a1a0c-1dca-477d-9a4c-06cd51dbefae,,,,,2026-08-25T03:17:25,,,,,,08/25/2026,08/25/2026 03:56:34
+Canadian Pacific Kansas City,d87e5f06-76e6-4584-97ed-0e57fad3c184,,,,,2026-08-25T03:17:25,,,,,,08/25/2026,08/25/2026 03:56:34
+Canadian Pacific Kansas City,e3d801a1-3da1-4e58-af66-d3ee801879ef,,5ae86419-0460-4215-bac8-7c1dac2e214a,,,2026-08-25T05:36:15,,,,,,08/25/2026,08/25/2026 03:56:34
+Gart Properties,72809f6f-5dd7-4ba2-b012-c191a9cd7af9,,,,,2026-07-23T13:41:46,,,,,,08/25/2026,08/25/2026 03:56:34
+Mizuho Bank,0509348f-716f-4b10-86e7-a569dc2c5071,,6cbc2bd8-2207-49ba-9431-d767b289a1fc,,,2026-08-25T06:35:03,,,,,,08/25/2026,08/25/2026 03:56:40
+Mizuho Bank,e1228cb6-2ff4-4cc2-a3c8-77ccd2dbbe67,,6cbc2bd8-2207-49ba-9431-d767b289a1fc,,,2026-08-25T06:35:03,,,,,,08/25/2026,08/25/2026 03:56:40
