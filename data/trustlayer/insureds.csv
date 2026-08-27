@@ -158,7 +158,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1262446148bd848cf7,DataLocker Inc,,COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1262446148bd848cfa,B-Envied Salon / David M & Lisa Walla,,COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1262446148bd848cfd,Residential - renter occupied: David Remick,,NON_COMPLIANT,,,false,false,2026-08-27
-"Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,NON_COMPLIANT,,,true,false,2026-08-27
+"Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1262446148bd848d03,DCB Homes LLC,,NON_COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1262446148bd848d06,"Dental Health Essentials, LLC",,NON_COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1262446148bd848d09,Dentek Inc DBA Sokolov Dental Laboratory Inc,,NON_COMPLIANT,,,true,false,2026-08-27
@@ -352,7 +352,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1a62446148bd848f64,Martinrea Riverside LLC,,NON_COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1a62446148bd848f67,Massage Envy,,COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1a62446148bd848f6d,Mattress Firm Inc,,NON_COMPLIANT,,,true,false,2026-08-27
-"Block Real Estate Services, LLC",69fded1a62446148bd848f70,"Mavs Volleyball / MAVS, LLC",,NON_COMPLIANT,,,true,false,2026-08-27
+"Block Real Estate Services, LLC",69fded1a62446148bd848f70,"Mavs Volleyball / MAVS, LLC",,COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1a62446148bd848f73,MAWD Pathology Group P.A.,,NON_COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1a62446148bd848f76,"Clear Choice Dental Implant Center / MB Properties, LLC",,NON_COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1a62446148bd848f79,MC Flooring LLC,,COMPLIANT,,,true,false,2026-08-27
@@ -486,7 +486,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1f62446148bd84910b,Roto-Rooter Services Company Inc,,NON_COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1f62446148bd84910e,Rottler Pest & Lawn Solutions / Rottler Pest Control Company,,NON_COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1f62446148bd849111,"Taco Bell / Royal City Bell, LLC",,COMPLIANT,,,true,false,2026-08-27
-"Block Real Estate Services, LLC",69fded1f62446148bd849114,"Royal Gyros (Royal Donuts, LLC) / Ahed Kalifa",,NON_COMPLIANT,,,true,false,2026-08-27
+"Block Real Estate Services, LLC",69fded1f62446148bd849114,"Royal Gyros (Royal Donuts, LLC) / Ahed Kalifa",,COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1f62446148bd849117,Royal Seamless Gutter Inc,,NON_COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1f62446148bd84911a,RSM US LLP,,NON_COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded1f62446148bd849120,Ryan Poage & Company,,NON_COMPLIANT,,,false,false,2026-08-27
@@ -601,7 +601,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2462446148bd84927f,Var City Maintenance LLC,,COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded2462446148bd849282,Verizon / Cellular Sales,,NON_COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded2462446148bd849288,Victor Caballero,,NON_COMPLIANT,,,true,false,2026-08-27
-"Block Real Estate Services, LLC",69fded2462446148bd84928b,Vintage Stock,,NON_COMPLIANT,,,true,false,2026-08-27
+"Block Real Estate Services, LLC",69fded2462446148bd84928b,Vintage Stock,,COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded2462446148bd84928e,Vintegrity Kansas LLC,,COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded2462446148bd849291,"Vision Savage Media, LLC",,NON_COMPLIANT,,,true,false,2026-08-27
 "Block Real Estate Services, LLC",69fded2462446148bd849294,Vitas Healthcare Corporation Midwest,,NON_COMPLIANT,,,true,false,2026-08-27
