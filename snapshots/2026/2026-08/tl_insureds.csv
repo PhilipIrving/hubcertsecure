@@ -159,7 +159,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1262446148bd848cfa,B-Envied Salon / David M & Lisa Walla,,COMPLIANT,,,true,false,2026-08-28
 "Block Real Estate Services, LLC",69fded1262446148bd848cfd,Residential - renter occupied: David Remick,,NON_COMPLIANT,,,false,false,2026-08-28
 "Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,COMPLIANT,,,true,false,2026-08-28
-"Block Real Estate Services, LLC",69fded1262446148bd848d03,DCB Homes LLC,,NON_COMPLIANT,,,true,false,2026-08-28
+"Block Real Estate Services, LLC",69fded1262446148bd848d03,DCB Homes LLC,,COMPLIANT,,,true,false,2026-08-28
 "Block Real Estate Services, LLC",69fded1262446148bd848d06,"Dental Health Essentials, LLC",,NON_COMPLIANT,,,true,false,2026-08-28
 "Block Real Estate Services, LLC",69fded1262446148bd848d09,Dentek Inc DBA Sokolov Dental Laboratory Inc,,NON_COMPLIANT,,,true,false,2026-08-28
 "Block Real Estate Services, LLC",69fded1262446148bd848d0c,Dermatology Consultants,,COMPLIANT,,,true,false,2026-08-28
@@ -724,7 +724,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a1df835fec651278665b987,"CBS Outdoor, Inc.",,NON_COMPLIANT,,,true,false,2026-08-28
 "Block Real Estate Services, LLC",6a1df84165d51d7aa5739d4e,Protective Animal Welfare Society / Sandra L. Outlaw f/k/a A Dogs' Fun Playce,,NON_COMPLIANT,,,true,false,2026-08-28
 "Block Real Estate Services, LLC",6a1dfcd80a51a0db79c1dfba,JRJ Partners - Condo Owners (Clancey Design Distributor),,COMPLIANT,,,true,false,2026-08-28
-"Block Real Estate Services, LLC",6a1dfce4a0ed8c51ab262c0b,Building 28 TIC,,NON_COMPLIANT,,,true,false,2026-08-28
+"Block Real Estate Services, LLC",6a1dfce4a0ed8c51ab262c0b,Building 28 TIC,,NON_COMPLIANT,,,false,false,2026-08-28
 "Block Real Estate Services, LLC",6a1dff1ca79f4c38d5103b69,"Design & Detail / Mel B, LLC",,NON_COMPLIANT,,,true,false,2026-08-28
 "Block Real Estate Services, LLC",6a1e004c23b401dcff82ac21,BRES Management Office,,COMPLIANT,,,true,false,2026-08-28
 "Block Real Estate Services, LLC",6a1ee9c0aa8b4d40c45d9cb4,"Ridgeview Eye Care, LLC",,NON_COMPLIANT,,,true,false,2026-08-28

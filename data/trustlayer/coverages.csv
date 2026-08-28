@@ -2364,7 +2364,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1d62446148bd849057,"W + D North America, Inc. / Paper Converting Machine Corporation/BW Converting",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-08-28
 "Block Real Estate Services, LLC",69fded1d62446148bd849057,"W + D North America, Inc. / Paper Converting Machine Corporation/BW Converting",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-08-28
 "Block Real Estate Services, LLC",69fded1262446148bd848d03,DCB Homes LLC,,Commercial General Liability,commercialGeneralLiability,,,2025-12-12,2026-12-12,,,,,2026-08-28
-"Block Real Estate Services, LLC",69fded1262446148bd848d03,DCB Homes LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-08-28
+"Block Real Estate Services, LLC",69fded1262446148bd848d03,DCB Homes LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-08-15,2027-08-15,,,,,2026-08-28
 "Block Real Estate Services, LLC",69fded1262446148bd848d03,DCB Homes LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-10-14,2026-10-14,,,,,2026-08-28
 "Block Real Estate Services, LLC",69fded1262446148bd848d03,DCB Homes LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-12-12,2026-12-12,,,,,2026-08-28
 "Block Real Estate Services, LLC",69fded1462446148bd848d87,Express Hardwood Floors LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-28
@@ -3411,6 +3411,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1b62446148bd848f9a,"510 Counseling Group / Melissa Winston, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-28
 "Block Real Estate Services, LLC",69fded1b62446148bd848fb2,Midwest Dance Center / Priscilla Lea Young,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-28
 "Block Real Estate Services, LLC",6a1750d2df078f8120119232,Dr. Julia Loecker Dentistry,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-28
+"Block Real Estate Services, LLC",69fded2162446148bd84917d,Soar Nutrition,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-28
 "Block Real Estate Services, LLC",69fded2162446148bd8491b0,Starbucks Corporation #9654,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-28
 "Block Real Estate Services, LLC",69fded1962446148bd848ee9,"KC Classic Auto, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-28
 "Block Real Estate Services, LLC",69fded1c62446148bd848ff7,New Century Dodge Chrysler Wholesale Parts,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-28
@@ -3437,6 +3438,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1462446148bd848da5,Fireplace & Bar-B-Q Center Inc,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-28
 "Block Real Estate Services, LLC",69fded2062446148bd849162,"Show Me State Vital Care / Show Me State Infusion Pharmacy, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-28
 "Block Real Estate Services, LLC",69fded1262446148bd848cd0,Crossroads Courier Inc,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-28
+"Block Real Estate Services, LLC",69fded1562446148bd848dea,"Garage Experts of Kansas City / Win-Win Concrete & Storage, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-28
 "Block Real Estate Services, LLC",6a171003ee5ef0b8dcf522cf,"Pop! Vintage Furniture & Accessories, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-28
 "Block Real Estate Services, LLC",6a17103e4ee870c0f8575639,"WGN & Associates, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-28
 "Block Real Estate Services, LLC",6a17105b1814afc0f53b2a39,Computers To Go / Scott Petrak,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-08-28
@@ -3866,7 +3868,7 @@ QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Umbrella/Exc
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-30,2027-06-30,,,,,2026-08-28
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Pollution Liability,pollution,,,2026-06-30,2027-06-30,,,,,2026-08-28
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Professional Liability,professional,,,2026-06-30,2027-06-30,,,,,2026-08-28
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Drone Liability,e54fdf78-f8fe-5b2e-a5f7-0ae05bbd7f66,,,,,,,,,2026-08-28
+QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Drone Liability,e54fdf78-f8fe-5b2e-a5f7-0ae05bbd7f66,,,2026-06-30,2027-06-30,,,,,2026-08-28
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-30,2027-06-30,,,,,2026-08-28
 QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-08-28
 QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Automobile Liability,automobileLiability,,,,,,,,,2026-08-28
