@@ -1,32 +1,342 @@
 [
   {
     "client": "A G Equipment Company",
-    "stage": "coverage_data",
-    "insured": "03de4bc2-9056-4258-b13a-52f93ff1b4e9",
-    "error": "HTTP 502 on /insurance/insureds/03de4bc2-9056-4258-b13a-52f93ff1b4e9/data: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "A G Equipment Company",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "A G Equipment Company",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "A G Equipment Company",
+    "stage": "insureds",
+    "error": ""
+  },
+  {
+    "client": "Action Plumbing Construction",
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "Action Plumbing Construction",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "Action Plumbing Construction",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "Action Plumbing Construction",
+    "stage": "insureds",
+    "error": ""
+  },
+  {
+    "client": "Bauer Foundation Corp.",
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "Bauer Foundation Corp.",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "Bauer Foundation Corp.",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "Bauer Foundation Corp.",
+    "stage": "insureds",
+    "error": ""
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "insureds",
+    "error": ""
+  },
+  {
+    "client": "Capital Railroad Contracting, Inc.",
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "Capital Railroad Contracting, Inc.",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "Capital Railroad Contracting, Inc.",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "Capital Railroad Contracting, Inc.",
+    "stage": "insureds",
+    "error": ""
+  },
+  {
+    "client": "EMMES",
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "EMMES",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "EMMES",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "EMMES",
+    "stage": "insureds",
+    "error": ""
   },
   {
     "client": "ESS Companies",
-    "stage": "criteria",
-    "insured": "0d56b3af-0dbb-45f6-b012-fc1f665e9d39",
-    "error": "HTTP 502 on /insurance/insureds/0d56b3af-0dbb-45f6-b012-fc1f665e9d39/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "insureds",
+    "error": ""
+  },
+  {
+    "client": "Gart Properties",
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "Gart Properties",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "Gart Properties",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "Gart Properties",
+    "stage": "insureds",
+    "error": ""
+  },
+  {
+    "client": "Kolb Grading",
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "Kolb Grading",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "Kolb Grading",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "Kolb Grading",
+    "stage": "insureds",
+    "error": ""
+  },
+  {
+    "client": "Mizuho Bank",
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "Mizuho Bank",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "Mizuho Bank",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "Mizuho Bank",
+    "stage": "insureds",
+    "error": ""
+  },
+  {
+    "client": "Musselman & Hall Contractors, LLC",
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "Musselman & Hall Contractors, LLC",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "Musselman & Hall Contractors, LLC",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "Musselman & Hall Contractors, LLC",
+    "stage": "insureds",
+    "error": ""
+  },
+  {
+    "client": "Paragon Geophysical Services, Inc.",
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "Paragon Geophysical Services, Inc.",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "Paragon Geophysical Services, Inc.",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "Paragon Geophysical Services, Inc.",
+    "stage": "insureds",
+    "error": ""
   },
   {
     "client": "Scandroli Construction",
-    "stage": "criteria",
-    "insured": "1093fc96-14eb-434f-b8db-2099948fa5d6",
-    "error": "HTTP 502 on /insurance/insureds/1093fc96-14eb-434f-b8db-2099948fa5d6/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "Scandroli Construction",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "Scandroli Construction",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "Scandroli Construction",
+    "stage": "insureds",
+    "error": ""
+  },
+  {
+    "client": "Skyline Developers Construction LLC",
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "Skyline Developers Construction LLC",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "Skyline Developers Construction LLC",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "Skyline Developers Construction LLC",
+    "stage": "insureds",
+    "error": ""
   },
   {
     "client": "The Abbey Management Company",
-    "stage": "criteria",
-    "insured": "028873ae-26b0-4c54-b6c9-8029f05a2752",
-    "error": "HTTP 502 on /insurance/insureds/028873ae-26b0-4c54-b6c9-8029f05a2752/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    "stage": "field_defs",
+    "error": ""
   },
   {
     "client": "The Abbey Management Company",
-    "stage": "criteria",
-    "insured": "0342c4f4-f3e5-47c6-ab0a-e43c34749cec",
-    "error": "HTTP 502 on /insurance/insureds/0342c4f4-f3e5-47c6-ab0a-e43c34749cec/status: <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "The Abbey Management Company",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "The Abbey Management Company",
+    "stage": "insureds",
+    "error": ""
+  },
+  {
+    "client": "Trinity Chemical Industries LLC",
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "Trinity Chemical Industries LLC",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "Trinity Chemical Industries LLC",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "Trinity Chemical Industries LLC",
+    "stage": "insureds",
+    "error": ""
+  },
+  {
+    "client": "United Coal Company LLC",
+    "stage": "field_defs",
+    "error": ""
+  },
+  {
+    "client": "United Coal Company LLC",
+    "stage": "export_csv",
+    "error": ""
+  },
+  {
+    "client": "United Coal Company LLC",
+    "stage": "actions",
+    "error": ""
+  },
+  {
+    "client": "United Coal Company LLC",
+    "stage": "insureds",
+    "error": ""
   }
 ]
