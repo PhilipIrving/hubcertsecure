@@ -9,7 +9,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0c62446148bd848b0e,A.N.D. Design Studio LLC,,COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded0c62446148bd848b14,Academy Bank,,COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded0c62446148bd848b17,"Pertronix (Aeromotive) / Accelerate Auto Works Intermediate, LLC",,NON_COMPLIANT,,,true,false,2026-09-01
-"Block Real Estate Services, LLC",69fded0c62446148bd848b1a,Actuarial Resources Corporation (ARC),,COMPLIANT,,,true,false,2026-09-01
+"Block Real Estate Services, LLC",69fded0c62446148bd848b1a,Actuarial Resources Corporation (ARC),,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded0c62446148bd848b1d,"Adams Cable Equipment, Inc.",,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded0c62446148bd848b20,Adare Pharma Solutions,,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded0c62446148bd848b23,"ADI (Ademco Distribution, Inc.) / Honeywell International, Inc.",,NON_COMPLIANT,,,true,false,2026-09-01
@@ -722,7 +722,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a1df4662575f4fed44df021,KC Smoke Shop,,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",6a1df472b9a647219f2f2916,Jeweler's Bench,,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",6a1df835fec651278665b987,"CBS Outdoor, Inc.",,NON_COMPLIANT,,,true,false,2026-09-01
-"Block Real Estate Services, LLC",6a1df84165d51d7aa5739d4e,Protective Animal Welfare Society / Sandra L. Outlaw f/k/a A Dogs' Fun Playce,,NON_COMPLIANT,,,true,false,2026-09-01
+"Block Real Estate Services, LLC",6a1df84165d51d7aa5739d4e,Protective Animal Welfare Society / Sandra L. Outlaw f/k/a A Dogs' Fun Playce,,COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",6a1dfcd80a51a0db79c1dfba,JRJ Partners - Condo Owners (Clancey Design Distributor),,COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",6a1dfce4a0ed8c51ab262c0b,Building 28 TIC,,NON_COMPLIANT,,,false,false,2026-09-01
 "Block Real Estate Services, LLC",6a1dff1ca79f4c38d5103b69,"Design & Detail / Mel B, LLC",,NON_COMPLIANT,,,true,false,2026-09-01
