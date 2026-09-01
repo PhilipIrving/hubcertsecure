@@ -193,7 +193,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1362446148bd848d63,Employers Mutual Casualty Company (EMC Insurance),,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1462446148bd848d66,"EnerSys Delaware, Inc",,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1462446148bd848d69,"Engaged Athletics Training Center / Engaged Holdings, LLC",,NON_COMPLIANT,,,true,false,2026-09-01
-"Block Real Estate Services, LLC",69fded1462446148bd848d6c,EDT Engineers / Engineering Design & Testing Corporation,,NON_COMPLIANT,,,true,false,2026-09-01
+"Block Real Estate Services, LLC",69fded1462446148bd848d6c,EDT Engineers / Engineering Design & Testing Corporation,,COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1462446148bd848d6f,Enterprise Leasing Company of Kansas,,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1462446148bd848d72,Enterprise Leasing Company of Kansas,,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1462446148bd848d75,Equipmentshare.com Inc,,NON_COMPLIANT,,,true,false,2026-09-01
@@ -248,7 +248,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1662446148bd848e17,Sni Valley Academy / Dr. Warren L. Moss - Grain Valley School District,,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1662446148bd848e1a,"Patio Enclosures / Great Day Improvements, LLC",,COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1662446148bd848e1d,Great Rivers Associates,,COMPLIANT,,,true,false,2026-09-01
-"Block Real Estate Services, LLC",69fded1662446148bd848e20,"The Shredder + MedShred / Green Resource Management, Inc.",,NON_COMPLIANT,,,true,false,2026-09-01
+"Block Real Estate Services, LLC",69fded1662446148bd848e20,"The Shredder + MedShred / Green Resource Management, Inc.",,COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1662446148bd848e23,"Action Stainless & Alloys / ACT Acquisition, Inc. (sublease from Hello Fresh / Grocery Delivery Logistics, Inc.)",,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1662446148bd848e26,"Gexpro Services / Rexel USA, Inc. (fka GS Operating, LLC )",,COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1662446148bd848e29,Internal Revenue Service / Government Services Administration (GSA),,NON_COMPLIANT,,,true,false,2026-09-01
@@ -315,7 +315,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1962446148bd848eef,"The Dotte Spot / KC Smashers, LLC",,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1962446148bd848ef2,"KGPCo / KGP Telecommunications, LLC",,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1962446148bd848ef5,"Merry Maids 391 & 604 / Khaos, Inc.",,COMPLIANT,,,true,false,2026-09-01
-"Block Real Estate Services, LLC",69fded1962446148bd848ef8,Salon Expose / Kim Medina,,NON_COMPLIANT,,,true,false,2026-09-01
+"Block Real Estate Services, LLC",69fded1962446148bd848ef8,Salon Expose / Kim Medina,,COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1962446148bd848efb,Knappco LLC,,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1962446148bd848efe,Knapstein Design,,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",69fded1962446148bd848f01,"KTI / Kruger Technologies, Inc.",,NON_COMPLIANT,,,true,false,2026-09-01
@@ -756,7 +756,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a7c9366ee0b08ce4f040184,Halbrook Wood PC,,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",6a7ccb7c72f903848e0cb0d8,Robin's Gluten Free Bakery,,NON_COMPLIANT,,,true,false,2026-09-01
 "Block Real Estate Services, LLC",6a7de8128ae97a448204bb45,LRIco Services LLC,,COMPLIANT,,,true,false,2026-09-01
-QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,NON_COMPLIANT,,,true,false,2026-09-01
+QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,COMPLIANT,,,true,false,2026-09-01
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,NON_COMPLIANT,,,true,false,2026-09-01
 QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,COMPLIANT,,,true,false,2026-09-01
 QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,NON_COMPLIANT,,,true,false,2026-09-01
