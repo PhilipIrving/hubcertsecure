@@ -1,0 +1,13 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Canadian Pacific Kansas City,019792f9-c72b-41e4-aa46-7feaa463c515,,9605e5d7-021a-4906-8aba-8eb7377ebd6e,,,2026-09-01T14:15:27,,,,,,09/01/2026,09/01/2026 14:29:47
+Canadian Pacific Kansas City,407f30fa-e8b9-497f-a799-b773f6fba310,,97f73acb-3b3b-492a-abff-eddce5f02ca4,,,2026-09-01T13:26:59,,,,,,09/01/2026,09/01/2026 14:29:47
+Canadian Pacific Kansas City,4c1e4ad0-fa3d-406a-882a-efe36612af3a,,,,,2026-09-01T14:17:15,,,,,,09/01/2026,09/01/2026 14:29:47
+Canadian Pacific Kansas City,5196eece-c826-41af-9a54-b87b42faf9db,,5cbeb87f-20a0-4d21-b366-fe0164834ea0,,,2026-09-01T13:28:00,,,,,,09/01/2026,09/01/2026 14:29:47
+Canadian Pacific Kansas City,7475c52b-50f3-4a28-a72d-06a1dcfe6b08,,397fe7e3-bc76-476b-a37a-6627911210e8,,,2026-09-01T13:20:26,,,,,,09/01/2026,09/01/2026 14:29:47
+Canadian Pacific Kansas City,897a11f3-b52d-4f02-ba7d-b666bdc701f3,,54046549-9442-49dc-a77e-78caf1e97655,,,2026-09-01T13:23:03,,,,,,09/01/2026,09/01/2026 14:29:47
+Canadian Pacific Kansas City,a2b23be3-9627-43ad-a996-9d87be2aedf3,,3d95ba67-1832-44e1-9aa9-b60a87d02c29,,,2026-09-01T13:25:59,,,,,,09/01/2026,09/01/2026 14:29:47
+Canadian Pacific Kansas City,aa9da629-9d89-470e-a8c5-b9ec03e6a350,,3d95ba67-1832-44e1-9aa9-b60a87d02c29,,,2026-09-01T13:25:59,,,,,,09/01/2026,09/01/2026 14:29:47
+Canadian Pacific Kansas City,abd7d16f-0de0-4be0-b3d2-4bf8505e613f,,9605e5d7-021a-4906-8aba-8eb7377ebd6e,,,2026-09-01T14:15:27,,,,,,09/01/2026,09/01/2026 14:29:47
+Canadian Pacific Kansas City,c2a6118d-f385-472c-b074-cefe609c6a5d,,343ffeaf-70c9-458d-8ec2-91c1305f1684,,,2026-09-01T13:26:00,,,,,,09/01/2026,09/01/2026 14:29:47
+Canadian Pacific Kansas City,c39f6fff-126c-43d8-9872-d839d08812f3,,5cbeb87f-20a0-4d21-b366-fe0164834ea0,,,2026-09-01T13:28:00,,,,,,09/01/2026,09/01/2026 14:29:47
+Canadian Pacific Kansas City,e54b37da-1546-47c9-9008-f4fbbffab8f2,,343ffeaf-70c9-458d-8ec2-91c1305f1684,,,2026-09-01T13:26:00,,,,,,09/01/2026,09/01/2026 14:29:47
