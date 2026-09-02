@@ -303,9 +303,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1162446148bd848c91,CMA / Colarelli Meyer & Associates,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded1162446148bd848c91,CMA / Colarelli Meyer & Associates,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded1162446148bd848c91,CMA / Colarelli Meyer & Associates,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-02
-"Block Real Estate Services, LLC",69fded0e62446148bd848bb3,Axiom Strategies LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-02
-"Block Real Estate Services, LLC",69fded0e62446148bd848bb3,Axiom Strategies LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-02
-"Block Real Estate Services, LLC",69fded0e62446148bd848bb3,Axiom Strategies LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-02
+"Block Real Estate Services, LLC",69fded0e62446148bd848bb3,Axiom Strategies LLC,,Commercial General Liability,commercialGeneralLiability,,,2025-08-07,2027-08-07,,,,,2026-09-02
+"Block Real Estate Services, LLC",69fded0e62446148bd848bb3,Axiom Strategies LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-08-07,2027-08-07,,,,,2026-09-02
+"Block Real Estate Services, LLC",69fded0e62446148bd848bb3,Axiom Strategies LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-04-04,2027-04-04,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded0e62446148bd848bb3,Axiom Strategies LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded2162446148bd8491bf,Studio Local LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded2162446148bd8491bf,Studio Local LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-02
@@ -847,7 +847,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2262446148bd84920a,"The Hairem / The Hairem of Olathe, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded2262446148bd84920a,"The Hairem / The Hairem of Olathe, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded2262446148bd84920a,"The Hairem / The Hairem of Olathe, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-02
-"Block Real Estate Services, LLC",69fded2362446148bd849273,Unopenedpackman Sportscards and Collectibles LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-02
+"Block Real Estate Services, LLC",69fded2362446148bd849273,Unopenedpackman Sportscards and Collectibles LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-02-14,2027-02-14,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded2362446148bd849273,Unopenedpackman Sportscards and Collectibles LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded2362446148bd849273,Unopenedpackman Sportscards and Collectibles LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded2362446148bd849273,Unopenedpackman Sportscards and Collectibles LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-02
@@ -1315,9 +1315,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2262446148bd849204,CATO / The Cato Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded2262446148bd849204,CATO / The Cato Corporation,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded2262446148bd849204,CATO / The Cato Corporation,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-02
-"Block Real Estate Services, LLC",69fded1762446148bd848e5f,"Hibbett Sports / Hibbett Retail, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-02
-"Block Real Estate Services, LLC",69fded1762446148bd848e5f,"Hibbett Sports / Hibbett Retail, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-02
-"Block Real Estate Services, LLC",69fded1762446148bd848e5f,"Hibbett Sports / Hibbett Retail, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-02
+"Block Real Estate Services, LLC",69fded1762446148bd848e5f,"Hibbett Sports / Hibbett Retail, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-09-01,,,,,2026-09-02
+"Block Real Estate Services, LLC",69fded1762446148bd848e5f,"Hibbett Sports / Hibbett Retail, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-09-01,,,,,2026-09-02
+"Block Real Estate Services, LLC",69fded1762446148bd848e5f,"Hibbett Sports / Hibbett Retail, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-09-01,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded1762446148bd848e5f,"Hibbett Sports / Hibbett Retail, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded1c62446148bd849024,Ollie's Bargain Outlet Inc,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded1c62446148bd849024,Ollie's Bargain Outlet Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-02
@@ -2827,9 +2827,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1d62446148bd84906f,Penske Truck Leasing Co LP,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded1d62446148bd84906f,Penske Truck Leasing Co LP,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded1d62446148bd84906f,Penske Truck Leasing Co LP,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-01-01,2027-01-01,,,,,2026-09-02
-"Block Real Estate Services, LLC",69fded1f62446148bd849102,"IVXPRESS, Inc. (fka Riverside Pharmacy Associates)",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-02
-"Block Real Estate Services, LLC",69fded1f62446148bd849102,"IVXPRESS, Inc. (fka Riverside Pharmacy Associates)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-02
-"Block Real Estate Services, LLC",69fded1f62446148bd849102,"IVXPRESS, Inc. (fka Riverside Pharmacy Associates)",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-02
+"Block Real Estate Services, LLC",69fded1f62446148bd849102,"IVXPRESS, Inc. (fka Riverside Pharmacy Associates)",,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-06-01,,,,,2026-09-02
+"Block Real Estate Services, LLC",69fded1f62446148bd849102,"IVXPRESS, Inc. (fka Riverside Pharmacy Associates)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-07-01,2027-06-01,,,,,2026-09-02
+"Block Real Estate Services, LLC",69fded1f62446148bd849102,"IVXPRESS, Inc. (fka Riverside Pharmacy Associates)",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded1f62446148bd849102,"IVXPRESS, Inc. (fka Riverside Pharmacy Associates)",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-02
 "Block Real Estate Services, LLC",6a1869cab517ae25a87d2e2e,"Metro Elevator Kansas City, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-02
 "Block Real Estate Services, LLC",6a1869cab517ae25a87d2e2e,"Metro Elevator Kansas City, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-02
@@ -3499,6 +3499,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1c62446148bd848ff7,New Century Dodge Chrysler Wholesale Parts,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-02-01,2027-02-01,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded1a62446148bd848f64,Martinrea Riverside LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-02
 "Block Real Estate Services, LLC",6a1dcea405955276b691e1da,Regal Distributing Co.,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-02
+"Block Real Estate Services, LLC",6a1dceb25e529bb0fc8a0f0a,"Integrated Opening Solutions, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded1662446148bd848e2c,Guardian Water & Air Systems LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded2362446148bd849234,"DaVita Dialysis / Total Renal Care, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded1e62446148bd8490a2,Polymershapes LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-02
@@ -3514,6 +3515,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a1df84165d51d7aa5739d4e,Protective Animal Welfare Society / Sandra L. Outlaw f/k/a A Dogs' Fun Playce,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded1a62446148bd848f70,"Mavs Volleyball / MAVS, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-02
 "Block Real Estate Services, LLC",69fded1662446148bd848e20,"The Shredder + MedShred / Green Resource Management, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-02
+"Block Real Estate Services, LLC",69fded1962446148bd848ee6,"Kawneer Company, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-02
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-09-02
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-09-02
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-09-02

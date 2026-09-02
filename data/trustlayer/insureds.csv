@@ -309,7 +309,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1862446148bd848edd,Kansas Granite Mart Inc,,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1862446148bd848ee0,Kate Smith Soiree LLC,,COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1962446148bd848ee3,Kavar Capital Partners / Douglas G & Kara L,,NON_COMPLIANT,,,true,false,2026-09-02
-"Block Real Estate Services, LLC",69fded1962446148bd848ee6,"Kawneer Company, Inc.",,NON_COMPLIANT,,,true,false,2026-09-02
+"Block Real Estate Services, LLC",69fded1962446148bd848ee6,"Kawneer Company, Inc.",,COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1962446148bd848ee9,"KC Classic Auto, LLC",,COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1962446148bd848eec,KC Cocktail Company LLC,,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1962446148bd848eef,"The Dotte Spot / KC Smashers, LLC",,NON_COMPLIANT,,,true,false,2026-09-02
@@ -760,7 +760,7 @@ QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,COMPLIANT,,,tr
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,NON_COMPLIANT,,,true,false,2026-09-02
 QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,COMPLIANT,,,true,false,2026-09-02
 QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,NON_COMPLIANT,,,true,false,2026-09-02
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,NON_COMPLIANT,,,true,false,2026-09-02
+QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,COMPLIANT,,,true,false,2026-09-02
 QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,NON_COMPLIANT,,,true,false,2026-09-02
 QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,NON_COMPLIANT,,,true,false,2026-09-02
 QTS Data Centers,69f0f3c5beb6279e947be0f3,"Holder Construction Group, LLC",,PENDING,,,true,false,2026-09-02
