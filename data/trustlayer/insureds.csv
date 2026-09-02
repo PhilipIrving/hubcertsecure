@@ -85,7 +85,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0f62446148bd848c0d,Bode Cellmark Forensics Inc,,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded0f62446148bd848c10,"Sono Bello / Body Contour Centers, LLC",,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded0f62446148bd848c13,"Celebrate Dental & Braces / Brave, LLC",,NON_COMPLIANT,,,true,false,2026-09-02
-"Block Real Estate Services, LLC",69fded0f62446148bd848c19,"Kitchen and Bath by Briggs / Briggs, Inc.",,COMPLIANT,,,true,false,2026-09-02
+"Block Real Estate Services, LLC",69fded0f62446148bd848c19,"Kitchen and Bath by Briggs / Briggs, Inc.",,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1062446148bd848c1c,Brown & Root Industrial Services LLC,,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1062446148bd848c1f,The Professional Group / Bryan Torez,,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1062446148bd848c22,Bryght Labs,,NON_COMPLIANT,,,true,false,2026-09-02
@@ -170,8 +170,8 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1362446148bd848d1e,"Dollar General / Dolgencorp, Inc.",,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1362446148bd848d21,Dollar Tree,,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1362446148bd848d24,Dollar Tree #03352,,COMPLIANT,,,true,false,2026-09-02
-"Block Real Estate Services, LLC",69fded1362446148bd848d27,Dollar Tree #4044,,COMPLIANT,,,true,false,2026-09-02
-"Block Real Estate Services, LLC",69fded1362446148bd848d2a,Dollar Tree #8462,,COMPLIANT,,,true,false,2026-09-02
+"Block Real Estate Services, LLC",69fded1362446148bd848d27,Dollar Tree #4044,,NON_COMPLIANT,,,true,false,2026-09-02
+"Block Real Estate Services, LLC",69fded1362446148bd848d2a,Dollar Tree #8462,,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1362446148bd848d2d,"Perry Plaza Dental / Dr. Darren Perry, DDS",,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1362446148bd848d30,Personal Care Dental Group / Dr. Floyd Wiggins III,,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1362446148bd848d33,DTG Medical Electronics,,NON_COMPLIANT,,,true,false,2026-09-02
@@ -234,7 +234,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1562446148bd848de1,G5 Enterprises Inc,,COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1562446148bd848de4,Vitev / Gabe Hunninghake,,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1562446148bd848de7,"Triad Capital Advisors, Inc. / Gantry, Inc.",,COMPLIANT,,,true,false,2026-09-02
-"Block Real Estate Services, LLC",69fded1562446148bd848dea,"Garage Experts of Kansas City / Win-Win Concrete & Storage, LLC",,NON_COMPLIANT,,,true,false,2026-09-02
+"Block Real Estate Services, LLC",69fded1562446148bd848dea,"Garage Experts of Kansas City / Win-Win Concrete & Storage, LLC",,COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1562446148bd848ded,"Gas Equipment Company / Gas Equipment, Inc.",,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1562446148bd848df0,Gateway Spine & Joint LLC,,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1562446148bd848df3,Generate-Ubiquity Management LLC,,NON_COMPLIANT,,,true,false,2026-09-02
@@ -258,7 +258,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1662446148bd848e35,H M Cragg Co,,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1662446148bd848e38,"H&R Block Eastern Tax Svc., Inc. / H&R Block 24167",,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1662446148bd848e3b,"Discount Tire / Halle Properties, Inc.",,COMPLIANT,,,true,false,2026-09-02
-"Block Real Estate Services, LLC",69fded1662446148bd848e3e,"Harbor Freight Tools USA, Inc",,COMPLIANT,,,true,false,2026-09-02
+"Block Real Estate Services, LLC",69fded1662446148bd848e3e,"Harbor Freight Tools USA, Inc",,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1662446148bd848e41,"Hartfiel Automation, Inc.",,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1662446148bd848e44,HCA Realty,,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded1762446148bd848e4a,Healthy Meals Inc,,COMPLIANT,,,true,false,2026-09-02
@@ -513,7 +513,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2062446148bd849168,Siemens Corporation,,COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded2062446148bd84916b,Siemens Energy Inc,,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded2062446148bd84916e,SJK Global LLC,,COMPLIANT,,,true,false,2026-09-02
-"Block Real Estate Services, LLC",69fded2062446148bd849171,Skechers Outlet,,COMPLIANT,,,true,false,2026-09-02
+"Block Real Estate Services, LLC",69fded2062446148bd849171,Skechers Outlet,,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded2062446148bd849174,Slim 4 Life Weight Loss Centers Inc,,COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded2062446148bd849177,"Epic Vision Center / Smithville Eye Center, LLC",,NON_COMPLIANT,,,true,false,2026-09-02
 "Block Real Estate Services, LLC",69fded2162446148bd84917a,"Church's Chicken / SNSA, Inc.",,NON_COMPLIANT,,,true,false,2026-09-02
