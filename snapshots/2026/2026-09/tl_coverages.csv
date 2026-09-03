@@ -1118,7 +1118,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1e62446148bd84909c,"Northstar Wealth / Polaris, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-06-26,2027-07-26,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1e62446148bd84909c,"Northstar Wealth / Polaris, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1e62446148bd84909c,"Northstar Wealth / Polaris, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-08-15,2027-08-15,,,,,2026-09-03
-"Block Real Estate Services, LLC",69fded1e62446148bd84909c,"Northstar Wealth / Polaris, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-26,2027-06-26,,,,,2026-09-03
+"Block Real Estate Services, LLC",69fded1e62446148bd84909c,"Northstar Wealth / Polaris, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-26,2027-07-26,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded2262446148bd8491dd,Tallgrass Energy / Tallgrass MLP,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded2262446148bd8491dd,Tallgrass Energy / Tallgrass MLP,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded2262446148bd8491dd,Tallgrass Energy / Tallgrass MLP,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-03
@@ -1130,7 +1130,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1e62446148bd84909c,"Northstar Wealth / Polaris, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-06-26,2027-07-26,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1e62446148bd84909c,"Northstar Wealth / Polaris, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1e62446148bd84909c,"Northstar Wealth / Polaris, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-08-15,2027-08-15,,,,,2026-09-03
-"Block Real Estate Services, LLC",69fded1e62446148bd84909c,"Northstar Wealth / Polaris, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-26,2027-06-26,,,,,2026-09-03
+"Block Real Estate Services, LLC",69fded1e62446148bd84909c,"Northstar Wealth / Polaris, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-26,2027-07-26,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded2162446148bd8491c2,"Style Crest, Inc. (fka Durham Supply, Inc.)",,Commercial General Liability,commercialGeneralLiability,,,2025-10-01,2026-10-01,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded2162446148bd8491c2,"Style Crest, Inc. (fka Durham Supply, Inc.)",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-10-01,2026-10-01,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded2162446148bd8491c2,"Style Crest, Inc. (fka Durham Supply, Inc.)",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-02-01,2028-02-01,,,,,2026-09-03
@@ -1155,7 +1155,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1b62446148bd848fc7,Miner Ltd,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-14,2027-03-14,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1b62446148bd848fc7,Miner Ltd,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-03-14,2027-03-14,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1b62446148bd848fc7,Miner Ltd,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-03-14,2027-03-14,,,,,2026-09-03
-"Block Real Estate Services, LLC",69fded1462446148bd848d8a,F & M Traders LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-03
+"Block Real Estate Services, LLC",69fded1462446148bd848d8a,F & M Traders LLC,,Commercial General Liability,commercialGeneralLiability,,,2025-09-01,2027-09-01,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1462446148bd848d8a,F & M Traders LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1462446148bd848d8a,F & M Traders LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1462446148bd848d8a,F & M Traders LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-03
@@ -3516,6 +3516,8 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1a62446148bd848f70,"Mavs Volleyball / MAVS, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1662446148bd848e20,"The Shredder + MedShred / Green Resource Management, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1962446148bd848ee6,"Kawneer Company, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-03
+"Block Real Estate Services, LLC",69fded1362446148bd848d18,Discover Church,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-03
+"Block Real Estate Services, LLC",69fded1e62446148bd84909c,"Northstar Wealth / Polaris, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-03
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-09-03
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-09-03
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-09-03
