@@ -1,0 +1,3 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Canadian Pacific Kansas City,a38d0c0e-25e0-44f5-baeb-7447619dc6eb,,9cd6dddc-256c-404b-b0bb-74a653ac7c7a,,,2026-09-03T07:55:11,,,,,,09/03/2026,09/03/2026 03:52:03
+"Musselman & Hall Contractors, LLC",5ab83fc6-0e28-4316-bc95-2db518dadd6c,,,,,2026-09-03T06:25:14,,,,,,09/03/2026,09/03/2026 03:52:14
