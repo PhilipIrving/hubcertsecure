@@ -2415,6 +2415,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1c62446148bd849018,Office Depot,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1c62446148bd849018,Office Depot,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1c62446148bd849018,Office Depot,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-03
+"Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-03
+"Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-03
+"Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-03
+"Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1362446148bd848d39,E & T Plastics MFG. CO. INC.,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1362446148bd848d39,E & T Plastics MFG. CO. INC.,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1362446148bd848d39,E & T Plastics MFG. CO. INC.,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-03
@@ -3436,6 +3440,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2162446148bd8491a7,"Staples, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1362446148bd848d2a,Dollar Tree #8462,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded2462446148bd84928b,Vintage Stock,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-03
+"Block Real Estate Services, LLC",69fded2062446148bd84912f,Salvation Army Family Store / The Salvation Army,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1362446148bd848d36,DaVita Dialysis / DVA Renal Healthcare,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1462446148bd848da5,Fireplace & Bar-B-Q Center Inc,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded2062446148bd849162,"Show Me State Vital Care / Show Me State Infusion Pharmacy, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-03
@@ -3518,6 +3523,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1962446148bd848ee6,"Kawneer Company, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1362446148bd848d18,Discover Church,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-03
 "Block Real Estate Services, LLC",69fded1e62446148bd84909c,"Northstar Wealth / Polaris, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-03
+"Block Real Estate Services, LLC",69fded1e62446148bd8490c3,Propak Logistics Inc,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-09-03
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-09-03
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-09-03
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-09-03
