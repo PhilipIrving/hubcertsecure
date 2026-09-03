@@ -1,15 +1,8 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,6080408b-f74b-4f26-9338-86e95bddd40a,,1fa0e284-572a-4432-aeff-b69803c93a0e,,,2026-09-03T11:16:58,,,,,,09/03/2026,09/03/2026 11:12:47
-Bauer Foundation Corp.,84ec7c33-c014-40fd-b757-4e0789863dc8,,,,,2026-09-03T11:16:58,,,,,,09/03/2026,09/03/2026 11:12:47
-Canadian Pacific Kansas City,359f030b-ee8e-478d-ad30-e5f7323005ff,,0e9f2b79-ebec-4301-9b2b-3278077fbaf8,,,2026-09-03T09:57:52,,,,,,09/03/2026,09/03/2026 11:12:47
-Canadian Pacific Kansas City,435b0e21-8fec-4a38-a06f-67559d93c73f,,59f1c4d5-489f-420e-a21f-addfcf817d62,,,2026-09-03T09:30:00,,,,,,09/03/2026,09/03/2026 11:12:47
-Canadian Pacific Kansas City,8ebc3744-484a-493b-a364-7f18dcb12595,,28cacaec-e2ab-4ac6-aa09-5ae746e210e4,,,2026-09-03T13:19:09,,,,,,09/03/2026,09/03/2026 11:12:47
-Canadian Pacific Kansas City,a38d0c0e-25e0-44f5-baeb-7447619dc6eb,,9cd6dddc-256c-404b-b0bb-74a653ac7c7a,,,2026-09-03T07:55:11,,,,,,09/03/2026,09/03/2026 11:12:47
-EMMES,00f12172-ba68-4207-af93-981367bb7127,,095cab1d-6584-4f28-a820-a3b42025a111,,,2026-09-03T12:45:17,,,,,,09/03/2026,09/03/2026 11:12:47
-Kolb Grading,28f7309a-28a1-4fcf-826e-29fd3f1660fd,,,,,2026-08-20T15:29:21,,,,,,09/03/2026,09/03/2026 11:12:50
-Kolb Grading,846c2a79-d61c-49ed-b170-3b4593f41c6c,,,,,2026-09-03T12:35:00,,,,,,09/03/2026,09/03/2026 11:12:50
-"Musselman & Hall Contractors, LLC",5ab83fc6-0e28-4316-bc95-2db518dadd6c,,,,,2026-09-03T06:25:14,,,,,,09/03/2026,09/03/2026 11:12:57
-The Abbey Management Company,500bfc2e-eafb-4fdd-a7a5-aa95567b236e,,,,,2026-09-03T12:59:36,,,,,,09/03/2026,09/03/2026 11:13:01
-The Abbey Management Company,796258f7-1ed3-4980-966c-ba719809016e,,,,,2026-09-03T12:59:36,,,,,,09/03/2026,09/03/2026 11:13:01
-The Abbey Management Company,8b32f68a-6fa8-496c-a9c2-e19c30275245,,77218924-8713-470c-baca-e79a60bdbc1c,,,2026-09-03T12:59:36,,,,,,09/03/2026,09/03/2026 11:13:01
-The Abbey Management Company,b7f3ff98-e09a-4dc7-aee0-372c067971b1,,77218924-8713-470c-baca-e79a60bdbc1c,,,2026-09-03T12:59:36,,,,,,09/03/2026,09/03/2026 11:13:01
+Kolb Grading,28f7309a-28a1-4fcf-826e-29fd3f1660fd,,,,,2026-08-20T15:29:21,,,,,,09/03/2026,09/03/2026 17:35:21
+Kolb Grading,846c2a79-d61c-49ed-b170-3b4593f41c6c,,,,,2026-09-03T12:35:00,,,,,,09/03/2026,09/03/2026 17:35:21
+"Musselman & Hall Contractors, LLC",5ab83fc6-0e28-4316-bc95-2db518dadd6c,,,,,2026-09-03T06:25:14,,,,,,09/03/2026,09/03/2026 17:35:29
+The Abbey Management Company,500bfc2e-eafb-4fdd-a7a5-aa95567b236e,,,,,2026-09-03T12:59:36,,,,,,09/03/2026,09/03/2026 17:35:33
+The Abbey Management Company,796258f7-1ed3-4980-966c-ba719809016e,,,,,2026-09-03T12:59:36,,,,,,09/03/2026,09/03/2026 17:35:33
+The Abbey Management Company,8b32f68a-6fa8-496c-a9c2-e19c30275245,,77218924-8713-470c-baca-e79a60bdbc1c,,,2026-09-03T12:59:36,,,,,,09/03/2026,09/03/2026 17:35:33
+The Abbey Management Company,b7f3ff98-e09a-4dc7-aee0-372c067971b1,,77218924-8713-470c-baca-e79a60bdbc1c,,,2026-09-03T12:59:36,,,,,,09/03/2026,09/03/2026 17:35:33
