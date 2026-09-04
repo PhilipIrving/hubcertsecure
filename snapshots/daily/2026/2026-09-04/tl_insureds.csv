@@ -192,7 +192,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1362446148bd848d60,Emerson Ecologics LLC,,COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",69fded1362446148bd848d63,Employers Mutual Casualty Company (EMC Insurance),,NON_COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",69fded1462446148bd848d66,"EnerSys Delaware, Inc",,NON_COMPLIANT,,,true,false,2026-09-04
-"Block Real Estate Services, LLC",69fded1462446148bd848d69,"Engaged Athletics Training Center / Engaged Holdings, LLC",,NON_COMPLIANT,,,true,false,2026-09-04
+"Block Real Estate Services, LLC",69fded1462446148bd848d69,"Engaged Athletics Training Center / Engaged Holdings, LLC",,COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",69fded1462446148bd848d6c,EDT Engineers / Engineering Design & Testing Corporation,,COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",69fded1462446148bd848d6f,Enterprise Leasing Company of Kansas,,NON_COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",69fded1462446148bd848d72,Enterprise Leasing Company of Kansas,,NON_COMPLIANT,,,true,false,2026-09-04
@@ -644,7 +644,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a1750de402cef48fa2e24a7,Cheezsteak Company / Asma Shane,,NON_COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",6a17544d68ca7e9989502900,Spurgeon Chiropractic / Dr. Ryan Spurgeon Healing Neck & Joints,,COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",6a1757dbf2985118876d7f9a,Afrah Event Center / Astro Ventures,,NON_COMPLIANT,,,true,false,2026-09-04
-"Block Real Estate Services, LLC",6a175a7bee5ef0b8dc066236,"PropertyRate, LLC",,NON_COMPLIANT,,,true,false,2026-09-04
+"Block Real Estate Services, LLC",6a175a7bee5ef0b8dc066236,"PropertyRate, LLC",,COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",6a1842e4b517ae25a873e28c,"Kari's On 39th, LLC",,NON_COMPLIANT,,,false,false,2026-09-04
 "Block Real Estate Services, LLC",6a1842efb517ae25a873e629,Lisa Coryell,,NON_COMPLIANT,,,false,false,2026-09-04
 "Block Real Estate Services, LLC",6a1842f8e701796d85d37b7e,Myla Ruffin,,NON_COMPLIANT,,,false,false,2026-09-04
@@ -756,6 +756,14 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a7c9366ee0b08ce4f040184,Halbrook Wood PC,,NON_COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",6a7ccb7c72f903848e0cb0d8,Robin's Gluten Free Bakery,,NON_COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",6a7de8128ae97a448204bb45,LRIco Services LLC,,COMPLIANT,,,true,false,2026-09-04
+"Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d01,"Fry Orthodontics / Jeremy R. Fry, D.D.S, M.S, LLC",,NON_COMPLIANT,,,true,false,2026-09-04
+"Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d08,"Back Nine Golf / C&E Ventures, LLC",,NON_COMPLIANT,,,true,false,2026-09-04
+"Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d0f,"Hokulia Shave Ice / Yellow Snow, Inc.",,NON_COMPLIANT,,,true,false,2026-09-04
+"Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d16,Insight Vision Center #1155,,NON_COMPLIANT,,,true,false,2026-09-04
+"Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d1d,"Decomm Systems, LLC",,NON_COMPLIANT,,,true,false,2026-09-04
+"Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d24,"CB Smoothie Supps, LLC",,NON_COMPLIANT,,,true,false,2026-09-04
+"Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d2b,"KIDSUNITED / Goal Getters 2, LLC",,NON_COMPLIANT,,,true,false,2026-09-04
+"Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d32,"Parkway Animal Hospital, LLC / Village Vet, LLC",,NON_COMPLIANT,,,true,false,2026-09-04
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,COMPLIANT,,,true,false,2026-09-04
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,NON_COMPLIANT,,,true,false,2026-09-04
 QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,COMPLIANT,,,true,false,2026-09-04
