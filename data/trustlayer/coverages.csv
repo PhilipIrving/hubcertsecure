@@ -199,9 +199,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0c62446148bd848aff,"1-800-Pack Rat, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-10-01,2026-10-01,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded0c62446148bd848aff,"1-800-Pack Rat, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-10-01,2026-10-01,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded0c62446148bd848aff,"1-800-Pack Rat, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-10-01,2026-10-01,,,,,2026-09-04
-"Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-04
-"Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-04
-"Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-04
+"Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,Commercial General Liability,commercialGeneralLiability,,,2025-03-31,2026-09-30,,,,,2026-09-04
+"Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-31,2027-03-31,,,,,2026-09-04
+"Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-03-31,2026-09-30,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded1c62446148bd848ffd,"New Cingular Wireless PCS, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-06-01,2027-06-01,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded1c62446148bd848ffd,"New Cingular Wireless PCS, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-04
@@ -235,9 +235,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1762446148bd848e8c,Great Clips / Iris Corporation,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded1762446148bd848e8c,Great Clips / Iris Corporation,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded1762446148bd848e8c,Great Clips / Iris Corporation,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-04
-"Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-04
-"Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-04
-"Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-04
+"Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,Commercial General Liability,commercialGeneralLiability,,,2025-03-31,2026-09-30,,,,,2026-09-04
+"Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-31,2027-03-31,,,,,2026-09-04
+"Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-03-31,2026-09-30,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded0e62446148bd848ba7,"Athletico Physical Therapy / Athletico Management, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded0f62446148bd848bec,Sarpino's / BHPS Restaurant Group LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded0f62446148bd848bec,Sarpino's / BHPS Restaurant Group LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-04
@@ -2575,6 +2575,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a7de8128ae97a448204bb45,LRIco Services LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-01,2027-06-01,,,,,2026-09-04
 "Block Real Estate Services, LLC",6a7de8128ae97a448204bb45,LRIco Services LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-09-04
 "Block Real Estate Services, LLC",6a7de8128ae97a448204bb45,LRIco Services LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-01,2027-06-01,,,,,2026-09-04
+"Block Real Estate Services, LLC",6a9af48732939092ea863a26,Daley & Fey,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-04
+"Block Real Estate Services, LLC",6a9af48732939092ea863a26,Daley & Fey,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-04
+"Block Real Estate Services, LLC",6a9af48732939092ea863a26,Daley & Fey,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-04
+"Block Real Estate Services, LLC",6a9af48732939092ea863a26,Daley & Fey,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded1462446148bd848da2,"Fine Line Graphics, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded1462446148bd848da2,"Fine Line Graphics, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded1462446148bd848da2,"Fine Line Graphics, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-04
@@ -2794,7 +2798,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2262446148bd8491fe,The American National Red Cross,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded2262446148bd8491fe,The American National Red Cross,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded2262446148bd8491fe,The American National Red Cross,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-04
-"Block Real Estate Services, LLC",69fded2262446148bd8491fe,The American National Red Cross,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-04
+"Block Real Estate Services, LLC",69fded2262446148bd8491fe,The American National Red Cross,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-07-01,2027-07-01,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded1762446148bd848e71,Hughes Machinery Company,,Commercial General Liability,commercialGeneralLiability,,,2026-06-01,2027-06-01,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded1762446148bd848e71,Hughes Machinery Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-01,2027-06-01,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded1762446148bd848e71,Hughes Machinery Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-09-04
@@ -3493,6 +3497,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1562446148bd848df0,Gateway Spine & Joint LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-04
 "Block Real Estate Services, LLC",6a7c9366ee0b08ce4f040184,Halbrook Wood PC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-04
 "Block Real Estate Services, LLC",6a7de8128ae97a448204bb45,LRIco Services LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-04
+"Block Real Estate Services, LLC",6a9af48732939092ea863a26,Daley & Fey,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-09-04
 "Block Real Estate Services, LLC",6a7ccb7c72f903848e0cb0d8,Robin's Gluten Free Bakery,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded2162446148bd849180,Sobriety First,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-04
 "Block Real Estate Services, LLC",69fded1262446148bd848d00,Daylight Donuts-Olathe LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-04
@@ -3542,7 +3547,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d16,Insight Vision Center #1155,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-04
 "Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d16,Insight Vision Center #1155,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-04
 "Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d16,Insight Vision Center #1155,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-04
-"Block Real Estate Services, LLC",69fded2262446148bd8491fe,The American National Red Cross,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-09-04
+"Block Real Estate Services, LLC",69fded2262446148bd8491fe,The American National Red Cross,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-04
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-09-04
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-09-04
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-09-04

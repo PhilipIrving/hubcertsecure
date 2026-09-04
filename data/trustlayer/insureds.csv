@@ -557,7 +557,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2262446148bd8491f2,"NetSmart Technologies, Inc (sublease from TEVA Pharmaceutical USA, Inc.)",,NON_COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",69fded2262446148bd8491f5,"Assist RX (sublease from TEVA Pharmaceutical USA, Inc.)",,NON_COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",69fded2262446148bd8491fb,Thai Chili Cuisine,,NON_COMPLIANT,,,true,false,2026-09-04
-"Block Real Estate Services, LLC",69fded2262446148bd8491fe,The American National Red Cross,,NON_COMPLIANT,,,true,false,2026-09-04
+"Block Real Estate Services, LLC",69fded2262446148bd8491fe,The American National Red Cross,,COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",69fded2262446148bd849201,The CapFinancial Group LLC,,NON_COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",69fded2262446148bd849204,CATO / The Cato Corporation,,NON_COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",69fded2262446148bd849207,"Rogers Labs (fka P&C Next) / The Compatibility Center, LLC",,NON_COMPLIANT,,,true,false,2026-09-04
@@ -764,11 +764,12 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d24,"CB Smoothie Supps, LLC",,NON_COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d2b,"KIDSUNITED / Goal Getters 2, LLC",,NON_COMPLIANT,,,true,false,2026-09-04
 "Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d32,"Parkway Animal Hospital, LLC / Village Vet, LLC",,NON_COMPLIANT,,,true,false,2026-09-04
+"Block Real Estate Services, LLC",6a9af48732939092ea863a26,Daley & Fey,,NON_COMPLIANT,,,true,false,2026-09-04
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,COMPLIANT,,,true,false,2026-09-04
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,NON_COMPLIANT,,,true,false,2026-09-04
 QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,COMPLIANT,,,true,false,2026-09-04
 QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,NON_COMPLIANT,,,true,false,2026-09-04
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,COMPLIANT,,,true,false,2026-09-04
+QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,NON_COMPLIANT,,,true,false,2026-09-04
 QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,NON_COMPLIANT,,,true,false,2026-09-04
 QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,NON_COMPLIANT,,,true,false,2026-09-04
 QTS Data Centers,69f0f3c5beb6279e947be0f3,"Holder Construction Group, LLC",,PENDING,,,true,false,2026-09-04
