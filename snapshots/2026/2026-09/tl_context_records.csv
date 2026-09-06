@@ -183,6 +183,8 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",6a186a07df4174601583f130,"prm793 - Prom Motor Hotel, Inc. - 12065 Metcalf",Project,active,,,,,,2026-05-28,2026-09-06,2026-09-06
 "Block Real Estate Services, LLC",6a186a846b3214c65fe80b42,"prm791 - Prom Motor Hotel, Inc. - 210 N 7 Highway",Project,active,,,,,,2026-05-28,2026-09-06,2026-09-06
 "Block Real Estate Services, LLC",6a18705a9ef1cffe57c1dcd0,"prg840 - Pine Ridge Building 9 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-28,2026-09-06,2026-09-06
+"Block Real Estate Services, LLC",6a71fac6e572ffeb053234f4,lne432 - Lenexa Logistics Centre North Building 6,Project,active,,,,,,2026-08-04,2026-09-06,2026-09-06
+"Block Real Estate Services, LLC",6a99d61e2d636a0d9252bc15,3rd669 - Lone Elm,Project,active,,,,,,2026-09-03,2026-09-06,2026-09-06
 "Block Real Estate Services, LLC",6a1dcc9da0ed8c51ab1b2a64,"3rd046 - Lee's Summit Mike Enterprise {Lee's Summit Mike Enterprise, LLC} (fka Lee's Summit Max)",Project,active,,,,,,2026-06-01,2026-09-06,2026-09-06
 "Block Real Estate Services, LLC",6a1dce5d2575f4fed44439f8,"len462 - Lenexa Logistics Centre South Building 6 {Lenexa Logistics South 6, LLC}",Project,active,,,,,,2026-06-01,2026-09-06,2026-09-06
 "Block Real Estate Services, LLC",6a1dd8c35e529bb0fc8c5087,tic447 - Lenexa Logistics Centre East Building 2,Project,active,,,,,,2026-06-01,2026-09-06,2026-09-06
@@ -196,8 +198,6 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",6a1dfca5a0ed8c51ab26246c,"con828 - Pine Ridge Building 28 {Building 28 of Pine Ridge West Condominium Association, Inc.}",Project,active,,,,,,2026-06-01,2026-09-06,2026-09-06
 "Block Real Estate Services, LLC",6a1ee9a423b401dcff8fb689,"rvw871 - Ridgeview Associates, LLC",Project,active,,,,,,2026-06-02,2026-09-06,2026-09-06
 "Block Real Estate Services, LLC",6a1eecc680c8f1ceee9d6510,3rd621 - Rule Realty Corporation - 3621 Noland Court,Project,active,,,,,,2026-06-02,2026-09-06,2026-09-06
-"Block Real Estate Services, LLC",6a71fac6e572ffeb053234f4,lne432 - Lenexa Logistics Centre North Building 6,Project,active,,,,,,2026-08-04,2026-09-06,2026-09-06
-"Block Real Estate Services, LLC",6a99d61e2d636a0d9252bc15,3rd669 - Lone Elm,Project,active,,,,,,2026-09-03,2026-09-06,2026-09-06
 QTS Data Centers,69f10c28beb6279e947be4c9,"DFW1DC4 - QTS Irving DC4, LLC",Project,archived,Structure Tone,2025-12-31,2026-01-08,2026-08-13,,2026-04-28,2026-08-13,2026-09-06
 QTS Data Centers,69f10c28beb6279e947be4ca,"DFW1DC5 - QTS Irving DC5, LLC",Project,active,Rogers O'Brien,2025-08-23,2025-10-08,,,2026-04-28,2026-09-06,2026-09-06
 QTS Data Centers,69f10c28beb6279e947be4cb,"DFW1DC6 - QTS Irving DC6, LLC",Project,active,Rogers O'Brien,2026-02-01,2026-04-01,,,2026-04-28,2026-09-06,2026-09-06
