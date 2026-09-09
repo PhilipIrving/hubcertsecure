@@ -1,2 +1,15 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-"Musselman & Hall Contractors, LLC",5ab83fc6-0e28-4316-bc95-2db518dadd6c,,,,,2026-09-03T06:25:14,,,,,,09/08/2026,09/08/2026 17:41:22
+Bauer Foundation Corp.,3f460fe5-3d45-49f6-91bc-0ee489458c4b,,5ca7a366-83e2-4ec3-807c-db5e34eba312,,,2026-09-09T04:42:24,,,,,,09/09/2026,09/09/2026 04:02:45
+Bauer Foundation Corp.,5eee8290-ff3a-4ece-90be-83f5b556b172,,5ca7a366-83e2-4ec3-807c-db5e34eba312,,,2026-09-09T04:42:24,,,,,,09/09/2026,09/09/2026 04:02:45
+Bauer Foundation Corp.,a2a6c019-b499-47d6-8005-28eeadc3f4af,,,,,2026-09-09T04:42:24,,,,,,09/09/2026,09/09/2026 04:02:45
+Bauer Foundation Corp.,a2d02c6a-61e1-4640-b7b2-830c719d31f3,,5ca7a366-83e2-4ec3-807c-db5e34eba312,,,2026-09-09T04:42:24,,,,,,09/09/2026,09/09/2026 04:02:45
+Canadian Pacific Kansas City,8de374c4-51fa-4e63-b2ed-c8ff7c920b74,,,,,2026-09-09T07:53:10,,,,,,09/09/2026,09/09/2026 04:02:45
+Canadian Pacific Kansas City,b5f444c8-4304-4248-b2f3-d36101042150,,,,,2026-09-09T06:10:00,,,,,,09/09/2026,09/09/2026 04:02:45
+Canadian Pacific Kansas City,c186bc8d-8401-4819-84df-addf41f9922c,,,,,2026-09-09T06:10:00,,,,,,09/09/2026,09/09/2026 04:02:45
+Canadian Pacific Kansas City,d8f86a96-521d-444d-97d0-8c2cc329b919,,,,,2026-09-09T06:10:00,,,,,,09/09/2026,09/09/2026 04:02:45
+Canadian Pacific Kansas City,ff8e5624-4a65-4174-b952-453e292b6806,,,,,2026-09-09T07:53:10,,,,,,09/09/2026,09/09/2026 04:02:45
+EMMES,3ba61de9-117c-4ad3-a1b7-ce4d11dc771d,,e3fdc1bb-f9c4-4df6-9721-f077847af5cb,,,2026-09-09T06:14:23,,,,,,09/09/2026,09/09/2026 04:02:45
+EMMES,cad20d98-d4a7-42e6-a051-25cc3ec95c85,,e3fdc1bb-f9c4-4df6-9721-f077847af5cb,,,2026-09-09T06:14:23,,,,,,09/09/2026,09/09/2026 04:02:45
+EMMES,cd6c8548-2952-4857-9f35-c77865c370b4,,095cab1d-6584-4f28-a820-a3b42025a111,,,2026-09-09T07:18:45,,,,,,09/09/2026,09/09/2026 04:02:45
+"Musselman & Hall Contractors, LLC",5ab83fc6-0e28-4316-bc95-2db518dadd6c,,,,,2026-09-03T06:25:14,,,,,,09/09/2026,09/09/2026 04:02:56
+United Coal Company LLC,001f71e1-6456-4840-b0ad-eb270c4b4e36,,c5cf2a7d-8cb4-4f7d-9ee3-7bbb9b57d98a,,,2026-09-09T06:59:35,,,,,,09/09/2026,09/09/2026 04:03:03
