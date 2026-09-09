@@ -1,0 +1,261 @@
+client,field_id,field_name,field_key,field_type,required,sync_date,sync_timestamp
+A G Equipment Company,a8dcf6ef-3656-43f6-ad7c-feb7338035a2,Criteria B,criteriaB,STRING,false,09/02/2026,09/02/2026 17:39:59
+A G Equipment Company,013ea150-22a5-4b85-83b8-e42b7ca45c96,Criteria A,criteriaA,STRING,false,09/02/2026,09/02/2026 17:39:59
+A G Equipment Company,62f94be4-55ed-47be-b054-115ad8c4b158,Third-Party ID,entityId,STRING,false,09/02/2026,09/02/2026 17:39:59
+A G Equipment Company,76eb173b-4656-40b0-b4f0-4777a183601a,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:39:59
+A G Equipment Company,abf1bede-0ca6-497a-88a2-9015635fb4ef,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:39:59
+A G Equipment Company,f7239129-a45b-4856-a7e1-6b84c9f7a5b1,Entity Type,entityType,STRING,false,09/02/2026,09/02/2026 17:39:59
+A G Equipment Company,8a60f9ad-e027-4006-a50b-f8197185d8cf,Notification List,notificationList,LIST_EMAIL,true,09/02/2026,09/02/2026 17:39:59
+A G Equipment Company,ea8d3b92-59df-490b-a228-a9a1c091f8e5,Notes,notes,LIST_STRING,false,09/02/2026,09/02/2026 17:39:59
+A G Equipment Company,8d3964f5-99d7-4332-b7fd-7a515edc03b6,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:39:59
+A G Equipment Company,3fca73bd-d791-406c-920a-4dc35587f61d,Email,email,STRING,false,09/02/2026,09/02/2026 17:39:59
+Action Plumbing Construction,93721140-37ae-4069-9d98-e44366d1f3d8,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:39:59
+Action Plumbing Construction,3a405130-8851-47d7-bbe0-887fe9dc80d8,Email,email,STRING,false,09/02/2026,09/02/2026 17:39:59
+Action Plumbing Construction,79d47b0c-2798-4e7c-ad02-7d513f390d79,Notification List,notificationList,LIST_EMAIL,false,09/02/2026,09/02/2026 17:39:59
+Action Plumbing Construction,b951794f-95ba-402a-bb4a-777f14e2ee98,Subcontractor Type,subcontractorType,STRING,false,09/02/2026,09/02/2026 17:39:59
+Action Plumbing Construction,53ff15d5-17e4-43d5-88b6-903749fe574c,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:39:59
+Action Plumbing Construction,15039de2-0c06-41f6-85d6-b780e508e665,Project Name,projectName,STRING,false,09/02/2026,09/02/2026 17:39:59
+Action Plumbing Construction,13c78193-c9dd-4aff-ba56-506c0712da35,ProjectCompOps,projectcompops,STRING,false,09/02/2026,09/02/2026 17:39:59
+Action Plumbing Construction,c9d8b871-96bc-4a4c-b5e5-cdbb026b8d3b,Notes,notes,STRING,false,09/02/2026,09/02/2026 17:39:59
+Action Plumbing Construction,d0cf25ee-1f9b-46e2-96f1-2a15ff4227c3,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:39:59
+Action Plumbing Construction,9f5f952b-a7b8-480f-957d-aec27783a6f0,Comp Ops Date,compOpsDate,STRING,false,09/02/2026,09/02/2026 17:39:59
+Action Plumbing Construction,97a1909e-fc9b-4241-b9f2-87ecd061ebcb,Project ID,projectId,STRING,false,09/02/2026,09/02/2026 17:39:59
+Action Plumbing Construction,3f6129d1-8688-4928-bf67-b9fd2e1e0f11,Project Status,projectStatus,STRING,false,09/02/2026,09/02/2026 17:39:59
+Action Plumbing Construction,e988dbf6-121f-4ab1-a59c-318c783b53d5,Third-Party ID,entityId,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,6e1f01d0-a8b5-4ae7-b6c0-18ecb5babcc9,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,744cb81e-bae2-4017-9c3a-b5d079851be2,Notification List,notificationList,LIST_EMAIL,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,b52b5834-0d87-4a16-b747-b0235c6599ab,Sample COI,sampleCoi,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,be488e57-f737-4231-87ce-538b0a29c662,Criteria A,criteriaA,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,67adfc5c-40d7-4a4b-b2d3-c2398678a725,Entity Type,entityType,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,ffad6b8c-100b-47cb-a17c-90e82ab30bd2,Criteria B,criteriaB,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,1663d18b-89ce-4502-add0-bc61ff7ea976,Pollution,pollution,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,14bfbe3c-deab-4b24-89e8-578028bd4b56,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,f1180b2e-d116-4eed-9c34-ed2e54175ed1,Email,email,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,82e4caa3-1a6d-4d11-9d2b-52f99cc30855,Project Number,projectNumber,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,a1e51eee-3682-46fd-9ad2-cd2fbe6026ef,Notes,notes,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,d7b08ab2-a07e-415d-8491-aedf2059c793,Entity ID,entityId,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,d4e19aa7-18f9-4630-a514-aad8c6adbefd,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,3d049218-5e19-4bde-9d02-9635f1016441,Project Name,projectName,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,946ba22d-50fd-4618-b0aa-82033ed2fdb9,Insurance Type,insuranceType,STRING,false,09/02/2026,09/02/2026 17:39:59
+Bauer Foundation Corp.,db3803fb-f3fb-4aa8-9058-6f377c4a181a,Professional,professional,STRING,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,769efdd6-7c0b-4c8d-b587-c9c5484ab9f3,Criteria A,criteriaA,STRING,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,8e45cce9-7a4f-4ea3-95db-b2d40c376e77,Criteria B,criteriaB,STRING,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,0a7661b3-c5ed-47c6-822e-56dfe5ebb44e,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,ca3e7ee1-d349-464a-8ac6-5157eeea49f3,Third-Party ID,entityId,STRING,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,9c4c5244-66c6-4759-929a-8696480c047c,Auto,auto,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,8448636b-81bb-4ed8-9c26-2667dcf681f4,GL,gl,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,54431875-d8ca-4e14-af91-fb2ad2176e47,Prof,prof,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,cbb42e32-8a87-4e74-a68e-9a5c812be162,WC,wc,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,f7fd723c-fc3f-43fa-9bff-892539910e40,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,ff9602b7-f2de-4787-814d-f88c4300dbaf,MTC,mtc,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,4dcf3a31-4804-4784-8aa6-b4d84b0d2f6c,POL,pol,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,8e5c5f0f-ebf5-44d0-bff7-2eff29bba8be,AIR,air,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,72c0cf30-2dfc-4f4e-8d1b-077439324087,Contract Number,contractNumber,STRING,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,36f08662-13f2-43a9-9b42-ac65d8082b88,GL-CG2417,glCg2417,STRING,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,499fd047-6648-4795-9bb1-99e4ed5b2964,Entity Type,entityType,STRING,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,ae8f9f9d-5d68-49f1-ac30-e36e5248d5db,Notification List,notificationList,LIST_EMAIL,true,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,cd2e804b-b1e6-4f0a-81aa-9504e4c393ee,Notes,notes,LIST_STRING,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,533c765f-5fff-4e5a-951e-84574d89fc0f,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,612a2d52-4009-4a38-85bd-f261e955bee6,Criteria Group,criteriaGroup,STRING,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,ebe868da-2eda-46e9-8c78-4b0497abb2de,Vendor Number,vendorNumber,STRING,false,09/02/2026,09/02/2026 17:39:59
+Canadian Pacific Kansas City,011db554-2324-4f34-bd79-73c080b7d946,Email,email,STRING,false,09/02/2026,09/02/2026 17:39:59
+"Capital Railroad Contracting, Inc.",4f02d6b7-092f-4e6b-8d98-0a8e98603ba1,Criteria B,criteriaB,STRING,false,09/02/2026,09/02/2026 17:39:59
+"Capital Railroad Contracting, Inc.",f1b22a32-e91d-4aa6-9cdc-659f19a95dbb,Criteria A,criteriaA,STRING,false,09/02/2026,09/02/2026 17:39:59
+"Capital Railroad Contracting, Inc.",483e1ab0-9758-4470-99a5-7d5106d3293f,Third-Party ID,entityId,STRING,false,09/02/2026,09/02/2026 17:39:59
+"Capital Railroad Contracting, Inc.",64bbefef-d612-4ef1-8ccd-67858f7b44d0,Notes,notes,STRING,false,09/02/2026,09/02/2026 17:39:59
+"Capital Railroad Contracting, Inc.",3bcbfa1c-f267-4a01-a6d3-5e7845a4ed1a,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:39:59
+"Capital Railroad Contracting, Inc.",fa8d0be4-2853-4b5b-9100-d8af9f187ee0,Entity Type,entityType,STRING,false,09/02/2026,09/02/2026 17:39:59
+"Capital Railroad Contracting, Inc.",6839fb8c-bf1f-4e0a-a20f-ef28f1d9efcd,Notification List,notificationList,LIST_EMAIL,false,09/02/2026,09/02/2026 17:39:59
+"Capital Railroad Contracting, Inc.",a0ee7de1-087f-4f87-9c87-67f282d822e1,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:39:59
+"Capital Railroad Contracting, Inc.",1919cb44-d464-4adf-856a-df4aa8d1ce2d,Criteria Group,criteriaGroup,STRING,false,09/02/2026,09/02/2026 17:39:59
+"Capital Railroad Contracting, Inc.",2465d77f-d8a9-4563-9061-584be57f3aeb,Project ID,projectId,STRING,false,09/02/2026,09/02/2026 17:39:59
+"Capital Railroad Contracting, Inc.",38bf305a-d90d-45df-ae72-1e3205f6ab1b,Email,email,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,70669168-b2ac-4020-bd21-f31b5f735a71,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,c10e5ac3-7682-4cab-ba86-5576df6e36a1,Notification List,notificationList,LIST_EMAIL,false,09/02/2026,09/02/2026 17:39:59
+EMMES,c531efdc-0eda-429d-9e9b-0f07343b53bc,Criteria A,criteriaA,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,8be95339-38bc-4a48-a14f-5fdf1785a1c2,Notes,notes,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,04c5133f-28a3-4cc5-bdd3-37c950acba0e,Criteria B,criteriaB,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,500db722-6285-471f-8c41-9c69281a5ddc,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,3b2fdb5b-1203-4b43-9bd6-e0597745266c,Email,email,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,2c7e40ac-cc12-4564-b1c8-4cf3cd25eb8b,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,6fb99960-9391-420d-b5af-dfaa07a085e3,Entity ID,entityId,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,dd441832-facb-46d5-8d19-23a67ed65c71,Entity Type,entityType,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,94b7dc86-9730-4e41-81c9-b8bcf3093181,Sample COI,sampleCoi,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,255a348d-8679-438c-8e6b-3145abfeb1bf,Pollution,pollution,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,b4529bec-0557-4709-822f-65207560721a,Property,property,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,67198c4d-8d69-4631-9f45-67bb253b60f5,GL,gl,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,b7f91523-84d4-4db8-ae15-44ed722f6948,Professional,professional,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,aa2c686a-c1e0-4d33-8ee3-9f3866f90d42,Property Location,propertyLocation,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,ab57e0d2-229d-4d68-935d-56fc1008df7e,Delete9,al,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,db58dfdd-5996-4cfd-a919-78d73faf8c08,Delete1,glGa,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,cdc5b64c-19b6-42e1-b6de-2bf136250cb8,GL - Per & Adv Inj,glPerAdvInj,NUMBER,false,09/02/2026,09/02/2026 17:39:59
+EMMES,56ffebc6-cad0-4706-ae73-da6244718af0,GL - Fire Legal,glFireLegal,NUMBER,false,09/02/2026,09/02/2026 17:39:59
+EMMES,ca60cdca-b3c1-4b8e-bb72-176cf1388e05,Delete,glEo,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,8a3f8a30-5937-45ab-8e5e-6dc654dcf821,GL - Each Occurrence,glEachOccurrence,NUMBER,false,09/02/2026,09/02/2026 17:39:59
+EMMES,c4eed233-58a4-4519-af90-a19bbbb71010,Delete2,glPai,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,acf538d4-98b7-484f-8907-8ceebe52ffa0,Delete3,glDtrp,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,7e7741e5-99ca-40f3-ad73-1fd62faa9d4e,Delete5,ll,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,a273f5fc-5df6-4fd6-9a43-0f5580bdefc8,GL - Gen Agg,glGenAgg,NUMBER,false,09/02/2026,09/02/2026 17:39:59
+EMMES,100b2248-0346-4a0b-9472-09ee939a37a2,Delete8,umb,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,dc787436-8269-4957-9be8-66cd5b26033a,Delete6,pol,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,de78fb5e-8f5e-42a4-bf5c-01af6e45520d,Auto,auto,NUMBER,false,09/02/2026,09/02/2026 17:39:59
+EMMES,f22a252b-4777-4ff4-9e25-0b2fd35ed30b,Umbrella,umbrella,NUMBER,false,09/02/2026,09/02/2026 17:39:59
+EMMES,54cf3cfc-536b-46cb-bcd1-e8877f8ee470,Liquor,liquor,NUMBER,false,09/02/2026,09/02/2026 17:39:59
+EMMES,bd20efbd-a01e-4e30-b75a-44b55f2fb07b,WC/EL,wcel,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,f35c8088-bd8f-46a0-86f5-bd9cbf01c760,Environmental,environmental,NUMBER,false,09/02/2026,09/02/2026 17:39:59
+EMMES,f11fcfa2-63f5-4776-b9df-16c497008afd,Delete4,cd,STRING,false,09/02/2026,09/02/2026 17:39:59
+EMMES,55c90027-0123-4a90-b670-8e1afbcb3744,Cancellation,cancellation,NUMBER,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,f6115cd6-2c52-4807-83d4-1f4a49286b4b,Insurance Type,insuranceType,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,fc164560-31ed-450a-8b51-bb616d8752a3,Riggers,riggers,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,d4ba7155-fd12-4c90-a153-568c0bfbf48f,Professional,professional,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,458b9bac-0723-479d-9039-ce6b28c13e2f,Job Description,jobDescription,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,d306e39d-fa8d-46a0-87fa-ff33c20f316d,Pollution,pollution,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,5eee0ee9-dff2-4c3c-b0af-8fadb05826ee,Email,email,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,d61f6a69-17ec-48a4-ac6c-c15baf7eb3d4,Job Number,jobNumber,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,6c0adbb3-9cdc-4a82-9fe7-2f662e638898,Vendor Number,vendorNumber,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,a21c6710-d710-4788-b1f8-1dd8a0ac9003,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,0dc75d9b-4b38-4120-84ac-373578eeaf98,Job Status,jobStatus,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,c598b122-c0b1-4b7b-94d9-c7d6dc8e81c9,Entity ID,entityId,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,8a8b4325-6ee8-4d72-acaa-397c1fa2035a,Notes,notes,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,34f129b2-1c7c-4a0e-8d38-20ada8dd067e,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,6fda13ce-3b30-4158-8dfb-d375e0b9f663,Subcontract Number,subcontractNumber,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,35a9def4-7a37-4391-bed2-883acfce3e2f,Notification List,notificationList,LIST_EMAIL,true,09/02/2026,09/02/2026 17:39:59
+ESS Companies,1839bde3-eea7-4540-879f-6cedfbaa9d9f,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:39:59
+ESS Companies,3855d9ab-8bba-48e7-a026-cecbc2cdc4cb,Project Specific,projectSpecific,BOOLEAN,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,cb6b79ef-c12c-43d7-947d-a4bde89ab4e4,Third-Party ID,entityId,STRING,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,63879a3a-da12-4521-92d2-b3267eeec867,Property Manager,propertyManager,STRING,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,51c04ecd-19e7-4870-9eba-d44aa0c2f612,Criteria A,criteriaA,STRING,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,d65bc49e-c181-4605-be2b-ae3dfffe3a12,Criteria B,criteriaB,STRING,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,147863aa-60d2-44fb-947e-7111258d358b,Notes,notes,STRING,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,adf01f60-cbcf-413e-b587-39c4604b7ef6,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,e3873a83-0761-4cfc-bad9-03199b3c9fae,GL-EO,glEo,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,a765af49-74f6-45fd-a447-c21f3aa79ad7,Liq,liq,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,b18b2dac-1195-418c-a595-8837a23d03f7,Umb,umb,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,cf35826e-d0be-4f18-a9d7-1e0783402300,Auto,auto,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,6c0ba676-4cf8-4757-952a-623898663bb8,WC/EL,wcel,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,e177566d-a425-4f07-b10c-15caf1a8ad5c,GL-PA,glPa,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,10dde5fc-9d5d-4dd7-a7cc-bca8595d3188,GL - GA,glGa,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,33d7f229-6701-4c30-b715-c6b469a21160,GL - PCOA,glPcoa,INTEGER,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,82209c39-4dd9-4f9f-98c5-03473f2d3dcc,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,71a9f939-067f-4953-81e0-3d51be1a5d34,Suite,suite,STRING,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,3480ae96-1ba7-434c-9e5e-2b5ea30b18de,Notification List,notificationList,LIST_EMAIL,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,dccfb79c-7db1-488d-8659-1552a8f6baa8,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:39:59
+Gart Properties,210d8737-b267-4418-a75a-d58fa2f45cf4,Property Location,propertyLocation,STRING,true,09/02/2026,09/02/2026 17:39:59
+Gart Properties,194762b9-5c35-4b6d-85e0-282d68d26342,Tenant Type,tenantType,STRING,true,09/02/2026,09/02/2026 17:39:59
+Gart Properties,da6e5780-011a-40ee-bd18-ede41a2756a3,Email,email,STRING,false,09/02/2026,09/02/2026 17:39:59
+Kolb Grading,030acfd7-8d70-4217-86a0-263f9e6fb796,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:40:02
+Kolb Grading,241b4a99-4d0a-4210-bf80-ef9ad63ca6b1,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:40:02
+Kolb Grading,bbf000cb-d161-4337-b287-a0974798058d,Criteria B,criteriaB,STRING,false,09/02/2026,09/02/2026 17:40:02
+Kolb Grading,2d484af0-80f9-4da4-b5b0-ab6a3b54d1e0,Criteria A,criteriaA,STRING,false,09/02/2026,09/02/2026 17:40:02
+Kolb Grading,73dffb91-feb3-4dc6-8c76-a85df7e4d140,Third-Party ID,entityId,STRING,false,09/02/2026,09/02/2026 17:40:02
+Kolb Grading,37491e16-844b-43b7-9339-b16737c01ee5,Notes,notes,STRING,false,09/02/2026,09/02/2026 17:40:02
+Kolb Grading,5c3a8d60-108d-4b48-843c-e913ce49f203,Entity Type,entityType,STRING,false,09/02/2026,09/02/2026 17:40:02
+Kolb Grading,050ccfcb-f2b4-4e64-92e4-ec781bae8745,Notification List,notificationList,LIST_EMAIL,false,09/02/2026,09/02/2026 17:40:02
+Kolb Grading,a5c131df-1e47-4ad9-8a5f-7546acbd95b5,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:40:02
+Kolb Grading,0e43aaf3-4947-4190-a5db-9cef54376ba4,Criteria Group,criteriaGroup,STRING,false,09/02/2026,09/02/2026 17:40:02
+Kolb Grading,33abc184-c022-491d-9747-f090151b8837,Email,email,STRING,false,09/02/2026,09/02/2026 17:40:02
+Mizuho Bank,99fc0f26-2487-4f2e-b6ed-597ed2fd4102,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:40:06
+Mizuho Bank,84053303-1b2e-437f-997a-9d5aa14d2b4c,Loan Name,loanName,STRING,false,09/02/2026,09/02/2026 17:40:06
+Mizuho Bank,7401a3b4-31f8-463d-a73e-b000ac610e85,Pollution,pollution,STRING,false,09/02/2026,09/02/2026 17:40:06
+Mizuho Bank,14f220de-9ac5-41f2-97fa-ddae3300c911,CCG Reference,ccgReference,STRING,false,09/02/2026,09/02/2026 17:40:06
+Mizuho Bank,0683efbd-55b5-4811-bf77-a59d7cba8399,Criteria A,criteriaA,STRING,false,09/02/2026,09/02/2026 17:40:06
+Mizuho Bank,3559cfe6-e12e-457b-bf55-38b88541aaa7,Criteria B,criteriaB,STRING,false,09/02/2026,09/02/2026 17:40:06
+Mizuho Bank,1825346b-e5ab-4e53-848c-0aa72b1b0698,Entity ID,entityId,STRING,false,09/02/2026,09/02/2026 17:40:06
+Mizuho Bank,0832aac2-702c-44be-8917-c5083a2e323e,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:40:06
+Mizuho Bank,dd811134-c786-43a5-b1db-5611a99d28b0,Notification List,notificationList,LIST_EMAIL,true,09/02/2026,09/02/2026 17:40:06
+Mizuho Bank,a8fe5dd7-b0f3-4602-a6da-e850f518e0d5,Notes,notes,LIST_STRING,false,09/02/2026,09/02/2026 17:40:06
+Mizuho Bank,b44dbe62-023f-47fa-9b05-85336b970ad4,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:40:06
+Mizuho Bank,c1092a75-6c08-4251-af53-36122f92078c,Email,email,STRING,false,09/02/2026,09/02/2026 17:40:06
+"Musselman & Hall Contractors, LLC",e141e73c-98aa-43d8-abfb-63298229adc1,Third-Party ID,entityId,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Musselman & Hall Contractors, LLC",78b16037-13e3-4989-8792-706136d21ccc,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Musselman & Hall Contractors, LLC",6179e61e-2b7e-40b1-850d-49d26c31d9ce,Criteria A,criteriaA,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Musselman & Hall Contractors, LLC",d4976602-715e-4c3f-b596-aa2cba916fba,Criteria B,criteriaB,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Musselman & Hall Contractors, LLC",15fd0577-aad6-4c9c-9eb9-8e7c90b8a0db,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Musselman & Hall Contractors, LLC",b6ab51f5-e065-4c77-835c-4b096d6f370e,Entity Type,entityType,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Musselman & Hall Contractors, LLC",37f33d03-cd62-404b-bae5-d059cc79711f,Notification List,notificationList,LIST_EMAIL,true,09/02/2026,09/02/2026 17:40:11
+"Musselman & Hall Contractors, LLC",2ea90b64-0d0b-4445-a1ad-1ee773bae256,Notes,notes,LIST_STRING,false,09/02/2026,09/02/2026 17:40:11
+"Musselman & Hall Contractors, LLC",552b8128-1add-4fe9-9415-5e0f75889713,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Musselman & Hall Contractors, LLC",49c9688f-88b1-4147-af6c-01540148dcd9,Insurance Type,insuranceType,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Musselman & Hall Contractors, LLC",cacabdec-364a-4460-939b-56ca29edbf0c,Projects,projects,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Musselman & Hall Contractors, LLC",dcc4dd30-9666-4ac9-a6dd-ee59518692ca,Email,email,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Paragon Geophysical Services, Inc.",dd459c3c-0fcb-408f-81e1-80748427f820,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Paragon Geophysical Services, Inc.",c1d82a1c-b51b-421d-9ec4-6f233b48922a,Criteria A,criteriaA,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Paragon Geophysical Services, Inc.",b9951548-ab63-4696-87f5-82f568809597,Criteria B,criteriaB,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Paragon Geophysical Services, Inc.",5d53ec5e-9443-4ba2-bcc9-de5aee2444d8,Verification Type,verificationType,INTEGER,false,09/02/2026,09/02/2026 17:40:11
+"Paragon Geophysical Services, Inc.",ee4cff1d-475e-4069-9578-77d867771a39,Third-Party ID,entityId,INTEGER,false,09/02/2026,09/02/2026 17:40:11
+"Paragon Geophysical Services, Inc.",c14391ea-13b9-4cda-8c4a-38c6f29e1a38,Notification List,notificationList,LIST_EMAIL,true,09/02/2026,09/02/2026 17:40:11
+"Paragon Geophysical Services, Inc.",75efbd06-0859-4cf0-8511-ee5010df1469,Notes,notes,LIST_STRING,false,09/02/2026,09/02/2026 17:40:11
+"Paragon Geophysical Services, Inc.",f3b639ab-678f-49f1-861c-8a53a8831453,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Paragon Geophysical Services, Inc.",efd364a2-6411-412a-8a84-88e99356ca73,Insurance Type,insuranceType,STRING,false,09/02/2026,09/02/2026 17:40:11
+"Paragon Geophysical Services, Inc.",4ccad79b-c8a2-4a01-a67e-f749967daae9,Email,email,STRING,false,09/02/2026,09/02/2026 17:40:11
+Scandroli Construction,d317b685-170c-4a34-a72e-470a38eebddb,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:40:13
+Scandroli Construction,7b221c01-d389-4c46-b833-1e3db763df2d,Project Comp Ops,projectCompOps,STRING,false,09/02/2026,09/02/2026 17:40:13
+Scandroli Construction,6568d62d-eec7-4960-a4f2-70e13dd910dc,Notes,notes,STRING,false,09/02/2026,09/02/2026 17:40:13
+Scandroli Construction,7c806cae-fa17-4df6-a43d-060d95834f8e,Third-Party ID,entityId,STRING,false,09/02/2026,09/02/2026 17:40:13
+Scandroli Construction,4778449b-247f-402d-b74e-9302b1db6833,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:40:13
+Scandroli Construction,f154d5d0-b3d7-4296-b071-5a1359ddf38b,Notification List,notificationList,LIST_EMAIL,false,09/02/2026,09/02/2026 17:40:13
+Scandroli Construction,42d62638-fb36-409e-a2f1-d8cefec9c8b9,Project ID,projectId,STRING,false,09/02/2026,09/02/2026 17:40:13
+Scandroli Construction,c99a0f2b-45d7-42cf-870c-9b38b80045da,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:40:13
+Scandroli Construction,be579ab3-e972-478f-86f3-964570adae1f,Project Name,projectName,STRING,false,09/02/2026,09/02/2026 17:40:13
+Scandroli Construction,8faf6d84-93ad-4ed6-8d27-50a2d9d2f11b,Project Status,projectStatus,STRING,false,09/02/2026,09/02/2026 17:40:13
+Scandroli Construction,b0d45b5c-8867-4407-8201-dc76cfe99daa,Project Comp Ops Date,compOpsDate,STRING,false,09/02/2026,09/02/2026 17:40:13
+Scandroli Construction,1cef3b99-c4b2-4dcd-81d0-8a2d90e4480e,Insured ID,insuredId,STRING,false,09/02/2026,09/02/2026 17:40:13
+Scandroli Construction,26c92995-6c53-4d32-9bc8-fb566f38a49d,Criteria B,criteriaB,STRING,false,09/02/2026,09/02/2026 17:40:13
+Scandroli Construction,df098597-91f4-4986-88cd-f4e159f87e2a,Email,email,STRING,false,09/02/2026,09/02/2026 17:40:13
+Scandroli Construction,56e3d354-7331-4f99-9d80-568b46b48e6a,Criteria A,criteriaGroup,STRING,false,09/02/2026,09/02/2026 17:40:13
+Skyline Developers Construction LLC,4d0be441-63d4-4d6a-8934-fb72dd79bc6f,Criteria A (optional if Third Party spec,criteriaAOptionalIfThirdPartySpec,STRING,false,09/02/2026,09/02/2026 17:40:15
+Skyline Developers Construction LLC,075201ed-a91c-423c-bdda-e2369a61692a,Criteria B (optional if Third Party spec,criteriaBOptionalIfThirdPartySpec,STRING,false,09/02/2026,09/02/2026 17:40:15
+Skyline Developers Construction LLC,b484ea93-b5d7-433e-8a6b-c40cf68e4df8,Project Name,projectName,STRING,false,09/02/2026,09/02/2026 17:40:15
+Skyline Developers Construction LLC,ed678393-2e1f-4bfd-9f48-4197593ef410,Project Status,projectStatus,STRING,false,09/02/2026,09/02/2026 17:40:15
+Skyline Developers Construction LLC,3f024b0e-e2e5-4e9c-a290-4309c8244522,Entity ID,entityId,STRING,false,09/02/2026,09/02/2026 17:40:15
+Skyline Developers Construction LLC,f3a27b0b-fb61-4954-a827-d2ea5ef74300,Notes,notes,STRING,false,09/02/2026,09/02/2026 17:40:15
+Skyline Developers Construction LLC,f48ce17a-c75c-44bf-8cac-40def28c29f0,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:40:15
+Skyline Developers Construction LLC,ee8bf2ec-3836-47fe-93b2-6eec08f18c05,Project ID,projectId,STRING,false,09/02/2026,09/02/2026 17:40:15
+Skyline Developers Construction LLC,69c4169b-8b0f-4986-b5fc-ce1dc1f3745f,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:40:15
+Skyline Developers Construction LLC,014be5ac-2917-48ad-8129-1965681677b2,Project Completion Date,projectCompletionDate,STRING,false,09/02/2026,09/02/2026 17:40:15
+Skyline Developers Construction LLC,9aa0744c-2205-4a09-be75-50945ec7fe37,Project Comp Ops Date,projectCompOpsDate,STRING,false,09/02/2026,09/02/2026 17:40:15
+Skyline Developers Construction LLC,545f0089-6bd2-422f-abcf-d47b46ac35cf,Entity Type,entityType,STRING,false,09/02/2026,09/02/2026 17:40:15
+Skyline Developers Construction LLC,a44ee662-fe96-4f9c-86ce-f5215b29484b,Notification List,notificationList,LIST_EMAIL,true,09/02/2026,09/02/2026 17:40:15
+Skyline Developers Construction LLC,8f91eb17-6ff2-40f3-890c-7aa42208ceaa,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:40:15
+Skyline Developers Construction LLC,c9612b9b-48c6-4a31-84a5-4b798223e0c6,Email,email,STRING,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,168c3cde-ce7b-458b-a1d0-100642f1f80c,Criteria A,criteriaA,STRING,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,25f05d2e-438f-4d34-98bb-6fb2b076a44e,Criteria B,criteriaB,STRING,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,0d322045-70aa-4ed5-9cc7-cca621eb1565,Email,email,STRING,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,fc002c5d-2cda-4e7e-96dd-e2d90d5f9b06,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,133f631c-6a08-4787-ad89-76bb96a5d2b4,Third-Party ID,entityId,STRING,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,62eb40de-e6f5-41fe-a71a-66361aa55995,Notes,notes,STRING,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,7b4e21fc-16a7-49b5-aafd-cc0d82e2995b,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,0ffdbf97-21d0-4b25-b5b0-e6071cc8aa49,Entity Type,entityType,STRING,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,6df8c2e3-7a4d-46f7-a411-64374c959137,Auto,auto,BOOLEAN,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,0effe769-7bf4-4317-9c01-0376ed27fd07,Liquor,liquor,BOOLEAN,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,3286070d-22bd-4aea-9173-e11dd0b66465,Bailee,bailee,BOOLEAN,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,a08be285-e63b-464f-9e60-ab25e5f23c89,Warehouse,warehouse,BOOLEAN,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,07dc27d4-521a-4651-b2d3-f986e258ab93,Pollution,pollution,BOOLEAN,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,63c7eee0-4158-463e-aa94-d8b128960045,RSF,rsf,STRING,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,937dd587-8300-4bd6-a6ac-2f84efc410bd,Property Location,propertyLocation,STRING,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,ad1baa06-ba7b-4be8-9697-5c96d15f14da,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:40:15
+The Abbey Management Company,a19bf21a-99da-4d2b-8113-ddc661818945,Notification List,notificationList,LIST_EMAIL,false,09/02/2026,09/02/2026 17:40:15
+Trinity Chemical Industries LLC,a22fecdb-aa64-44dd-8926-2f8ecc84e099,Criteria A,criteriaA,STRING,false,09/02/2026,09/02/2026 17:40:15
+Trinity Chemical Industries LLC,b0c0a872-d1fd-4401-907a-6e39d3b0c0b4,Third-Party ID,entityId,STRING,false,09/02/2026,09/02/2026 17:40:15
+Trinity Chemical Industries LLC,fdcd01f4-8d98-4774-aa30-6b208152454a,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:40:15
+Trinity Chemical Industries LLC,76d149aa-c656-4249-8327-44983c2a5100,Criteria B,criteriaB,STRING,false,09/02/2026,09/02/2026 17:40:15
+Trinity Chemical Industries LLC,3d048887-022f-4aa8-8327-ad77a8a8d210,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:40:15
+Trinity Chemical Industries LLC,4bfe4722-d75a-4de2-9fb4-f00364f13139,Notification List,notificationList,LIST_EMAIL,true,09/02/2026,09/02/2026 17:40:15
+Trinity Chemical Industries LLC,1d70a46a-c7eb-4b80-ac6c-513a50992ef6,# of Cars,ofCars,INTEGER,false,09/02/2026,09/02/2026 17:40:15
+Trinity Chemical Industries LLC,536973d4-6417-4be4-804b-7075bbeecbaf,Notes,notes,LIST_STRING,false,09/02/2026,09/02/2026 17:40:15
+Trinity Chemical Industries LLC,c4cbd8f9-ab1b-4215-8b3f-633fd7f14097,Reference ID,referenceId,STRING,false,09/02/2026,09/02/2026 17:40:15
+Trinity Chemical Industries LLC,913f5624-a9ff-4200-9ad1-76e5eb0489db,Email,email,STRING,false,09/02/2026,09/02/2026 17:40:15
+United Coal Company LLC,6a812e14-faf1-4444-9f9e-b1a946f16c93,GL - EO,glEo,INTEGER,false,09/02/2026,09/02/2026 17:40:17
+United Coal Company LLC,deacda94-65b5-4acc-bbf7-c3c647c4e4e0,Entity Type,entityType,STRING,false,09/02/2026,09/02/2026 17:40:17
+United Coal Company LLC,1dac1f8c-07e3-4886-93f5-3c47bebf18a7,GL - GA,glGa,INTEGER,false,09/02/2026,09/02/2026 17:40:17
+United Coal Company LLC,fbb9fd7a-f0a8-4449-bee1-e2a1e8ddf894,Verification Type,verificationType,STRING,false,09/02/2026,09/02/2026 17:40:17
+United Coal Company LLC,2e74ebd9-81f3-4fd4-9bde-3b652bf3618d,GL - PCOA,glPcoa,INTEGER,false,09/02/2026,09/02/2026 17:40:17
+United Coal Company LLC,b5310207-1331-477c-8971-c878efdca28d,GL - DED,glDed,INTEGER,false,09/02/2026,09/02/2026 17:40:17
+United Coal Company LLC,adc29a7b-b6f0-42eb-9675-8c1f7f770728,Criteria A,criteriaA,STRING,false,09/02/2026,09/02/2026 17:40:17
+United Coal Company LLC,ac1d8bbc-a427-4dd7-bf79-75387c5ff2a3,Criteria B,criteriaB,STRING,false,09/02/2026,09/02/2026 17:40:17
+United Coal Company LLC,1e8ca6b3-55d5-4a22-b234-580510fc8d6f,Email2,email2,STRING,false,09/02/2026,09/02/2026 17:40:17
+United Coal Company LLC,9907d14a-bd96-46d2-99c0-2dabdfd3f252,Third-Party ID,entityId,STRING,false,09/02/2026,09/02/2026 17:40:17
+United Coal Company LLC,84de60af-6fc2-419c-ba3a-9cf0966a7556,Notification List,notificationList,LIST_EMAIL,true,09/02/2026,09/02/2026 17:40:17
+United Coal Company LLC,1d42a0d6-f3eb-4bd0-affe-d7ff144cbe8a,Notes,notes,LIST_STRING,false,09/02/2026,09/02/2026 17:40:17
+United Coal Company LLC,1cdce32e-e3c0-4559-931d-f4604f56960f,Insurance Type,insuranceType,STRING,false,09/02/2026,09/02/2026 17:40:17
+United Coal Company LLC,3e355418-727a-489b-bfec-1b4289e0fb9d,Email,email,STRING,false,09/02/2026,09/02/2026 17:40:17
