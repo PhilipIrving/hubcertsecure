@@ -9,7 +9,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0c62446148bd848b0e,A.N.D. Design Studio LLC,,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded0c62446148bd848b14,Academy Bank,,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded0c62446148bd848b17,"Pertronix (Aeromotive) / Accelerate Auto Works Intermediate, LLC",,NON_COMPLIANT,,,true,false,2026-09-09
-"Block Real Estate Services, LLC",69fded0c62446148bd848b1a,Actuarial Resources Corporation (ARC),,NON_COMPLIANT,,,true,false,2026-09-09
+"Block Real Estate Services, LLC",69fded0c62446148bd848b1a,Actuarial Resources Corporation (ARC),,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded0c62446148bd848b1d,"Adams Cable Equipment, Inc.",,NON_COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded0c62446148bd848b20,Adare Pharma Solutions,,NON_COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded0c62446148bd848b23,"ADI (Ademco Distribution, Inc.) / Honeywell International, Inc.",,NON_COMPLIANT,,,true,false,2026-09-09
@@ -153,7 +153,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1262446148bd848ce8,Dairy Farmers Of America,,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1262446148bd848ceb,Dairy Farmers of America Inc,,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1262446148bd848cee,"Dark Horse Coffee / Dark Horse Collective, LLC",,COMPLIANT,,,true,false,2026-09-09
-"Block Real Estate Services, LLC",69fded1262446148bd848cf1,"Retail Data Systems of KC (RDS) / Data Systems, Inc.",,NON_COMPLIANT,,,true,false,2026-09-09
+"Block Real Estate Services, LLC",69fded1262446148bd848cf1,"Retail Data Systems of KC (RDS) / Data Systems, Inc.",,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1262446148bd848cf4,Data Systems International/ Nextworld / Cloud Inventory,,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1262446148bd848cf7,DataLocker Inc,,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1262446148bd848cfa,B-Envied Salon / David M & Lisa Walla,,COMPLIANT,,,true,false,2026-09-09
@@ -318,7 +318,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1962446148bd848ef8,Salon Expose / Kim Medina,,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1962446148bd848efb,Knappco LLC,,NON_COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1962446148bd848efe,Knapstein Design,,NON_COMPLIANT,,,true,false,2026-09-09
-"Block Real Estate Services, LLC",69fded1962446148bd848f01,"KTI / Kruger Technologies, Inc.",,NON_COMPLIANT,,,true,false,2026-09-09
+"Block Real Estate Services, LLC",69fded1962446148bd848f01,"KTI / Kruger Technologies, Inc.",,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1962446148bd848f04,KU Women's Health Specialty Centers / KU Gynocology and Obstetrical Foundation,,NON_COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1962446148bd848f07,LabCorp / Laboratory Corporation of America Holdings,,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1962446148bd848f0a,Landers Visions LLC,,NON_COMPLIANT,,,true,false,2026-09-09
@@ -344,7 +344,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1a62446148bd848f49,Mainland Valuation Services,,NON_COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1a62446148bd848f4c,"Shoot 360 / Mambas Basketball Academy, LLC",,NON_COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1a62446148bd848f52,Manna Pro Products LLC,,NON_COMPLIANT,,,true,false,2026-09-09
-"Block Real Estate Services, LLC",69fded1a62446148bd848f55,"Bistro / Marcie, Inc.",,NON_COMPLIANT,,,true,false,2026-09-09
+"Block Real Estate Services, LLC",69fded1a62446148bd848f55,"Bistro / Marcie, Inc.",,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1a62446148bd848f58,Marcon Marketing Concepts Inc,,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1a62446148bd848f5b,"Marel, USA",,NON_COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1a62446148bd848f5e,"Mariner Wealth Advisors / Mariner Holdings, LLC",,NON_COMPLIANT,,,true,false,2026-09-09
@@ -471,7 +471,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1f62446148bd8490de,Longhorn Steakhouse / RARE Hospitality of Kansas,,NON_COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1f62446148bd8490e1,"RBC Capital Markets, LLC / Royal Bank of Canada",,NON_COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1f62446148bd8490e4,"LynTec, Inc. / RDC, Inc.",,NON_COMPLIANT,,,true,false,2026-09-09
-"Block Real Estate Services, LLC",69fded1f62446148bd8490e7,Reeves-Wiedeman Co,,NON_COMPLIANT,,,true,false,2026-09-09
+"Block Real Estate Services, LLC",69fded1f62446148bd8490e7,Reeves-Wiedeman Co,,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1f62446148bd8490ea,"Regal Staffing, LLC",,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1f62446148bd8490ed,Releve Performing Arts / Ashley Collier,,NON_COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded1f62446148bd8490f0,"Remax Real Estate / Harry C. Meierarend, III",,NON_COMPLIANT,,,true,false,2026-09-09
@@ -507,7 +507,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2062446148bd849153,Anthony's Plumbing,,PENDING,,,false,false,2026-09-09
 "Block Real Estate Services, LLC",69fded2062446148bd849156,"Echo Electric / Springfield Electric Supply Company, LLC (fka Shaw Supply Company)",,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded2062446148bd84915c,Sherwin Williams-SW 07526,,COMPLIANT,,,true,false,2026-09-09
-"Block Real Estate Services, LLC",69fded2062446148bd84915f,"Shoe Sensation, Inc.",,NON_COMPLIANT,,,true,false,2026-09-09
+"Block Real Estate Services, LLC",69fded2062446148bd84915f,"Shoe Sensation, Inc.",,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded2062446148bd849162,"Show Me State Vital Care / Show Me State Infusion Pharmacy, LLC",,COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded2062446148bd849165,Side Pockets Inc,,NON_COMPLIANT,,,true,false,2026-09-09
 "Block Real Estate Services, LLC",69fded2062446148bd849168,Siemens Corporation,,COMPLIANT,,,true,false,2026-09-09
@@ -769,7 +769,7 @@ QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,COMPLIANT,,,tr
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,NON_COMPLIANT,,,true,false,2026-09-09
 QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,COMPLIANT,,,true,false,2026-09-09
 QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,NON_COMPLIANT,,,true,false,2026-09-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,NON_COMPLIANT,,,true,false,2026-09-09
+QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,COMPLIANT,,,true,false,2026-09-09
 QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,NON_COMPLIANT,,,true,false,2026-09-09
 QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,NON_COMPLIANT,,,true,false,2026-09-09
 QTS Data Centers,69f0f3c5beb6279e947be0f3,"Holder Construction Group, LLC",,PENDING,,,true,false,2026-09-09

@@ -9,7 +9,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdef1402bb2c42a879cc2a,"3rd203 - D&H Properties - Santa Fe Drive {D&H Properties, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdef1a3b208288e0a799c2,"3rd237 - Interstate Business Park Building 4 {2025 Wilshire Werbo, LLC}",Project,active,,,,,,2026-05-08,2026-08-24,2026-09-09
 "Block Real Estate Services, LLC",69fdef2438cbea6b3a68ae39,"3rd250 - 4500 W 107, LLC - (TEVA Pharmacy - tev250 for CAM)",Project,active,,,,,,2026-05-08,2026-06-18,2026-09-09
-"Block Real Estate Services, LLC",69fdef283b208288e0a79ba9,"3rd299 - Delaire KC, LLC - Westport Building - 301 Westport Road (Retail, 1st Floor)",Project,active,,,,,,2026-05-08,2026-09-01,2026-09-09
+"Block Real Estate Services, LLC",69fdef283b208288e0a79ba9,"3rd299 - Delaire KC, LLC - Westport Building - 301 Westport Road (Retail, 1st Floor)",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdef2cbf1df2fe96920b3f,"3rd312 - Westport Land & Management I, LLC",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdef31e45e7dcf5c4328bd,3rd347 - 919 E. 29th Street {Taikan Development Corporation},Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdef3603a2257cd27d8a19,3rd348 - 5051 West 134th Street {Taikan Development Corporation},Project,active,,,,,,2026-05-08,2026-09-06,2026-09-09
@@ -72,12 +72,12 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf0590bb484cab513c4cc,"kci283 - Platte Valley Industrial Center 3 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdf05e0e86e2f8723db3e7,"kci284 - Platte Valley Industrial Center 4 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-07-27,2026-09-09
 "Block Real Estate Services, LLC",69fdf061bf1df2fe969263d0,"kci286 - Platte Valley Industrial Center 6 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
-"Block Real Estate Services, LLC",69fdf064e45e7dcf5c4375c2,"kci287 - Platte Valley Industrial Center 7 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-09-09
+"Block Real Estate Services, LLC",69fdf064e45e7dcf5c4375c2,"kci287 - Platte Valley Industrial Center 7 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdf067fa0b60fcd50d99bf,"kci288 - Platte Valley Industrial Center 8 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdf06abf1df2fe96926664,"kci289 - Platte Valley Industrial Center 9 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-09-06,2026-09-09
 "Block Real Estate Services, LLC",69fdf06de45e7dcf5c4377cd,"kci290 - Platte Valley Industrial Center 10 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-09-06,2026-09-09
 "Block Real Estate Services, LLC",69fdf07103a2257cd27deaeb,"kci291 - Platte Valley Industrial Center 11 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
-"Block Real Estate Services, LLC",69fdf07502bb2c42a87a2174,"kci862 - Riverside Distribution Center 2 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-09-06,2026-09-09
+"Block Real Estate Services, LLC",69fdf07502bb2c42a87a2174,"kci862 - Riverside Distribution Center 2 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdf07f0e86e2f8723dbc32,"kci863 - Riverside Distribution Center 3 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-09-09
 "Block Real Estate Services, LLC",69fdf08238cbea6b3a6909f0,"kci864 - Riverside Distribution Center 4 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-07-14,2026-09-09
 "Block Real Estate Services, LLC",69fdf0850bb484cab513cb76,"kci865 - Riverside Distribution Center 5 {Riverside Distribution Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-09-06,2026-09-09
@@ -86,7 +86,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf08d0bb484cab513cc63,"kci893 - Riverside Industrial Center 3 {Riverside Industrial Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdf090fa0b60fcd50da1ff,"kci894 - Riverside Industrial Center 4 {Riverside Industrial Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-09-02,2026-09-09
 "Block Real Estate Services, LLC",69fdf09302bb2c42a87a27e2,"kci895 - Riverside Industrial Center 5 {Riverside Industrial Center Investment, LLC}",Project,active,,,,,,2026-05-08,2026-07-17,2026-09-09
-"Block Real Estate Services, LLC",69fdf09d38cbea6b3a6917a7,"lcs458 - Lenexa Logistics Centre South Building 8 {LLCS Building 8 Investors, LLC}",Project,active,,,,,,2026-05-08,2026-09-06,2026-09-09
+"Block Real Estate Services, LLC",69fdf09d38cbea6b3a6917a7,"lcs458 - Lenexa Logistics Centre South Building 8 {LLCS Building 8 Investors, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdf0a00bb484cab513cf51,"lle449 - Lenexa Logistics Centre East Building 4 {NB Lenexa East 4, LLC}",Project,active,,,,,,2026-05-08,2026-09-06,2026-09-09
 "Block Real Estate Services, LLC",69fdf0a3e45e7dcf5c438149,"lne435 - Lenexa Logistics Centre North Building 5 {LLCN 5, LLC}",Project,active,,,,,,2026-05-08,2026-09-06,2026-09-09
 "Block Real Estate Services, LLC",69fdf0a60bb484cab513d2da,"mil708 - Mill Street Station {Mill Street Station, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
@@ -134,7 +134,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf16443ffeed6de3b3cbb,"tic220 - Pinnacle Corporate Centre I {Pinnacle Corporate Centre, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdf16702bb2c42a87a69a9,"tic239 - 3901 Dixon {3901 Dixon Investors, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-09-09
 "Block Real Estate Services, LLC",69fdf16bd3bfa5e4945e27f9,tic242 - Martinrea Building {HIDGS Associates LLC},Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
-"Block Real Estate Services, LLC",69fdf16fbf1df2fe9692b2ff,"tic253 - Nall Corporate Centre II {HLBT Associates, LLC}",Project,active,,,,,,2026-05-08,2026-09-08,2026-09-09
+"Block Real Estate Services, LLC",69fdf16fbf1df2fe9692b2ff,"tic253 - Nall Corporate Centre II {HLBT Associates, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdf1733b208288e0a83fdc,"tic285 - Platte Valley Industrial Center 5 {WCG Riverside, LLC}",Project,active,,,,,,2026-05-08,2026-09-06,2026-09-09
 "Block Real Estate Services, LLC",69fdf176bf1df2fe9692bf76,"tic330 - Faith Technologies, Inc.",Project,active,,,,,,2026-05-08,2026-06-18,2026-09-09
 "Block Real Estate Services, LLC",69fdf179d3bfa5e4945e2ba8,"tic441 - Lenexa Logistics Centre North Building 1 {BLNW ASSOCIATES, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
@@ -168,7 +168,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf2023b208288e0a871b2,"tic846 - Pine Ridge Building 26 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-07-06,2026-09-09
 "Block Real Estate Services, LLC",69fdf20a02bb2c42a87a98b0,"tic847 - Pine Ridge Building 27 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdf20e8e25e7a0d918b96c,"tic851 - Pine Ridge Building 31 {PERG Corbion, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-09-09
-"Block Real Estate Services, LLC",69fdf211bf1df2fe9692fce4,"tic873 - Northgate Plaza {Northgate Associates, LLC}",Project,active,,,,,,2026-05-08,2026-09-06,2026-09-09
+"Block Real Estate Services, LLC",69fdf211bf1df2fe9692fce4,"tic873 - Northgate Plaza {Northgate Associates, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdf21419e1eeeaeb9ad90b,"tic880 - 8040 Bond {8040 Bond Investors, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-09-09
 "Block Real Estate Services, LLC",69fdf21802bb2c42a87aa766,"tic921 - Millennium Business Park {Millennium Lenexa, LLC}",Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
 "Block Real Estate Services, LLC",69fdf21b8e25e7a0d918bf24,tic949 - Staples Building {Orchard Cambridge Investors LLC} (fka Corporate Express [BIF III - CEB Executive Park]),Project,active,,,,,,2026-05-08,2026-09-09,2026-09-09
