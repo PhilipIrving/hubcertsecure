@@ -78,7 +78,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0f62446148bd848bf2,Bird Dog Shaved Ice (Vacant but still leasing),,PENDING,,,false,false,2026-09-11
 "Block Real Estate Services, LLC",69fded0f62446148bd848bf8,Block Multi-Family Group,,NON_COMPLIANT,,,true,false,2026-09-11
 "Block Real Estate Services, LLC",69fded0f62446148bd848bfb,"Block Real Estate Services, LLC / Block Partners, LLC",,NON_COMPLIANT,,,true,false,2026-09-11
-"Block Real Estate Services, LLC",69fded0f62446148bd848c01,BluSky Restoration Contractors LLC,,NON_COMPLIANT,,,true,false,2026-09-11
+"Block Real Estate Services, LLC",69fded0f62446148bd848c01,BluSky Restoration Contractors LLC,,COMPLIANT,,,true,false,2026-09-11
 "Block Real Estate Services, LLC",69fded0f62446148bd848c04,"BluSky Salon Suites, Inc.",,NON_COMPLIANT,,,true,false,2026-09-11
 "Block Real Estate Services, LLC",69fded0f62446148bd848c07,"BMO Harris Commercial Banking / BMO Harris Bank, NA",,COMPLIANT,,,true,false,2026-09-11
 "Block Real Estate Services, LLC",69fded0f62446148bd848c0a,"AKKA Karate USA / BMS Fitnes Solutions, Inc. (AKKA Olathe Martial Arts)",,NON_COMPLIANT,,,true,false,2026-09-11
@@ -509,7 +509,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2062446148bd84915c,Sherwin Williams-SW 07526,,COMPLIANT,,,true,false,2026-09-11
 "Block Real Estate Services, LLC",69fded2062446148bd84915f,"Shoe Sensation, Inc.",,COMPLIANT,,,true,false,2026-09-11
 "Block Real Estate Services, LLC",69fded2062446148bd849162,"Show Me State Vital Care / Show Me State Infusion Pharmacy, LLC",,COMPLIANT,,,true,false,2026-09-11
-"Block Real Estate Services, LLC",69fded2062446148bd849165,Side Pockets Inc,,NON_COMPLIANT,,,true,false,2026-09-11
+"Block Real Estate Services, LLC",69fded2062446148bd849165,Side Pockets Inc,,COMPLIANT,,,true,false,2026-09-11
 "Block Real Estate Services, LLC",69fded2062446148bd849168,Siemens Corporation,,COMPLIANT,,,true,false,2026-09-11
 "Block Real Estate Services, LLC",69fded2062446148bd84916b,Siemens Energy Inc,,NON_COMPLIANT,,,true,false,2026-09-11
 "Block Real Estate Services, LLC",69fded2062446148bd84916e,SJK Global LLC,,COMPLIANT,,,true,false,2026-09-11
@@ -655,7 +655,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a18432d8bbe0a0890e87ff9,Residential - renter occupied: John Woods,,NON_COMPLIANT,,,false,false,2026-09-11
 "Block Real Estate Services, LLC",6a184f0e5a886bcac1349c23,"Veseris / ES OPCO OSE, LLC",,COMPLIANT,,,true,false,2026-09-11
 "Block Real Estate Services, LLC",6a184f4af8f612ef094c4c00,PharMerica / Pharmacy Corporation of America,,NON_COMPLIANT,,,true,false,2026-09-11
-"Block Real Estate Services, LLC",6a184fbc8bbe0a0890eb6a1d,"HD Supply Facilities Maintenance, LTD.",,NON_COMPLIANT,,,true,false,2026-09-11
+"Block Real Estate Services, LLC",6a184fbc8bbe0a0890eb6a1d,"HD Supply Facilities Maintenance, LTD.",,COMPLIANT,,,true,false,2026-09-11
 "Block Real Estate Services, LLC",6a18531ae701796d85d75b3b,Voya Services Company,,NON_COMPLIANT,,,false,false,2026-09-11
 "Block Real Estate Services, LLC",6a1855835a886bcac1362a47,"Sheldon Fleishman, DPM, PA",,NON_COMPLIANT,,,false,false,2026-09-11
 "Block Real Estate Services, LLC",6a1857c8bda7a44c60055e47,KU Neurology  / University of Kansas Hospital Authority,,NON_COMPLIANT,,,true,false,2026-09-11
