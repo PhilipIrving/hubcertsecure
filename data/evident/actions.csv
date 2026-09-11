@@ -1,7 +1,2 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,5660468c-5d95-4a46-9533-33ecc1170270,,048e1065-0804-4952-8552-67723eb7e91a,,,2026-09-11T11:01:46,,,,,,09/11/2026,09/11/2026 11:18:14
-EMMES,f6d3722f-0eb8-4a08-86a9-e52b1aec6dda,,,,,2026-09-11T10:14:07,,,,,,09/11/2026,09/11/2026 11:18:14
-"Musselman & Hall Contractors, LLC",5ab83fc6-0e28-4316-bc95-2db518dadd6c,,,,,2026-09-03T06:25:14,,,,,,09/11/2026,09/11/2026 11:18:26
-Scandroli Construction,1cc36eaa-0112-43b3-a5a1-62a7390fa00c,,1a559b90-9536-486f-bf83-62e4d1ed00e3,,,2026-09-11T10:05:19,,,,,,09/11/2026,09/11/2026 11:18:28
-Scandroli Construction,2ad0f1d8-e583-4a76-96fa-09e86080a446,,9288daab-e1b6-4170-91be-18dc5c9c7454,,,2026-09-11T09:25:11,,,,,,09/11/2026,09/11/2026 11:18:28
-Scandroli Construction,74a48f0c-2acf-4ed7-b11c-6da2bfcf73c6,,a40b6a89-1464-4d85-8821-1fdbdd7a31a0,,,2026-09-11T09:22:38,,,,,,09/11/2026,09/11/2026 11:18:28
+EMMES,f6d3722f-0eb8-4a08-86a9-e52b1aec6dda,,,,,2026-09-11T10:14:07,,,,,,09/11/2026,09/11/2026 17:32:30
