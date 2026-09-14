@@ -523,7 +523,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2162446148bd849189,South Western Communications Inc,,COMPLIANT,,,true,false,2026-09-14
 "Block Real Estate Services, LLC",69fded2162446148bd84918c,Southwest Solutions Group Inc,,NON_COMPLIANT,,,true,false,2026-09-14
 "Block Real Estate Services, LLC",69fded2162446148bd849192,Sport Clips,,NON_COMPLIANT,,,true,false,2026-09-14
-"Block Real Estate Services, LLC",69fded2162446148bd849195,Sports Rehab & Physical Therapy Inc,,COMPLIANT,,,true,false,2026-09-14
+"Block Real Estate Services, LLC",69fded2162446148bd849195,Sports Rehab & Physical Therapy Inc,,NON_COMPLIANT,,,true,false,2026-09-14
 "Block Real Estate Services, LLC",69fded2162446148bd849198,"Sports Rehab and Physical Therapy Associates, Inc. (sublease from Kansas City Bone & Joint)",,COMPLIANT,,,true,false,2026-09-14
 "Block Real Estate Services, LLC",69fded2162446148bd84919b,"SRS Commercial AVL, LLC (fka Stark Raving Solutions, LLC)",,NON_COMPLIANT,,,true,false,2026-09-14
 "Block Real Estate Services, LLC",69fded2162446148bd84919e,"Midwest Roofing / SRS Distribution, Inc.",,NON_COMPLIANT,,,true,false,2026-09-14
@@ -765,6 +765,9 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d2b,"KIDSUNITED / Goal Getters 2, LLC",,NON_COMPLIANT,,,true,false,2026-09-14
 "Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d32,"Parkway Animal Hospital, LLC / Village Vet, LLC",,NON_COMPLIANT,,,true,false,2026-09-14
 "Block Real Estate Services, LLC",6a9af48732939092ea863a26,Daley & Fey,,NON_COMPLIANT,,,true,false,2026-09-14
+"Block Real Estate Services, LLC",6aa85fceac91ff43d2d77bcb,MHC Group / McElroy's Inc,,NON_COMPLIANT,,,true,false,2026-09-14
+"Block Real Estate Services, LLC",6aa861419efb7603ecfc63ae,CapFinancial Group,,NON_COMPLIANT,,,true,false,2026-09-14
+"Block Real Estate Services, LLC",6aa86494ac91ff43d2d86f38,Direct Impact Logistics INC,,NON_COMPLIANT,,,true,false,2026-09-14
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,COMPLIANT,,,true,false,2026-09-14
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,NON_COMPLIANT,,,true,false,2026-09-14
 QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,COMPLIANT,,,true,false,2026-09-14
