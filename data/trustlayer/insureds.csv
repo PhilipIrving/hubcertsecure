@@ -258,7 +258,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1662446148bd848e35,H M Cragg Co,,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1662446148bd848e38,"H&R Block Eastern Tax Svc., Inc. / H&R Block 24167",,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1662446148bd848e3b,"Discount Tire / Halle Properties, Inc.",,COMPLIANT,,,true,false,2026-09-15
-"Block Real Estate Services, LLC",69fded1662446148bd848e3e,"Harbor Freight Tools USA, Inc",,NON_COMPLIANT,,,true,false,2026-09-15
+"Block Real Estate Services, LLC",69fded1662446148bd848e3e,"Harbor Freight Tools USA, Inc",,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1662446148bd848e41,"Hartfiel Automation, Inc.",,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1662446148bd848e44,HCA Realty,,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1762446148bd848e4a,Healthy Meals Inc,,COMPLIANT,,,true,false,2026-09-15
@@ -323,7 +323,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1962446148bd848f07,LabCorp / Laboratory Corporation of America Holdings,,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1962446148bd848f0a,Landers Visions LLC,,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1962446148bd848f0d,Landmarc Environmental Systems LLC,,COMPLIANT,,,true,false,2026-09-15
-"Block Real Estate Services, LLC",69fded1962446148bd848f13,"LeafFilter North, LLC/Leaf Home Safety Solutions, LLC",,NON_COMPLIANT,,,true,false,2026-09-15
+"Block Real Estate Services, LLC",69fded1962446148bd848f13,"LeafFilter North, LLC/Leaf Home Safety Solutions, LLC",,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1962446148bd848f16,"LeafFilter North, LLC/Leaf Home Safety Solutions, LLC",,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1962446148bd848f19,Legacy Restaurant Group LLC,,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1962446148bd848f1c,Lenexa Manufacturing Company LLC,,COMPLIANT,,,true,false,2026-09-15
@@ -499,7 +499,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2062446148bd849138,Scheels All Sports Inc,,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded2062446148bd84913b,New Image Leasing / Seal Harbor Capital,,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded2062446148bd84913e,Security Data Supply,,COMPLIANT,,,true,false,2026-09-15
-"Block Real Estate Services, LLC",69fded2062446148bd849141,Seen Merchandising LLC,,NON_COMPLIANT,,,true,false,2026-09-15
+"Block Real Estate Services, LLC",69fded2062446148bd849141,Seen Merchandising LLC,,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded2062446148bd849144,Select Comfort Retail Corporation,,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded2062446148bd849147,Select Physical Therapy / Healthsouth Corp,,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded2062446148bd84914a,"Senior Day KC / The Respite House, LLC",,NON_COMPLIANT,,,true,false,2026-09-15
@@ -699,7 +699,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a19b8b18805769e5038a2ed,Savor Strategy,,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",6a1dccbb23b401dcff773de7,TitleMax Title Loans / Title Max of Missouri,,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",6a1dcea405955276b691e1da,Regal Distributing Co.,,COMPLIANT,,,true,false,2026-09-15
-"Block Real Estate Services, LLC",6a1dceb25e529bb0fc8a0f0a,"Integrated Opening Solutions, LLC",,NON_COMPLIANT,,,true,false,2026-09-15
+"Block Real Estate Services, LLC",6a1dceb25e529bb0fc8a0f0a,"Integrated Opening Solutions, LLC",,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",6a1dd8f38805769e5068fd19,"Living Spaces Furniture, LLC",,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",6a1dd8fdfec65127865d9614,"Jaeckle Wholesale, Inc.",,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",6a1dd90798a3fac93a1b2583,"ASMI Stone and Tile, LLC",,NON_COMPLIANT,,,true,false,2026-09-15
