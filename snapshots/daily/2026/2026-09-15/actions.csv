@@ -1,0 +1,3 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Canadian Pacific Kansas City,3856e822-f749-4d77-bf0e-eead2620d3a8,,,,,2026-09-15T03:11:59,,,,,,09/14/2026,09/14/2026 23:06:30
+EMMES,b4943ec3-2649-4d45-9c0f-6e3fd3a73541,,c97f43e9-ae47-4733-9bae-2a81863c7ee3,,,2026-09-15T03:42:27,,,,,,09/14/2026,09/14/2026 23:06:30
