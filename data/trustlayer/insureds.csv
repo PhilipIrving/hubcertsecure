@@ -33,7 +33,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0d62446148bd848b5c,"Earth Brands, Inc. subtenant of  American West Worldwide Express, Inc. / Renew",,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0d62446148bd848b5f,"Ameriprise Financial / Ameriprise Holdings, Inc.",,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0d62446148bd848b62,"AMSCO Supply / Flegler Investment Co., Inc.",,COMPLIANT,,,true,false,2026-09-15
-"Block Real Estate Services, LLC",69fded0d62446148bd848b65,Amsted Rail Company Inc,,NON_COMPLIANT,,,true,false,2026-09-15
+"Block Real Estate Services, LLC",69fded0d62446148bd848b65,Amsted Rail Company Inc,,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0d62446148bd848b68,AN Cubed Marketing LLC,,NON_COMPLIANT,,,false,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0d62446148bd848b6b,Anixter Inc,,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0d62446148bd848b6e,Puppy Love Grooming / Anntippia Young,,NON_COMPLIANT,,,true,false,2026-09-15
@@ -41,7 +41,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0d62446148bd848b74,LaborMax Staffing / Anytime Labor - KC Metro,,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0d62446148bd848b77,"Apex Products, LLC",,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0d62446148bd848b7a,"ApexSite Cleaning, LLC",,NON_COMPLIANT,,,true,false,2026-09-15
-"Block Real Estate Services, LLC",69fded0e62446148bd848b7d,"APLOS, Inc.",,COMPLIANT,,,true,false,2026-09-15
+"Block Real Estate Services, LLC",69fded0e62446148bd848b7d,"APLOS, Inc.",,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0e62446148bd848b80,"Applebee's Bar & Grill / Apple Central, LLC",,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0e62446148bd848b83,Applied Industrial Technologies Inc,,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0e62446148bd848b86,ARC Physical Therapy Plus,,COMPLIANT,,,true,false,2026-09-15
@@ -50,7 +50,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded0e62446148bd848b8f,Arrowhead Forensics,,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0e62446148bd848b92,Arthur J Gallagher Risk Management Services Inc,,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0e62446148bd848b95,Ashley Nelson Studios,,NON_COMPLIANT,,,true,false,2026-09-15
-"Block Real Estate Services, LLC",69fded0e62446148bd848b98,Aspen Properties Group,,NON_COMPLIANT,,,true,false,2026-09-15
+"Block Real Estate Services, LLC",69fded0e62446148bd848b98,Aspen Properties Group,,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0e62446148bd848b9b,Aspire Wealth Management LLC,,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0e62446148bd848ba1,Asurion LLC,,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded0e62446148bd848ba4,Asurion UBIF,,COMPLIANT,,,true,false,2026-09-15
@@ -444,7 +444,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1d62446148bd849081,"ICON / PRA Health Sciences / Pharmaceutical Research Associates, Inc.",,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1d62446148bd849084,Pharmacy Corp of America,,PENDING,,,false,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1e62446148bd84908a,Phoenix Fastpitch LLC,,NON_COMPLIANT,,,true,false,2026-09-15
-"Block Real Estate Services, LLC",69fded1e62446148bd84908d,"Servpro / Piat, Inc.",,NON_COMPLIANT,,,true,false,2026-09-15
+"Block Real Estate Services, LLC",69fded1e62446148bd84908d,"Servpro / Piat, Inc.",,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1e62446148bd849090,"Pinnacle Construction Group, LLC",,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1e62446148bd849093,Pivot International Inc,,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded1e62446148bd849096,"Pizza Hut of America, Inc.",,NON_COMPLIANT,,,true,false,2026-09-15
@@ -517,7 +517,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2062446148bd849174,Slim 4 Life Weight Loss Centers Inc,,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded2062446148bd849177,"Epic Vision Center / Smithville Eye Center, LLC",,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded2162446148bd84917a,"Church's Chicken / SNSA, Inc.",,NON_COMPLIANT,,,true,false,2026-09-15
-"Block Real Estate Services, LLC",69fded2162446148bd84917d,Soar Nutrition,,NON_COMPLIANT,,,true,false,2026-09-15
+"Block Real Estate Services, LLC",69fded2162446148bd84917d,Soar Nutrition,,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded2162446148bd849180,Sobriety First,,NON_COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded2162446148bd849183,"Soleran, Inc. (sublease from Sunflower Health Plan / Centene Management Company, LLC)",,COMPLIANT,,,true,false,2026-09-15
 "Block Real Estate Services, LLC",69fded2162446148bd849189,South Western Communications Inc,,COMPLIANT,,,true,false,2026-09-15
