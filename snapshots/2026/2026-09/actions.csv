@@ -1,0 +1,4 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Scandroli Construction,3835b7a5-d605-43ef-8ccd-63cd76dd8093,,dfc621bf-03e0-4ed7-ae82-5a9b249a28b4,,,2026-09-17T02:08:38,,,,,,09/16/2026,09/16/2026 23:09:47
+Scandroli Construction,6fa055e0-8efb-4d16-8608-47ac9d1c3486,,,,,2026-09-17T02:08:38,,,,,,09/16/2026,09/16/2026 23:09:47
+Scandroli Construction,d18f0884-9a75-4930-8660-cb4895e322ce,,21f84392-5945-43ef-b5b1-b07565386fb1,,,2026-09-17T03:40:25,,,,,,09/16/2026,09/16/2026 23:09:47
