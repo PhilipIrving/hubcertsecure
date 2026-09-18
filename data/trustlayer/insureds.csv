@@ -393,7 +393,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1c62446148bd848fe8,"Prosperity Partners / NDH Advisors, LLC (fka Mariner Group, LLC & Stratus Group, LLC)",,NON_COMPLIANT,,,true,false,2026-09-18
 "Block Real Estate Services, LLC",69fded1c62446148bd848feb,Neenan Company,,NON_COMPLIANT,,,true,false,2026-09-18
 "Block Real Estate Services, LLC",69fded1c62446148bd848fee,"Creche Innovations / Neonatal Product Group, Inc.",,NON_COMPLIANT,,,true,false,2026-09-18
-"Block Real Estate Services, LLC",69fded1c62446148bd848ff1,Nestle Purina PetCare Co.,,NON_COMPLIANT,,,true,false,2026-09-18
+"Block Real Estate Services, LLC",69fded1c62446148bd848ff1,Nestle Purina PetCare Co.,,COMPLIANT,,,true,false,2026-09-18
 "Block Real Estate Services, LLC",69fded1c62446148bd848ff4,Netsmart Technologies Inc,,COMPLIANT,,,true,false,2026-09-18
 "Block Real Estate Services, LLC",69fded1c62446148bd848ff7,New Century Dodge Chrysler Wholesale Parts,,COMPLIANT,,,true,false,2026-09-18
 "Block Real Estate Services, LLC",69fded1c62446148bd848ffa,New China Super Buffet,,NON_COMPLIANT,,,true,false,2026-09-18
@@ -768,6 +768,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6aa85fceac91ff43d2d77bcb,MHC Group / McElroy's Inc,,NON_COMPLIANT,,,true,false,2026-09-18
 "Block Real Estate Services, LLC",6aa861419efb7603ecfc63ae,CapFinancial Group,,NON_COMPLIANT,,,true,false,2026-09-18
 "Block Real Estate Services, LLC",6aa86494ac91ff43d2d86f38,Direct Impact Logistics INC,,NON_COMPLIANT,,,true,false,2026-09-18
+"Block Real Estate Services, LLC",6aad904d55224622f2d2f233,Empower Gymnastics LLC,,NON_COMPLIANT,,,true,false,2026-09-18
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,COMPLIANT,,,true,false,2026-09-18
 QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,NON_COMPLIANT,,,true,false,2026-09-18
 QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,COMPLIANT,,,true,false,2026-09-18

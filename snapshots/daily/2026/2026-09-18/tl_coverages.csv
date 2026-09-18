@@ -1407,6 +1407,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a46a9fa881712769bd59542,"GuideTech, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-01,2027-06-01,,,,,2026-09-18
 "Block Real Estate Services, LLC",6a46a9fa881712769bd59542,"GuideTech, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-09-18
 "Block Real Estate Services, LLC",6a46a9fa881712769bd59542,"GuideTech, LLC",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-06-01,2027-06-01,,,,,2026-09-18
+"Block Real Estate Services, LLC",6aad904d55224622f2d2f233,Empower Gymnastics LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-18
+"Block Real Estate Services, LLC",6aad904d55224622f2d2f233,Empower Gymnastics LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-18
+"Block Real Estate Services, LLC",6aad904d55224622f2d2f233,Empower Gymnastics LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-18
+"Block Real Estate Services, LLC",6aad904d55224622f2d2f233,Empower Gymnastics LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded1862446148bd848ee0,Kate Smith Soiree LLC,,Commercial General Liability,commercialGeneralLiability,,,2025-12-01,2026-12-01,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded1862446148bd848ee0,Kate Smith Soiree LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded1862446148bd848ee0,Kate Smith Soiree LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-03-06,2027-03-06,,,,,2026-09-18
@@ -3587,6 +3591,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0d62446148bd848b5c,"Earth Brands, Inc. subtenant of  American West Worldwide Express, Inc. / Renew",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
 "Block Real Estate Services, LLC",6a71fb111df1817c9d71e47a,Wholesale Electric Supply Co.,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded1962446148bd848ee3,Kavar Capital Partners / Douglas G & Kara L,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
+"Block Real Estate Services, LLC",6aad904d55224622f2d2f233,Empower Gymnastics LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-09-18
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-09-18
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-09-18
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-09-18
