@@ -1307,10 +1307,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2062446148bd84915f,"Shoe Sensation, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-07-31,2027-07-31,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded2062446148bd84915f,"Shoe Sensation, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-31,2027-07-31,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded2062446148bd84915f,"Shoe Sensation, Inc.",,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2026-07-31,2027-07-31,,,,,2026-09-18
-"Block Real Estate Services, LLC",69fded2462446148bd849282,Verizon / Cellular Sales,,Commercial General Liability,commercialGeneralLiability,,,2025-09-17,2026-09-17,,,,,2026-09-18
-"Block Real Estate Services, LLC",69fded2462446148bd849282,Verizon / Cellular Sales,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-09-17,2026-09-17,,,,,2026-09-18
+"Block Real Estate Services, LLC",69fded2462446148bd849282,Verizon / Cellular Sales,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-18
+"Block Real Estate Services, LLC",69fded2462446148bd849282,Verizon / Cellular Sales,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded2462446148bd849282,Verizon / Cellular Sales,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-18
-"Block Real Estate Services, LLC",69fded2462446148bd849282,Verizon / Cellular Sales,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-09-17,2026-09-17,,,,,2026-09-18
+"Block Real Estate Services, LLC",69fded2462446148bd849282,Verizon / Cellular Sales,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded1362446148bd848d1e,"Dollar General / Dolgencorp, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-02-10,2027-02-10,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded1362446148bd848d1e,"Dollar General / Dolgencorp, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-02-10,2027-02-10,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded1362446148bd848d1e,"Dollar General / Dolgencorp, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-02-10,2027-02-10,,,,,2026-09-18
@@ -2231,10 +2231,10 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2362446148bd849249,Twentyseven Global LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded2362446148bd849249,Twentyseven Global LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded2362446148bd849249,Twentyseven Global LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-18
-"Block Real Estate Services, LLC",69fded1162446148bd848ca9,Core Adventures LLC,,Commercial General Liability,commercialGeneralLiability,,,2025-09-17,2026-09-17,,,,,2026-09-18
+"Block Real Estate Services, LLC",69fded1162446148bd848ca9,Core Adventures LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded1162446148bd848ca9,Core Adventures LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-18
-"Block Real Estate Services, LLC",69fded1162446148bd848ca9,Core Adventures LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-09-17,2026-09-17,,,,,2026-09-18
-"Block Real Estate Services, LLC",69fded1162446148bd848ca9,Core Adventures LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,2025-09-17,2026-09-17,,,,,2026-09-18
+"Block Real Estate Services, LLC",69fded1162446148bd848ca9,Core Adventures LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-09-18
+"Block Real Estate Services, LLC",69fded1162446148bd848ca9,Core Adventures LLC,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-18
 "Block Real Estate Services, LLC",6a7100a9132501a25c9e41ac,"The Reynolds Law Firm, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-08-06,2027-08-06,,,,,2026-09-18
 "Block Real Estate Services, LLC",6a7100a9132501a25c9e41ac,"The Reynolds Law Firm, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-09-18
 "Block Real Estate Services, LLC",6a7100a9132501a25c9e41ac,"The Reynolds Law Firm, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-09-01,2027-05-01,,,,,2026-09-18
@@ -3512,6 +3512,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2262446148bd8491d7,"SPI Coatings / Superior Products International II, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
 "Block Real Estate Services, LLC",6a186650b517ae25a87c5643,Kansas City Vascular & General Surgery Group / HCA Midwest Health,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
 "Block Real Estate Services, LLC",6a18661fa4bcce858bf426d7,Premier Gastroenterology of Kansas City (fka KC Gastroenterology & Hepatology / HCA-MMC-Menorah Medical Center),,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
+"Block Real Estate Services, LLC",6a18663117ab90e8a02f12a9,Midwest Heart & Vascular and KCHRI (Kansas City Heart Rhythm Institute),,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-09-18
 "Block Real Estate Services, LLC",6a1dd90798a3fac93a1b2583,"ASMI Stone and Tile, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded2062446148bd84915c,Sherwin Williams-SW 07526,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded1c62446148bd848ffd,"New Cingular Wireless PCS, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
@@ -3573,6 +3574,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d16,Insight Vision Center #1155,,Additional Requirements,6ac20aae-5728-5d57-b364-aeba38527dba,,,,,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded2262446148bd8491fe,The American National Red Cross,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded2062446148bd84915f,"Shoe Sensation, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
+"Block Real Estate Services, LLC",69fded1762446148bd848e5f,"Hibbett Sports / Hibbett Retail, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded1262446148bd848cf1,"Retail Data Systems of KC (RDS) / Data Systems, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded1a62446148bd848f55,"Bistro / Marcie, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded1962446148bd848f01,"KTI / Kruger Technologies, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
@@ -3580,6 +3582,11 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded2362446148bd84924f,UBS Financial Services Inc,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
 "Block Real Estate Services, LLC",69fded0f62446148bd848c01,BluSky Restoration Contractors LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
 "Block Real Estate Services, LLC",6aa86494ac91ff43d2d86f38,Direct Impact Logistics INC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
+"Block Real Estate Services, LLC",69fded0c62446148bd848b1d,"Adams Cable Equipment, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
+"Block Real Estate Services, LLC",69fded0c62446148bd848b2f,"Daymon / Advantage Sales & Marketing, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-09-18
+"Block Real Estate Services, LLC",69fded0d62446148bd848b5c,"Earth Brands, Inc. subtenant of  American West Worldwide Express, Inc. / Renew",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
+"Block Real Estate Services, LLC",6a71fb111df1817c9d71e47a,Wholesale Electric Supply Co.,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
+"Block Real Estate Services, LLC",69fded1962446148bd848ee3,Kavar Capital Partners / Douglas G & Kara L,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-09-18
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-09-18
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-09-18
 QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-09-18
