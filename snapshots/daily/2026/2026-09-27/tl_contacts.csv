@@ -1,18 +1,25 @@
 client,vendor_id,vendor_name,email,contact_name,is_primary,is_default_request_recipient,external_code,sync_date
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",nmorgan@hitt-gc.com,,true,true,,2026-09-27
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,msanchez@evans-gc.com,,false,true,,2026-09-27
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,mbrier@evans-gc.com,,true,false,,2026-09-27
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,cmarshall@evans-gc.com,,false,true,,2026-09-27
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",porterd@claycorp.com,,true,true,,2026-09-27
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,pherrin@brasfieldgorrie.com,,true,true,,2026-09-27
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,kskipper@lakeviewrisk.com,,false,false,,2026-09-27
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,evanelkan@lakeviewrisk.com,,false,false,,2026-09-27
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,dbuser@gilbaneco.com,,true,true,,2026-09-27
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,esynstad@gilbaneco.com,,false,false,,2026-09-27
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,michael.annecchino@alliant.com,,false,false,,2026-09-27
 QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,deniese.fahnbulleh@q.com,,false,false,,2026-09-27
+QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,msanchez@evans-gc.com,,false,true,,2026-09-27
+QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,mbrier@evans-gc.com,,true,false,,2026-09-27
+QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,cmarshall@evans-gc.com,,false,true,,2026-09-27
+QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",tyson.robinson@gray.com,,false,true,,2026-09-27
+QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",kcasu@lockton.com,,false,false,,2026-09-27
+QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",ajolly@gray.com,,true,true,,2026-09-27
+QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",porterd@claycorp.com,,true,true,,2026-09-27
 QTS Data Centers,69f0f3c5beb6279e947be0f3,"Holder Construction Group, LLC",internalemail@noemail.com,,true,false,,2026-09-27
+QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",nmorgan@hitt-gc.com,,true,true,,2026-09-27
+QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",cmchenry@suffolk.com,,true,true,,2026-09-27
+QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",jessica.coello@alliant.com,,false,false,,2026-09-27
+QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,jonathan.simko@whiting-turner.com,,true,true,,2026-09-27
+QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,squidley@hmsia.com,,false,false,,2026-09-27
+QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,whitingturner.certificates@rcmd.com,,false,false,,2026-09-27
+QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,troy.sanders@whiting-turner.com,,false,true,,2026-09-27
+QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,joe.fioretti@whiting-turner.com,,false,false,,2026-09-27
 QTS Data Centers,69f0f3c5beb6279e947be0fd,M. A. Mortenson Company,dan.bavaro@mortenson.com,,true,true,,2026-09-27
 QTS Data Centers,69f0f3c5beb6279e947be0fd,M. A. Mortenson Company,certificates@wtwco.com,,false,false,,2026-09-27
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",tami.gray@structuretone.com,,true,true,,2026-09-27
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",nick.soldivieri@laytonconstruction.com,,false,false,,2026-09-27
+QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",paige.brandenburg@laytonconstruction.com,,false,true,,2026-09-27
+QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",rickie.sanchez@laytonconstruction.com,,true,false,,2026-09-27
