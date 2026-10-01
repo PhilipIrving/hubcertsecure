@@ -1,8 +1,2 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,d9327d52-a521-45f3-9319-479d7803d443,,e7378f8b-902b-4442-9e8c-1fa31003a578,,pending,2026-09-30T23:31:06,,,,,,10/01/2026,10/01/2026 00:03:29
-Scandroli Construction,01710707-9d2b-4059-9cd6-166cd10c1267,,918d8cd2-8ef9-4290-bab7-caaa74b0c8c3,,pending,2026-09-30T23:44:41,,,,,,10/01/2026,10/01/2026 00:03:41
-Scandroli Construction,404323ce-72d6-406e-a85a-7ed0796a6331,,8abf46f6-f328-402b-863c-04a229b0da03,,pending,2026-09-30T23:55:52,,,,,,10/01/2026,10/01/2026 00:03:41
-Scandroli Construction,8eb6cc50-459e-48e2-8eca-4c54cc5dd5fa,,171317ac-e60c-47de-a4f1-5719017af333,,pending,2026-09-30T23:31:56,,,,,,10/01/2026,10/01/2026 00:03:41
-Scandroli Construction,96e0f255-e74c-43a3-936a-54601aa1fc51,,,,pending,2026-09-30T23:34:02,,,,,,10/01/2026,10/01/2026 00:03:41
-Scandroli Construction,d92ed631-4b0c-4501-87f5-f5b80dfe71a7,,94fe838b-60ed-4cab-9120-4cb7d8e14bb4,,pending,2026-09-30T23:34:02,,,,,,10/01/2026,10/01/2026 00:03:41
-The Abbey Management Company,ab4fbdcc-0a9b-4a2c-b5ca-b31c90dd0297,,,,pending,2026-09-30T22:48:29,,,,,,10/01/2026,10/01/2026 00:03:44
+Canadian Pacific Kansas City,8537183b-1bb3-48bf-91b4-a35031a3ad83,,4abd008a-d700-48d4-ae1d-4a35138407e6,,pending,2026-10-01T14:48:51,,,,,,10/01/2026,10/01/2026 10:28:49
