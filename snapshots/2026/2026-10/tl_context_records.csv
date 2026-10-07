@@ -51,7 +51,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf00902bb2c42a87a0a88,"cm2757 - Corporate Medical Plaza II {CMP Building II, LLC}",Project,active,,,,,,2026-05-08,2026-10-06,2026-10-07
 "Block Real Estate Services, LLC",69fdf00d0e86e2f8723da443,"cm3758 - Corporate Medical Plaza III {CMP Building III, LLC}",Project,active,,,,,,2026-05-08,2026-10-06,2026-10-07
 "Block Real Estate Services, LLC",69fdf01138cbea6b3a68e74b,"cna251 - Nall Corporate Centre I {CN Associates, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-10-07
-"Block Real Estate Services, LLC",69fdf0150bb484cab513b4eb,col720 - College Crossing - Building 1 (Building A) {COLLEGE CROSSING ASSOCIATES. LLC},Project,active,,,,,,2026-05-08,2026-10-06,2026-10-07
+"Block Real Estate Services, LLC",69fdf0150bb484cab513b4eb,col720 - College Crossing - Building 1 (Building A) {COLLEGE CROSSING ASSOCIATES. LLC},Project,active,,,,,,2026-05-08,2026-10-07,2026-10-07
 "Block Real Estate Services, LLC",69fdf01803a2257cd27dd982,"cp3269 - CityPlace Corporate Centre III {Cityplace Corporate Centre III Investors, LLC}",Project,active,,,,,,2026-05-08,2026-06-18,2026-10-07
 "Block Real Estate Services, LLC",69fdf01c02bb2c42a87a0f07,"dav189 - Davenport Investors, LLC",Project,active,,,,,,2026-05-08,2026-10-06,2026-10-07
 "Block Real Estate Services, LLC",69fdf01f3b208288e0a7cdb6,"fwr117 - Galleria 115 Firstwatch {Galleria 115, LLC}",Project,active,,,,,,2026-05-08,2026-08-21,2026-10-07
@@ -67,7 +67,7 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",69fdf0473b208288e0a7d535,"kc2702 - Switzer III {Barry 3, LLC}",Project,active,,,,,,2026-05-08,2026-09-20,2026-10-07
 "Block Real Estate Services, LLC",69fdf04d03a2257cd27de3b8,"kc2703 - Brookhollow I {Flint 1, LLC}",Project,active,,,,,,2026-05-08,2026-10-05,2026-10-07
 "Block Real Estate Services, LLC",69fdf05002bb2c42a87a1859,"kc2704 - Westbrook IV {Brian 4, LLC}",Project,active,,,,,,2026-05-08,2026-10-06,2026-10-07
-"Block Real Estate Services, LLC",69fdf0533b208288e0a7d827,"kci281 - Platte Valley Industrial Center 1 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-10-06,2026-10-07
+"Block Real Estate Services, LLC",69fdf0533b208288e0a7d827,"kci281 - Platte Valley Industrial Center 1 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-10-07,2026-10-07
 "Block Real Estate Services, LLC",69fdf05638cbea6b3a68f4ea,"kci282 - Platte Valley Industrial Center 2 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-09-20,2026-10-07
 "Block Real Estate Services, LLC",69fdf0590bb484cab513c4cc,"kci283 - Platte Valley Industrial Center 3 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-10-06,2026-10-07
 "Block Real Estate Services, LLC",69fdf05e0e86e2f8723db3e7,"kci284 - Platte Valley Industrial Center 4 {Platte Valley Investment, LLC}",Project,active,,,,,,2026-05-08,2026-07-27,2026-10-07
@@ -183,6 +183,9 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",6a186a07df4174601583f130,"prm793 - Prom Motor Hotel, Inc. - 12065 Metcalf",Project,active,,,,,,2026-05-28,2026-10-06,2026-10-07
 "Block Real Estate Services, LLC",6a186a846b3214c65fe80b42,"prm791 - Prom Motor Hotel, Inc. - 210 N 7 Highway",Project,active,,,,,,2026-05-28,2026-10-06,2026-10-07
 "Block Real Estate Services, LLC",6a18705a9ef1cffe57c1dcd0,"prg840 - Pine Ridge Building 9 {PERG BUILDINGS, LLC}",Project,active,,,,,,2026-05-28,2026-10-06,2026-10-07
+"Block Real Estate Services, LLC",6a71fac6e572ffeb053234f4,lne432 - Lenexa Logistics Centre North Building 6,Project,active,,,,,,2026-08-04,2026-10-06,2026-10-07
+"Block Real Estate Services, LLC",6a99d61e2d636a0d9252bc15,3rd669 - Lone Elm,Project,active,,,,,,2026-09-03,2026-10-06,2026-10-07
+"Block Real Estate Services, LLC",6ac3c59ceda8e0d11de77ddc,"3rd117 - Galleria 115 Fidelity Bank {WEINFRA 5, LLC}",Project,active,,,,,,2026-10-05,2026-10-06,2026-10-07
 "Block Real Estate Services, LLC",6a1dcc9da0ed8c51ab1b2a64,"3rd046 - Lee's Summit Mike Enterprise {Lee's Summit Mike Enterprise, LLC} (fka Lee's Summit Max)",Project,active,,,,,,2026-06-01,2026-10-06,2026-10-07
 "Block Real Estate Services, LLC",6a1dce5d2575f4fed44439f8,"len462 - Lenexa Logistics Centre South Building 6 {Lenexa Logistics South 6, LLC}",Project,active,,,,,,2026-06-01,2026-10-06,2026-10-07
 "Block Real Estate Services, LLC",6a1dd8c35e529bb0fc8c5087,tic447 - Lenexa Logistics Centre East Building 2,Project,active,,,,,,2026-06-01,2026-10-06,2026-10-07
@@ -196,9 +199,6 @@ client,id,name,context_object,status,description,start_date,end_date,archived_at
 "Block Real Estate Services, LLC",6a1dfca5a0ed8c51ab26246c,"con828 - Pine Ridge Building 28 {Building 28 of Pine Ridge West Condominium Association, Inc.}",Project,active,,,,,,2026-06-01,2026-10-06,2026-10-07
 "Block Real Estate Services, LLC",6a1ee9a423b401dcff8fb689,"rvw871 - Ridgeview Associates, LLC",Project,active,,,,,,2026-06-02,2026-10-06,2026-10-07
 "Block Real Estate Services, LLC",6a1eecc680c8f1ceee9d6510,3rd621 - Rule Realty Corporation - 3621 Noland Court,Project,active,,,,,,2026-06-02,2026-10-06,2026-10-07
-"Block Real Estate Services, LLC",6a71fac6e572ffeb053234f4,lne432 - Lenexa Logistics Centre North Building 6,Project,active,,,,,,2026-08-04,2026-10-06,2026-10-07
-"Block Real Estate Services, LLC",6a99d61e2d636a0d9252bc15,3rd669 - Lone Elm,Project,active,,,,,,2026-09-03,2026-10-06,2026-10-07
-"Block Real Estate Services, LLC",6ac3c59ceda8e0d11de77ddc,"3rd117 - Galleria 115 Fidelity Bank {WEINFRA 5, LLC}",Project,active,,,,,,2026-10-05,2026-10-06,2026-10-07
 QTS Data Centers,69f10c28beb6279e947be4c9,"DFW1DC4 - QTS Irving DC4, LLC",Project,archived,Structure Tone,2025-12-31,2026-01-08,2026-08-13,,2026-04-28,2026-08-13,2026-10-07
 QTS Data Centers,69f10c28beb6279e947be4ca,"DFW1DC5 - QTS Irving DC5, LLC",Project,active,Rogers O'Brien,2025-08-23,2025-10-08,,,2026-04-28,2026-10-06,2026-10-07
 QTS Data Centers,69f10c28beb6279e947be4cb,"DFW1DC6 - QTS Irving DC6, LLC",Project,active,Rogers O'Brien,2026-02-01,2026-04-01,,,2026-04-28,2026-10-06,2026-10-07
