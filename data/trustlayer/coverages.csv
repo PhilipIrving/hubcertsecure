@@ -23,10 +23,6 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1c62446148bd849015,O' Reilly Automotive,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1c62446148bd849015,O' Reilly Automotive,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1c62446148bd849015,O' Reilly Automotive,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",69fded0e62446148bd848b80,"Applebee's Bar & Grill / Apple Central, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-08-01,2027-08-01,,,,,2026-10-09
-"Block Real Estate Services, LLC",69fded0e62446148bd848b80,"Applebee's Bar & Grill / Apple Central, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-08-01,2027-08-01,,,,,2026-10-09
-"Block Real Estate Services, LLC",69fded0e62446148bd848b80,"Applebee's Bar & Grill / Apple Central, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-08-01,2027-08-01,,,,,2026-10-09
-"Block Real Estate Services, LLC",69fded0e62446148bd848b80,"Applebee's Bar & Grill / Apple Central, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-08-01,2027-08-01,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded0f62446148bd848bda,Bella's Italian Restaurant Inc,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded0f62446148bd848bda,Bella's Italian Restaurant Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded0f62446148bd848bda,Bella's Italian Restaurant Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
@@ -367,9 +363,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0e62446148bd848ba4,Asurion UBIF,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-04-30,2027-04-30,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded0e62446148bd848ba4,Asurion UBIF,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-04-30,2027-04-30,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded0e62446148bd848ba4,Asurion UBIF,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-04-30,2027-04-30,,,,,2026-10-09
-"Block Real Estate Services, LLC",69fded1362446148bd848d4e,Einstein Bros Bagels #3961,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",69fded1362446148bd848d4e,Einstein Bros Bagels #3961,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",69fded1362446148bd848d4e,Einstein Bros Bagels #3961,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
+"Block Real Estate Services, LLC",69fded1362446148bd848d4e,Einstein Bros Bagels #3961,,Commercial General Liability,commercialGeneralLiability,,,2025-10-01,2027-10-01,,,,,2026-10-09
+"Block Real Estate Services, LLC",69fded1362446148bd848d4e,Einstein Bros Bagels #3961,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-10-01,2027-10-01,,,,,2026-10-09
+"Block Real Estate Services, LLC",69fded1362446148bd848d4e,Einstein Bros Bagels #3961,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-10-01,2027-10-01,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1362446148bd848d4e,Einstein Bros Bagels #3961,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1862446148bd848eaa,Jimmy John's,,Commercial General Liability,commercialGeneralLiability,,,2026-05-27,2027-05-27,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1862446148bd848eaa,Jimmy John's,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-27,2027-05-27,,,,,2026-10-09
@@ -399,9 +395,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1062446148bd848c61,Charles D Jones Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1062446148bd848c61,Charles D Jones Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1062446148bd848c61,Charles D Jones Company,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",69fded1462446148bd848d96,FastSigns,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
+"Block Real Estate Services, LLC",69fded1462446148bd848d96,FastSigns,,Commercial General Liability,commercialGeneralLiability,,,2026-02-09,2027-02-09,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1462446148bd848d96,FastSigns,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",69fded1462446148bd848d96,FastSigns,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
+"Block Real Estate Services, LLC",69fded1462446148bd848d96,FastSigns,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-02-09,2027-02-09,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1462446148bd848d96,FastSigns,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1662446148bd848e29,Internal Revenue Service / Government Services Administration (GSA),,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1662446148bd848e29,Internal Revenue Service / Government Services Administration (GSA),,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
@@ -511,9 +507,9 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded1362446148bd848d24,Dollar Tree #03352,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2025-09-01,2027-09-01,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1362446148bd848d24,Dollar Tree #03352,,Workers' Compensation and Employer's Liability,workersCompensation,,,2025-09-01,2027-09-01,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1362446148bd848d24,Dollar Tree #03352,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2025-09-01,2027-09-01,,,,,2026-10-09
-"Block Real Estate Services, LLC",69fded1a62446148bd848f6d,Mattress Firm Inc,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",69fded1a62446148bd848f6d,Mattress Firm Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",69fded1a62446148bd848f6d,Mattress Firm Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
+"Block Real Estate Services, LLC",69fded1a62446148bd848f6d,Mattress Firm Inc,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-10-09
+"Block Real Estate Services, LLC",69fded1a62446148bd848f6d,Mattress Firm Inc,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-09-01,2027-07-01,,,,,2026-10-09
+"Block Real Estate Services, LLC",69fded1a62446148bd848f6d,Mattress Firm Inc,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-01,2027-07-01,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1a62446148bd848f6d,Mattress Firm Inc,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1d62446148bd849054,Papa Murphy's / Papa's Partners,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1d62446148bd849054,Papa Murphy's / Papa's Partners,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
@@ -2843,13 +2839,13 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a185d785a886bcac13835bd,"Aperture Credentialing, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",6a185d785a886bcac13835bd,"Aperture Credentialing, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",6a185d785a886bcac13835bd,"Aperture Credentialing, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",6a185e8d5a886bcac13878a0,NAPA / Genuine Parts Company,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",6a185e8d5a886bcac13878a0,NAPA / Genuine Parts Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",6a185e8d5a886bcac13878a0,NAPA / Genuine Parts Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
+"Block Real Estate Services, LLC",6a185e8d5a886bcac13878a0,NAPA / Genuine Parts Company,,Commercial General Liability,commercialGeneralLiability,,,2026-09-01,2027-09-01,,,,,2026-10-09
+"Block Real Estate Services, LLC",6a185e8d5a886bcac13878a0,NAPA / Genuine Parts Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-09-01,2027-09-01,,,,,2026-10-09
+"Block Real Estate Services, LLC",6a185e8d5a886bcac13878a0,NAPA / Genuine Parts Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-10-09
 "Block Real Estate Services, LLC",6a185e8d5a886bcac13878a0,NAPA / Genuine Parts Company,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",6a185e8d5a886bcac13878a0,NAPA / Genuine Parts Company,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",6a185e8d5a886bcac13878a0,NAPA / Genuine Parts Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",6a185e8d5a886bcac13878a0,NAPA / Genuine Parts Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
+"Block Real Estate Services, LLC",6a185e8d5a886bcac13878a0,NAPA / Genuine Parts Company,,Commercial General Liability,commercialGeneralLiability,,,2026-09-01,2027-09-01,,,,,2026-10-09
+"Block Real Estate Services, LLC",6a185e8d5a886bcac13878a0,NAPA / Genuine Parts Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-09-01,2027-09-01,,,,,2026-10-09
+"Block Real Estate Services, LLC",6a185e8d5a886bcac13878a0,NAPA / Genuine Parts Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-10-09
 "Block Real Estate Services, LLC",6a185e8d5a886bcac13878a0,NAPA / Genuine Parts Company,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1e62446148bd8490cf,Pulse Design Group,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1e62446148bd8490cf,Pulse Design Group,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
@@ -3011,8 +3007,8 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a187768b517ae25a8805ad8,"KC Roofscapes, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",6a187768b517ae25a8805ad8,"KC Roofscapes, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",6a187768b517ae25a8805ad8,"KC Roofscapes, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",6a187790d2723fbba9a43f46,"Integrated Health Systems, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-"Block Real Estate Services, LLC",6a187790d2723fbba9a43f46,"Integrated Health Systems, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
+"Block Real Estate Services, LLC",6a187790d2723fbba9a43f46,"Integrated Health Systems, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-05-16,2027-05-16,,,,,2026-10-09
+"Block Real Estate Services, LLC",6a187790d2723fbba9a43f46,"Integrated Health Systems, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-16,2027-05-16,,,,,2026-10-09
 "Block Real Estate Services, LLC",6a187790d2723fbba9a43f46,"Integrated Health Systems, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",6a187790d2723fbba9a43f46,"Integrated Health Systems, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1562446148bd848dd2,Friends of the Johnson County Library,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-10-09
@@ -3579,7 +3575,7 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",69fded0f62446148bd848c01,BluSky Restoration Contractors LLC,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded2062446148bd849165,Side Pockets Inc,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-10-09
 "Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d2b,"KIDSUNITED / Goal Getters 2, LLC",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-10-09
-"Block Real Estate Services, LLC",69fded1e62446148bd8490c3,Propak Logistics Inc,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-10-09
+"Block Real Estate Services, LLC",6aa85fceac91ff43d2d77bcb,MHC Group / McElroy's Inc,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-10-09
 "Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d01,"Fry Orthodontics / Jeremy R. Fry, D.D.S, M.S, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d01,"Fry Orthodontics / Jeremy R. Fry, D.D.S, M.S, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d01,"Fry Orthodontics / Jeremy R. Fry, D.D.S, M.S, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
@@ -3625,368 +3621,3 @@ client,insured_id,insured_name,primary_contact_email,coverage_type,coverage_id,p
 "Block Real Estate Services, LLC",6a9ada38bfedaa57c4931d16,Insight Vision Center #1155,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1e62446148bd8490c0,"Sportsman's Cap / Promotional Headwear International, Inc.",,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,always_valid,always_valid,,,,,2026-10-09
 "Block Real Estate Services, LLC",69fded1e62446148bd8490b7,Pro Concrete Design Inc,,Lease,13eec448-4e9a-5f89-b177-a46743b50aac,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-03-01,2027-03-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Automobile Liability,automobileLiability,,,2026-03-01,2027-03-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-01,2027-03-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-03-01,2027-03-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Professional Liability,professional,,,2026-03-01,2027-03-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-03-01,2027-03-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-03-01,2027-03-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Automobile Liability,automobileLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Commercial General Liability,commercialGeneralLiability,,,2026-08-01,2027-08-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Automobile Liability,automobileLiability,,,2026-08-01,2027-08-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-08-01,2027-08-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-08-01,2027-08-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-08-01,2027-08-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Automobile Liability,automobileLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,Automobile Liability,automobileLiability,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,Professional Liability,professional,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-03-31,2027-03-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Automobile Liability,automobileLiability,,,2026-03-31,2027-03-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-31,2027-03-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-03-31,2027-03-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Automobile Liability,automobileLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Professional Liability,professional,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Automobile Liability,automobileLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Professional Liability,professional,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Professional Liability,professional,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Cyber Liability,cyber,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Professional Liability,professional,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Cyber Liability,cyber,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Professional Liability,professional,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Cyber Liability,cyber,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-01-01,2027-01-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,Automobile Liability,automobileLiability,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,Professional Liability,professional,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0fd,M. A. Mortenson Company,,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0fd,M. A. Mortenson Company,,Automobile Liability,automobileLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0fd,M. A. Mortenson Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0fd,M. A. Mortenson Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0fd,M. A. Mortenson Company,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Commercial General Liability,commercialGeneralLiability,,,2026-06-01,2027-06-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,Automobile Liability,automobileLiability,,,2026-07-01,2027-07-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-07-01,2027-07-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-01,2027-07-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,Professional Liability,professional,,,2026-07-01,2027-07-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,Drone Liability,087d5aa5-0b6f-5758-9e68-801810082e34,,,2026-07-01,2027-07-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-07-01,2027-07-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Commercial General Liability,commercialGeneralLiability,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Automobile Liability,automobileLiability,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Pollution Liability,pollution,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Professional Liability,professional,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Drone Liability,087d5aa5-0b6f-5758-9e68-801810082e34,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Pollution Liability,pollution,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Drone Liability,087d5aa5-0b6f-5758-9e68-801810082e34,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Commercial General Liability,commercialGeneralLiability,,,2026-08-01,2027-08-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Automobile Liability,automobileLiability,,,2026-08-01,2027-08-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-08-01,2027-08-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-08-01,2027-08-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-08-01,2027-08-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Pollution Liability,pollution,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-05-01,2027-05-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Pollution Liability,pollution,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Drone Liability,087d5aa5-0b6f-5758-9e68-801810082e34,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Pollution Liability,pollution,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Drone Liability,087d5aa5-0b6f-5758-9e68-801810082e34,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,Commercial General Liability,commercialGeneralLiability,,,2026-07-01,2027-07-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,Automobile Liability,automobileLiability,,,2026-07-01,2027-07-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-07-01,2027-07-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-07-01,2027-07-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,Professional Liability,professional,,,2026-07-01,2027-07-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-07-01,2027-07-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Commercial General Liability,commercialGeneralLiability,,,2026-06-01,2027-06-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Automobile Liability,automobileLiability,,,2026-06-01,2027-06-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-01,2027-06-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Professional Liability,professional,,,2026-06-01,2027-06-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-06-01,2027-06-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Commercial General Liability,commercialGeneralLiability,,,2026-06-01,2027-06-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Automobile Liability,automobileLiability,,,2026-06-01,2027-06-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-01,2027-06-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-01,2027-06-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Professional Liability,professional,,,2026-06-01,2027-06-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-06-01,2027-06-01,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Commercial General Liability,commercialGeneralLiability,,,2026-08-31,2027-08-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Automobile Liability,automobileLiability,,,2026-08-31,2027-08-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-08-31,2027-08-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-08-31,2027-08-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Pollution Liability,pollution,,,2026-08-31,2027-08-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Professional Liability,professional,,,2026-08-31,2027-08-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Drone Liability,087d5aa5-0b6f-5758-9e68-801810082e34,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-08-31,2027-08-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Commercial General Liability,commercialGeneralLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Automobile Liability,automobileLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Workers' Compensation and Employer's Liability,workersCompensation,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Commercial General Liability,commercialGeneralLiability,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Automobile Liability,automobileLiability,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Pollution Liability,pollution,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Professional Liability,professional,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Drone Liability,087d5aa5-0b6f-5758-9e68-801810082e34,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,2026-06-30,2027-06-30,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Commercial General Liability,commercialGeneralLiability,,,2026-03-31,2027-03-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Automobile Liability,automobileLiability,,,2026-03-31,2027-03-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Umbrella/Excess Liability,excessOrUmbrellaLiability,,,2026-03-31,2027-03-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Workers' Compensation and Employer's Liability,workersCompensation,,,2026-03-31,2027-03-31,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Professional Liability,professional,,,,,,,,,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,Additional Requirements,d0e734f7-bb6f-5932-95bb-db5f081d253f,,,,,,,,,2026-10-09

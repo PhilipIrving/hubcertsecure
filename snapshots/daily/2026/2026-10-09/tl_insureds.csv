@@ -187,7 +187,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1362446148bd848d51,Electrical Investments Inc,,COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1362446148bd848d54,Electronics for Imaging / EFI Ink Jet Solutions,,COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1362446148bd848d57,"NTR Metals / Elemental Direct USA, LLC",,NON_COMPLIANT,,,true,false,2026-10-09
-"Block Real Estate Services, LLC",69fded1362446148bd848d5a,Elliott Electric Supply Inc,,NON_COMPLIANT,,,true,false,2026-10-09
+"Block Real Estate Services, LLC",69fded1362446148bd848d5a,Elliott Electric Supply Inc,,COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1362446148bd848d5d,Elysian Salon and Spa LLC,,COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1362446148bd848d60,Emerson Ecologics LLC,,COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1362446148bd848d63,Employers Mutual Casualty Company (EMC Insurance),,NON_COMPLIANT,,,true,false,2026-10-09
@@ -269,7 +269,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1762446148bd848e59,Hensley Electric Inc,,COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1762446148bd848e5c,"Heritage First, Inc.",,NON_COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1762446148bd848e5f,"Hibbett Sports / Hibbett Retail, Inc.",,NON_COMPLIANT,,,true,false,2026-10-09
-"Block Real Estate Services, LLC",69fded1762446148bd848e62,Hoambrecker Enterprises LLC,,NON_COMPLIANT,,,true,false,2026-10-09
+"Block Real Estate Services, LLC",69fded1762446148bd848e62,Hoambrecker Enterprises LLC,,COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1762446148bd848e65,"Hoang Tran Nhat Pham, Phuoc Duc Ngo and Binh Xuan Nguyen",,NON_COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1762446148bd848e68,Hoefer Welker LLC,,COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1762446148bd848e6b,"Horizon PSI / Horizon Systems, Inc.",,COMPLIANT,,,true,false,2026-10-09
@@ -363,7 +363,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded1b62446148bd848f8b,"Med Resources, Inc.",,NON_COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1b62446148bd848f8e,Medical Missions Foundation,,NON_COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1b62446148bd848f91,Medical Technology Associates Inc,,NON_COMPLIANT,,,true,false,2026-10-09
-"Block Real Estate Services, LLC",69fded1b62446148bd848f94,"Mr. Handy Man / Melcar Enterprises (fka Stagg Enterprises, LLC)",,NON_COMPLIANT,,,true,false,2026-10-09
+"Block Real Estate Services, LLC",69fded1b62446148bd848f94,"Mr. Handy Man / Melcar Enterprises (fka Stagg Enterprises, LLC)",,COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1b62446148bd848f97,"Melcher Investment Company, LP",,NON_COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1b62446148bd848f9a,"510 Counseling Group / Melissa Winston, LLC",,NON_COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded1b62446148bd848f9d,"Salom Asian Market / Men Sui and Naa Aung, Wife and Husband",,NON_COMPLIANT,,,true,false,2026-10-09
@@ -616,7 +616,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",69fded2462446148bd8492b2,West Shore Home LLC,,NON_COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded2462446148bd8492b5,Westlake Hardware 54,,NON_COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded2462446148bd8492bb,Woodbridge Corporation,,NON_COMPLIANT,,,true,false,2026-10-09
-"Block Real Estate Services, LLC",69fded2462446148bd8492be,Workout Anytime,,NON_COMPLIANT,,,true,false,2026-10-09
+"Block Real Estate Services, LLC",69fded2462446148bd8492be,Workout Anytime,,NON_COMPLIANT,,,false,false,2026-10-09
 "Block Real Estate Services, LLC",69fded2462446148bd8492c1,World Acceptance Corporation / World Finance,,COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded2462446148bd8492c4,"Advance Auto Store #4362 / Worldpac, Inc.",,NON_COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",69fded2462446148bd8492c7,"Worldwide Express / WWEX Franchise Holdings, LLC",,NON_COMPLIANT,,,true,false,2026-10-09
@@ -751,7 +751,7 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6a71f9b8bcf6cdcf331ccfcd,"Hennessy Enterprises, LLC",,NON_COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",6a71fb111df1817c9d71e47a,Wholesale Electric Supply Co.,,COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",6a71fb4d1df1817c9d71edf9,"L&C Cabinetry KCI, LLC",,NON_COMPLIANT,,,true,false,2026-10-09
-"Block Real Estate Services, LLC",6a71fe9c1df1817c9d72a945,"Thrift World, Inc.",,NON_COMPLIANT,,,true,false,2026-10-09
+"Block Real Estate Services, LLC",6a71fe9c1df1817c9d72a945,"Thrift World, Inc.",,NON_COMPLIANT,,,false,false,2026-10-09
 "Block Real Estate Services, LLC",6a72067ea7b0558ab72338fb,Lure Creative,,NON_COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",6a7c9366ee0b08ce4f040184,Halbrook Wood PC,,NON_COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",6a7ccb7c72f903848e0cb0d8,Robin's Gluten Free Bakery,,NON_COMPLIANT,,,true,false,2026-10-09
@@ -770,17 +770,17 @@ client,insured_id,insured_name,primary_contact_email,compliance_status,verificat
 "Block Real Estate Services, LLC",6aad904d55224622f2d2f233,Empower Gymnastics LLC,,NON_COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",6ac3c3da97e56de703a50087,"Veridity Fire Solutions, LLC",,NON_COMPLIANT,,,true,false,2026-10-09
 "Block Real Estate Services, LLC",6ac3c5cc7c7d96a0b508b00f,"Fidelity Brokerage Servies, LLC",,NON_COMPLIANT,,,true,false,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,COMPLIANT,,,true,false,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,NON_COMPLIANT,,,true,false,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,NON_COMPLIANT,,,true,false,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,NON_COMPLIANT,,,true,false,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,COMPLIANT,,,true,false,2026-10-09
-QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,NON_COMPLIANT,,,true,false,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,NON_COMPLIANT,,,true,false,2026-10-09
+QTS Data Centers,69f0f3c4beb6279e947be0d0,"AP Gulf States, Inc.",,PENDING,,,true,false,2026-10-09
+QTS Data Centers,69f0f3c4beb6279e947be0d5,Brasfield & Gorrie L.L.C.,,PENDING,,,true,false,2026-10-09
+QTS Data Centers,69f0f3c4beb6279e947be0da,"Clayco, Inc.",,PENDING,,,true,false,2026-10-09
+QTS Data Centers,69f0f3c4beb6279e947be0df,Evans General Contractors LLC,,PENDING,,,true,false,2026-10-09
+QTS Data Centers,69f0f3c4beb6279e947be0e4,Gilbane Building Company,,PENDING,,,true,false,2026-10-09
+QTS Data Centers,69f0f3c4beb6279e947be0e9,"Gray Construction, Inc.",,PENDING,,,true,false,2026-10-09
+QTS Data Centers,69f0f3c5beb6279e947be0ee,"HITT Contracting, Inc.",,PENDING,,,true,false,2026-10-09
 QTS Data Centers,69f0f3c5beb6279e947be0f3,"Holder Construction Group, LLC",,PENDING,,,true,false,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,NON_COMPLIANT,,,true,false,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be0fd,M. A. Mortenson Company,,NON_COMPLIANT,,,true,false,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,NON_COMPLIANT,,,true,false,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,NON_COMPLIANT,,,true,false,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,NON_COMPLIANT,,,true,false,2026-10-09
-QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,NON_COMPLIANT,,,true,false,2026-10-09
+QTS Data Centers,69f0f3c5beb6279e947be0f8,"Layton Construction Company, LLC",,PENDING,,,true,false,2026-10-09
+QTS Data Centers,69f0f3c5beb6279e947be0fd,M. A. Mortenson Company,,PENDING,,,true,false,2026-10-09
+QTS Data Centers,69f0f3c5beb6279e947be102,Rogers-O-Brien Construction Company Ltd.,,PENDING,,,true,false,2026-10-09
+QTS Data Centers,69f0f3c5beb6279e947be107,"Structure Tone, LLC",,PENDING,,,true,false,2026-10-09
+QTS Data Centers,69f0f3c5beb6279e947be10c,"Suffolk Construction Company, Inc.",,PENDING,,,true,false,2026-10-09
+QTS Data Centers,69f0f3c5beb6279e947be111,Whitting-Turner Contracting Company,,PENDING,,,true,false,2026-10-09
