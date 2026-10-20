@@ -1,2 +1,9 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Trinity Chemical Industries LLC,06891f8b-d228-49bb-a574-371930a831cf,,,,pending,2026-10-20T03:57:32,,,,,,10/19/2026,10/19/2026 23:14:31
+Scandroli Construction,4e244ed0-3814-414b-bf32-e03a1815b787,,,,pending,2026-10-20T07:30:48,,,,,,10/20/2026,10/20/2026 04:35:37
+Scandroli Construction,68b02ed4-5cf6-4625-9cbc-d32ea40101db,,b07c98d9-7fc0-40b0-b9a3-ac94a997fcfb,,pending,2026-10-20T07:30:48,,,,,,10/20/2026,10/20/2026 04:35:37
+Scandroli Construction,aa0d2c1b-e431-4fee-9230-c86d7b381c64,,b07c98d9-7fc0-40b0-b9a3-ac94a997fcfb,,pending,2026-10-20T07:30:48,,,,,,10/20/2026,10/20/2026 04:35:37
+Scandroli Construction,c048cbb6-238b-4fec-823f-c0822168ed62,,f6df7b21-7523-4682-8e75-d7b4a7ea8954,,pending,2026-10-20T05:21:22,,,,,,10/20/2026,10/20/2026 04:35:37
+Scandroli Construction,c1b231a0-3991-43a0-a808-b19bf84aa405,,045a02d5-2bfe-4c21-8f3f-4e6c17f86194,,pending,2026-10-20T06:53:17,,,,,,10/20/2026,10/20/2026 04:35:37
+Scandroli Construction,d3a2ab45-8a3c-4aa9-9427-fc9a08defb2e,,b07c98d9-7fc0-40b0-b9a3-ac94a997fcfb,,pending,2026-10-20T07:30:48,,,,,,10/20/2026,10/20/2026 04:35:37
+Scandroli Construction,f3ca7801-f421-40fd-867a-2f87b93dc630,,b07c98d9-7fc0-40b0-b9a3-ac94a997fcfb,,pending,2026-10-20T07:30:48,,,,,,10/20/2026,10/20/2026 04:35:37
+Trinity Chemical Industries LLC,06891f8b-d228-49bb-a574-371930a831cf,,,,pending,2026-10-20T03:57:32,,,,,,10/20/2026,10/20/2026 04:35:40
