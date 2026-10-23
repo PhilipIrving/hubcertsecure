@@ -1,7 +1,10 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,963410b2-08d9-4668-bc50-05505da6c702,,662ef5ee-7075-4ca9-b233-d4b0ba1a5bdd,,pending,2026-10-23T16:06:18,,,,,,10/23/2026,10/23/2026 12:05:12
-Scandroli Construction,4621325a-ec9f-4900-97ae-2676f3810f29,,3d1a213b-0188-4b2f-8974-a43ec8b7161d,,pending,2026-10-23T15:43:03,,,,,,10/23/2026,10/23/2026 12:05:25
-Scandroli Construction,93ab6ea7-92ce-4bcc-8251-42a943a6356a,,ff5d6293-5398-4527-b37b-e43f3ebf4236,,pending,2026-10-23T14:38:22,,,,,,10/23/2026,10/23/2026 12:05:25
-Scandroli Construction,b689cb79-4588-4756-80f5-bc7a0e3f8ff7,,3d1a213b-0188-4b2f-8974-a43ec8b7161d,,pending,2026-10-23T15:43:03,,,,,,10/23/2026,10/23/2026 12:05:25
-Scandroli Construction,c3843aee-05ca-42ed-8448-a5edf006e409,,ff5d6293-5398-4527-b37b-e43f3ebf4236,,pending,2026-10-23T14:38:22,,,,,,10/23/2026,10/23/2026 12:05:25
-Trinity Chemical Industries LLC,fab5e101-88f6-41e7-8cce-0453408d57f6,,,,pending,2026-10-23T13:53:24,,,,,,10/23/2026,10/23/2026 12:05:28
+Canadian Pacific Kansas City,963410b2-08d9-4668-bc50-05505da6c702,,662ef5ee-7075-4ca9-b233-d4b0ba1a5bdd,,pending,2026-10-23T16:06:18,,,,,,10/23/2026,10/23/2026 18:18:42
+Scandroli Construction,4621325a-ec9f-4900-97ae-2676f3810f29,,3d1a213b-0188-4b2f-8974-a43ec8b7161d,,pending,2026-10-23T15:43:03,,,,,,10/23/2026,10/23/2026 18:18:56
+Scandroli Construction,93ab6ea7-92ce-4bcc-8251-42a943a6356a,,ff5d6293-5398-4527-b37b-e43f3ebf4236,,pending,2026-10-23T14:38:22,,,,,,10/23/2026,10/23/2026 18:18:56
+Scandroli Construction,b689cb79-4588-4756-80f5-bc7a0e3f8ff7,,3d1a213b-0188-4b2f-8974-a43ec8b7161d,,pending,2026-10-23T15:43:03,,,,,,10/23/2026,10/23/2026 18:18:56
+Scandroli Construction,c3843aee-05ca-42ed-8448-a5edf006e409,,ff5d6293-5398-4527-b37b-e43f3ebf4236,,pending,2026-10-23T14:38:22,,,,,,10/23/2026,10/23/2026 18:18:56
+Scandroli Construction,feb29b70-956a-4ed8-8e28-f8743e2a97e9,,b567c35c-65df-486b-97ca-bb4b2775c697,,pending,2026-10-23T18:28:20,,,,,,10/23/2026,10/23/2026 18:18:56
+The Abbey Management Company,87b17b88-eaf6-44b3-9f2c-91b4f80f84b2,,37774b77-52c6-4e73-816a-bee3894f2404,,pending,2026-10-23T22:42:06,,,,,,10/23/2026,10/23/2026 18:18:58
+The Abbey Management Company,e2d3ef33-ce2b-4c7c-bee2-a826c6f41833,,,,pending,2026-10-23T22:42:06,,,,,,10/23/2026,10/23/2026 18:18:58
+Trinity Chemical Industries LLC,fab5e101-88f6-41e7-8cce-0453408d57f6,,,,pending,2026-10-23T13:53:24,,,,,,10/23/2026,10/23/2026 18:18:58
