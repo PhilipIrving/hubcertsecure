@@ -1,12 +1,17 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,039bb745-97c5-4e1f-8db8-758540af563a,,c43a830d-6fd6-4ffa-8041-e65b577d1444,,pending,2026-10-22T21:31:47,,,,,,10/22/2026,10/22/2026 18:23:58
-EMMES,418885f7-45e6-41fb-b04f-2c12aaa575a5,,,,pending,2026-10-22T22:45:24,,,,,,10/22/2026,10/22/2026 18:23:58
-Scandroli Construction,1feb1e5e-8b3f-4b31-a2e8-f904c7b8bafa,,59db199d-63c9-479c-bcdd-f2a21298f1d0,,pending,2026-10-22T16:54:02,,,,,,10/22/2026,10/22/2026 18:24:11
-Scandroli Construction,25861ddc-7d05-4a91-9e87-888692714b20,,,,pending,2026-10-22T23:21:22,,,,,,10/22/2026,10/22/2026 18:24:11
-Scandroli Construction,450acad1-18f2-46ae-b551-600dc7ad0b39,,822c705b-23c7-4788-9c2b-5ccd7e281efa,,pending,2026-10-22T17:20:16,,,,,,10/22/2026,10/22/2026 18:24:11
-Scandroli Construction,589a4607-9f44-492a-93c0-82c3b322ab9a,,636ae314-329f-40d5-ab36-402242dfbddb,,pending,2026-10-22T16:19:38,,,,,,10/22/2026,10/22/2026 18:24:11
-Scandroli Construction,8c8853ed-c5c1-438c-ba0b-f487c48e6546,,822c705b-23c7-4788-9c2b-5ccd7e281efa,,pending,2026-10-22T17:20:16,,,,,,10/22/2026,10/22/2026 18:24:11
-Scandroli Construction,a3fd9315-b1cc-4ba3-85bf-605380a25f28,,822c705b-23c7-4788-9c2b-5ccd7e281efa,,pending,2026-10-22T17:20:16,,,,,,10/22/2026,10/22/2026 18:24:11
-The Abbey Management Company,626de393-8eec-4bf4-b0a7-acc55b9832fd,,192abf47-167e-4690-ac23-9e51f208f860,,pending,2026-10-22T00:29:49,,,,,,10/22/2026,10/22/2026 18:24:13
-The Abbey Management Company,c7e593f2-3aca-4d85-aec2-ff9925eb64e4,,192abf47-167e-4690-ac23-9e51f208f860,,pending,2026-10-22T00:29:49,,,,,,10/22/2026,10/22/2026 18:24:13
-United Coal Company LLC,bdb723f2-2089-4e9b-9341-da08057487a2,,,,pending,2026-10-21T13:35:46,,,,,,10/22/2026,10/22/2026 18:24:15
+Bauer Foundation Corp.,63424888-442a-4726-b102-f1cffa6cf50c,,3a754537-f9a3-4c1f-9c22-5e1165105b7e,,pending,2026-10-23T02:00:25,,,,,,10/22/2026,10/22/2026 23:12:30
+Bauer Foundation Corp.,8942290e-c86f-4de7-9349-1f983e89c302,,,,pending,2026-10-23T00:42:22,,,,,,10/22/2026,10/22/2026 23:12:30
+Canadian Pacific Kansas City,039bb745-97c5-4e1f-8db8-758540af563a,,c43a830d-6fd6-4ffa-8041-e65b577d1444,,pending,2026-10-22T21:31:47,,,,,,10/22/2026,10/22/2026 23:12:30
+EMMES,418885f7-45e6-41fb-b04f-2c12aaa575a5,,,,pending,2026-10-22T22:45:24,,,,,,10/22/2026,10/22/2026 23:12:30
+Scandroli Construction,1feb1e5e-8b3f-4b31-a2e8-f904c7b8bafa,,59db199d-63c9-479c-bcdd-f2a21298f1d0,,pending,2026-10-22T16:54:02,,,,,,10/22/2026,10/22/2026 23:12:43
+Scandroli Construction,25861ddc-7d05-4a91-9e87-888692714b20,,,,pending,2026-10-22T23:21:22,,,,,,10/22/2026,10/22/2026 23:12:43
+Scandroli Construction,2613336b-6ba4-4e03-909d-33265822dea8,,,,pending,2026-10-22T23:24:21,,,,,,10/22/2026,10/22/2026 23:12:43
+Scandroli Construction,449f7da4-c3f1-478b-9515-bdf5487a8fa7,,5f2d2a79-723f-432b-8339-744fe36d825b,,pending,2026-10-22T23:24:21,,,,,,10/22/2026,10/22/2026 23:12:43
+Scandroli Construction,450acad1-18f2-46ae-b551-600dc7ad0b39,,822c705b-23c7-4788-9c2b-5ccd7e281efa,,pending,2026-10-22T17:20:16,,,,,,10/22/2026,10/22/2026 23:12:43
+Scandroli Construction,589a4607-9f44-492a-93c0-82c3b322ab9a,,636ae314-329f-40d5-ab36-402242dfbddb,,pending,2026-10-22T16:19:38,,,,,,10/22/2026,10/22/2026 23:12:43
+Scandroli Construction,70951f58-c22c-455e-ab73-d6683f12cb7f,,5f2d2a79-723f-432b-8339-744fe36d825b,,pending,2026-10-22T23:24:21,,,,,,10/22/2026,10/22/2026 23:12:43
+Scandroli Construction,8c8853ed-c5c1-438c-ba0b-f487c48e6546,,822c705b-23c7-4788-9c2b-5ccd7e281efa,,pending,2026-10-22T17:20:16,,,,,,10/22/2026,10/22/2026 23:12:43
+Scandroli Construction,a3fd9315-b1cc-4ba3-85bf-605380a25f28,,822c705b-23c7-4788-9c2b-5ccd7e281efa,,pending,2026-10-22T17:20:16,,,,,,10/22/2026,10/22/2026 23:12:43
+The Abbey Management Company,626de393-8eec-4bf4-b0a7-acc55b9832fd,,192abf47-167e-4690-ac23-9e51f208f860,,pending,2026-10-22T00:29:49,,,,,,10/22/2026,10/22/2026 23:12:45
+The Abbey Management Company,c7e593f2-3aca-4d85-aec2-ff9925eb64e4,,192abf47-167e-4690-ac23-9e51f208f860,,pending,2026-10-22T00:29:49,,,,,,10/22/2026,10/22/2026 23:12:45
+United Coal Company LLC,bdb723f2-2089-4e9b-9341-da08057487a2,,,,pending,2026-10-21T13:35:46,,,,,,10/22/2026,10/22/2026 23:12:48
