@@ -1,7 +1,2 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Gart Properties,1079ef1b-b576-40db-bc2c-f1cfd640e907,,,,pending,2026-10-27T13:08:07,,,,,,10/27/2026,10/27/2026 23:58:09
-Gart Properties,14f73af9-fe20-4399-a0be-cc32f05be06f,,,,pending,2026-10-27T10:34:41,,,,,,10/27/2026,10/27/2026 23:58:09
-Gart Properties,abcf19e6-3f81-4292-9ef7-1e5e4e669e54,,,,pending,2026-10-27T13:08:07,,,,,,10/27/2026,10/27/2026 23:58:09
-Scandroli Construction,1b571c52-ad77-4b6f-803a-ee03e6a28ad3,,79384072-26d1-4943-9bb4-0760a22b206c,,pending,2026-10-28T04:33:21,,,,,,10/27/2026,10/27/2026 23:58:23
-Scandroli Construction,662d71e7-de81-4ae2-9c29-8e2ee54eadf9,,81edee8a-18fa-4044-8cdb-2d9da7bb1a71,,pending,2026-10-28T03:44:31,,,,,,10/27/2026,10/27/2026 23:58:23
-Scandroli Construction,8d1d52a0-11e4-4b3b-9af5-ee623d6d690c,,81edee8a-18fa-4044-8cdb-2d9da7bb1a71,,pending,2026-10-28T03:44:31,,,,,,10/27/2026,10/27/2026 23:58:23
+Canadian Pacific Kansas City,2f96f5e7-effe-4bba-ac7b-583702239232,,a63c93b9-c2ca-4325-9b1d-e2ba2690251f,,pending,2026-10-28T08:20:07,,,,,,10/28/2026,10/28/2026 10:19:47
