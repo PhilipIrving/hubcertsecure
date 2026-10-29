@@ -1,0 +1,12 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Canadian Pacific Kansas City,2f96f5e7-effe-4bba-ac7b-583702239232,,a63c93b9-c2ca-4325-9b1d-e2ba2690251f,,pending,2026-10-28T08:20:07,,,,,,10/29/2026,10/29/2026 00:14:10
+EMMES,18445784-eb4a-4d11-a67d-f4779e16864f,,,,pending,2026-10-29T02:48:23,,,,,,10/29/2026,10/29/2026 00:14:10
+EMMES,290ce789-8b83-4e91-8020-93076f31883b,,,,pending,2026-10-29T02:48:23,,,,,,10/29/2026,10/29/2026 00:14:10
+Gart Properties,1519b19e-c74d-4d71-85f5-e089edefa8a4,,,,pending,2026-10-29T02:38:41,,,,,,10/29/2026,10/29/2026 00:14:10
+Scandroli Construction,6a4bb4e5-e309-4a25-b268-b7c618412235,,adfbf7fb-698a-4649-aa32-9e26ebdbe34e,,pending,2026-10-29T01:46:06,,,,,,10/29/2026,10/29/2026 00:14:23
+Scandroli Construction,9518d4a9-fd5d-410c-b117-8084f01a9c89,,adfbf7fb-698a-4649-aa32-9e26ebdbe34e,,pending,2026-10-29T01:46:06,,,,,,10/29/2026,10/29/2026 00:14:23
+Scandroli Construction,a32da09f-3127-4ffa-9871-f636025b67aa,,adfbf7fb-698a-4649-aa32-9e26ebdbe34e,,pending,2026-10-29T01:46:06,,,,,,10/29/2026,10/29/2026 00:14:23
+Scandroli Construction,a95b4d7f-bb15-4141-8a11-8a51b9e0b9c8,,e2e7f03f-3206-446c-a03f-ba4991f89352,,pending,2026-10-29T01:23:45,,,,,,10/29/2026,10/29/2026 00:14:23
+Scandroli Construction,dc5c470e-b9bd-4c3f-a0c1-4533e830f46e,,e2e7f03f-3206-446c-a03f-ba4991f89352,,pending,2026-10-29T01:23:45,,,,,,10/29/2026,10/29/2026 00:14:23
+Scandroli Construction,e22c2a2f-f70b-4be3-a3ab-413128332027,,8ae48a40-bac9-4a51-b3ca-b2e198e1e2be,,pending,2026-10-29T01:20:53,,,,,,10/29/2026,10/29/2026 00:14:23
+Scandroli Construction,ea183398-94e9-4755-af09-3f9b3896763a,,adfbf7fb-698a-4649-aa32-9e26ebdbe34e,,pending,2026-10-29T01:46:06,,,,,,10/29/2026,10/29/2026 00:14:23
