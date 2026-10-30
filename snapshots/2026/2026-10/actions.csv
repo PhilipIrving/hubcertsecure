@@ -1,7 +1,9 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,2f96f5e7-effe-4bba-ac7b-583702239232,,a63c93b9-c2ca-4325-9b1d-e2ba2690251f,,pending,2026-10-28T08:20:07,,,,,,10/29/2026,10/29/2026 16:18:27
-Scandroli Construction,4b2d9918-6b9b-41c8-aebc-4f0dd2b1ef3d,,,,pending,2026-10-29T17:16:27,,,,,,10/29/2026,10/29/2026 16:18:39
-Scandroli Construction,abd3bd79-ae3b-4cae-9ac8-2a3b24c7f198,,,,pending,2026-10-29T17:16:27,,,,,,10/29/2026,10/29/2026 16:18:39
-Scandroli Construction,bb8f479f-d3eb-49b3-bb91-5c46e7b4f14b,,84648274-e76c-4ac8-bbc7-c79c24ed71bf,,pending,2026-10-29T17:16:27,,,,,,10/29/2026,10/29/2026 16:18:39
-Scandroli Construction,c94ca7f0-4457-4bcb-87bb-b65bb0fdc6ea,,84648274-e76c-4ac8-bbc7-c79c24ed71bf,,pending,2026-10-29T17:16:27,,,,,,10/29/2026,10/29/2026 16:18:39
-Scandroli Construction,e843d198-e025-4991-9e01-98665f6804d4,,84648274-e76c-4ac8-bbc7-c79c24ed71bf,,pending,2026-10-29T17:16:27,,,,,,10/29/2026,10/29/2026 16:18:39
+Canadian Pacific Kansas City,2f96f5e7-effe-4bba-ac7b-583702239232,,a63c93b9-c2ca-4325-9b1d-e2ba2690251f,,pending,2026-10-28T08:20:07,,,,,,10/30/2026,10/30/2026 00:13:07
+Canadian Pacific Kansas City,6f901370-0669-4712-9cf6-145f7d3481cc,,7d5f20ac-bb18-412a-9dd1-3881a16d3263,,pending,2026-10-30T01:29:39,,,,,,10/30/2026,10/30/2026 00:13:07
+Canadian Pacific Kansas City,71406b21-f323-4963-921b-d9104919f8ca,,,,pending,2026-10-30T01:29:39,,,,,,10/30/2026,10/30/2026 00:13:07
+Scandroli Construction,4b2d9918-6b9b-41c8-aebc-4f0dd2b1ef3d,,,,pending,2026-10-29T17:16:27,,,,,,10/30/2026,10/30/2026 00:13:19
+Scandroli Construction,abd3bd79-ae3b-4cae-9ac8-2a3b24c7f198,,,,pending,2026-10-29T17:16:27,,,,,,10/30/2026,10/30/2026 00:13:19
+Scandroli Construction,bb8f479f-d3eb-49b3-bb91-5c46e7b4f14b,,84648274-e76c-4ac8-bbc7-c79c24ed71bf,,pending,2026-10-29T17:16:27,,,,,,10/30/2026,10/30/2026 00:13:19
+Scandroli Construction,c94ca7f0-4457-4bcb-87bb-b65bb0fdc6ea,,84648274-e76c-4ac8-bbc7-c79c24ed71bf,,pending,2026-10-29T17:16:27,,,,,,10/30/2026,10/30/2026 00:13:19
+Scandroli Construction,e843d198-e025-4991-9e01-98665f6804d4,,84648274-e76c-4ac8-bbc7-c79c24ed71bf,,pending,2026-10-29T17:16:27,,,,,,10/30/2026,10/30/2026 00:13:19
