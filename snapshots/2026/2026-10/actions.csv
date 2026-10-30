@@ -1,7 +1,15 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Canadian Pacific Kansas City,211ae4b3-3b32-494e-8dfb-f0e9a70c3795,,,,pending,2026-10-30T12:23:31,,,,,,10/30/2026,10/30/2026 10:24:51
-Canadian Pacific Kansas City,2f96f5e7-effe-4bba-ac7b-583702239232,,a63c93b9-c2ca-4325-9b1d-e2ba2690251f,,pending,2026-10-28T08:20:07,,,,,,10/30/2026,10/30/2026 10:24:51
-Canadian Pacific Kansas City,78b06ae6-5f29-4ede-a12c-fb62edc6d615,,918b67d7-6574-42c3-8f1a-83c3f95789ac,,pending,2026-10-30T12:54:58,,,,,,10/30/2026,10/30/2026 10:24:51
-Canadian Pacific Kansas City,a310cb9f-8edd-4b1a-abe5-eb7c3002da68,,,,pending,2026-10-30T12:23:31,,,,,,10/30/2026,10/30/2026 10:24:51
-Canadian Pacific Kansas City,a77011f6-df6c-46f7-813e-91473c895ab6,,,,pending,2026-10-30T14:50:16,,,,,,10/30/2026,10/30/2026 10:24:51
-EMMES,a95f5acf-e1fc-4322-b047-6ab61847cbc4,,,,pending,2026-10-30T13:00:55,,,,,,10/30/2026,10/30/2026 10:24:51
+Bauer Foundation Corp.,3a81bc14-8d86-441e-87da-894d63ad3df1,,a2b12a2d-4fec-49ee-8216-9d07ace13499,,pending,2026-10-30T20:10:02,,,,,,10/30/2026,10/30/2026 16:01:23
+Bauer Foundation Corp.,59409e6a-b88f-4d10-b8e1-7eece5fcd035,,,,pending,2026-10-30T20:10:02,,,,,,10/30/2026,10/30/2026 16:01:23
+Bauer Foundation Corp.,6341a16f-17ce-4e2f-be8d-16be8d952d99,,d44d9aa5-8924-4129-85a4-98408d841478,,pending,2026-10-30T20:41:29,,,,,,10/30/2026,10/30/2026 16:01:23
+Bauer Foundation Corp.,6d56939b-0e9b-4946-84a3-d580328a339f,,,,pending,2026-10-30T20:41:29,,,,,,10/30/2026,10/30/2026 16:01:23
+Bauer Foundation Corp.,6e300674-aa9f-4ed0-81df-a0aab8e7789e,,,,pending,2026-10-30T20:10:02,,,,,,10/30/2026,10/30/2026 16:01:23
+Bauer Foundation Corp.,8a2bfa49-5136-48a8-83c3-4ae67a6e5a0e,,a2b12a2d-4fec-49ee-8216-9d07ace13499,,pending,2026-10-30T20:10:02,,,,,,10/30/2026,10/30/2026 16:01:23
+Bauer Foundation Corp.,9399ccb0-181f-4020-a528-9161c241b2dd,,d44d9aa5-8924-4129-85a4-98408d841478,,pending,2026-10-30T20:41:29,,,,,,10/30/2026,10/30/2026 16:01:23
+Canadian Pacific Kansas City,211ae4b3-3b32-494e-8dfb-f0e9a70c3795,,,,pending,2026-10-30T12:23:31,,,,,,10/30/2026,10/30/2026 16:01:23
+Canadian Pacific Kansas City,2f96f5e7-effe-4bba-ac7b-583702239232,,a63c93b9-c2ca-4325-9b1d-e2ba2690251f,,pending,2026-10-28T08:20:07,,,,,,10/30/2026,10/30/2026 16:01:23
+Canadian Pacific Kansas City,78b06ae6-5f29-4ede-a12c-fb62edc6d615,,918b67d7-6574-42c3-8f1a-83c3f95789ac,,pending,2026-10-30T12:54:58,,,,,,10/30/2026,10/30/2026 16:01:23
+Canadian Pacific Kansas City,a310cb9f-8edd-4b1a-abe5-eb7c3002da68,,,,pending,2026-10-30T12:23:31,,,,,,10/30/2026,10/30/2026 16:01:23
+Canadian Pacific Kansas City,a77011f6-df6c-46f7-813e-91473c895ab6,,,,pending,2026-10-30T14:50:16,,,,,,10/30/2026,10/30/2026 16:01:23
+EMMES,a95f5acf-e1fc-4322-b047-6ab61847cbc4,,,,pending,2026-10-30T13:00:55,,,,,,10/30/2026,10/30/2026 16:01:23
+Gart Properties,166e453a-ebb1-4c6d-952a-8591e232bea8,,,,pending,2026-10-30T17:01:11,,,,,,10/30/2026,10/30/2026 16:01:23
