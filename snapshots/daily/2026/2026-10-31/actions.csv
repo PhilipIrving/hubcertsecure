@@ -1,0 +1,10 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Bauer Foundation Corp.,3a81bc14-8d86-441e-87da-894d63ad3df1,,a2b12a2d-4fec-49ee-8216-9d07ace13499,,pending,2026-10-30T20:10:02,,,,,,10/30/2026,10/30/2026 23:55:57
+Bauer Foundation Corp.,6341a16f-17ce-4e2f-be8d-16be8d952d99,,d44d9aa5-8924-4129-85a4-98408d841478,,pending,2026-10-30T20:41:29,,,,,,10/30/2026,10/30/2026 23:55:57
+Bauer Foundation Corp.,6d56939b-0e9b-4946-84a3-d580328a339f,,,,pending,2026-10-30T20:41:29,,,,,,10/30/2026,10/30/2026 23:55:57
+Bauer Foundation Corp.,8a2bfa49-5136-48a8-83c3-4ae67a6e5a0e,,a2b12a2d-4fec-49ee-8216-9d07ace13499,,pending,2026-10-30T20:10:02,,,,,,10/30/2026,10/30/2026 23:55:57
+Bauer Foundation Corp.,9399ccb0-181f-4020-a528-9161c241b2dd,,d44d9aa5-8924-4129-85a4-98408d841478,,pending,2026-10-30T20:41:29,,,,,,10/30/2026,10/30/2026 23:55:57
+Canadian Pacific Kansas City,2f96f5e7-effe-4bba-ac7b-583702239232,,a63c93b9-c2ca-4325-9b1d-e2ba2690251f,,pending,2026-10-28T08:20:07,,,,,,10/30/2026,10/30/2026 23:55:57
+Scandroli Construction,10eae52b-4ace-4b48-bbb9-7ee1b41b01d5,,9ed31d06-ad16-42f3-bf51-2ae821689d28,,pending,2026-10-30T23:48:29,,,,,,10/30/2026,10/30/2026 23:56:10
+The Abbey Management Company,da2bdb7b-55d0-4a32-8220-2c932ab7f744,,,,pending,2026-10-31T00:49:26,,,,,,10/30/2026,10/30/2026 23:56:13
+The Abbey Management Company,e50253be-3b1d-43a8-a811-91cca4a908c0,,,,pending,2026-10-31T00:49:26,,,,,,10/30/2026,10/30/2026 23:56:13
