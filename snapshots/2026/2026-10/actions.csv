@@ -1,10 +1,21 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,3a81bc14-8d86-441e-87da-894d63ad3df1,,a2b12a2d-4fec-49ee-8216-9d07ace13499,,pending,2026-10-30T20:10:02,,,,,,10/30/2026,10/30/2026 23:55:57
-Bauer Foundation Corp.,6341a16f-17ce-4e2f-be8d-16be8d952d99,,d44d9aa5-8924-4129-85a4-98408d841478,,pending,2026-10-30T20:41:29,,,,,,10/30/2026,10/30/2026 23:55:57
-Bauer Foundation Corp.,6d56939b-0e9b-4946-84a3-d580328a339f,,,,pending,2026-10-30T20:41:29,,,,,,10/30/2026,10/30/2026 23:55:57
-Bauer Foundation Corp.,8a2bfa49-5136-48a8-83c3-4ae67a6e5a0e,,a2b12a2d-4fec-49ee-8216-9d07ace13499,,pending,2026-10-30T20:10:02,,,,,,10/30/2026,10/30/2026 23:55:57
-Bauer Foundation Corp.,9399ccb0-181f-4020-a528-9161c241b2dd,,d44d9aa5-8924-4129-85a4-98408d841478,,pending,2026-10-30T20:41:29,,,,,,10/30/2026,10/30/2026 23:55:57
-Canadian Pacific Kansas City,2f96f5e7-effe-4bba-ac7b-583702239232,,a63c93b9-c2ca-4325-9b1d-e2ba2690251f,,pending,2026-10-28T08:20:07,,,,,,10/30/2026,10/30/2026 23:55:57
-Scandroli Construction,10eae52b-4ace-4b48-bbb9-7ee1b41b01d5,,9ed31d06-ad16-42f3-bf51-2ae821689d28,,pending,2026-10-30T23:48:29,,,,,,10/30/2026,10/30/2026 23:56:10
-The Abbey Management Company,da2bdb7b-55d0-4a32-8220-2c932ab7f744,,,,pending,2026-10-31T00:49:26,,,,,,10/30/2026,10/30/2026 23:56:13
-The Abbey Management Company,e50253be-3b1d-43a8-a811-91cca4a908c0,,,,pending,2026-10-31T00:49:26,,,,,,10/30/2026,10/30/2026 23:56:13
+Bauer Foundation Corp.,3a81bc14-8d86-441e-87da-894d63ad3df1,,a2b12a2d-4fec-49ee-8216-9d07ace13499,,pending,2026-10-30T20:10:02,,,,,,10/31/2026,10/31/2026 09:47:55
+Bauer Foundation Corp.,6341a16f-17ce-4e2f-be8d-16be8d952d99,,d44d9aa5-8924-4129-85a4-98408d841478,,pending,2026-10-30T20:41:29,,,,,,10/31/2026,10/31/2026 09:47:55
+Bauer Foundation Corp.,6d56939b-0e9b-4946-84a3-d580328a339f,,,,pending,2026-10-30T20:41:29,,,,,,10/31/2026,10/31/2026 09:47:55
+Bauer Foundation Corp.,8a2bfa49-5136-48a8-83c3-4ae67a6e5a0e,,a2b12a2d-4fec-49ee-8216-9d07ace13499,,pending,2026-10-30T20:10:02,,,,,,10/31/2026,10/31/2026 09:47:55
+Bauer Foundation Corp.,9399ccb0-181f-4020-a528-9161c241b2dd,,d44d9aa5-8924-4129-85a4-98408d841478,,pending,2026-10-30T20:41:29,,,,,,10/31/2026,10/31/2026 09:47:55
+Canadian Pacific Kansas City,2f96f5e7-effe-4bba-ac7b-583702239232,,a63c93b9-c2ca-4325-9b1d-e2ba2690251f,,pending,2026-10-28T08:20:07,,,,,,10/31/2026,10/31/2026 09:47:55
+Canadian Pacific Kansas City,3b43744a-b183-424c-9da9-1a12b52167d2,,,,pending,2026-10-31T08:54:15,,,,,,10/31/2026,10/31/2026 09:47:55
+Canadian Pacific Kansas City,f4a9455d-e732-4099-b859-fc5218f15291,,,,pending,2026-10-31T05:48:58,,,,,,10/31/2026,10/31/2026 09:47:55
+Scandroli Construction,10eae52b-4ace-4b48-bbb9-7ee1b41b01d5,,9ed31d06-ad16-42f3-bf51-2ae821689d28,,pending,2026-10-30T23:48:29,,,,,,10/31/2026,10/31/2026 09:48:08
+Scandroli Construction,11e7f9e9-be16-448d-8cd3-130763a38e01,,,,pending,2026-10-31T13:46:49,,,,,,10/31/2026,10/31/2026 09:48:08
+Scandroli Construction,5b220205-b305-4fda-97ec-417f23769db8,,875bcc4e-df12-416f-b986-4c8ef774b60d,,pending,2026-10-31T13:46:49,,,,,,10/31/2026,10/31/2026 09:48:08
+Scandroli Construction,8695c220-441f-4842-8c47-673819d3575f,,,,pending,2026-10-31T13:46:49,,,,,,10/31/2026,10/31/2026 09:48:08
+Scandroli Construction,a1102be3-1743-42f3-adb7-16518b66e1f0,,,,pending,2026-10-31T13:46:49,,,,,,10/31/2026,10/31/2026 09:48:08
+Scandroli Construction,ac4c11d1-9260-411b-93ad-d5e529fece64,,875bcc4e-df12-416f-b986-4c8ef774b60d,,pending,2026-10-31T13:46:49,,,,,,10/31/2026,10/31/2026 09:48:08
+Scandroli Construction,b68b8937-cc10-4e00-95bb-0e420bf35159,,875bcc4e-df12-416f-b986-4c8ef774b60d,,pending,2026-10-31T13:46:49,,,,,,10/31/2026,10/31/2026 09:48:08
+Scandroli Construction,ff703952-2e4c-4f23-8508-ee2d99b3bb7f,,875bcc4e-df12-416f-b986-4c8ef774b60d,,pending,2026-10-31T13:46:49,,,,,,10/31/2026,10/31/2026 09:48:08
+Skyline Developers Construction LLC,dea9213f-101f-47b4-a803-bda1bee167ab,,,,pending,2026-10-31T09:58:58,,,,,,10/31/2026,10/31/2026 09:48:10
+Skyline Developers Construction LLC,e84ec29a-e41a-4d9f-a265-595024be5124,,1b2e4651-2031-43dd-8f65-36dd7bfa43b3,,pending,2026-10-31T09:58:58,,,,,,10/31/2026,10/31/2026 09:48:10
+The Abbey Management Company,da2bdb7b-55d0-4a32-8220-2c932ab7f744,,,,pending,2026-10-31T00:49:26,,,,,,10/31/2026,10/31/2026 09:48:11
+The Abbey Management Company,e50253be-3b1d-43a8-a811-91cca4a908c0,,,,pending,2026-10-31T00:49:26,,,,,,10/31/2026,10/31/2026 09:48:11
