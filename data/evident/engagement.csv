@@ -1,41 +1,4 @@
 Event ID,Date,Email,Type,Subject,Client
-6a6fda10dc3b73513288eed3,8/2/2026 23:43:31,njuhnke@pipelinefoods.com,deferral,Reminder: Non-Compliant Insurance Verification Request for PIPELINE FOODS ULC,Canadian Pacific Kansas City
-6a6fddcddc3b73513288efd9,8/3/2026 0:12:45,carter@witransload.ca,deferral,Reminder: Non-Compliant Insurance Verification Request for WEYBURN INDUSTRIAL TRANSLOAD INC,Canadian Pacific Kansas City
-6a6fddcdc8107944de519d69,8/3/2026 0:12:45,thashy@witransload.ca,deferral,Reminder: Non-Compliant Insurance Verification Request for WEYBURN INDUSTRIAL TRANSLOAD INC,Canadian Pacific Kansas City
-6a6fe021dc3b73513288f04a,8/3/2026 0:14:19,info@nbatving.com,deferral,Reminder: Non-Compliant Insurance Verification Request for NEW BRUNSWICK ATV FEDERATION,Canadian Pacific Kansas City
-6a6fdd65dc3b73513288efc2,8/3/2026 0:14:27,info@nbatving.com,hard_bounce,Reminder: Non-Compliant Insurance Verification Request for NEW BRUNSWICK ATV FEDERATION,Canadian Pacific Kansas City
-6a6ff08adc3b73513288f3ce,8/3/2026 0:46:57,kenny@soswhs.com,open,Reminder: Non-Compliant Insurance Verification Request for Safety Onsite Services,A G Equipment Company
-6a6fe905dc3b73513288f22c,8/3/2026 1:00:01,chrisc@trilogyag.com,send,Reminder: Expiring Insurance Verification Request for TRILOGY AG GROUP LLC,Canadian Pacific Kansas City
-6a6fe905c8107944de519fc0,8/3/2026 1:00:01,kathryns@trilogyag.com,send,Reminder: Expiring Insurance Verification Request for TRILOGY AG GROUP LLC,Canadian Pacific Kansas City
-6a6fedcac8107944de51a0dc,8/3/2026 1:00:06,kathryns@trilogyag.com,open,Reminder: Expiring Insurance Verification Request for TRILOGY AG GROUP LLC,Canadian Pacific Kansas City
-6a6fe81dc8107944de519f8e,8/3/2026 1:00:10,chrisc@trilogyag.com,soft_bounce,Reminder: Expiring Insurance Verification Request for TRILOGY AG GROUP LLC,Canadian Pacific Kansas City
-6a6fea78dc3b73513288f282,8/3/2026 1:04:19,crystal@targetsystems.ca,deferral,Reminder: Non-Compliant Insurance Verification Request for TARGET TRANSLOAD SYSTEMS INC.,Canadian Pacific Kansas City
-6a6ffa6edc3b73513288f507,8/3/2026 2:15:23,njuhnke@pipelinefoods.com,deferral,Reminder: Non-Compliant Insurance Verification Request for PIPELINE FOODS ULC,Canadian Pacific Kansas City
-6a6ff9c6c8107944de51a28f,8/3/2026 2:15:29,njuhnke@pipelinefoods.com,soft_bounce,Reminder: Non-Compliant Insurance Verification Request for PIPELINE FOODS ULC,Canadian Pacific Kansas City
-6a70021fdc3b73513288fb07,8/3/2026 2:32:56,jenniferk@vitalitybowls.com,open,"Reminder: Non-Compliant Insurance Verification - Colorado Superfoods, LLC at The Village",Gart Properties
-6a700296c8107944de51a8fe,8/3/2026 2:45:04,accountsreceivable@everbridge.com,send,Reminder: Expiring Insurance Verification Request for EVERBRIDGE INC,Canadian Pacific Kansas City
-6a7002e2dc3b73513288fb86,8/3/2026 2:45:18,accountsreceivable@everbridge.com,send,Reminder: Expiring Insurance Verification Request for EVERBRIDGE INC,Canadian Pacific Kansas City
-6a7003c1c8107944de51a99b,8/3/2026 2:45:18,paused@internalemail.com,reject,Reminder: Expiring Insurance Verification Request for JAMES FAIRLEY,Canadian Pacific Kansas City
-6a7000bec8107944de51a790,8/3/2026 2:45:19,paused@internalemail.com,rejected,,Canadian Pacific Kansas City
-6a700148c8107944de51a7f0,8/3/2026 2:45:19,julia.liu@rogers.com,send,Reminder: Non-Compliant Insurance Verification Request for TRAVELODGE SCARBOROUGH,Canadian Pacific Kansas City
-6a700148dc3b73513288fa59,8/3/2026 2:45:19,travelodge@rogers.com,send,Reminder: Non-Compliant Insurance Verification Request for TRAVELODGE SCARBOROUGH,Canadian Pacific Kansas City
-6a70030cdc3b73513288fba0,8/3/2026 2:45:24,thashy@witransload.ca,deferral,Reminder: Non-Compliant Insurance Verification Request for WEYBURN INDUSTRIAL TRANSLOAD INC,Canadian Pacific Kansas City
-6a70030cc8107944de51a934,8/3/2026 2:45:24,carter@witransload.ca,deferral,Reminder: Non-Compliant Insurance Verification Request for WEYBURN INDUSTRIAL TRANSLOAD INC,Canadian Pacific Kansas City
-6a7005a9dc3b73513288fcfe,8/3/2026 2:45:25,accountsreceivable@everbridge.com,open,Reminder: Expiring Insurance Verification Request for EVERBRIDGE INC,Canadian Pacific Kansas City
-6a7010ccc8107944de51acab,8/3/2026 3:41:04,sebastien.djanchekar@kiewit.com,open,"Reminder: Non-Compliant Insurance Verification Request for KPH TURCOT, UN PARTENARIAT S.E.N.C.",Canadian Pacific Kansas City
-6a700f7ec8107944de51ac68,8/3/2026 3:41:08,crystal@targetsystems.ca,deferral,Reminder: Non-Compliant Insurance Verification Request for TARGET TRANSLOAD SYSTEMS INC.,Canadian Pacific Kansas City
-6a7019cddc3b73513289003e,8/3/2026 4:18:38,monkeyworks.ca@gmail.com,open,Reminder: Non-Compliant Insurance Verification Request for DARREN MAYES,Canadian Pacific Kansas City
-6a701c2ec8107944de51ae2a,8/3/2026 4:18:38,monkeyworks.ca@gmail.com,open,Reminder: Non-Compliant Insurance Verification Request for DARREN MAYES,Canadian Pacific Kansas City
-6a701ca9dc3b7351328900aa,8/3/2026 4:19:01,monkeyworks.ca@gmail.com,open,Reminder: Non-Compliant Insurance Verification Request for DARREN MAYES,Canadian Pacific Kansas City
-6a701d54c8107944de51ae58,8/3/2026 4:19:01,monkeyworks.ca@gmail.com,open,Reminder: Non-Compliant Insurance Verification Request for DARREN MAYES,Canadian Pacific Kansas City
-6a701b5ac8107944de51ae0f,8/3/2026 4:21:58,monkeyworks.ca@gmail.com,open,Reminder: Non-Compliant Insurance Verification Request for DARREN MAYES,Canadian Pacific Kansas City
-6a701e02c8107944de51ae7d,8/3/2026 4:21:58,monkeyworks.ca@gmail.com,open,Reminder: Non-Compliant Insurance Verification Request for DARREN MAYES,Canadian Pacific Kansas City
-6a701a15c8107944de51ade1,8/3/2026 4:22:02,monkeyworks.ca@gmail.com,open,Reminder: Non-Compliant Insurance Verification Request for DARREN MAYES,Canadian Pacific Kansas City
-6a701b88dc3b735132890085,8/3/2026 4:22:02,monkeyworks.ca@gmail.com,open,Reminder: Non-Compliant Insurance Verification Request for DARREN MAYES,Canadian Pacific Kansas City
-6a702683dc3b735132890206,8/3/2026 4:59:44,chris-sevigny1@hotmail.com,open,Reminder: Non-Compliant Insurance Verification Request for 2311-2931 Quebec Inc.,Canadian Pacific Kansas City
-6a702943c8107944de51b009,8/3/2026 5:10:08,terry@eisenm.com,open,Reminder: Expiring Insurance Verification Request for M. Hsueh and Eisen Machinery,The Abbey Management Company
-6a7025bedc3b7351328901f1,8/3/2026 5:19:53,thashy@witransload.ca,deferral,Reminder: Non-Compliant Insurance Verification Request for WEYBURN INDUSTRIAL TRANSLOAD INC,Canadian Pacific Kansas City
-6a7025e6c8107944de51af85,8/3/2026 5:19:53,carter@witransload.ca,deferral,Reminder: Non-Compliant Insurance Verification Request for WEYBURN INDUSTRIAL TRANSLOAD INC,Canadian Pacific Kansas City
 6a70350ec8107944de51b166,8/3/2026 6:04:12,nik.singhal@tcs.com,open,Reminder: Non-Compliant Insurance Verification Request for TATA CONSULTANCY SERVICES CANADA INC,Canadian Pacific Kansas City
 6a703603dc3b7351328903f7,8/3/2026 6:04:12,nik.singhal@tcs.com,open,Reminder: Non-Compliant Insurance Verification Request for TATA CONSULTANCY SERVICES CANADA INC,Canadian Pacific Kansas City
 6a7032c8c8107944de51b108,8/3/2026 6:14:17,crystal@targetsystems.ca,deferral,Reminder: Non-Compliant Insurance Verification Request for TARGET TRANSLOAD SYSTEMS INC.,Canadian Pacific Kansas City
