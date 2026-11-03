@@ -1,6 +1,12 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,3332f64b-5da8-4c2f-8c4a-84f215384b20,,2372f58d-0098-4954-b4e4-4f048eee189f,,pending,2026-11-02T21:35:59,,,,,,11/02/2026,11/02/2026 20:32:11
-Bauer Foundation Corp.,5a1d56b2-e866-496c-938f-7617e2aadaf6,,,,pending,2026-11-02T21:35:59,,,,,,11/02/2026,11/02/2026 20:32:11
-Bauer Foundation Corp.,8d7ae280-5ac0-4ab3-a1e2-d2d4fc278d6c,,,,pending,2026-11-02T21:35:59,,,,,,11/02/2026,11/02/2026 20:32:11
-Bauer Foundation Corp.,9c4c6959-f6b2-46e4-84c2-b2bd526a8d65,,2372f58d-0098-4954-b4e4-4f048eee189f,,pending,2026-11-02T21:35:59,,,,,,11/02/2026,11/02/2026 20:32:11
-Canadian Pacific Kansas City,8ce95f1a-1757-4323-b922-a9624ad180d3,,,,pending,2026-11-03T01:00:47,,,,,,11/02/2026,11/02/2026 20:32:11
+Bauer Foundation Corp.,3332f64b-5da8-4c2f-8c4a-84f215384b20,,2372f58d-0098-4954-b4e4-4f048eee189f,,pending,2026-11-02T21:35:59,,,,,,11/03/2026,11/03/2026 06:06:17
+Bauer Foundation Corp.,36309c4f-ed68-44ee-b687-5f7e9c60e6e1,,,,pending,2026-11-03T05:51:51,,,,,,11/03/2026,11/03/2026 06:06:17
+Bauer Foundation Corp.,5a1d56b2-e866-496c-938f-7617e2aadaf6,,,,pending,2026-11-02T21:35:59,,,,,,11/03/2026,11/03/2026 06:06:17
+Bauer Foundation Corp.,8d7ae280-5ac0-4ab3-a1e2-d2d4fc278d6c,,,,pending,2026-11-02T21:35:59,,,,,,11/03/2026,11/03/2026 06:06:17
+Bauer Foundation Corp.,9c4c6959-f6b2-46e4-84c2-b2bd526a8d65,,2372f58d-0098-4954-b4e4-4f048eee189f,,pending,2026-11-02T21:35:59,,,,,,11/03/2026,11/03/2026 06:06:17
+Canadian Pacific Kansas City,313ba4e3-edbf-4091-bd7b-ede104dc22e2,,,,pending,2026-11-03T09:29:26,,,,,,11/03/2026,11/03/2026 06:06:17
+Canadian Pacific Kansas City,8ce95f1a-1757-4323-b922-a9624ad180d3,,,,pending,2026-11-03T01:00:47,,,,,,11/03/2026,11/03/2026 06:06:17
+Scandroli Construction,3f59bba8-d131-4e03-87c5-4b7aee86cafc,,328fc9a0-79d9-4b80-a270-8479abb1b165,,pending,2026-11-03T09:24:19,,,,,,11/03/2026,11/03/2026 06:06:31
+United Coal Company LLC,4405ab14-8c13-44bb-943e-bbe8bf114703,,75e37f8f-61c6-48a3-b3e1-ac0987155046,,pending,2026-11-03T11:46:46,,,,,,11/03/2026,11/03/2026 06:06:36
+United Coal Company LLC,727f9182-fa63-4354-abc0-95fd692370b3,,75e37f8f-61c6-48a3-b3e1-ac0987155046,,pending,2026-11-03T11:46:46,,,,,,11/03/2026,11/03/2026 06:06:36
+United Coal Company LLC,9fc11356-efed-40cd-be89-e37b37d2a97d,,75e37f8f-61c6-48a3-b3e1-ac0987155046,,pending,2026-11-03T11:46:46,,,,,,11/03/2026,11/03/2026 06:06:36
