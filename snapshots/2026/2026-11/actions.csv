@@ -1,0 +1,6 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Bauer Foundation Corp.,3332f64b-5da8-4c2f-8c4a-84f215384b20,,2372f58d-0098-4954-b4e4-4f048eee189f,,pending,2026-11-02T21:35:59,,,,,,11/02/2026,11/02/2026 20:32:11
+Bauer Foundation Corp.,5a1d56b2-e866-496c-938f-7617e2aadaf6,,,,pending,2026-11-02T21:35:59,,,,,,11/02/2026,11/02/2026 20:32:11
+Bauer Foundation Corp.,8d7ae280-5ac0-4ab3-a1e2-d2d4fc278d6c,,,,pending,2026-11-02T21:35:59,,,,,,11/02/2026,11/02/2026 20:32:11
+Bauer Foundation Corp.,9c4c6959-f6b2-46e4-84c2-b2bd526a8d65,,2372f58d-0098-4954-b4e4-4f048eee189f,,pending,2026-11-02T21:35:59,,,,,,11/02/2026,11/02/2026 20:32:11
+Canadian Pacific Kansas City,8ce95f1a-1757-4323-b922-a9624ad180d3,,,,pending,2026-11-03T01:00:47,,,,,,11/02/2026,11/02/2026 20:32:11
