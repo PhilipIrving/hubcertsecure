@@ -1,15 +1,19 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Scandroli Construction,150ebef1-eaa5-47ab-8fa1-fbddcedb3c0c,,b4dd8517-604a-484b-acbd-edf3f9de13a6,,pending,2026-11-03T14:57:51,,,,,,11/03/2026,11/03/2026 13:45:46
-Scandroli Construction,3739da73-6d6a-4c59-a96e-418fe6ca774a,,ccd025a2-22e4-4c4e-aa55-25c54e3c36af,,pending,2026-11-03T14:40:03,,,,,,11/03/2026,11/03/2026 13:45:46
-Scandroli Construction,536493c6-b569-449b-a262-7f9f74c4e282,,f2a880c3-dd07-4e13-8943-38cfaf867075,,pending,2026-11-03T14:51:54,,,,,,11/03/2026,11/03/2026 13:45:46
-Scandroli Construction,5bef705d-1b95-4f92-979a-5beaf7c1f734,,ccd025a2-22e4-4c4e-aa55-25c54e3c36af,,pending,2026-11-03T14:40:03,,,,,,11/03/2026,11/03/2026 13:45:46
-Scandroli Construction,72ad8a80-cadf-463b-93aa-af7695535820,,b4dd8517-604a-484b-acbd-edf3f9de13a6,,pending,2026-11-03T14:57:51,,,,,,11/03/2026,11/03/2026 13:45:46
-Scandroli Construction,91d93177-66fc-4bda-bca7-7251b6322071,,b4dd8517-604a-484b-acbd-edf3f9de13a6,,pending,2026-11-03T14:57:51,,,,,,11/03/2026,11/03/2026 13:45:46
-Scandroli Construction,97946d44-e447-4a2c-82ce-7fd690777547,,,,pending,2026-11-03T14:51:54,,,,,,11/03/2026,11/03/2026 13:45:46
-Scandroli Construction,9d8406ac-fb74-422a-be5a-a25241932301,,b4dd8517-604a-484b-acbd-edf3f9de13a6,,pending,2026-11-03T14:57:51,,,,,,11/03/2026,11/03/2026 13:45:46
-Scandroli Construction,a7c054dc-23e8-489f-9698-0d2d447d97be,,f2a880c3-dd07-4e13-8943-38cfaf867075,,pending,2026-11-03T14:51:54,,,,,,11/03/2026,11/03/2026 13:45:46
-Scandroli Construction,b03a4996-4a8d-4227-9c7e-b4890ad78d63,,b4dd8517-604a-484b-acbd-edf3f9de13a6,,pending,2026-11-03T14:57:51,,,,,,11/03/2026,11/03/2026 13:45:46
-Scandroli Construction,b4d63a42-c129-4f5d-90fa-098890617af6,,f2a880c3-dd07-4e13-8943-38cfaf867075,,pending,2026-11-03T14:51:54,,,,,,11/03/2026,11/03/2026 13:45:46
-Scandroli Construction,d66a42bc-6cc4-46d0-b861-fad9c4406895,,f2a880c3-dd07-4e13-8943-38cfaf867075,,pending,2026-11-03T14:51:54,,,,,,11/03/2026,11/03/2026 13:45:46
-Scandroli Construction,d7736a2f-59e5-4c45-98f7-24f9a08f456d,,,,pending,2026-11-03T14:57:51,,,,,,11/03/2026,11/03/2026 13:45:46
-Scandroli Construction,d919d7fd-9628-4cfb-a64b-e6c824c84d6c,,f2a880c3-dd07-4e13-8943-38cfaf867075,,pending,2026-11-03T14:51:54,,,,,,11/03/2026,11/03/2026 13:45:46
+Bauer Foundation Corp.,39afacec-a007-4927-99e0-3e1b6533d39c,,2372f58d-0098-4954-b4e4-4f048eee189f,,pending,2026-11-04T01:20:42,,,,,,11/04/2026,11/04/2026 06:22:19
+Scandroli Construction,150ebef1-eaa5-47ab-8fa1-fbddcedb3c0c,,b4dd8517-604a-484b-acbd-edf3f9de13a6,,pending,2026-11-03T14:57:51,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,3739da73-6d6a-4c59-a96e-418fe6ca774a,,ccd025a2-22e4-4c4e-aa55-25c54e3c36af,,pending,2026-11-03T14:40:03,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,536493c6-b569-449b-a262-7f9f74c4e282,,f2a880c3-dd07-4e13-8943-38cfaf867075,,pending,2026-11-03T14:51:54,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,5bef705d-1b95-4f92-979a-5beaf7c1f734,,ccd025a2-22e4-4c4e-aa55-25c54e3c36af,,pending,2026-11-03T14:40:03,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,66fcca72-5903-4292-aecc-fa9f93c92156,,188476e8-c244-4c6b-9570-053d17592dd2,,pending,2026-11-04T08:02:17,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,72ad8a80-cadf-463b-93aa-af7695535820,,b4dd8517-604a-484b-acbd-edf3f9de13a6,,pending,2026-11-03T14:57:51,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,91d93177-66fc-4bda-bca7-7251b6322071,,b4dd8517-604a-484b-acbd-edf3f9de13a6,,pending,2026-11-03T14:57:51,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,97946d44-e447-4a2c-82ce-7fd690777547,,,,pending,2026-11-03T14:51:54,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,9d1e3bea-3d2a-4cca-a695-81ef6e63a9c7,,188476e8-c244-4c6b-9570-053d17592dd2,,pending,2026-11-04T08:02:17,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,9d8406ac-fb74-422a-be5a-a25241932301,,b4dd8517-604a-484b-acbd-edf3f9de13a6,,pending,2026-11-03T14:57:51,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,a7c054dc-23e8-489f-9698-0d2d447d97be,,f2a880c3-dd07-4e13-8943-38cfaf867075,,pending,2026-11-03T14:51:54,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,b03a4996-4a8d-4227-9c7e-b4890ad78d63,,b4dd8517-604a-484b-acbd-edf3f9de13a6,,pending,2026-11-03T14:57:51,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,b4d63a42-c129-4f5d-90fa-098890617af6,,f2a880c3-dd07-4e13-8943-38cfaf867075,,pending,2026-11-03T14:51:54,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,d66a42bc-6cc4-46d0-b861-fad9c4406895,,f2a880c3-dd07-4e13-8943-38cfaf867075,,pending,2026-11-03T14:51:54,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,d7736a2f-59e5-4c45-98f7-24f9a08f456d,,,,pending,2026-11-03T14:57:51,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,d919d7fd-9628-4cfb-a64b-e6c824c84d6c,,f2a880c3-dd07-4e13-8943-38cfaf867075,,pending,2026-11-03T14:51:54,,,,,,11/04/2026,11/04/2026 06:22:33
+Scandroli Construction,dbc2cc24-5561-4515-a4c2-b88bcb3376e4,,188476e8-c244-4c6b-9570-053d17592dd2,,pending,2026-11-04T08:02:17,,,,,,11/04/2026,11/04/2026 06:22:33
