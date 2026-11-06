@@ -1,0 +1,12 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Bauer Foundation Corp.,39afacec-a007-4927-99e0-3e1b6533d39c,,2372f58d-0098-4954-b4e4-4f048eee189f,,pending,2026-11-04T01:20:42,,,,,,11/05/2026,11/05/2026 19:16:16
+Canadian Pacific Kansas City,1f1773e1-1c06-408c-93d6-81a99c3d063c,,,,pending,2026-11-05T15:48:05,,,,,,11/05/2026,11/05/2026 19:16:16
+Scandroli Construction,1db542ed-4ad8-41b8-a8c5-e9b5ed7e404e,,85b5d896-290b-4917-aaa4-a38a5d2e0520,,pending,2026-11-05T18:55:27,,,,,,11/05/2026,11/05/2026 19:16:26
+Scandroli Construction,4aba7b53-7935-4463-bc58-28de5c893051,,,,pending,2026-11-06T00:40:20,,,,,,11/05/2026,11/05/2026 19:16:26
+Scandroli Construction,5956558d-38af-463c-a717-fa385dc67ebb,,5438dc8e-21f5-4699-a63a-88e5659510d4,,pending,2026-11-05T14:47:35,,,,,,11/05/2026,11/05/2026 19:16:26
+Scandroli Construction,65c8e76e-57a5-471a-b8f6-7e291b33f2b0,,85b5d896-290b-4917-aaa4-a38a5d2e0520,,pending,2026-11-05T18:55:27,,,,,,11/05/2026,11/05/2026 19:16:26
+Scandroli Construction,71ec4309-9a34-4eb0-94ce-85e2bb2579f8,,291b98cb-8406-402a-ba9f-5f45c129b2fb,,pending,2026-11-05T15:24:38,,,,,,11/05/2026,11/05/2026 19:16:26
+Scandroli Construction,84451eff-ee3e-491d-ade8-4dec77c0bfde,,b99476b3-5517-44a7-8001-82198c1b2167,,pending,2026-11-05T15:25:53,,,,,,11/05/2026,11/05/2026 19:16:26
+Scandroli Construction,9673cad8-43f7-4db4-8414-891d0253e847,,85b5d896-290b-4917-aaa4-a38a5d2e0520,,pending,2026-11-05T18:55:27,,,,,,11/05/2026,11/05/2026 19:16:26
+Scandroli Construction,afd4b562-853d-4f54-9cdf-ffd92701b9d9,,85b5d896-290b-4917-aaa4-a38a5d2e0520,,pending,2026-11-05T18:55:27,,,,,,11/05/2026,11/05/2026 19:16:26
+Scandroli Construction,ba68308d-c834-498d-ada7-6455fd57c98a,,,,pending,2026-11-05T18:55:27,,,,,,11/05/2026,11/05/2026 19:16:26
