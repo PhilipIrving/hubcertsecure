@@ -1,13 +1,16 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,39afacec-a007-4927-99e0-3e1b6533d39c,,2372f58d-0098-4954-b4e4-4f048eee189f,,pending,2026-11-04T01:20:42,,,,,,11/06/2026,11/06/2026 18:22:45
-EMMES,ba23e6de-9727-42f2-95e2-312a367c102d,,c711ad38-1c9a-461b-ad8a-3e850123075b,,pending,2026-11-06T14:27:56,,,,,,11/06/2026,11/06/2026 18:22:45
-Scandroli Construction,25951862-7a78-4c20-90d6-0e87821cadaa,,793f9975-e5d1-42db-bdc8-419c2d899444,,pending,2026-11-06T16:30:18,,,,,,11/06/2026,11/06/2026 18:22:53
-Scandroli Construction,32313f74-7593-4137-9768-d9b45b7bc064,,793f9975-e5d1-42db-bdc8-419c2d899444,,pending,2026-11-06T16:30:18,,,,,,11/06/2026,11/06/2026 18:22:53
-Scandroli Construction,3f0d39e4-6cfc-405d-9862-b650213d8747,,793f9975-e5d1-42db-bdc8-419c2d899444,,pending,2026-11-06T16:30:18,,,,,,11/06/2026,11/06/2026 18:22:53
-Scandroli Construction,6b2df495-bbc6-4df8-8d59-51185f1ece19,,,,pending,2026-11-06T16:30:18,,,,,,11/06/2026,11/06/2026 18:22:53
-Scandroli Construction,a84bdc7d-4789-407b-bb8a-ba59dcdf9c8d,,793f9975-e5d1-42db-bdc8-419c2d899444,,pending,2026-11-06T16:30:18,,,,,,11/06/2026,11/06/2026 18:22:53
-Scandroli Construction,fc7201bd-53a0-44d3-bb0b-6a5938852d68,,,,pending,2026-11-06T16:30:18,,,,,,11/06/2026,11/06/2026 18:22:53
-The Abbey Management Company,7f29b1be-3c9c-4dea-92ae-a52c0c312d20,,,,pending,2026-11-06T13:46:18,,,,,,11/06/2026,11/06/2026 18:22:54
-The Abbey Management Company,edb06b2e-6e07-414f-9bc3-0d86e109a6de,,,,pending,2026-11-06T13:46:18,,,,,,11/06/2026,11/06/2026 18:22:54
-United Coal Company LLC,db460b53-b36f-4f8d-acf6-7818c87b0a5e,,,,pending,2026-11-06T14:33:02,,,,,,11/06/2026,11/06/2026 18:22:55
-United Coal Company LLC,f98c879b-fcb8-41af-92e5-b972e64882b0,,,,pending,2026-11-06T14:33:02,,,,,,11/06/2026,11/06/2026 18:22:55
+Bauer Foundation Corp.,39afacec-a007-4927-99e0-3e1b6533d39c,,2372f58d-0098-4954-b4e4-4f048eee189f,,pending,2026-11-04T01:20:42,,,,,,11/07/2026,11/07/2026 00:10:14
+Bauer Foundation Corp.,87f19d07-2f4e-409f-9dce-4fff7142cfd8,,eaae3d1a-520d-450f-9b0b-464781f6191a,,pending,2026-11-07T03:28:32,,,,,,11/07/2026,11/07/2026 00:10:14
+Canadian Pacific Kansas City,35e8a820-79ae-4937-a2a8-9e79555e4b80,,,,pending,2026-11-07T01:53:47,,,,,,11/07/2026,11/07/2026 00:10:14
+Canadian Pacific Kansas City,7e1ee6d0-e56d-4554-bb53-64ff03edce70,,,,pending,2026-11-07T02:07:22,,,,,,11/07/2026,11/07/2026 00:10:14
+EMMES,ba23e6de-9727-42f2-95e2-312a367c102d,,c711ad38-1c9a-461b-ad8a-3e850123075b,,pending,2026-11-06T14:27:56,,,,,,11/07/2026,11/07/2026 00:10:14
+Scandroli Construction,25951862-7a78-4c20-90d6-0e87821cadaa,,793f9975-e5d1-42db-bdc8-419c2d899444,,pending,2026-11-06T16:30:18,,,,,,11/07/2026,11/07/2026 00:10:21
+Scandroli Construction,32313f74-7593-4137-9768-d9b45b7bc064,,793f9975-e5d1-42db-bdc8-419c2d899444,,pending,2026-11-06T16:30:18,,,,,,11/07/2026,11/07/2026 00:10:21
+Scandroli Construction,3f0d39e4-6cfc-405d-9862-b650213d8747,,793f9975-e5d1-42db-bdc8-419c2d899444,,pending,2026-11-06T16:30:18,,,,,,11/07/2026,11/07/2026 00:10:21
+Scandroli Construction,6b2df495-bbc6-4df8-8d59-51185f1ece19,,,,pending,2026-11-06T16:30:18,,,,,,11/07/2026,11/07/2026 00:10:21
+Scandroli Construction,a84bdc7d-4789-407b-bb8a-ba59dcdf9c8d,,793f9975-e5d1-42db-bdc8-419c2d899444,,pending,2026-11-06T16:30:18,,,,,,11/07/2026,11/07/2026 00:10:21
+Scandroli Construction,fc7201bd-53a0-44d3-bb0b-6a5938852d68,,,,pending,2026-11-06T16:30:18,,,,,,11/07/2026,11/07/2026 00:10:21
+The Abbey Management Company,7f29b1be-3c9c-4dea-92ae-a52c0c312d20,,,,pending,2026-11-06T13:46:18,,,,,,11/07/2026,11/07/2026 00:10:23
+The Abbey Management Company,edb06b2e-6e07-414f-9bc3-0d86e109a6de,,,,pending,2026-11-06T13:46:18,,,,,,11/07/2026,11/07/2026 00:10:23
+United Coal Company LLC,db460b53-b36f-4f8d-acf6-7818c87b0a5e,,,,pending,2026-11-06T14:33:02,,,,,,11/07/2026,11/07/2026 00:10:25
+United Coal Company LLC,f98c879b-fcb8-41af-92e5-b972e64882b0,,,,pending,2026-11-06T14:33:02,,,,,,11/07/2026,11/07/2026 00:10:25
