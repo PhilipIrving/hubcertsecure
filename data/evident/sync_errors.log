@@ -1,368 +1,116 @@
 [
   {
-    "client": "A G Equipment Company",
-    "stage": "criteria",
-    "insured": "ab92749e-e455-4b85-8104-ddeb62500d92",
-    "error": "socket hang up"
-  },
-  {
-    "client": "A G Equipment Company",
+    "client": "Canadian Pacific Kansas City",
     "stage": "coverage_data",
-    "insured": "ac49ea91-af7c-4882-8115-211eea3dadfb",
-    "error": "socket hang up"
-  },
-  {
-    "client": "A G Equipment Company",
-    "stage": "criteria",
-    "insured": "ab3fef36-40a1-47e9-b938-9ce5064cdbb1",
-    "error": "socket hang up"
-  },
-  {
-    "client": "A G Equipment Company",
-    "stage": "criteria",
-    "insured": "aab0fd27-4021-4efb-9a23-97d542142535",
-    "error": "HTTP 500 on /insurance/insureds/aab0fd27-4021-4efb-9a23-97d542142535/status: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
-  },
-  {
-    "client": "A G Equipment Company",
-    "stage": "coverage_data",
-    "insured": "afa06ea1-ea74-4540-95aa-27f4cf0f31bf",
-    "error": "socket hang up"
-  },
-  {
-    "client": "A G Equipment Company",
-    "stage": "criteria",
-    "insured": "ae2a61bc-20db-4cf7-8777-fda921b48a2e",
-    "error": "socket hang up"
-  },
-  {
-    "client": "A G Equipment Company",
-    "stage": "criteria",
-    "insured": "adb82fdc-bb93-45f9-9825-d9fc72c82ba8",
-    "error": "HTTP 401 on /insurance/insureds/adb82fdc-bb93-45f9-9825-d9fc72c82ba8/status: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
-  },
-  {
-    "client": "A G Equipment Company",
-    "stage": "criteria",
-    "insured": "aebe21e6-a832-44ec-b641-1d75dc438a78",
-    "error": "socket hang up"
-  },
-  {
-    "client": "A G Equipment Company",
-    "stage": "coverage_data",
-    "insured": "afe3769a-7f6f-41f8-bcd7-cd17b41a4839",
-    "error": "socket hang up"
-  },
-  {
-    "client": "A G Equipment Company",
-    "stage": "coverage_data",
-    "insured": "b81d69f9-a449-4bfa-849a-1585a3197002",
-    "error": "socket hang up"
-  },
-  {
-    "client": "A G Equipment Company",
-    "stage": "coverage_data",
-    "insured": "b781e95f-29ee-4f4c-a1f0-9165b69ad585",
-    "error": "socket hang up"
-  },
-  {
-    "client": "A G Equipment Company",
-    "stage": "coverage_data",
-    "insured": "b833f5ee-dd2e-4eb8-a919-0e3e422fd85b",
-    "error": "socket hang up"
-  },
-  {
-    "client": "A G Equipment Company",
-    "stage": "coverage_data",
-    "insured": "b849d553-7d51-4aad-ba59-5eba8cfa49d1",
-    "error": "socket hang up"
-  },
-  {
-    "client": "A G Equipment Company",
-    "stage": "coverage_data",
-    "insured": "b86d1d32-d354-42d9-a119-3c78898559bc",
+    "insured": "cf369733-a614-45ac-a922-914163c86e5d",
     "error": "socket hang up"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "coverage_data",
-    "insured": "12b92553-cf56-4ea5-8dda-29ce2313ffb1",
+    "insured": "cf77ca7c-4a4e-435b-8cb2-4c45396260c6",
     "error": "socket hang up"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "coverage_data",
-    "insured": "12e0dfc5-c54e-48f8-be04-ca06f9cb282c",
+    "insured": "cf6efe38-d527-47d2-a472-4ae49b75da6f",
     "error": "socket hang up"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "criteria",
-    "insured": "11e87008-60b6-4dfe-803d-74c963dba203",
-    "error": "HTTP 500 on /insurance/insureds/11e87008-60b6-4dfe-803d-74c963dba203/status: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "136e877b-62e1-48a9-8c35-67f0f3c03768",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "136e787c-bf7e-4f47-b3d3-d6ce0272b158",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "138cb9a6-1a51-4df1-b3dd-c11e994ad192",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "138345fb-e607-4fdf-a333-67e2168746cd",
+    "insured": "cf0197f1-6e11-4721-af2f-dbb798c801bd",
     "error": "socket hang up"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "criteria",
-    "insured": "13366d5a-c005-411e-8b46-e0dee64e5c14",
+    "insured": "ceed474b-b0b3-40c1-8a87-499bfec35ec1",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "coverage_data",
+    "insured": "cf52a32c-2eef-4e36-beba-e7b4b57e4a8f",
     "error": "socket hang up"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "criteria",
-    "insured": "158d8f7a-b9b8-46a7-a9a1-8b527c728fd6",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "15bf4c29-70d9-48f9-bc68-89fde3fd2333",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "c8cd20bd-d4a2-460b-9ca3-49924b0b41b1",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "c8dd89e5-5bd8-4852-bc7c-c8aead24aa5f",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "c87efc70-26d5-4159-a43b-579dcb7346dd",
-    "error": "HTTP 401 on /insurance/insureds/c87efc70-26d5-4159-a43b-579dcb7346dd/data: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "c956e1db-744f-4a21-ba46-311e6b3192d4",
+    "insured": "cf006ca7-8753-41d7-b2a2-90787086aedb",
     "error": "socket hang up"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "criteria",
-    "insured": "c979f410-d621-463b-b992-6784363f2ce1",
+    "insured": "cf045b81-3b15-46c2-b53e-6615c4cbc73b",
     "error": "socket hang up"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "criteria",
-    "insured": "c91246cb-fdb3-453a-a273-bc45a813a553",
+    "insured": "cea0f593-ad77-482c-b8a4-e901fadc21d7",
+    "error": "HTTP 401 on /insurance/insureds/cea0f593-ad77-482c-b8a4-e901fadc21d7/status: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "criteria",
+    "insured": "cecc1a0e-8260-470a-906d-433a05b06486",
+    "error": "HTTP 401 on /insurance/insureds/cecc1a0e-8260-470a-906d-433a05b06486/status: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "coverage_data",
+    "insured": "cf0be2f3-9d3f-47b7-88c7-b90e0c722cad",
+    "error": "HTTP 500 on /insurance/insureds/cf0be2f3-9d3f-47b7-88c7-b90e0c722cad/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "criteria",
+    "insured": "cec5ef56-8e7e-4268-bd97-debdf392ea94",
+    "error": "HTTP 500 on /insurance/insureds/cec5ef56-8e7e-4268-bd97-debdf392ea94/status: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "coverage_data",
+    "insured": "cfdee612-3cfb-4a72-8f92-9cad4da7a9ff",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "coverage_data",
+    "insured": "d0119aff-2431-4a45-8dbc-da1176aa99ce",
     "error": "socket hang up"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "criteria",
-    "insured": "c8aeb977-d8e4-4132-89c9-2bb997e935a1",
-    "error": "socket hang up"
+    "insured": "cfb80a79-dc13-4fef-951b-06bf83f37cac",
+    "error": "HTTP 500 on /insurance/insureds/cfb80a79-dc13-4fef-951b-06bf83f37cac/status: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "coverage_data",
-    "insured": "c97c05b1-d784-436b-a930-9b6d4ba7b0fc",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "c8e62f17-705d-4d6f-b2a0-7d9b3fd10468",
+    "insured": "d2aadcd8-39c2-41ed-ab41-e54ac25e4a1f",
     "error": "socket hang up"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "criteria",
-    "insured": "c8ce1f9b-4ac9-4174-b827-bec159d7cbe1",
+    "insured": "d1f8494d-34b5-4d72-b12c-53844d6f7c8c",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "criteria",
+    "insured": "d23ba251-efa2-4e3a-add0-86a42b0025bc",
     "error": "socket hang up"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "coverage_data",
-    "insured": "c97a27e0-1ef6-4b35-8ef8-2708cfe9f089",
-    "error": "HTTP 401 on /insurance/insureds/c97a27e0-1ef6-4b35-8ef8-2708cfe9f089/data: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "criteria",
-    "insured": "4e14c8f1-9756-40eb-8181-48865398a861",
-    "error": "socket hang up"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "coverage_data",
-    "insured": "4faef0b9-6b5c-4ddc-b746-f07cd975b0fd",
-    "error": "socket hang up"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "coverage_data",
-    "insured": "4fedd13e-9fae-48dd-8541-951cc7f03b8b",
-    "error": "socket hang up"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "coverage_data",
-    "insured": "4fd5503b-cd64-446c-ab60-6cf94bc1b823",
-    "error": "socket hang up"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "coverage_data",
-    "insured": "4fe7a1f5-2476-42f0-a608-4ab123720cb0",
-    "error": "socket hang up"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "coverage_data",
-    "insured": "4ff20583-6071-4ffe-b6aa-33fda0fab771",
-    "error": "socket hang up"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "criteria",
-    "insured": "4fd5503b-cd64-446c-ab60-6cf94bc1b823",
-    "error": "socket hang up"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "coverage_data",
-    "insured": "5183c012-4f99-4ee6-8b3b-f6e24209647a",
-    "error": "socket hang up"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "coverage_data",
-    "insured": "51f549f9-ff0d-4383-9938-1fb268f96178",
-    "error": "socket hang up"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "coverage_data",
-    "insured": "51b4d936-c57e-47ab-b2a5-633f47d561bf",
-    "error": "socket hang up"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "coverage_data",
-    "insured": "566371b9-32fc-4149-82ea-7edb555b72a9",
-    "error": "socket hang up"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "coverage_data",
-    "insured": "560b4920-b81b-4978-a324-16741a460af4",
-    "error": "socket hang up"
-  },
-  {
-    "client": "ESS Companies",
-    "stage": "coverage_data",
-    "insured": "5678a711-1fc9-41d8-af67-6baeace4febc",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "criteria",
-    "insured": "d8f46461-5e4a-4b4d-a9e3-36e2882065ed",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "coverage_data",
-    "insured": "dc97af47-35b0-4b64-9108-b5b19e1bfb85",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "coverage_data",
-    "insured": "dc87adf3-1e41-40dd-aa08-0e80434c54e1",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "coverage_data",
-    "insured": "dcf2b2b2-e6e2-40d2-9156-e08fd3ccbd80",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "coverage_data",
-    "insured": "dc62049d-7787-485e-b2ba-f64132614c0f",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "coverage_data",
-    "insured": "dcb1e520-ca82-4a56-90ce-79047b4f4784",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "coverage_data",
-    "insured": "e2733a31-2b54-407b-82a6-97c177695307",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "coverage_data",
-    "insured": "e17194b1-4dad-40f9-a597-fcacd133a76d",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "coverage_data",
-    "insured": "e227f0c2-ef9d-4ec3-b9c1-fdf4b2cd49ea",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "coverage_data",
-    "insured": "e2e7f03f-3206-446c-a03f-ba4991f89352",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "coverage_data",
-    "insured": "e1f24eef-89fc-42f9-9610-e1383e6b9cb1",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "coverage_data",
-    "insured": "f2d6eb93-a741-46ff-88b4-80aea8e20c97",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Scandroli Construction",
-    "stage": "coverage_data",
-    "insured": "f2cd4c1d-5ee9-4a6d-a534-609d25b0db0b",
+    "insured": "d2dad263-133f-445d-867d-998a755d4be1",
     "error": "socket hang up"
   }
 ]
