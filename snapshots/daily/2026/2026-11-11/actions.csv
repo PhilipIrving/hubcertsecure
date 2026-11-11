@@ -1,0 +1,21 @@
+client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
+Canadian Pacific Kansas City,8767ee42-f0c1-4aae-823b-c6ece34af849,,dbf52911-2fb2-4940-aa8b-f3b54acef1d2,,pending,2026-11-10T05:32:55,,,,,,11/10/2026,11/10/2026 16:12:24
+Canadian Pacific Kansas City,d0aab271-700a-4ce7-9b79-e57fc536c7ee,,5d787117-4f49-45cd-99dc-4b39dc71f73c,,pending,2026-11-10T06:24:47,,,,,,11/10/2026,11/10/2026 16:12:24
+Canadian Pacific Kansas City,ec74fccf-75af-4e23-aad7-847c217d6748,,aea374ec-587b-4813-9fc7-c0c0c54c0f82,,pending,2026-11-10T17:37:24,,,,,,11/10/2026,11/10/2026 16:12:24
+Scandroli Construction,12d1bc3e-eaa7-4491-9509-ec413005ff74,,2a1d46df-7470-49ea-a0f8-abd24e3d350f,,pending,2026-11-10T07:35:45,,,,,,11/10/2026,11/10/2026 16:12:31
+Scandroli Construction,20e7d8c6-bbc6-408d-913a-425fbab632dc,,83a59965-eb7e-4566-87f2-1275ca2db624,,pending,2026-11-10T06:38:23,,,,,,11/10/2026,11/10/2026 16:12:31
+Scandroli Construction,2124a577-ddc6-4995-9e73-4865c50d33f1,,54957dc2-96dd-4e0a-959a-c1cdb9347661,,pending,2026-11-09T19:48:46,,,,,,11/10/2026,11/10/2026 16:12:31
+Scandroli Construction,3fb1588b-4e6a-4b78-8f93-62906a6a5f4a,,54957dc2-96dd-4e0a-959a-c1cdb9347661,,pending,2026-11-09T19:48:46,,,,,,11/10/2026,11/10/2026 16:12:31
+Scandroli Construction,6b71cea0-5c23-4de9-ba62-f1981af85dd2,,4d197f82-6df5-463f-90f8-8b77d9478a9e,,pending,2026-11-10T04:37:14,,,,,,11/10/2026,11/10/2026 16:12:31
+Scandroli Construction,6d7f1919-9a8a-4cce-a4b6-c282e7998eed,,54957dc2-96dd-4e0a-959a-c1cdb9347661,,pending,2026-11-09T19:48:46,,,,,,11/10/2026,11/10/2026 16:12:31
+Scandroli Construction,794d537a-36a3-4abe-90e3-1862060e3947,,,,pending,2026-11-09T19:48:46,,,,,,11/10/2026,11/10/2026 16:12:31
+Scandroli Construction,7ad4e315-c839-408b-bda1-5ebe985ef2ba,,2a1d46df-7470-49ea-a0f8-abd24e3d350f,,pending,2026-11-10T07:35:45,,,,,,11/10/2026,11/10/2026 16:12:31
+Scandroli Construction,a050b58c-ae11-49a8-b029-34fb016cfbeb,,81edee8a-18fa-4044-8cdb-2d9da7bb1a71,,pending,2026-11-10T13:39:53,,,,,,11/10/2026,11/10/2026 16:12:31
+Scandroli Construction,b299d9b8-9a1c-46f1-aa57-e88f0d8b7931,,81edee8a-18fa-4044-8cdb-2d9da7bb1a71,,pending,2026-11-10T13:39:53,,,,,,11/10/2026,11/10/2026 16:12:31
+Scandroli Construction,dc1089cc-a338-4115-b2df-5703c47cb4d6,,81edee8a-18fa-4044-8cdb-2d9da7bb1a71,,pending,2026-11-10T13:39:53,,,,,,11/10/2026,11/10/2026 16:12:31
+Scandroli Construction,df340069-c080-445d-a2b6-58e61eafac6b,,,,pending,2026-11-09T19:48:46,,,,,,11/10/2026,11/10/2026 16:12:31
+Scandroli Construction,fa951343-d845-4a22-ba55-dfa3d73624bf,,81edee8a-18fa-4044-8cdb-2d9da7bb1a71,,pending,2026-11-10T13:39:53,,,,,,11/10/2026,11/10/2026 16:12:31
+The Abbey Management Company,13728f14-689e-4d24-903b-49c6a0ed2a46,,,,pending,2026-11-10T05:05:49,,,,,,11/10/2026,11/10/2026 16:12:32
+The Abbey Management Company,1774fd61-50c1-4d53-a007-95c2c7342a3b,,28e7c2d3-f3d5-42ef-9b1d-5e3be337d20c,,pending,2026-11-10T08:40:53,,,,,,11/10/2026,11/10/2026 16:12:32
+The Abbey Management Company,74867d84-6bad-43b0-a757-815c22ce16a1,,,,pending,2026-11-10T08:45:18,,,,,,11/10/2026,11/10/2026 16:12:32
+The Abbey Management Company,e2048d28-328a-40b2-b7f5-8598c5f6e5ab,,,,pending,2026-11-10T05:05:49,,,,,,11/10/2026,11/10/2026 16:12:32
