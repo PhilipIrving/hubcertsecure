@@ -1,116 +1,344 @@
 [
   {
-    "client": "Canadian Pacific Kansas City",
+    "client": "A G Equipment Company",
     "stage": "coverage_data",
-    "insured": "cf369733-a614-45ac-a922-914163c86e5d",
-    "error": "socket hang up"
+    "insured": "4fefab15-9bc7-4c08-a85e-5a3e6ec6494a",
+    "error": "HTTP 401 on /insurance/insureds/4fefab15-9bc7-4c08-a85e-5a3e6ec6494a/data: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
   },
   {
-    "client": "Canadian Pacific Kansas City",
+    "client": "A G Equipment Company",
     "stage": "coverage_data",
-    "insured": "cf77ca7c-4a4e-435b-8cb2-4c45396260c6",
-    "error": "socket hang up"
+    "insured": "7414fd16-7e21-4e1c-95a9-daa307b9367c",
+    "error": "HTTP 500 on /insurance/insureds/7414fd16-7e21-4e1c-95a9-daa307b9367c/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
   },
   {
-    "client": "Canadian Pacific Kansas City",
+    "client": "A G Equipment Company",
+    "stage": "criteria",
+    "insured": "7a52f90c-c334-4928-8d37-55d7dec17d51",
+    "error": "HTTP 401 on /insurance/insureds/7a52f90c-c334-4928-8d37-55d7dec17d51/status: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+  },
+  {
+    "client": "A G Equipment Company",
     "stage": "coverage_data",
-    "insured": "cf6efe38-d527-47d2-a472-4ae49b75da6f",
-    "error": "socket hang up"
+    "insured": "7e465759-822c-4bbf-a115-eab1a5bff12f",
+    "error": "HTTP 401 on /insurance/insureds/7e465759-822c-4bbf-a115-eab1a5bff12f/data: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
   },
   {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "cf0197f1-6e11-4721-af2f-dbb798c801bd",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "ceed474b-b0b3-40c1-8a87-499bfec35ec1",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
+    "client": "A G Equipment Company",
     "stage": "coverage_data",
-    "insured": "cf52a32c-2eef-4e36-beba-e7b4b57e4a8f",
+    "insured": "82d716d9-a979-4f6e-bd08-acdf84cb205c",
     "error": "socket hang up"
   },
   {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "cf006ca7-8753-41d7-b2a2-90787086aedb",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "cf045b81-3b15-46c2-b53e-6615c4cbc73b",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "cea0f593-ad77-482c-b8a4-e901fadc21d7",
-    "error": "HTTP 401 on /insurance/insureds/cea0f593-ad77-482c-b8a4-e901fadc21d7/status: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "cecc1a0e-8260-470a-906d-433a05b06486",
-    "error": "HTTP 401 on /insurance/insureds/cecc1a0e-8260-470a-906d-433a05b06486/status: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
+    "client": "A G Equipment Company",
     "stage": "coverage_data",
-    "insured": "cf0be2f3-9d3f-47b7-88c7-b90e0c722cad",
-    "error": "HTTP 500 on /insurance/insureds/cf0be2f3-9d3f-47b7-88c7-b90e0c722cad/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+    "insured": "81c5a15a-fd93-4436-9dc4-ad9be8d18d21",
+    "error": "HTTP 401 on /insurance/insureds/81c5a15a-fd93-4436-9dc4-ad9be8d18d21/data: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
   },
   {
-    "client": "Canadian Pacific Kansas City",
+    "client": "A G Equipment Company",
     "stage": "criteria",
-    "insured": "cec5ef56-8e7e-4268-bd97-debdf392ea94",
-    "error": "HTTP 500 on /insurance/insureds/cec5ef56-8e7e-4268-bd97-debdf392ea94/status: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "cfdee612-3cfb-4a72-8f92-9cad4da7a9ff",
+    "insured": "ec148e33-5269-44cf-a977-30c83ea5bc83",
     "error": "socket hang up"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "coverage_data",
-    "insured": "d0119aff-2431-4a45-8dbc-da1176aa99ce",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "cfb80a79-dc13-4fef-951b-06bf83f37cac",
-    "error": "HTTP 500 on /insurance/insureds/cfb80a79-dc13-4fef-951b-06bf83f37cac/status: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "coverage_data",
-    "insured": "d2aadcd8-39c2-41ed-ab41-e54ac25e4a1f",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "d1f8494d-34b5-4d72-b12c-53844d6f7c8c",
-    "error": "socket hang up"
-  },
-  {
-    "client": "Canadian Pacific Kansas City",
-    "stage": "criteria",
-    "insured": "d23ba251-efa2-4e3a-add0-86a42b0025bc",
+    "insured": "07e069be-6e9a-4543-93c1-cccbe0dce8c5",
     "error": "socket hang up"
   },
   {
     "client": "Canadian Pacific Kansas City",
     "stage": "coverage_data",
-    "insured": "d2dad263-133f-445d-867d-998a755d4be1",
+    "insured": "08f5437c-30cd-4d85-bafe-c25dabf22883",
     "error": "socket hang up"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "criteria",
+    "insured": "0cac3ab4-b136-421a-8db3-f9c33cc1fb40",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "criteria",
+    "insured": "2939e8f9-f26d-464e-924f-bd52f4f72afa",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "coverage_data",
+    "insured": "292dc755-821a-48ea-9e0a-b3a14902893c",
+    "error": "HTTP 401 on /insurance/insureds/292dc755-821a-48ea-9e0a-b3a14902893c/data: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "criteria",
+    "insured": "28cacaec-e2ab-4ac6-aa09-5ae746e210e4",
+    "error": "HTTP 500 on /insurance/insureds/28cacaec-e2ab-4ac6-aa09-5ae746e210e4/status: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "coverage_data",
+    "insured": "29fbdc51-af83-4ee9-a860-33914bccd6be",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "coverage_data",
+    "insured": "50e45990-1600-4902-b87b-3add5263e9ff",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "criteria",
+    "insured": "506932dc-857b-433e-a95e-3eaee6a82540",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "criteria",
+    "insured": "50acbcfa-00da-4401-b1f9-c14eae688ec4",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "coverage_data",
+    "insured": "5106c799-4a01-46e1-a257-69724a6c97c5",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "coverage_data",
+    "insured": "51534f03-f8a9-4272-93af-5f2fb65cf8b0",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "criteria",
+    "insured": "4f908c84-833e-4eba-ab80-944ef1903fec",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "coverage_data",
+    "insured": "513270a2-d3dd-4961-8dea-1a3bf0398417",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "coverage_data",
+    "insured": "50cad263-94fa-4fae-b1d8-04f8a4e9e7c3",
+    "error": "HTTP 401 on /insurance/insureds/50cad263-94fa-4fae-b1d8-04f8a4e9e7c3/data: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+  },
+  {
+    "client": "Canadian Pacific Kansas City",
+    "stage": "coverage_data",
+    "insured": "50bcc318-da70-4274-8229-b160be10c2e2",
+    "error": "HTTP 500 on /insurance/insureds/50bcc318-da70-4274-8229-b160be10c2e2/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "criteria",
+    "insured": "3b92b11a-e3c4-41ed-8915-511be4da399a",
+    "error": "socket hang up"
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "criteria",
+    "insured": "3ae86e9a-440a-4ba3-82dc-4b476f758389",
+    "error": "HTTP 401 on /insurance/insureds/3ae86e9a-440a-4ba3-82dc-4b476f758389/status: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "criteria",
+    "insured": "4010664c-7e50-4529-a820-9372292641d9",
+    "error": "socket hang up"
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "coverage_data",
+    "insured": "41b32c18-c5aa-460a-bc2f-a0ad273684ba",
+    "error": "socket hang up"
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "coverage_data",
+    "insured": "7c1a2681-1320-42a8-8c7e-a541379f30c3",
+    "error": "socket hang up"
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "criteria",
+    "insured": "c884983a-fc4f-4072-a6e2-5c7b14e16370",
+    "error": "socket hang up"
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "coverage_data",
+    "insured": "c99d7016-ef9a-4676-8db1-9cb48451fb21",
+    "error": "socket hang up"
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "criteria",
+    "insured": "c8d8f2a0-1bd6-41f2-a124-d046ae46586e",
+    "error": "socket hang up"
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "coverage_data",
+    "insured": "c9f4fae5-7186-4294-9057-26ac7259070d",
+    "error": "socket hang up"
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "criteria",
+    "insured": "c95cb9a8-787e-4f98-aef1-17291f8d279a",
+    "error": "socket hang up"
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "coverage_data",
+    "insured": "e2291481-6cc4-4d24-af4b-f9f0631b44bc",
+    "error": "socket hang up"
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "criteria",
+    "insured": "e0f1a46c-6675-43bf-9a1f-e6780a6e6515",
+    "error": "socket hang up"
+  },
+  {
+    "client": "ESS Companies",
+    "stage": "criteria",
+    "insured": "e0c7c7e6-4983-4e11-ab02-1ba0462e9e5b",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Scandroli Construction",
+    "stage": "coverage_data",
+    "insured": "89de8eba-16db-4337-89f7-464bebf38711",
+    "error": "HTTP 500 on /insurance/insureds/89de8eba-16db-4337-89f7-464bebf38711/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+  },
+  {
+    "client": "Scandroli Construction",
+    "stage": "coverage_data",
+    "insured": "ab39a4c4-5dea-4638-83a9-679778418e19",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Scandroli Construction",
+    "stage": "coverage_data",
+    "insured": "b07c98d9-7fc0-40b0-b9a3-ac94a997fcfb",
+    "error": "socket hang up"
+  },
+  {
+    "client": "Scandroli Construction",
+    "stage": "coverage_data",
+    "insured": "afbb9360-d3ec-407d-a2a1-e936887f137b",
+    "error": "HTTP 500 on /insurance/insureds/afbb9360-d3ec-407d-a2a1-e936887f137b/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+  },
+  {
+    "client": "The Abbey Management Company",
+    "stage": "criteria",
+    "insured": "58953a7f-6cb1-4a40-881d-32aa5c3c0bbb",
+    "error": "HTTP 500 on /insurance/insureds/58953a7f-6cb1-4a40-881d-32aa5c3c0bbb/status: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+  },
+  {
+    "client": "The Abbey Management Company",
+    "stage": "coverage_data",
+    "insured": "5a51138c-a131-46f5-8524-b578eda62389",
+    "error": "HTTP 500 on /insurance/insureds/5a51138c-a131-46f5-8524-b578eda62389/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+  },
+  {
+    "client": "The Abbey Management Company",
+    "stage": "coverage_data",
+    "insured": "5a674470-b0fb-4a26-a7db-27edf2dce955",
+    "error": "HTTP 401 on /insurance/insureds/5a674470-b0fb-4a26-a7db-27edf2dce955/data: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+  },
+  {
+    "client": "The Abbey Management Company",
+    "stage": "coverage_data",
+    "insured": "5b5ac482-ff98-42c2-8ad9-539b5bc5b1b6",
+    "error": "HTTP 500 on /insurance/insureds/5b5ac482-ff98-42c2-8ad9-539b5bc5b1b6/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+  },
+  {
+    "client": "The Abbey Management Company",
+    "stage": "criteria",
+    "insured": "adcf09db-3f45-4ea4-ba21-d397300d7db7",
+    "error": "HTTP 401 on /insurance/insureds/adcf09db-3f45-4ea4-ba21-d397300d7db7/status: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+  },
+  {
+    "client": "The Abbey Management Company",
+    "stage": "criteria",
+    "insured": "c7172471-183e-49ea-af76-b1c80bb9c4f7",
+    "error": "socket hang up"
+  },
+  {
+    "client": "The Abbey Management Company",
+    "stage": "coverage_data",
+    "insured": "cde263a5-e166-402f-941f-fc212900d684",
+    "error": "socket hang up"
+  },
+  {
+    "client": "The Abbey Management Company",
+    "stage": "coverage_data",
+    "insured": "d6fdd537-19e3-4dc3-8391-d5a50e102f85",
+    "error": "socket hang up"
+  },
+  {
+    "client": "The Abbey Management Company",
+    "stage": "coverage_data",
+    "insured": "d791baf6-71a9-4b4b-a499-80c139eeafca",
+    "error": "socket hang up"
+  },
+  {
+    "client": "United Coal Company LLC",
+    "stage": "coverage_data",
+    "insured": "3fd774a8-7fbb-402a-ab6e-2d6e87016098",
+    "error": "HTTP 401 on /insurance/insureds/3fd774a8-7fbb-402a-ab6e-2d6e87016098/data: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+  },
+  {
+    "client": "United Coal Company LLC",
+    "stage": "criteria",
+    "insured": "3855b401-e1fc-4592-9154-6c6741ec1b94",
+    "error": "HTTP 401 on /insurance/insureds/3855b401-e1fc-4592-9154-6c6741ec1b94/status: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+  },
+  {
+    "client": "United Coal Company LLC",
+    "stage": "coverage_data",
+    "insured": "3d83cf16-dcc3-4ff0-b51c-4b583359a3a8",
+    "error": "HTTP 401 on /insurance/insureds/3d83cf16-dcc3-4ff0-b51c-4b583359a3a8/data: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+  },
+  {
+    "client": "United Coal Company LLC",
+    "stage": "coverage_data",
+    "insured": "b1072ec6-7b4f-40b6-adde-17de18b5b24a",
+    "error": "HTTP 500 on /insurance/insureds/b1072ec6-7b4f-40b6-adde-17de18b5b24a/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
+  },
+  {
+    "client": "United Coal Company LLC",
+    "stage": "coverage_data",
+    "insured": "d181820a-aa69-4bcd-a2d4-d8150df79f36",
+    "error": "socket hang up"
+  },
+  {
+    "client": "United Coal Company LLC",
+    "stage": "coverage_data",
+    "insured": "df412abd-6ecf-4b5b-b33f-753ac83b3b12",
+    "error": "HTTP 401 on /insurance/insureds/df412abd-6ecf-4b5b-b33f-753ac83b3b12/data: {\"detail\": \"The specified credentials did not match any recognized by the system.\", \"heading\": \"Invalid credentials specified\", \"auth_error\": \"InvalidCredentialsSpecified\"}\n"
+  },
+  {
+    "client": "United Coal Company LLC",
+    "stage": "coverage_data",
+    "insured": "ee4589f7-0014-4a6d-b66d-fa728e7f0744",
+    "error": "socket hang up"
+  },
+  {
+    "client": "United Coal Company LLC",
+    "stage": "coverage_data",
+    "insured": "d9d59405-e8cd-424a-9f1f-9e9fc8c2102a",
+    "error": "HTTP 500 on /insurance/insureds/d9d59405-e8cd-424a-9f1f-9e9fc8c2102a/data: {\"error\":{\"message\":\"An unexpected error has occurred.\",\"type\":\"UnexpectedException\"},\"success\":false}\n"
   }
 ]
