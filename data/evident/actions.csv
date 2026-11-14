@@ -1,21 +1,10 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-A G Equipment Company,2db9c2a4-e005-4218-ad6c-b72c04d9fa2e,,8c55e315-2f58-4120-94b1-cceec497dc37,,pending,2026-11-12T15:14:47,,,,,,11/13/2026,11/13/2026 06:22:27
-Canadian Pacific Kansas City,2d6dac1a-32a3-49ce-9b30-9702b2171355,,a28b8fe4-dd56-4cb1-98ee-06b66e6089b2,,pending,2026-11-13T07:18:48,,,,,,11/13/2026,11/13/2026 06:22:27
-Canadian Pacific Kansas City,76872712-9fb3-4ad9-94ec-13f8bbda3a71,,0615febe-62ab-45c8-bb7e-ef7e5d54dd9b,,pending,2026-11-13T07:11:21,,,,,,11/13/2026,11/13/2026 06:22:27
-Canadian Pacific Kansas City,99feef2b-8a24-4aae-b333-2d1ee780b591,,,,pending,2026-11-13T07:18:48,,,,,,11/13/2026,11/13/2026 06:22:27
-"Musselman & Hall Contractors, LLC",28077670-a6f2-4026-9a58-8b556cf42f3d,,,,pending,2026-11-12T15:11:29,,,,,,11/13/2026,11/13/2026 06:22:35
-"Musselman & Hall Contractors, LLC",9ae4e4d2-a3a8-4ad1-a548-1b271a3d4a4e,,,,pending,2026-11-12T15:11:29,,,,,,11/13/2026,11/13/2026 06:22:35
-Scandroli Construction,3047d9e9-547b-4f3e-a7bd-bbf6f96e33fe,,934e22d7-b63d-47bb-9389-890cc6b1bb29,,pending,2026-11-13T06:57:38,,,,,,11/13/2026,11/13/2026 06:22:35
-Scandroli Construction,5283fd50-dc2c-437e-b59c-ba547cde6841,,e73cf19d-3a21-4181-9621-692bbfe5581e,,pending,2026-11-13T09:07:38,,,,,,11/13/2026,11/13/2026 06:22:35
-Scandroli Construction,53b089e3-fc1e-4eff-900d-de5648810f4f,,b07c98d9-7fc0-40b0-b9a3-ac94a997fcfb,,pending,2026-11-13T10:04:08,,,,,,11/13/2026,11/13/2026 06:22:35
-Scandroli Construction,6654b076-cadf-41d3-beca-e9e46699a16c,,e73cf19d-3a21-4181-9621-692bbfe5581e,,pending,2026-11-13T09:07:38,,,,,,11/13/2026,11/13/2026 06:22:35
-Scandroli Construction,98441625-d2b5-4ca8-bf07-b4c6e6545b81,,,,pending,2026-11-13T09:07:38,,,,,,11/13/2026,11/13/2026 06:22:35
-Scandroli Construction,a38877d5-e3ca-4220-9bb8-d10ba057929f,,b07c98d9-7fc0-40b0-b9a3-ac94a997fcfb,,pending,2026-11-13T10:04:08,,,,,,11/13/2026,11/13/2026 06:22:35
-Scandroli Construction,b7669de6-a3e8-40ab-805d-dc24603f23e9,,b07c98d9-7fc0-40b0-b9a3-ac94a997fcfb,,pending,2026-11-13T10:04:08,,,,,,11/13/2026,11/13/2026 06:22:35
-Scandroli Construction,b89b612c-9724-45a1-b02d-003f7dd3cb7d,,e73cf19d-3a21-4181-9621-692bbfe5581e,,pending,2026-11-13T09:07:38,,,,,,11/13/2026,11/13/2026 06:22:35
-Scandroli Construction,c0f1a98d-0623-41e8-9e72-c09eea7c52d9,,b07c98d9-7fc0-40b0-b9a3-ac94a997fcfb,,pending,2026-11-13T10:04:08,,,,,,11/13/2026,11/13/2026 06:22:35
-Scandroli Construction,c54efbbf-710e-4477-b476-62d3e4822c77,,,,pending,2026-11-13T09:07:38,,,,,,11/13/2026,11/13/2026 06:22:35
-Scandroli Construction,ca57284f-999a-4263-9a97-eeca90134ea4,,e73cf19d-3a21-4181-9621-692bbfe5581e,,pending,2026-11-13T09:07:38,,,,,,11/13/2026,11/13/2026 06:22:35
-The Abbey Management Company,7b08742e-bb19-4d5a-9d98-46e290087f08,,,,pending,2026-11-13T06:57:14,,,,,,11/13/2026,11/13/2026 06:22:37
-The Abbey Management Company,7f6cffe6-1595-4342-9f21-9968071d0429,,,,pending,2026-11-12T16:35:19,,,,,,11/13/2026,11/13/2026 06:22:37
-The Abbey Management Company,c63ce61f-29b7-401d-bbc0-5620bbe65577,,fb2e1444-da27-4ecb-a1e3-956793329c0b,,pending,2026-11-13T06:57:14,,,,,,11/13/2026,11/13/2026 06:22:37
+A G Equipment Company,2db9c2a4-e005-4218-ad6c-b72c04d9fa2e,,8c55e315-2f58-4120-94b1-cceec497dc37,,pending,2026-11-12T15:14:47,,,,,,11/13/2026,11/13/2026 19:08:24
+Canadian Pacific Kansas City,2d6dac1a-32a3-49ce-9b30-9702b2171355,,a28b8fe4-dd56-4cb1-98ee-06b66e6089b2,,pending,2026-11-13T07:18:48,,,,,,11/13/2026,11/13/2026 19:08:24
+Canadian Pacific Kansas City,76872712-9fb3-4ad9-94ec-13f8bbda3a71,,0615febe-62ab-45c8-bb7e-ef7e5d54dd9b,,pending,2026-11-13T07:11:21,,,,,,11/13/2026,11/13/2026 19:08:24
+Canadian Pacific Kansas City,99feef2b-8a24-4aae-b333-2d1ee780b591,,,,pending,2026-11-13T07:18:48,,,,,,11/13/2026,11/13/2026 19:08:24
+"Musselman & Hall Contractors, LLC",28077670-a6f2-4026-9a58-8b556cf42f3d,,,,pending,2026-11-12T15:11:29,,,,,,11/13/2026,11/13/2026 19:08:31
+"Musselman & Hall Contractors, LLC",9ae4e4d2-a3a8-4ad1-a548-1b271a3d4a4e,,,,pending,2026-11-12T15:11:29,,,,,,11/13/2026,11/13/2026 19:08:31
+The Abbey Management Company,7b08742e-bb19-4d5a-9d98-46e290087f08,,,,pending,2026-11-13T06:57:14,,,,,,11/13/2026,11/13/2026 19:08:33
+The Abbey Management Company,7f6cffe6-1595-4342-9f21-9968071d0429,,,,pending,2026-11-12T16:35:19,,,,,,11/13/2026,11/13/2026 19:08:33
+The Abbey Management Company,c63ce61f-29b7-401d-bbc0-5620bbe65577,,fb2e1444-da27-4ecb-a1e3-956793329c0b,,pending,2026-11-13T06:57:14,,,,,,11/13/2026,11/13/2026 19:08:33
