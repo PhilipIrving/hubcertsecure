@@ -1,10 +1,18 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-A G Equipment Company,2db9c2a4-e005-4218-ad6c-b72c04d9fa2e,,8c55e315-2f58-4120-94b1-cceec497dc37,,pending,2026-11-12T15:14:47,,,,,,11/13/2026,11/13/2026 19:08:24
-Canadian Pacific Kansas City,2d6dac1a-32a3-49ce-9b30-9702b2171355,,a28b8fe4-dd56-4cb1-98ee-06b66e6089b2,,pending,2026-11-13T07:18:48,,,,,,11/13/2026,11/13/2026 19:08:24
-Canadian Pacific Kansas City,76872712-9fb3-4ad9-94ec-13f8bbda3a71,,0615febe-62ab-45c8-bb7e-ef7e5d54dd9b,,pending,2026-11-13T07:11:21,,,,,,11/13/2026,11/13/2026 19:08:24
-Canadian Pacific Kansas City,99feef2b-8a24-4aae-b333-2d1ee780b591,,,,pending,2026-11-13T07:18:48,,,,,,11/13/2026,11/13/2026 19:08:24
-"Musselman & Hall Contractors, LLC",28077670-a6f2-4026-9a58-8b556cf42f3d,,,,pending,2026-11-12T15:11:29,,,,,,11/13/2026,11/13/2026 19:08:31
-"Musselman & Hall Contractors, LLC",9ae4e4d2-a3a8-4ad1-a548-1b271a3d4a4e,,,,pending,2026-11-12T15:11:29,,,,,,11/13/2026,11/13/2026 19:08:31
-The Abbey Management Company,7b08742e-bb19-4d5a-9d98-46e290087f08,,,,pending,2026-11-13T06:57:14,,,,,,11/13/2026,11/13/2026 19:08:33
-The Abbey Management Company,7f6cffe6-1595-4342-9f21-9968071d0429,,,,pending,2026-11-12T16:35:19,,,,,,11/13/2026,11/13/2026 19:08:33
-The Abbey Management Company,c63ce61f-29b7-401d-bbc0-5620bbe65577,,fb2e1444-da27-4ecb-a1e3-956793329c0b,,pending,2026-11-13T06:57:14,,,,,,11/13/2026,11/13/2026 19:08:33
+A G Equipment Company,2db9c2a4-e005-4218-ad6c-b72c04d9fa2e,,8c55e315-2f58-4120-94b1-cceec497dc37,,pending,2026-11-12T15:14:47,,,,,,11/14/2026,11/14/2026 05:42:27
+Bauer Foundation Corp.,bc5fe288-4865-483d-b46d-9daa161cdfe4,,c4624a67-70ee-4104-8c71-fed5e0d3ddcc,,pending,2026-11-14T07:30:15,,,,,,11/14/2026,11/14/2026 05:42:27
+Canadian Pacific Kansas City,0de67134-022d-4a0c-b466-299017241177,,,,pending,2026-11-14T05:18:45,,,,,,11/14/2026,11/14/2026 05:42:27
+Canadian Pacific Kansas City,2d6dac1a-32a3-49ce-9b30-9702b2171355,,a28b8fe4-dd56-4cb1-98ee-06b66e6089b2,,pending,2026-11-13T07:18:48,,,,,,11/14/2026,11/14/2026 05:42:27
+Canadian Pacific Kansas City,76872712-9fb3-4ad9-94ec-13f8bbda3a71,,0615febe-62ab-45c8-bb7e-ef7e5d54dd9b,,pending,2026-11-13T07:11:21,,,,,,11/14/2026,11/14/2026 05:42:27
+Canadian Pacific Kansas City,99feef2b-8a24-4aae-b333-2d1ee780b591,,,,pending,2026-11-13T07:18:48,,,,,,11/14/2026,11/14/2026 05:42:27
+Gart Properties,4a062340-dd20-4010-a9c6-014c4564b920,,,,pending,2026-11-14T06:05:54,,,,,,11/14/2026,11/14/2026 05:42:27
+"Musselman & Hall Contractors, LLC",28077670-a6f2-4026-9a58-8b556cf42f3d,,,,pending,2026-11-12T15:11:29,,,,,,11/14/2026,11/14/2026 05:42:33
+"Musselman & Hall Contractors, LLC",9ae4e4d2-a3a8-4ad1-a548-1b271a3d4a4e,,,,pending,2026-11-12T15:11:29,,,,,,11/14/2026,11/14/2026 05:42:33
+Scandroli Construction,4ab24e14-c912-4cd9-be27-1224c6aea21f,,c1178a54-c6fc-471e-82ef-bba2c010d5ac,,pending,2026-11-14T11:09:25,,,,,,11/14/2026,11/14/2026 05:42:34
+Scandroli Construction,cfc305e6-70a1-48ce-b3e2-86eb3347a1d3,,c1178a54-c6fc-471e-82ef-bba2c010d5ac,,pending,2026-11-14T11:09:25,,,,,,11/14/2026,11/14/2026 05:42:34
+Scandroli Construction,d6296bed-2d05-44c9-bdfd-8c032d6a66b2,,c1178a54-c6fc-471e-82ef-bba2c010d5ac,,pending,2026-11-14T11:09:25,,,,,,11/14/2026,11/14/2026 05:42:34
+Scandroli Construction,e1c5c954-05c1-4f16-abbe-e6cd96a1bbc0,,c1178a54-c6fc-471e-82ef-bba2c010d5ac,,pending,2026-11-14T11:09:25,,,,,,11/14/2026,11/14/2026 05:42:34
+The Abbey Management Company,5cacdeff-855e-46b7-9147-d7332ab36ffd,,bcedfbdb-2bb9-4b86-8cf5-eeafe4b163ba,,pending,2026-11-14T06:17:36,,,,,,11/14/2026,11/14/2026 05:42:36
+The Abbey Management Company,7b08742e-bb19-4d5a-9d98-46e290087f08,,,,pending,2026-11-13T06:57:14,,,,,,11/14/2026,11/14/2026 05:42:36
+The Abbey Management Company,7f6cffe6-1595-4342-9f21-9968071d0429,,,,pending,2026-11-12T16:35:19,,,,,,11/14/2026,11/14/2026 05:42:36
+The Abbey Management Company,c63ce61f-29b7-401d-bbc0-5620bbe65577,,fb2e1444-da27-4ecb-a1e3-956793329c0b,,pending,2026-11-13T06:57:14,,,,,,11/14/2026,11/14/2026 05:42:36
