@@ -1,3 +1,4 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,bc5fe288-4865-483d-b46d-9daa161cdfe4,,c4624a67-70ee-4104-8c71-fed5e0d3ddcc,,pending,2026-11-14T07:30:15,,,,,,11/16/2026,11/16/2026 12:27:56
-The Abbey Management Company,896703a1-5a40-42cf-9458-209aa291c18a,,80f42fbc-a1fc-45b0-88ca-4013b2352546,,pending,2026-11-16T15:16:16,,,,,,11/16/2026,11/16/2026 12:28:06
+Bauer Foundation Corp.,bc5fe288-4865-483d-b46d-9daa161cdfe4,,c4624a67-70ee-4104-8c71-fed5e0d3ddcc,,pending,2026-11-14T07:30:15,,,,,,11/16/2026,11/16/2026 21:12:51
+Canadian Pacific Kansas City,2ceb28a7-c38b-4dde-bc29-66175a65e781,,6a5de9b2-0ec8-48d1-bbfd-fc26e4162256,,pending,2026-11-17T02:23:01,,,,,,11/16/2026,11/16/2026 21:12:51
+The Abbey Management Company,896703a1-5a40-42cf-9458-209aa291c18a,,80f42fbc-a1fc-45b0-88ca-4013b2352546,,pending,2026-11-16T15:16:16,,,,,,11/16/2026,11/16/2026 21:13:00
