@@ -1,4 +1,15 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,bc5fe288-4865-483d-b46d-9daa161cdfe4,,c4624a67-70ee-4104-8c71-fed5e0d3ddcc,,pending,2026-11-14T07:30:15,,,,,,11/16/2026,11/16/2026 21:12:51
-Canadian Pacific Kansas City,2ceb28a7-c38b-4dde-bc29-66175a65e781,,6a5de9b2-0ec8-48d1-bbfd-fc26e4162256,,pending,2026-11-17T02:23:01,,,,,,11/16/2026,11/16/2026 21:12:51
-The Abbey Management Company,896703a1-5a40-42cf-9458-209aa291c18a,,80f42fbc-a1fc-45b0-88ca-4013b2352546,,pending,2026-11-16T15:16:16,,,,,,11/16/2026,11/16/2026 21:13:00
+Bauer Foundation Corp.,bc5fe288-4865-483d-b46d-9daa161cdfe4,,c4624a67-70ee-4104-8c71-fed5e0d3ddcc,,pending,2026-11-14T07:30:15,,,,,,11/17/2026,11/17/2026 07:16:07
+Canadian Pacific Kansas City,005a280a-a160-4ee4-9757-55ea539d4911,,,,pending,2026-11-17T06:58:06,,,,,,11/17/2026,11/17/2026 07:16:07
+Canadian Pacific Kansas City,2ceb28a7-c38b-4dde-bc29-66175a65e781,,6a5de9b2-0ec8-48d1-bbfd-fc26e4162256,,pending,2026-11-17T02:23:01,,,,,,11/17/2026,11/17/2026 07:16:07
+Canadian Pacific Kansas City,39cbf64f-ae0c-4d35-b806-dbb776e9336a,,,,pending,2026-11-17T10:00:49,,,,,,11/17/2026,11/17/2026 07:16:07
+Canadian Pacific Kansas City,3eeb7bc5-1d6c-4c7e-97b9-4d2f3d77c18b,,,,pending,2026-11-17T06:58:06,,,,,,11/17/2026,11/17/2026 07:16:07
+Canadian Pacific Kansas City,dc6b97c7-fe43-4aa5-b1d5-a12f03d97ab9,,bd340359-3913-47cc-b4b2-363af94f23a5,,pending,2026-11-17T07:58:32,,,,,,11/17/2026,11/17/2026 07:16:07
+Canadian Pacific Kansas City,fc2417c7-3d8c-42b5-a1ff-e107997f8827,,962df2ec-c289-4531-81aa-d484e0436ed8,,pending,2026-11-17T08:11:02,,,,,,11/17/2026,11/17/2026 07:16:07
+Gart Properties,74b41aaf-a96e-424a-88ba-cd2395e7ced5,,,,pending,2026-11-17T06:01:51,,,,,,11/17/2026,11/17/2026 07:16:07
+Scandroli Construction,0209a615-9b8c-4a5d-a565-d61eedbf7b0c,,513f3d92-d02d-4d51-b988-d5756cedd8a3,,pending,2026-11-17T03:24:13,,,,,,11/17/2026,11/17/2026 07:16:16
+Scandroli Construction,1e566924-6617-4f95-a504-e5177bdc9f0a,,513f3d92-d02d-4d51-b988-d5756cedd8a3,,pending,2026-11-17T03:24:13,,,,,,11/17/2026,11/17/2026 07:16:16
+Scandroli Construction,78c6311e-4a18-4469-86ff-004eccec3d8f,,513f3d92-d02d-4d51-b988-d5756cedd8a3,,pending,2026-11-17T03:24:13,,,,,,11/17/2026,11/17/2026 07:16:16
+Scandroli Construction,acd31379-025d-4556-87e1-5be5620d2da5,,,,pending,2026-11-17T03:24:13,,,,,,11/17/2026,11/17/2026 07:16:16
+Scandroli Construction,be8b2c27-caff-4171-bb78-5597894ff35b,,513f3d92-d02d-4d51-b988-d5756cedd8a3,,pending,2026-11-17T03:24:13,,,,,,11/17/2026,11/17/2026 07:16:16
+The Abbey Management Company,896703a1-5a40-42cf-9458-209aa291c18a,,80f42fbc-a1fc-45b0-88ca-4013b2352546,,pending,2026-11-16T15:16:16,,,,,,11/17/2026,11/17/2026 07:16:17
