@@ -1,5 +1,5 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,bc5fe288-4865-483d-b46d-9daa161cdfe4,,c4624a67-70ee-4104-8c71-fed5e0d3ddcc,,pending,2026-11-14T07:30:15,,,,,,11/18/2026,11/18/2026 00:52:17
-EMMES,087fc319-3987-4d9c-a173-f421c956cd79,,5612449b-dc13-44f6-9357-50f4e51b4d0b,,pending,2026-11-18T05:33:08,,,,,,11/18/2026,11/18/2026 00:52:17
-Gart Properties,a385fe6e-aee9-4577-a61d-9155ce82f9e3,,13396a4e-dee6-4153-9293-725a33a3a4fc,,pending,2026-11-18T04:43:48,,,,,,11/18/2026,11/18/2026 00:52:17
-Gart Properties,aee1d737-9921-48d2-a776-7bf91caa7664,,8b6dbc1c-2d54-4f7b-ad25-e13764dde704,,pending,2026-11-18T05:31:32,,,,,,11/18/2026,11/18/2026 00:52:17
+Bauer Foundation Corp.,5365a333-ddab-400a-9747-6157873d2585,,f3b8e5c5-3132-403a-8b14-db1c03d596b0,,pending,2026-11-18T13:41:46,,,,,,11/18/2026,11/18/2026 11:32:18
+Bauer Foundation Corp.,7bdf03b1-ce89-41ef-a99b-dd8e3a520bac,,5ca7a366-83e2-4ec3-807c-db5e34eba312,,pending,2026-11-18T10:58:57,,,,,,11/18/2026,11/18/2026 11:32:18
+Bauer Foundation Corp.,bc5fe288-4865-483d-b46d-9daa161cdfe4,,c4624a67-70ee-4104-8c71-fed5e0d3ddcc,,pending,2026-11-14T07:30:15,,,,,,11/18/2026,11/18/2026 11:32:18
+Bauer Foundation Corp.,fdec1c2b-a172-4d3f-87ff-0e1665ed709b,,699f30ba-0077-4149-89e8-86407c10d04d,,pending,2026-11-18T12:19:38,,,,,,11/18/2026,11/18/2026 11:32:18
