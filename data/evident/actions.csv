@@ -1,52 +1,7 @@
 client,action_id,action_type,insured_id,insured_name,status,created_at,updated_at,scheduled_at,completed_at,notes,triggered_by,sync_date,sync_timestamp
-Bauer Foundation Corp.,5365a333-ddab-400a-9747-6157873d2585,,f3b8e5c5-3132-403a-8b14-db1c03d596b0,,pending,2026-11-18T13:41:46,,,,,,11/19/2026,11/19/2026 07:01:35
-Bauer Foundation Corp.,7bdf03b1-ce89-41ef-a99b-dd8e3a520bac,,5ca7a366-83e2-4ec3-807c-db5e34eba312,,pending,2026-11-18T10:58:57,,,,,,11/19/2026,11/19/2026 07:01:35
-Bauer Foundation Corp.,bc5fe288-4865-483d-b46d-9daa161cdfe4,,c4624a67-70ee-4104-8c71-fed5e0d3ddcc,,pending,2026-11-14T07:30:15,,,,,,11/19/2026,11/19/2026 07:01:35
-Bauer Foundation Corp.,d4829fe9-c7ac-4bd3-a9bb-84966a3a626d,,368e602f-f9c3-4a12-b93c-0c0e73c47603,,pending,2026-11-18T21:44:55,,,,,,11/19/2026,11/19/2026 07:01:35
-Bauer Foundation Corp.,fafab17e-a09e-42b7-9cb8-a5222b0c2a86,,,,pending,2026-11-18T21:44:55,,,,,,11/19/2026,11/19/2026 07:01:35
-Bauer Foundation Corp.,fdec1c2b-a172-4d3f-87ff-0e1665ed709b,,699f30ba-0077-4149-89e8-86407c10d04d,,pending,2026-11-18T12:19:38,,,,,,11/19/2026,11/19/2026 07:01:35
-Canadian Pacific Kansas City,060dd764-4c65-4cc9-8be0-3d784d1b7e49,,,,pending,2026-11-19T02:46:29,,,,,,11/19/2026,11/19/2026 07:01:35
-Canadian Pacific Kansas City,2c6b463b-2bb1-4886-9b35-b5a99620b529,,,,pending,2026-11-19T08:39:53,,,,,,11/19/2026,11/19/2026 07:01:35
-Canadian Pacific Kansas City,5b49da32-b13c-40ac-a6d4-65d1e0b054ca,,beabfe15-5e19-4cf1-8ae4-3219fa97942c,,pending,2026-11-19T12:51:20,,,,,,11/19/2026,11/19/2026 07:01:35
-Canadian Pacific Kansas City,8f96e802-3db5-41cd-9fd0-58eae1f1e139,,,,pending,2026-11-19T08:39:53,,,,,,11/19/2026,11/19/2026 07:01:35
-Canadian Pacific Kansas City,9f3b546e-1228-4e85-b7ef-254c67fd2e7c,,,,pending,2026-11-19T04:19:45,,,,,,11/19/2026,11/19/2026 07:01:35
-Canadian Pacific Kansas City,ffad7990-6110-4a75-8d8c-719680b9cfee,,,,pending,2026-11-19T11:41:01,,,,,,11/19/2026,11/19/2026 07:01:35
-EMMES,c7d1fb8d-103d-4ee6-8a09-544a9291e1f6,,e3fdc1bb-f9c4-4df6-9721-f077847af5cb,,pending,2026-11-19T03:25:56,,,,,,11/19/2026,11/19/2026 07:01:35
-Gart Properties,ad9e63e5-de80-4149-a2b6-c11c90a9b2a6,,deedc904-ad3d-4866-8e67-1695ed510b30,,pending,2026-11-19T09:45:31,,,,,,11/19/2026,11/19/2026 07:01:35
-Scandroli Construction,0c206f94-373c-4abd-a3ab-8df9ec1a59aa,,a48696a3-736d-4fe2-aab5-bd102acd4603,,pending,2026-11-19T10:16:39,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,0dd881ec-f8d6-480b-bc01-f631f6118a0e,,9db8a767-624d-4360-bd5d-0bca903b76f2,,pending,2026-11-19T06:00:47,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,149a0ce6-452c-44c1-8261-31ccf8cf4223,,b2fb0f98-9b6a-47ef-9dff-151235023eb4,,pending,2026-11-19T06:48:50,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,162f268b-e215-47be-a2b2-7297dba2dea4,,138fa12e-aba5-4b54-b9fc-87361459d1e1,,pending,2026-11-19T06:50:52,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,26193a6f-5657-40c8-8f7e-b525e6d4a915,,b4dd8517-604a-484b-acbd-edf3f9de13a6,,pending,2026-11-19T06:57:03,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,45188b46-ed6f-4048-b8c3-508bd729675f,,76cbc01b-355d-42c5-bdc4-9b883f79a937,,pending,2026-11-19T06:32:43,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,50cc4196-a8f8-4c3e-9d1b-b11a1abe8fcc,,f2a880c3-dd07-4e13-8943-38cfaf867075,,pending,2026-11-19T06:48:40,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,54059f2e-dff9-4a44-95d5-999054239f0f,,bc0872a2-86cb-4f8f-a5ed-ed6b4e58136d,,pending,2026-11-19T07:15:28,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,54f10e88-7c84-4878-ba7d-4e6526d664b2,,e91a7790-4bf7-4896-aae8-9f9d00c1cc01,,pending,2026-11-19T06:23:03,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,699af6c8-bf74-4d6c-b1d3-bfa4dc418f32,,e91a7790-4bf7-4896-aae8-9f9d00c1cc01,,pending,2026-11-19T06:23:03,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,71b3b53f-9617-43de-9e2c-50a393c8c55b,,76cbc01b-355d-42c5-bdc4-9b883f79a937,,pending,2026-11-19T06:32:43,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,76fa3a8a-e67a-438a-a3cb-eb1a22d87f79,,443bd65c-8491-407d-a3b6-cc4cd988fc65,,pending,2026-11-19T06:33:14,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,79c5aaa1-02c6-487a-bee5-163771647e19,,bc0872a2-86cb-4f8f-a5ed-ed6b4e58136d,,pending,2026-11-19T07:15:28,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,7b6a1dfc-b1e0-4f54-9710-82898e3b2f1a,,bc0872a2-86cb-4f8f-a5ed-ed6b4e58136d,,pending,2026-11-19T07:15:28,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,872e1464-378a-4d68-a7fa-10dfe03653cb,,443bd65c-8491-407d-a3b6-cc4cd988fc65,,pending,2026-11-19T06:33:14,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,8ef354b4-029c-4196-8758-8bbd14b8c164,,76cbc01b-355d-42c5-bdc4-9b883f79a937,,pending,2026-11-19T06:32:43,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,a0907eac-540d-4e31-b4f9-777fd381459c,,443bd65c-8491-407d-a3b6-cc4cd988fc65,,pending,2026-11-19T06:33:14,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,a0ebba66-61de-4caf-9d5b-5e755a83222d,,9db8a767-624d-4360-bd5d-0bca903b76f2,,pending,2026-11-19T06:00:47,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,a6ff82c2-92f9-49a7-aae8-860587530310,,9db8a767-624d-4360-bd5d-0bca903b76f2,,pending,2026-11-19T06:00:47,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,a71ba56a-9bc6-44c3-b211-632f5081dbd8,,0ba2df3a-f62f-4290-aae6-efc358b1e08f,,pending,2026-11-19T07:26:42,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,b400ff58-8d76-4088-a1a7-ce736cad686a,,b4dd8517-604a-484b-acbd-edf3f9de13a6,,pending,2026-11-19T06:57:03,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,b82308b2-c75e-4cfa-8a1d-b40a1130117a,,443bd65c-8491-407d-a3b6-cc4cd988fc65,,pending,2026-11-19T06:33:14,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,b9ad7398-a197-435e-a2f2-e7849980ffd9,,ccd025a2-22e4-4c4e-aa55-25c54e3c36af,,pending,2026-11-19T07:19:56,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,bc67d4be-6087-4ad0-a53d-8129a7636392,,a48696a3-736d-4fe2-aab5-bd102acd4603,,pending,2026-11-19T10:16:39,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,be8c04d4-0325-4bfa-9f5b-e82e18cf22b5,,f2a880c3-dd07-4e13-8943-38cfaf867075,,pending,2026-11-19T06:48:40,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,c23ec449-5e01-4fd0-a1e5-a76d361fa1b6,,b4dd8517-604a-484b-acbd-edf3f9de13a6,,pending,2026-11-19T06:57:03,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,d5c2cb5f-18f2-4c94-9607-6eb22b350eef,,,,pending,2026-11-19T07:15:28,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,eac8e435-86df-4f6f-8ac1-91a5d6741912,,9db8a767-624d-4360-bd5d-0bca903b76f2,,pending,2026-11-19T06:00:47,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,f26317ac-7de6-4c93-82c4-1d740386c9c8,,,,pending,2026-11-19T10:16:39,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,f7d4efb1-ecc6-403e-ae33-0019cf508dec,,bc0872a2-86cb-4f8f-a5ed-ed6b4e58136d,,pending,2026-11-19T07:15:28,,,,,,11/19/2026,11/19/2026 07:01:43
-Scandroli Construction,f9458423-5514-4226-b7de-bf8177c4bdc1,,764fb267-fa67-4c1a-9fdd-69065098e84d,,pending,2026-11-19T07:15:11,,,,,,11/19/2026,11/19/2026 07:01:43
-The Abbey Management Company,1f3cca94-c0fc-4303-8443-54c267d401c1,,,,pending,2026-11-19T12:54:44,,,,,,11/19/2026,11/19/2026 07:01:44
-The Abbey Management Company,4735c2f8-5c1a-4648-b16a-8b5d80f3ff43,,,,pending,2026-11-19T12:48:32,,,,,,11/19/2026,11/19/2026 07:01:44
-The Abbey Management Company,8bf75f78-f1e9-4eb0-bebf-c19051faea71,,1706f60e-7fd2-46cd-af33-dcfac051fe9c,,pending,2026-11-19T03:12:40,,,,,,11/19/2026,11/19/2026 07:01:44
-The Abbey Management Company,a0250a28-2b14-43f7-b447-41a1e365fa6b,,,,pending,2026-11-19T13:01:32,,,,,,11/19/2026,11/19/2026 07:01:44
-The Abbey Management Company,b1bba516-0cf0-471e-bffa-ce8bb8baeeb4,,,,pending,2026-11-19T09:09:51,,,,,,11/19/2026,11/19/2026 07:01:44
-The Abbey Management Company,e5e92eaf-0236-46f6-9d69-75bb22f949bc,,,,pending,2026-11-19T11:34:31,,,,,,11/19/2026,11/19/2026 07:01:44
+Bauer Foundation Corp.,5365a333-ddab-400a-9747-6157873d2585,,f3b8e5c5-3132-403a-8b14-db1c03d596b0,,pending,2026-11-18T13:41:46,,,,,,11/19/2026,11/19/2026 17:22:03
+Bauer Foundation Corp.,7bdf03b1-ce89-41ef-a99b-dd8e3a520bac,,5ca7a366-83e2-4ec3-807c-db5e34eba312,,pending,2026-11-18T10:58:57,,,,,,11/19/2026,11/19/2026 17:22:03
+Bauer Foundation Corp.,bc5fe288-4865-483d-b46d-9daa161cdfe4,,c4624a67-70ee-4104-8c71-fed5e0d3ddcc,,pending,2026-11-14T07:30:15,,,,,,11/19/2026,11/19/2026 17:22:03
+Bauer Foundation Corp.,fdec1c2b-a172-4d3f-87ff-0e1665ed709b,,699f30ba-0077-4149-89e8-86407c10d04d,,pending,2026-11-18T12:19:38,,,,,,11/19/2026,11/19/2026 17:22:03
+Canadian Pacific Kansas City,cdd9494c-61a6-4771-8da5-a2c01f5772ea,,5afac288-40e2-4b09-9e14-c2108009bf0d,,pending,2026-11-19T16:21:36,,,,,,11/19/2026,11/19/2026 17:22:03
+The Abbey Management Company,13c08572-e968-4dc7-9d7b-d1e5edd83316,,,,pending,2026-11-19T16:02:34,,,,,,11/19/2026,11/19/2026 17:22:13
